@@ -263,27 +263,38 @@ main{padding-top:0}
 
 /* ─── PAGE 0: SELECTOR ──────────────────────────────────── */
 .selector-hero{
+  background:#fff;
+  display:flex;flex-direction:column;
+  width:100%;
+}
+.selector-hero-screen{
   min-height:100vh;
   background-image:linear-gradient(to bottom, rgba(0,0,0,.62), rgba(0,0,0,.72)), url('assets/logic/13-building-corner.png');
   background-size:cover;
   background-position:center;
   display:flex;flex-direction:column;
   align-items:center;justify-content:center;
-  padding:140px 32px 140px;
+  padding:140px 32px;
   position:relative;
   overflow:hidden;
 }
-.selector-hero::before{
+.selector-hero-screen::before{
   content:'';position:absolute;top:-200px;right:-200px;
   width:600px;height:600px;border-radius:50%;
   background:radial-gradient(circle,rgba(37,99,235,.06) 0%,transparent 70%);
   pointer-events:none;
 }
-.selector-hero::after{
+.selector-hero-screen::after{
   content:'';position:absolute;bottom:-150px;left:-150px;
   width:500px;height:500px;border-radius:50%;
   background:radial-gradient(circle,rgba(37,99,235,.04) 0%,transparent 70%);
   pointer-events:none;
+}
+.selector-hero-content{
+  background:#fff;
+  color:#0f172a;
+  width:100%;
+  padding:88px 32px 112px;
 }
 .selector-badge{display:none}
 .selector-badge .dot{
@@ -308,14 +319,15 @@ main{padding-top:0}
 .selector-cards{
   display:grid;grid-template-columns:1fr 1fr;gap:28px;
   width:100%;max-width:1040px;margin-bottom:56px;
+  margin-left:auto;margin-right:auto;
 }
 .selector-card{
   background:#fff;
-  border:1px solid #f1f5f9;
+  border:1px solid #e2e8f0;
   border-radius:var(--radius-lg);
   padding:40px 36px;
   cursor:pointer;
-  transition:all .25s ease;
+  transition:border-color .2s ease, background-color .2s ease;
   position:relative;overflow:hidden;
 }
 .selector-card::before{
@@ -323,7 +335,7 @@ main{padding-top:0}
   background:var(--blue);opacity:0;
   transition:opacity .25s ease;
 }
-.selector-card:hover{border-color:#e2e8f0;background:#fff;transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.selector-card:hover{border-color:#cbd5e1;background:#fff;transform:none;box-shadow:none}
 .selector-card:hover::before{opacity:.02}
 .selector-card-icon{
   width:48px;height:48px;border-radius:10px;
@@ -356,8 +368,74 @@ main{padding-top:0}
   padding:18px 24px;max-width:920px;font-weight:300;
   display:flex;align-items:flex-start;gap:12px;
   font-size:13px;color:#334155;line-height:1.6;
+  margin:0 auto;
 }
 .selector-warning svg{width:18px;height:18px;stroke:#d97706;fill:none;stroke-width:1.8;flex-shrink:0;margin-top:1px}
+
+.hero-brand{
+  font-size:clamp(2.2rem,6.2vw,5.4rem);
+  line-height:1;
+  letter-spacing:-.05em;
+  font-weight:700;
+  color:#fff;
+  text-transform:uppercase;
+  text-align:center;
+}
+.hero-descriptor{
+  margin-top:14px;
+  font-size:clamp(1.2rem,2.6vw,2.2rem);
+  line-height:1.15;
+  letter-spacing:-.03em;
+  font-weight:300;
+  color:#fff;
+  text-align:center;
+  max-width:20ch;
+}
+.longread-section{
+  background:#fff;
+  color:#0f172a;
+  padding:112px 0;
+}
+.longread-section h2{font-size:clamp(1.9rem,3.5vw,3rem);margin-bottom:18px;color:#0f172a}
+.longread-section p{color:#475569;font-size:16px;line-height:1.75}
+.manifest-metrics{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
+  margin-top:36px;
+}
+.manifest-metric{
+  border:1px solid #e2e8f0;border-radius:10px;background:#fff;padding:20px 18px;
+}
+.manifest-metric .value{font-size:1.9rem;line-height:1;font-weight:700;color:#0f172a;letter-spacing:-.03em}
+.manifest-metric .label{font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:#64748b;margin-top:8px}
+.risk-cards{
+  margin-top:28px;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
+}
+.risk-card{border:1px solid #e2e8f0;border-radius:10px;padding:18px;background:#fff}
+.risk-card h4{font-size:14px;font-weight:600;letter-spacing:-.01em;line-height:1.2;color:#0f172a;margin-bottom:8px}
+.risk-card p{font-size:13px;line-height:1.6;color:#475569}
+.audience-tabs{
+  display:flex;justify-content:center;gap:24px;
+  margin-bottom:44px;
+}
+.audience-tab{
+  border:none;background:transparent;cursor:pointer;
+  font-family:'Inter',sans-serif;
+  font-size:12px;font-weight:300;letter-spacing:.14em;text-transform:uppercase;
+  color:#64748b;padding:0 0 8px;border-bottom:1px solid transparent;
+}
+.audience-tab.active{color:#0f172a;border-bottom-color:#0f172a}
+.audience-pane{display:none}
+.audience-pane.active{display:block}
+.solution-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:24px}
+.solution-card{
+  border:1px solid #e2e8f0;border-radius:12px;background:#fff;padding:30px;
+}
+.solution-card h3{font-size:1.35rem;line-height:1.1;letter-spacing:-.03em;color:#0f172a;margin-bottom:12px}
+.solution-list{display:flex;flex-direction:column;gap:10px;margin-top:12px}
+.solution-list li{list-style:none;color:#475569;font-size:14px;line-height:1.6}
+.solution-radar-wrap{height:320px}
+#page-p1,#page-p2,#page-p3,#page-p4{display:none!important}
 
 /* ─── PAGE 1: WARNING / PAIN ─────────────────────────────── */
 .p1-hero{
@@ -895,6 +973,11 @@ main{padding-top:0}
   .topbar-right{width:auto;justify-content:flex-end}
   .selector-title{font-size:clamp(2rem,9vw,3.2rem)}
   .selector-sub{margin-bottom:48px}
+  .selector-hero-content{padding:56px 20px 72px}
+  .manifest-metrics,.risk-cards,.solution-grid{grid-template-columns:1fr}
+  .longread-section{padding:72px 0}
+  .hero-brand{font-size:clamp(2rem,11vw,3.1rem)}
+  .hero-descriptor{font-size:clamp(1rem,6vw,1.5rem)}
   .p1-hero h1{font-size:clamp(2rem,10vw,3rem)}
   .p2-hero h1,.p3-header h1,.p4-header h1{font-size:clamp(1.7rem,8vw,2.25rem)}
   .feature-row{padding:44px 0}
@@ -917,20 +1000,12 @@ main{padding-top:0}
       </a>
     </div>
     <nav class="topbar-nav">
-      <button type="button" class="topbar-nav-btn" onclick="showPage('p1')">Фаза I</button>
-      <button type="button" class="topbar-nav-btn" onclick="showPage('p2')">Фаза II</button>
-      <button type="button" class="topbar-nav-btn" onclick="showPage('p3')">Фаза III</button>
-      <button type="button" class="topbar-nav-btn" onclick="showPage('p4')">Фаза IV</button>
+      <button type="button" class="topbar-nav-btn active" data-audience-tab="private" onclick="switchAudience('private')">Частным лицам</button>
+      <button type="button" class="topbar-nav-btn" data-audience-tab="trade" onclick="switchAudience('trade')">Импортерам и Экспортерам</button>
     </nav>
     <div class="topbar-right">
       <a href="why.html" class="topbar-why">THE LOGIC</a>
       <button type="button" class="topbar-private-access" id="openLoginModal" aria-haspopup="dialog" aria-controls="loginModal">Private Access</button>
-      <div class="topbar-phase">
-        <span class="phase-pill" onclick="showPage('p1')">Этап I</span>
-        <span class="phase-pill" onclick="showPage('p2')">Этап II</span>
-        <span class="phase-pill" onclick="showPage('p3')">Этап III</span>
-        <span class="phase-pill" onclick="showPage('p4')">Этап IV</span>
-      </div>
     </div>
   </div>
 </div>
@@ -942,41 +1017,93 @@ main{padding-top:0}
 ═══════════════════════════════════════════════════════════ -->
 <div id="page-selector" class="page active">
   <div class="selector-hero">
-    <div class="selector-badge">
-      <span class="dot"></span>
-      Закрытый портал Charter Capital
-    </div>
-    <h1 class="selector-title">CHARTER CAPITAL. Архитекторы легитимности и безупречной биографии вашего капитала.</h1>
-    <p class="selector-sub">Мы превращаем токсичные активы в прозрачный капитал для глобального мира.</p>
-    <div class="selector-cards">
-      <div class="selector-card" onclick="showPage('p3')">
-        <div class="selector-card-icon">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.58-7 8-7s8 3 8 7"/></svg>
-        </div>
-        <div class="selector-card-label">Private Wealth</div>
-        <h3>Частный капитал и легитимация</h3>
-        <p>Для частных клиентов: аудит происхождения капитала, структурирование через трасты и фонды, подготовка к статусу Tier-1 Bank Ready.</p>
-        <div class="selector-card-arrow">
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </div>
-      </div>
-      <div class="selector-card" onclick="showPage('p4')">
-        <div class="selector-card-icon">
-          <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-        </div>
-        <div class="selector-card-label">Corporate Hub</div>
-        <h3>Инфраструктура ВЭД</h3>
-        <p>Для корпоративных клиентов: регистрация холдингов в HK/SG, архитектура Decoupling, кросс-бордерные платежи и управление рисками ВЭД.</p>
-        <div class="selector-card-arrow">
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </div>
-      </div>
-    </div>
-    <div class="selector-warning">
-      <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-      <span>В 2026 году активы с российским следом блокируются в 78% европейских банков. <strong>Ознакомьтесь с аналитикой →</strong> <a href="#" onclick="showPage('p1');return false;" style="color:#92400e;font-weight:500">Карта рисков, 2026</a></span>
+    <div class="selector-hero-screen">
+      <h1 class="hero-brand">CHARTER CAPITAL</h1>
+      <p class="hero-descriptor">Архитекторы легитимности и безупречной биографии вашего капитала.</p>
     </div>
   </div>
+
+  <section class="longread-section">
+    <div class="container">
+      <div class="label">Манифест</div>
+      <h2>Dubai Exodus, $2.1 трлн под заморозкой и новая норма прозрачности</h2>
+      <p>Капитал с «российским следом» становится мусором для западных банков, если не имеет институциональной биографии. Простая релокация больше не работает: работает только легитимная архитектура владения, подтвержденная SoW/SoF и юридическим контуром Tier-1.</p>
+      <div class="manifest-metrics">
+        <div class="manifest-metric"><div class="value">78%</div><div class="label">Блокировок в ЕС</div></div>
+        <div class="manifest-metric"><div class="value">$2.1T</div><div class="label">Активов под риском</div></div>
+        <div class="manifest-metric"><div class="value">14K</div><div class="label">Счетов закрыто</div></div>
+        <div class="manifest-metric"><div class="value">6 мес</div><div class="label">Средний комплаенс</div></div>
+      </div>
+      <div class="risk-cards">
+        <article class="risk-card">
+          <h4>Токсичность следа и EDD</h4>
+          <p>Любая связь с токсичными маршрутами автоматически запускает Enhanced Due Diligence и риск блокировки.</p>
+        </article>
+        <article class="risk-card">
+          <h4>Dubai Exodus</h4>
+          <p>После окна 2022-2023 банки ОАЭ закрывают счета ретроспективно, перенося риск в новые юрисдикции.</p>
+        </article>
+        <article class="risk-card">
+          <h4>Номинальные офшоры больше не защищают</h4>
+          <p>Без прозрачного UBO и доказуемого происхождения капитала структура больше не проходит банковский фильтр.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="longread-section" style="padding-top:24px">
+    <div class="container">
+      <div class="label">Решения</div>
+      <div class="audience-tabs">
+        <button type="button" class="audience-tab active" data-audience-tab="private" onclick="switchAudience('private')">Частным лицам</button>
+        <button type="button" class="audience-tab" data-audience-tab="trade" onclick="switchAudience('trade')">Импортерам и Экспортерам</button>
+      </div>
+
+      <div class="audience-pane active" data-audience-pane="private">
+        <div class="solution-grid">
+          <article class="solution-card">
+            <h3>Family Office и институциональная легализация</h3>
+            <p>Проектируем частный контур владения для защиты капитала, преемственности и работы с банками Tier-1.</p>
+            <ul class="solution-list">
+              <li>SoW/SoF аудит и сбор комплаенс-досье для Tier-1.</li>
+              <li>Fiduciary-координация юристов, банков и налоговых консультантов.</li>
+              <li>Структуры Stiftung / Trust / SPV под персональный риск-профиль.</li>
+            </ul>
+          </article>
+          <article class="solution-card">
+            <h3>Object Passport</h3>
+            <p>Паспорт актива формирует доказуемую историю происхождения и владения для банковского и регуляторного контура.</p>
+            <ul class="solution-list">
+              <li>Верификация происхождения средств и цепочки операций.</li>
+              <li>Юридическая упаковка активов перед открытием счетов.</li>
+              <li>Подготовка к cross-border сделкам без комплаенс-стопов.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+
+      <div class="audience-pane" data-audience-pane="trade">
+        <div class="solution-grid">
+          <article class="solution-card">
+            <h3>Инфраструктура ВЭД и Decoupling</h3>
+            <p>Собираем операционный контур для импортеров и экспортеров: юрисдикции, банки, платежные шлюзы и риск-изоляция.</p>
+            <ul class="solution-list">
+              <li>HK/SG структуры для торговых потоков и документооборота.</li>
+              <li>Decoupling по уровням владения, операционного риска и платежей.</li>
+              <li>Кросс-бордерная архитектура для устойчивых расчетов.</li>
+            </ul>
+          </article>
+          <article class="solution-card">
+            <h3>Сравнение юрисдикций (радар)</h3>
+            <p style="margin-bottom:14px">Singapore и Hong Kong как базовые опоры ВЭД-инфраструктуры в 2026.</p>
+            <div class="solution-radar-wrap">
+              <canvas id="audienceRadar" aria-label="Сравнение Singapore и Hong Kong" role="img"></canvas>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
 
 <!-- ══════════════════════════════════════════════════════════
@@ -1789,7 +1916,52 @@ main{padding-top:0}
 // ── Page fade-in ─────────────────────────────────────────
 document.addEventListener('DOMContentLoaded',function(){
   requestAnimationFrame(function(){ document.body.classList.add('page-ready'); });
+  switchAudience('private');
+  var topbar=document.getElementById('topbar');
+  var updateTopbar=function(){
+    if(!topbar) return;
+    topbar.classList.toggle('topbar-solid', window.scrollY>24);
+  };
+  updateTopbar();
+  window.addEventListener('scroll',updateTopbar,{passive:true});
 });
+
+let audienceRadarChart=null;
+function initAudienceRadar(){
+  if(audienceRadarChart) return;
+  var c=document.getElementById('audienceRadar');
+  if(!c||typeof Chart==='undefined') return;
+  audienceRadarChart=new Chart(c,{
+    type:'radar',
+    data:{
+      labels:['Compliance','Bank Access','Trade Ops','Risk Shield','Tax Logic','Scalability'],
+      datasets:[
+        {label:'Singapore',data:[94,92,90,88,86,91],borderColor:'#2563eb',backgroundColor:'rgba(37,99,235,.14)',pointBackgroundColor:'#2563eb',borderWidth:2},
+        {label:'Hong Kong',data:[88,89,95,82,84,93],borderColor:'#0f172a',backgroundColor:'rgba(15,23,42,.12)',pointBackgroundColor:'#0f172a',borderWidth:2}
+      ]
+    },
+    options:{
+      responsive:true,
+      maintainAspectRatio:false,
+      plugins:{legend:{position:'bottom',labels:{boxWidth:12,color:'#334155'}}},
+      scales:{r:{
+        min:0,max:100,ticks:{display:false},
+        angleLines:{color:'#e2e8f0'},
+        grid:{color:'#e2e8f0'},
+        pointLabels:{color:'#334155',font:{size:11}}
+      }}
+    }
+  });
+}
+function switchAudience(audience){
+  document.querySelectorAll('[data-audience-tab]').forEach(function(btn){
+    btn.classList.toggle('active', btn.getAttribute('data-audience-tab')===audience);
+  });
+  document.querySelectorAll('[data-audience-pane]').forEach(function(pane){
+    pane.classList.toggle('active', pane.getAttribute('data-audience-pane')===audience);
+  });
+  if(audience==='trade') setTimeout(initAudienceRadar,60);
+}
 
 // ── Login modal ─────────────────────────────────────────
 function openLoginModal(){
@@ -1850,9 +2022,9 @@ function showPage(id){
   window.scrollTo({top:0,behavior:'smooth'});
   document.querySelectorAll('.phase-pill').forEach(p=>p.classList.remove('active'));
   const pillMap={p1:0,p2:1,p3:2,p4:3};
-  if(id in pillMap) document.querySelectorAll('.phase-pill')[pillMap[id]].classList.add('active');
+  if(id in pillMap && document.querySelectorAll('.phase-pill')[pillMap[id]]) document.querySelectorAll('.phase-pill')[pillMap[id]].classList.add('active');
   document.querySelectorAll('.topbar-nav-btn').forEach(b=>b.classList.remove('active'));
-  if(id in pillMap) document.querySelectorAll('.topbar-nav-btn')[pillMap[id]].classList.add('active');
+  if(id in pillMap && document.querySelectorAll('.topbar-nav-btn')[pillMap[id]]) document.querySelectorAll('.topbar-nav-btn')[pillMap[id]].classList.add('active');
   if(id==='p4') setTimeout(initCharts,100);
 }
 
