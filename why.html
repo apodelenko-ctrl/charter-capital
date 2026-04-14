@@ -6,13 +6,15 @@
 <title>THE LOGIC | Charter Capital</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
 <style>
 :root{
   --bg:#050505;
+  --surface:#0d0d0d;
   --text:#f8fafc;
-  --muted:#94a3b8;
+  --muted:#9ca3af;
   --blue:#2563eb;
+  --red:#dc2626;
   --border:#1f2937;
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -52,31 +54,186 @@ body.page-ready{opacity:1}
 }
 .topbar-links span{color:var(--text)}
 main{padding-top:60px}
-.logic-frame{
-  width:min(1280px,100%);
+
+.section{
+  max-width:1280px;
   margin:0 auto;
   background:#fff;
+  color:#111827;
 }
-.slide{
-  position:relative;
-  overflow:hidden;
-  border-bottom:1px solid #0b0b0b;
-}
-.slide img{
-  display:block;
+.hero-top{
   width:100%;
-  height:auto;
+  height:38vw;
+  min-height:240px;
+  max-height:420px;
+  object-fit:cover;
+  display:block;
 }
-.slide::after{
-  content:'';
-  position:absolute;inset:0;
-  background:linear-gradient(to bottom,rgba(0,0,0,0) 70%,rgba(0,0,0,.06) 100%);
-  pointer-events:none;
+.hero-bottom{
+  background:#020202;
+  color:#fff;
+  padding:56px 54px 62px;
 }
-.slide.is-dark::after{
-  background:linear-gradient(to bottom,rgba(0,0,0,0) 68%,rgba(0,0,0,.22) 100%);
+.hero-bottom h1{
+  font-size:clamp(2rem,4.8vw,4rem);
+  line-height:1.05;
+  letter-spacing:-.03em;
+  margin-bottom:22px;
+  font-weight:700;
+  max-width:16ch;
 }
-@media (max-width: 900px){
+.hero-bottom p{
+  color:#d1d5db;
+  font-size:clamp(1rem,1.8vw,1.4rem);
+  max-width:42ch;
+  line-height:1.55;
+}
+
+.split{
+  display:grid;
+  grid-template-columns:minmax(280px,47%) 1fr;
+}
+.split img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+.panel{
+  padding:56px 56px 60px;
+}
+.panel h2{
+  font-size:clamp(2.2rem,4.5vw,4.5rem);
+  line-height:1.03;
+  letter-spacing:-.03em;
+  font-weight:700;
+  margin-bottom:26px;
+}
+.panel p{
+  font-size:clamp(1rem,1.15vw,1.35rem);
+  color:#374151;
+  line-height:1.6;
+  margin-bottom:18px;
+}
+
+.white-block{
+  padding:64px 54px;
+}
+.white-block h2{
+  font-size:clamp(2rem,4vw,3.8rem);
+  line-height:1.04;
+  letter-spacing:-.03em;
+  margin-bottom:22px;
+}
+.white-block .lead{
+  color:#374151;
+  font-size:clamp(1rem,1.2vw,1.28rem);
+  line-height:1.6;
+  margin-bottom:34px;
+  max-width:70ch;
+}
+.grid-3{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:20px;
+}
+.card{
+  border:1px solid #d1d5db;
+  border-top:4px solid #111827;
+  padding:20px 18px;
+}
+.card h3{
+  font-size:clamp(1.2rem,2.2vw,2rem);
+  line-height:1.1;
+  margin-bottom:14px;
+}
+.card p{
+  color:#374151;
+  font-size:clamp(1rem,1.05vw,1.2rem);
+  line-height:1.6;
+}
+
+.image-stack{
+  padding:56px 54px 66px;
+}
+.image-stack h2{
+  font-size:clamp(2rem,3.8vw,3.6rem);
+  letter-spacing:-.03em;
+  margin-bottom:24px;
+  line-height:1.06;
+}
+.image-stack .frame{
+  border-radius:10px;
+  overflow:hidden;
+  margin-bottom:26px;
+}
+.image-stack .frame img{
+  width:100%;
+  display:block;
+}
+.steps{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:16px;
+  border-top:2px solid #111827;
+  padding-top:14px;
+}
+.step h4{
+  font-size:clamp(1.2rem,1.8vw,1.8rem);
+  margin-bottom:10px;
+}
+.step p{
+  color:#374151;
+  line-height:1.6;
+}
+
+.footer-cta{
+  padding:62px 54px 72px;
+  border-top:1px solid #d1d5db;
+}
+.footer-cta .tag{
+  color:#9ca3af;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  font-size:14px;
+  margin-bottom:18px;
+}
+.footer-cta p{
+  color:#374151;
+  font-size:clamp(1rem,1.2vw,1.25rem);
+  line-height:1.65;
+  max-width:75ch;
+}
+.footer-cta .btn{
+  display:inline-flex;
+  margin-top:22px;
+  border:1px solid #6b7280;
+  border-radius:8px;
+  padding:13px 22px;
+  text-decoration:none;
+  color:#111827;
+  font-weight:600;
+}
+.mini-grid{
+  margin-top:34px;
+  border-top:1px solid #d1d5db;
+  padding-top:26px;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:24px;
+}
+.mini-grid h5{
+  font-size:clamp(1.1rem,1.7vw,1.5rem);
+  margin-bottom:10px;
+}
+.mini-grid p{color:#374151;line-height:1.55}
+
+@media (max-width:1024px){
+  .hero-bottom,.white-block,.image-stack,.footer-cta,.panel{padding:40px 28px 44px}
+  .grid-3,.steps,.mini-grid{grid-template-columns:1fr}
+  .split{grid-template-columns:1fr}
+}
+@media (max-width:900px){
   #topbar{height:56px}
   .topbar-inner{padding:0 14px}
   main{padding-top:56px}
@@ -103,24 +260,133 @@ main{padding-top:60px}
 </header>
 
 <main>
-  <div class="logic-frame">
-    <section class="slide is-dark"><img src="assets/logic/01-hero.png" alt="Charter Capital — Архитекторы легитимности" loading="eager"/></section>
-    <section class="slide"><img src="assets/logic/02-bank-bio.png" alt="Ваши деньги в РФ — без понятной биографии" loading="lazy"/></section>
-    <section class="slide"><img src="assets/logic/03-toxic-routes.png" alt="Токсичные маршруты прошлого" loading="lazy"/></section>
-    <section class="slide"><img src="assets/logic/04-singapore-dna.png" alt="Сингапур: трансформация ДНК капитала" loading="lazy"/></section>
-    <section class="slide"><img src="assets/logic/05-architecture.png" alt="Архитектура реализации" loading="lazy"/></section>
-    <section class="slide"><img src="assets/logic/06-real-asset.png" alt="Реальный актив как фундамент" loading="lazy"/></section>
-    <section class="slide"><img src="assets/logic/07-clean-history.png" alt="Чистая финансовая история" loading="lazy"/></section>
-    <section class="slide"><img src="assets/logic/08-thailand-hub.png" alt="Таиланд-Пхукет: глобальный хаб" loading="lazy"/></section>
-    <section class="slide"><img src="assets/logic/09-footer.png" alt="Charter Capital footer" loading="lazy"/></section>
-  </div>
+  <section class="section">
+    <img class="hero-top" src="assets/logic/01-hero.png" alt="Charter Capital hero" loading="eager"/>
+    <div class="hero-bottom">
+      <h1>Charter Capital — Архитекторы легитимности и безупречной биографии вашего капитала.</h1>
+      <p>Смена международного статуса ваших активов через прозрачную для западных банков инвестиционную структуру.</p>
+    </div>
+  </section>
+
+  <section class="section split">
+    <img src="assets/logic/02-bank-bio.png" alt="Ваши деньги в РФ без биографии"/>
+    <div class="panel">
+      <h2>Ваши деньги в РФ — это мусор для западного банка, пока у них нет понятной биографии.</h2>
+      <p>Западный комплаенс работает просто: если происхождение капитала невозможно верифицировать по международным стандартам — его не существует.</p>
+      <p>Ни договоры, ни декларации, ни нотариальные заверения из РФ сами по себе не формируют того, что банки называют Paper Trail — последовательной документальной историей.</p>
+      <p>«Серые» маршруты и неподтвержденные транзитные цепочки мгновенно обнуляют легальность документов и переводят капитал в зону системного риска.</p>
+    </div>
+  </section>
+
+  <section class="section white-block">
+    <h2>Токсичные маршруты прошлого</h2>
+    <p class="lead">Инструменты, которые раньше решали задачи, сегодня стали маркерами, закрывающими доступ к мировой финансовой системе навсегда.</p>
+    <div class="grid-3">
+      <article class="card">
+        <h3>Транзитные узлы ОАЭ</h3>
+        <p>Наличие структур в ОАЭ в цепочке транзакций автоматически поднимает красный флаг в AML-системах и ведет к принудительным блокировкам.</p>
+      </article>
+      <article class="card">
+        <h3>Виртуальные активы (VASP)</h3>
+        <p>On-chain история без институциональной верификации не является достаточным доказательством легальности происхождения средств для Tier-1 банков.</p>
+      </article>
+      <article class="card">
+        <h3>Формальный документооборот</h3>
+        <p>Шаблонные договоры без Economic Substance не принимаются как Source of Wealth и юридически не защищают транзакционный след.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section image-stack">
+    <h2>Сингапур: трансформация ДНК капитала</h2>
+    <div class="frame"><img src="assets/logic/04-singapore-dna.png" alt="Сингапур трансформация капитала"/></div>
+    <div class="steps">
+      <div class="step">
+        <h4>01 Вход в активы</h4>
+        <p>Вход в частный инвестиционный холдинг, созданный для владения реальными активами в Азии.</p>
+      </div>
+      <div class="step">
+        <h4>02 Economic Substance</h4>
+        <p>Операционная деятельность формирует реальный и проверяемый след в white-list юрисдикции.</p>
+      </div>
+      <div class="step">
+        <h4>03 Чистый выход</h4>
+        <p>Доход и возврат капитала с безупречным Paper Trail, который принимается международной банковской системой.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section split">
+    <img src="assets/logic/06-real-asset.png" alt="Реальный актив как фундамент"/>
+    <div class="panel">
+      <h2>Реальный актив как фундамент</h2>
+      <p>Инвестиция в курортную недвижимость Азии — это не просто размещение капитала, а создание проверяемого экономического присутствия.</p>
+      <div class="grid-3" style="grid-template-columns:1fr;gap:14px;margin-top:14px">
+        <article class="card" style="border-top-width:1px">
+          <h3>Верифицируемость</h3>
+          <p>Сделка фиксируется в реестре, имеет рыночную оценку и прозрачную структуру финансирования.</p>
+        </article>
+        <article class="card" style="border-top-width:1px">
+          <h3>Доходность</h3>
+          <p>Актив генерирует подтвержденный поток дохода с полным транзакционным следом.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section split">
+    <div class="panel">
+      <h2>Чистая финансовая история: капитал с биографией</h2>
+      <p>Результат работы Charter Capital — не «обход», а создание понятной для банков истории происхождения и движения капитала.</p>
+      <article class="card" style="border-top-width:1px;margin-top:14px">
+        <h3>До</h3>
+        <p>Деньги без внятного происхождения, постоянные запросы комплаенса, риск блокировок и статус нежелательного клиента.</p>
+      </article>
+      <article class="card" style="border-top-width:1px;margin-top:12px">
+        <h3>После</h3>
+        <p>Прозрачный задокументированный поток прибыли и статус «белого» инвестора с подтвержденным источником богатства.</p>
+      </article>
+    </div>
+    <img src="assets/logic/07-clean-history.png" alt="Чистая финансовая история"/>
+  </section>
+
+  <section class="section white-block">
+    <h2>Архитектура реализации: от токсичного актива к чистому капиталу</h2>
+    <p class="lead">Каждый этап — независимый юридический протокол с верифицируемым транзакционным следом и документальным подтверждением результата.</p>
+    <div class="frame" style="border-radius:10px;overflow:hidden"><img src="assets/logic/05-architecture.png" alt="Архитектура реализации" style="width:100%;display:block"/></div>
+  </section>
+
+  <section class="section white-block">
+    <h2>Таиланд — Пхукет: глобальный хаб, который нельзя «достроить»</h2>
+    <p class="lead">Сочетание физической надежности недвижимости и правовых преимуществ Сингапура создает рабочую связку для защиты и роста капитала.</p>
+    <div class="frame" style="border-radius:10px;overflow:hidden"><img src="assets/logic/08-thailand-hub.png" alt="Таиланд Пхукет" style="width:100%;display:block"/></div>
+  </section>
+
+  <section class="section footer-cta">
+    <div class="tag">Charter Capital</div>
+    <p>Мы работаем с ограниченным пулом частных запросов. Первая встреча — экспресс-аудит целей и применимости инструментов Charter Capital для защиты и роста вашего капитала.</p>
+    <a class="btn" href="index.html">Обсудить архитектуру кейса</a>
+    <div class="mini-grid">
+      <div>
+        <h5>Конфиденциальность</h5>
+        <p>Безусловное подписание NDA перед любым обсуждением структуры.</p>
+      </div>
+      <div>
+        <h5>Регламенты</h5>
+        <p>100% соответствие международным стандартам AML/KYC.</p>
+      </div>
+      <div>
+        <h5>Прозрачность</h5>
+        <p>Полный Paper Trail. Безопасность для вас и вашего капитала.</p>
+      </div>
+    </div>
+  </section>
 </main>
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
   requestAnimationFrame(function () { document.body.classList.add('page-ready'); });
 });
-
 document.addEventListener('click', function (e) {
   var a = e.target.closest('a[href]');
   if (!a || a.target === '_blank' || e.metaKey || e.ctrlKey || e.shiftKey) return;
