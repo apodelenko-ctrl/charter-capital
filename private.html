@@ -1004,21 +1004,20 @@ body[data-audience="trade"] #page-p4{display:block!important}
 /* --- Split pages overrides --- */
 body{font-weight:300;background:#fff}
 h1,h2,h3,h4{font-weight:300}
-#topbar{position:fixed;top:0;left:0;right:0;background:rgba(255,255,255,.96)!important;border-bottom:1px solid #e2e8f0!important;backdrop-filter:blur(10px)}
-.topbar-inner{max-width:1320px;min-height:72px;display:grid;grid-template-columns:minmax(280px,1.4fr) auto auto;gap:20px;padding:0 28px}
+#topbar{position:fixed;top:0;left:0;right:0;background:#000!important;border-bottom:1px solid #111827!important;backdrop-filter:none;z-index:1200}
+.topbar-inner{max-width:1320px;min-height:76px;display:flex;justify-content:space-between;align-items:center;gap:18px;padding:0 28px}
 .topbar-left{min-width:0}
-.topbar-brandline{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;text-decoration:none;color:#0f172a}
+.topbar-brandline{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;text-decoration:none;color:#fff}
 .topbar-brandline .name{font-weight:700;letter-spacing:.01em;font-size:17px}
-.topbar-brandline .desc{font-weight:300;font-size:13px;color:#475569;letter-spacing:.01em}
+.topbar-brandline .desc{font-weight:300;font-size:13px;color:rgba(255,255,255,.86);letter-spacing:.01em}
 .topbar-nav{display:flex;gap:10px;justify-content:flex-end}
-.topbar-nav-link{font-size:11px;font-weight:300;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:#64748b;padding-bottom:6px;border-bottom:1px solid transparent}
-.topbar-nav-link.active{color:#0f172a;border-bottom-color:#0f172a}
-.topbar-private-access{color:#0f172a!important;border-color:#e2e8f0!important}
-.topbar-private-access:hover{background:#f8fafc!important}
-main{padding-top:72px}
-.hero-banner{min-height:34vh;background-image:linear-gradient(to bottom, rgba(0,0,0,.58), rgba(0,0,0,.66)), url('assets/logic/13-building-corner.png');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;padding:42px 24px}
-.hero-banner h1{font-size:clamp(2rem,4.8vw,3rem);font-weight:700;color:#fff;letter-spacing:-.03em;line-height:1.06;text-align:center}
-.hero-banner p{margin-top:8px;font-size:clamp(1rem,2vw,1.2rem);font-weight:300;color:rgba(255,255,255,.92);text-align:center}
+.topbar-nav-link{font-size:11px;font-weight:300;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,.88);padding-bottom:6px;border-bottom:1px solid transparent}
+.topbar-nav-link.active{color:#fff;border-bottom-color:#fff}
+.topbar-private-access{color:#fff!important;border-color:rgba(255,255,255,.45)!important}
+.topbar-private-access:hover{background:rgba(255,255,255,.12)!important;border-color:#fff!important}
+main{padding-top:76px}
+.hero-banner{min-height:calc(100vh - 76px);background-image:linear-gradient(to bottom, rgba(0,0,0,.62), rgba(0,0,0,.74)), url('assets/logic/13-building-corner.png');background-size:cover;background-position:center;display:block;padding:0}
+.hero-banner h1,.hero-banner p{display:none}
 #page-selector,.longread-section{display:none!important}
 .page{display:block!important;background:#fff}
 .p1-hero,.p1-risks,.p1-timeline,.p1-dubai,.p1-cta,.p2-hero,.p2-features,.p3-header,.p3-body,.p4-header,.p4-content{background:#fff!important}
@@ -1026,7 +1025,7 @@ main{padding-top:72px}
 @media(max-width:900px){
   .topbar-inner{grid-template-columns:1fr;gap:8px;padding:10px 16px;min-height:auto}
   .topbar-nav{justify-content:flex-start;flex-wrap:wrap}
-  .hero-banner{min-height:28vh}
+  .hero-banner{min-height:calc(100vh - 76px)}
 }
 
 </style>
@@ -1051,7 +1050,7 @@ main{padding-top:72px}
   </div>
 </div>
 <main>
-<section class="hero-banner"><div><h1>CHARTER CAPITAL</h1><p>Архитекторы легитимности и безупречной биографии вашего капитала.</p></div></section>
+<section class="hero-banner" aria-hidden="true"></section>
 <div id="page-p2" class="page">
   <div class="p2-hero">
     <div class="container">
