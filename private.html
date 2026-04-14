@@ -962,6 +962,30 @@ body[data-audience="trade"] #page-p4{display:block!important}
 .ps-desc{font-size:11px;color:var(--text-muted);line-height:1.5}
 
 /* ─── RESPONSIVE ────────────────────────────────────────── */
+
+.context-switch{display:flex;align-items:center;gap:10px;margin-left:24px}
+.context-pill{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.78);text-decoration:none;padding:6px 10px;border:1px solid rgba(255,255,255,.22)}
+.context-pill.active{color:#fff;border-color:#fff}
+.bridge-pain{background:#fff;padding:96px 32px 48px}
+.bridge-pain h2{font-size:clamp(2rem,4vw,3rem);font-weight:300;line-height:1.15;letter-spacing:-.02em;margin-bottom:16px;color:#0f172a}
+.bridge-pain p{font-size:17px;line-height:1.75;color:#475569;max-width:70ch}
+.bridge-split{background:#fff;padding:28px 32px 120px}
+.split-grid{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.split-card{border:1px solid #e2e8f0;background:#fff;padding:42px;display:flex;flex-direction:column;gap:16px;min-height:300px;transition:all .3s ease}
+.split-card:hover{box-shadow:0 18px 40px rgba(15,23,42,.12);transform:translateY(-4px)}
+.split-kicker{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#94a3b8}
+.split-title{font-size:2rem;line-height:1.1;letter-spacing:-.02em;color:#0f172a;font-weight:400}
+.split-desc{font-size:15px;color:#64748b;line-height:1.7;max-width:44ch}
+.split-cta{margin-top:auto;display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:#0f172a;border:1px solid #e2e8f0;padding:11px 14px}
+.split-cta:hover{background:#0f172a;color:#fff;border-color:#0f172a}
+.page-end-cta{background:#fff;border-top:1px solid #e2e8f0;padding:90px 32px 110px}
+.page-end-cta h3{font-size:1.9rem;font-weight:300;letter-spacing:-.02em;color:#0f172a;margin-bottom:18px}
+.page-end-cta .cta-row{display:flex;gap:12px;flex-wrap:wrap}
+@media(max-width:900px){
+  .context-switch{display:none}
+  .split-grid{grid-template-columns:1fr}
+}
+
 @media(max-width:900px){
   .container{padding:0 20px}
   .grid-2,.grid-3,.grid-4{grid-template-columns:1fr}
@@ -1020,6 +1044,7 @@ main{padding-top:76px}
 .hero-banner h1,.hero-banner p{display:none}
 #page-selector,.longread-section{display:none!important}
 .page{display:block!important;background:#fff}
+#page-p2,#page-p3{display:none!important}
 .p1-hero,.p1-risks,.p1-timeline,.p1-dubai,.p1-cta,.p2-hero,.p2-features,.p3-header,.p3-body,.p4-header,.p4-content{background:#fff!important}
 .card,.selector-card,.risk-card,.radar-card,.decoupling-diagram,.risk-grading-table,.payment-flow{border:1px solid #e2e8f0!important;box-shadow:none!important}
 @media(max-width:900px){
@@ -1039,11 +1064,10 @@ main{padding-top:76px}
         <span class="desc">// Архитекторы легитимности и безупречной биографии вашего капитала.</span>
       </a>
     </div>
-    <nav class="topbar-nav">
-      <a href="index.html" class="topbar-nav-link ">ГЛАВНАЯ</a>
-      <a href="private.html" class="topbar-nav-link active">ЧАСТНЫМ ЛИЦАМ</a>
-      <a href="corporate.html" class="topbar-nav-link ">ИМПОРТЕРАМ</a>
-    </nav>
+    <div class="context-switch">
+      <a href="corporate.html" class="context-pill ">БИЗНЕСУ</a>
+      <a href="private.html" class="context-pill active">СЕМЬЕ</a>
+    </div>
     <div class="topbar-right">
       <button type="button" class="topbar-private-access" id="openLoginModal" aria-haspopup="dialog" aria-controls="loginModal">Private Access</button>
     </div>
@@ -1051,14 +1075,26 @@ main{padding-top:76px}
 </div>
 <main>
 <section class="hero-banner" aria-hidden="true"></section>
+<section class="private-route" style="background:#fff;padding:96px 32px 110px">
+  <div class="container" style="max-width:1240px;margin:0 auto">
+    <div class="label">МАРШРУТ ЛЕГИТИМАЦИИ</div>
+    <h2 style="font-size:clamp(2rem,4vw,3rem);font-weight:300;line-height:1.18;letter-spacing:-.02em;margin-bottom:38px">Личный капитал: последовательный переход к банковскому стандарту Tier-1</h2>
+    <div style="display:grid;grid-template-columns:1fr;gap:16px">
+      <article class="card" style="border:1px solid #e2e8f0;padding:32px;background:#fff"><h3 style="font-size:1.5rem;font-weight:400;letter-spacing:-.02em;margin-bottom:10px">Этап I. Формирование подтвержденной истории (SoW/SoF)</h3><p style="font-size:15px;color:#475569;line-height:1.7">Создаем безупречное досье источника средств и структуры владения, пригодное для комплаенс-проверки Tier-1 банков.</p></article>
+      <article class="card" style="border:1px solid #e2e8f0;padding:32px;background:#fff"><h3 style="font-size:1.5rem;font-weight:400;letter-spacing:-.02em;margin-bottom:10px">Этап II. Маршрут легитимации</h3><p style="font-size:15px;color:#475569;line-height:1.7">Трансформируем актив в белый банковский инструмент: юридическая упаковка, контроль юрисдикций и выпуск Object Passport.</p></article>
+      <article class="card" style="border:1px solid #e2e8f0;padding:32px;background:#fff"><h3 style="font-size:1.5rem;font-weight:400;letter-spacing:-.02em;margin-bottom:10px">Этап III. Сохранение и Твердые активы</h3><p style="font-size:15px;color:#475569;line-height:1.7">После завершения легитимации капитал переводится в режим сохранения: Family Office и твердые активы, включая стратегию Пхукета как финальной точки маршрута.</p></article>
+    </div>
+    <div style="margin-top:38px"><a href="#" class="btn btn-primary btn-lg" onclick="return false;">ОБСУДИТЬ СТРУКТУРУ И МАРШРУТ КАПИТАЛА</a></div>
+  </div>
+</section>
 <div id="page-p2" class="page">
   <div class="p2-hero">
     <div class="container">
       <div class="p2-hero-inner">
         <div>
           <div class="label">Family Office</div>
-          <h1>Институциональная защита частного капитала</h1>
-          <p>Charter Capital — не банк и не консалтинг в привычном смысле. Это закрытый семейный офис, который проектирует индивидуальные контуры владения, защиты и межпоколенческой передачи капитала.</p>
+          <h1>Легитимация частного капитала: аудит и очистка биографии</h1>
+          <p>Первый этап для семьи — аудит происхождения и юридическая очистка биографии капитала. Мы формируем Object Passport и только после полной легитимации переводим капитал в защитные структуры.</p>
           <div class="p2-services-tabs">
             <button class="p2-tab active" onclick="switchP2Tab('fiduciary',this)">Fiduciary</button>
             <button class="p2-tab" onclick="switchP2Tab('protection',this)">Защита активов</button>
@@ -1081,8 +1117,8 @@ main{padding-top:76px}
             <div class="p2-service-item"><div class="p2-service-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg></div><div><div class="p2-service-name">BVI / Seychelles SPV</div><div class="p2-service-desc">Специальные проектные компании для владения активами и оптимизации налогообложения в рамках холдинга.</div></div></div>
           </div>
           <div id="p2-mobility" class="p2-service-content">
-            <div class="p2-service-item"><div class="p2-service-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div class="p2-service-name">Резидентство Thailand Elite</div><div class="p2-service-desc">Налоговое резидентство Таиланда снижает «токсичность» при прохождении банковского Compliance в иных юрисдикциях.</div></div></div>
-            <div class="p2-service-item"><div class="p2-service-icon"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div><div><div class="p2-service-name">Второе гражданство (CBI)</div><div class="p2-service-desc">Юридическое сопровождение гражданства через инвестиции в устойчивых юрисдикциях.</div></div></div>
+            <div class="p2-service-item"><div class="p2-service-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div class="p2-service-name">Резидентство Thailand Elite</div><div class="p2-service-desc">Налоговое резидентство Таиланда повышает предсказуемость прохождения банковского Compliance в иных юрисдикциях.</div></div></div>
+            <div class="p2-service-item"><div class="p2-service-icon"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div><div><div class="p2-service-name">Второе гражданство (CBI)</div><div class="p2-service-desc">Юридическое сопровождение смены статуса и резидентства как часть легализации биографии капитала.</div></div></div>
             <div class="p2-service-item"><div class="p2-service-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.09 6.09l1.27-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><div><div class="p2-service-name">Глобальная связь (130+ юрисдикций)</div><div class="p2-service-desc">Конфиденциальная коммуникация и операционное присутствие; сопровождение семьи без разрыва контуров.</div></div></div>
           </div>
         </div>
@@ -1153,7 +1189,7 @@ main{padding-top:76px}
         <div><div class="feature-num">03</div></div>
         <div>
           <h3 class="feature-title">Real Estate — конфиденциальное владение</h3>
-          <p class="feature-desc">Элитная недвижимость в Лондоне и ЕС через закрытые SPV и трасты. Конфиденциальность конечного бенефициара и инвестиционное обоснование для легитимации капитала в премиальных активах.</p>
+          <p class="feature-desc">Сохранение в твердых активах — финальный этап после легитимации. Приоритет: защищенные сценарии владения, включая стратегию входа в Пхукет как результат уже очищенной биографии капитала.</p>
           <div class="compliance-row">
             <div class="compliance-item"><div class="icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><h5>SPV в Лондоне</h5><p>Приобретение через Special Purpose Vehicle</p></div>
             <div class="compliance-item"><div class="icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg></div><h5>Структуры ЕС</h5><p>Португалия, Мальта, Кипр через трасты</p></div>
@@ -1430,8 +1466,8 @@ main{padding-top:76px}
         </div>
         <div style="background:var(--slate-dark);border-radius:var(--radius-lg);padding:28px;margin-top:28px;text-align:center">
           <h3 style="color:#fff;margin-bottom:8px">Начать реализацию структуры</h3>
-          <p style="color:#94a3b8;font-size:14px;font-weight:300;max-width:500px;margin:0 auto 24px">Ваш Object Passport сформирован. Следующий шаг — консультация с персональным советником Charter Capital для запуска реализации.</p>
-          <button class="btn btn-primary btn-lg" onclick="showPage('p2')">Перейти в Family Office →</button>
+          <p style="color:#94a3b8;font-size:14px;font-weight:300;max-width:500px;margin:0 auto 24px">Ваш Object Passport сформирован. Следующий шаг — официальный аудит биографии и запуск реализации с персональным советником.</p>
+          <button class="btn btn-primary btn-lg" onclick="showPage('p2')">ЗАПРОСИТЬ АУДИТ БИОГРАФИИ</button>
         </div>
         <div style="display:flex;justify-content:flex-start;margin-top:16px">
           <button class="btn btn-secondary" onclick="showP3Step(3)">← Назад</button>

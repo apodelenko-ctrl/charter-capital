@@ -865,7 +865,7 @@ body[data-audience="trade"] #page-p4{display:block!important}
 .radar-card h4{font-size:14px;font-weight:600;margin-bottom:4px}
 .radar-card .sub{font-size:12px;color:var(--text-muted);margin-bottom:16px}
 .radar-chart-wrap{height:240px;position:relative}
-/* Decoupling */
+/* Разделение платежных и санкционных контуров */
 .decoupling-diagram{
   background:#fff;border:1px solid var(--border);
   border-radius:var(--radius-lg);padding:32px;margin-bottom:32px;
@@ -962,6 +962,30 @@ body[data-audience="trade"] #page-p4{display:block!important}
 .ps-desc{font-size:11px;color:var(--text-muted);line-height:1.5}
 
 /* ─── RESPONSIVE ────────────────────────────────────────── */
+
+.context-switch{display:flex;align-items:center;gap:10px;margin-left:24px}
+.context-pill{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.78);text-decoration:none;padding:6px 10px;border:1px solid rgba(255,255,255,.22)}
+.context-pill.active{color:#fff;border-color:#fff}
+.bridge-pain{background:#fff;padding:96px 32px 48px}
+.bridge-pain h2{font-size:clamp(2rem,4vw,3rem);font-weight:300;line-height:1.15;letter-spacing:-.02em;margin-bottom:16px;color:#0f172a}
+.bridge-pain p{font-size:17px;line-height:1.75;color:#475569;max-width:70ch}
+.bridge-split{background:#fff;padding:28px 32px 120px}
+.split-grid{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.split-card{border:1px solid #e2e8f0;background:#fff;padding:42px;display:flex;flex-direction:column;gap:16px;min-height:300px;transition:all .3s ease}
+.split-card:hover{box-shadow:0 18px 40px rgba(15,23,42,.12);transform:translateY(-4px)}
+.split-kicker{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#94a3b8}
+.split-title{font-size:2rem;line-height:1.1;letter-spacing:-.02em;color:#0f172a;font-weight:400}
+.split-desc{font-size:15px;color:#64748b;line-height:1.7;max-width:44ch}
+.split-cta{margin-top:auto;display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:#0f172a;border:1px solid #e2e8f0;padding:11px 14px}
+.split-cta:hover{background:#0f172a;color:#fff;border-color:#0f172a}
+.page-end-cta{background:#fff;border-top:1px solid #e2e8f0;padding:90px 32px 110px}
+.page-end-cta h3{font-size:1.9rem;font-weight:300;letter-spacing:-.02em;color:#0f172a;margin-bottom:18px}
+.page-end-cta .cta-row{display:flex;gap:12px;flex-wrap:wrap}
+@media(max-width:900px){
+  .context-switch{display:none}
+  .split-grid{grid-template-columns:1fr}
+}
+
 @media(max-width:900px){
   .container{padding:0 20px}
   .grid-2,.grid-3,.grid-4{grid-template-columns:1fr}
@@ -1039,11 +1063,10 @@ main{padding-top:76px}
         <span class="desc">// Архитекторы легитимности и безупречной биографии вашего капитала.</span>
       </a>
     </div>
-    <nav class="topbar-nav">
-      <a href="index.html" class="topbar-nav-link ">ГЛАВНАЯ</a>
-      <a href="private.html" class="topbar-nav-link ">ЧАСТНЫМ ЛИЦАМ</a>
-      <a href="corporate.html" class="topbar-nav-link active">ИМПОРТЕРАМ</a>
-    </nav>
+    <div class="context-switch">
+      <a href="corporate.html" class="context-pill active">БИЗНЕСУ</a>
+      <a href="private.html" class="context-pill ">СЕМЬЕ</a>
+    </div>
     <div class="topbar-right">
       <button type="button" class="topbar-private-access" id="openLoginModal" aria-haspopup="dialog" aria-controls="loginModal">Private Access</button>
     </div>
@@ -1051,12 +1074,25 @@ main{padding-top:76px}
 </div>
 <main>
 <section class="hero-banner" aria-hidden="true"></section>
+<section class="corporate-route" style="background:#fff;padding:96px 32px 110px">
+  <div class="container" style="max-width:1240px;margin:0 auto">
+    <div class="label">ПЛАТЕЖНЫЕ КОНТУРЫ</div>
+    <h2 style="font-size:clamp(2rem,4vw,3rem);font-weight:300;line-height:1.18;letter-spacing:-.02em;margin-bottom:30px">Обеспечение бесперебойности транзакций и разделение платежных рисков</h2>
+    <p style="font-size:16px;color:#475569;max-width:72ch;line-height:1.8;margin-bottom:26px">Основной продукт для бизнеса — устойчивость расчетов между юрисдикциями и раздельная архитектура санкционных и платежных контуров. Инвестиционные инструменты используются как вторичный слой защиты прибыли.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px">
+      <article class="card" style="border:1px solid #e2e8f0;padding:28px;background:#fff"><h3 style="font-size:1.25rem;font-weight:500;margin-bottom:8px">Контур расчетов</h3><p style="font-size:14px;color:#64748b;line-height:1.7">Маршрутизация платежей и выбор банковских коридоров под профиль контрагентов.</p></article>
+      <article class="card" style="border:1px solid #e2e8f0;padding:28px;background:#fff"><h3 style="font-size:1.25rem;font-weight:500;margin-bottom:8px">Разделение платежных и санкционных контуров</h3><p style="font-size:14px;color:#64748b;line-height:1.7">Изоляция рисков по уровням владения, операций и банковских шлюзов.</p></article>
+      <article class="card" style="border:1px solid #e2e8f0;padding:28px;background:#fff"><h3 style="font-size:1.25rem;font-weight:500;margin-bottom:8px">Защита прибыли</h3><p style="font-size:14px;color:#64748b;line-height:1.7">После стабилизации расчетов — консервативные инструменты защиты маржи.</p></article>
+    </div>
+    <div style="margin-top:38px"><a href="#" class="btn btn-primary btn-lg" onclick="return false;">ОБЕСПЕЧИТЬ СТАБИЛЬНОСТЬ РАСЧЕТОВ</a></div>
+  </div>
+</section>
 <div id="page-p4" class="page">
   <div class="p4-header">
     <div class="container">
       <div class="label">Corporate Hub</div>
       <h1>Корпоративный дашборд и ВЭД</h1>
-      <p>Регистрация холдингов, анализ юрисдикций, архитектура Decoupling и управление рисками внешнеэкономической деятельности</p>
+      <p>Приоритет: Разделение платежных и санкционных контуров и безопасность транзакций. Инвестиционные инструменты используются вторично — как слой защиты прибыли после стабилизации маршрутов ВЭД.</p>
     </div>
   </div>
   <div class="p4-grid">
@@ -1068,7 +1104,7 @@ main{padding-top:76px}
       </div>
       <div class="p4-nav-item" onclick="showP4Panel('decoupling',this)">
         <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-        Архитектура Decoupling
+        Разделение платежных и санкционных контуров
       </div>
       <div class="p4-nav-item" onclick="showP4Panel('risk',this)">
         <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
@@ -1097,7 +1133,7 @@ main{padding-top:76px}
           </div>
           <div class="radar-card">
             <h4>🇸🇬 Singapore</h4>
-            <div class="sub">Оптимально для: холдинговые структуры, инвестиции, family office</div>
+            <div class="sub">Оптимально для: операционные холдинги, безопасные транзакции, защита маржи</div>
             <div class="radar-chart-wrap"><canvas id="radarSG"></canvas></div>
           </div>
         </div>
@@ -1126,12 +1162,12 @@ main{padding-top:76px}
         </div>
       </div>
 
-      <!-- Decoupling Panel -->
+      <!-- Разделение платежных и санкционных контуров Panel -->
       <div class="p4-panel" id="p4-decoupling">
-        <h2 class="p4-panel-title">Архитектура Decoupling</h2>
+        <h2 class="p4-panel-title">Разделение платежных и санкционных контуров</h2>
         <p class="p4-panel-sub">Принцип детерминированного разделения рисков: каждый контур — независимая функциональная единица.</p>
         <div class="decoupling-diagram">
-          <div class="decoupling-title">Четырёхслойная модель Decoupling</div>
+          <div class="decoupling-title">Четырехслойная модель разделения платежных и санкционных контуров</div>
           <div class="decoupling-layers">
             <div class="decoupling-layer"><div class="layer-label layer-label-1">HOLDING</div><div class="layer-items"><span class="layer-pill">Liechtenstein Stiftung</span><span class="layer-pill">Cayman Fund</span><span class="layer-pill">BVI Holding Co.</span><span class="layer-pill">Singapore PTE Ltd</span><span class="layer-pill">Panama Foundation</span></div></div>
             <div class="decoupling-layer"><div class="layer-label layer-label-2">TRADING</div><div class="layer-items"><span class="layer-pill">HK Limited Co.</span><span class="layer-pill">Seychelles IBC</span><span class="layer-pill">Belize IBC</span><span class="layer-pill">Dubai FZCO</span><span class="layer-pill">UK LLP</span></div></div>
@@ -1141,7 +1177,7 @@ main{padding-top:76px}
         </div>
         <div class="grid-2">
           <div class="card">
-            <h4 style="font-size:14px;font-weight:600;margin-bottom:12px">Эффект Decoupling</h4>
+            <h4 style="font-size:14px;font-weight:600;margin-bottom:12px">Эффект разделения платежных и санкционных контуров</h4>
             <div style="display:flex;flex-direction:column;gap:8px">
               <div style="display:flex;gap:10px;font-size:13px;align-items:flex-start"><svg style="width:16px;height:16px;stroke:var(--success);fill:none;stroke-width:2;flex-shrink:0;margin-top:2px" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Проблема в одном контуре не затрагивает другие</div>
               <div style="display:flex;gap:10px;font-size:13px;align-items:flex-start"><svg style="width:16px;height:16px;stroke:var(--success);fill:none;stroke-width:2;flex-shrink:0;margin-top:2px" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Оптимальная налоговая нагрузка для каждого слоя</div>
@@ -1262,7 +1298,7 @@ main{padding-top:76px}
       <!-- Holding Panel -->
       <div class="p4-panel" id="p4-holding">
         <h2 class="p4-panel-title">Шаблоны холдинговых структур</h2>
-        <p class="p4-panel-sub">Готовые архитектуры холдинговых структур для различных задач: ВЭД, инвестиции, IP-холдинг</p>
+        <p class="p4-panel-sub">Архитектуры для ВЭД и защиты транзакций: инвестиционные сценарии рассматриваются как вторичный инструмент защиты прибыли.</p>
         <div style="display:flex;flex-direction:column;gap:16px">
           <div class="card">
             <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:16px;flex-wrap:wrap;gap:12px"><div><h4 style="font-size:15px">Template A — Trade & Operations Hub</h4><p style="font-size:13px;color:var(--text-muted);margin-top:4px">Для торговых операций между Азией, Европой и рынками СНГ</p></div><span class="tag tag-green">Most Popular</span></div>
@@ -1304,7 +1340,7 @@ main{padding-top:76px}
         <div class="card card-blue" style="margin-top:20px">
           <h4 style="color:#fff;font-size:15px;margin-bottom:8px">Готовы начать структурирование?</h4>
           <p style="color:rgba(255,255,255,.8);font-size:14px;margin-bottom:20px">Каждая структура проектируется индивидуально. Запросите стратегический аудит — первый шаг бесплатно.</p>
-          <button class="btn" style="background:#fff;color:var(--blue);font-weight:600" onclick="showPage('p2')">Перейти в Family Office Hub →</button>
+          <button class="btn" style="background:#fff;color:var(--blue);font-weight:600" onclick="showPage('p2')">РАССЧИТАТЬ МАРШРУТ ДЕКАПЛИНГА</button>
         </div>
       </div>
 

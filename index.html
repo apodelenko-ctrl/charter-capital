@@ -962,6 +962,30 @@ body[data-audience="trade"] #page-p4{display:block!important}
 .ps-desc{font-size:11px;color:var(--text-muted);line-height:1.5}
 
 /* ─── RESPONSIVE ────────────────────────────────────────── */
+
+.context-switch{display:flex;align-items:center;gap:10px;margin-left:24px}
+.context-pill{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.78);text-decoration:none;padding:6px 10px;border:1px solid rgba(255,255,255,.22)}
+.context-pill.active{color:#fff;border-color:#fff}
+.bridge-pain{background:#fff;padding:96px 32px 48px}
+.bridge-pain h2{font-size:clamp(2rem,4vw,3rem);font-weight:300;line-height:1.15;letter-spacing:-.02em;margin-bottom:16px;color:#0f172a}
+.bridge-pain p{font-size:17px;line-height:1.75;color:#475569;max-width:70ch}
+.bridge-split{background:#fff;padding:28px 32px 120px}
+.split-grid{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.split-card{border:1px solid #e2e8f0;background:#fff;padding:42px;display:flex;flex-direction:column;gap:16px;min-height:300px;transition:all .3s ease}
+.split-card:hover{box-shadow:0 18px 40px rgba(15,23,42,.12);transform:translateY(-4px)}
+.split-kicker{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#94a3b8}
+.split-title{font-size:2rem;line-height:1.1;letter-spacing:-.02em;color:#0f172a;font-weight:400}
+.split-desc{font-size:15px;color:#64748b;line-height:1.7;max-width:44ch}
+.split-cta{margin-top:auto;display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:#0f172a;border:1px solid #e2e8f0;padding:11px 14px}
+.split-cta:hover{background:#0f172a;color:#fff;border-color:#0f172a}
+.page-end-cta{background:#fff;border-top:1px solid #e2e8f0;padding:90px 32px 110px}
+.page-end-cta h3{font-size:1.9rem;font-weight:300;letter-spacing:-.02em;color:#0f172a;margin-bottom:18px}
+.page-end-cta .cta-row{display:flex;gap:12px;flex-wrap:wrap}
+@media(max-width:900px){
+  .context-switch{display:none}
+  .split-grid{grid-template-columns:1fr}
+}
+
 @media(max-width:900px){
   .container{padding:0 20px}
   .grid-2,.grid-3,.grid-4{grid-template-columns:1fr}
@@ -1019,6 +1043,8 @@ h1,h2,h3,h4{font-weight:300}
 main{padding-top:0}
 .hero-banner{width:100%;height:100vh;position:relative;padding-top:5rem;background-image:url('assets/logic/13-building-corner.png');background-size:cover;background-position:center}
 .hero-overlay{position:absolute;inset:0;background:rgba(0,0,0,.5)}
+.hero-title-wrap{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:0 32px}
+.hero-title{max-width:18ch;text-align:center;color:#fff;font-size:clamp(2rem,4.5vw,3.4rem);font-weight:300;line-height:1.15;letter-spacing:-.02em}
 #infra-dashboard{background:#fff;color:#0f172a;padding:8rem 2rem}
 #infra-dashboard .kicker{font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;color:#94a3b8;margin-bottom:1.5rem}
 #infra-dashboard .message{font-size:clamp(2rem,4vw,3rem);font-weight:300;max-width:64rem;line-height:1.2;margin-bottom:4rem}
@@ -1031,6 +1057,7 @@ main{padding-top:0}
 .dot-green{width:.5rem;height:.5rem;background:#22c55e;border-radius:999px}
 #page-selector,.longread-section{display:none!important}
 .page{display:block!important;background:#fff}
+#page-p1{display:none!important}
 .p1-hero,.p1-risks,.p1-timeline,.p1-dubai,.p1-cta,.p2-hero,.p2-features,.p3-header,.p3-body,.p4-header,.p4-content{background:#fff!important}
 .card,.selector-card,.risk-card,.radar-card,.decoupling-diagram,.risk-grading-table,.payment-flow{border:1px solid #e2e8f0!important;box-shadow:none!important}
 @media(max-width:900px){
@@ -1047,11 +1074,10 @@ main{padding-top:0}
   <div class="bar flex justify-between items-center">
     <div class="text-white text-lg font-bold tracking-widest flex items-center gap-3">CHARTER CAPITAL <span class="text-slate-400 text-xs font-light normal-case tracking-normal border-l border-slate-700 pl-3">Архитекторы легитимности и безупречной биографии вашего капитала.</span></div>
     <div class="flex items-center gap-8">
-      <nav class="flex items-center gap-8 text-xs uppercase tracking-widest text-white/80">
-        <a href="index.html" class="text-white">ГЛАВНАЯ</a>
-        <a href="private.html">ЧАСТНЫМ ЛИЦАМ</a>
-        <a href="corporate.html">ИМПОРТЕРАМ</a>
-      </nav>
+      <div class="context-switch">
+        <a href="corporate.html" class="context-pill">БИЗНЕСУ</a>
+        <a href="private.html" class="context-pill">СЕМЬЕ</a>
+      </div>
       <button type="button" class="topbar-private-access border border-white/30 px-4 py-2 hover:bg-white hover:text-black transition" id="openLoginModal" aria-haspopup="dialog" aria-controls="loginModal">PRIVATE ACCESS</button>
     </div>
   </div>
@@ -1059,25 +1085,29 @@ main{padding-top:0}
 <main>
 <section class="hero-banner w-full h-screen relative pt-20 bg-cover bg-center" aria-hidden="true">
   <div class="hero-overlay bg-black/50"></div>
+  <div class="hero-title-wrap"><h1 class="hero-title">Верните контроль над капиталом в условиях ограниченного банковского доступа</h1></div>
 </section>
-<section id="infra-dashboard" class="bg-white text-slate-900 py-32 px-8">
-  <div class="kicker text-xs uppercase tracking-widest text-slate-400 mb-6">CHARTER CAPITAL // ИНСТИТУЦИОНАЛЬНАЯ ИНФРАСТРУКТУРА</div>
-  <h2 class="message text-4xl lg:text-5xl font-light max-w-4xl leading-tight mb-16">Мы не консультируем. Мы строим физические и юридические мосты между токсичным прошлым и легитимным будущим.</h2>
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-    <article class="cardx bg-white border border-slate-200 p-8 hover:shadow-2xl hover:-translate-y-1 transition-all duration-500">
-      <h3 class="text-xl font-medium">Sovereign Entry Corridors</h3>
-      <p class="text-slate-500">Выстраиваем юридические и операционные коридоры входа в Tier-1 инфраструктуру с чистой комплаенс-биографией.</p>
-      <div class="status flex items-center gap-2"><span class="dot-green w-2 h-2 bg-green-500 rounded-full"></span>active network</div>
+<section class="bridge-pain">
+  <div class="container">
+    <div class="label">ДИАГНОЗ</div>
+    <h2>Статус: Ваш капитал находится в зоне высокого комплаенс-риска.</h2>
+    <p>Проблема: Ограничения международной банковской системы затрудняют использование и движение неструктурированных активов.
+<br><br>Решение: Мы строим последовательную модель приведения капитала к мировому банковскому стандарту.</p>
+  </div>
+</section>
+<section class="bridge-split">
+  <div class="split-grid">
+    <article class="split-card">
+      <div class="split-kicker">ТРАНСПОРТНЫЙ КОРИДОР</div>
+      <h3 class="split-title">ДЛЯ БИЗНЕСА // Расчеты и ВЭД</h3>
+      <p class="split-desc">Обеспечение стабильности расчетов между юрисдикциями.</p>
+      <a class="split-cta" href="corporate.html">Построить маршрут платежей</a>
     </article>
-    <article class="cardx bg-white border border-slate-200 p-8 hover:shadow-2xl hover:-translate-y-1 transition-all duration-500">
-      <h3 class="text-xl font-medium">Legal-Asset Bridging</h3>
-      <p class="text-slate-500">Соединяем токсичные legacy-активы с легитимными структурами владения через SoW/SoF, trust и SPV-архитектуры.</p>
-      <div class="status flex items-center gap-2"><span class="dot-green w-2 h-2 bg-green-500 rounded-full"></span>compliance ready</div>
-    </article>
-    <article class="cardx bg-white border border-slate-200 p-8 hover:shadow-2xl hover:-translate-y-1 transition-all duration-500">
-      <h3 class="text-xl font-medium">Execution Terminal</h3>
-      <p class="text-slate-500">Интегрируем банковский доступ, документооборот и контроль рисков в единую институциональную панель исполнения.</p>
-      <div class="status flex items-center gap-2"><span class="dot-green w-2 h-2 bg-green-500 rounded-full"></span>live operations</div>
+    <article class="split-card">
+      <div class="split-kicker">ТРАНСПОРТНЫЙ КОРИДОР</div>
+      <h3 class="split-title">ДЛЯ СЕМЬИ // Личный капитал</h3>
+      <p class="split-desc">Формирование подтвержденной истории происхождения средств.</p>
+      <a class="split-cta" href="private.html">Создать безупречную биографию</a>
     </article>
   </div>
 </section>
@@ -1094,8 +1124,8 @@ main{padding-top:0}
         <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:#fca5a5;fill:none;stroke-width:2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
         Отчёт Charter Capital — Capital Risk Report 2026
       </div>
-      <h1>Токсичный капитал.<br>Глобальная блокада.</h1>
-      <p>В условиях тотальной финансовой прозрачности активы с «российским следом» — независимо от гражданства владельца — стали токсичными для западной финансовой системы. Банки закрывают счета. Регуляторы требуют SoW. Дубайская модель перегрева разрушается.</p>
+      <h1>Капитал в зоне повышенного комплаенс-контроля.<br>Глобальные ограничения доступа.</h1>
+      <p>В условиях тотальной финансовой прозрачности активы с «российским следом» — независимо от гражданства владельца — стали критичными для западной финансовой системы. Банки закрывают счета. Регуляторы требуют SoW. Дубайская модель перегрева разрушается.</p>
       <div style="display:flex;gap:14px;flex-wrap:wrap">
         <a href="#" class="btn btn-danger btn-lg" onclick="showPage('p3');return false;">Проверить мой капитал →</a>
         <a href="#" class="btn btn-secondary btn-lg" onclick="showPage('p2');return false;">Структуры защиты капитала</a>
@@ -1118,7 +1148,7 @@ main{padding-top:0}
     <div class="risk-grid" style="max-width:1200px;margin:0 auto">
       <div class="risk-cell">
         <div class="risk-cell-num">01</div>
-        <h4>Токсичность российского следа</h4>
+        <h4>Комплаенс-чувствительность происхождения</h4>
         <p>Любой счёт, связанный с российским банком, контрагентом или гражданством, автоматически проходит Enhanced Due Diligence. Оценочная вероятность блокировки: 72%.</p>
       </div>
       <div class="risk-cell">
@@ -1174,7 +1204,7 @@ main{padding-top:0}
           <div class="label" style="color:#60a5fa;margin-bottom:12px">Исходящий поток</div>
           <h2>Куда перемещается капитал после Дубая</h2>
           <p>В 2025–2026 году «умные» деньги из СНГ ищут не просто другую географию — они ищут институциональную архитектуру, которую невозможно заблокировать.</p>
-          <p>Charter Capital помогает клиентам построить такую архитектуру — с нулевой токсичностью и полной юридической прозрачностью для банков Tier-1.</p>
+          <p>Charter Capital помогает клиентам построить такую архитектуру — с нейтральным комплаенс-профилем и полной юридической прозрачностью для банков Tier-1.</p>
         </div>
         <ul class="p1-exodus-list">
           <li><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Лихтенштейн — частные фонды (Stiftung)</li>
@@ -1188,17 +1218,15 @@ main{padding-top:0}
     </div>
   </div>
 
-  <div class="p1-cta">
-    <div class="container">
-      <div class="label">Следующий шаг</div>
-      <h2>Оцените токсичность вашего капитала</h2>
-      <p>Пройдите аудит в Private Wealth Dashboard: персональный Readiness Score и рекомендации по структурированию.</p>
-      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
-        <a href="#" class="btn btn-primary btn-lg" onclick="showPage('p3');return false;">Запустить аудит капитала</a>
-        <a href="#" class="btn btn-secondary btn-lg" onclick="showPage('p2');return false;">Family Office →</a>
-      </div>
+  <section class="page-end-cta">
+  <div class="container">
+    <h3>Выберите следующий конкретный шаг</h3>
+    <div class="cta-row">
+      <a href="private.html" class="btn btn-secondary btn-lg">ЗАПРОСИТЬ АУДИТ БИОГРАФИИ</a>
+      <a href="corporate.html" class="btn btn-primary btn-lg">РАССЧИТАТЬ МАРШРУТ ДЕКАПЛИНГА</a>
     </div>
   </div>
+</section>
 </div>
 </main>
 <div id="loginModal" role="dialog" aria-modal="true" aria-labelledby="loginModalTitle" aria-hidden="true">
