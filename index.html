@@ -45,7 +45,10 @@ body{
   font-weight:300;
   line-height:1.65;
   -webkit-font-smoothing:antialiased;
+  opacity:0;
+  transition:opacity .4s ease;
 }
+body.page-ready{opacity:1}
 /* scrollbar */
 ::-webkit-scrollbar{width:5px}
 ::-webkit-scrollbar-track{background:#f1f5f9}
@@ -121,8 +124,84 @@ hr.rule{border:none;border-top:1px solid var(--border);margin:0}
 }
 .topbar-inner{
   max-width:1200px;margin:0 auto;padding:0 32px;
-  height:60px;display:flex;align-items:center;justify-content:space-between;
+  min-height:60px;display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:12px 16px;
 }
+.topbar-left{display:flex;align-items:center;gap:16px;min-width:0}
+.topbar-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-left:auto}
+.topbar-why{
+  font-family:'Inter',sans-serif;
+  font-size:11px;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:#64748b;text-decoration:none;
+  padding:6px 4px;
+  transition:color .15s ease;
+}
+.topbar-why:hover{color:#2563eb}
+.topbar-private-access{
+  font-family:'Inter',sans-serif;
+  font-size:10px;font-weight:600;
+  letter-spacing:.2em;text-transform:uppercase;
+  background:transparent;
+  color:var(--text-main);
+  border:1px solid #e2e8f0;
+  padding:9px 16px;border-radius:6px;
+  cursor:pointer;
+  transition:background .15s ease,border-color .15s ease,color .15s ease;
+}
+.topbar-private-access:hover{border-color:#cbd5e1;background:#f8fafc}
+/* Login modal */
+#loginModal{
+  position:fixed;inset:0;z-index:2000;
+  display:flex;align-items:center;justify-content:center;
+  padding:24px;
+  background:rgba(15,23,42,.45);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  opacity:0;visibility:hidden;
+  transition:opacity .3s ease,visibility .3s ease;
+}
+#loginModal.is-open{opacity:1;visibility:visible}
+#loginModal .login-modal-card{
+  position:relative;
+  width:100%;max-width:400px;
+  background:#fff;border-radius:var(--radius-lg);
+  padding:36px 32px 32px;
+  box-shadow:0 25px 50px -12px rgba(0,0,0,.2);
+  transform:translateY(12px) scale(.98);
+  transition:transform .35s cubic-bezier(.22,1,.36,1);
+}
+#loginModal.is-open .login-modal-card{transform:translateY(0) scale(1)}
+.login-modal-close{
+  position:absolute;top:12px;right:12px;
+  width:36px;height:36px;border:none;background:transparent;
+  cursor:pointer;color:#94a3b8;font-size:22px;line-height:1;border-radius:8px;
+}
+.login-modal-close:hover{background:#f1f5f9;color:#475569}
+.login-modal-title{
+  font-size:1.125rem;font-weight:600;color:var(--text-main);
+  margin-bottom:8px;letter-spacing:-.02em;
+}
+.login-modal-sub{font-size:13px;color:var(--text-muted);margin-bottom:28px;line-height:1.5}
+.login-field{margin-bottom:18px}
+.login-field label{
+  display:block;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  color:#64748b;margin-bottom:8px;
+}
+.login-field input{
+  width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:var(--radius);
+  font-family:'Inter',sans-serif;font-size:14px;outline:none;
+  transition:border-color .15s ease,box-shadow .15s ease;
+}
+.login-field input:focus{border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,.12)}
+.login-modal-authorize{
+  width:100%;margin-top:8px;padding:14px 20px;
+  font-family:'Inter',sans-serif;font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;
+  background:#0f172a;color:#fff;border:none;border-radius:var(--radius);cursor:pointer;
+  transition:background .15s ease,transform .15s ease;
+}
+.login-modal-authorize:hover{background:#1e293b}
+.login-modal-authorize:active{transform:scale(.99)}
 .topbar-logo{
   display:flex;align-items:center;gap:10px;cursor:pointer;
   text-decoration:none;
@@ -134,7 +213,7 @@ hr.rule{border:none;border-top:1px solid var(--border);margin:0}
 .topbar-logo-mark svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:1.8}
 .topbar-brand{font-size:15px;font-weight:600;color:var(--text-main);letter-spacing:-.02em}
 .topbar-brand span{color:var(--blue)}
-.topbar-nav{display:flex;align-items:center;gap:4px}
+.topbar-nav{display:flex;align-items:center;gap:4px;flex:1;justify-content:center;flex-wrap:wrap}
 .topbar-nav-btn{
   font-size:13px;font-weight:400;color:#94a3b8;
   padding:8px 16px;border-radius:8px;
@@ -797,6 +876,7 @@ main{padding-top:60px}
   .rg-header div:nth-child(4),.rg-header div:nth-child(5),
   .rg-cell:nth-child(4),.rg-cell:nth-child(5),.rg-bar-cell:nth-child(4),.rg-bar-cell:nth-child(5){display:none}
   .topbar-nav{display:none}
+  .topbar-right{width:100%;justify-content:space-between}
   .p3-progress-bar .p3-step-border{display:none}
 }
 </style>
@@ -806,23 +886,29 @@ main{padding-top:60px}
 <!-- ── GLOBAL TOP BAR ── -->
 <div id="topbar">
   <div class="topbar-inner">
-    <a class="topbar-logo" onclick="showPage('selector')">
-      <div class="topbar-logo-mark">
-        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-      </div>
-      <span class="topbar-brand">Charter <span>Capital</span></span>
-    </a>
+    <div class="topbar-left">
+      <a class="topbar-logo" href="index.html">
+        <div class="topbar-logo-mark">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <span class="topbar-brand">Charter <span>Capital</span></span>
+      </a>
+    </div>
     <nav class="topbar-nav">
-      <button class="topbar-nav-btn" onclick="showPage('p1')">Карта рисков</button>
-      <button class="topbar-nav-btn" onclick="showPage('p2')">Family Office</button>
-      <button class="topbar-nav-btn" onclick="showPage('p3')">Private Wealth</button>
-      <button class="topbar-nav-btn" onclick="showPage('p4')">Corporate Hub</button>
+      <button type="button" class="topbar-nav-btn" onclick="showPage('p1')">Карта рисков</button>
+      <button type="button" class="topbar-nav-btn" onclick="showPage('p2')">Family Office</button>
+      <button type="button" class="topbar-nav-btn" onclick="showPage('p3')">Private Wealth</button>
+      <button type="button" class="topbar-nav-btn" onclick="showPage('p4')">Corporate Hub</button>
     </nav>
-    <div class="topbar-phase">
-      <span class="phase-pill" onclick="showPage('p1')">Этап I</span>
-      <span class="phase-pill" onclick="showPage('p2')">Этап II</span>
-      <span class="phase-pill" onclick="showPage('p3')">Этап III</span>
-      <span class="phase-pill" onclick="showPage('p4')">Этап IV</span>
+    <div class="topbar-right">
+      <a href="why.html" class="topbar-why">THE LOGIC</a>
+      <button type="button" class="topbar-private-access" id="openLoginModal" aria-haspopup="dialog" aria-controls="loginModal">Private Access</button>
+      <div class="topbar-phase">
+        <span class="phase-pill" onclick="showPage('p1')">Этап I</span>
+        <span class="phase-pill" onclick="showPage('p2')">Этап II</span>
+        <span class="phase-pill" onclick="showPage('p3')">Этап III</span>
+        <span class="phase-pill" onclick="showPage('p4')">Этап IV</span>
+      </div>
     </div>
   </div>
 </div>
@@ -1658,7 +1744,80 @@ main{padding-top:60px}
 
 </main>
 
+<div id="loginModal" role="dialog" aria-modal="true" aria-labelledby="loginModalTitle" aria-hidden="true">
+  <div class="login-modal-card" role="document" onclick="event.stopPropagation()">
+    <button type="button" class="login-modal-close" onclick="closeLoginModal()" aria-label="Закрыть">×</button>
+    <h2 class="login-modal-title" id="loginModalTitle">Private Access</h2>
+    <p class="login-modal-sub">Введите учётные данные партнёрского контура. Сессия шифруется end-to-end.</p>
+    <form onsubmit="event.preventDefault(); closeLoginModal();">
+      <div class="login-field">
+        <label for="partnerId">Partner ID</label>
+        <input type="text" id="partnerId" name="partnerId" autocomplete="username" placeholder=""/>
+      </div>
+      <div class="login-field">
+        <label for="accessToken">Access Token</label>
+        <input type="password" id="accessToken" name="accessToken" autocomplete="current-password" placeholder=""/>
+      </div>
+      <button type="submit" class="login-modal-authorize">Authorize</button>
+    </form>
+  </div>
+</div>
+
 <script>
+// ── Page fade-in ─────────────────────────────────────────
+document.addEventListener('DOMContentLoaded',function(){
+  requestAnimationFrame(function(){ document.body.classList.add('page-ready'); });
+});
+
+// ── Login modal ─────────────────────────────────────────
+function openLoginModal(){
+  var m=document.getElementById('loginModal');
+  if(!m) return;
+  m.classList.add('is-open');
+  m.setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
+}
+function closeLoginModal(){
+  var m=document.getElementById('loginModal');
+  if(!m) return;
+  m.classList.remove('is-open');
+  m.setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
+}
+(function(){
+  var o=document.getElementById('openLoginModal');
+  if(o) o.addEventListener('click',openLoginModal);
+  var lm=document.getElementById('loginModal');
+  if(lm) lm.addEventListener('click',function(e){ if(e.target===lm) closeLoginModal(); });
+})();
+document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeLoginModal(); });
+
+document.querySelector('.topbar-logo[href="index.html"]')?.addEventListener('click',function(e){
+  if(document.getElementById('page-selector')){
+    e.preventDefault();
+    showPage('selector');
+    if(history.replaceState) history.replaceState(null,'','index.html');
+  }
+});
+
+// ── Page transitions (opacity) for cross-page .html links ───
+document.addEventListener('click',function(e){
+  var a=e.target.closest('a[href]');
+  if(!a||a.target==='_blank'||e.metaKey||e.ctrlKey||e.shiftKey) return;
+  if(a.classList.contains('topbar-logo')&&document.getElementById('page-selector')) return;
+  var href=a.getAttribute('href');
+  if(!href||href.startsWith('#')||href.startsWith('mailto:')||href.startsWith('javascript:')) return;
+  try{
+    var u=new URL(a.href,location.href);
+    if(u.origin!==location.origin) return;
+    if(!/\.html($|[?#])/i.test(u.pathname)) return;
+    e.preventDefault();
+    document.body.classList.remove('page-ready');
+    document.body.style.opacity='0';
+    setTimeout(function(){ location.href=a.href; }, 320);
+  }catch(err){}
+});
+
 // ── Page navigation ───────────────────────────────────────
 function showPage(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>THE LOGIC | Charter Capital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#050505;
+  --surface:#0a0a0a;
+  --red:#dc2626;
+  --blue:#2563eb;
+  --text:#fafafa;
+  --muted:#737373;
+  --border:#262626;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  opacity:0;
+  transition:opacity .4s ease;
+}
+body.page-ready{opacity:1}
+/* Header (dark) */
+#whyTopbar{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  background:rgba(5,5,5,.88);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+}
+.why-top-inner{
+  max-width:1200px;margin:0 auto;padding:0 28px;
+  min-height:60px;display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:12px;
+}
+.why-logo{
+  display:flex;align-items:center;gap:10px;text-decoration:none;
+}
+.why-logo-mark{
+  width:32px;height:32px;background:var(--blue);border-radius:6px;
+  display:flex;align-items:center;justify-content:center;
+}
+.why-logo-mark svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:1.8}
+.why-brand{font-size:15px;font-weight:600;color:var(--text);letter-spacing:-.02em}
+.why-brand span{color:var(--blue)}
+.why-nav{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.why-nav a{
+  font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;transition:color .15s ease;
+}
+.why-nav a:hover{color:#a3a3a3}
+.why-nav a.is-active{color:var(--text)}
+.why-private{
+  font-family:'Inter',sans-serif;
+  font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+  background:transparent;color:var(--text);
+  border:1px solid #e2e8f0;padding:9px 16px;border-radius:6px;cursor:pointer;
+  transition:background .15s ease,border-color .15s ease;
+}
+.why-private:hover{background:#171717;border-color:#cbd5e1}
+/* Modal (reuse structure) */
+#loginModal{
+  position:fixed;inset:0;z-index:2000;
+  display:flex;align-items:center;justify-content:center;padding:24px;
+  background:rgba(0,0,0,.65);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  opacity:0;visibility:hidden;
+  transition:opacity .3s ease,visibility .3s ease;
+}
+#loginModal.is-open{opacity:1;visibility:visible}
+#loginModal .login-modal-card{
+  position:relative;width:100%;max-width:400px;background:#fff;border-radius:12px;
+  padding:36px 32px 32px;
+  box-shadow:0 25px 50px -12px rgba(0,0,0,.5);
+  transform:translateY(12px) scale(.98);
+  transition:transform .35s cubic-bezier(.22,1,.36,1);
+}
+#loginModal.is-open .login-modal-card{transform:translateY(0) scale(1)}
+.login-modal-close{
+  position:absolute;top:12px;right:12px;width:36px;height:36px;border:none;
+  background:transparent;cursor:pointer;color:#94a3b8;font-size:22px;line-height:1;border-radius:8px;
+}
+.login-modal-close:hover{background:#f1f5f9;color:#475569}
+.login-modal-title{font-size:1.125rem;font-weight:600;color:#0f172a;margin-bottom:8px}
+.login-modal-sub{font-size:13px;color:#64748b;margin-bottom:28px;line-height:1.5}
+.login-field{margin-bottom:18px}
+.login-field label{
+  display:block;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748b;margin-bottom:8px;
+}
+.login-field input{
+  width:100%;padding:12px 14px;border:1px solid #e2e8f0;border-radius:8px;
+  font-family:'Inter',sans-serif;font-size:14px;outline:none;
+}
+.login-field input:focus{border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,.12)}
+.login-modal-authorize{
+  width:100%;margin-top:8px;padding:14px 20px;
+  font-family:'Inter',sans-serif;font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;
+  background:#0f172a;color:#fff;border:none;border-radius:8px;cursor:pointer;
+}
+.login-modal-authorize:hover{background:#1e293b}
+/* Story sections */
+.why-wrap{padding-top:60px}
+.why-section{
+  min-height:100vh;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:100px 28px 120px;
+  max-width:1100px;margin:0 auto;
+  position:relative;
+  overflow:hidden;
+}
+.why-section--tight{padding-bottom:80px;min-height:auto}
+.why-kicker{
+  font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  margin-bottom:24px;display:inline-block;
+}
+.why-kicker--red{color:var(--red)}
+.why-kicker--blue{color:var(--blue)}
+.why-headline{
+  font-size:clamp(2.5rem,8vw,5.5rem);
+  font-weight:800;
+  line-height:1.02;
+  letter-spacing:-.04em;
+  margin-bottom:32px;
+  max-width:18ch;
+}
+.why-headline em{font-style:normal;color:var(--red)}
+.why-headline .hl-blue{color:var(--blue)}
+.why-lead{
+  font-size:clamp(1.1rem,2.5vw,1.35rem);
+  font-weight:400;
+  color:#a3a3a3;
+  max-width:42ch;
+  line-height:1.75;
+}
+.why-mega{
+  font-size:clamp(4rem,18vw,12rem);
+  font-weight:900;
+  letter-spacing:-.06em;
+  line-height:.9;
+  color:var(--red);
+  text-shadow:0 0 80px rgba(220,38,38,.25);
+}
+.why-mega-label{
+  font-size:14px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--muted);margin-top:16px;
+}
+.why-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:48px 40px;
+  margin-top:48px;
+  transform:translateY(40px);
+  opacity:0;
+  transition:transform .8s cubic-bezier(.22,1,.36,1),opacity .8s ease;
+}
+.why-card.is-inview{transform:translateY(0);opacity:1}
+.why-card h3{
+  font-size:clamp(1.5rem,4vw,2.25rem);
+  font-weight:700;
+  letter-spacing:-.03em;
+  margin-bottom:16px;
+  color:var(--text);
+}
+.why-card p{color:#a3a3a3;font-weight:400;font-size:15px;line-height:1.8;max-width:55ch}
+.why-stat-row{display:flex;flex-wrap:wrap;gap:48px;margin-top:40px;padding-top:40px;border-top:1px solid var(--border)}
+.why-stat-num{font-size:3rem;font-weight:800;color:var(--text);letter-spacing:-.03em}
+.why-stat-num span{color:var(--red)}
+.why-stat-label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-top:4px}
+.why-parallax-bg{
+  position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 80% 50% at 50% 0%,rgba(37,99,235,.08) 0%,transparent 55%);
+  transform:translateY(var(--py,0));
+  transition:transform .15s ease-out;
+}
+.why-cta{
+  display:inline-flex;align-items:center;gap:10px;
+  margin-top:40px;padding:16px 28px;
+  background:var(--blue);color:#fff;text-decoration:none;
+  font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  border-radius:8px;transition:transform .15s ease,box-shadow .15s ease;
+}
+.why-cta:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(37,99,235,.35)}
+.why-footer-note{
+  text-align:center;padding:80px 28px 120px;
+  font-size:12px;color:#525252;letter-spacing:.08em;text-transform:uppercase;
+}
+@media (max-width:768px){
+  .why-stat-row{flex-direction:column;gap:28px}
+}
+</style>
+</head>
+<body>
+
+<header id="whyTopbar">
+  <div class="why-top-inner">
+    <a class="why-logo" href="index.html">
+      <div class="why-logo-mark">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      </div>
+      <span class="why-brand">Charter <span>Capital</span></span>
+    </a>
+    <nav class="why-nav">
+      <a href="index.html">Portal</a>
+      <span class="is-active" style="cursor:default">THE LOGIC</span>
+      <button type="button" class="why-private" id="openLoginModal" aria-controls="loginModal">Private Access</button>
+    </nav>
+  </div>
+</header>
+
+<main class="why-wrap">
+
+  <section class="why-section" aria-label="Введение">
+    <div class="why-parallax-bg" data-parallax="0.15"></div>
+    <p class="why-kicker why-kicker--blue">Charter Capital</p>
+    <h1 class="why-headline">THE LOGIC<br/><span class="hl-blue">OF INSTITUTIONAL SURVIVAL</span></h1>
+    <p class="why-lead">Один документ — одна линия рассуждения. Почему «просто счёт» больше не защищает капитал, и что делает позицию необратимой.</p>
+  </section>
+
+  <section class="why-section" id="dubai-exodus" aria-label="The Dubai Exodus">
+    <div class="why-parallax-bg" data-parallax="0.2" style="background:radial-gradient(ellipse 70% 40% at 70% 20%,rgba(220,38,38,.12) 0%,transparent 50%)"></div>
+    <p class="why-kicker why-kicker--red">The Dubai Exodus</p>
+    <h2 class="why-headline">Капитал уходит.<br/><em>Окно схлопывается.</em></h2>
+    <p class="why-lead">Дубай принял потоки как временное убежище. Ретроспективный AML, выход ОАЭ из серого списка FATF и давление США сделали массовые закрытия счетов новой нормой — не исключением.</p>
+    <div class="why-card" data-reveal>
+      <h3>География без структуры = токсичность</h3>
+      <p>Релокация без институциональной легитимации SoW и без развязки (Decoupling) контуров оставляет тот же след в данных. Банки Tier-1 видят паттерн, а не паспорт.</p>
+    </div>
+  </section>
+
+  <section class="why-section" id="frozen" aria-label="Frozen assets">
+    <p class="why-kicker why-kicker--red">Systemic freeze</p>
+    <div class="why-mega" aria-hidden="true">$2.1T</div>
+    <p class="why-mega-label">оценка замороженных и заблокированных активов в глобальной перспективе — порядок величины, который задаёт тон регуляторам</p>
+    <p class="why-lead" style="margin-top:48px">Когда прозрачность становится оружием, любой «серый» след превращается в кредитный риск. <strong style="color:var(--text)">$2.1T Frozen</strong> — не заголовок таблоида, а напоминание: без досье нет доступа к ликвидности западного эшелона.</p>
+  </section>
+
+  <section class="why-section" id="transparency" aria-label="The New Transparency">
+    <div class="why-parallax-bg" data-parallax="0.12" style="background:radial-gradient(ellipse 60% 50% at 30% 40%,rgba(37,99,235,.14) 0%,transparent 55%)"></div>
+    <p class="why-kicker why-kicker--blue">The New Transparency</p>
+    <h2 class="why-headline"><span class="hl-blue">Тотальная видимость.</span><br/>Нулевая снисходительность.</h2>
+    <p class="why-lead">CRS, публичные UBO-реестры, крипто-travel rule и вторичные санкции превратили приватность из «по умолчанию» в продукт, который нужно проектировать — юридически и технически.</p>
+    <div class="why-card" data-reveal>
+      <h3>Compliance — не форма, а фильтр</h3>
+      <p>Enhanced Due Diligence, SoF/SoW, Object Passport и Tier-1 onboarding — это одна цепочка. Разрыв в любом звене отправляет клиента в очередь на отказ без объяснения причин.</p>
+      <div class="why-stat-row">
+        <div>
+          <div class="why-stat-num">78<span>%</span></div>
+          <div class="why-stat-label">европейских банков — усиленный контроль следов</div>
+        </div>
+        <div>
+          <div class="why-stat-num">72<span>%</span></div>
+          <div class="why-stat-label">оценочная вероятность блокировки при российском nexus без структуры</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="why-section why-section--tight" aria-label="Решение">
+    <p class="why-kicker why-kicker--blue">Institutional path</p>
+    <h2 class="why-headline">Структура вместо<br/><span class="hl-blue">надежды на тишину</span></h2>
+    <p class="why-lead">Charter Capital проектирует контуры Private Wealth и Corporate Hub: трасты и фонды, Decoupling слоёв, кросс-бордерные платежи и досье, которое выдерживает Tier-1.</p>
+    <a class="why-cta" href="index.html">Вернуться в портал →</a>
+  </section>
+
+  <p class="why-footer-note">Charter Capital · THE LOGIC · 2026</p>
+</main>
+
+<div id="loginModal" role="dialog" aria-modal="true" aria-labelledby="loginModalTitle" aria-hidden="true">
+  <div class="login-modal-card" onclick="event.stopPropagation()">
+    <button type="button" class="login-modal-close" onclick="closeLoginModal()" aria-label="Закрыть">×</button>
+    <h2 class="login-modal-title" id="loginModalTitle">Private Access</h2>
+    <p class="login-modal-sub">Введите учётные данные партнёрского контура.</p>
+    <form onsubmit="event.preventDefault(); closeLoginModal();">
+      <div class="login-field">
+        <label for="partnerId">Partner ID</label>
+        <input type="text" id="partnerId" name="partnerId" autocomplete="username"/>
+      </div>
+      <div class="login-field">
+        <label for="accessToken">Access Token</label>
+        <input type="password" id="accessToken" name="accessToken" autocomplete="current-password"/>
+      </div>
+      <button type="submit" class="login-modal-authorize">Authorize</button>
+    </form>
+  </div>
+</div>
+
+<script>
+function openLoginModal(){
+  var m=document.getElementById('loginModal');
+  if(!m) return;
+  m.classList.add('is-open');
+  m.setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
+}
+function closeLoginModal(){
+  var m=document.getElementById('loginModal');
+  if(!m) return;
+  m.classList.remove('is-open');
+  m.setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
+}
+document.addEventListener('DOMContentLoaded',function(){
+  requestAnimationFrame(function(){ document.body.classList.add('page-ready'); });
+  var o=document.getElementById('openLoginModal');
+  if(o) o.addEventListener('click',openLoginModal);
+  var lm=document.getElementById('loginModal');
+  if(lm) lm.addEventListener('click',function(e){ if(e.target===lm) closeLoginModal(); });
+});
+document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeLoginModal(); });
+
+document.addEventListener('click',function(e){
+  var a=e.target.closest('a[href]');
+  if(!a||a.target==='_blank'||e.metaKey||e.ctrlKey||e.shiftKey) return;
+  if(!a.getAttribute('href')||a.getAttribute('href').startsWith('#')) return;
+  try{
+    var u=new URL(a.href,location.href);
+    if(u.origin!==location.origin) return;
+    if(!/\.html($|[?#])/i.test(u.pathname)) return;
+    e.preventDefault();
+    document.body.classList.remove('page-ready');
+    document.body.style.opacity='0';
+    setTimeout(function(){ location.href=a.href; }, 320);
+  }catch(err){}
+});
+
+var io=new IntersectionObserver(function(entries){
+  entries.forEach(function(en){
+    if(en.isIntersecting) en.target.classList.add('is-inview');
+  });
+},{threshold:.15});
+document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
+
+window.addEventListener('scroll',function(){
+  var y=window.scrollY;
+  document.querySelectorAll('[data-parallax]').forEach(function(el){
+    var s=parseFloat(el.getAttribute('data-parallax'))||0.1;
+    el.style.transform='translateY('+(-y*s*0.06)+'px)';
+  });
+},{passive:true});
+</script>
+</body>
+</html>
