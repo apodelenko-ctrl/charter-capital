@@ -435,49 +435,62 @@ main{padding-top:0}
 .solution-list{display:flex;flex-direction:column;gap:10px;margin-top:12px}
 .solution-list li{list-style:none;color:#475569;font-size:14px;line-height:1.6}
 .solution-radar-wrap{height:320px}
-#page-p1,#page-p2,#page-p3,#page-p4{display:none!important}
+
+/* Longread visibility model */
+#page-selector{display:block!important}
+#page-p1{display:block!important}
+body[data-audience="private"] #page-p2,
+body[data-audience="private"] #page-p3{display:block!important}
+body[data-audience="private"] #page-p4{display:none!important}
+body[data-audience="trade"] #page-p2,
+body[data-audience="trade"] #page-p3{display:none!important}
+body[data-audience="trade"] #page-p4{display:block!important}
+
+/* Hide temporary duplicate longread block; use restored native sections */
+.longread-section{display:none}
 
 /* ─── PAGE 1: WARNING / PAIN ─────────────────────────────── */
 .p1-hero{
-  background:var(--slate-dark);
+  background:#fff;
   padding:120px 0 88px;
 }
 .p1-alert-bar{
-  background:#7f1d1d;
+  background:#fff5f5;
   padding:10px 0;
   margin-bottom:0;
+  border-bottom:1px solid #fee2e2;
 }
 .p1-alert-inner{
   max-width:1200px;margin:0 auto;padding:0 32px;
   display:flex;align-items:center;gap:10px;
   font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
-  color:#fca5a5;
+  color:#dc2626;
 }
-.p1-alert-inner svg{width:14px;height:14px;stroke:#fca5a5;fill:none;stroke-width:2}
+.p1-alert-inner svg{width:14px;height:14px;stroke:#dc2626;fill:none;stroke-width:2}
 .p1-hero-inner{
   max-width:1000px;
   padding:60px 32px;
 }
 .p1-year-badge{
   display:inline-flex;align-items:center;gap:8px;
-  background:rgba(220,38,38,.2);border:1px solid rgba(220,38,38,.4);
-  color:#fca5a5;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  background:#fff5f5;border:1px solid #fecaca;
+  color:#b91c1c;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
   padding:6px 16px;border-radius:4px;margin-bottom:28px;
 }
 .p1-hero h1{
   font-size:clamp(2.4rem,6.2vw,4.8rem);
-  color:#fff;margin-bottom:24px;line-height:1.02;
+  color:#0f172a;margin-bottom:24px;line-height:1.02;
   max-width:750px;
 }
-.p1-hero p{color:#cbd5e1;font-size:17px;font-weight:300;max-width:640px;margin-bottom:44px;line-height:1.72}
+.p1-hero p{color:#475569;font-size:17px;font-weight:300;max-width:640px;margin-bottom:44px;line-height:1.72}
 .p1-stat-row{
   display:flex;gap:40px;flex-wrap:wrap;
-  padding-top:40px;border-top:1px solid rgba(255,255,255,.08);
+  padding-top:40px;border-top:1px solid #e2e8f0;
 }
 .p1-stat{display:flex;flex-direction:column;gap:4px}
-.p1-stat-num{font-size:2rem;font-weight:700;color:#fff;letter-spacing:-.03em}
-.p1-stat-num span{color:#f87171}
-.p1-stat-label{font-size:12px;color:#94a3b8;font-weight:500;letter-spacing:.03em}
+.p1-stat-num{font-size:2rem;font-weight:700;color:#0f172a;letter-spacing:-.03em}
+.p1-stat-num span{color:#dc2626}
+.p1-stat-label{font-size:12px;color:#64748b;font-weight:500;letter-spacing:.03em}
 .p1-risks{background:#fff;padding:128px 0}
 .risk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
 .risk-cell{
@@ -508,19 +521,19 @@ main{padding-top:0}
 .timeline-date{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px}
 .timeline-title{font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:6px}
 .timeline-desc{font-size:13px;font-weight:400;color:var(--text-body);line-height:1.65}
-.p1-dubai{background:linear-gradient(135deg,#1e293b 0%,#0f172a 100%);padding:72px 0}
+.p1-dubai{background:#fff;padding:72px 0;border-top:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0}
 .p1-dubai-inner{
   display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;
 }
-.p1-dubai h2{color:#fff;font-size:2rem;margin-bottom:18px}
-.p1-dubai p{color:#94a3b8;font-size:15px;line-height:1.75;margin-bottom:16px}
+.p1-dubai h2{color:#0f172a;font-size:2rem;margin-bottom:18px}
+.p1-dubai p{color:#475569;font-size:15px;line-height:1.75;margin-bottom:16px}
 .p1-exodus-list{list-style:none;display:flex;flex-direction:column;gap:10px}
 .p1-exodus-list li{
   display:flex;align-items:center;gap:10px;
-  font-size:13px;color:#cbd5e1;
+  font-size:13px;color:#334155;
   padding:12px 16px;
-  background:rgba(255,255,255,.04);border-radius:var(--radius);
-  border:1px solid rgba(255,255,255,.06);
+  background:#fff;border-radius:var(--radius);
+  border:1px solid #e2e8f0;
 }
 .p1-exodus-list li svg{width:16px;height:16px;stroke:#f59e0b;fill:none;stroke-width:1.8;flex-shrink:0}
 .p1-cta{background:#fff;padding:128px 0;text-align:center;border-top:1px solid var(--border)}
@@ -1001,7 +1014,7 @@ main{padding-top:0}
     </div>
     <nav class="topbar-nav">
       <button type="button" class="topbar-nav-btn active" data-audience-tab="private" onclick="switchAudience('private')">Частным лицам</button>
-      <button type="button" class="topbar-nav-btn" data-audience-tab="trade" onclick="switchAudience('trade')">Импортерам и Экспортерам</button>
+      <button type="button" class="topbar-nav-btn" data-audience-tab="trade" onclick="switchAudience('trade')">Импортерам и экспортерам</button>
     </nav>
     <div class="topbar-right">
       <a href="why.html" class="topbar-why">THE LOGIC</a>
@@ -1056,7 +1069,7 @@ main{padding-top:0}
       <div class="label">Решения</div>
       <div class="audience-tabs">
         <button type="button" class="audience-tab active" data-audience-tab="private" onclick="switchAudience('private')">Частным лицам</button>
-        <button type="button" class="audience-tab" data-audience-tab="trade" onclick="switchAudience('trade')">Импортерам и Экспортерам</button>
+        <button type="button" class="audience-tab" data-audience-tab="trade" onclick="switchAudience('trade')">Импортерам и экспортерам</button>
       </div>
 
       <div class="audience-pane active" data-audience-pane="private">
@@ -1954,13 +1967,19 @@ function initAudienceRadar(){
   });
 }
 function switchAudience(audience){
+  document.body.setAttribute('data-audience', audience);
   document.querySelectorAll('[data-audience-tab]').forEach(function(btn){
     btn.classList.toggle('active', btn.getAttribute('data-audience-tab')===audience);
   });
   document.querySelectorAll('[data-audience-pane]').forEach(function(pane){
     pane.classList.toggle('active', pane.getAttribute('data-audience-pane')===audience);
   });
-  if(audience==='trade') setTimeout(initAudienceRadar,60);
+  if(audience==='trade'){
+    setTimeout(function(){
+      initAudienceRadar();
+      initCharts();
+    },60);
+  }
 }
 
 // ── Login modal ─────────────────────────────────────────
@@ -2014,18 +2033,15 @@ document.addEventListener('click',function(e){
 
 // ── Page navigation ───────────────────────────────────────
 function showPage(id){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  const page = document.getElementById('page-'+id);
-  if(page) page.classList.add('active');
-  const topbar = document.getElementById('topbar');
-  if(topbar) topbar.classList.toggle('topbar-solid', id !== 'selector');
-  window.scrollTo({top:0,behavior:'smooth'});
-  document.querySelectorAll('.phase-pill').forEach(p=>p.classList.remove('active'));
-  const pillMap={p1:0,p2:1,p3:2,p4:3};
-  if(id in pillMap && document.querySelectorAll('.phase-pill')[pillMap[id]]) document.querySelectorAll('.phase-pill')[pillMap[id]].classList.add('active');
-  document.querySelectorAll('.topbar-nav-btn').forEach(b=>b.classList.remove('active'));
-  if(id in pillMap && document.querySelectorAll('.topbar-nav-btn')[pillMap[id]]) document.querySelectorAll('.topbar-nav-btn')[pillMap[id]].classList.add('active');
-  if(id==='p4') setTimeout(initCharts,100);
+  if(id==='selector'){
+    window.scrollTo({top:0,behavior:'smooth'});
+    return;
+  }
+  var target=document.getElementById('page-'+id);
+  if(target){
+    target.scrollIntoView({behavior:'smooth',block:'start'});
+    if(id==='p4') setTimeout(initCharts,100);
+  }
 }
 
 // ── P2 tabs ───────────────────────────────────────────────
