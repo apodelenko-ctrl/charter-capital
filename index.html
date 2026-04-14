@@ -1044,7 +1044,12 @@ main{padding-top:0}
 .hero-banner{width:100%;height:100vh;position:relative;padding-top:5rem;background-image:url('assets/logic/13-building-corner.png');background-size:cover;background-position:center}
 .hero-overlay{position:absolute;inset:0;background:rgba(0,0,0,.5)}
 .hero-title-wrap{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:0 32px}
-.hero-title{max-width:18ch;text-align:center;color:#fff;font-size:clamp(2rem,4.5vw,3.4rem);font-weight:300;line-height:1.15;letter-spacing:-.02em}
+.hero-title{max-width:18ch;text-align:center;color:#fff;font-size:clamp(2rem,4.5vw,3.4rem);font-weight:300;line-height:1.12;letter-spacing:-.02em;margin:0 0 20px}
+.hero-sub{max-width:26ch;text-align:center;color:#e2e8f0;font-size:clamp(1rem,2vw,1.35rem);font-weight:300;line-height:1.45;margin:0 auto 20px}
+.hero-context{list-style:none;padding:0;margin:0 auto;display:grid;gap:8px;max-width:34ch}
+.hero-context li{color:#cbd5e1;font-size:.95rem;font-weight:300;line-height:1.5;position:relative;padding-left:16px}
+.hero-context li:before{content:"";position:absolute;left:0;top:.62em;width:6px;height:6px;border-radius:999px;background:#94a3b8}
+.hero-copy{max-width:42rem}
 #infra-dashboard{background:#fff;color:#0f172a;padding:8rem 2rem}
 #infra-dashboard .kicker{font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;color:#94a3b8;margin-bottom:1.5rem}
 #infra-dashboard .message{font-size:clamp(2rem,4vw,3rem);font-weight:300;max-width:64rem;line-height:1.2;margin-bottom:4rem}
@@ -1060,11 +1065,33 @@ main{padding-top:0}
 #page-p1{display:none!important}
 .p1-hero,.p1-risks,.p1-timeline,.p1-dubai,.p1-cta,.p2-hero,.p2-features,.p3-header,.p3-body,.p4-header,.p4-content{background:#fff!important}
 .card,.selector-card,.risk-card,.radar-card,.decoupling-diagram,.risk-grading-table,.payment-flow{border:1px solid #e2e8f0!important;box-shadow:none!important}
+.funnel-section{padding:88px 32px;background:#fff}
+.funnel-section .container{max-width:1100px}
+.funnel-kicker{display:block;font-size:.74rem;letter-spacing:.13em;text-transform:uppercase;color:#94a3b8;margin-bottom:16px}
+.funnel-title{font-size:clamp(1.85rem,3.5vw,2.8rem);font-weight:300;letter-spacing:-.02em;line-height:1.2;color:#0f172a;margin:0 0 16px}
+.funnel-text{font-size:1.02rem;line-height:1.72;color:#475569;max-width:66ch;margin:0}
+.funnel-dominant{padding-top:44px;padding-bottom:110px}
+.funnel-fork-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.funnel-fork-card{border:1px solid #cbd5e1;background:#fff;padding:34px 30px;min-height:300px;display:flex;flex-direction:column;justify-content:space-between;transition:all .35s ease}
+.funnel-fork-card:hover{transform:translateY(-4px);border-color:#94a3b8;box-shadow:0 20px 42px rgba(15,23,42,.12)}
+.funnel-fork-title{font-size:clamp(1.4rem,2.6vw,2rem);font-weight:300;letter-spacing:-.02em;color:#0f172a;margin:0 0 12px}
+.funnel-fork-text{font-size:1rem;line-height:1.7;color:#475569;margin:0 0 22px}
+.funnel-fork-cta{display:inline-block;border:1px solid #0f172a;color:#0f172a;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;padding:11px 14px;text-decoration:none;transition:all .2s ease}
+.funnel-fork-cta:hover{background:#0f172a;color:#fff}
+.funnel-principles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 22px;max-width:820px;padding:0;margin:8px 0 0;list-style:none}
+.funnel-principles li{font-size:1rem;color:#475569;line-height:1.6;position:relative;padding-left:18px}
+.funnel-principles li:before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:999px;background:#94a3b8}
+.funnel-cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+.funnel-cta-row .btn{padding:.95rem 1.2rem}
 @media(max-width:900px){
   #topbar .bar{flex-direction:column;align-items:flex-start;gap:.75rem}
   #topbar nav{gap:1rem;flex-wrap:wrap}
   #infra-dashboard{padding:5rem 1.25rem}
   #infra-dashboard .grid{grid-template-columns:1fr}
+  .hero-copy{padding-top:40px}
+  .funnel-section{padding:62px 20px}
+  .funnel-fork-grid{grid-template-columns:1fr}
+  .funnel-principles{grid-template-columns:1fr}
 }
 
 </style>
@@ -1083,141 +1110,86 @@ main{padding-top:0}
   </div>
 </header>
 <main>
-<section class="hero-banner w-full h-screen relative pt-20 bg-cover bg-center" aria-hidden="true">
+<section class="hero-banner w-full h-screen relative pt-20 bg-cover bg-center">
   <div class="hero-overlay bg-black/50"></div>
-  <div class="hero-title-wrap"><h1 class="hero-title">Верните контроль над капиталом в условиях ограниченного банковского доступа</h1></div>
-</section>
-<section class="bridge-pain">
-  <div class="container">
-    <div class="label">ДИАГНОЗ</div>
-    <h2>Статус: Ваш капитал находится в зоне высокого комплаенс-риска.</h2>
-    <p>Проблема: Ограничения международной банковской системы затрудняют использование и движение неструктурированных активов.
-<br><br>Решение: Мы строим последовательную модель приведения капитала к мировому банковскому стандарту.</p>
+  <div class="hero-title-wrap">
+    <div class="hero-copy">
+      <h1 class="hero-title">Верните контроль над капиталом в условиях ограниченного банковского доступа</h1>
+      <p class="hero-sub">Структурируем движение средств и капитала в условиях ограничений, блокировок и отказов банков</p>
+      <ul class="hero-context">
+        <li>средства не проходят через банки или блокируются</li>
+        <li>международные переводы ограничены или невозможны</li>
+        <li>отсутствует понятная история происхождения средств</li>
+      </ul>
+    </div>
   </div>
 </section>
-<section class="bridge-split">
-  <div class="split-grid">
-    <article class="split-card">
-      <div class="split-kicker">ТРАНСПОРТНЫЙ КОРИДОР</div>
-      <h3 class="split-title">ДЛЯ БИЗНЕСА // Расчеты и ВЭД</h3>
-      <p class="split-desc">Обеспечение стабильности расчетов между юрисдикциями.</p>
-      <a class="split-cta" href="corporate.html">Построить маршрут платежей</a>
-    </article>
-    <article class="split-card">
-      <div class="split-kicker">ТРАНСПОРТНЫЙ КОРИДОР</div>
-      <h3 class="split-title">ДЛЯ СЕМЬИ // Личный капитал</h3>
-      <p class="split-desc">Формирование подтвержденной истории происхождения средств.</p>
-      <a class="split-cta" href="private.html">Создать безупречную биографию</a>
-    </article>
+<section class="funnel-section">
+  <div class="container">
+    <span class="funnel-kicker">ДИАГНОЗ</span>
+    <h2 class="funnel-title">Почему это происходит</h2>
+    <p class="funnel-text">В текущей системе банки оценивают не только средства, но и их происхождение и маршрут движения. Если структура капитала не соответствует требованиям, он становится ограниченным в использовании.</p>
+  </div>
+</section>
+<section class="funnel-section">
+  <div class="container">
+    <span class="funnel-kicker">РЕШЕНИЕ</span>
+    <h2 class="funnel-title">Что мы делаем</h2>
+    <p class="funnel-text">Мы не выполняем отдельные операции. Мы выстраиваем структуру движения средств и капитала, которая соответствует требованиям банков и юрисдикций.</p>
+  </div>
+</section>
+<section class="funnel-section funnel-dominant">
+  <div class="container">
+    <span class="funnel-kicker">РАЗВИЛКА</span>
+    <div class="funnel-fork-grid">
+      <article class="funnel-fork-card">
+        <div>
+          <h3 class="funnel-fork-title">У меня компания / ВЭД</h3>
+          <p class="funnel-fork-text">Нужна стабильность расчётов и безопасное движение платежей между юрисдикциями.</p>
+        </div>
+        <a class="funnel-fork-cta" href="corporate.html">Построить платежный маршрут</a>
+      </article>
+      <article class="funnel-fork-card">
+        <div>
+          <h3 class="funnel-fork-title">У меня личный капитал</h3>
+          <p class="funnel-fork-text">Необходимо привести средства к форме, принимаемой банковской системой.</p>
+        </div>
+        <a class="funnel-fork-cta" href="private.html">Разобрать структуру капитала</a>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="funnel-section">
+  <div class="container">
+    <span class="funnel-kicker">ОБЩИЙ ПРИНЦИП</span>
+    <h2 class="funnel-title">Как мы работаем</h2>
+    <p class="funnel-text">Все решения выстраиваются как последовательная система, а не набор операций. Каждый этап формирует проверяемую структуру, понятную банковскому комплаенсу.</p>
+  </div>
+</section>
+<section class="funnel-section">
+  <div class="container">
+    <span class="funnel-kicker">ПРИНЦИПЫ</span>
+    <h2 class="funnel-title">Подход</h2>
+    <ul class="funnel-principles">
+      <li>соответствие требованиям банковского комплаенса</li>
+      <li>документируемость всех этапов</li>
+      <li>работа в рамках действующего регулирования</li>
+      <li>приоритет устойчивости и прозрачности</li>
+    </ul>
+  </div>
+</section>
+<section class="funnel-section">
+  <div class="container">
+    <span class="funnel-kicker">CTA</span>
+    <h2 class="funnel-title">Определить маршрут</h2>
+    <p class="funnel-text">Поможем определить оптимальную структуру в зависимости от вашей ситуации и задач.</p>
+    <div class="funnel-cta-row">
+      <a href="corporate.html" class="btn btn-primary btn-lg">Для бизнеса → Построить платежный маршрут</a>
+      <a href="private.html" class="btn btn-secondary btn-lg">Для частного капитала → Обсудить структуру капитала</a>
+    </div>
   </div>
 </section>
 <div id="page-p1" class="page">
-  <div class="p1-alert-bar">
-    <div class="p1-alert-inner">
-      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-      Критический обзор: капитал с российским следом в 2026 году
-    </div>
-  </div>
-  <div class="p1-hero">
-    <div class="p1-hero-inner" style="margin:0 auto;max-width:1200px;padding:60px 32px">
-      <div class="p1-year-badge">
-        <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:#fca5a5;fill:none;stroke-width:2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
-        Отчёт Charter Capital — Capital Risk Report 2026
-      </div>
-      <h1>Капитал в зоне повышенного комплаенс-контроля.<br>Глобальные ограничения доступа.</h1>
-      <p>В условиях тотальной финансовой прозрачности активы с «российским следом» — независимо от гражданства владельца — стали критичными для западной финансовой системы. Банки закрывают счета. Регуляторы требуют SoW. Дубайская модель перегрева разрушается.</p>
-      <div style="display:flex;gap:14px;flex-wrap:wrap">
-        <a href="#" class="btn btn-danger btn-lg" onclick="showPage('p3');return false;">Проверить мой капитал →</a>
-        <a href="#" class="btn btn-secondary btn-lg" onclick="showPage('p2');return false;">Структуры защиты капитала</a>
-      </div>
-      <div class="p1-stat-row">
-        <div class="p1-stat"><span class="p1-stat-num">78<span>%</span></span><span class="p1-stat-label">банков ЕС блокируют счета</span></div>
-        <div class="p1-stat"><span class="p1-stat-num">$2.1<span>трлн</span></span><span class="p1-stat-label">активов под заморозкой</span></div>
-        <div class="p1-stat"><span class="p1-stat-num">14<span>тыс</span></span><span class="p1-stat-label">счетов закрыто в 2025</span></div>
-        <div class="p1-stat"><span class="p1-stat-num">6<span>мес</span></span><span class="p1-stat-label">средний срок комплаенса</span></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Risk cells -->
-  <div class="p1-risks">
-    <div class="container">
-      <div class="label" style="margin-bottom:8px">Ключевые риски</div>
-      <h2 style="font-size:1.8rem;margin-bottom:40px">Шесть векторов системной угрозы</h2>
-    </div>
-    <div class="risk-grid" style="max-width:1200px;margin:0 auto">
-      <div class="risk-cell">
-        <div class="risk-cell-num">01</div>
-        <h4>Комплаенс-чувствительность происхождения</h4>
-        <p>Любой счёт, связанный с российским банком, контрагентом или гражданством, автоматически проходит Enhanced Due Diligence. Оценочная вероятность блокировки: 72%.</p>
-      </div>
-      <div class="risk-cell">
-        <div class="risk-cell-num">02</div>
-        <h4>OFAC & SDN List расширение</h4>
-        <p>США расширили SDN List на 340+ юридических и физических лиц в 2025 году. Вторичные санкции охватывают третьи страны, включая ОАЭ и Казахстан.</p>
-      </div>
-      <div class="risk-cell">
-        <div class="risk-cell-num">03</div>
-        <h4>Дубайский коллапс</h4>
-        <p>ОАЭ вышли из серого списка FATF, но давление США на местные банки усилилось. RAK Bank, CBD и Emirates NBD массово закрывают счета клиентов из СНГ.</p>
-      </div>
-      <div class="risk-cell">
-        <div class="risk-cell-num">04</div>
-        <h4>Крипто-ловушка</h4>
-        <p>Переводы через non-KYC кошельки и P2P биржи создают неустраняемый AML-след. Банки отказывают в обслуживании при наличии crypto-exposure выше 15%.</p>
-      </div>
-      <div class="risk-cell">
-        <div class="risk-cell-num">05</div>
-        <h4>Номинальный офшор устарел</h4>
-        <p>BVI, Кипр и Белиз без реального Beneficial Owner Disclosure больше не защищают. Прозрачность UBO стала обязательной во всех юрисдикциях G20.</p>
-      </div>
-      <div class="risk-cell">
-        <div class="risk-cell-num">06</div>
-        <h4>Наследственный вакуум</h4>
-        <p>Активы без трастовой оболочки или частного фонда подлежат публичному наследованию. 63% состоятельных семей из СНГ не имеют succession structure.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Timeline -->
-  <div class="p1-timeline">
-    <div class="container">
-      <div class="label" style="margin-bottom:8px">Хронология</div>
-      <h2 style="font-size:1.8rem;margin-bottom:48px">Dubai Exodus: хронология сжатия</h2>
-      <div style="max-width:680px">
-        <div class="timeline">
-          <div class="timeline-item"><div class="timeline-dot timeline-dot-red"></div><div class="timeline-date">Февраль 2022</div><div class="timeline-title">Введение первичных санкций — начало исхода капитала</div><div class="timeline-desc">Первая волна: €320 млрд частного капитала покидает Россию. Основные направления — ОАЭ, Турция, Казахстан.</div></div>
-          <div class="timeline-item"><div class="timeline-dot timeline-dot-amber"></div><div class="timeline-date">2023</div><div class="timeline-title">Дубай принимает до $180 млрд — временное убежище</div><div class="timeline-desc">Брокеры, девелоперы и банки ОАЭ активно открывают счета без проверки источника средств. Пузырь надувается.</div></div>
-          <div class="timeline-item"><div class="timeline-dot timeline-dot-amber"></div><div class="timeline-date">2024 Q1</div><div class="timeline-title">ОАЭ выходят из серого списка FATF</div><div class="timeline-desc">Условие выхода — ужесточение AML/KYC. Банки начинают ретроспективную проверку клиентов 2022–2023 годов.</div></div>
-          <div class="timeline-item"><div class="timeline-dot timeline-dot-red"></div><div class="timeline-date">2024–2025</div><div class="timeline-title">Массовые закрытия счетов в ОАЭ</div><div class="timeline-desc">Emirates NBD, RAK Bank, Mashreq Bank закрывают тысячи счетов. Клиенты обнаруживают, что средства заморожены.</div></div>
-          <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-date">2026 →</div><div class="timeline-title">Окно возможностей сужается: нужна структура, а не смена географии</div><div class="timeline-desc">Простая релокация больше не работает. Решение — институциональная легитимация SoW через признанные структуры.</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Dubai exodus -->
-  <div class="p1-dubai">
-    <div class="container">
-      <div class="p1-dubai-inner">
-        <div>
-          <div class="label" style="color:#60a5fa;margin-bottom:12px">Исходящий поток</div>
-          <h2>Куда перемещается капитал после Дубая</h2>
-          <p>В 2025–2026 году «умные» деньги из СНГ ищут не просто другую географию — они ищут институциональную архитектуру, которую невозможно заблокировать.</p>
-          <p>Charter Capital помогает клиентам построить такую архитектуру — с нейтральным комплаенс-профилем и полной юридической прозрачностью для банков Tier-1.</p>
-        </div>
-        <ul class="p1-exodus-list">
-          <li><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Лихтенштейн — частные фонды (Stiftung)</li>
-          <li><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Панама — трасты с профессиональными трасти</li>
-          <li><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Сингапур — холдинги для операционного бизнеса</li>
-          <li><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Гонконг — торговые структуры и ВЭД</li>
-          <li><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Таиланд (Thailand Elite) — налоговое резидентство</li>
-          <li><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Лондон — конфиденциальное владение через SPV</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
   <section class="page-end-cta">
   <div class="container">
     <h3>Выберите следующий конкретный шаг</h3>
