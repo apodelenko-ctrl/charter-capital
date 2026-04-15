@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>WET SOLUTION // 中国解决方案</title>
+<meta name="description" content="WET SOLUTION: институциональный China Hub для маркетинговых стратегий, торговых операций и товарно-сырьевых потоков."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --red:#DC2626;
+    --ink:#0f172a;
+    --muted:#64748b;
+    --line:#fecaca;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:'Inter',sans-serif;
+    color:var(--ink);
+    background:#fff;
+    opacity:0;
+    transition:opacity .35s ease;
+  }
+  body.page-ready{opacity:1}
+  .container{max-width:1200px;margin:0 auto;padding:0 28px}
+  .hero{
+    min-height:100vh;
+    color:#fff;
+    display:flex;
+    align-items:flex-end;
+    padding:120px 0 80px;
+    background:
+      linear-gradient(130deg, rgba(0,0,0,.78), rgba(0,0,0,.55)),
+      url('https://images.unsplash.com/photo-1536599018102-9f803c140fc1?auto=format&fit=crop&w=1800&q=80') center/cover no-repeat;
+  }
+  .hero h1{
+    margin:0 0 16px;
+    font-size:clamp(2.2rem,6vw,4.8rem);
+    line-height:1.03;
+    letter-spacing:-.03em;
+    font-weight:700;
+  }
+  .hero p{
+    margin:0;
+    max-width:900px;
+    font-size:clamp(1rem,2vw,1.45rem);
+    line-height:1.45;
+    color:rgba(255,255,255,.9);
+    font-weight:300;
+  }
+  .tabs{
+    background:#fff;
+    border-bottom:1px solid #e2e8f0;
+    position:sticky;
+    top:0;
+    z-index:10;
+  }
+  .tabs-row{display:flex;gap:12px;padding:18px 0}
+  .tab{
+    border:1px solid #e2e8f0;
+    background:#fff;
+    color:#334155;
+    padding:11px 18px;
+    font-size:.78rem;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    cursor:pointer;
+  }
+  .tab.active{border-color:var(--red);color:var(--red);background:#fff5f5}
+  .content{padding:56px 0 90px}
+  .pane{display:none}
+  .pane.active{display:block}
+  .section{
+    padding:34px 0 44px;
+    border-top:1px solid var(--line);
+  }
+  .section-grid{
+    display:grid;
+    grid-template-columns:130px 1fr;
+    gap:24px;
+    align-items:start;
+  }
+  .stage{
+    font-size:clamp(2.8rem,8vw,5.8rem);
+    color:#fecaca;
+    font-weight:700;
+    line-height:1;
+    letter-spacing:-.04em;
+  }
+  .kicker{
+    font-size:.72rem;
+    text-transform:uppercase;
+    letter-spacing:.14em;
+    color:var(--red);
+    margin-bottom:10px;
+    font-weight:700;
+  }
+  h2{margin:0 0 12px;font-size:clamp(1.6rem,3vw,2.6rem);line-height:1.08;letter-spacing:-.02em}
+  p{margin:0;color:var(--muted);line-height:1.75;font-weight:300}
+  .cards{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:16px;
+    margin-top:22px;
+  }
+  .card{
+    border:1px solid #e2e8f0;
+    background:#fff;
+    padding:18px;
+  }
+  .card h3{margin:0 0 8px;font-size:1rem;line-height:1.3}
+  .cn{color:var(--red);font-weight:600}
+  .meta{font-size:.84rem;color:#475569;line-height:1.6}
+  .grid-4{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:16px;
+    margin-top:20px;
+  }
+  .footer-link{
+    border-top:1px solid #e2e8f0;
+    padding:28px 0 42px;
+    text-align:center;
+  }
+  .footer-link a{
+    display:inline-block;
+    text-decoration:none;
+    color:#0f172a;
+    border:1px solid #cbd5e1;
+    padding:12px 16px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    font-size:.72rem;
+  }
+  .footer-link a:hover{background:#0f172a;color:#fff;border-color:#0f172a}
+  @media(max-width:980px){
+    .section-grid{grid-template-columns:1fr}
+    .cards,.grid-4{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="container">
+    <h1>WET SOLUTION // 中国解决方案</h1>
+    <p>Институциональный хаб для реализации маркетинговых стратегий и обеспечения товарно-сырьевых потоков.</p>
+  </div>
+</header>
+
+<section class="tabs">
+  <div class="container tabs-row">
+    <button class="tab active" type="button" data-tab="agency">Agency</button>
+    <button class="tab" type="button" data-tab="trade">Trade House</button>
+  </div>
+</section>
+
+<main class="content container">
+  <section class="pane active" id="pane-agency">
+    <article class="section">
+      <div class="section-grid">
+        <div class="stage">01</div>
+        <div>
+          <div class="kicker">Business Agency</div>
+          <h2>Маркетинговое агентство / <span class="cn">营销代理</span></h2>
+          <p>Запуск и институциональное сопровождение PR-кампаний, локализации брендов и выставочной активности в Китае.</p>
+          <div class="cards">
+            <div class="card">
+              <h3>PR & Media Placement / <span class="cn">媒体投放</span></h3>
+              <div class="meta">Technode, PingWest, отраслевые медиа и B2B-платформы.</div>
+            </div>
+            <div class="card">
+              <h3>Exhibition Management / <span class="cn">展会管理</span></h3>
+              <div class="meta">Подбор площадок, стендов, переговорных сеток и сопровождение делегаций.</div>
+            </div>
+            <div class="card">
+              <h3>Brand Localization / <span class="cn">品牌本地化</span></h3>
+              <div class="meta">Локализация упаковки, коммуникации, tone-of-voice и каналов продаж.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="section">
+      <div class="section-grid">
+        <div class="stage">02</div>
+        <div>
+          <div class="kicker">Logistics Consulting</div>
+          <h2>Логистический консалтинг и инспекции / <span class="cn">物流咨询与检验</span></h2>
+          <p>Верификация производственных площадок и контроль качества на всех стадиях цепочки поставок.</p>
+          <div class="cards">
+            <div class="card">
+              <h3>Quality Control / <span class="cn">质量控制</span></h3>
+              <div class="meta">Pre-shipment инспекция, sampling и compliance-check.</div>
+            </div>
+            <div class="card">
+              <h3>Factory Audit / <span class="cn">工厂审计</span></h3>
+              <div class="meta">Аудит производства, документации и фактической операционной модели.</div>
+            </div>
+            <div class="card">
+              <h3>Route Advisory / <span class="cn">路线咨询</span></h3>
+              <div class="meta">Оптимизация маршрутов, сроков и рисков международной логистики.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section class="pane" id="pane-trade">
+    <article class="section">
+      <div class="section-grid">
+        <div class="stage">01</div>
+        <div>
+          <div class="kicker">Meat Department</div>
+          <h2>Мясной департамент / <span class="cn">肉类部门</span></h2>
+          <p>Поставка и контрактование продуктовых групп BEEF, PORK, POULTRY с фокусом на стабильные торговые спецификации.</p>
+          <div class="cards">
+            <div class="card">
+              <h3>BEEF</h3>
+              <div class="meta">Cuts, Quarters, Grade A. Каналы HoReCa и дистрибьюция.</div>
+            </div>
+            <div class="card">
+              <h3>PORK</h3>
+              <div class="meta">Standard cuts, Quarter sets, Grade A для сетевых закупок.</div>
+            </div>
+            <div class="card">
+              <h3>POULTRY</h3>
+              <div class="meta">Whole birds, portions, frozen lines, Grade A и traceability.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="section">
+      <div class="section-grid">
+        <div class="stage">02</div>
+        <div>
+          <div class="kicker">Product Grids</div>
+          <h2>Товарные сетки / <span class="cn">商品矩阵</span></h2>
+          <div class="grid-4">
+            <div class="card">
+              <h3>BEVERAGES</h3>
+              <div class="meta">Craft Beer, private label и контрактные линейки.</div>
+            </div>
+            <div class="card">
+              <h3>FMCG</h3>
+              <div class="meta">Household goods, Textile, потребительские группы.</div>
+            </div>
+            <div class="card">
+              <h3>INDUSTRIAL</h3>
+              <div class="meta">Equipment, Spare parts, операционные комплектующие.</div>
+            </div>
+            <div class="card">
+              <h3>TRADE OPS</h3>
+              <div class="meta">Контрактация, документация, контроль исполнения поставок.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+</main>
+
+<div class="footer-link">
+  <a href="index.html">На главную Charter Capital</a>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    requestAnimationFrame(function(){ document.body.classList.add('page-ready'); });
+    var tabs = document.querySelectorAll('[data-tab]');
+    tabs.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var id = btn.getAttribute('data-tab');
+        document.querySelectorAll('.tab').forEach(function(t){ t.classList.remove('active'); });
+        document.querySelectorAll('.pane').forEach(function(p){ p.classList.remove('active'); });
+        btn.classList.add('active');
+        document.getElementById('pane-' + id).classList.add('active');
+      });
+    });
+    document.addEventListener('click', function(e){
+      var a = e.target.closest('a[href]');
+      if(!a || a.target === '_blank' || e.metaKey || e.ctrlKey || e.shiftKey) return;
+      var href = a.getAttribute('href');
+      if(!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('javascript:')) return;
+      try{
+        var u = new URL(a.href, location.href);
+        if(u.origin !== location.origin) return;
+        if(!/\.html($|[?#])/i.test(u.pathname)) return;
+        e.preventDefault();
+        document.body.classList.remove('page-ready');
+        setTimeout(function(){ location.href = a.href; }, 220);
+      }catch(err){}
+    });
+  });
+</script>
+</body>
+</html>
