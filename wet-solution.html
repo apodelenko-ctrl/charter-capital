@@ -120,6 +120,55 @@
     gap:16px;
     margin-top:20px;
   }
+  .stack{display:grid;gap:14px;margin-top:18px}
+  .list{margin:14px 0 0;padding-left:18px;color:#475569;line-height:1.8;font-weight:300}
+  .list li{margin:6px 0}
+  .mini-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:14px;
+    margin-top:18px;
+  }
+  .contact-grid{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:16px;
+    margin-top:20px;
+  }
+  .metric-grid{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:16px;
+    margin-top:18px;
+  }
+  .metric{
+    border:1px solid #fee2e2;
+    background:#fff;
+    padding:18px;
+  }
+  .metric .num{font-size:2rem;font-weight:700;color:var(--red);line-height:1}
+  .metric .cap{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;margin-top:8px;color:#334155}
+  .legal{
+    border-top:1px solid #e2e8f0;
+    margin-top:28px;
+    padding-top:22px;
+    color:#475569;
+    line-height:1.8;
+    font-size:.92rem;
+  }
+  .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+  .action{
+    display:inline-flex;
+    text-decoration:none;
+    border:1px solid var(--red);
+    color:var(--red);
+    padding:11px 14px;
+    font-size:.72rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+  }
+  .action.fill{background:var(--red);color:#fff}
+  .action:hover{opacity:.86}
   .footer-link{
     border-top:1px solid #e2e8f0;
     padding:28px 0 42px;
@@ -138,7 +187,7 @@
   .footer-link a:hover{background:#0f172a;color:#fff;border-color:#0f172a}
   @media(max-width:980px){
     .section-grid{grid-template-columns:1fr}
-    .cards,.grid-4{grid-template-columns:1fr}
+    .cards,.grid-4,.mini-grid,.contact-grid,.metric-grid{grid-template-columns:1fr}
   }
 </style>
 </head>
@@ -164,20 +213,35 @@
         <div class="stage">01</div>
         <div>
           <div class="kicker">Business Agency</div>
-          <h2>Маркетинговое агентство / <span class="cn">营销代理</span></h2>
-          <p>Запуск и институциональное сопровождение PR-кампаний, локализации брендов и выставочной активности в Китае.</p>
+          <h2>Бизнес-агентство в Китае / <span class="cn">中国业务代理</span></h2>
+          <p>Мы — операционное плечо вашего бизнеса в Китае. Не консультанты. Не посредники. Мы работаем на земле — в Гонконге, Шэньчжэне и Шанхае — решая задачи, которые невозможно решить удалённо.</p>
+          <p style="margin-top:10px">Каждый проект — это команда специалистов с отраслевой экспертизой и рабочими коммуникациями на китайском, русском и английском языках.</p>
           <div class="cards">
             <div class="card">
               <h3>PR & Media Placement / <span class="cn">媒体投放</span></h3>
-              <div class="meta">Technode, PingWest, отраслевые медиа и B2B-платформы.</div>
+              <div class="meta">Публикации и репутационные кампании в технологических и бизнес-медиа Китая.</div>
             </div>
             <div class="card">
               <h3>Exhibition Management / <span class="cn">展会管理</span></h3>
-              <div class="meta">Подбор площадок, стендов, переговорных сеток и сопровождение делегаций.</div>
+              <div class="meta">Участие в Canton Fair, SIAL China, CIIE: от регистрации до нетворкинга.</div>
             </div>
             <div class="card">
               <h3>Brand Localization / <span class="cn">品牌本地化</span></h3>
               <div class="meta">Локализация упаковки, коммуникации, tone-of-voice и каналов продаж.</div>
+            </div>
+          </div>
+          <div class="stack">
+            <div class="card">
+              <h3>Глобальное институциональное доверие / <span class="cn">全球媒体</span></h3>
+              <div class="meta">Стратегическое размещение в <a href="https://www.scmp.com/" target="_blank" rel="noopener noreferrer">South China Morning Post (SCMP)</a> для охвата топ-менеджмента и институционального признания.</div>
+            </div>
+            <div class="card">
+              <h3>Технологическая экосистема / <span class="cn">科技生态</span></h3>
+              <div class="meta">Публикации на <a href="https://kr-asia.com/" target="_blank" rel="noopener noreferrer">KrASIA</a> и профильных площадках цифровой экономики для выхода в поле инвесторов и партнеров.</div>
+            </div>
+            <div class="card">
+              <h3>Локальная медиа-сеть Китая / <span class="cn">中国主流媒体</span></h3>
+              <div class="meta"><a href="https://pingwest.com/" target="_blank" rel="noopener noreferrer">PingWest</a>, <a href="https://geekpark.net/" target="_blank" rel="noopener noreferrer">GeekPark</a>, <a href="https://ikanchai.com/" target="_blank" rel="noopener noreferrer">Ikanchai</a> для подтверждения реальности деятельности на локальном рынке.</div>
             </div>
           </div>
         </div>
@@ -190,7 +254,7 @@
         <div>
           <div class="kicker">Logistics Consulting</div>
           <h2>Логистический консалтинг и инспекции / <span class="cn">物流咨询与检验</span></h2>
-          <p>Верификация производственных площадок и контроль качества на всех стадиях цепочки поставок.</p>
+          <p>Верификация производственных площадок и контроль качества на всех стадиях цепочки поставок. Каждая сделка проходит полный операционный цикл под контролем команды на земле в Китае.</p>
           <div class="cards">
             <div class="card">
               <h3>Quality Control / <span class="cn">质量控制</span></h3>
@@ -205,6 +269,25 @@
               <div class="meta">Оптимизация маршрутов, сроков и рисков международной логистики.</div>
             </div>
           </div>
+          <div class="mini-grid">
+            <div class="card">
+              <h3>Почему работают с нами / <span class="cn">为什么选择我们</span></h3>
+              <ul class="list">
+                <li>Присутствие на земле: Гонконг, Шэньчжэнь, Шанхай</li>
+                <li>Двуязычная команда на китайском, русском и английском</li>
+                <li>Прямые контакты в медиа и профильных структурах</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3>Ключевые компетенции / <span class="cn">核心业务能力</span></h3>
+              <ul class="list">
+                <li>PR и медиаразмещение</li>
+                <li>Аудит и контроль качества</li>
+                <li>Выставки и экспо</li>
+                <li>Логистика и сорсинг</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </article>
@@ -217,11 +300,11 @@
         <div>
           <div class="kicker">Meat Department</div>
           <h2>Мясной департамент / <span class="cn">肉类部门</span></h2>
-          <p>Поставка и контрактование продуктовых групп BEEF, PORK, POULTRY с фокусом на стабильные торговые спецификации.</p>
+          <p>WET SOLUTION Trade House — это прямые экспортно-импортные контракты между Россией, СНГ и Китаем. Мы формируем долгосрочные торговые отношения с проверенными контрагентами.</p>
           <div class="cards">
             <div class="card">
               <h3>BEEF</h3>
-              <div class="meta">Cuts, Quarters, Grade A. Каналы HoReCa и дистрибьюция.</div>
+              <div class="meta">Отрубы, четверти, компенсат. Заморозка -18°C. Cuts / Quarters / Grade A.</div>
             </div>
             <div class="card">
               <h3>PORK</h3>
@@ -229,9 +312,10 @@
             </div>
             <div class="card">
               <h3>POULTRY</h3>
-              <div class="meta">Whole birds, portions, frozen lines, Grade A и traceability.</div>
+              <div class="meta">Куриные лапы Grade A, wing mid-joint, замороженные линейки и traceability.</div>
             </div>
           </div>
+          <p style="margin-top:12px">Вся продукция соответствует стандартам GACC и ветеринарному контролю Китая.</p>
         </div>
       </div>
     </article>
@@ -245,24 +329,108 @@
           <div class="grid-4">
             <div class="card">
               <h3>BEVERAGES</h3>
-              <div class="meta">Craft Beer, private label и контрактные линейки.</div>
+              <div class="meta">Craft Beer, соки, воды, функциональные напитки. Регистрация CIFER и маркировка под требования КНР.</div>
             </div>
             <div class="card">
               <h3>FMCG</h3>
-              <div class="meta">Household goods, Textile, потребительские группы.</div>
+              <div class="meta">Household goods, textile, товары для дома, бытовая химия, спецодежда, private label.</div>
             </div>
             <div class="card">
               <h3>INDUSTRIAL</h3>
-              <div class="meta">Equipment, Spare parts, операционные комплектующие.</div>
+              <div class="meta">CNC-станки, комплектующие, редкие запчасти, автоматика и электроника.</div>
             </div>
             <div class="card">
-              <h3>TRADE OPS</h3>
-              <div class="meta">Контрактация, документация, контроль исполнения поставок.</div>
+              <h3>LOGISTICS HUB</h3>
+              <div class="meta">Партнерская инфраструктура в Гонконге и Шэньчжэне. Контракты от 1 контейнера FCL (20') или эквивалента LCL.</div>
+            </div>
+          </div>
+          <div class="stack">
+            <div class="card">
+              <h3>FOOD & BEVERAGE / <span class="cn">食品与饮料 — 进出口贸易</span></h3>
+              <div class="meta">Говядина, свинина, птица, напитки и крафтовое пиво. Ветеринарные сертификаты, холодовая цепь, таможенное оформление.</div>
+            </div>
+            <div class="card">
+              <h3>CONSUMER GOODS & FMCG / <span class="cn">消费品与快速消费品</span></h3>
+              <div class="meta">Текстиль и одежда, хозтовары, упаковка и материалы, оптовые поставки с проверенных заводов.</div>
+            </div>
+            <div class="card">
+              <h3>INDUSTRIAL EQUIPMENT / <span class="cn">工业设备与零部件</span></h3>
+              <div class="meta">Прямой доступ к производителям первого эшелона, аудит поставщика и техническое сопровождение.</div>
             </div>
           </div>
         </div>
       </div>
     </article>
+  </section>
+
+  <section class="section">
+    <div class="section-grid">
+      <div class="stage">03</div>
+      <div>
+        <div class="kicker">Quick Contact</div>
+        <h2>Быстрая связь / <span class="cn">快速联系</span></h2>
+        <p>Свяжитесь с нами для оперативного разбора проекта и запроса коммерческого предложения в течение 24 часов.</p>
+        <div class="contact-grid">
+          <div class="card">
+            <h3>Telegram / <span class="cn">电报</span></h3>
+            <div class="meta">Самый быстрый ответ. Основной канал оперативной коммуникации.</div>
+          </div>
+          <div class="card">
+            <h3>WeChat & LINE / <span class="cn">微信 & LINE 联系</span></h3>
+            <div class="meta">Мгновенная связь с командой в Китае и Гонконге.</div>
+          </div>
+          <div class="card">
+            <h3>Email / <span class="cn">电子邮件</span></h3>
+            <div class="meta">Формальный канал для контрактов, спецификаций и документов.</div>
+          </div>
+        </div>
+        <div class="actions">
+          <a class="action fill" href="#">Запросить коммерческое предложение</a>
+          <a class="action" href="#">Связаться с командой</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-grid">
+      <div class="stage">04</div>
+      <div>
+        <div class="kicker">Global Presence</div>
+        <h2>Глобальное присутствие / <span class="cn">全球布局</span></h2>
+        <p>Операционная география и сделочная экспертиза, выстроенная на реальных международных контрактах.</p>
+        <div class="metric-grid">
+          <div class="metric">
+            <div class="num">12+</div>
+            <div class="cap">Лет на рынке</div>
+            <div class="meta">Экспертиза, выработанная на реальных сделках.</div>
+          </div>
+          <div class="metric">
+            <div class="num">300+</div>
+            <div class="cap">Активных клиентов</div>
+            <div class="meta">Компании из России, СНГ, Европы и ЮВА.</div>
+          </div>
+          <div class="metric">
+            <div class="num">50+</div>
+            <div class="cap">Стран поставок</div>
+            <div class="meta">Глобальная логистика через Гонконг-хаб.</div>
+          </div>
+        </div>
+        <div class="legal">
+          <strong>WET SOLUTIONS LIMITED</strong><br/>
+          Юридический адрес: FLAT/RM C 7/F WORLD TRUST TOWER, 50 STANLEY STREET, CENTRAL, HK.<br/>
+          Регистрационный номер: 76458883-000-04-26-8.<br/>
+          WET SOLUTION является операционным подразделением холдинга Tang Cultural Media.<br/>
+          Финансовый хаб: DBS BANK (HONG KONG) LIMITED.<br/>
+          Операционный офис: Материковый Китай.<br/><br/>
+          <strong>WET SOLUTIONS LIMITED</strong><br/>
+          Registered Address: FLAT/RM C 7/F WORLD TRUST TOWER, 50 STANLEY STREET, CENTRAL, HK.<br/>
+          Business Registration No: 76458883-000-04-26-8.<br/>
+          WET SOLUTION is a strategic arm of Tang Cultural Media.<br/>
+          Banking Partner: DBS BANK (HONG KONG) LIMITED.
+        </div>
+      </div>
+    </div>
   </section>
 </main>
 
