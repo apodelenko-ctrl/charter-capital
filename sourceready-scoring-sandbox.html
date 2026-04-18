@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SourceReady Scoring Engine Sandbox v1</title>
+    <title>SourceReady Scoring Engine Sandbox v1.1 stable</title>
     <style>
         :root {
             --bg-color: #f4f6f8;
@@ -33,6 +33,7 @@
             max-width: 1200px;
             width: 100%;
             gap: 20px;
+            flex-wrap: wrap;
         }
 
         .panel {
@@ -44,10 +45,10 @@
         }
 
         .left-panel { flex: 1; min-width: 350px; }
-        .right-panel { flex: 1.5; }
+        .right-panel { flex: 1.5; min-width: 450px; }
 
         h2 { margin-top: 0; font-size: 1.2rem; color: var(--text-main); border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
-        h3 { font-size: 1rem; margin-bottom: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+        h3 { font-size: 1rem; margin-bottom: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 20px; }
 
         .form-group { margin-bottom: 15px; }
         label { display: block; font-weight: 600; margin-bottom: 5px; font-size: 0.9rem; }
@@ -65,7 +66,7 @@
         .override-wrapper { margin-left: 20px; padding-left: 10px; border-left: 2px solid var(--warning); display: none; }
         .override-wrapper.visible { display: flex; flex-direction: column; gap: 5px; margin-top: 5px; }
 
-        .btn { padding: 8px 12px; border: none; border-radius: 4px; cursor: pointer; font-weight: 600; font-size: 0.85rem; transition: background 0.2s; }
+        .btn { padding: 8px 12px; border: none; border-radius: 4px; cursor: pointer; font-weight: 600; font-size: 0.85rem; transition: background 0.2s; margin-bottom: 5px; }
         .btn-primary { background-color: var(--primary); color: white; }
         .btn-primary:hover { background-color: #2b6cb0; }
         .btn-outline { background-color: transparent; border: 1px solid var(--border-color); color: var(--text-main); }
@@ -87,6 +88,7 @@
         .status-elevated { background-color: #dd6b20; }
         .status-insufficient { background-color: var(--danger); }
         .status-paused { background-color: var(--paused); }
+        .status-default { background-color: #a0aec0; } 
 
         .result-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 10px;}
         .result-score { font-size: 3rem; font-weight: 800; line-height: 1; }
@@ -156,7 +158,7 @@
             </div>
         </div>
         
-        <button class="btn btn-outline" onclick="resetForm()" style="width: 100%; margin-top: 10px;">Reset Sandbox</button>
+        <button class="btn btn-outline" onclick="resetForm()" style="width: 100%; margin-top: 10px;">Reset to Default Scenario</button>
     </div>
 
     <div class="panel right-panel">
@@ -173,20 +175,22 @@
             <button class="btn btn-outline" onclick="loadTestCase('blacklist_route')">5. Blacklist Route</button>
             <button class="btn btn-outline" onclick="loadTestCase('weak_package')">6. Weak Package</button>
             <button class="btn btn-outline" onclick="loadTestCase('deal_maker')">7. Deal-Maker</button>
+            <button class="btn btn-outline" onclick="loadTestCase('borderline_gate')" style="border-color: var(--primary);">8. Borderline Gate</button>
+            <button class="btn btn-outline" onclick="loadTestCase('integrity_pause')" style="border-color: var(--danger);">9. Integrity Pause</button>
         </div>
 
-        <div id="resultCard" class="result-card status-ready">
+        <div id="resultCard" class="result-card status-default">
             <div class="result-header">
                 <div>
-                    <div id="finalMode" class="result-mode">MODE: NORMAL</div>
-                    <div id="finalStatus" class="result-status">Submission Ready</div>
+                    <div id="finalMode" class="result-mode">AWAITING ENGINE...</div>
+                    <div id="finalStatus" class="result-status">Initializing...</div>
                 </div>
-                <div id="finalScore" class="result-score">85</div>
+                <div id="finalScore" class="result-score">--</div>
             </div>
         </div>
 
         <h3>Decision Path Log</h3>
-        <div id="decisionPath" class="decision-path"></div>
+        <div id="decisionPath" class="decision-path">Loading engine...</div>
     </div>
 </div>
 
@@ -206,12 +210,12 @@ const ENGINE_CONFIG = {
         { id: "T4", name: "Insufficient Readiness", min: 0, rank: 4 }
     ],
     floor_rules: [
-        { if: (d1, d2, core) => d1 < 35, maxRank: 3, reason: "D1 < 35 (Weak SoF caps status to Elevated Review Burden)" },
-        { if: (d1, d2, core) => d1 < 20, maxRank: 4, reason: "D1 < 20 (Critically weak SoF caps status to Insufficient Readiness)" },
-        { if: (d1, d2, core) => d2 < 40 && core >= 85, maxRank: 2, reason: "D2 < 40 (Weak SoW prevents Submission Ready)" }
+        { id: "FR1", if: (d1, d2, core) => d1 < 35, maxRank: 3, reason: "D1 < 35 (Weak SoF caps status to Elevated Review Burden)" },
+        { id: "FR2", if: (d1, d2, core) => d1 < 20, maxRank: 4, reason: "D1 < 20 (Critically weak SoF caps status to Insufficient Readiness)" },
+        { id: "FR3", if: (d1, d2, core) => d2 < 40 && core >= 85, maxRank: 2, reason: "D2 < 40 (Weak SoW prevents Submission Ready)" }
     ],
     gates: {
-        submission_ready: { min_d1: 80, min_d2: 60 }
+        submission_ready: { min_d1: 80, min_d2: 60, fail_reason: "D1 must be >= 80 and D2 >= 60 for Submission Ready." }
     }
 };
 
@@ -222,16 +226,40 @@ const TEST_CASES = {
     pep_client: { d1: 85, d2: 80, mods: ['mod_pep'] },
     blacklist_route: { d1: 90, d2: 85, mods: ['mod_blacklist'] },
     weak_package: { d1: 25, d2: 30, mods: [] },
-    deal_maker: { d1: 90, d2: 78, mods: [] }
+    deal_maker: { d1: 90, d2: 78, mods: [] },
+    borderline_gate: { d1: 82, d2: 58, mods: [] },
+    integrity_pause: { d1: 92, d2: 88, mods: ['mod_integrity'] }
 };
 
-let currentResultJSON = {};
+let currentResultJSON = null;
+let engineHasRun = false;
 
 // ==========================================
 // 2. CORE LOGIC ENGINE
 // ==========================================
 function calculateResult(inputs, config) {
     let log = [];
+    let jsonResult = {
+        inputs: {
+            d1_score: inputs.d1,
+            d2_score: inputs.d2,
+            profile: inputs.profile,
+            active_modifiers: inputs.blocking.concat(inputs.escalation).filter(m => m.active).map(m => m.id)
+        },
+        selected_profile_weights: config.profiles[inputs.profile],
+        raw_score: 0,
+        display_score: "--",
+        raw_status: "",
+        final_mode: "normal",
+        final_status: "",
+        final_rank: null,
+        triggered_floor_rules: [],
+        triggered_escalation_modifiers: [],
+        triggered_blocking_modifiers: [],
+        overridden_blocking_modifiers: [],
+        final_status_reason: ""
+    };
+
     log.push(`--- Engine Execution Started ---`);
     log.push(`Profile Selected: ${inputs.profile}`);
     
@@ -239,16 +267,18 @@ function calculateResult(inputs, config) {
     let w_d1 = config.profiles[inputs.profile].w_d1;
     let w_d2 = config.profiles[inputs.profile].w_d2;
     let rawScore = (inputs.d1 * w_d1) + (inputs.d2 * w_d2);
-    rawScore = Math.round(rawScore * 10) / 10; // 1 decimal
+    rawScore = Math.round(rawScore * 10) / 10;
+    
+    jsonResult.raw_score = rawScore;
+    jsonResult.display_score = rawScore.toString();
     log.push(`Raw Score: ${rawScore} (D1:${inputs.d1}*${w_d1} + D2:${inputs.d2}*${w_d2})`);
 
     // 2. Raw Tier Mapping
     let rawTier = config.tiers.find(t => rawScore >= t.min);
+    jsonResult.raw_status = rawTier.name;
     log.push(`Raw Status: ${rawTier.name} [Rank ${rawTier.rank}]`);
 
     let currentRank = rawTier.rank;
-    let finalMode = "normal";
-    let isPaused = false;
     let finalStatusName = rawTier.name;
     let suffixes = [];
 
@@ -257,14 +287,22 @@ function calculateResult(inputs, config) {
     let overriddenBlockers = inputs.blocking.filter(b => b.active && b.overridden);
     
     if (overriddenBlockers.length > 0) {
-        log.push(`Human Overrides Active: ${overriddenBlockers.map(b => b.id).join(', ')}`);
+        let overIds = overriddenBlockers.map(b => b.id);
+        jsonResult.overridden_blocking_modifiers = overIds;
+        log.push(`Human Overrides Active: ${overIds.join(', ')}`);
     }
 
     if (activeBlockers.length > 0) {
-        log.push(`[!] Blocking Modifiers Triggered: ${activeBlockers.map(b => b.id).join(', ')}`);
-        isPaused = true;
-        finalMode = "paused";
+        let activeBlockerIds = activeBlockers.map(b => b.id);
+        jsonResult.triggered_blocking_modifiers = activeBlockerIds;
+        
+        log.push(`[!] Blocking Modifiers Triggered: ${activeBlockerIds.join(', ')}`);
+        
+        jsonResult.final_mode = "paused";
+        jsonResult.display_score = "--"; 
         finalStatusName = "Manual Expert Review Required";
+        jsonResult.final_status_reason = `Scoring paused due to blocking modifiers: ${activeBlockerIds.join(', ')}`;
+        
         log.push(`-> Action: Scoring Paused.`);
     } else {
         log.push(`Blocking Modifiers: None (or overridden)`);
@@ -273,27 +311,38 @@ function calculateResult(inputs, config) {
         config.floor_rules.forEach(rule => {
             if (rule.if(inputs.d1, inputs.d2, rawScore)) {
                 log.push(`[!] Floor Rule Triggered: ${rule.reason}`);
+                jsonResult.triggered_floor_rules.push(rule.id);
                 if (rule.maxRank > currentRank) {
                     currentRank = rule.maxRank;
                     finalStatusName = config.tiers.find(t => t.rank === currentRank).name;
+                    jsonResult.final_status_reason = `Status capped by floor rule: ${rule.reason}`;
                     log.push(`-> Action: Status capped to ${finalStatusName}`);
                 }
             }
         });
 
         // 5. Escalation Modifiers
-        if (inputs.escalation.length > 0) {
-            finalMode = "escalated";
+        let activeEscalations = inputs.escalation.filter(e => e.active);
+        if (activeEscalations.length > 0) {
+            jsonResult.final_mode = "escalated";
             log.push(`[!] Escalation Modifiers Triggered:`);
-            inputs.escalation.forEach(esc => {
+            activeEscalations.forEach(esc => {
                 log.push(`   - ${esc.id}`);
+                jsonResult.triggered_escalation_modifiers.push(esc.id);
                 suffixes.push(esc.suffix);
                 if (esc.maxRank > currentRank) {
                     currentRank = esc.maxRank;
                     finalStatusName = config.tiers.find(t => t.rank === currentRank).name;
+                    jsonResult.final_status_reason = `Status capped by escalation: ${esc.id}`;
                     log.push(`     -> Status capped to ${finalStatusName} by ${esc.id}`);
                 }
             });
+            
+            // Fallback reason if escalation didn't cap the status
+            if (!jsonResult.final_status_reason) {
+                 jsonResult.final_status_reason = `Escalation modifiers active: ${jsonResult.triggered_escalation_modifiers.join(', ')}`;
+            }
+
         } else {
              log.push(`Escalation Modifiers: None`);
         }
@@ -302,31 +351,39 @@ function calculateResult(inputs, config) {
         if (currentRank === 1) {
             log.push(`Checking Submission Ready Gates...`);
             if (inputs.d1 < config.gates.submission_ready.min_d1 || inputs.d2 < config.gates.submission_ready.min_d2) {
-                currentRank = 2; // Downgrade to rank 2
+                currentRank = 2; // Downgrade
                 finalStatusName = config.tiers.find(t => t.rank === currentRank).name;
-                log.push(`[!] Gate Failed: D1 must be >= ${config.gates.submission_ready.min_d1} and D2 >= ${config.gates.submission_ready.min_d2}.`);
+                jsonResult.final_status_reason = config.gates.submission_ready.fail_reason;
+                log.push(`[!] Gate Failed: ${config.gates.submission_ready.fail_reason}`);
                 log.push(`-> Action: Downgraded to ${finalStatusName}`);
             } else {
                 log.push(`Gates Passed.`);
             }
         }
         
-        // Append suffixes if any
+        // Final fallback reason for normal flow
+        if (!jsonResult.final_status_reason && jsonResult.final_mode === "normal") {
+            jsonResult.final_status_reason = "Status assigned from baseline score with no blocking or escalation constraints.";
+        }
+        
+        // Append suffixes
         if (suffixes.length > 0) {
             finalStatusName += " — " + suffixes.join(" | ");
         }
     }
 
+    jsonResult.final_status = finalStatusName;
+    jsonResult.final_rank = (jsonResult.final_mode === "paused") ? null : currentRank;
+    
     log.push(`--- Execution Complete ---`);
-    log.push(`Final Mode: ${finalMode.toUpperCase()}`);
-    log.push(`Final Status: ${finalStatusName}`);
+    log.push(`Final Mode: ${jsonResult.final_mode.toUpperCase()}`);
+    log.push(`Final Status: ${jsonResult.final_status}`);
 
     return {
-        score: isPaused ? "--" : rawScore,
-        mode: finalMode,
-        status: finalStatusName,
+        json: jsonResult,
         log: log.join('\n'),
-        rank: isPaused ? -1 : currentRank
+        rank: jsonResult.final_rank,
+        mode: jsonResult.final_mode
     };
 }
 
@@ -358,29 +415,31 @@ function getInputs() {
         d1: parseInt(document.getElementById('d1Num').value),
         d2: parseInt(document.getElementById('d2Num').value),
         blocking: [
-            { id: 'integrity', active: document.getElementById('mod_integrity').checked, overridden: false },
-            { id: 'forgery', active: document.getElementById('mod_forgery').checked, overridden: false },
-            { id: 'id_conflict', active: document.getElementById('mod_id_conflict').checked, overridden: document.getElementById('over_id_conflict').checked },
-            { id: 'timeline', active: document.getElementById('mod_timeline').checked, overridden: document.getElementById('over_timeline').checked },
-            { id: 'blacklist', active: document.getElementById('mod_blacklist').checked, overridden: document.getElementById('over_blacklist').checked }
+            { id: 'integrity_breach_suspected', active: document.getElementById('mod_integrity').checked, overridden: false },
+            { id: 'document_forgery_suspected', active: document.getElementById('mod_forgery').checked, overridden: false },
+            { id: 'critical_identity_conflict', active: document.getElementById('mod_id_conflict').checked, overridden: document.getElementById('over_id_conflict').checked },
+            { id: 'impossible_funds_timeline', active: document.getElementById('mod_timeline').checked, overridden: document.getElementById('over_timeline').checked },
+            { id: 'high_risk_jurisdiction_blacklist', active: document.getElementById('mod_blacklist').checked, overridden: document.getElementById('over_blacklist').checked }
         ],
         escalation: [
-            ...(document.getElementById('mod_pep').checked ? [{ id: 'PEP Exposure', maxRank: 2, suffix: 'EDD Required' }] : []),
-            ...(document.getElementById('mod_sanctions').checked ? [{ id: 'Sanctions Adjacency', maxRank: 2, suffix: 'Specialist Review Recommended' }] : []),
-            ...(document.getElementById('mod_greylist').checked ? [{ id: 'Jurisdiction Greylist', maxRank: 2, suffix: 'Jurisdiction Escalation' }] : []),
-            ...(document.getElementById('mod_control').checked ? [{ id: 'Unexplained Control', maxRank: 3, suffix: 'Control Structure Review' }] : [])
+            { id: 'PEP_exposure', active: document.getElementById('mod_pep').checked, maxRank: 2, suffix: 'EDD Required' },
+            { id: 'sanctions_adjacency', active: document.getElementById('mod_sanctions').checked, maxRank: 2, suffix: 'Specialist Review Recommended' },
+            { id: 'high_risk_jurisdiction_greylist', active: document.getElementById('mod_greylist').checked, maxRank: 2, suffix: 'Jurisdiction Escalation' },
+            { id: 'unexplained_third_party_control', active: document.getElementById('mod_control').checked, maxRank: 3, suffix: 'Control Structure Review' }
         ]
     };
 }
 
 function runEngine() {
+    engineHasRun = true;
     const inputs = getInputs();
     const result = calculateResult(inputs, ENGINE_CONFIG);
+    currentResultJSON = result.json;
     
     // Update UI
-    document.getElementById('finalScore').innerText = result.score;
-    document.getElementById('finalMode').innerText = `MODE: ${result.mode.toUpperCase()}`;
-    document.getElementById('finalStatus').innerText = result.status;
+    document.getElementById('finalScore').innerText = result.json.display_score;
+    document.getElementById('finalMode').innerText = `MODE: ${result.json.final_mode.toUpperCase()}`;
+    document.getElementById('finalStatus').innerText = result.json.final_status;
     document.getElementById('decisionPath').innerText = result.log;
 
     // Card Colors
@@ -391,9 +450,6 @@ function runEngine() {
     else if (result.rank === 2) card.classList.add('status-reinforcement');
     else if (result.rank === 3) card.classList.add('status-elevated');
     else if (result.rank === 4) card.classList.add('status-insufficient');
-
-    // Save for JSON export
-    currentResultJSON = { inputs, result };
 }
 
 function resetForm() {
@@ -414,20 +470,27 @@ function loadTestCase(caseId) {
     syncInput('d1'); syncInput('d2');
     
     t.mods.forEach(mod => {
-        document.getElementById(mod).checked = true;
-        if(mod === 'mod_blacklist' || mod === 'mod_timeline' || mod === 'mod_id_conflict') {
-            toggleOverride(mod.replace('mod_', ''));
+        let el = document.getElementById(mod);
+        if(el) {
+            el.checked = true;
+            if(mod === 'mod_blacklist' || mod === 'mod_timeline' || mod === 'mod_id_conflict') {
+                toggleOverride(mod.replace('mod_', ''));
+            }
         }
     });
     runEngine();
 }
 
 function copyJSON() {
+    if (!engineHasRun) {
+        alert("Please run the engine first.");
+        return;
+    }
     navigator.clipboard.writeText(JSON.stringify(currentResultJSON, null, 2));
     alert("Result copied to clipboard!");
 }
 
-// Init
+// Auto-initialize default state on load
 runEngine();
 </script>
 
