@@ -176,6 +176,16 @@ hr.rule{border:none;border-top:1px solid var(--border);margin:0}
   transition:background .15s ease,border-color .15s ease,color .15s ease;
 }
 .topbar-private-access:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+.topbar-gamma-link{
+  font-family:'Inter',sans-serif;
+  font-size:10px;font-weight:500;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(255,255,255,.78);
+  text-decoration:none;padding:8px 0;margin-right:14px;border-bottom:1px solid transparent;
+}
+.topbar-gamma-link:hover{color:#fff;border-bottom-color:rgba(255,255,255,.35)}
+#topbar.topbar-solid .topbar-gamma-link{color:#64748b}
+#topbar.topbar-solid .topbar-gamma-link:hover{color:#0f172a;border-bottom-color:#cbd5e1}
 /* Login modal */
 #loginModal{
   position:fixed;inset:0;z-index:2000;
@@ -1073,6 +1083,7 @@ main{padding-top:76px}
       <a href="private.html" class="context-pill ">СЕМЬЕ</a>
     </div>
     <div class="topbar-right">
+      <a href="gamma-charter.html" class="topbar-gamma-link">Презентация</a>
       <button type="button" class="topbar-private-access" id="openLoginModal" aria-haspopup="dialog" aria-controls="loginModal">Private Access</button>
     </div>
   </div>
