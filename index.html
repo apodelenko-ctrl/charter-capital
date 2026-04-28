@@ -136,14 +136,14 @@ p{color:var(--body);font-weight:400;line-height:1.7}
 #topbar{
   position:fixed;top:0;left:0;right:0;z-index:100;
   background:transparent;
-  border-bottom:1px solid rgba(255,255,255,.08);
-  transition:background .25s ease,border-color .25s ease;
+  border-bottom:1px solid transparent;
+  transition:background .3s ease,border-color .3s ease,backdrop-filter .3s ease;
 }
 #topbar.solid{
-  background:rgba(255,255,255,.72);
-  backdrop-filter:saturate(180%) blur(18px);
-  -webkit-backdrop-filter:saturate(180%) blur(18px);
-  border-bottom-color:rgba(15,23,42,.06);
+  background:rgba(6,8,15,.55);
+  backdrop-filter:saturate(150%) blur(14px);
+  -webkit-backdrop-filter:saturate(150%) blur(14px);
+  border-bottom-color:rgba(255,255,255,.06);
 }
 .topbar-inner{
   max-width:1320px;margin:0 auto;padding:18px 32px;
@@ -158,8 +158,6 @@ p{color:var(--body);font-weight:400;line-height:1.7}
   border-left:1px solid rgba(255,255,255,.2);padding-left:14px;
   letter-spacing:.04em;
 }
-#topbar.solid .topbar-brand,#topbar.solid .topbar-brand .name{color:var(--ink)}
-#topbar.solid .topbar-brand .tag{color:var(--muted);border-left-color:var(--line)}
 .topbar-nav{display:flex;align-items:center;gap:6px}
 .topbar-nav a{
   font-size:12px;font-weight:500;
@@ -169,8 +167,6 @@ p{color:var(--body);font-weight:400;line-height:1.7}
   transition:color .15s ease,background .15s ease;
 }
 .topbar-nav a:hover{color:#fff;background:rgba(255,255,255,.06)}
-#topbar.solid .topbar-nav a{color:var(--muted)}
-#topbar.solid .topbar-nav a:hover{color:var(--ink);background:var(--bg-soft)}
 .topbar-cta{
   font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
   background:transparent;color:#fff;cursor:pointer;
@@ -179,8 +175,6 @@ p{color:var(--body);font-weight:400;line-height:1.7}
   transition:all .15s ease;font-family:inherit;
 }
 .topbar-cta:hover{border-color:#fff;background:rgba(255,255,255,.06)}
-#topbar.solid .topbar-cta{color:var(--ink);border-color:var(--line)}
-#topbar.solid .topbar-cta:hover{border-color:#cbd5e1;background:var(--bg-soft)}
 
 /* ─── HERO ──────────────────────────────────────────────── */
 .hero{
@@ -1945,7 +1939,7 @@ document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeLogin
 (function(){
   var bar=document.getElementById('topbar');
   function tick(){
-    if(window.scrollY>50) bar.classList.add('solid');
+    if(window.scrollY>140) bar.classList.add('solid');
     else bar.classList.remove('solid');
   }
   window.addEventListener('scroll',tick,{passive:true}); tick();
