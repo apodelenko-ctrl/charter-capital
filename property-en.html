@@ -302,19 +302,46 @@ section.s.dark .s-head p{color:rgba(255,255,255,.7)}
 .loc-item .y{font-size:13px;font-weight:700;color:var(--gold);letter-spacing:-.01em;font-feature-settings:'tnum';white-space:nowrap}
 .loc-map{
   position:relative;
-  background:radial-gradient(ellipse at 50% 50%,#0e1322 0%,#06080f 80%);
+  background:#06080f;
   border-radius:var(--radius-lg);overflow:hidden;color:#fff;
-  display:grid;grid-template-columns:1fr 200px;gap:0;
+  display:grid;grid-template-columns:1fr 220px;gap:0;
   border:1px solid #1f2937;
-  min-height:560px;
 }
-.phuket-svg{
-  width:100%;height:100%;display:block;
-  padding:18px;
+.phuket-canvas{
+  position:relative;
+  aspect-ratio:1024/682;
+  background:radial-gradient(ellipse at 50% 50%,#0e1322 0%,#06080f 80%);
+  overflow:hidden;
 }
-.phuket-svg .map-pin{cursor:pointer;transform-origin:center;transition:transform .25s ease}
-.phuket-svg .map-pin:hover{transform:translate(var(--tx,0),var(--ty,0)) scale(1.08)}
-.phuket-svg .pin-glow{transform-origin:center;animation:mapPing 2.8s cubic-bezier(0,0,.2,1) infinite}
+.phuket-map-img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center;display:block;
+  filter:saturate(1.05) brightness(1.02);
+}
+.map-pin{
+  position:absolute;
+  top:var(--y);left:var(--x);
+  width:34px;height:34px;border-radius:50%;
+  background:var(--gold-bright,#d6b370);color:#0a0e1a;
+  display:flex;align-items:center;justify-content:center;
+  font-family:inherit;font-size:14px;font-weight:700;
+  border:2px solid #fff;cursor:pointer;
+  box-shadow:0 0 0 4px rgba(214,179,112,0.16),0 6px 14px rgba(0,0,0,0.35);
+  transform:translate(-50%,-50%);
+  transition:transform .22s ease,box-shadow .22s ease;
+  z-index:2;padding:0;
+}
+.map-pin::before{
+  content:'';position:absolute;inset:-12px;border-radius:50%;
+  background:rgba(214,179,112,0.22);
+  animation:mapPing 2.8s cubic-bezier(0,0,.2,1) infinite;
+  pointer-events:none;z-index:-1;
+}
+.map-pin:hover{
+  transform:translate(-50%,-50%) scale(1.08);
+  box-shadow:0 0 0 6px rgba(214,179,112,0.25),0 8px 18px rgba(0,0,0,0.45);
+}
+.map-pin > span{display:block;line-height:1}
 @keyframes mapPing{0%{transform:scale(.7);opacity:.7}80%,100%{transform:scale(1.4);opacity:0}}
 .map-legend{
   border-left:1px solid rgba(255,255,255,.08);
@@ -505,9 +532,10 @@ footer.f{
   .mech-grid,.gidr-grid,.loc-grid{grid-template-columns:1fr;gap:36px}
   .contact-grid{grid-template-columns:1fr}
   .f-grid{grid-template-columns:1fr 1fr}
-  .loc-map{grid-template-columns:1fr;min-height:auto}
+  .loc-map{grid-template-columns:1fr}
   .map-legend{border-left:0;border-top:1px solid rgba(255,255,255,.08);flex-direction:row;flex-wrap:wrap;gap:12px}
   .map-legend-row{flex:1;min-width:160px}
+  .map-pin{width:28px;height:28px;font-size:12px;border-width:1.5px}
 }
 @media (max-width:640px){
   .container,.container-sm{padding:0 22px}
@@ -905,169 +933,14 @@ footer.f{
       </div>
 
       <div class="loc-map" aria-label="Phuket island map with project pins">
-        <svg class="phuket-svg" viewBox="0 0 240 360" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
-          <defs>
-            <linearGradient id="phuketFill" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="rgba(214,179,112,0.18)"/>
-              <stop offset="100%" stop-color="rgba(160,129,86,0.06)"/>
-            </linearGradient>
-            <linearGradient id="phuketStroke" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="rgba(214,179,112,0.85)"/>
-              <stop offset="100%" stop-color="rgba(160,129,86,0.45)"/>
-            </linearGradient>
-            <radialGradient id="phuketGlow" cx="50%" cy="55%" r="55%">
-              <stop offset="0%" stop-color="rgba(214,179,112,0.18)"/>
-              <stop offset="100%" stop-color="rgba(214,179,112,0)"/>
-            </radialGradient>
-            <pattern id="phuketGrid" width="20" height="20" patternUnits="userSpaceOnUse">
-              <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
-            </pattern>
-          </defs>
-
-          <!-- subtle grid background -->
-          <rect width="240" height="360" fill="url(#phuketGrid)"/>
-
-          <!-- mainland (Phang Nga province, north-east) -->
-          <path d="M 168 0 L 240 0 L 240 90 Q 220 86 208 76 Q 196 64 188 50 Q 180 34 174 18 Q 170 8 168 0 Z" fill="rgba(255,255,255,0.022)"/>
-
-          <!-- Sarasin Bridge link (north-eastern entry to mainland) -->
-          <line x1="148" y1="14" x2="178" y2="6" stroke="rgba(214,179,112,0.55)" stroke-width="1" stroke-dasharray="2.5 3"/>
-          <text x="162" y="4" font-family="Inter, sans-serif" font-size="6.5" font-weight="600" fill="rgba(214,179,112,0.7)" letter-spacing="0.12em">SARASIN BRIDGE</text>
-
-          <!-- Andaman Sea label (west) -->
-          <text x="20" y="200" font-family="Inter, sans-serif" font-size="9" font-weight="500" fill="rgba(255,255,255,0.22)" letter-spacing="0.32em">A N D A M A N</text>
-          <text x="20" y="214" font-family="Inter, sans-serif" font-size="9" font-weight="500" fill="rgba(255,255,255,0.22)" letter-spacing="0.32em">S E A</text>
-
-          <!-- Phang Nga Bay label (east) -->
-          <text x="208" y="160" font-family="Inter, sans-serif" font-size="8" font-weight="500" fill="rgba(255,255,255,0.22)" letter-spacing="0.22em" text-anchor="end">PHANG NGA BAY</text>
-
-          <!-- island glow -->
-          <ellipse cx="120" cy="200" rx="100" ry="155" fill="url(#phuketGlow)"/>
-
-          <!-- Phuket island silhouette (realistic proportions, jagged west coast, Cape Panwa east, Promthep south-west, Sarasin neck north) -->
-          <path d="
-            M 142 18
-            Q 150 22 152 30
-            L 150 42
-            Q 152 54 158 64
-            Q 168 76 172 88
-            Q 174 100 168 108
-            Q 162 114 168 120
-            Q 178 128 184 140
-            Q 188 152 188 166
-            Q 186 178 188 188
-            Q 192 198 198 206
-            Q 206 212 210 220
-            L 206 228
-            Q 196 232 184 230
-            Q 176 226 170 220
-            Q 164 226 162 236
-            Q 158 250 150 260
-            Q 138 268 124 270
-            Q 116 274 108 280
-            Q 100 286 92 286
-            Q 82 282 78 274
-            Q 74 264 76 256
-            Q 80 248 76 240
-            Q 70 232 68 220
-            Q 64 208 64 196
-            Q 60 186 56 176
-            Q 50 168 50 158
-            Q 52 148 50 140
-            Q 46 132 50 124
-            Q 56 116 54 108
-            Q 50 100 54 92
-            Q 60 84 60 76
-            Q 56 68 60 60
-            Q 68 50 78 42
-            Q 90 32 104 26
-            Q 116 22 130 18
-            Q 138 16 142 18
-            Z
-          " fill="url(#phuketFill)" stroke="url(#phuketStroke)" stroke-width="1.4" stroke-linejoin="round"/>
-
-          <!-- Chalong Bay (south-east inlet) -->
-          <path d="M 170 220 Q 162 232 156 240 Q 152 246 152 252" fill="none" stroke="rgba(214,179,112,0.4)" stroke-width="1" stroke-dasharray="0"/>
-
-          <!-- Mountainous spine + interior contours (Phuket has central ridge) -->
-          <g stroke="rgba(214,179,112,0.22)" stroke-width="0.6" fill="none">
-            <path d="M 110 60 Q 122 80 128 100 Q 132 124 130 148 Q 128 172 132 196 Q 134 220 128 240"/>
-            <path d="M 90 90 Q 104 100 118 102"/>
-            <path d="M 80 130 Q 100 138 120 136"/>
-            <path d="M 78 174 Q 102 180 126 176 Q 144 178 156 186"/>
-            <path d="M 84 218 Q 108 224 132 220 Q 152 222 168 228"/>
-            <path d="M 96 256 Q 116 262 134 256"/>
-          </g>
-
-          <!-- compass -->
-          <g transform="translate(214,32)" opacity="0.65">
-            <circle r="12" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="0.7"/>
-            <path d="M 0 -9 L 2.5 0 L 0 9 L -2.5 0 Z" fill="rgba(214,179,112,0.9)"/>
-            <text y="-15" text-anchor="middle" font-size="7.5" font-weight="700" fill="rgba(255,255,255,0.7)" letter-spacing="0.1em">N</text>
-          </g>
-
-          <!-- scale -->
-          <g transform="translate(22,338)" font-family="Inter, sans-serif">
-            <line x1="0" y1="0" x2="40" y2="0" stroke="rgba(255,255,255,0.55)" stroke-width="0.9"/>
-            <line x1="0" y1="-3" x2="0" y2="3" stroke="rgba(255,255,255,0.55)" stroke-width="0.9"/>
-            <line x1="20" y1="-2" x2="20" y2="2" stroke="rgba(255,255,255,0.55)" stroke-width="0.7"/>
-            <line x1="40" y1="-3" x2="40" y2="3" stroke="rgba(255,255,255,0.55)" stroke-width="0.9"/>
-            <text x="20" y="14" text-anchor="middle" font-size="7" letter-spacing="0.16em" fill="rgba(255,255,255,0.55)">10 KM</text>
-          </g>
-
-          <!-- reference: Phuket Town (east-central) -->
-          <g transform="translate(150,200)">
-            <circle r="2.6" fill="rgba(255,255,255,0.55)"/>
-            <text x="6" y="2.6" font-family="Inter, sans-serif" font-size="7.5" font-weight="500" fill="rgba(255,255,255,0.5)" letter-spacing="0.05em">Phuket Town</text>
-          </g>
-          <!-- reference: HKT Airport (north) -->
-          <g transform="translate(115,52)">
-            <circle r="2.6" fill="rgba(255,255,255,0.55)"/>
-            <text x="6" y="2.6" font-family="Inter, sans-serif" font-size="7.5" font-weight="500" fill="rgba(255,255,255,0.5)" letter-spacing="0.05em">HKT Airport</text>
-          </g>
-          <!-- reference: Cape Panwa (south-east) -->
-          <g transform="translate(200,222)">
-            <circle r="2.4" fill="rgba(255,255,255,0.4)"/>
-            <text x="6" y="2.4" font-family="Inter, sans-serif" font-size="7" font-weight="500" fill="rgba(255,255,255,0.4)" letter-spacing="0.05em">Cape Panwa</text>
-          </g>
-          <!-- reference: Promthep Cape (south-west) -->
-          <g transform="translate(80,288)">
-            <circle r="2.4" fill="rgba(255,255,255,0.4)"/>
-            <text x="-6" y="2.4" font-family="Inter, sans-serif" font-size="7" font-weight="500" fill="rgba(255,255,255,0.4)" letter-spacing="0.05em" text-anchor="end">Promthep</text>
-          </g>
-
-          <!-- active project pins with numbers (positioned by real-world coords) -->
-          <!-- 1 Bang Tao (west, mid-north) -->
-          <g class="map-pin" transform="translate(64,140)">
-            <circle class="pin-glow" r="20" fill="rgba(214,179,112,0.2)"/>
-            <circle r="11" fill="#d6b370" stroke="#fff" stroke-width="2"/>
-            <text y="3.6" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#0a0e1a">1</text>
-          </g>
-          <!-- 2 Layan (west, slightly north of Bang Tao) -->
-          <g class="map-pin" transform="translate(60,108)">
-            <circle class="pin-glow" r="20" fill="rgba(214,179,112,0.2)"/>
-            <circle r="11" fill="#d6b370" stroke="#fff" stroke-width="2"/>
-            <text y="3.6" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#0a0e1a">2</text>
-          </g>
-          <!-- 3 Patong (mid-west) -->
-          <g class="map-pin" transform="translate(56,184)">
-            <circle class="pin-glow" r="20" fill="rgba(214,179,112,0.2)"/>
-            <circle r="11" fill="#d6b370" stroke="#fff" stroke-width="2"/>
-            <text y="3.6" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#0a0e1a">3</text>
-          </g>
-          <!-- 4 Kata · Karon (south-west) -->
-          <g class="map-pin" transform="translate(70,238)">
-            <circle class="pin-glow" r="20" fill="rgba(214,179,112,0.2)"/>
-            <circle r="11" fill="#d6b370" stroke="#fff" stroke-width="2"/>
-            <text y="3.6" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#0a0e1a">4</text>
-          </g>
-          <!-- 5 Rawai · Nai Harn (south-central) -->
-          <g class="map-pin" transform="translate(120,272)">
-            <circle class="pin-glow" r="20" fill="rgba(214,179,112,0.2)"/>
-            <circle r="11" fill="#d6b370" stroke="#fff" stroke-width="2"/>
-            <text y="3.6" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#0a0e1a">5</text>
-          </g>
-        </svg>
+        <div class="phuket-canvas" aria-hidden="true">
+          <img class="phuket-map-img" src="/assets/property/phuket-map.png" alt="Phuket island map — five CP Property locations" loading="lazy"/>
+          <button type="button" class="map-pin" style="--x:33.5%;--y:38%" data-pin="bangtao" aria-label="Bang Tao · 3 projects"><span>1</span></button>
+          <button type="button" class="map-pin" style="--x:38%;--y:25.5%" data-pin="layan" aria-label="Layan · 1 project"><span>2</span></button>
+          <button type="button" class="map-pin" style="--x:34%;--y:52%" data-pin="patong" aria-label="Patong · selective"><span>3</span></button>
+          <button type="button" class="map-pin" style="--x:38%;--y:65%" data-pin="kata" aria-label="Kata · Karon · 1 project"><span>4</span></button>
+          <button type="button" class="map-pin" style="--x:46%;--y:82%" data-pin="rawai" aria-label="Rawai · Nai Harn · southern corridor"><span>5</span></button>
+        </div>
         <div class="map-legend">
           <div class="map-legend-row"><span class="map-legend-num">1</span><div><div class="map-legend-name">Bang Tao</div><div class="map-legend-meta">3 projects · Tier 1</div></div></div>
           <div class="map-legend-row"><span class="map-legend-num">2</span><div><div class="map-legend-name">Layan</div><div class="map-legend-meta">1 project · Tier 1–2</div></div></div>
