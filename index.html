@@ -225,6 +225,18 @@ section.s.dark p{color:rgba(255,255,255,.72)}
   max-width:1240px;margin:0 auto;
   display:grid;grid-template-columns:1.05fr 1fr;gap:72px;align-items:center;
 }
+.band-letter-grid.reverse{grid-template-columns:1fr 1.05fr}
+/* approved variant: warmer dark base, green accents */
+.band-letter--approved{
+  background:linear-gradient(180deg,#06080f 0%,#0e1410 100%);
+}
+.band-letter--approved::before{
+  background:radial-gradient(circle,rgba(34,170,90,.10) 0%,transparent 65%);
+}
+.band-letter--approved::after{
+  background:radial-gradient(circle,rgba(160,129,86,.08) 0%,transparent 70%);
+}
+.kicker.kicker-green{color:#86efac}
 .bank-letter{
   background:#fbfaf6;color:#1a1a1a;
   border-radius:6px;padding:34px 38px 36px;
@@ -239,6 +251,13 @@ section.s.dark p{color:rgba(255,255,255,.72)}
   background:linear-gradient(90deg,#1a3a8c 0%,#1a3a8c 60%,#a08156 60%,#a08156 100%);
   border-radius:6px 6px 0 0;
 }
+.bank-letter--approved{transform:rotate(1.2deg)}
+.bank-letter--approved::before{
+  background:linear-gradient(90deg,#0f5132 0%,#0f5132 55%,#a08156 55%,#a08156 100%);
+}
+.bank-letter--approved .bank-logo{color:#0f5132}
+.bank-letter--approved .bank-logo svg{stroke:#0f5132}
+.bank-letter--approved .bank-letter-head{border-bottom-color:#bcd9c0}
 .bank-letter-head{
   display:flex;justify-content:space-between;align-items:flex-end;
   border-bottom:1px solid #cbd5e1;padding-bottom:14px;margin-bottom:18px;
@@ -266,6 +285,19 @@ section.s.dark p{color:rgba(255,255,255,.72)}
   flex-shrink:0;
 }
 .bank-letter-body .declined strong{color:#7f1d1d;font-weight:800;letter-spacing:.05em;font-size:14.5px}
+.bank-letter-body .approved{
+  background:#f0f7f1;border:1px solid #bcd9c0;border-left:3px solid #0f5132;
+  border-radius:3px;padding:14px 16px;color:#0f5132;
+  font-size:13.5px;font-weight:500;letter-spacing:.005em;
+  display:flex;align-items:center;gap:14px;
+  margin:4px 0;
+}
+.bank-letter-body .approved-label{
+  font-size:9.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:#0f5132;background:#fff;padding:3px 7px;border-radius:2px;border:1px solid #bcd9c0;
+  flex-shrink:0;
+}
+.bank-letter-body .approved strong{color:#0a3d22;font-weight:800;letter-spacing:.05em;font-size:14.5px}
 .bank-letter-body .signature{
   margin-top:14px;padding-top:14px;border-top:1px solid #e2e8f0;
   font-size:11.5px;color:#64748b;line-height:1.55;
@@ -282,12 +314,15 @@ section.s.dark p{color:rgba(255,255,255,.72)}
   max-width:48ch;font-weight:300;
 }
 @media(max-width:980px){
-  .band-letter-grid{grid-template-columns:1fr;gap:48px}
+  .band-letter-grid,.band-letter-grid.reverse{grid-template-columns:1fr;gap:48px}
+  .band-letter-grid.reverse > .band-message{order:1}
+  .band-letter-grid.reverse > .bank-letter{order:2}
   .bank-letter{transform:rotate(-.6deg);max-width:520px;margin:0 auto;width:100%}
+  .bank-letter--approved{transform:rotate(.6deg)}
   .band-letter{padding:80px 28px}
 }
 @media(max-width:560px){
-  .bank-letter{padding:24px 22px;transform:none}
+  .bank-letter,.bank-letter--approved{padding:24px 22px;transform:none}
   .bank-letter-meta{text-align:left}
 }
 
@@ -1020,11 +1055,34 @@ footer.f{
   </div>
 </section>
 
-<!-- VISUAL BAND 2 -->
-<section class="image-band" style="background-image:url('assets/logic/05-architecture.png')" aria-hidden="true">
-  <div class="image-band-text">
-    <span class="kicker">Архитектура</span>
-    <h3>Без искусственных границ —<br/>с <strong>реальной архитектурой</strong>, которую банк проверяет независимо.</h3>
+<!-- VISUAL BAND 2 — bank approval letter mockup (the antithesis) -->
+<section class="band-letter band-letter--approved" aria-hidden="true">
+  <div class="band-letter-grid reverse">
+    <div class="band-message">
+      <span class="kicker kicker-green">Результат</span>
+      <h3>Тот же AML-робот. Тот же compliance-офицер.<br/>Та&nbsp;же политика регулирования.<br/><strong>Просто другая папка на входе.</strong></h3>
+      <p class="band-sub">Это не магия и не лоббизм. Это инженерия документа: правильная цепочка SoF/SoW, корректный substance, верифицируемая on-chain история, согласованный с банком формат подачи. Через 6–10 недель — onboarding, а не очередное «отказано».</p>
+    </div>
+    <article class="bank-letter bank-letter--approved">
+      <div class="bank-letter-head">
+        <div class="bank-logo">
+          <svg viewBox="0 0 24 24"><path d="M2 12h20M12 2v20M5 7l14 10M19 7L5 17"/></svg>
+          <span>BANK FRICK &amp; CO. AG</span>
+        </div>
+        <div class="bank-letter-meta">Private Banking · Balzers, FL</div>
+      </div>
+      <div class="bank-letter-body">
+        <div class="subject">Re: Application №&nbsp;PB-9024 / Private Banking Relationship</div>
+        <p>Уважаемый клиент,</p>
+        <p>После завершения процедуры Enhanced Due Diligence и проверки предоставленного пакета документов мы рады сообщить о принятом решении.</p>
+        <div class="approved">
+          <span class="approved-label">РЕШЕНИЕ</span>
+          Заявка <strong>ОДОБРЕНА</strong>
+        </div>
+        <p>Ваш Relationship Manager свяжется с Вами в течение трёх рабочих дней для согласования onboarding-сессии и подписания документов открытия счёта. Welcome to Bank Frick.</p>
+        <p class="signature">С уважением,<br/>Private Banking Department<br/>BANK FRICK &amp; CO. AG · Liechtenstein</p>
+      </div>
+    </article>
   </div>
 </section>
 
