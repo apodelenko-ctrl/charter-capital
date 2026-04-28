@@ -4,10 +4,10 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Private Office · Charter Capital — когда двери закрываются, мы открываем мир</title>
-<meta name="description" content="Charter Capital · Private Office. Когда все двери закрываются — мы открываем мир для вашего капитала. Без искусственных границ. Для частных клиентов с активами от $250 000 и кейсов с повышенной сложностью."/>
+<meta name="description" content="Charter Capital · Private Office. Архитекторы легитимности и безупречной биографии вашего капитала. Структурированные инвестиции в Сингапурский фонд недвижимости с выходом на счета EU/UK/Швейцарии чистыми деньгами. Для частных клиентов с активами от $1 000 000."/>
 <meta property="og:type" content="website"/>
 <meta property="og:title" content="Private Office · Charter Capital — когда двери закрываются, мы открываем мир"/>
-<meta property="og:description" content="Когда двери закрываются — Charter открывает мир для вашего капитала. Без искусственных границ. Для частных клиентов с активами от $250 000."/>
+<meta property="og:description" content="Архитекторы легитимности и безупречной биографии вашего капитала. SG-фонд → недвижимость → выход на счета EU / UK / Швейцарии чистыми деньгами. От $1 000 000."/>
 <meta property="og:url" content="https://ccapital.pro/private.html"/>
 <meta name="robots" content="noindex, nofollow"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -78,9 +78,20 @@ button{font-family:inherit}
   border-left:1px solid #2a2a2a;padding-left:14px;
 }
 .topbar-right{display:flex;align-items:center;gap:10px}
+.topbar-nav{
+  display:flex;align-items:center;gap:2px;
+  flex:1;justify-content:center;
+}
+.topbar-nav a{
+  font-size:11px;font-weight:500;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--text-on-dark-mute);
+  padding:8px 14px;border-radius:6px;text-decoration:none;
+  transition:color .15s ease,background .15s ease;
+}
+.topbar-nav a:hover{color:#fff;background:rgba(255,255,255,.06)}
 .topbar-link{
   font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--text-on-dark-mute);
+  color:var(--gold-soft);
   padding:8px 14px;border-radius:6px;
   transition:color .15s ease,background .15s ease;
 }
@@ -418,6 +429,7 @@ footer.f{
   .bound-grid{grid-template-columns:1fr}
   .before-after{grid-template-columns:1fr}
   .f-inner{grid-template-columns:1fr;gap:28px}
+  .topbar-nav{display:none}
 }
 @media(max-width:640px){
   #topbar{height:56px}
@@ -440,10 +452,18 @@ footer.f{
   <div class="topbar-inner">
     <a href="index.html" class="topbar-left">
       <span class="topbar-brand">Charter Capital</span>
-      <span class="topbar-tag">Private Office · от&nbsp;$250K · открываем мир для&nbsp;вашего&nbsp;капитала</span>
+      <span class="topbar-tag">Private Office · от&nbsp;$1М</span>
     </a>
+    <nav class="topbar-nav">
+      <a href="#diagnosis">Диагноз</a>
+      <a href="#path">Путь капитала</a>
+      <a href="#hubs">Хабы</a>
+      <a href="#engagement">Формы</a>
+      <a href="#boundaries">Границы</a>
+      <a href="#contact">Контакт</a>
+    </nav>
     <div class="topbar-right">
-      <a href="index.html" class="topbar-link">Основной агрегатор</a>
+      <a href="index.html" class="topbar-link">Агрегатор&nbsp;→</a>
       <button type="button" class="topbar-cta" id="openLoginModal" aria-haspopup="dialog" aria-controls="loginModal">Private Access</button>
     </div>
   </div>
@@ -457,23 +477,23 @@ footer.f{
   <div class="hero-body">
     <div class="hero-flag">
       <span class="dot"></span>
-      <span>Private Office · Закрытый контур · от $250K</span>
+      <span>Private Office · Закрытый контур · от&nbsp;$1&nbsp;000&nbsp;000</span>
     </div>
-    <h1 class="title">Когда двери закрываются —<br/><strong>Charter&nbsp;Capital открывает мир</strong> без искусственных границ.</h1>
-    <p class="hero-second">Для Вашего капитала. Капитал не имеет паспорта — мы делаем так, чтобы у&nbsp;него <strong>был</strong>.</p>
-    <p class="lead">Charter Capital · Private Office — закрытый контур для частных клиентов с активами от $250 000 и кейсов, в которых стандартный пакет «компания + счёт + ВНЖ» ситуацию не закрывает. Мы не оказываем услугу — мы проектируем биографию капитала, которую принимает Tier-1.</p>
+    <h1 class="title"><strong>Архитекторы легитимности</strong> и безупречной биографии вашего капитала.</h1>
+    <p class="hero-second">Когда сумма исключает шорткаты, маршрут — единственный продукт.</p>
+    <p class="lead">Мы проводим капитал через структурированные инвестиции в Сингапурский фонд недвижимости, формируем substance и реальный paper-trail — и через выход из инвестиционного раунда возвращаем средства на ваши целевые счета в ЕС / Британии / Швейцарии уже <strong>чистыми деньгами с проверяемой банковской биографией</strong>. Для частных клиентов с активами от&nbsp;$1&nbsp;000&nbsp;000.</p>
     <div class="hero-actions">
-      <a href="#engagement" class="btn btn-gold btn-lg">Запросить аудит<span class="arr">→</span></a>
-      <a href="index.html" class="btn btn-outline-dark btn-lg">Капитал ниже $250K — основной маршрут</a>
+      <a href="#engagement" class="btn btn-gold btn-lg">Запросить мандат<span class="arr">→</span></a>
+      <a href="index.html" class="btn btn-outline-dark btn-lg">Капитал ниже $1М — основной агрегатор</a>
     </div>
     <div class="hero-meta">
       <div class="hero-meta-item">
-        <div class="v">$250K+</div>
-        <div class="l">Минимальный мандат</div>
+        <div class="v">$1М+</div>
+        <div class="l">Основной мандат · полный цикл</div>
       </div>
       <div class="hero-meta-item">
-        <div class="v">3</div>
-        <div class="l">Хаба substance: SG · HK · UAE</div>
+        <div class="v">SG · TH · EU</div>
+        <div class="l">Маршрут капитала</div>
       </div>
       <div class="hero-meta-item">
         <div class="v">12–18</div>
@@ -488,14 +508,14 @@ footer.f{
 </section>
 
 <!-- ─── DECK 2 · ДИАГНОЗ (split) ─────────────────────────── -->
-<section class="deck split">
+<section class="deck split" id="diagnosis">
   <img src="assets/logic/11-vault.png" alt="Капитал без биографии"/>
   <div class="panel">
     <span class="kicker red">Диагноз</span>
-    <h2 class="title">В 2026 капитал из РФ — мусор для Tier-1, пока у него нет биографии.</h2>
+    <h2 class="title">Ваши деньги в РФ — это <strong>мусор</strong> для западного банка, пока у них нет понятной биографии.</h2>
     <p>Западный комплаенс работает простой логикой: если происхождение капитала невозможно верифицировать по международным стандартам — этого капитала не существует. Не «он подозрителен» — он не существует как операционная единица.</p>
-    <p>Договоры РФ-нотариусов, выписки Сбербанка за 2018 год, формула «я заработал в&nbsp;90-х» — для системы Enhanced Due Diligence это не источник. Это шум.</p>
-    <p>Парадокс: чем больше у вас капитала, тем сложнее. $50&nbsp;000 банк ЕС может молча принять. $5&nbsp;000&nbsp;000 — никогда без ответа на вопрос: «откуда».</p>
+    <p>Ни договоры, ни декларации, ни нотариальные заверения из РФ сами по себе не формируют того, что банки называют <strong>Paper Trail</strong> — последовательной, логически связанной документальной истории.</p>
+    <p>Парадокс: чем больше у вас капитала, тем сложнее. $50&nbsp;000 банк ЕС может молча принять. <strong>$5&nbsp;000&nbsp;000 — никогда</strong> без ответа на вопрос: «откуда».</p>
   </div>
 </section>
 
@@ -531,9 +551,9 @@ footer.f{
 </section>
 
 <!-- ─── DECK 4 · ЧИСТЫЙ КОНТУР ───────────────────────────── -->
-<section class="deck">
+<section class="deck" id="path">
   <div class="blk">
-    <span class="kicker">Архитектура</span>
+    <span class="kicker">Архитектура · Путь капитала</span>
     <h2 class="title">Чистый контур — это всегда три ступени, не больше</h2>
     <p class="lead">Не пять SPV в матрёшку, не семь юрисдикций «для запутывания». Чем проще структура, тем легче её защитить перед EDD-офицером.</p>
     <div class="steps">
@@ -622,7 +642,7 @@ footer.f{
 </section>
 
 <!-- ─── DECK 8 · ХАБЫ (dark) ─────────────────────────────── -->
-<section class="deck dark">
+<section class="deck dark" id="hubs">
   <div class="blk">
     <span class="kicker">География</span>
     <h2 class="title">Три хаба для substance — и почему именно эти</h2>
@@ -662,18 +682,18 @@ footer.f{
   </div>
 </section>
 
-<!-- ─── DECK 9 · ENGAGEMENT TIERS (pricing) ──────────────── -->
+<!-- ─── DECK 9 · ENGAGEMENT TIERS (by capital size) ──────── -->
 <section class="deck" id="engagement">
   <div class="blk">
     <span class="kicker">Форматы вовлечения</span>
-    <h2 class="title">Три формата работы — выбираете по глубине задачи</h2>
-    <p class="lead">Все цены индикативные, фиксируются после первой встречи и due diligence. Если стоимость нашей работы выходит больше 6% от размера капитала под мандатом — мы отказываем сами. Проект должен иметь экономический смысл для вас.</p>
+    <h2 class="title">Три формата работы — выбираете по размеру капитала</h2>
+    <p class="lead">Tier определяется размером капитала под мандатом. Все цены индикативные и фиксируются после первой встречи и due diligence. Потолок чека — 6% от капитала: если выходит больше, мы отказываем сами. Проект должен иметь экономический смысл для вас.</p>
     <div class="tiers">
       <div class="tier">
-        <span class="tier-flag">T1 · Аудит</span>
+        <span class="tier-flag">T1 · Diagnostic</span>
         <h3>Diagnostic Audit</h3>
-        <div class="price">$50K — $100K<small>фиксированная цена за проект</small></div>
-        <span class="term">3–4 недели</span>
+        <div class="price">от&nbsp;$250&nbsp;000<small>размер капитала клиента</small></div>
+        <span class="term">3–4 недели · фикс $50K–$100K</span>
         <ul>
           <li>Полный аудит источника капитала (SoF / SoW)</li>
           <li>On-chain аудит при наличии крипто-составляющей</li>
@@ -681,36 +701,36 @@ footer.f{
           <li>Дорожная карта — что именно строить и в какой последовательности</li>
           <li>Эскалационный план на случай отказа</li>
         </ul>
-        <div class="tier-note">Финальный отчёт — 30–60 страниц на английском, готов к показу банку или адвокатам.</div>
+        <div class="tier-note">Финальный отчёт 30–60 страниц на английском, готов к показу банку или адвокатам. Без обязательства идти дальше — это полноценный продукт.</div>
       </div>
       <div class="tier featured">
-        <span class="tier-flag">T2 · Полный мандат</span>
+        <span class="tier-flag">T2 · Full Mandate · основной</span>
         <h3>Full Mandate</h3>
-        <div class="price">$100K — $4M<small>вилка по сложности, числу юрисдикций и размеру капитала</small></div>
-        <span class="term">12–18 месяцев</span>
+        <div class="price">от&nbsp;$1&nbsp;000&nbsp;000<small>размер капитала клиента</small></div>
+        <span class="term">12–18 месяцев · $100K–$4M</span>
         <ul>
-          <li>Всё из Audit + полная реализация</li>
-          <li>Корпоративная архитектура (SG / HK / UAE Mainland)</li>
-          <li>Substance-инфраструктура: офис, директор, бухгалтерия</li>
-          <li>Tier-1 onboarding в 1–2 банках</li>
+          <li>Diagnostic + полная реализация</li>
+          <li>Корпоративная архитектура: SG-фонд + Phuket Real Estate + EU/UK банковский контур</li>
+          <li>Substance-инфраструктура: офис, директор, бухгалтерия, audit под GAAP</li>
+          <li>Tier-1 onboarding в 1–2 банках (DBS / EFG / Julius Baer / Vontobel)</li>
           <li>Сопровождение EDD-интервью лично</li>
-          <li>Налоговая регистрация и tax-filing год 1</li>
+          <li>Налоговая регистрация и tax-filing год 1 в SG / TH</li>
           <li>Персональный fiduciary-advisor — ваша точка входа на 18 месяцев</li>
         </ul>
-        <div class="tier-note">Минимальный мандат — $100K (капитал от $1.7M). Потолок чека — 6% от капитала под мандатом: если выходит больше, мы отказываем сами. Проект должен иметь экономический смысл.</div>
+        <div class="tier-note">Это и есть «Архитекторы легитимности» в полной форме. Капитал входит в SG-фонд, работает в недвижимости, выходит из инвестиционного раунда чистыми деньгами на ваш счёт в EU/UK.</div>
       </div>
       <div class="tier">
-        <span class="tier-flag">T3 · Партнёрство</span>
+        <span class="tier-flag">T3 · Strategic</span>
         <h3>Strategic Partnership</h3>
-        <div class="price">от $5M+<small>retainer + success fee, индивидуально</small></div>
-        <span class="term">36+ месяцев · многопоколенный горизонт</span>
+        <div class="price">от&nbsp;$10&nbsp;000&nbsp;000<small>размер капитала клиента</small></div>
+        <span class="term">36+ месяцев · retainer + success fee</span>
         <ul>
           <li>Семейный офис на базе Charter Capital</li>
           <li>Многоюрисдикционная архитектура (3+ хабов)</li>
-          <li>Trust / Foundation для succession planning</li>
+          <li>Trust / Foundation для succession planning (3 поколения)</li>
           <li>Доступ к закрытому пулу инвестиционных идей</li>
           <li>Контроль 24/7, годовой комплаенс-rebuild</li>
-          <li>Прямой канал с партнёрами Tier-1 (Julius Baer, Pictet, EFG)</li>
+          <li>Прямой канал с партнёрами Tier-1 (Julius Baer, Pictet, EFG, Lombard Odier)</li>
         </ul>
         <div class="tier-note">Только по приглашению. Due diligence работает в обе стороны: мы изучаем вас, вы изучаете нас.</div>
       </div>
@@ -719,7 +739,7 @@ footer.f{
 </section>
 
 <!-- ─── DECK 10 · ГРАНИЦЫ (cream) ────────────────────────── -->
-<section class="deck cream">
+<section class="deck cream" id="boundaries">
   <div class="blk">
     <span class="kicker muted">Granicy</span>
     <h2 class="title">Кому мы не служим — и почему это часть качества</h2>
@@ -741,7 +761,7 @@ footer.f{
           <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Предпринимателями с реальной выручкой.</strong> Понятный бизнес, документированный exit, прозрачная история активов.</span></li>
           <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Крипто-холдерами с «белой» on-chain историей.</strong> Майнинг с регистрацией, ранний BTC, торговая прибыль с регулируемых площадок, DeFi с KYC-вершинами.</span></li>
           <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Наследниками капитала.</strong> Капитал получен по наследству или дарению с документами — мы выстраиваем биографию от первого источника.</span></li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Семьями в стадии релокации.</strong> Капитал $250K – $5M, цель — долгосрочная база с ВНЖ / гражданством и Tier-1 банкингом.</span></li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Семьями в стадии релокации.</strong> Капитал $1М+, цель — долгосрочная база с ВНЖ / гражданством и Tier-1 банкингом, succession planning.</span></li>
           <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Топ-менеджерами после exit.</strong> Опционы, бонусы, продажа доли — есть документы, нужна архитектура.</span></li>
         </ul>
       </div>
@@ -771,15 +791,15 @@ footer.f{
   <div class="f-inner">
     <div class="f-brand">
       <div class="name">Charter Capital</div>
-      <div class="tag">Private Office · от $250K</div>
-      <p>Когда все двери закрываются — Charter открывает мир для вашего капитала. Без искусственных границ. Архитекторы биографии капитала для частных клиентов: diagnostic audit, full mandate, strategic partnership. Tier-1 onboarding, substance-инфраструктура, многоюрисдикционные структуры.</p>
+      <div class="tag">Private Office · от $1 000 000</div>
+      <p>Архитекторы легитимности и безупречной биографии вашего капитала. Структурированные инвестиции в Сингапурский фонд недвижимости с выходом на ваши целевые счета в EU / UK / Швейцарии чистыми деньгами с проверяемой биографией. Diagnostic audit (от $250K капитала), Full Mandate (от $1M), Strategic Partnership (от $10M+).</p>
     </div>
     <div class="f-col">
       <h5>Контуры</h5>
       <ul>
         <li><a href="homeland.html">Подготовка к исходу · ещё в РФ</a></li>
         <li><a href="index.html">Основной агрегатор · от $50K</a></li>
-        <li><a href="private.html">Private Office · от $250K</a></li>
+        <li><a href="private.html">Private Office · от $1М</a></li>
         <li><a href="corporate.html">Corporate · ВЭД</a></li>
         <li><a href="sourceready-scoring-sandbox.html">Скоринг готовности</a></li>
       </ul>
