@@ -263,11 +263,6 @@ p{color:var(--on-dark-soft);font-weight:400;line-height:1.7}
   max-width:54ch;
 }
 .hero-formula strong{color:var(--gold-warm);font-weight:500}
-.hero-line{
-  font-size:14.5px;line-height:1.65;color:rgba(255,255,255,.78);
-  margin:0 0 14px;max-width:54ch;
-}
-.hero-line strong{color:#fff;font-weight:500}
 .hero-stack{
   display:flex;flex-wrap:wrap;gap:8px 14px;
   margin-bottom:36px;
@@ -278,7 +273,21 @@ p{color:var(--on-dark-soft);font-weight:400;line-height:1.7}
 .hero-stack span:not(:last-child)::after{
   content:'·';position:absolute;right:0;color:var(--gold-warm);font-weight:600;
 }
-.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:28px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:14px}
+.hero-cta-sub{
+  margin:-4px 0 26px;
+}
+.hero-secondary-link{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:13px;font-weight:500;letter-spacing:.04em;
+  color:rgba(255,255,255,.68);text-decoration:none;
+  border-bottom:1px solid rgba(232,212,168,.38);
+  padding-bottom:3px;
+  transition:color .18s ease,border-color .18s ease;
+}
+.hero-secondary-link:hover{color:var(--gold-warm);border-color:var(--gold-warm)}
+.hero-secondary-link .arr{transition:transform .18s ease}
+.hero-secondary-link:hover .arr{transform:translateX(3px)}
 .hero-trust{
   display:flex;align-items:flex-start;gap:10px;
   font-size:12.5px;color:rgba(255,255,255,.6);
@@ -286,27 +295,24 @@ p{color:var(--on-dark-soft);font-weight:400;line-height:1.7}
 }
 .hero-trust svg{width:14px;height:14px;stroke:var(--gold-soft);fill:none;stroke-width:1.6;flex-shrink:0;margin-top:3px}
 
-/* Hero closing pull-line — integrated, not standalone */
-.hero-quote{
+/* Hero quote · вынесена под первый экран — легче по весу */
+.hero-quote-strip{
   position:relative;
-  margin-top:42px;padding:26px 0 0 26px;
-  border-top:1px solid rgba(160,129,86,.28);
+  background:#06080f;
+  border-bottom:1px solid rgba(160,129,86,.22);
+  padding:20px 0 26px;
+}
+.hero-quote-strip p{
   font-family:'Cormorant Garamond',serif;
-  font-size:clamp(1.2rem,1.7vw,1.6rem);
+  font-size:clamp(.98rem,1.25vw,1.18rem);
   font-weight:300;font-style:italic;
-  line-height:1.32;
-  color:rgba(255,255,255,.92);
-  letter-spacing:-.005em;
-  max-width:54ch;
+  line-height:1.38;
+  color:rgba(255,255,255,.52);
+  letter-spacing:-.01em;
+  max-width:52ch;margin:0;padding-left:16px;
+  border-left:2px solid rgba(160,129,86,.28);
 }
-.hero-quote::before{
-  content:'\201C';
-  position:absolute;left:-2px;top:14px;
-  font-family:'Cormorant Garamond',serif;
-  font-size:54px;font-style:normal;line-height:1;
-  color:var(--gold-warm);
-}
-.hero-quote em{color:var(--gold-warm);font-style:italic;font-weight:400}
+.hero-quote-strip em{color:rgba(232,212,168,.78);font-style:italic;font-weight:400}
 
 /* Inline editorial pull-line (used inside structure / final CTA) */
 .inline-quote{
@@ -1697,8 +1703,9 @@ footer.f{
   }
   .container,.container-wide,.container-sm,.container-narrow{padding:0 22px}
   .hero-actions .btn{width:100%;justify-content:center}
-  .hero-quote{margin-top:34px;padding:22px 0 0 22px;font-size:1.15rem}
-  .hero-quote::before{font-size:42px;top:8px}
+  .hero-cta-sub{text-align:center;margin-bottom:22px}
+  .hero-secondary-link{padding-bottom:4px}
+  .hero-quote-strip{padding:18px 0 22px}
   .then-now{grid-template-columns:1fr;gap:20px}
   .escape-vs{grid-template-columns:1fr;gap:14px}
   .escape-col.left .escape-row,.escape-col.right .escape-row{text-align:left}
@@ -1874,33 +1881,34 @@ footer.f{
         вы&nbsp;не&nbsp;хотите «счёт за&nbsp;границей».<br/>
         <strong>вы хотите снова свободно жить, двигаться, владеть капиталом</strong> и&nbsp;выбирать будущее для семьи.
       </p>
-      <p class="hero-line">
-        Мы&nbsp;собираем международный маршрут.
-      </p>
-      <div class="hero-stack">
-        <span>Банк</span>
-        <span>Компания</span>
-        <span>Документы по&nbsp;капиталу</span>
-        <span>ВНЖ</span>
-        <span>Крипто-выход</span>
-        <span>Инвестиции</span>
-        <span>Финансовая подушка</span>
+      <div class="hero-stack" aria-label="Ось маршрута в одном контуре">
+        <span>Банк и капитал</span>
+        <span>Семья и ВНЖ</span>
+        <span>Компания и контур</span>
+        <span>Резерв и инвестиции</span>
       </div>
       <div class="hero-actions">
         <a href="#contact" class="btn btn-gold btn-lg">Разобрать мой маршрут <span class="arr">→</span></a>
-        <a href="#contact" class="btn btn-outline btn-lg">Проверить капитал перед банком <span class="arr">→</span></a>
       </div>
+      <p class="hero-cta-sub">
+        <a href="#contact" class="hero-secondary-link">Проверить капитал перед банком <span class="arr">→</span></a>
+      </p>
       <div class="hero-trust">
         <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-12V5l-8-3-8 3v5c0 8 8 12 8 12z"/></svg>
         <span>Первый разговор — не&nbsp;продажа. Это карта рисков: где вы&nbsp;сейчас, что можно делать, а&nbsp;что лучше не&nbsp;трогать без подготовки.</span>
       </div>
-      <p class="hero-quote">
-        Свобода больше не&nbsp;даётся автоматически.<br/>
-        <em>Её&nbsp;нужно правильно структурировать.</em>
-      </p>
     </div>
   </div>
 </section>
+
+<div class="hero-quote-strip">
+  <div class="container">
+    <p>
+      Свобода больше не&nbsp;даётся автоматически.
+      <em>Её&nbsp;нужно правильно структурировать.</em>
+    </p>
+  </div>
+</div>
 
 <!-- ─── PAIN TICKER ──────────────────────────────────────── -->
 <div class="ticker-strip" aria-hidden="true">
