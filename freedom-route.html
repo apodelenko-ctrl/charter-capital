@@ -744,8 +744,33 @@ section.s.cream .kicker{color:var(--gold)}
 }
 .tn-col.then .tn-list li::before{background:rgba(252,165,165,.3)}
 .tn-col.now .tn-list li::before{background:#fcd34d}
+.tn-empathy{
+  margin:48px 0 24px;
+  text-align:center;
+}
+.tn-empathy p{
+  display:inline-flex;align-items:center;flex-wrap:wrap;
+  justify-content:center;gap:12px;
+  padding:24px 36px;
+  background:linear-gradient(135deg,rgba(160,129,86,.08) 0%,rgba(160,129,86,.02) 100%);
+  border:1px solid rgba(160,129,86,.28);
+  border-radius:var(--radius-lg);
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.25rem,2vw,1.75rem);
+  font-weight:300;line-height:1.32;
+  color:#fff;letter-spacing:-.012em;
+  max-width:920px;
+}
+.tn-empathy p .dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--gold);flex-shrink:0;
+}
+.tn-empathy p em{
+  font-style:italic;color:rgba(255,255,255,.92);
+}
+.tn-empathy p em strong{color:var(--gold-warm);font-weight:500;font-style:italic}
 .tn-close{
-  margin-top:48px;padding:32px 36px;
+  margin-top:24px;padding:32px 36px;
   background:rgba(255,255,255,.03);
   border:1px solid var(--line-dark);
   border-left:3px solid var(--gold);
@@ -796,6 +821,84 @@ section.s.cream .kicker{color:var(--gold)}
   color:rgba(255,255,255,.92);
 }
 .route-hero-pill .d{width:5px;height:5px;border-radius:50%;background:var(--gold-warm)}
+
+/* Route flow: 6-pillar stepper (visual map) */
+.route-flow-wrap{
+  margin:48px 0 64px;text-align:center;
+}
+.rf-caption{
+  display:block;
+  font-size:11px;font-weight:600;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--gold-soft);
+  margin-bottom:22px;
+}
+.route-flow{
+  display:flex;align-items:flex-start;justify-content:center;
+  flex-wrap:wrap;gap:6px;
+  padding:42px 32px;margin:0 auto;
+  max-width:1180px;
+  background:
+    radial-gradient(ellipse at 50% 0%,rgba(160,129,86,.08) 0%,transparent 70%),
+    linear-gradient(180deg,rgba(255,255,255,.025) 0%,rgba(255,255,255,.01) 100%);
+  border:1px solid rgba(160,129,86,.24);
+  border-radius:var(--radius-lg);
+  position:relative;
+}
+.rf-node{
+  display:flex;flex-direction:column;align-items:center;
+  gap:10px;padding:0 14px;
+  min-width:124px;
+}
+.rf-circle{
+  width:58px;height:58px;border-radius:50%;
+  background:rgba(160,129,86,.1);
+  border:1px solid rgba(160,129,86,.4);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;font-weight:400;color:var(--gold-warm);
+  font-style:italic;letter-spacing:.02em;
+  transition:background .25s ease,border-color .25s ease,transform .25s ease;
+}
+.rf-node:hover .rf-circle{
+  background:rgba(160,129,86,.18);
+  border-color:var(--gold-warm);
+  transform:translateY(-2px);
+}
+.rf-final .rf-circle{
+  background:linear-gradient(135deg,var(--gold-warm) 0%,var(--gold) 100%);
+  color:#0a0a0a;font-style:normal;font-weight:600;
+  border-color:rgba(232,212,168,.5);
+  box-shadow:0 0 0 1px rgba(232,212,168,.32),0 8px 24px -4px rgba(160,129,86,.4);
+}
+.rf-label{
+  font-size:13px;font-weight:600;letter-spacing:.06em;
+  color:#fff;text-transform:uppercase;
+}
+.rf-sub{
+  font-size:11.5px;font-weight:300;
+  color:rgba(255,255,255,.55);
+  letter-spacing:.01em;line-height:1.35;
+  text-align:center;max-width:14ch;
+}
+.rf-arrow{
+  font-size:18px;color:rgba(160,129,86,.6);
+  display:inline-flex;align-items:center;
+  height:58px;width:24px;justify-content:center;
+  flex-shrink:0;
+}
+.rf-orbit{
+  list-style:none;padding:0;margin:24px auto 0;
+  display:flex;flex-wrap:wrap;justify-content:center;
+  gap:8px 14px;max-width:780px;
+}
+.rf-orbit li{
+  font-size:12px;color:rgba(255,255,255,.5);
+  letter-spacing:.04em;font-weight:400;
+  padding:5px 12px;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:999px;
+}
 
 .route-grid{
   display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
@@ -964,6 +1067,70 @@ section.s.cream .kicker{color:var(--gold)}
   max-width:760px;margin:0 auto;
 }
 .structure-key-line strong{color:var(--gold-warm);font-weight:500}
+
+/* ─── TRANSLATOR BANNER · positioning crown ──────────────── */
+.translator-banner{
+  position:relative;
+  min-height:78vh;
+  display:flex;align-items:center;justify-content:center;
+  padding:140px 32px;
+  overflow:hidden;
+  background:#06080f;
+  border-top:1px solid rgba(160,129,86,.16);
+  border-bottom:1px solid rgba(160,129,86,.16);
+}
+.tb-bg{position:absolute;inset:0;z-index:0}
+.tb-bg img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center;
+  filter:saturate(.65) blur(2px);
+  opacity:.32;
+}
+.tb-bg::after{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse at 50% 50%,rgba(160,129,86,.16) 0%,transparent 60%),
+    linear-gradient(180deg,rgba(6,8,15,.86) 0%,rgba(6,8,15,.78) 50%,rgba(6,8,15,.92) 100%);
+  pointer-events:none;
+}
+.tb-content{
+  position:relative;z-index:1;
+  max-width:1080px;text-align:center;
+}
+.tb-mark{
+  display:inline-block;
+  font-size:11px;font-weight:600;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--gold-warm);
+  padding:8px 18px;
+  border:1px solid rgba(232,212,168,.32);
+  border-radius:999px;
+  background:rgba(160,129,86,.08);
+  margin-bottom:38px;
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+}
+.tb-line{
+  font-size:clamp(1.8rem,4.4vw,3.6rem);
+  font-weight:200;letter-spacing:-.035em;
+  line-height:1.14;color:#fff;
+  margin-bottom:34px;
+  max-width:24ch;margin-left:auto;margin-right:auto;
+}
+.tb-line em{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;font-weight:300;
+  color:var(--gold-warm);letter-spacing:-.025em;
+}
+.tb-line strong{
+  color:#fff;font-weight:500;
+}
+.tb-sub{
+  font-size:clamp(1rem,1.4vw,1.2rem);
+  line-height:1.55;
+  color:rgba(255,255,255,.72);
+  font-weight:300;
+  max-width:62ch;margin:0 auto;
+  letter-spacing:-.005em;
+}
 
 /* ─── SECTION 6 — Scenarios ────────────────────────────── */
 .scenarios{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
@@ -1161,6 +1328,146 @@ section.s.cream .kicker{color:var(--gold)}
 .private-chip .d{width:4px;height:4px;border-radius:50%;background:var(--gold);}
 .private-bridge-cta{display:flex;gap:12px;flex-wrap:wrap}
 
+/* ─── SECTION 8 v2 · PRIVATE VAULT (closed level) ───────── */
+.private-vault{
+  position:relative;
+  padding:120px 32px 130px;
+  overflow:hidden;
+  background:#06080f;
+  border-top:1px solid rgba(160,129,86,.22);
+  border-bottom:1px solid rgba(160,129,86,.22);
+}
+.pv-bg{position:absolute;inset:0;z-index:0}
+.pv-bg img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center;
+  opacity:.22;filter:saturate(.85);
+}
+.pv-bg::after{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse at 50% 0%,rgba(160,129,86,.18) 0%,transparent 55%),
+    radial-gradient(ellipse at 80% 100%,rgba(160,129,86,.08) 0%,transparent 55%),
+    linear-gradient(180deg,rgba(6,8,15,.92) 0%,rgba(6,8,15,.78) 50%,rgba(6,8,15,.95) 100%);
+  pointer-events:none;
+}
+.pv-inner{position:relative;z-index:1;text-align:center}
+.pv-flag{
+  display:inline-flex;align-items:center;gap:14px;
+  padding:10px 22px 10px 16px;
+  background:linear-gradient(135deg,rgba(160,129,86,.18) 0%,rgba(160,129,86,.06) 100%);
+  border:1px solid rgba(232,212,168,.4);
+  border-radius:999px;
+  margin-bottom:38px;
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  box-shadow:0 0 0 1px rgba(232,212,168,.12),0 12px 32px -10px rgba(160,129,86,.4);
+}
+.pv-key{
+  width:14px;height:14px;border-radius:50%;
+  background:linear-gradient(135deg,var(--gold-warm) 0%,var(--gold) 100%);
+  box-shadow:0 0 12px rgba(232,212,168,.5);
+  flex-shrink:0;
+}
+.pv-flag-text{
+  font-size:11.5px;font-weight:700;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--gold-warm);
+}
+.pv-flag-tag{
+  font-family:'Cormorant Garamond',serif;
+  font-size:13.5px;font-style:italic;
+  color:rgba(255,255,255,.7);font-weight:300;
+  border-left:1px solid rgba(232,212,168,.32);
+  padding-left:14px;letter-spacing:.02em;
+}
+.pv-title{
+  font-size:clamp(2rem,4.6vw,3.6rem);
+  font-weight:200;letter-spacing:-.04em;
+  line-height:1.06;color:#fff;
+  margin:0 auto 28px;max-width:18ch;
+}
+.pv-title em{
+  color:var(--gold-warm);font-style:normal;font-weight:300;
+}
+.pv-title strong{color:#fff;font-weight:500}
+.pv-title .brk{display:inline-block}
+.pv-lead{
+  font-size:clamp(1rem,1.4vw,1.18rem);
+  line-height:1.6;color:rgba(255,255,255,.78);
+  font-weight:300;letter-spacing:-.005em;
+  max-width:64ch;margin:0 auto 64px;
+}
+.pv-lead strong{color:#fff;font-weight:500}
+
+.pv-pillars{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:18px;margin-bottom:64px;text-align:left;
+}
+.pv-pillar{
+  position:relative;
+  padding:36px 32px 30px;
+  background:linear-gradient(180deg,rgba(255,255,255,.04) 0%,rgba(255,255,255,.015) 100%);
+  border:1px solid rgba(232,212,168,.22);
+  border-radius:var(--radius-lg);
+  transition:border-color .25s ease,background .25s ease,transform .25s ease;
+}
+.pv-pillar:hover{
+  border-color:rgba(232,212,168,.46);
+  background:linear-gradient(180deg,rgba(160,129,86,.07) 0%,rgba(160,129,86,.02) 100%);
+  transform:translateY(-2px);
+}
+.pv-num{
+  display:inline-block;
+  font-family:'Cormorant Garamond',serif;
+  font-size:32px;font-weight:400;font-style:italic;
+  color:var(--gold-warm);
+  letter-spacing:.04em;line-height:1;
+  padding-bottom:18px;margin-bottom:18px;
+  border-bottom:1px solid rgba(232,212,168,.22);
+}
+.pv-pillar h3{
+  font-size:18px;font-weight:500;
+  color:#fff;letter-spacing:-.005em;line-height:1.32;
+  margin-bottom:14px;
+}
+.pv-pillar p{
+  font-size:14.5px;line-height:1.6;
+  color:rgba(255,255,255,.7);font-weight:300;
+  margin-bottom:18px;
+}
+.pv-pillar p em{color:#fff;font-style:italic;font-weight:400}
+.pv-meta{
+  list-style:none;padding:0;margin:0;
+  display:flex;flex-direction:column;gap:6px;
+  padding-top:14px;
+  border-top:1px solid rgba(232,212,168,.14);
+}
+.pv-meta li{
+  font-size:12px;letter-spacing:.06em;font-weight:500;
+  color:var(--gold-soft);text-transform:uppercase;
+  padding-left:14px;position:relative;
+}
+.pv-meta li::before{
+  content:'';position:absolute;left:0;top:7px;
+  width:5px;height:1px;background:var(--gold-warm);
+}
+
+.pv-close{
+  display:flex;flex-direction:column;align-items:center;
+  gap:32px;padding-top:16px;
+  border-top:1px solid rgba(232,212,168,.16);
+  padding-top:48px;
+}
+.pv-close-line{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.2rem,2vw,1.7rem);
+  font-style:italic;font-weight:300;
+  line-height:1.32;color:rgba(255,255,255,.92);
+  letter-spacing:-.01em;
+  max-width:50ch;text-align:center;
+}
+.pv-close-line strong{color:var(--gold-warm);font-style:italic;font-weight:400}
+.pv-cta{align-self:center}
+
 /* ─── SECTION 9 — Result Dashboard ─────────────────────── */
 .result-grid{
   display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:start;
@@ -1251,17 +1558,31 @@ section.s.cream .kicker{color:var(--gold)}
   position:relative;z-index:1;padding:96px 56px 80px;
   max-width:760px;margin:0 auto;
 }
-.final-cta-quote{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(1.3rem,2.3vw,1.95rem);
-  font-style:italic;font-weight:300;
-  line-height:1.3;color:rgba(255,255,255,.94);
-  letter-spacing:-.015em;
-  max-width:560px;margin:0 auto 32px;
-  padding-bottom:30px;
-  border-bottom:1px solid rgba(232,212,168,.28);
+.final-cta-crown{
+  font-size:clamp(1.15rem,1.85vw,1.55rem);
+  font-weight:300;line-height:1.4;
+  color:#fff;letter-spacing:-.015em;
+  max-width:680px;margin:0 auto 38px;
+  padding:26px 32px;
+  background:linear-gradient(135deg,rgba(232,212,168,.16) 0%,rgba(232,212,168,.04) 100%);
+  border:1px solid rgba(232,212,168,.42);
+  border-radius:var(--radius-lg);
+  box-shadow:0 0 0 1px rgba(232,212,168,.1) inset,0 12px 32px -8px rgba(160,129,86,.32);
 }
-.final-cta-quote em{color:var(--gold-warm);font-style:italic;font-weight:400}
+.final-cta-crown em{
+  font-family:'Cormorant Garamond',serif;
+  color:var(--gold-warm);font-style:italic;font-weight:300;
+}
+.final-cta-crown strong{color:var(--gold-warm);font-weight:500}
+.final-cta-quote-soft{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.05rem,1.6vw,1.4rem);
+  font-style:italic;font-weight:300;
+  line-height:1.32;color:rgba(255,255,255,.78);
+  letter-spacing:-.015em;
+  margin:0 auto 28px;
+}
+.final-cta-quote-soft em{color:var(--gold-warm);font-style:italic;font-weight:400}
 .final-cta h2{
   color:#fff;font-size:clamp(1.9rem,3.6vw,3rem);
   margin-bottom:30px;font-weight:200;letter-spacing:-.035em;
@@ -1347,6 +1668,13 @@ footer.f{
   .hero-copy{max-width:580px}
   .assembly-grid{grid-template-columns:repeat(2,1fr)}
   .assembly-compare{grid-template-columns:1fr;gap:20px}
+  .dream-reality{grid-template-columns:1fr;gap:16px}
+  .dr-divider{min-height:48px}
+  .dr-divider::before,.dr-divider::after{width:0;height:0;display:none}
+  .route-flow{gap:4px;padding:32px 18px}
+  .rf-node{min-width:100px;padding:0 6px}
+  .rf-arrow{width:18px}
+  .rf-label{font-size:11.5px;letter-spacing:.04em}
   .assembly-arrow{flex-direction:row;min-height:64px}
   .assembly-arrow .aa-line{width:auto;height:1px;flex:1;background:linear-gradient(90deg,transparent 0%,rgba(160,129,86,.5) 50%,transparent 100%)}
   .assembly-arrow .aa-circle{transform:rotate(90deg)}
@@ -1357,6 +1685,7 @@ footer.f{
   .private-bridge{grid-template-columns:1fr;min-height:auto}
   .private-bridge-img{aspect-ratio:16/9}
   .private-bridge-text{padding:48px 40px}
+  .pv-pillars{grid-template-columns:1fr;gap:16px}
   .scenarios{grid-template-columns:1fr 1fr}
   .route-grid{grid-template-columns:1fr 1fr}
   .roles-grid{grid-template-columns:1fr 1fr}
@@ -1399,6 +1728,10 @@ footer.f{
   .old-routes-banner{aspect-ratio:4/3;max-height:none}
   .old-routes-banner-text{left:24px;right:24px;bottom:22px;max-width:none}
   .private-bridge-text{padding:36px 28px}
+  .private-vault{padding:88px 22px 96px}
+  .pv-flag{flex-wrap:wrap;justify-content:center;text-align:center;padding:10px 18px}
+  .pv-flag-tag{border-left:none;padding-left:0;width:100%}
+  .pv-pillar{padding:30px 26px 26px}
   .final-cta-inner{padding:64px 28px 56px}
   .structure-key{padding:32px 28px}
   .structure-key-quote{padding-bottom:22px;margin-bottom:22px}
@@ -1417,6 +1750,16 @@ footer.f{
   .manifesto-line:hover{padding-left:22px}
   .assembly-grid{grid-template-columns:1fr}
   .assembly-fragments,.assembly-unified{padding:28px 24px}
+  .dr-col{padding:28px 24px}
+  .translator-banner{padding:96px 22px;min-height:auto}
+  .tb-line{font-size:clamp(1.6rem,5vw,2.4rem)}
+  .route-flow{flex-direction:column;align-items:stretch}
+  .route-flow .rf-node{flex-direction:row;justify-content:flex-start;gap:14px;text-align:left;padding:8px 6px;min-width:0}
+  .route-flow .rf-circle{flex-shrink:0}
+  .route-flow .rf-label{flex:1}
+  .route-flow .rf-sub{display:none}
+  .route-flow .rf-arrow{transform:rotate(90deg);width:auto;height:18px}
+  .rf-orbit{margin-top:16px}
 }
 
 /* ─── Reduced motion ───────────────────────────────────── */
@@ -1819,6 +2162,14 @@ footer.f{
       </div>
     </div>
 
+    <div class="tn-empathy">
+      <p>
+        <span class="dot" aria-hidden="true"></span>
+        Вы&nbsp;не&nbsp;стали хуже как клиент.
+        <em>Просто система стала <strong>читать Вас иначе</strong>.</em>
+      </p>
+    </div>
+
     <div class="tn-close">
       Проблема не&nbsp;в&nbsp;том, что мир закрылся.<br/>
       <strong>Проблема в&nbsp;том, что старые маршруты перестали работать.</strong>
@@ -1843,13 +2194,59 @@ footer.f{
         <span class="kicker">Архитектура</span>
         <h3>Несколько линий — <strong>один путь</strong>.<br/>Личная история, семья, бизнес и&nbsp;капитал — в&nbsp;одной логике.</h3>
       </figcaption>
-      <div class="route-hero-pills" aria-hidden="true">
-        <span class="route-hero-pill"><span class="d"></span>Человек</span>
-        <span class="route-hero-pill"><span class="d"></span>Семья</span>
-        <span class="route-hero-pill"><span class="d"></span>Бизнес</span>
-        <span class="route-hero-pill"><span class="d"></span>Капитал</span>
-      </div>
     </figure>
+
+    <!-- Route flow: 6 pillars in one direction -->
+    <div class="route-flow-wrap">
+      <span class="rf-caption">Шесть пилларов · один направленный маршрут</span>
+      <div class="route-flow" role="list">
+        <div class="rf-node" role="listitem">
+          <span class="rf-circle" aria-hidden="true">i</span>
+          <span class="rf-label">Человек</span>
+          <span class="rf-sub">Резидентность · ВНЖ</span>
+        </div>
+        <span class="rf-arrow" aria-hidden="true">→</span>
+        <div class="rf-node" role="listitem">
+          <span class="rf-circle" aria-hidden="true">ii</span>
+          <span class="rf-label">Семья</span>
+          <span class="rf-sub">Школа · документы</span>
+        </div>
+        <span class="rf-arrow" aria-hidden="true">→</span>
+        <div class="rf-node" role="listitem">
+          <span class="rf-circle" aria-hidden="true">iii</span>
+          <span class="rf-label">Капитал</span>
+          <span class="rf-sub">Source of Funds</span>
+        </div>
+        <span class="rf-arrow" aria-hidden="true">→</span>
+        <div class="rf-node" role="listitem">
+          <span class="rf-circle" aria-hidden="true">iv</span>
+          <span class="rf-label">Бизнес</span>
+          <span class="rf-sub">Холдинг · второй контур</span>
+        </div>
+        <span class="rf-arrow" aria-hidden="true">→</span>
+        <div class="rf-node" role="listitem">
+          <span class="rf-circle" aria-hidden="true">v</span>
+          <span class="rf-label">Банк</span>
+          <span class="rf-sub">Подача · KYC · AML</span>
+        </div>
+        <span class="rf-arrow" aria-hidden="true">→</span>
+        <div class="rf-node rf-final" role="listitem">
+          <span class="rf-circle" aria-hidden="true">∞</span>
+          <span class="rf-label">Новый контур</span>
+          <span class="rf-sub">Управляемая жизнь</span>
+        </div>
+      </div>
+      <ul class="rf-orbit" aria-hidden="true">
+        <li>школа</li>
+        <li>off-ramp</li>
+        <li>документы</li>
+        <li>real assets</li>
+        <li>private banking</li>
+        <li>налоговая логика</li>
+        <li>EMI</li>
+        <li>substance</li>
+      </ul>
+    </div>
 
     <div class="route-grid">
       <div class="route-cell">
@@ -1974,10 +2371,27 @@ footer.f{
       <p class="structure-key-quote">
         Свободный мир открыт <em>для&nbsp;тех</em>, кто может объяснить свой капитал.
       </p>
-      <p class="structure-key-line">
-        Мы переводим Вашу <strong>реальную жизнь</strong> на&nbsp;язык, который понимает международная финансовая система.
-      </p>
     </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────────────────────
+     TRANSLATOR BANNER · positioning crown
+     ───────────────────────────────────────────────────────── -->
+<section class="translator-banner" aria-label="Charter Capital · Translation Layer">
+  <div class="tb-bg" aria-hidden="true">
+    <img src="assets/freedom-route/bank-questions.webp" loading="lazy" alt=""/>
+  </div>
+  <div class="tb-content">
+    <span class="tb-mark">Charter&nbsp;Capital · Translation&nbsp;Layer</span>
+    <h2 class="tb-line">
+      Мы&nbsp;переводим Вашу <em>реальную жизнь</em><br/>
+      на&nbsp;язык, который понимает <strong>международная финансовая система</strong>.
+    </h2>
+    <p class="tb-sub">
+      Не&nbsp;юристы, не&nbsp;релокаторы, не&nbsp;обменник.<br/>
+      Архитекторы маршрута между Вашей биографией и&nbsp;миром, где капитал нужно объяснять.
+    </p>
   </div>
 </section>
 
@@ -2099,33 +2513,69 @@ footer.f{
 </section>
 
 <!-- ─────────────────────────────────────────────────────────
-     SECTION 8 · PRIVATE OFFICE BRIDGE
+     SECTION 8 · PRIVATE OFFICE — closed level
      ───────────────────────────────────────────────────────── -->
-<section class="s tight" id="private">
-  <div class="container">
-    <div class="private-bridge">
-      <div class="private-bridge-img" aria-hidden="true">
-        <img src="assets/freedom-route/private-capital-architecture.webp" loading="lazy" alt="Private Office для капитала от одного миллиона долларов"/>
-      </div>
-      <div class="private-bridge-text">
-        <span class="private-flag"><span class="d"></span>Private Office · Capital&nbsp;$1M+</span>
-        <h3>Если капитал от&nbsp;$1M — нужен не&nbsp;маршрут, а&nbsp;<strong>архитектура</strong>.</h3>
-        <p>Крупный капитал нельзя просто «перевести». Его нужно подготовить.</p>
-        <p>Для&nbsp;капитала от&nbsp;$1M мы&nbsp;собираем private-контур — не&nbsp;набор услуг, а&nbsp;связную работу:</p>
-        <div class="private-chips">
-          <span class="private-chip"><span class="d"></span>Capital&nbsp;Biography</span>
-          <span class="private-chip"><span class="d"></span>Source&nbsp;of&nbsp;Wealth</span>
-          <span class="private-chip"><span class="d"></span>Bank-ready&nbsp;file</span>
-          <span class="private-chip"><span class="d"></span>Real&nbsp;Assets · Private&nbsp;Banking</span>
-        </div>
-        <p style="font-size:15px;color:#fff;margin-bottom:28px;font-weight:300;line-height:1.5">
-          Ваш капитал должен не&nbsp;просто переместиться.<br/>
-          Он&nbsp;должен <strong style="color:var(--gold-warm)">стать понятным свободному миру</strong>.
-        </p>
-        <div class="private-bridge-cta">
-          <a href="private.html" class="btn btn-gold btn-lg">Перейти в&nbsp;Private Office <span class="arr">→</span></a>
-        </div>
-      </div>
+<section class="s private-vault" id="private">
+  <div class="pv-bg" aria-hidden="true">
+    <img src="assets/freedom-route/private-capital-architecture.webp" loading="lazy" alt=""/>
+  </div>
+
+  <div class="container container-narrow pv-inner">
+
+    <div class="pv-flag">
+      <span class="pv-key" aria-hidden="true"></span>
+      <span class="pv-flag-text">Private Office · Capital&nbsp;$1M+</span>
+      <span class="pv-flag-tag">Закрытый уровень</span>
+    </div>
+
+    <h2 class="pv-title">
+      Если капитал от&nbsp;<em>$1M</em> — нужен <span class="brk">не&nbsp;маршрут</span>,<br/>
+      а&nbsp;<strong>архитектура</strong>.
+    </h2>
+
+    <p class="pv-lead">
+      Крупный капитал нельзя просто «перевести». <strong>Его нужно подготовить.</strong> Иначе банк будет видеть не&nbsp;инвестора, а&nbsp;человека с&nbsp;деньгами без объяснения.
+    </p>
+
+    <div class="pv-pillars">
+      <article class="pv-pillar">
+        <span class="pv-num">I</span>
+        <h3>Капитал должен иметь биографию</h3>
+        <p>Происхождение, рост, структура владения, налоговая логика — собранные в&nbsp;один связный документ под целевой банк.</p>
+        <ul class="pv-meta">
+          <li>Source of Wealth</li>
+          <li>Capital Biography</li>
+          <li>Bank-ready file</li>
+        </ul>
+      </article>
+      <article class="pv-pillar">
+        <span class="pv-num">II</span>
+        <h3>Банк должен понять происхождение и&nbsp;цель</h3>
+        <p>Не&nbsp;«хороший&nbsp;ли Вы человек», а&nbsp;<em>как</em> Ваш капитал был заработан, <em>зачем</em> он&nbsp;здесь и&nbsp;<em>что</em> с&nbsp;ним будет дальше.</p>
+        <ul class="pv-meta">
+          <li>Compliance narrative</li>
+          <li>Private banking entry</li>
+          <li>Investment thesis</li>
+        </ul>
+      </article>
+      <article class="pv-pillar">
+        <span class="pv-num">III</span>
+        <h3>Семья, активы и&nbsp;структура — в&nbsp;одной работе</h3>
+        <p>Резидентность, наследование, holding, real assets, ликвидность. Единая архитектура вместо «договорился с&nbsp;юристом, потом с&nbsp;банком».</p>
+        <ul class="pv-meta">
+          <li>Family governance</li>
+          <li>Real assets · funds</li>
+          <li>Holding · substance</li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="pv-close">
+      <p class="pv-close-line">
+        Ваш капитал должен не&nbsp;просто переместиться. <br/>
+        Он&nbsp;должен <strong>стать понятным свободному миру</strong>.
+      </p>
+      <a href="private.html" class="btn btn-gold btn-lg pv-cta">Перейти в&nbsp;Private&nbsp;Office <span class="arr">→</span></a>
     </div>
   </div>
 </section>
@@ -2210,11 +2660,17 @@ footer.f{
         <img src="assets/freedom-route/final-route-light.webp" loading="lazy" alt="Первый шаг к свободному международному маршруту"/>
       </div>
       <div class="final-cta-inner">
-        <p class="final-cta-quote">
-          Сначала маршрут. Потом действие. <em>Не&nbsp;наоборот.</em>
+        <p class="final-cta-crown">
+          Вы&nbsp;приходите <em>не&nbsp;за&nbsp;счётом</em>, компанией или ВНЖ.<br/>
+          Вы&nbsp;приходите за&nbsp;<strong>маршрутом</strong>, где Ваша семья, капитал и&nbsp;бизнес <strong>снова становятся управляемыми</strong>.
         </p>
+
         <span class="kicker bright">Первый шаг</span>
         <h2>Первый шаг — <strong>понять маршрут</strong>.</h2>
+
+        <p class="final-cta-quote-soft">
+          Сначала маршрут. Потом действие. <em>Не&nbsp;наоборот.</em>
+        </p>
 
         <div class="final-cta-list">
           <div class="final-cta-list-line">Не&nbsp;надо сразу открывать компанию.</div>
@@ -2334,7 +2790,7 @@ document.addEventListener('click',function(e){
 // Subtle reveal on scroll
 (function(){
   if(!('IntersectionObserver' in window)) return;
-  var els=document.querySelectorAll('.manifesto-line,.scenario,.route-cell,.tn-col,.escape-row,.glimpse,.role-cell,.result-row,.bank-chip,.private-chip,.pull-quote-text');
+  var els=document.querySelectorAll('.manifesto-line,.dr-list li,.ah-card,.scenario,.route-cell,.tn-col,.escape-row,.glimpse,.role-cell,.result-row,.bank-chip,.private-chip,.pull-quote-text,.assembly-anchor');
   els.forEach(function(el){
     el.style.opacity='0';
     el.style.transform='translateY(14px)';
@@ -2354,6 +2810,8 @@ document.addEventListener('click',function(e){
     });
   },{threshold:.12,rootMargin:'0px 0px -60px 0px'});
   document.querySelectorAll('.manifesto-line').forEach(function(el,i){ el.dataset.delay=String(i*80); });
+  document.querySelectorAll('.dr-list li').forEach(function(el,i){ el.dataset.delay=String(i*70); });
+  document.querySelectorAll('.ah-card').forEach(function(el,i){ el.dataset.delay=String(i*50); });
   document.querySelectorAll('.glimpse').forEach(function(el,i){ el.dataset.delay=String(i*100); });
   document.querySelectorAll('.scenario').forEach(function(el,i){ el.dataset.delay=String(i*60); });
   document.querySelectorAll('.route-cell').forEach(function(el,i){ el.dataset.delay=String(i*40); });
