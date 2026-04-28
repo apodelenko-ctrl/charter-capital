@@ -3,1547 +3,856 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Charter Capital Private — легитимация частного капитала</title>
-<meta name="description" content="Маршрут легитимации частного капитала: SoW/SoF аудит, Object Passport и прохождение комплаенс-фильтров Tier-1 с финальной устойчивой структурой."/>
+<title>Private Office · Charter Capital — архитекторы биографии капитала</title>
+<meta name="description" content="Charter Capital · Private Office. Для капитала от $250 000 и кейсов с повышенной сложностью. Архитектура биографии капитала, Tier-1 onboarding, substance-инфраструктура, fiduciary-сопровождение."/>
 <meta property="og:type" content="website"/>
-<meta property="og:title" content="Charter Capital Private — легитимация частного капитала"/>
-<meta property="og:description" content="Пошаговая структура для частного капитала: подтвержденная история, маршрут легитимации и итоговая конфигурация Family Office."/>
-<meta property="og:url" content="https://apodelenko-ctrl.github.io/charter-capital/private.html"/>
+<meta property="og:title" content="Private Office · Charter Capital"/>
+<meta property="og:description" content="Капитал не имеет паспорта. Мы делаем так, чтобы у него был. Для частных клиентов с активами от $250 000."/>
+<meta property="og:url" content="https://ccapital.pro/private.html"/>
+<meta name="robots" content="noindex, nofollow"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
 <style>
-/* ─── DESIGN SYSTEM ─────────────────────────────────────── */
 :root{
-  --blue:       #2563eb;
-  --blue-dark:  #1d4ed8;
-  --blue-light: #eff6ff;
-  --blue-mid:   #dbeafe;
-  --slate:      #475569;
-  --slate-dark: #1e293b;
-  --slate-mid:  #64748b;
-  --slate-light:#94a3b8;
-  --slate-bg:   #f8fafc;
-  --border:     #e2e8f0;
-  --border-dark:#cbd5e1;
-  --white:      #ffffff;
-  --warn-red:   #dc2626;
-  --warn-amber: #d97706;
-  --success:    #059669;
-  --text-main:  #0f172a;
-  --text-body:  #334155;
-  --text-muted: #64748b;
-  --shadow-sm:  0 1px 2px rgba(15,23,42,.04), 0 1px 3px rgba(15,23,42,.06);
-  --shadow-md:  0 4px 6px rgba(0,0,0,.05), 0 2px 4px rgba(0,0,0,.04);
-  --shadow-lg:  0 10px 15px rgba(0,0,0,.06), 0 4px 6px rgba(0,0,0,.04);
-  --radius:     8px;
-  --radius-lg:  12px;
+  --bg:#050505;
+  --ink:#0a0a0a;
+  --ink-2:#1a1a1a;
+  --paper:#fbfaf6;
+  --paper-2:#f3f0e8;
+  --line:#d1d5db;
+  --line-soft:#e5e7eb;
+  --line-dark:#1f2937;
+  --line-darker:#111827;
+  --text:#0f172a;
+  --text-soft:#374151;
+  --text-muted:#6b7280;
+  --text-on-dark:#f8fafc;
+  --text-on-dark-soft:#cbd5e1;
+  --text-on-dark-mute:#94a3b8;
+  --gold:#a08156;
+  --gold-soft:#cfc4a2;
+  --blue:#2563eb;
+  --blue-soft:#dbeafe;
+  --red:#b91c1c;
 }
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+*{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
-  font-family:'Inter',sans-serif;
-  background:#ffffff;
-  color:var(--text-main);
-  font-size:15px;
-  font-weight:300;
-  line-height:1.65;
+  font-family:'Inter',-apple-system,sans-serif;
+  background:var(--bg);
+  color:var(--text-on-dark);
+  font-size:16px;line-height:1.6;font-weight:400;
   -webkit-font-smoothing:antialiased;
-  opacity:0;
-  transition:opacity .4s ease;
+  opacity:0;transition:opacity .35s ease;
 }
 body.page-ready{opacity:1}
-.page{background:#fff}
-/* scrollbar */
-::-webkit-scrollbar{width:5px}
-::-webkit-scrollbar-track{background:#f1f5f9}
-::-webkit-scrollbar-thumb{background:var(--slate-light);border-radius:3px}
+::selection{background:#1e3a8a;color:#fff}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:#0a0a0a}
+::-webkit-scrollbar-thumb{background:#374151;border-radius:3px}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit}
 
-/* ─── UTILITY ────────────────────────────────────────────── */
-.hidden{display:none!important}
-.page{display:none}
-.page.active{display:block}
-.container{max-width:1240px;margin:0 auto;padding:0 36px}
-.container-sm{max-width:860px;margin:0 auto;padding:0 32px}
-.label{
-  display:inline-block;
-  font-size:11px;font-weight:600;
-  letter-spacing:.08em;text-transform:uppercase;
-  color:var(--blue);
-  margin-bottom:12px;
-}
-.label-warn{color:var(--warn-red)}
-.label-slate{color:var(--slate-mid)}
-h1,h2,h3,h4{font-weight:300;color:var(--text-main);letter-spacing:-.05em;line-height:1.04}
-p{color:var(--text-body);font-weight:400;line-height:1.75}
-.section{padding:160px 0}
-.section-sm{padding:120px 0}
-hr.rule{border:none;border-top:1px solid var(--border);margin:0}
-.tag{
-  display:inline-flex;align-items:center;gap:6px;
-  font-size:12px;font-weight:500;
-  padding:4px 10px;border-radius:20px;
-  background:var(--blue-light);color:var(--blue);
-}
-.tag-red{background:#fef2f2;color:var(--warn-red)}
-.tag-amber{background:#fffbeb;color:var(--warn-amber)}
-.tag-green{background:#ecfdf5;color:var(--success)}
-.tag-slate{background:var(--slate-bg);color:var(--slate)}
-.badge-dot{width:6px;height:6px;border-radius:50%;background:currentColor;display:inline-block}
-.btn{
-  display:inline-flex;align-items:center;gap:8px;
-  font-family:'Inter',sans-serif;font-size:14px;font-weight:500;
-  padding:10px 22px;border-radius:var(--radius);
-  cursor:pointer;text-decoration:none;border:none;
-  transition:all .2s ease;white-space:nowrap;
-}
-.btn-primary{background:var(--blue);color:#fff}
-.btn-primary:hover{background:var(--blue-dark);transform:translateY(-1px);box-shadow:0 4px 12px rgba(37,99,235,.3)}
-.btn-secondary{background:var(--white);color:var(--slate);border:1px solid var(--border)}
-.btn-secondary:hover{background:var(--slate-bg);border-color:var(--border-dark)}
-.btn-ghost{background:transparent;color:var(--blue);padding:8px 0}
-.btn-ghost:hover{color:var(--blue-dark)}
-.btn-lg{padding:14px 32px;font-size:15px;border-radius:var(--radius-lg)}
-.btn-danger{background:#dc2626;color:#fff}
-.btn-danger:hover{background:#b91c1c}
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.card{
-  background:var(--white);border:1px solid #f1f5f9;
-  border-radius:var(--radius-lg);padding:36px;
-  box-shadow:0 1px 2px rgba(15,23,42,.03);
-}
-.card:hover{box-shadow:0 12px 34px rgba(15,23,42,.06);border-color:#e2e8f0}
-.card-blue{background:var(--blue);color:#fff;border:none}
-.card-blue p,.card-blue h3,.card-blue h4{color:#fff}
-.card-slate{background:var(--slate-dark);color:#fff;border:none}
-.card-light{background:var(--blue-light);border:1px solid var(--blue-mid)}
-
-/* ─── GLOBAL TOP BAR ────────────────────────────────────── */
+/* ─── TOPBAR ────────────────────────────────────────────── */
 #topbar{
   position:fixed;top:0;left:0;right:0;z-index:1000;
-  background:transparent;
-  backdrop-filter:blur(6px);
-  border-bottom:1px solid rgba(255,255,255,.14);
-}
-#topbar.topbar-solid{
-  background:rgba(255,255,255,.96);
-  border-bottom:1px solid #e2e8f0;
-}
-#topbar.topbar-solid .topbar-brand,
-#topbar.topbar-solid .topbar-nav-btn,
-#topbar.topbar-solid .topbar-why{color:#0f172a}
-#topbar.topbar-solid .topbar-nav-btn.active{
-  color:#0f172a;
-  text-decoration-color:#0f172a;
-}
-#topbar.topbar-solid .topbar-private-access{
-  color:#0f172a;
-  border-color:#e2e8f0;
-}
-#topbar.topbar-solid .topbar-private-access:hover{
-  background:#f8fafc;
-  border-color:#cbd5e1;
+  height:64px;background:rgba(5,5,5,.92);
+  border-bottom:1px solid var(--line-dark);
+  backdrop-filter:saturate(180%) blur(14px);
+  -webkit-backdrop-filter:saturate(180%) blur(14px);
 }
 .topbar-inner{
-  max-width:1320px;margin:0 auto;padding:0 32px;
-  min-height:72px;display:grid;align-items:center;
-  grid-template-columns:1fr auto 1fr;
-  gap:18px;
+  max-width:1320px;height:100%;margin:0 auto;padding:0 32px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
 }
-.topbar-left{display:flex;align-items:center;gap:16px;min-width:0}
-.topbar-right{display:flex;align-items:center;justify-content:flex-end;gap:12px}
-.topbar-why{
-  font-family:'Inter',sans-serif;
-  font-size:11px;font-weight:500;
+.topbar-left{display:flex;align-items:baseline;gap:14px;min-width:0}
+.topbar-brand{
+  font-size:13px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+  color:#fff;
+}
+.topbar-tag{
+  font-size:11px;font-weight:300;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--gold);
+  border-left:1px solid #2a2a2a;padding-left:14px;
+}
+.topbar-right{display:flex;align-items:center;gap:10px}
+.topbar-link{
+  font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--text-on-dark-mute);
+  padding:8px 14px;border-radius:6px;
+  transition:color .15s ease,background .15s ease;
+}
+.topbar-link:hover{color:#fff;background:rgba(255,255,255,.06)}
+.topbar-cta{
+  font-family:inherit;font-size:11px;font-weight:600;
   letter-spacing:.14em;text-transform:uppercase;
-  color:rgba(255,255,255,.85);text-decoration:none;
-  padding:6px 4px;
-  transition:color .15s ease,opacity .15s ease;
+  background:transparent;color:#fff;cursor:pointer;
+  border:1px solid rgba(255,255,255,.4);
+  padding:9px 16px;border-radius:6px;
+  transition:all .15s ease;
 }
-.topbar-why:hover{color:#fff;opacity:1}
-.topbar-private-access{
-  font-family:'Inter',sans-serif;
-  font-size:11px;font-weight:500;
-  letter-spacing:.2em;text-transform:uppercase;
-  background:transparent;
-  color:#fff;
-  border:1px solid rgba(255,255,255,.55);
-  padding:10px 18px;border-radius:4px;
-  cursor:pointer;
-  transition:background .15s ease,border-color .15s ease,color .15s ease;
-}
-.topbar-private-access:hover{border-color:#fff;background:rgba(255,255,255,.08)}
-.topbar-gamma-link{
-  font-family:'Inter',sans-serif;
-  font-size:10px;font-weight:500;
-  letter-spacing:.18em;text-transform:uppercase;
-  color:rgba(255,255,255,.78);
-  text-decoration:none;padding:8px 0;margin-right:14px;border-bottom:1px solid transparent;
-}
-.topbar-gamma-link:hover{color:#fff;border-bottom-color:rgba(255,255,255,.35)}
-#topbar.topbar-solid .topbar-gamma-link{color:#64748b}
-#topbar.topbar-solid .topbar-gamma-link:hover{color:#0f172a;border-bottom-color:#cbd5e1}
-/* Login modal */
-#loginModal{
-  position:fixed;inset:0;z-index:2000;
-  display:flex;align-items:center;justify-content:center;
-  padding:24px;
-  background:rgba(0,0,0,.62);
-  backdrop-filter:blur(14px);
-  -webkit-backdrop-filter:blur(14px);
-  opacity:0;visibility:hidden;
-  transition:opacity .3s ease,visibility .3s ease;
-}
-#loginModal.is-open{opacity:1;visibility:visible}
-#loginModal .login-modal-card{
-  position:relative;
-  width:100%;max-width:400px;
-  background:rgba(2,6,23,.82);border:1px solid rgba(255,255,255,.18);border-radius:var(--radius-lg);
-  padding:36px 32px 32px;
-  box-shadow:0 25px 50px -12px rgba(0,0,0,.55);
-  transform:translateY(12px) scale(.98);
-  transition:transform .35s cubic-bezier(.22,1,.36,1);
-}
-#loginModal.is-open .login-modal-card{transform:translateY(0) scale(1)}
-.login-modal-close{
-  position:absolute;top:12px;right:12px;
-  width:36px;height:36px;border:none;background:transparent;
-  cursor:pointer;color:#94a3b8;font-size:22px;line-height:1;border-radius:8px;
-}
-.login-modal-close:hover{background:rgba(255,255,255,.12);color:#fff}
-.login-modal-title{
-  font-size:1.125rem;font-weight:500;color:#fff;
-  margin-bottom:8px;letter-spacing:-.02em;
-}
-.login-modal-sub{font-size:13px;color:rgba(255,255,255,.72);margin-bottom:28px;line-height:1.5}
-.login-field{margin-bottom:18px}
-.login-field label{
-  display:block;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
-  color:rgba(255,255,255,.78);margin-bottom:8px;
-}
-.login-field input{
-  width:100%;padding:10px 0 12px;border:none;border-bottom:1px solid rgba(255,255,255,.34);border-radius:0;
-  background:transparent;color:#fff;
-  font-family:'Inter',sans-serif;font-size:14px;outline:none;
-  transition:border-color .15s ease;
-}
-.login-field input:focus{border-bottom-color:#fff}
-.login-modal-authorize{
-  width:100%;margin-top:8px;padding:14px 20px;
-  font-family:'Inter',sans-serif;font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;
-  background:#000;color:#fff;border:none;border-radius:var(--radius);cursor:pointer;
-  transition:background .15s ease,transform .15s ease;
-}
-.login-modal-authorize:hover{background:#111827}
-.login-modal-authorize:active{transform:scale(.99)}
-.topbar-logo{
-  display:flex;align-items:center;gap:10px;cursor:pointer;
-  text-decoration:none;
-}
-.topbar-logo-mark{display:none}
-.topbar-brand{font-size:13px;font-weight:500;color:#fff;letter-spacing:.14em;text-transform:uppercase}
-.topbar-brand span{color:#fff}
-.topbar-nav{display:flex;align-items:center;gap:2px;justify-content:center}
-.topbar-nav-btn{
-  font-size:12px;font-weight:300;color:rgba(255,255,255,.88);
-  padding:6px 14px;border-radius:0;
-  cursor:pointer;background:transparent;border:none;
-  font-family:'Inter',sans-serif;
-  letter-spacing:.02em;
-  transition:opacity .15s ease,color .15s ease;
-}
-.topbar-nav-btn:hover{color:#fff;opacity:.96;background:transparent}
-.topbar-nav-btn.active{color:#fff;text-decoration:underline;text-underline-offset:6px}
-.topbar-nav-btn.active{font-weight:400}
-.topbar-phase{display:none}
-.phase-pill{
-  font-size:11px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;
-  padding:6px 14px;border-radius:999px;
-  background:transparent;color:#94a3b8;
-  border:1px solid var(--border);
-  cursor:pointer;transition:all .15s ease;
-}
-.phase-pill:hover{color:#64748b;border-color:#e2e8f0;background:#f8fafc}
-.phase-pill.active{
-  background:#fff;color:#2563eb;border-color:#e2e8f0;
-  box-shadow:0 1px 2px rgba(15,23,42,.05),0 1px 3px rgba(15,23,42,.06);
-}
-.topbar-sep{width:1px;height:24px;background:var(--border);margin:0 8px}
+.topbar-cta:hover{border-color:#fff;background:rgba(255,255,255,.06)}
 
-/* PAGE OFFSET */
-main{padding-top:0}
+main{padding-top:64px;background:#0a0a0a}
 
-/* ─── PAGE 0: SELECTOR ──────────────────────────────────── */
-.selector-hero{
-  background:#fff;
-  display:flex;flex-direction:column;
-  width:100%;
-}
-.selector-hero-screen{
-  min-height:100vh;
-  background-image:linear-gradient(to bottom, rgba(0,0,0,.62), rgba(0,0,0,.72)), url('assets/logic/13-building-corner.png');
-  background-size:cover;
-  background-position:center;
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  padding:140px 32px;
+/* ─── DECK ──────────────────────────────────────────────── */
+.deck{
+  max-width:1280px;margin:0 auto;
+  background:var(--paper);color:var(--ink);
   position:relative;
-  overflow:hidden;
 }
-.selector-hero-screen::before{
-  content:'';position:absolute;top:-200px;right:-200px;
-  width:600px;height:600px;border-radius:50%;
-  background:radial-gradient(circle,rgba(37,99,235,.06) 0%,transparent 70%);
-  pointer-events:none;
+.deck + .deck{margin-top:0}
+.deck.dark{background:#020202;color:#fff}
+.deck.dark h1,.deck.dark h2,.deck.dark h3,.deck.dark h4{color:#fff}
+.deck.dark p{color:var(--text-on-dark-soft)}
+.deck.cream{background:var(--paper-2)}
+.blk{padding:88px 72px}
+@media(max-width:880px){.blk{padding:56px 28px}}
+
+.kicker{
+  display:inline-block;
+  font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:18px;
 }
-.selector-hero-screen::after{
-  content:'';position:absolute;bottom:-150px;left:-150px;
-  width:500px;height:500px;border-radius:50%;
-  background:radial-gradient(circle,rgba(37,99,235,.04) 0%,transparent 70%);
-  pointer-events:none;
+.kicker.muted{color:var(--text-muted)}
+.kicker.red{color:var(--red)}
+.deck.dark .kicker{color:var(--gold-soft)}
+.deck.dark .kicker.muted{color:var(--text-on-dark-mute)}
+
+h1,h2,h3,h4{font-weight:300;letter-spacing:-.035em;line-height:1.06;color:var(--ink)}
+.title{
+  font-size:clamp(2rem,4.2vw,4rem);
+  font-weight:300;line-height:1.04;letter-spacing:-.04em;
+  margin-bottom:22px;
 }
-.selector-hero-content{
-  background:#fff;
-  color:#0f172a;
-  width:100%;
-  padding:88px 32px 112px;
+.title strong{font-weight:700}
+.lead{
+  font-size:clamp(1rem,1.32vw,1.4rem);
+  line-height:1.6;color:var(--text-soft);
+  max-width:70ch;font-weight:400;
 }
-.selector-badge{display:none}
-.selector-badge .dot{
-  width:7px;height:7px;border-radius:50%;background:var(--blue);
-  animation:pulse 2s ease infinite;
+.deck.dark .title{color:#fff}
+.deck.dark .lead{color:var(--text-on-dark-soft)}
+
+.subhead{
+  font-size:clamp(1.25rem,1.8vw,1.7rem);
+  font-weight:500;letter-spacing:-.02em;line-height:1.18;
+  margin-bottom:14px;color:var(--ink);
 }
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(.85)}}
-.selector-title{
-  font-size:clamp(2.7rem,6.4vw,6rem);
-  text-align:center;max-width:14ch;
-  margin-bottom:20px;line-height:1;
-  letter-spacing:-.055em;
-  font-weight:300;
-  color:#fff;
-  text-transform:uppercase;
-}
-.selector-sub{
-  font-size:clamp(1rem,1.7vw,1.45rem);font-weight:300;color:rgba(255,255,255,.88);
-  text-align:center;max-width:56ch;
-  margin-bottom:96px;line-height:1.62;
-}
-.selector-cards{
-  display:grid;grid-template-columns:1fr 1fr;gap:28px;
-  width:100%;max-width:1040px;margin-bottom:56px;
-  margin-left:auto;margin-right:auto;
-}
-.selector-card{
-  background:#fff;
-  border:1px solid #e2e8f0;
-  border-radius:var(--radius-lg);
-  padding:40px 36px;
-  cursor:pointer;
-  transition:border-color .2s ease, background-color .2s ease;
+.deck.dark .subhead{color:#fff}
+
+p{color:var(--text-soft);font-weight:400;line-height:1.65;font-size:16px}
+.deck.dark p{color:var(--text-on-dark-soft)}
+
+/* ─── HERO ──────────────────────────────────────────────── */
+.hero-deck{
+  background:#020202;color:#fff;
   position:relative;overflow:hidden;
 }
-.selector-card::before{
-  content:'';position:absolute;inset:0;
-  background:var(--blue);opacity:0;
-  transition:opacity .25s ease;
+.hero-img{
+  display:block;width:100%;height:min(48vw,540px);
+  object-fit:cover;object-position:center 30%;
+  filter:brightness(.55) saturate(1.05);
 }
-.selector-card:hover{border-color:#cbd5e1;background:#fff;transform:none;box-shadow:none}
-.selector-card:hover::before{opacity:.02}
-.selector-card-icon{
-  width:48px;height:48px;border-radius:10px;
-  background:var(--blue-light);
-  display:flex;align-items:center;justify-content:center;
-  margin-bottom:20px;
-  transition:background .25s ease;
+.hero-body{padding:64px 72px 72px;position:relative}
+.hero-flag{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(160,129,86,.12);border:1px solid rgba(160,129,86,.4);
+  padding:7px 16px;border-radius:999px;
+  font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--gold-soft);margin-bottom:32px;
 }
-.selector-card:hover .selector-card-icon{background:var(--blue)}
-.selector-card:hover .selector-card-icon svg{stroke:#fff}
-.selector-card-icon svg{width:22px;height:22px;stroke:var(--blue);fill:none;stroke-width:1.8;transition:stroke .25s ease}
-.selector-card-label{
-  font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--blue);margin-bottom:10px;
-}
-.selector-card h3{font-size:1.34rem;margin-bottom:14px;letter-spacing:-.03em;line-height:1.12}
-.selector-card p{font-size:14px;font-weight:400;color:var(--text-body);line-height:1.72}
-.selector-card-arrow{
-  position:absolute;bottom:28px;right:28px;
-  width:32px;height:32px;border-radius:50%;
-  background:var(--border);
-  display:flex;align-items:center;justify-content:center;
-  transition:all .25s ease;
-}
-.selector-card:hover .selector-card-arrow{background:var(--blue)}
-.selector-card-arrow svg{width:14px;height:14px;stroke:var(--slate);fill:none;stroke-width:2;transition:stroke .25s ease}
-.selector-card:hover .selector-card-arrow svg{stroke:#fff}
-.selector-warning{
-  background:rgba(255,255,255,.95);border:1px solid #f1f5f9;border-radius:var(--radius);
-  padding:18px 24px;max-width:920px;font-weight:300;
-  display:flex;align-items:flex-start;gap:12px;
-  font-size:13px;color:#334155;line-height:1.6;
-  margin:0 auto;
-}
-.selector-warning svg{width:18px;height:18px;stroke:#d97706;fill:none;stroke-width:1.8;flex-shrink:0;margin-top:1px}
-
-.hero-brand{
-  font-size:clamp(2.2rem,6.2vw,5.4rem);
-  line-height:1;
-  letter-spacing:-.05em;
-  font-weight:700;
-  color:#fff;
-  text-transform:uppercase;
-  text-align:center;
-}
-.hero-descriptor{
-  margin-top:14px;
-  font-size:clamp(1.2rem,2.6vw,2.2rem);
-  line-height:1.15;
-  letter-spacing:-.03em;
-  font-weight:300;
-  color:#fff;
-  text-align:center;
-  max-width:20ch;
-}
-.longread-section{
-  background:#fff;
-  color:#0f172a;
-  padding:112px 0;
-}
-.longread-section h2{font-size:clamp(1.9rem,3.5vw,3rem);margin-bottom:18px;color:#0f172a}
-.longread-section p{color:#475569;font-size:16px;line-height:1.75}
-.manifest-metrics{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
-  margin-top:36px;
-}
-.manifest-metric{
-  border:1px solid #e2e8f0;border-radius:10px;background:#fff;padding:20px 18px;
-}
-.manifest-metric .value{font-size:1.9rem;line-height:1;font-weight:700;color:#0f172a;letter-spacing:-.03em}
-.manifest-metric .label{font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:#64748b;margin-top:8px}
-.risk-cards{
-  margin-top:28px;
-  display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
-}
-.risk-card{border:1px solid #e2e8f0;border-radius:10px;padding:18px;background:#fff}
-.risk-card h4{font-size:14px;font-weight:600;letter-spacing:-.01em;line-height:1.2;color:#0f172a;margin-bottom:8px}
-.risk-card p{font-size:13px;line-height:1.6;color:#475569}
-.audience-tabs{
-  display:flex;justify-content:center;gap:24px;
-  margin-bottom:44px;
-}
-.audience-tab{
-  border:none;background:transparent;cursor:pointer;
-  font-family:'Inter',sans-serif;
-  font-size:12px;font-weight:300;letter-spacing:.14em;text-transform:uppercase;
-  color:#64748b;padding:0 0 8px;border-bottom:1px solid transparent;
-}
-.audience-tab.active{color:#0f172a;border-bottom-color:#0f172a}
-.audience-pane{display:none}
-.audience-pane.active{display:block}
-.solution-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:24px}
-.solution-card{
-  border:1px solid #e2e8f0;border-radius:12px;background:#fff;padding:30px;
-}
-.solution-card h3{font-size:1.35rem;line-height:1.1;letter-spacing:-.03em;color:#0f172a;margin-bottom:12px}
-.solution-list{display:flex;flex-direction:column;gap:10px;margin-top:12px}
-.solution-list li{list-style:none;color:#475569;font-size:14px;line-height:1.6}
-.solution-radar-wrap{height:320px}
-
-/* Longread visibility model */
-#page-selector{display:block!important}
-#page-p1{display:block!important}
-body[data-audience="private"] #page-p2,
-body[data-audience="private"] #page-p3{display:block!important}
-body[data-audience="private"] #page-p4{display:none!important}
-body[data-audience="trade"] #page-p2,
-body[data-audience="trade"] #page-p3{display:none!important}
-body[data-audience="trade"] #page-p4{display:block!important}
-
-/* Hide temporary duplicate longread block; use restored native sections */
-.longread-section{display:none}
-
-/* ─── PAGE 1: WARNING / PAIN ─────────────────────────────── */
-.p1-hero{
-  background:#fff;
-  padding:120px 0 88px;
-}
-.p1-alert-bar{
-  background:#fff5f5;
-  padding:10px 0;
-  margin-bottom:0;
-  border-bottom:1px solid #fee2e2;
-}
-.p1-alert-inner{
-  max-width:1200px;margin:0 auto;padding:0 32px;
-  display:flex;align-items:center;gap:10px;
-  font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
-  color:#dc2626;
-}
-.p1-alert-inner svg{width:14px;height:14px;stroke:#dc2626;fill:none;stroke-width:2}
-.p1-hero-inner{
-  max-width:1000px;
-  padding:60px 32px;
-}
-.p1-year-badge{
+.hero-flag .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2.4s ease infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero-deck .title{color:#fff;max-width:24ch}
+.hero-deck .lead{color:var(--text-on-dark-soft);max-width:62ch;margin-top:6px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:42px}
+.btn{
   display:inline-flex;align-items:center;gap:8px;
-  background:#fff5f5;border:1px solid #fecaca;
-  color:#b91c1c;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
-  padding:6px 16px;border-radius:4px;margin-bottom:28px;
+  font-family:inherit;font-size:13px;font-weight:500;
+  padding:14px 24px;border-radius:6px;
+  cursor:pointer;border:1px solid transparent;text-decoration:none;
+  transition:all .18s ease;letter-spacing:.02em;
+  white-space:nowrap;
 }
-.p1-hero h1{
-  font-size:clamp(2.4rem,6.2vw,4.8rem);
-  color:#0f172a;margin-bottom:24px;line-height:1.02;
-  max-width:750px;
+.btn .arr{transition:transform .18s ease}
+.btn:hover .arr{transform:translateX(3px)}
+.btn-gold{background:var(--gold);color:#fff;border-color:var(--gold)}
+.btn-gold:hover{background:#8e7148;border-color:#8e7148;transform:translateY(-1px)}
+.btn-outline-dark{background:transparent;color:#fff;border-color:rgba(255,255,255,.45)}
+.btn-outline-dark:hover{border-color:#fff;background:rgba(255,255,255,.06)}
+.btn-dark{background:var(--ink);color:#fff;border-color:var(--ink)}
+.btn-dark:hover{background:#000;transform:translateY(-1px)}
+.btn-outline{background:transparent;color:var(--ink);border-color:#9ca3af}
+.btn-outline:hover{border-color:var(--ink);background:rgba(0,0,0,.03)}
+.btn-lg{padding:16px 30px;font-size:14px}
+.hero-meta{
+  display:flex;flex-wrap:wrap;gap:48px;
+  margin-top:64px;padding-top:34px;
+  border-top:1px solid rgba(255,255,255,.12);max-width:780px;
 }
-.p1-hero p{color:#475569;font-size:17px;font-weight:300;max-width:640px;margin-bottom:44px;line-height:1.72}
-.p1-stat-row{
-  display:flex;gap:40px;flex-wrap:wrap;
-  padding-top:40px;border-top:1px solid #e2e8f0;
-}
-.p1-stat{display:flex;flex-direction:column;gap:4px}
-.p1-stat-num{font-size:2rem;font-weight:700;color:#0f172a;letter-spacing:-.03em}
-.p1-stat-num span{color:#dc2626}
-.p1-stat-label{font-size:12px;color:#64748b;font-weight:500;letter-spacing:.03em}
-.p1-risks{background:#fff;padding:128px 0}
-.risk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
-.risk-cell{
-  background:#fff;padding:36px 32px;
-}
-.risk-cell-num{
-  font-size:2.5rem;font-weight:700;color:var(--border-dark);
-  letter-spacing:-.04em;margin-bottom:16px;
-}
-.risk-cell h4{font-size:14px;font-weight:600;margin-bottom:10px}
-.risk-cell p{font-size:13px;font-weight:400;color:var(--text-body);line-height:1.65}
-.p1-timeline{background:#fff;padding:128px 0}
-.timeline{position:relative;padding-left:40px}
-.timeline::before{
-  content:'';position:absolute;left:14px;top:8px;bottom:8px;
-  width:1px;background:var(--border);
-}
-.timeline-item{position:relative;margin-bottom:40px}
-.timeline-item:last-child{margin-bottom:0}
-.timeline-dot{
-  position:absolute;left:-33px;top:5px;
-  width:12px;height:12px;border-radius:50%;
-  background:var(--blue);border:2px solid var(--white);
-  box-shadow:0 0 0 3px var(--blue-mid);
-}
-.timeline-dot-red{background:var(--warn-red);box-shadow:0 0 0 3px #fee2e2}
-.timeline-dot-amber{background:var(--warn-amber);box-shadow:0 0 0 3px #fef3c7}
-.timeline-date{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px}
-.timeline-title{font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:6px}
-.timeline-desc{font-size:13px;font-weight:400;color:var(--text-body);line-height:1.65}
-.p1-dubai{background:#fff;padding:72px 0;border-top:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0}
-.p1-dubai-inner{
-  display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;
-}
-.p1-dubai h2{color:#0f172a;font-size:2rem;margin-bottom:18px}
-.p1-dubai p{color:#475569;font-size:15px;line-height:1.75;margin-bottom:16px}
-.p1-exodus-list{list-style:none;display:flex;flex-direction:column;gap:10px}
-.p1-exodus-list li{
-  display:flex;align-items:center;gap:10px;
-  font-size:13px;color:#334155;
-  padding:12px 16px;
-  background:#fff;border-radius:var(--radius);
-  border:1px solid #e2e8f0;
-}
-.p1-exodus-list li svg{width:16px;height:16px;stroke:#f59e0b;fill:none;stroke-width:1.8;flex-shrink:0}
-.p1-cta{background:#fff;padding:128px 0;text-align:center;border-top:1px solid var(--border)}
-.p1-cta h2{font-size:2rem;margin-bottom:16px}
-.p1-cta p{color:var(--text-muted);max-width:520px;margin:0 auto 36px;font-size:15px}
+.hero-meta-item{display:flex;flex-direction:column;gap:4px}
+.hero-meta-item .v{font-size:1.5rem;font-weight:600;color:#fff;letter-spacing:-.02em}
+.hero-meta-item .l{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.55)}
 
-/* ─── PAGE 2: FAMILY OFFICE HUB ─────────────────────────── */
-.p2-hero{
-  background:#fff;
-  padding:120px 0 96px;
-  border-bottom:1px solid var(--border);
+/* ─── SPLIT (image + panel) ────────────────────────────── */
+.split{display:grid;grid-template-columns:46% 1fr}
+.split.reverse{grid-template-columns:1fr 46%}
+.split img{width:100%;height:100%;object-fit:cover;display:block}
+.split.reverse > img{order:2}
+.panel{padding:88px 72px}
+.panel p{font-size:clamp(1rem,1.18vw,1.22rem);line-height:1.65;margin-bottom:18px}
+.panel p:last-child{margin-bottom:0}
+
+/* ─── DARK BLOCK ────────────────────────────────────────── */
+.deck.dark .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:42px}
+.deck.dark .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:42px}
+.toxic-card{
+  background:#101010;border:1px solid #1f2937;
+  padding:26px 24px;border-radius:8px;
+  display:flex;flex-direction:column;gap:10px;
 }
-.p2-hero-inner{
-  display:grid;grid-template-columns:1.2fr 1fr;gap:64px;align-items:center;
+.toxic-card .num{font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--red)}
+.toxic-card h3{font-size:1.12rem;font-weight:500;line-height:1.2;color:#fff;letter-spacing:-.02em}
+.toxic-card p{font-size:13.5px;line-height:1.6;color:var(--text-on-dark-mute)}
+
+/* ─── STEPS / TIMELINE ──────────────────────────────────── */
+.steps{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:28px;
+  margin-top:36px;padding-top:30px;border-top:2px solid var(--ink);
 }
-.p2-hero h1{font-size:clamp(2.1rem,4.1vw,3.2rem);margin-bottom:18px;line-height:1.06}
-.p2-hero p{color:var(--text-body);font-size:16px;line-height:1.72;margin-bottom:32px}
-.p2-services-tabs{
-  display:flex;gap:6px;padding:6px;background:#fff;
-  border-radius:var(--radius-lg);margin-bottom:40px;
-  border:1px solid var(--border);width:fit-content;
+.step h4{font-size:clamp(1.2rem,1.7vw,1.55rem);margin-bottom:10px;font-weight:500}
+.step h4 .n{display:inline-block;color:var(--gold);font-weight:700;margin-right:10px;font-feature-settings:'tnum'}
+.step p{color:var(--text-soft);line-height:1.6}
+
+.timeline{
+  display:grid;grid-template-columns:1fr 84px 1fr;gap:18px;
+  margin-top:42px;align-items:start;
 }
-.p2-tab{
-  font-size:13px;font-weight:400;color:#94a3b8;
-  padding:9px 18px;border-radius:8px;cursor:pointer;
-  background:transparent;border:none;font-family:'Inter',sans-serif;
-  transition:all .15s ease;
+.timeline-center{position:relative;min-height:580px}
+.timeline-center::before{
+  content:'';position:absolute;left:50%;top:0;bottom:0;width:2px;
+  background:#cbd5e1;transform:translateX(-50%);
 }
-.p2-tab:hover{color:#64748b}
-.p2-tab.active{
-  background:#fff;color:#2563eb;font-weight:500;
-  box-shadow:0 1px 2px rgba(15,23,42,.05),0 1px 3px rgba(15,23,42,.06);
-}
-.p2-service-content{display:none}
-.p2-service-content.active{display:block}
-.p2-service-item{
-  padding:20px 0;border-bottom:1px solid var(--border);
-  display:flex;align-items:flex-start;gap:14px;
-}
-.p2-service-item:last-child{border-bottom:none}
-.p2-service-icon{
-  width:36px;height:36px;border-radius:7px;
-  background:var(--blue-light);
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;
-}
-.p2-service-icon svg{width:16px;height:16px;stroke:var(--blue);fill:none;stroke-width:1.8}
-.p2-service-name{font-size:14px;font-weight:600;margin-bottom:4px}
-.p2-service-desc{font-size:13px;font-weight:400;color:var(--text-body);line-height:1.65}
-.p2-hero-card{
-  background:#fff;border:1px solid var(--border);
-  border-radius:var(--radius-lg);padding:32px;
-  box-shadow:0 1px 2px rgba(15,23,42,.03);
-}
-.p2-stats-row{
-  display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:20px;
-}
-.p2-stat-card{
-  background:#fff;border-radius:var(--radius);
-  border:1px solid var(--border);
-  padding:16px;text-align:center;
-}
-.p2-stat-card .num{font-size:1.6rem;font-weight:700;color:var(--blue);letter-spacing:-.03em}
-.p2-stat-card .lbl{font-size:11px;color:var(--text-muted);font-weight:500;margin-top:2px}
-.p2-features{background:#fff;padding:128px 0}
-.feature-row{
-  display:grid;grid-template-columns:1fr 2fr;gap:56px;align-items:start;
-  padding:72px 0;border-bottom:1px solid var(--border);
-}
-.feature-row:last-child{border-bottom:none}
-.feature-num{
-  font-size:3rem;font-weight:700;
-  color:#cbd5e1;letter-spacing:-.04em;
-}
-.feature-title{font-size:1.5rem;margin-bottom:12px;line-height:1.12}
-.feature-desc{color:var(--text-body);font-weight:400;font-size:15px;line-height:1.74;margin-bottom:26px}
-.feature-tags{display:flex;flex-wrap:wrap;gap:8px}
-.trust-card{
-  background:var(--slate-dark);color:#fff;
-  border-radius:var(--radius-lg);padding:40px;
-}
-.trust-card h3{color:#fff;font-size:1.3rem;margin-bottom:8px}
-.trust-card p{color:#94a3b8;font-size:14px;line-height:1.75}
-.trust-items{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:rgba(255,255,255,.06);margin-top:24px;border-radius:var(--radius);overflow:hidden}
-.trust-item{
-  background:var(--slate-dark);
-  padding:20px 22px;
-  border:1px solid rgba(255,255,255,.05);
-}
-.trust-item h5{font-size:13px;font-weight:600;color:#e2e8f0;margin-bottom:6px}
-.trust-item p{font-size:12px;color:#94a3b8;line-height:1.6}
-.compliance-row{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:1px;background:var(--border);
-  margin-top:48px;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border);
-}
-.compliance-item{
-  background:var(--white);padding:24px;text-align:center;
-}
-.compliance-item .icon{
-  width:40px;height:40px;margin:0 auto 14px;
-  background:var(--blue-light);border-radius:8px;
+.tl-badge{
+  width:48px;height:48px;border-radius:10px;
+  background:var(--ink);color:#fff;
   display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:18px;
+  margin:0 auto 92px;position:relative;z-index:1;
+  border:2px solid var(--ink);
 }
-.compliance-item .icon svg{width:18px;height:18px;stroke:var(--blue);fill:none;stroke-width:1.8}
-.compliance-item h5{font-size:13px;font-weight:600;margin-bottom:6px}
-.compliance-item p{font-size:12px;color:var(--text-muted)}
+.tl-col .item{margin-bottom:48px}
+.tl-col h4{font-size:clamp(1.2rem,1.6vw,1.4rem);line-height:1.18;margin-bottom:10px;font-weight:500}
+.tl-col p{color:var(--text-soft);line-height:1.6}
 
-/* ─── PAGE 3: PRIVATE CAPITAL DASHBOARD ─────────────────── */
-.p3-header{
-  background:#fff;
-  padding:72px 0 0;
-  border-bottom:1px solid var(--border);
+/* ─── HUB ───────────────────────────────────────────────── */
+.hubs{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:36px}
+.hub{
+  background:#0e0e0e;border:1px solid #1f2937;
+  padding:28px 26px;border-radius:8px;
 }
-.p3-header-inner{margin-bottom:0}
-.p3-header h1{font-size:2.15rem;margin-bottom:8px;line-height:1.06}
-.p3-header p{color:var(--text-body);font-size:15px;font-weight:400;margin-bottom:32px}
-.p3-progress-bar{
-  display:flex;align-items:center;gap:0;
-}
-.p3-step{
-  display:flex;align-items:center;gap:10px;
-  padding:12px 20px 12px 0;
-  position:relative;cursor:pointer;
-  transition:all .15s ease;
-}
-.p3-step::after{
-  content:'→';position:absolute;right:4px;
-  color:var(--border-dark);font-size:14px;
-}
-.p3-step:last-child::after{display:none}
-.p3-step-num{
-  width:28px;height:28px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  font-size:12px;font-weight:700;flex-shrink:0;
-  background:var(--border);color:var(--text-muted);
-  transition:all .2s ease;
-}
-.p3-step.active .p3-step-num,.p3-step.done .p3-step-num{background:var(--blue);color:#fff}
-.p3-step.done .p3-step-num{background:var(--success)}
-.p3-step-label{font-size:13px;font-weight:300;color:#94a3b8}
-.p3-step.active .p3-step-label{color:#2563eb;font-weight:600}
-.p3-step.done .p3-step-label{color:var(--success);font-weight:500}
-.p3-step-border{
-  height:2px;background:var(--border);flex:1;margin:0 4px;
-}
-.p3-step-border.done{background:var(--success)}
-.p3-body{padding:64px 0 128px;background:#fff}
-/* Step panels */
-.p3-panel{display:none}
-.p3-panel.active{display:block}
-/* Input tiles */
-.input-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:32px}
-.input-tile{
-  background:#fff;border:1px solid var(--border);
-  border-radius:var(--radius-lg);padding:28px;
-  cursor:pointer;transition:all .2s ease;text-align:center;
-}
-.input-tile.selected{border-color:#2563eb;background:#eff6ff}
-.input-tile:hover:not(.selected){border-color:#e2e8f0;background:#fff}
-.input-tile-icon{
-  width:48px;height:48px;margin:0 auto 14px;
-  border-radius:10px;background:var(--slate-bg);
-  display:flex;align-items:center;justify-content:center;
-  transition:background .2s ease;
-}
-.input-tile.selected .input-tile-icon{background:var(--white)}
-.input-tile-icon svg{width:22px;height:22px;stroke:var(--slate);fill:none;stroke-width:1.8;transition:stroke .2s ease}
-.input-tile.selected .input-tile-icon svg{stroke:var(--blue)}
-.input-tile h4{font-size:14px;font-weight:600;margin-bottom:6px;transition:color .2s ease}
-.input-tile.selected h4{color:var(--blue)}
-.input-tile p{font-size:12px;color:var(--text-muted);line-height:1.55}
-.amount-input-wrap{margin-bottom:32px}
-.amount-input-wrap label{font-size:13px;font-weight:600;display:block;margin-bottom:8px}
-.amount-input-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.currency-btn{
-  font-size:13px;font-weight:500;
-  padding:8px 16px;border-radius:var(--radius);
-  border:1px solid var(--border);background:#fff;
-  cursor:pointer;color:var(--text-muted);
-  transition:all .15s ease;font-family:'Inter',sans-serif;
-}
-.currency-btn.active{background:var(--blue);color:#fff;border-color:var(--blue)}
-.amount-field{
-  flex:1;min-width:200px;
-  padding:10px 16px;border:1px solid var(--border);
-  border-radius:var(--radius);font-size:14px;font-family:'Inter',sans-serif;
-  outline:none;transition:border .15s ease;
-}
-.amount-field:focus{border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-mid)}
-.risk-matrix{
-  background:var(--slate-bg);border-radius:var(--radius-lg);
-  border:1px solid var(--border);overflow:hidden;margin-bottom:28px;
-}
-.risk-matrix-header{
-  background:#fff;border-bottom:1px solid var(--border);
-  padding:14px 20px;
-  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:16px;
-  font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
-  color:var(--text-muted);
-}
-.risk-matrix-row{
-  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:16px;
-  padding:14px 20px;background:#fff;border-bottom:1px solid var(--border);
-  align-items:center;
-}
-.risk-matrix-row:last-child{border-bottom:none}
-.risk-matrix-row:hover{background:var(--slate-bg)}
-.risk-bar-wrap{display:flex;align-items:center;gap:10px}
-.risk-bar{height:6px;border-radius:3px;flex:1;background:var(--border);overflow:hidden}
-.risk-fill{height:100%;border-radius:3px;transition:width .6s ease}
-.risk-fill-low{background:var(--success)}
-.risk-fill-med{background:var(--warn-amber)}
-.risk-fill-high{background:var(--warn-red)}
-.risk-score{font-size:12px;font-weight:600;width:24px;text-align:right}
-/* Process panel */
-.process-flow{
-  display:grid;grid-template-columns:1fr auto 1fr auto 1fr;
-  gap:0;align-items:stretch;
-  margin-bottom:40px;
-}
-.process-arrow{
-  display:flex;align-items:center;justify-content:center;
-  padding:0 12px;color:var(--slate-light);
-}
-.process-arrow svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8}
-.process-box{
-  background:#fff;border:1px solid var(--border);
-  border-radius:var(--radius-lg);padding:24px;
-}
-.process-box h4{font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin-bottom:12px;color:var(--text-muted)}
-.process-item{
-  display:flex;align-items:center;gap:8px;
-  padding:8px 10px;border-radius:6px;
-  font-size:13px;color:var(--text-body);margin-bottom:4px;
-  background:var(--slate-bg);
-  transition:all .2s ease;
-}
-.process-item.processing{background:var(--blue-light);color:var(--blue);font-weight:500}
-.process-item.done-item{background:#ecfdf5;color:var(--success);font-weight:500}
-.process-item svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0}
-.audit-progress{margin-bottom:32px}
-.audit-progress h4{font-size:13px;font-weight:600;margin-bottom:14px}
-.audit-item{
-  display:flex;align-items:center;gap:12px;
-  padding:10px 14px;border-radius:var(--radius);
-  border:1px solid var(--border);background:#fff;
-  margin-bottom:8px;font-size:13px;
-}
-.audit-status{
-  width:20px;height:20px;border-radius:50%;flex-shrink:0;
-  display:flex;align-items:center;justify-content:center;
-}
-.audit-status.done{background:var(--success)}
-.audit-status.pending{background:var(--warn-amber)}
-.audit-status.waiting{background:var(--border)}
-.audit-status svg{width:11px;height:11px;stroke:#fff;fill:none;stroke-width:2.5}
-/* Output panel */
-.output-score-card{
-  background:linear-gradient(135deg,var(--blue) 0%,#1d4ed8 100%);
-  border-radius:var(--radius-lg);padding:40px;
-  color:#fff;text-align:center;margin-bottom:32px;
-}
-.output-score-card h3{color:#fff;font-size:14px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;opacity:.8;margin-bottom:12px}
-.readiness-score{
-  font-size:5rem;font-weight:700;letter-spacing:-.04em;
-  line-height:1;margin-bottom:8px;
-}
-.readiness-score span{font-size:2rem;opacity:.7}
-.output-score-card p{color:rgba(255,255,255,.75);font-size:14px}
-.bank-tiers{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.bank-tier-card{
-  background:#fff;border:1px solid var(--border);
-  border-radius:var(--radius-lg);padding:22px;
-}
-.bank-tier-card.unlocked{border-color:#a7f3d0;background:#ecfdf5}
-.bank-tier-card.partial{border-color:#fde68a;background:#fffbeb}
-.bank-tier-card.locked{border-color:var(--border);opacity:.6}
-.bank-tier-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
-.bank-tier-header h5{font-size:13px;font-weight:600}
-.tier-badge-green{font-size:11px;font-weight:600;color:var(--success);background:#d1fae5;padding:3px 10px;border-radius:20px}
-.tier-badge-amber{font-size:11px;font-weight:600;color:var(--warn-amber);background:#fef3c7;padding:3px 10px;border-radius:20px}
-.tier-badge-gray{font-size:11px;font-weight:600;color:var(--text-muted);background:var(--border);padding:3px 10px;border-radius:20px}
-.bank-logos{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
-.bank-logo-pill{
-  font-size:11px;font-weight:600;letter-spacing:.03em;
-  padding:4px 10px;border-radius:4px;
-  background:#f8fafc;color:var(--slate);border:1px solid var(--border);
+.hub .flag{font-size:11px;font-weight:600;letter-spacing:.16em;color:var(--gold-soft);text-transform:uppercase;margin-bottom:12px}
+.hub h3{color:#fff;font-size:1.4rem;font-weight:500;margin-bottom:10px;letter-spacing:-.02em}
+.hub p{font-size:13.5px;line-height:1.6;color:var(--text-on-dark-mute)}
+.hub ul{list-style:none;margin-top:14px;display:flex;flex-direction:column;gap:7px}
+.hub ul li{font-size:13px;color:var(--text-on-dark-soft);padding-left:14px;position:relative}
+.hub ul li::before{
+  content:'';position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;background:var(--gold);
 }
 
-/* ─── PAGE 4: CORPORATE B2B ──────────────────────────────── */
-.p4-header{
-  background:#fff;border-bottom:1px solid var(--border);
-  padding:72px 0;
+/* ─── ENGAGEMENT TIERS (pricing) ───────────────────────── */
+.tiers{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px;
 }
-.p4-header h1{font-size:2.15rem;margin-bottom:8px;line-height:1.06}
-.p4-header p{color:var(--text-body);font-size:15px}
-.p4-grid{
-  display:grid;grid-template-columns:280px 1fr;gap:0;
-  min-height:calc(100vh - 200px);
+.tier{
+  background:#fff;border:1px solid var(--line);
+  border-radius:10px;padding:32px 28px;
+  display:flex;flex-direction:column;gap:14px;
+  transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;
 }
-.p4-sidebar{
-  border-right:1px solid var(--border);
-  padding:28px 0;background:#fff;
+.tier:hover{transform:translateY(-3px);border-color:#9ca3af;box-shadow:0 14px 30px rgba(0,0,0,.08)}
+.tier.featured{border:1px solid var(--gold);box-shadow:0 0 0 4px rgba(160,129,86,.12)}
+.tier-flag{
+  font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);
 }
-.p4-sidebar-title{
-  font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--text-muted);padding:0 20px 12px;
+.tier h3{font-size:1.5rem;font-weight:500;letter-spacing:-.02em;line-height:1.15}
+.tier .price{
+  font-size:2rem;font-weight:600;letter-spacing:-.03em;line-height:1;color:var(--ink);
+  font-feature-settings:'tnum';
 }
-.p4-nav-item{
-  display:flex;align-items:center;gap:10px;
-  padding:10px 20px;font-size:14px;font-weight:500;
-  color:var(--text-muted);cursor:pointer;
-  border-left:3px solid transparent;
-  transition:all .15s ease;
+.tier .price small{font-size:.7rem;font-weight:500;color:var(--text-muted);letter-spacing:0;display:block;margin-top:6px}
+.tier .term{font-size:12px;color:var(--text-muted);letter-spacing:.06em;text-transform:uppercase;font-weight:600}
+.tier ul{list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:8px;padding-top:18px;border-top:1px solid var(--line-soft)}
+.tier ul li{font-size:13.5px;color:var(--text-soft);line-height:1.55;padding-left:18px;position:relative}
+.tier ul li::before{
+  content:'';position:absolute;left:0;top:7px;width:8px;height:1px;background:var(--gold);
 }
-.p4-nav-item svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.8;flex-shrink:0}
-.p4-nav-item:hover{color:var(--text-main);background:var(--white)}
-.p4-nav-item.active{color:#2563eb;border-left-color:#2563eb;background:#fff;box-shadow:0 1px 2px rgba(15,23,42,.04)}
-.p4-content{padding:52px 48px 64px;overflow-y:auto;background:#fff}
-.p4-panel{display:none}
-.p4-panel.active{display:block}
-.p4-panel-title{font-size:1.52rem;margin-bottom:8px;line-height:1.1}
-.p4-panel-sub{font-size:15px;color:var(--text-body);margin-bottom:32px;line-height:1.7}
-/* Radar chart */
-.radar-compare{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:28px}
-.radar-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px}
-.radar-card h4{font-size:14px;font-weight:600;margin-bottom:4px}
-.radar-card .sub{font-size:12px;color:var(--text-muted);margin-bottom:16px}
-.radar-chart-wrap{height:240px;position:relative}
-/* Decoupling */
-.decoupling-diagram{
-  background:#fff;border:1px solid var(--border);
-  border-radius:var(--radius-lg);padding:32px;margin-bottom:32px;
-}
-.decoupling-title{font-size:14px;font-weight:600;margin-bottom:20px}
-.decoupling-layers{display:flex;flex-direction:column;gap:2px}
-.decoupling-layer{
-  display:grid;grid-template-columns:120px 1fr;
-  gap:0;overflow:hidden;border-radius:var(--radius);
-}
-.layer-label{
-  padding:14px 16px;font-size:12px;font-weight:700;
-  letter-spacing:.04em;text-transform:uppercase;
-  display:flex;align-items:center;
-}
-.layer-label-1{background:#bfdbfe;color:#1e3a8a}
-.layer-label-2{background:#bbf7d0;color:#14532d}
-.layer-label-3{background:#fde68a;color:#78350f}
-.layer-label-4{background:#fecaca;color:#7f1d1d}
-.layer-items{
-  display:flex;flex-wrap:wrap;gap:6px;padding:12px 14px;
-  background:#fff;align-items:center;
-}
-.layer-pill{
-  font-size:11px;font-weight:600;
-  padding:4px 10px;border-radius:4px;
-  background:var(--white);border:1px solid var(--border);
-  color:var(--slate);
-}
-/* Risk grading */
-.risk-grading-table{
-  background:var(--white);border:1px solid var(--border);
-  border-radius:var(--radius-lg);overflow:hidden;margin-bottom:28px;
-}
-.rg-header{
-  background:var(--slate-dark);
-  display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:0;
-}
-.rg-header div{
-  padding:12px 16px;font-size:11px;font-weight:700;
-  letter-spacing:.06em;text-transform:uppercase;color:#94a3b8;
-  border-right:1px solid rgba(255,255,255,.05);
-}
-.rg-row{
-  display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:0;
-  border-bottom:1px solid var(--border);
-}
-.rg-row:last-child{border-bottom:none}
-.rg-row:hover{background:var(--slate-bg)}
-.rg-cell{
-  padding:13px 16px;font-size:13px;color:var(--text-body);
-  border-right:1px solid var(--border);display:flex;align-items:center;
-}
-.rg-cell:last-child{border-right:none}
-.rg-grade{
-  display:inline-flex;align-items:center;justify-content:center;
-  width:28px;height:28px;border-radius:6px;
-  font-size:12px;font-weight:700;
-}
-.grade-a{background:#d1fae5;color:#059669}
-.grade-b{background:#dbeafe;color:#2563eb}
-.grade-c{background:#fef3c7;color:#d97706}
-.grade-d{background:#fee2e2;color:#dc2626}
-.rg-bar-cell{display:flex;align-items:center;gap:6px;padding:13px 16px}
-.rg-mini-bar{height:6px;flex:1;background:var(--border);border-radius:3px;overflow:hidden}
-.rg-mini-fill{height:100%;border-radius:3px;transition:width .8s ease}
-/* Cross-border payments */
-.payment-flow{
-  display:grid;grid-template-columns:repeat(5,1fr);gap:0;
-  background:#fff;border:1px solid var(--border);
-  border-radius:var(--radius-lg);overflow:hidden;margin-bottom:32px;
-}
-.payment-step{
-  padding:22px 16px;text-align:center;
-  border-right:1px solid var(--border);
-  position:relative;
-}
-.payment-step:last-child{border-right:none}
-.payment-step::after{
-  content:'→';
-  position:absolute;right:-8px;top:50%;transform:translateY(-50%);
-  color:var(--slate-light);font-size:16px;z-index:1;
-  background:var(--white);padding:2px 0;
-}
-.payment-step:last-child::after{display:none}
-.ps-icon{
-  width:36px;height:36px;margin:0 auto 10px;
-  background:var(--blue-light);border-radius:8px;
-  display:flex;align-items:center;justify-content:center;
-}
-.ps-icon svg{width:16px;height:16px;stroke:var(--blue);fill:none;stroke-width:1.8}
-.ps-label{font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--text-muted);margin-bottom:4px}
-.ps-name{font-size:13px;font-weight:600;color:var(--text-main);margin-bottom:6px}
-.ps-desc{font-size:11px;color:var(--text-muted);line-height:1.5}
+.tier .tier-note{font-size:12px;color:var(--text-muted);margin-top:8px;border-top:1px dashed var(--line);padding-top:14px;line-height:1.5}
 
-/* ─── RESPONSIVE ────────────────────────────────────────── */
+/* ─── BOUNDARIES ────────────────────────────────────────── */
+.bound-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:38px}
+.bound{
+  background:#fff;border:1px solid var(--line);border-radius:8px;padding:32px 28px;
+}
+.bound h3{font-size:1.18rem;font-weight:500;margin-bottom:16px;letter-spacing:-.02em}
+.bound ul{list-style:none;display:flex;flex-direction:column;gap:13px}
+.bound li{
+  display:grid;grid-template-columns:auto 1fr;gap:12px;
+  font-size:13.5px;color:var(--text-soft);line-height:1.55;
+}
+.bound li svg{width:16px;height:16px;stroke-width:2.2;fill:none;flex-shrink:0;margin-top:2px}
+.bound.no svg{stroke:var(--red)}
+.bound.yes svg{stroke:#057a55}
+.bound li strong{color:var(--ink);font-weight:600}
 
-.context-switch{display:flex;align-items:center;gap:10px;margin-left:24px}
-.context-pill{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.78);text-decoration:none;padding:6px 10px;border:1px solid rgba(255,255,255,.22)}
-.context-pill.active{color:#fff;border-color:#fff}
-.bridge-pain{background:#fff;padding:96px 32px 48px}
-.bridge-pain h2{font-size:clamp(2rem,4vw,3rem);font-weight:300;line-height:1.15;letter-spacing:-.02em;margin-bottom:16px;color:#0f172a}
-.bridge-pain p{font-size:17px;line-height:1.75;color:#475569;max-width:70ch}
-.bridge-split{background:#fff;padding:28px 32px 120px}
-.split-grid{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.split-card{border:1px solid #e2e8f0;background:#fff;padding:42px;display:flex;flex-direction:column;gap:16px;min-height:300px;transition:all .3s ease}
-.split-card:hover{box-shadow:0 18px 40px rgba(15,23,42,.12);transform:translateY(-4px)}
-.split-kicker{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#94a3b8}
-.split-title{font-size:2rem;line-height:1.1;letter-spacing:-.02em;color:#0f172a;font-weight:400}
-.split-desc{font-size:15px;color:#64748b;line-height:1.7;max-width:44ch}
-.split-cta{margin-top:auto;display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:#0f172a;border:1px solid #e2e8f0;padding:11px 14px}
-.split-cta:hover{background:#0f172a;color:#fff;border-color:#0f172a}
-.page-end-cta{background:#fff;border-top:1px solid #e2e8f0;padding:90px 32px 110px}
-.page-end-cta h3{font-size:1.9rem;font-weight:300;letter-spacing:-.02em;color:#0f172a;margin-bottom:18px}
-.page-end-cta .cta-row{display:flex;gap:12px;flex-wrap:wrap}
-.page-end-cta .btn{min-height:50px;font-weight:600}
-@media(max-width:900px){
-  .context-switch{display:none}
-  .split-grid{grid-template-columns:1fr}
-  .page-end-cta .btn{width:100%;justify-content:center}
+/* ─── DO-AFTER (before/after panels) ────────────────────── */
+.before-after{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:24px}
+.before, .after{
+  border-radius:8px;padding:24px 24px 22px;
+  background:#fff;border:1px solid var(--line);
+}
+.before{background:#fffaf2;border-color:#e9d8b8}
+.after{background:#f0f7f1;border-color:#bcd9c0}
+.before h4, .after h4{
+  font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  margin-bottom:8px;
+}
+.before h4{color:var(--red)}
+.after h4{color:#057a55}
+.before p, .after p{font-size:14px;line-height:1.55;color:var(--text-soft)}
+
+/* ─── CONTACT ───────────────────────────────────────────── */
+.deck.contact{
+  background:#020202;color:#fff;text-align:center;
+}
+.deck.contact .blk{padding:96px 32px}
+.deck.contact h2{color:#fff;font-size:clamp(2rem,3.5vw,3rem);font-weight:300;margin-bottom:18px;letter-spacing:-.03em}
+.deck.contact p{color:var(--text-on-dark-soft);max-width:60ch;margin:0 auto 36px;font-size:17px;line-height:1.62}
+.contact-channels{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-bottom:32px}
+.contact-note{font-size:12px;color:var(--text-on-dark-mute);max-width:60ch;margin:0 auto;line-height:1.6;letter-spacing:.02em}
+.contact-note strong{color:var(--text-on-dark)}
+
+/* ─── FOOTER ────────────────────────────────────────────── */
+footer.f{
+  background:#000;color:var(--text-on-dark-mute);
+  padding:48px 32px 32px;border-top:1px solid var(--line-darker);
+}
+.f-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:42px}
+.f-brand .name{font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#fff;margin-bottom:10px}
+.f-brand .tag{color:var(--gold);font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px}
+.f-brand p{font-size:12.5px;color:#94a3b8;line-height:1.6;max-width:42ch}
+.f-col h5{font-size:11px;font-weight:700;letter-spacing:.14em;color:#fff;text-transform:uppercase;margin-bottom:14px}
+.f-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.f-col li a{font-size:13px;color:#94a3b8;transition:color .15s ease}
+.f-col li a:hover{color:#fff}
+.f-bottom{
+  max-width:1280px;margin:36px auto 0;
+  padding-top:18px;border-top:1px solid #111827;
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
+  font-size:11px;color:#64748b;letter-spacing:.04em;
+}
+.f-disclaimer{
+  max-width:1280px;margin:18px auto 0;
+  background:rgba(160,129,86,.08);border:1px solid rgba(160,129,86,.18);
+  border-radius:6px;padding:14px 18px;
+  font-size:11.5px;color:#cbd5e1;line-height:1.65;
 }
 
-@media(max-width:900px){
-  .container{padding:0 20px}
-  .grid-2,.grid-3,.grid-4{grid-template-columns:1fr}
-  .p2-hero-inner,.p1-dubai-inner,.p4-grid{grid-template-columns:1fr}
-  .p4-sidebar{display:none}
-  .process-flow{grid-template-columns:1fr;gap:12px}
-  .process-arrow{display:none}
-  .payment-flow{grid-template-columns:1fr 1fr}
-  .radar-compare{grid-template-columns:1fr}
-  .p3-progress-bar{flex-wrap:wrap}
-  .selector-cards{grid-template-columns:1fr}
-  .p1-stat-row{gap:20px}
-  .risk-grid{grid-template-columns:1fr}
-  .compliance-row{grid-template-columns:1fr}
-  .input-tiles{grid-template-columns:1fr}
-  .bank-tiers{grid-template-columns:1fr}
-  .rg-header,.rg-row{grid-template-columns:2fr 1fr 1fr}
-  .rg-header div:nth-child(4),.rg-header div:nth-child(5),
-  .rg-cell:nth-child(4),.rg-cell:nth-child(5),.rg-bar-cell:nth-child(4),.rg-bar-cell:nth-child(5){display:none}
-  .topbar-inner{grid-template-columns:1fr auto;min-height:64px;padding:0 20px}
-  .topbar-left{min-width:auto}
-  .topbar-nav{display:none}
-  .topbar-why{display:none}
-  .topbar-right{width:auto;justify-content:flex-end}
-  .selector-title{font-size:clamp(2rem,9vw,3.2rem)}
-  .selector-sub{margin-bottom:48px}
-  .selector-hero-content{padding:56px 20px 72px}
-  .manifest-metrics,.risk-cards,.solution-grid{grid-template-columns:1fr}
-  .longread-section{padding:72px 0}
-  .hero-brand{font-size:clamp(2rem,11vw,3.1rem)}
-  .hero-descriptor{font-size:clamp(1rem,6vw,1.5rem)}
-  .p1-hero h1{font-size:clamp(2rem,10vw,3rem)}
-  .p2-hero h1,.p3-header h1,.p4-header h1{font-size:clamp(1.7rem,8vw,2.25rem)}
-  .feature-row{padding:44px 0}
-  .p4-content{padding:36px 20px 48px}
-  .p3-progress-bar .p3-step-border{display:none}
+/* ─── LOGIN MODAL ───────────────────────────────────────── */
+#loginModal{
+  position:fixed;inset:0;z-index:2000;
+  display:flex;align-items:center;justify-content:center;padding:24px;
+  background:rgba(0,0,0,.62);backdrop-filter:blur(14px);
+  opacity:0;visibility:hidden;transition:opacity .25s ease,visibility .25s ease;
 }
-
-
-/* --- Split pages overrides --- */
-body{font-weight:300;background:#fff}
-h1,h2,h3,h4{font-weight:300}
-#topbar{position:fixed;top:0;left:0;right:0;background:#000!important;border-bottom:1px solid #111827!important;backdrop-filter:none;z-index:1200}
-.topbar-inner{max-width:1320px;min-height:76px;display:flex;justify-content:space-between;align-items:center;gap:18px;padding:0 28px}
-.topbar-left{min-width:0}
-.topbar-brandline{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;text-decoration:none;color:#fff}
-.topbar-brandline .name{font-weight:700;letter-spacing:.01em;font-size:17px}
-.topbar-brandline .desc{font-weight:300;font-size:13px;color:rgba(255,255,255,.86);letter-spacing:.01em}
-.topbar-nav{display:flex;gap:10px;justify-content:flex-end}
-.topbar-nav-link{font-size:11px;font-weight:300;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,.88);padding-bottom:6px;border-bottom:1px solid transparent}
-.topbar-nav-link.active{color:#fff;border-bottom-color:#fff}
-.topbar-private-access{color:#fff!important;border-color:rgba(255,255,255,.45)!important}
-.topbar-private-access:hover{background:rgba(255,255,255,.12)!important;border-color:#fff!important}
-main{padding-top:76px}
-.hero-banner{min-height:calc(100vh - 76px);background-image:linear-gradient(to bottom, rgba(0,0,0,.62), rgba(0,0,0,.74)), url('assets/logic/13-building-corner.png');background-size:cover;background-position:center;display:block;padding:0}
-.hero-banner h1,.hero-banner p{display:none}
-#page-selector,.longread-section{display:none!important}
-.page{display:block!important;background:#fff}
-#page-p2,#page-p3{display:block!important}
-.p1-hero,.p1-risks,.p1-timeline,.p1-dubai,.p1-cta,.p2-hero,.p2-features,.p3-header,.p3-body,.p4-header,.p4-content{background:#fff!important}
-.card,.selector-card,.risk-card,.radar-card,.decoupling-diagram,.risk-grading-table,.payment-flow{border:1px solid #e2e8f0!important;box-shadow:none!important}
-@media(max-width:900px){
-  .topbar-inner{grid-template-columns:1fr;gap:8px;padding:10px 16px;min-height:auto}
-  .topbar-nav{justify-content:flex-start;flex-wrap:wrap}
-  .hero-banner{min-height:calc(100vh - 76px)}
+#loginModal.is-open{opacity:1;visibility:visible}
+.login-card{
+  position:relative;width:100%;max-width:400px;
+  background:rgba(2,6,23,.92);border:1px solid rgba(255,255,255,.16);
+  border-radius:12px;padding:36px 32px 32px;
+  box-shadow:0 25px 50px rgba(0,0,0,.55);
+  transform:translateY(10px) scale(.98);transition:transform .3s cubic-bezier(.22,1,.36,1);
 }
+#loginModal.is-open .login-card{transform:translateY(0) scale(1)}
+.login-close{
+  position:absolute;top:10px;right:10px;
+  width:34px;height:34px;background:transparent;border:none;color:#94a3b8;
+  font-size:20px;border-radius:8px;cursor:pointer;
+}
+.login-close:hover{background:rgba(255,255,255,.1);color:#fff}
+.login-card h3{color:#fff;font-size:1.05rem;font-weight:500;margin-bottom:8px;letter-spacing:-.01em}
+.login-card .sub{font-size:13px;color:rgba(255,255,255,.7);margin-bottom:26px}
+.login-field{margin-bottom:18px}
+.login-field label{display:block;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.78);margin-bottom:8px}
+.login-field input{
+  width:100%;padding:10px 0 12px;background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,.34);
+  color:#fff;font-family:inherit;font-size:14px;outline:none;transition:border-color .15s ease;
+}
+.login-field input:focus{border-bottom-color:#fff}
+.login-submit{
+  width:100%;margin-top:8px;padding:14px 20px;background:#000;color:#fff;border:none;
+  border-radius:6px;cursor:pointer;font-family:inherit;
+  font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;
+  transition:background .15s ease;
+}
+.login-submit:hover{background:#111}
 
-
-/* --- Private restored content premium white overrides --- */
-#page-p2,#page-p3{background:#fff}
-#page-p2 p,#page-p3 p{color:#475569}
-#page-p2 h1,#page-p2 h2,#page-p2 h3,#page-p2 h4,#page-p3 h1,#page-p3 h2,#page-p3 h3,#page-p3 h4{font-weight:300;color:#0f172a}
-#page-p2 .card,#page-p3 .card{background:#fff;border:1px solid #f1f5f9!important;box-shadow:none!important}
-#page-p2 .trust-card,#page-p2 .trust-item,#page-p3 .trust-card,#page-p3 .trust-item{background:#fff!important;color:#0f172a!important;border:1px solid #f1f5f9!important}
-#page-p2 .trust-card p,#page-p2 .trust-item p,#page-p3 .trust-card p,#page-p3 .trust-item p{color:#64748b!important}
-#page-p2 .card-blue,#page-p3 .card-blue,#page-p2 .card-slate,#page-p3 .card-slate{background:#fff!important;color:#0f172a!important;border:1px solid #f1f5f9!important}
-#page-p2 .card-blue p,#page-p2 .card-blue h3,#page-p2 .card-blue h4,#page-p3 .card-blue p,#page-p3 .card-blue h3,#page-p3 .card-blue h4{color:#0f172a!important}
-#page-p2 .input-tile,#page-p3 .input-tile,#page-p2 .risk-matrix,#page-p3 .risk-matrix,#page-p2 .audit-progress,#page-p3 .audit-progress,#page-p2 .bank-tier-card,#page-p3 .bank-tier-card{background:#fff!important;border:1px solid #f1f5f9!important}
-
+/* ─── Responsive ───────────────────────────────────────── */
+@media(max-width:1100px){
+  .blk,.panel,.hero-body{padding:56px 32px}
+  .split{grid-template-columns:1fr}
+  .split.reverse > img{order:0}
+  .deck.dark .grid-3,.steps,.hubs,.tiers{grid-template-columns:1fr}
+  .deck.dark .grid-4{grid-template-columns:1fr 1fr}
+  .timeline{grid-template-columns:1fr;gap:0}
+  .timeline-center{display:none}
+  .bound-grid{grid-template-columns:1fr}
+  .before-after{grid-template-columns:1fr}
+  .f-inner{grid-template-columns:1fr;gap:28px}
+}
+@media(max-width:640px){
+  #topbar{height:56px}
+  main{padding-top:56px}
+  .topbar-inner{padding:0 18px}
+  .topbar-tag{display:none}
+  .topbar-link{display:none}
+  .blk,.panel,.hero-body{padding:48px 22px}
+  .hero-actions .btn{width:100%;justify-content:center}
+  .deck.contact .blk{padding:64px 22px}
+  .hero-meta{gap:24px}
+  .hero-meta-item .v{font-size:1.25rem}
+  .deck.dark .grid-4{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
-<div id="topbar">
+
+<header id="topbar">
   <div class="topbar-inner">
-    <div class="topbar-left">
-      <a class="topbar-brandline" href="index.html">
-        <span class="name">Charter Capital</span>
-        <span class="desc">// Архитекторы легитимности и безупречной биографии вашего капитала.</span>
-      </a>
-    </div>
-    <div class="context-switch">
-      <a href="corporate.html" class="context-pill ">БИЗНЕСУ</a>
-      <a href="private.html" class="context-pill active">СЕМЬЕ</a>
-    </div>
+    <a href="index.html" class="topbar-left">
+      <span class="topbar-brand">Charter Capital</span>
+      <span class="topbar-tag">Private Office · от $250K</span>
+    </a>
     <div class="topbar-right">
-      <a href="gamma-charter.html" class="topbar-gamma-link">Презентация</a>
-      <button type="button" class="topbar-private-access" id="openLoginModal" aria-haspopup="dialog" aria-controls="loginModal">Private Access</button>
+      <a href="index.html" class="topbar-link">Основной агрегатор</a>
+      <button type="button" class="topbar-cta" id="openLoginModal" aria-haspopup="dialog" aria-controls="loginModal">Private Access</button>
     </div>
   </div>
-</div>
+</header>
+
 <main>
-<section class="hero-banner" aria-hidden="true"></section>
-<section class="private-route" style="background:#fff;padding:96px 32px 110px">
-  <div class="container" style="max-width:1240px;margin:0 auto">
-    <div class="label">МАРШРУТ ЛЕГИТИМАЦИИ</div>
-    <h2 style="font-size:clamp(2rem,4vw,3rem);font-weight:300;line-height:1.18;letter-spacing:-.02em;margin-bottom:38px">Личный капитал: последовательный переход к банковскому стандарту Tier-1</h2>
-    <div style="display:grid;grid-template-columns:1fr;gap:16px">
-      <article class="card" style="border:1px solid #e2e8f0;padding:32px;background:#fff"><h3 style="font-size:1.5rem;font-weight:300;letter-spacing:-.02em;margin-bottom:10px">Этап I. Формирование подтвержденной истории (SoW/SoF)</h3><p style="font-size:15px;color:#475569;line-height:1.7">Создаем безупречное досье источника средств и структуры владения, пригодное для комплаенс-проверки Tier-1 банков.</p></article>
-      <article class="card" style="border:1px solid #e2e8f0;padding:32px;background:#fff"><h3 style="font-size:1.5rem;font-weight:300;letter-spacing:-.02em;margin-bottom:10px">Этап II. Маршрут легитимации</h3><p style="font-size:15px;color:#475569;line-height:1.7">Трансформируем актив в белый банковский инструмент: юридическая упаковка, контроль юрисдикций и выпуск Object Passport.</p></article>
-      <article class="card" style="border:1px solid #e2e8f0;padding:32px;background:#fff"><h3 style="font-size:1.5rem;font-weight:300;letter-spacing:-.02em;margin-bottom:10px">Этап III. Сохранение и Твердые активы</h3><p style="font-size:15px;color:#475569;line-height:1.7">После завершения легитимации капитал переводится в режим сохранения: Family Office и твердые активы, включая стратегию Пхукета как финальной точки маршрута.</p></article>
+
+<!-- ─── DECK 1 · HERO ────────────────────────────────────── -->
+<section class="deck hero-deck">
+  <img class="hero-img" src="assets/logic/13-building-corner.png" alt="Charter Capital · Private Office"/>
+  <div class="hero-body">
+    <div class="hero-flag">
+      <span class="dot"></span>
+      <span>Private Office · Закрытый контур</span>
     </div>
-    <div style="margin-top:38px"><a href="#" class="btn btn-primary btn-lg" onclick="return false;">ОБСУДИТЬ СТРУКТУРУ И МАРШРУТ КАПИТАЛА</a></div>
+    <h1 class="title">Капитал не имеет паспорта.<br/>Мы делаем так, чтобы у него <strong>был</strong>.</h1>
+    <p class="lead">Charter Capital · Private Office — для частных клиентов с активами от $250 000 и кейсов, в которых стандартный пакет «компания + счёт + ВНЖ» ситуацию не закрывает. Мы не оказываем услугу — мы проектируем биографию капитала, которую принимает Tier-1.</p>
+    <div class="hero-actions">
+      <a href="#engagement" class="btn btn-gold btn-lg">Запросить аудит<span class="arr">→</span></a>
+      <a href="index.html" class="btn btn-outline-dark btn-lg">Капитал ниже $250K — основной маршрут</a>
+    </div>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="v">$250K+</div>
+        <div class="l">Минимальный мандат</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="v">3</div>
+        <div class="l">Хаба substance: SG · HK · UAE</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="v">12–18</div>
+        <div class="l">Месяцев полный цикл</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="v">100%</div>
+        <div class="l">Под NDA, без публичных кейсов</div>
+      </div>
+    </div>
   </div>
 </section>
-<div id="page-p2" class="page">
-  <div class="p2-hero">
-    <div class="container">
-      <div class="p2-hero-inner">
-        <div>
-          <div class="label">Family Office</div>
-          <h1>Легитимация частного капитала: аудит и очистка биографии</h1>
-          <p>Первый этап для семьи — аудит происхождения и юридическая очистка биографии капитала. Мы формируем Object Passport и только после полной легитимации переводим капитал в защитные структуры.</p>
-          <div class="p2-services-tabs">
-            <button class="p2-tab active" onclick="switchP2Tab('fiduciary',this)">Fiduciary</button>
-            <button class="p2-tab" onclick="switchP2Tab('protection',this)">Защита активов</button>
-            <button class="p2-tab" onclick="switchP2Tab('trusts',this)">Трасты</button>
-            <button class="p2-tab" onclick="switchP2Tab('mobility',this)">Мобильность</button>
-          </div>
-          <div id="p2-fiduciary" class="p2-service-content active">
-            <div class="p2-service-item"><div class="p2-service-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><div class="p2-service-name">Аудит SoW / SoF</div><div class="p2-service-desc">Полный аудит и документирование происхождения капитала. Подготовка досье для банков Tier-1.</div></div></div>
-            <div class="p2-service-item"><div class="p2-service-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01"/></svg></div><div><div class="p2-service-name">Fiduciary Advisory</div><div class="p2-service-desc">Персональный fiduciary-советник: координация юристов, банков и налоговых консультантов.</div></div></div>
-            <div class="p2-service-item"><div class="p2-service-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><div><div class="p2-service-name">Налоговая оптимизация</div><div class="p2-service-desc">Законная налоговая оптимизация (tax avoidance) в рамках международного права: архитектура, а не уклонение.</div></div></div>
-          </div>
-          <div id="p2-protection" class="p2-service-content">
-            <div class="p2-service-item"><div class="p2-service-icon"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div><div><div class="p2-service-name">Decoupling активов</div><div class="p2-service-desc">Разделение активов по независимым юрисдикционным контурам: локализация риска в одной зоне не распространяется на остальные.</div></div></div>
-            <div class="p2-service-item"><div class="p2-service-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><div class="p2-service-name">Защита от судебных рисков</div><div class="p2-service-desc">Структуры Лихтенштейна и Панамы — барьер против внешних посягательств и litigation.</div></div></div>
-            <div class="p2-service-item"><div class="p2-service-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div><div class="p2-service-name">Преемственность капитала</div><div class="p2-service-desc">Передача капитала следующим поколениям без публичного наследования; горизонт succession planning — до трёх поколений.</div></div></div>
-          </div>
-          <div id="p2-trusts" class="p2-service-content">
-            <div class="p2-service-item"><div class="p2-service-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div><div class="p2-service-name">Liechtenstein Stiftung</div><div class="p2-service-desc">Частный фонд в Лихтенштейне — наивысший уровень защиты активов в Европе. Полная конфиденциальность бенефициара.</div></div></div>
-            <div class="p2-service-item"><div class="p2-service-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div><div><div class="p2-service-name">Panama Trust</div><div class="p2-service-desc">Гибкая трастовая структура для владения недвижимостью в Лондоне и ЕС через SPV. Анонимность бенефициара.</div></div></div>
-            <div class="p2-service-item"><div class="p2-service-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg></div><div><div class="p2-service-name">BVI / Seychelles SPV</div><div class="p2-service-desc">Специальные проектные компании для владения активами и оптимизации налогообложения в рамках холдинга.</div></div></div>
-          </div>
-          <div id="p2-mobility" class="p2-service-content">
-            <div class="p2-service-item"><div class="p2-service-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div class="p2-service-name">Резидентство Thailand Elite</div><div class="p2-service-desc">Налоговое резидентство Таиланда повышает предсказуемость прохождения банковского Compliance в иных юрисдикциях.</div></div></div>
-            <div class="p2-service-item"><div class="p2-service-icon"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div><div><div class="p2-service-name">Второе гражданство (CBI)</div><div class="p2-service-desc">Юридическое сопровождение смены статуса и резидентства как часть легализации биографии капитала.</div></div></div>
-            <div class="p2-service-item"><div class="p2-service-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.09 6.09l1.27-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><div><div class="p2-service-name">Глобальная связь (130+ юрисдикций)</div><div class="p2-service-desc">Конфиденциальная коммуникация и операционное присутствие; сопровождение семьи без разрыва контуров.</div></div></div>
-          </div>
+
+<!-- ─── DECK 2 · ДИАГНОЗ (split) ─────────────────────────── -->
+<section class="deck split">
+  <img src="assets/logic/11-vault.png" alt="Капитал без биографии"/>
+  <div class="panel">
+    <span class="kicker red">Диагноз</span>
+    <h2 class="title">В 2026 капитал из РФ — мусор для Tier-1, пока у него нет биографии.</h2>
+    <p>Западный комплаенс работает простой логикой: если происхождение капитала невозможно верифицировать по международным стандартам — этого капитала не существует. Не «он подозрителен» — он не существует как операционная единица.</p>
+    <p>Договоры РФ-нотариусов, выписки Сбербанка за 2018 год, формула «я заработал в&nbsp;90-х» — для системы Enhanced Due Diligence это не источник. Это шум.</p>
+    <p>Парадокс: чем больше у вас капитала, тем сложнее. $50&nbsp;000 банк ЕС может молча принять. $5&nbsp;000&nbsp;000 — никогда без ответа на вопрос: «откуда».</p>
+  </div>
+</section>
+
+<!-- ─── DECK 3 · ТОКСИЧНЫЕ МАРШРУТЫ (dark) ───────────────── -->
+<section class="deck dark">
+  <div class="blk">
+    <span class="kicker">Что больше не работает</span>
+    <h2 class="title">Токсичные маршруты прошлого десятилетия</h2>
+    <p class="lead" style="margin-top:6px">Инструменты, которые в 2018–2022 решали задачи, в 2026 превратились в маркеры, которые закрывают доступ к мировой банковской системе на годы вперёд.</p>
+    <div class="grid-4">
+      <div class="toxic-card">
+        <span class="num">01</span>
+        <h3>Транзит через ОАЭ без substance</h3>
+        <p>Free Zone-компания без офиса, директора и операций — это уже флаг. ОАЭ давно не «тихая гавань», а юрисдикция под давлением FATF.</p>
+      </div>
+      <div class="toxic-card">
+        <span class="num">02</span>
+        <h3>Криптомиксеры и нерегулируемые VASP</h3>
+        <p>Tornado Cash, неKYC-DEX, P2P-обменники без AML — это не просто красный флаг. Это источник, который банк не примет ни за какие документы.</p>
+      </div>
+      <div class="toxic-card">
+        <span class="num">03</span>
+        <h3>Договорной формализм без экономики</h3>
+        <p>Контракты между «связанными лицами», договоры займа без движения средств, безсубстансные SPV — банкиры это видят за 6 секунд.</p>
+      </div>
+      <div class="toxic-card">
+        <span class="num">04</span>
+        <h3>«Знакомый OTC» и серый exit</h3>
+        <p>Продажа крипты через брокера без лицензии VASP / MiCA — это не off-ramp, а bridge с риском заморозки. Один такой шаг — и paper-trail обнулён.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── DECK 4 · ЧИСТЫЙ КОНТУР ───────────────────────────── -->
+<section class="deck">
+  <div class="blk">
+    <span class="kicker">Архитектура</span>
+    <h2 class="title">Чистый контур — это всегда три ступени, не больше</h2>
+    <p class="lead">Не пять SPV в матрёшку, не семь юрисдикций «для запутывания». Чем проще структура, тем легче её защитить перед EDD-офицером.</p>
+    <div class="steps">
+      <div class="step">
+        <h4><span class="n">01</span>Subscription</h4>
+        <p>Вход в инвестиционный или операционный контур через прозрачный договор с внутренним KYC. Документально подтверждённое намерение и источник средств — на этом этапе.</p>
+      </div>
+      <div class="step">
+        <h4><span class="n">02</span>Substance</h4>
+        <p>Капитал работает. Реальная операционная деятельность в white-list юрисдикции: контракты, выручка, налоговые отчёты. След, который верифицируется не словом, а аудитом.</p>
+      </div>
+      <div class="step">
+        <h4><span class="n">03</span>Clean Exit</h4>
+        <p>Выход с paper-trail: входящие на ваш счёт в Tier-1 банке имеют полную документальную историю — от инвестиционного решения до распределения дохода.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── DECK 5 · ВРЕМЕННАЯ ШКАЛА (dark + image) ──────────── -->
+<section class="deck dark">
+  <div class="blk">
+    <span class="kicker">12–18 месяцев</span>
+    <h2 class="title">Как мы строим это пошагово</h2>
+    <p class="lead" style="margin-top:6px">Каждый шаг — отдельный юридический протокол с верифицируемым результатом. Если шаг не сработал, мы не двигаемся к следующему.</p>
+    <div class="timeline">
+      <div class="tl-col">
+        <div class="item">
+          <h4>Шаг 1 · Onboarding в инвест-контур</h4>
+          <p>Подписание инвестиционного меморандума или договора участия в холдинге (SG/HK). Внутренний KYC/AML-аудит подтверждает легитимность намерений и источника. Это якорная точка, от которой считается биография.</p>
         </div>
-        <div>
-          <div class="p2-hero-card">
-            <div class="label">Ключевые метрики</div>
-            <h3 style="font-size:1.1rem;margin-bottom:16px">Charter Capital в цифрах</h3>
-            <div class="p2-stats-row">
-              <div class="p2-stat-card"><div class="num">130<small style="font-size:1rem">+</small></div><div class="lbl">Стран покрытия</div></div>
-              <div class="p2-stat-card"><div class="num">15<small style="font-size:1rem">+</small></div><div class="lbl">Юрисдикций</div></div>
-              <div class="p2-stat-card"><div class="num">100<small style="font-size:.9rem">%</small></div><div class="lbl">Легальность</div></div>
-              <div class="p2-stat-card"><div class="num" style="color:var(--success)">1</div><div class="lbl">Советник / Клиент</div></div>
-            </div>
-            <div style="margin-top:28px;padding-top:24px;border-top:1px solid var(--border)">
-              <div class="label label-slate" style="margin-bottom:10px">Процесс работы</div>
-              <div style="display:flex;flex-direction:column;gap:8px">
-                <div style="display:flex;align-items:center;gap:10px;font-size:13px"><span style="width:22px;height:22px;background:var(--blue);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0">1</span>Стратегический аудит активов</div>
-                <div style="display:flex;align-items:center;gap:10px;font-size:13px"><span style="width:22px;height:22px;background:var(--blue);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0">2</span>Проектирование контура владения</div>
-                <div style="display:flex;align-items:center;gap:10px;font-size:13px"><span style="width:22px;height:22px;background:var(--blue);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0">3</span>Реализация и сопровождение 24/7</div>
-              </div>
-            </div>
-          </div>
+        <div class="item">
+          <h4>Шаг 3 · Создание Economic Substance</h4>
+          <p>Операционное управление активом: арендные потоки, фонд управления, бухгалтерия и tax filing. Substance — не декорация, это то, что предъявляется банку при EDD.</p>
+        </div>
+      </div>
+      <div class="timeline-center">
+        <div class="tl-badge">1</div>
+        <div class="tl-badge">2</div>
+        <div class="tl-badge">3</div>
+        <div class="tl-badge">4</div>
+      </div>
+      <div class="tl-col">
+        <div class="item">
+          <h4>Шаг 2 · Капитализация в твёрдый актив</h4>
+          <p>Распределение капитала в реальный портфель — недвижимость премиум-сегмента (Пхукет, Дубай, Лиссабон), инфраструктура, частные фонды. Сделка фиксируется через холдинг с полной транзакционной историей.</p>
+        </div>
+        <div class="item">
+          <h4>Шаг 4 · Clean Exit / Возврат</h4>
+          <p>Выплата инвестиционного дохода или возврат тела капитала на ваш счёт — с паспортом операций. На этой точке вы перестаёте быть «русским с деньгами» и становитесь «инвестором с прозрачным returns'ом».</p>
         </div>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- Features -->
-  <div class="p2-features">
-    <div class="container">
-      <div class="feature-row">
-        <div><div class="feature-num">01</div></div>
-        <div>
-          <h3 class="feature-title">Архитектура трастов и частных фондов</h3>
-          <p class="feature-desc">Проектируем частные фонды (Stiftung) в Лихтенштейне и трасты в Панаме — инструменты, выдержавшие многолетнюю практику. Контур даёт защиту от судебных решений, кредиторов и политических рисков; бенефициар остаётся невидимым для внешних реестров.</p>
-          <div class="feature-tags">
-            <span class="tag"><span class="badge-dot"></span>Liechtenstein Stiftung</span>
-            <span class="tag"><span class="badge-dot"></span>Panama Foundation</span>
-            <span class="tag"><span class="badge-dot"></span>BVI Trust</span>
-            <span class="tag"><span class="badge-dot"></span>Succession Planning</span>
-          </div>
-        </div>
+<!-- ─── DECK 6 · РЕАЛЬНЫЙ АКТИВ (split) ──────────────────── -->
+<section class="deck split">
+  <img src="assets/logic/10-villa-color.png" alt="Реальный актив как фундамент substance"/>
+  <div class="panel">
+    <span class="kicker">Substance</span>
+    <h2 class="title">Реальный актив — единственная защита от вопроса «откуда»</h2>
+    <p>Substance — это не маркетинговое слово. Это набор документов, который банк может проверить независимо: договор аренды, налоговая декларация в стране актива, фотофиксация, оценка независимого оценщика, выписки операционного счёта.</p>
+    <p>Премиум-недвижимость в дефицитных хабах (Пхукет, Дубай Marina, Лиссабон-центр) делает substance прочным: банк может позвонить и убедиться, что объект существует, доход реален, налоги платятся.</p>
+    <p>Бумажные SPV без реального актива — substance не создают. Банк увидит это в первой же выписке.</p>
+  </div>
+</section>
+
+<!-- ─── DECK 7 · ДО / ПОСЛЕ (cream) ──────────────────────── -->
+<section class="deck cream">
+  <div class="blk">
+    <span class="kicker">Результат</span>
+    <h2 class="title">Биография — это не красивая папка. Это статус «нежелательный → белый».</h2>
+    <p class="lead">Мы не делаем декларации. Мы меняем тип, к которому вас относит EDD-система.</p>
+    <div class="before-after">
+      <div class="before">
+        <h4>До · Нежелательный клиент</h4>
+        <p>Постоянные KYC-уточнения, частичные блокировки операций, статус «Russia exposure», отказы Tier-1. Каждая транзакция — потенциальный foulup. Каждый перевод — повод для очередной EDD-папки.</p>
       </div>
-      <div class="feature-row">
-        <div><div class="feature-num">02</div></div>
-        <div>
-          <h3 class="feature-title">SoW и банковский onboarding</h3>
-          <p class="feature-desc">Легитимация капитала — не пакет форм, а выстроенное досье: аудит истории активов, цепочка транзакций, налоговые декларации, подтверждения аудиторов. Готовим клиента к Enhanced Due Diligence в банках высшего эшелона: Julius Baer, Pictet, Lombard Odier, HSBC Private Bank.</p>
-          <div class="feature-tags">
-            <span class="tag"><span class="badge-dot"></span>Julius Baer</span>
-            <span class="tag"><span class="badge-dot"></span>Pictet</span>
-            <span class="tag"><span class="badge-dot"></span>Lombard Odier</span>
-            <span class="tag tag-slate">HSBC Private</span>
-          </div>
-          <div class="trust-card" style="margin-top:24px">
-            <h3>Наш принцип</h3>
-            <p>Если структуру нельзя публично обосновать — мы её не проектируем. Полная легальность — не слоган, а критерий допуска.</p>
-            <div class="trust-items">
-              <div class="trust-item"><h5>AML / KYC Compliance</h5><p>Структуры соответствуют стандартам FATF</p></div>
-              <div class="trust-item"><h5>Режим NDA</h5><p>Коммуникации под соглашениями о неразглашении</p></div>
-              <div class="trust-item"><h5>Attorney privilege</h5><p>Профессиональная тайна в духе адвокатских стандартов</p></div>
-              <div class="trust-item"><h5>Мониторинг 24/7</h5><p>Отслеживание регуляторных изменений без разрыва</p></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="feature-row">
-        <div><div class="feature-num">03</div></div>
-        <div>
-          <h3 class="feature-title">Real Estate — конфиденциальное владение</h3>
-          <p class="feature-desc">Сохранение в твердых активах — финальный этап после легитимации. Приоритет: защищенные сценарии владения, включая стратегию входа в Пхукет как результат уже очищенной биографии капитала.</p>
-          <div class="compliance-row">
-            <div class="compliance-item"><div class="icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><h5>SPV в Лондоне</h5><p>Приобретение через Special Purpose Vehicle</p></div>
-            <div class="compliance-item"><div class="icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg></div><h5>Структуры ЕС</h5><p>Португалия, Мальта, Кипр через трасты</p></div>
-            <div class="compliance-item"><div class="icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h5>Конфиденциальное владение</h5><p>Бенефициар не раскрывается в публичных реестрах</p></div>
-          </div>
-        </div>
+      <div class="after">
+        <h4>После · Белый инвестор</h4>
+        <p>Прозрачный задокументированный поток дохода. Банковский профиль с понятным источником богатства. Tier-1 onboarding проходит за 6–10 недель, а не за 9 месяцев с просьбами «дополнить документы».</p>
       </div>
     </div>
   </div>
+</section>
 
-  <div style="background:#fff;padding:56px 0;text-align:center;border-top:1px solid #f1f5f9">
-    <div class="container">
-      <div class="label" style="color:#60a5fa;margin-bottom:12px">Начать работу</div>
-      <h2 style="color:#0f172a;font-size:1.8rem;margin-bottom:14px;font-weight:300">Конфиденциальная первая встреча</h2>
-      <p style="color:#64748b;max-width:520px;margin:0 auto 32px;font-size:15px">Первая встреча — это аудит вашей ситуации, а не продажа. Вы получите персональную карту рисков независимо от того, станете ли клиентом.</p>
-      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
-        <a href="#" class="btn btn-primary btn-lg" onclick="showPage('p3');return false;">Запустить аудит капитала →</a>
-        <button class="btn btn-secondary btn-lg" style="border-color:#e2e8f0;color:#334155;background:#fff">Запросить встречу</button>
+<!-- ─── DECK 8 · ХАБЫ (dark) ─────────────────────────────── -->
+<section class="deck dark">
+  <div class="blk">
+    <span class="kicker">География</span>
+    <h2 class="title">Три хаба для substance — и почему именно эти</h2>
+    <p class="lead" style="margin-top:6px">Мы не работаем в 50 юрисдикциях. Мы работаем там, где у нас есть рабочая инфраструктура и где банковская система Tier-1 принимает substance без оговорок.</p>
+    <div class="hubs">
+      <div class="hub">
+        <div class="flag">SINGAPORE</div>
+        <h3>Singapore Holding</h3>
+        <p>Налоговый суверенитет (Section 10L: иностранный доход не облагается, если не репатриирован), прозрачная корпоративная отчётность, доступ к Tier-1 (DBS, UOB, Bank of Singapore).</p>
+        <ul>
+          <li>Holding company + EP-statment</li>
+          <li>Audit под GAAP</li>
+          <li>Onboarding в DBS / UOB</li>
+        </ul>
+      </div>
+      <div class="hub">
+        <div class="flag">PHUKET / THAILAND</div>
+        <h3>Real Asset Substance</h3>
+        <p>Премиум-недвижимость в дефицитном хабе. 70% острова — заповедные горы и джунгли. Bath — одна из стабильных валют Азии. Section 10L закрывает налогообложение в SG.</p>
+        <ul>
+          <li>Land Department reg.</li>
+          <li>Договор аренды + property mgmt</li>
+          <li>Возврат через SG holding</li>
+        </ul>
+      </div>
+      <div class="hub">
+        <div class="flag">UAE · SUBSTANCE-ONLY</div>
+        <h3>Mainland (не Free Zone)</h3>
+        <p>Только Mainland-структуры с реальными операциями. Free Zone без офиса и сотрудников — это транзит, а транзит сегодня — флаг. Mainland с substance даёт доступ к Mashreq Private, Emirates NBD Private.</p>
+        <ul>
+          <li>Mainland LLC + офис</li>
+          <li>Mashreq / ENBD onboarding</li>
+          <li>Tax residency (UAE)</li>
+        </ul>
       </div>
     </div>
   </div>
-</div>
-<div id="page-p3" class="page">
-  <div class="p3-header">
-    <div class="container">
-      <div class="p3-header-inner">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:24px;flex-wrap:wrap;gap:16px">
-          <div>
-            <div class="label">Private Wealth Dashboard</div>
-            <h1 style="padding:0;border:none">Маршрут легитимации капитала</h1>
-            <p style="margin:6px 0 0;font-weight:400;color:var(--text-muted)">От исходного актива до статуса Tier-1 Bank Ready</p>
-          </div>
-          <div style="display:flex;gap:8px;align-items:center">
-            <span class="tag tag-amber"><span class="badge-dot"></span>Сессия активна</span>
-            <span class="tag tag-green"><span class="badge-dot"></span>Шифрование</span>
-          </div>
-        </div>
-        <!-- Step bar -->
-        <div class="p3-progress-bar">
-          <div class="p3-step active" id="step-btn-1" onclick="showP3Step(1)">
-            <div class="p3-step-num">1</div>
-            <span class="p3-step-label">Ввод активов</span>
-          </div>
-          <div class="p3-step-border" id="sb-1"></div>
-          <div class="p3-step" id="step-btn-2" onclick="showP3Step(2)">
-            <div class="p3-step-num">2</div>
-            <span class="p3-step-label">Compliance Audit</span>
-          </div>
-          <div class="p3-step-border" id="sb-2"></div>
-          <div class="p3-step" id="step-btn-3" onclick="showP3Step(3)">
-            <div class="p3-step-num">3</div>
-            <span class="p3-step-label">Object Passport</span>
-          </div>
-          <div class="p3-step-border" id="sb-3"></div>
-          <div class="p3-step" id="step-btn-4" onclick="showP3Step(4)">
-            <div class="p3-step-num">4</div>
-            <span class="p3-step-label">Tier-1 Bank Readiness</span>
-          </div>
-        </div>
+</section>
+
+<!-- ─── DECK 9 · ENGAGEMENT TIERS (pricing) ──────────────── -->
+<section class="deck" id="engagement">
+  <div class="blk">
+    <span class="kicker">Форматы вовлечения</span>
+    <h2 class="title">Три формата работы — выбираете по глубине задачи</h2>
+    <p class="lead">Все цены индикативные, фиксируются после первой встречи и due diligence. Если стоимость нашей работы выходит больше 6% от размера капитала под мандатом — мы отказываем сами. Проект должен иметь экономический смысл для вас.</p>
+    <div class="tiers">
+      <div class="tier">
+        <span class="tier-flag">T1 · Аудит</span>
+        <h3>Diagnostic Audit</h3>
+        <div class="price">$50K — $100K<small>фиксированная цена за проект</small></div>
+        <span class="term">3–4 недели</span>
+        <ul>
+          <li>Полный аудит источника капитала (SoF / SoW)</li>
+          <li>On-chain аудит при наличии крипто-составляющей</li>
+          <li>Карта рисков по EDD каждого целевого банка</li>
+          <li>Дорожная карта — что именно строить и в какой последовательности</li>
+          <li>Эскалационный план на случай отказа</li>
+        </ul>
+        <div class="tier-note">Финальный отчёт — 30–60 страниц на английском, готов к показу банку или адвокатам.</div>
+      </div>
+      <div class="tier featured">
+        <span class="tier-flag">T2 · Полный мандат</span>
+        <h3>Full Mandate</h3>
+        <div class="price">$100K — $4M<small>вилка по сложности, числу юрисдикций и размеру капитала</small></div>
+        <span class="term">12–18 месяцев</span>
+        <ul>
+          <li>Всё из Audit + полная реализация</li>
+          <li>Корпоративная архитектура (SG / HK / UAE Mainland)</li>
+          <li>Substance-инфраструктура: офис, директор, бухгалтерия</li>
+          <li>Tier-1 onboarding в 1–2 банках</li>
+          <li>Сопровождение EDD-интервью лично</li>
+          <li>Налоговая регистрация и tax-filing год 1</li>
+          <li>Персональный fiduciary-advisor — ваша точка входа на 18 месяцев</li>
+        </ul>
+        <div class="tier-note">Минимальный мандат — $100K (капитал от $1.7M). Потолок чека — 6% от капитала под мандатом: если выходит больше, мы отказываем сами. Проект должен иметь экономический смысл.</div>
+      </div>
+      <div class="tier">
+        <span class="tier-flag">T3 · Партнёрство</span>
+        <h3>Strategic Partnership</h3>
+        <div class="price">от $5M+<small>retainer + success fee, индивидуально</small></div>
+        <span class="term">36+ месяцев · многопоколенный горизонт</span>
+        <ul>
+          <li>Семейный офис на базе Charter Capital</li>
+          <li>Многоюрисдикционная архитектура (3+ хабов)</li>
+          <li>Trust / Foundation для succession planning</li>
+          <li>Доступ к закрытому пулу инвестиционных идей</li>
+          <li>Контроль 24/7, годовой комплаенс-rebuild</li>
+          <li>Прямой канал с партнёрами Tier-1 (Julius Baer, Pictet, EFG)</li>
+        </ul>
+        <div class="tier-note">Только по приглашению. Due diligence работает в обе стороны: мы изучаем вас, вы изучаете нас.</div>
       </div>
     </div>
   </div>
+</section>
 
-  <div class="p3-body">
-    <div class="container">
-
-      <!-- STEP 1: Input -->
-      <div class="p3-panel active" id="p3-step-1">
-        <h3 style="margin-bottom:8px">Шаг 1 — ввод данных об активе</h3>
-        <p style="font-size:14px;font-weight:400;color:var(--text-body);margin-bottom:32px">Укажите тип актива и порядок величины: система оценит риск-профиль и предложит базовую структуру.</p>
-        <div class="input-tiles">
-          <div class="input-tile selected" onclick="selectTile(this)">
-            <div class="input-tile-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
-            <h4>Cash / Fiat</h4>
-            <p>Банковские переводы, наличные, депозиты. Наиболее распространённая форма капитала из СНГ.</p>
-          </div>
-          <div class="input-tile" onclick="selectTile(this)">
-            <div class="input-tile-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01"/></svg></div>
-            <h4>Crypto / Digital</h4>
-            <p>Bitcoin, ETH, stablecoins. Требует специального AML-аудита и крипто-фиатного шлюза.</p>
-          </div>
-          <div class="input-tile" onclick="selectTile(this)">
-            <div class="input-tile-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
-            <h4>Offshore Structures</h4>
-            <p>Действующие офшорные компании, счета в ОАЭ, трасты без актуальной документации.</p>
-          </div>
-        </div>
-        <div class="amount-input-wrap">
-          <label>Объём актива (приблизительно)</label>
-          <div class="amount-input-row">
-            <button class="currency-btn active" onclick="setCurrency(this)">USD</button>
-            <button class="currency-btn" onclick="setCurrency(this)">EUR</button>
-            <button class="currency-btn" onclick="setCurrency(this)">GBP</button>
-            <button class="currency-btn" onclick="setCurrency(this)">BTC</button>
-            <input type="text" class="amount-field" placeholder="Например: 2,500,000" value="2,500,000"/>
-          </div>
-        </div>
-        <!-- Risk matrix preview -->
-        <h4 style="font-size:13px;font-weight:600;margin-bottom:12px">Предварительная оценка рисков</h4>
-        <div class="risk-matrix">
-          <div class="risk-matrix-header">
-            <div>Фактор риска</div><div>Балл</div><div>Уровень</div><div>Требуемые действия</div>
-          </div>
-          <div class="risk-matrix-row">
-            <div style="font-size:13px;font-weight:500">Документирование SoW</div>
-            <div><div class="risk-bar-wrap"><div class="risk-bar"><div class="risk-fill risk-fill-high" style="width:82%"></div></div><span class="risk-score" style="color:var(--warn-red)">82</span></div></div>
-            <div><span class="tag tag-red">HIGH</span></div>
-            <div style="font-size:12px;font-weight:400;color:var(--text-muted)">Полный аудит SoW</div>
-          </div>
-          <div class="risk-matrix-row">
-            <div style="font-size:13px;font-weight:500">Russian Nexus Exposure</div>
-            <div><div class="risk-bar-wrap"><div class="risk-bar"><div class="risk-fill risk-fill-high" style="width:75%"></div></div><span class="risk-score" style="color:var(--warn-red)">75</span></div></div>
-            <div><span class="tag tag-red">HIGH</span></div>
-            <div style="font-size:12px;color:var(--text-muted)">Jurisdiction Change</div>
-          </div>
-          <div class="risk-matrix-row">
-            <div style="font-size:13px;font-weight:500">Tax Residency Clarity</div>
-            <div><div class="risk-bar-wrap"><div class="risk-bar"><div class="risk-fill risk-fill-med" style="width:54%"></div></div><span class="risk-score" style="color:var(--warn-amber)">54</span></div></div>
-            <div><span class="tag tag-amber">MEDIUM</span></div>
-            <div style="font-size:12px;color:var(--text-muted)">Residency Programme</div>
-          </div>
-          <div class="risk-matrix-row">
-            <div style="font-size:13px;font-weight:500">Ownership Structure Transparency</div>
-            <div><div class="risk-bar-wrap"><div class="risk-bar"><div class="risk-fill risk-fill-med" style="width:48%"></div></div><span class="risk-score" style="color:var(--warn-amber)">48</span></div></div>
-            <div><span class="tag tag-amber">MEDIUM</span></div>
-            <div style="font-size:12px;color:var(--text-muted)">Trust/Foundation Setup</div>
-          </div>
-          <div class="risk-matrix-row">
-            <div style="font-size:13px;font-weight:500">AML/KYC Compliance</div>
-            <div><div class="risk-bar-wrap"><div class="risk-bar"><div class="risk-fill risk-fill-low" style="width:28%"></div></div><span class="risk-score" style="color:var(--success)">28</span></div></div>
-            <div><span class="tag tag-green">LOW</span></div>
-            <div style="font-size:12px;color:var(--text-muted)">Documentation Review</div>
-          </div>
-        </div>
-        <div style="display:flex;justify-content:flex-end;margin-top:24px">
-          <button class="btn btn-primary btn-lg" onclick="showP3Step(2)">Перейти к Compliance Audit →</button>
-        </div>
+<!-- ─── DECK 10 · ГРАНИЦЫ (cream) ────────────────────────── -->
+<section class="deck cream">
+  <div class="blk">
+    <span class="kicker muted">Granicy</span>
+    <h2 class="title">Кому мы не служим — и почему это часть качества</h2>
+    <p class="lead">Банки видят, с кем мы работали в прошлых проектах. Это переносится на ваш кейс. Мы охраняем эту репутацию жёстко — иначе теряем рычаг для всех клиентов.</p>
+    <div class="bound-grid">
+      <div class="bound no">
+        <h3>Не работаем с</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span><strong>PEP и членами их семей.</strong> Чиновники, депутаты, силовики и близкие — у них своя индустрия, не наша.</span></li>
+          <li><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span><strong>Санкционными лицами.</strong> OFAC / EU / UK / OFSI — однозначное «нет», даже если кейс выглядит чисто.</span></li>
+          <li><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span><strong>Активным уголовным розыском.</strong> Interpol Red Notice, открытые дела за рубежом — нет.</span></li>
+          <li><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span><strong>«Мутным» происхождением.</strong> Mixers, Tornado, обналичка, незадекларированный нал. Мы не отбеливаем — мы строим белое заново или отказываемся.</span></li>
+          <li><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span><strong>Транзитом без substance.</strong> ОАЭ Free Zone «для печати», номиналы — это серые сигналы 2026, мы их не строим.</span></li>
+        </ul>
       </div>
-
-      <!-- STEP 2: Compliance -->
-      <div class="p3-panel" id="p3-step-2">
-        <h3 style="margin-bottom:8px">Шаг 2 — Compliance Audit</h3>
-        <p style="font-size:14px;font-weight:400;color:var(--text-body);margin-bottom:32px">Многоуровневая проверка соответствия: внутренний AML-аудит Charter Capital до старта работы с клиентом.</p>
-        <!-- Process flow -->
-        <div class="process-flow">
-          <div class="process-box">
-            <h4>INPUT</h4>
-            <div class="process-item done-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Cash / Fiat Assets</div>
-            <div class="process-item done-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Asset Amount Declared</div>
-            <div class="process-item done-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Risk Profile Generated</div>
-          </div>
-          <div class="process-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-          <div class="process-box">
-            <h4>PROCESSING</h4>
-            <div class="process-item processing"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>SoW Documentation Audit</div>
-            <div class="process-item processing"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Sanctions Screening</div>
-            <div class="process-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>Tax Position Analysis</div>
-          </div>
-          <div class="process-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-          <div class="process-box">
-            <h4>OUTPUT</h4>
-            <div class="process-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>Object Passport</div>
-            <div class="process-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>Structure Blueprint</div>
-            <div class="process-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>Bank Readiness Score</div>
-          </div>
-        </div>
-        <!-- Audit checklist -->
-        <div class="audit-progress">
-          <h4>Чек-лист аудита — 9 контрольных точек</h4>
-          <div class="audit-item"><div class="audit-status done"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><span style="flex:1;font-size:13px">Identity Verification (KYC Level 3)</span><span class="tag tag-green" style="font-size:11px">Complete</span></div>
-          <div class="audit-item"><div class="audit-status done"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><span style="flex:1;font-size:13px">OFAC / UN Sanctions Screening</span><span class="tag tag-green" style="font-size:11px">Clear</span></div>
-          <div class="audit-item"><div class="audit-status pending"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><span style="flex:1;font-size:13px">Source of Wealth Documentation Review</span><span class="tag tag-amber" style="font-size:11px">In Progress</span></div>
-          <div class="audit-item"><div class="audit-status pending"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><span style="flex:1;font-size:13px">Transaction History Analysis (5 years)</span><span class="tag tag-amber" style="font-size:11px">In Progress</span></div>
-          <div class="audit-item"><div class="audit-status waiting"><svg viewBox="0 0 24 24"></svg></div><span style="flex:1;font-size:13px">Crypto Exposure Assessment</span><span class="tag tag-slate" style="font-size:11px">Pending</span></div>
-          <div class="audit-item"><div class="audit-status waiting"></div><span style="flex:1;font-size:13px">Tax Residency Verification</span><span class="tag tag-slate" style="font-size:11px">Pending</span></div>
-          <div class="audit-item"><div class="audit-status waiting"></div><span style="flex:1;font-size:13px">Beneficial Ownership Structure Review</span><span class="tag tag-slate" style="font-size:11px">Pending</span></div>
-          <div class="audit-item"><div class="audit-status waiting"></div><span style="flex:1;font-size:13px">PEP (Politically Exposed Persons) Check</span><span class="tag tag-slate" style="font-size:11px">Pending</span></div>
-          <div class="audit-item"><div class="audit-status waiting"></div><span style="flex:1;font-size:13px">Adverse Media Screening</span><span class="tag tag-slate" style="font-size:11px">Pending</span></div>
-        </div>
-        <div style="background:var(--blue-light);border:1px solid var(--blue-mid);border-radius:var(--radius);padding:16px 20px;font-size:13px;color:var(--blue);margin-bottom:24px">
-          <strong>Статус аудита:</strong> завершены 2 из 9 проверок. Ожидается пакет SoW. По завершении будет сформирован Object Passport.
-        </div>
-        <div style="display:flex;justify-content:space-between">
-          <button class="btn btn-secondary" onclick="showP3Step(1)">← Назад</button>
-          <button class="btn btn-primary btn-lg" onclick="showP3Step(3)">Сформировать Object Passport →</button>
-        </div>
+      <div class="bound yes">
+        <h3>Работаем с</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Предпринимателями с реальной выручкой.</strong> Понятный бизнес, документированный exit, прозрачная история активов.</span></li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Крипто-холдерами с «белой» on-chain историей.</strong> Майнинг с регистрацией, ранний BTC, торговая прибыль с регулируемых площадок, DeFi с KYC-вершинами.</span></li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Наследниками капитала.</strong> Капитал получен по наследству или дарению с документами — мы выстраиваем биографию от первого источника.</span></li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Семьями в стадии релокации.</strong> Капитал $250K – $5M, цель — долгосрочная база с ВНЖ / гражданством и Tier-1 банкингом.</span></li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Топ-менеджерами после exit.</strong> Опционы, бонусы, продажа доли — есть документы, нужна архитектура.</span></li>
+        </ul>
       </div>
-
-      <!-- STEP 3: Object Passport -->
-      <div class="p3-panel" id="p3-step-3">
-        <h3 style="margin-bottom:8px">Шаг 3 — Object Passport</h3>
-        <p style="font-size:14px;font-weight:400;color:var(--text-body);margin-bottom:32px">Структурированное досье актива: формат, который банк воспринимает вместо разрозненных объяснений. Ваша история — в корректной подаче.</p>
-        <div class="grid-2" style="margin-bottom:28px">
-          <div class="card">
-            <div class="label label-slate" style="margin-bottom:10px">Asset Summary</div>
-            <table style="width:100%;font-size:13px;border-collapse:collapse">
-              <tr style="border-bottom:1px solid var(--border)"><td style="padding:8px 0;color:var(--text-muted)">Asset Type</td><td style="padding:8px 0;font-weight:500;text-align:right">Cash / Fiat — USD</td></tr>
-              <tr style="border-bottom:1px solid var(--border)"><td style="padding:8px 0;color:var(--text-muted)">Declared Amount</td><td style="padding:8px 0;font-weight:500;text-align:right">$2,500,000</td></tr>
-              <tr style="border-bottom:1px solid var(--border)"><td style="padding:8px 0;color:var(--text-muted)">Risk Profile</td><td style="padding:8px 0;text-align:right"><span class="tag tag-amber">MEDIUM-HIGH</span></td></tr>
-              <tr style="border-bottom:1px solid var(--border)"><td style="padding:8px 0;color:var(--text-muted)">Recommended Structure</td><td style="padding:8px 0;font-weight:500;text-align:right">Liechtenstein Stiftung</td></tr>
-              <tr><td style="padding:8px 0;color:var(--text-muted)">Est. Timeline</td><td style="padding:8px 0;font-weight:500;text-align:right">8–12 weeks</td></tr>
-            </table>
-          </div>
-          <div class="card">
-            <div class="label label-slate" style="margin-bottom:10px">Recommended Pathway</div>
-            <div style="display:flex;flex-direction:column;gap:10px">
-              <div style="display:flex;gap:10px;align-items:flex-start"><span style="width:20px;height:20px;background:var(--blue);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;margin-top:1px">1</span><div><div style="font-size:13px;font-weight:600">Liechtenstein Stiftung Setup</div><div style="font-size:12px;color:var(--text-muted)">Private foundation as holding vehicle</div></div></div>
-              <div style="display:flex;gap:10px;align-items:flex-start"><span style="width:20px;height:20px;background:var(--blue);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;margin-top:1px">2</span><div><div style="font-size:13px;font-weight:600">Thailand Elite Residency</div><div style="font-size:12px;color:var(--text-muted)">Remove Russian-nexus toxicity</div></div></div>
-              <div style="display:flex;gap:10px;align-items:flex-start"><span style="width:20px;height:20px;background:var(--blue);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;margin-top:1px">3</span><div><div style="font-size:13px;font-weight:600">SoW Dossier Compilation</div><div style="font-size:12px;color:var(--text-muted)">5-year documented wealth history</div></div></div>
-              <div style="display:flex;gap:10px;align-items:flex-start"><span style="width:20px;height:20px;background:var(--success);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;margin-top:1px">✓</span><div><div style="font-size:13px;font-weight:600">Bank Introduction — Pictet / Julius Baer</div><div style="font-size:12px;color:var(--text-muted)">Warm introduction via Charter Capital network</div></div></div>
-            </div>
-          </div>
-        </div>
-        <div style="background:var(--slate-dark);border-radius:var(--radius-lg);padding:28px;color:#fff;margin-bottom:28px">
-          <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:20px;flex-wrap:wrap;gap:16px">
-            <div>
-              <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#60a5fa;margin-bottom:6px">Object Passport #CC-2026-0419</div>
-              <h4 style="color:#fff;font-size:1.1rem">Capital Legitimation Blueprint</h4>
-            </div>
-            <span class="tag" style="background:rgba(96,165,250,.15);color:#93c5fd;border:1px solid rgba(96,165,250,.2)">Draft — Pending Full Audit</span>
-          </div>
-          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
-            <div style="background:rgba(255,255,255,.04);border-radius:var(--radius);padding:14px"><div style="font-size:11px;color:#94a3b8;margin-bottom:4px;font-weight:600;letter-spacing:.04em;text-transform:uppercase">Holding Jurisdiction</div><div style="font-size:14px;font-weight:600;color:#e2e8f0">Liechtenstein</div></div>
-            <div style="background:rgba(255,255,255,.04);border-radius:var(--radius);padding:14px"><div style="font-size:11px;color:#94a3b8;margin-bottom:4px;font-weight:600;letter-spacing:.04em;text-transform:uppercase">Tax Residency</div><div style="font-size:14px;font-weight:600;color:#e2e8f0">Thailand (Elite)</div></div>
-            <div style="background:rgba(255,255,255,.04);border-radius:var(--radius);padding:14px"><div style="font-size:11px;color:#94a3b8;margin-bottom:4px;font-weight:600;letter-spacing:.04em;text-transform:uppercase">Target Bank Tier</div><div style="font-size:14px;font-weight:600;color:#e2e8f0">Tier-1 Private</div></div>
-          </div>
-        </div>
-        <div style="display:flex;justify-content:space-between">
-          <button class="btn btn-secondary" onclick="showP3Step(2)">← Назад</button>
-          <button class="btn btn-primary btn-lg" onclick="showP3Step(4)">Показать Bank Readiness Score →</button>
-        </div>
-      </div>
-
-      <!-- STEP 4: Output -->
-      <div class="p3-panel" id="p3-step-4">
-        <h3 style="margin-bottom:8px">Шаг 4 — Tier-1 Bank Readiness</h3>
-        <p style="font-size:14px;font-weight:400;color:var(--text-body);margin-bottom:32px">Итоговая оценка готовности к onboarding в банках Tier-1. После реализации структуры Charter Capital счёт может быть принят в целевом банке.</p>
-        <div class="output-score-card">
-          <h3>Bank Readiness Score</h3>
-          <div class="readiness-score">34<span>/100</span></div>
-          <p>Текущий статус — до внедрения структуры Charter Capital. Целевой показатель после реализации: 87+</p>
-        </div>
-        <div style="margin-bottom:28px">
-          <h4 style="font-size:13px;font-weight:600;margin-bottom:4px">Прогноз после реализации структуры</h4>
-          <div style="height:8px;background:var(--border);border-radius:4px;overflow:hidden;margin-bottom:8px">
-            <div style="height:100%;width:87%;background:linear-gradient(to right,var(--blue),var(--success));border-radius:4px;transition:width 1s ease"></div>
-          </div>
-          <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted)">
-            <span>Сейчас: 34</span><span style="font-weight:600;color:var(--success)">Цель: 87 — Tier-1 Ready</span>
-          </div>
-        </div>
-        <h4 style="font-size:13px;font-weight:600;margin-bottom:14px">Bank Access by Tier</h4>
-        <div class="bank-tiers">
-          <div class="bank-tier-card locked">
-            <div class="bank-tier-header"><h5>Tier 1 — Ultra Private</h5><span class="tier-badge-gray">Locked</span></div>
-            <div class="bank-logos"><span class="bank-logo-pill">Pictet</span><span class="bank-logo-pill">Julius Baer</span><span class="bank-logo-pill">Lombard Odier</span></div>
-            <p style="font-size:12px;color:var(--text-muted)">Требует полная легитимация SoW + Tier-1 структура</p>
-          </div>
-          <div class="bank-tier-card partial">
-            <div class="bank-tier-header"><h5>Tier 2 — Premium Private</h5><span class="tier-badge-amber">Partial</span></div>
-            <div class="bank-logos"><span class="bank-logo-pill">UBS</span><span class="bank-logo-pill">Credit Suisse</span><span class="bank-logo-pill">HSBC Private</span></div>
-            <p style="font-size:12px;color:var(--text-muted)">Возможен onboarding с дополнительными документами</p>
-          </div>
-          <div class="bank-tier-card unlocked">
-            <div class="bank-tier-header"><h5>Tier 3 — Boutique</h5><span class="tier-badge-green">Available</span></div>
-            <div class="bank-logos"><span class="bank-logo-pill">Loyal Banks</span><span class="bank-logo-pill">Singapore</span><span class="bank-logo-pill">HK Banks</span></div>
-            <p style="font-size:12px;color:var(--text-muted)">Доступно сейчас при наличии структуры HK/SG</p>
-          </div>
-          <div class="bank-tier-card" style="background:linear-gradient(135deg,var(--blue-light),#e0f2fe);border-color:var(--blue-mid)">
-            <div class="bank-tier-header"><h5>After Charter Capital</h5><span class="tier-badge-green">All Tiers</span></div>
-            <div class="bank-logos"><span class="bank-logo-pill" style="background:var(--blue);color:#fff;border-color:var(--blue)">All Banks</span></div>
-            <p style="font-size:12px;color:var(--blue)">После реализации структуры — доступ ко всем уровням</p>
-          </div>
-        </div>
-        <div style="background:#fff;border-radius:var(--radius-lg);padding:28px;margin-top:28px;text-align:center;border:1px solid #f1f5f9">
-          <h3 style="color:#0f172a;margin-bottom:8px;font-weight:300">Начать реализацию структуры</h3>
-          <p style="color:#64748b;font-size:14px;font-weight:300;max-width:500px;margin:0 auto 24px">Ваш Object Passport сформирован. Следующий шаг — официальный аудит биографии и запуск реализации с персональным советником.</p>
-          <button class="btn btn-primary btn-lg" onclick="showPage('p2')">ЗАПРОСИТЬ АУДИТ БИОГРАФИИ</button>
-        </div>
-        <div style="display:flex;justify-content:flex-start;margin-top:16px">
-          <button class="btn btn-secondary" onclick="showP3Step(3)">← Назад</button>
-        </div>
-      </div>
-
     </div>
   </div>
-</div>
+</section>
+
+<!-- ─── DECK 11 · CONTACT ────────────────────────────────── -->
+<section class="deck contact" id="contact">
+  <div class="blk">
+    <span class="kicker">Первый шаг</span>
+    <h2>30 минут под NDA — закрытая встреча, не консультация</h2>
+    <p>Расскажите ситуацию — мы покажем, какой формат вовлечения её закрывает, какой бюджет и горизонт, каких рисков мы видим больше всего. Если ваш кейс не наш — скажем сразу и порекомендуем тех, кто подойдёт. Мы работаем с ограниченным числом мандатов одновременно.</p>
+      <div class="contact-channels">
+        <a href="https://t.me/charter_capital" class="btn btn-gold btn-lg" target="_blank" rel="noopener">Telegram <span class="arr">→</span></a>
+        <a href="mailto:private@ccapital.pro" class="btn btn-outline-dark btn-lg">private@ccapital.pro</a>
+        <button type="button" class="btn btn-outline-dark btn-lg" id="openLoginModal2">Защищённый канал</button>
+      </div>
+    <p class="contact-note">Канал шифрован end-to-end. <strong>Не пишите в обычной почте</strong> номера счетов, паспорта, адреса кошельков и реквизиты сделок — мы пришлём защищённую форму после первого ответа.</p>
+  </div>
+</section>
+
 </main>
+
+<!-- ─── FOOTER ────────────────────────────────────────────── -->
+<footer class="f">
+  <div class="f-inner">
+    <div class="f-brand">
+      <div class="name">Charter Capital</div>
+      <div class="tag">Private Office · от $250K</div>
+      <p>Архитекторы биографии капитала для частных клиентов. Audit, full mandate, strategic partnership. Tier-1 onboarding, substance-инфраструктура, многоюрисдикционные структуры.</p>
+    </div>
+    <div class="f-col">
+      <h5>Контуры</h5>
+      <ul>
+        <li><a href="index.html">Основной агрегатор · от $50K</a></li>
+        <li><a href="private.html">Private Office · от $250K</a></li>
+        <li><a href="corporate.html">Corporate · ВЭД</a></li>
+        <li><a href="sourceready-scoring-sandbox.html">Скоринг готовности</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h5>Контакт</h5>
+      <ul>
+        <li><a href="https://t.me/charter_capital" target="_blank" rel="noopener">Telegram</a></li>
+        <li><a href="mailto:private@ccapital.pro">private@ccapital.pro</a></li>
+        <li><a href="https://ccapital.pro">ccapital.pro</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="f-disclaimer">
+    Charter Capital · Private Office оказывает (i) собственные услуги — диагностические аудиты, проектирование корпоративной архитектуры, AML-пакеты, fiduciary-сопровождение, координацию с банками, аудиторами, юристами и (ii) выступает концирж-агентом для услуг лицензированных партнёров — банков, нотариусов, аудиторов, регулируемых VASP / EMI. Услуги партнёров оказываются партнёрами и регулируются их юрисдикциями. Charter Capital не предоставляет инвестиционных, налоговых и юридических советов в смысле локального законодательства. Любая информация на сайте носит индикативный характер и не является публичной офертой.
+  </div>
+  <div class="f-bottom">
+    <span>© 2026 Charter Capital · Private Office</span>
+    <span>Обновлено: апрель 2026</span>
+  </div>
+</footer>
+
+<!-- ─── LOGIN MODAL ──────────────────────────────────────── -->
 <div id="loginModal" role="dialog" aria-modal="true" aria-labelledby="loginModalTitle" aria-hidden="true">
-  <div class="login-modal-card" role="document" onclick="event.stopPropagation()">
-    <button type="button" class="login-modal-close" onclick="closeLoginModal()" aria-label="Закрыть">×</button>
-    <h2 class="login-modal-title" id="loginModalTitle">Private Access</h2>
-    <p class="login-modal-sub">Введите учётные данные партнёрского контура. Сессия шифруется end-to-end.</p>
+  <div class="login-card" role="document" onclick="event.stopPropagation()">
+    <button type="button" class="login-close" onclick="closeLoginModal()" aria-label="Закрыть">×</button>
+    <h3 id="loginModalTitle">Private Access</h3>
+    <p class="sub">Защищённый партнёрский контур. Сессия шифруется end-to-end.</p>
     <form onsubmit="event.preventDefault(); closeLoginModal();">
       <div class="login-field">
         <label for="partnerId">Partner ID</label>
-        <input type="text" id="partnerId" name="partnerId" autocomplete="username" placeholder=""/>
+        <input type="text" id="partnerId" name="partnerId" autocomplete="username"/>
       </div>
       <div class="login-field">
         <label for="accessToken">Access Token</label>
-        <input type="password" id="accessToken" name="accessToken" autocomplete="current-password" placeholder=""/>
+        <input type="password" id="accessToken" name="accessToken" autocomplete="current-password"/>
       </div>
-      <button type="submit" class="login-modal-authorize">Authorize</button>
+      <button type="submit" class="login-submit">Authorize</button>
     </form>
   </div>
 </div>
 
-
-
 <script>
-document.addEventListener('DOMContentLoaded',function(){ requestAnimationFrame(function(){ document.body.classList.add('page-ready'); }); });
-function openLoginModal(){ var m=document.getElementById('loginModal'); if(!m) return; m.classList.add('is-open'); m.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
-function closeLoginModal(){ var m=document.getElementById('loginModal'); if(!m) return; m.classList.remove('is-open'); m.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
-(function(){ var o=document.getElementById('openLoginModal'); if(o) o.addEventListener('click',openLoginModal); var lm=document.getElementById('loginModal'); if(lm) lm.addEventListener('click',function(e){ if(e.target===lm) closeLoginModal(); }); })();
+document.addEventListener('DOMContentLoaded', function () {
+  requestAnimationFrame(function () { document.body.classList.add('page-ready'); });
+});
+
+function openLoginModal(){
+  var m=document.getElementById('loginModal'); if(!m) return;
+  m.classList.add('is-open'); m.setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
+}
+function closeLoginModal(){
+  var m=document.getElementById('loginModal'); if(!m) return;
+  m.classList.remove('is-open'); m.setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
+}
+(function(){
+  ['openLoginModal','openLoginModal2'].forEach(function(id){
+    var el=document.getElementById(id); if(el) el.addEventListener('click',openLoginModal);
+  });
+  var lm=document.getElementById('loginModal');
+  if(lm) lm.addEventListener('click',function(e){ if(e.target===lm) closeLoginModal(); });
+})();
 document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeLoginModal(); });
-document.addEventListener('click',function(e){ var a=e.target.closest('a[href]'); if(!a||a.target==='_blank'||e.metaKey||e.ctrlKey||e.shiftKey) return; var href=a.getAttribute('href'); if(!href||href.startsWith('#')||href.startsWith('mailto:')||href.startsWith('javascript:')) return; try{ var u=new URL(a.href,location.href); if(u.origin!==location.origin) return; if(!/\.html($|[?#])/i.test(u.pathname)) return; e.preventDefault(); document.body.classList.remove('page-ready'); document.body.style.opacity='0'; setTimeout(function(){ location.href=a.href; }, 280); }catch(err){} });
-function showPage(id){ var map={selector:'index.html',p1:'index.html',p2:'private.html',p3:'private.html',p4:'corporate.html'}; var to=map[id]||'index.html'; document.body.classList.remove('page-ready'); document.body.style.opacity='0'; setTimeout(function(){ location.href=to; }, 240); }
 
-</script>
-
-
-<script>
-function switchP2Tab(tab, btn){ document.querySelectorAll('.p2-tab').forEach(t=>t.classList.remove('active')); document.querySelectorAll('.p2-service-content').forEach(c=>c.classList.remove('active')); btn.classList.add('active'); document.getElementById('p2-'+tab).classList.add('active'); }
-function showP3Step(n){ document.querySelectorAll('.p3-panel').forEach(p=>p.classList.remove('active')); document.getElementById('p3-step-'+n).classList.add('active'); document.querySelectorAll('.p3-step').forEach((s,i)=>{ s.classList.remove('active','done'); if(i+1<n) s.classList.add('done'); if(i+1===n) s.classList.add('active'); }); document.querySelectorAll('.p3-step-border').forEach((b,i)=> b.classList.toggle('done', i+1<n)); }
-function selectTile(el){ document.querySelectorAll('.input-tile').forEach(t=>t.classList.remove('selected')); el.classList.add('selected'); }
-function setCurrency(el){ document.querySelectorAll('.currency-btn').forEach(b=>b.classList.remove('active')); el.classList.add('active'); }
+// Smooth fade transition between local html pages
+document.addEventListener('click',function(e){
+  var a=e.target.closest('a[href]');
+  if(!a||a.target==='_blank'||e.metaKey||e.ctrlKey||e.shiftKey) return;
+  var href=a.getAttribute('href');
+  if(!href||href.startsWith('#')||href.startsWith('mailto:')||href.startsWith('javascript:')||href.startsWith('tel:')) return;
+  try{
+    var u=new URL(a.href,location.href);
+    if(u.origin!==location.origin) return;
+    if(!/\.html($|[?#])/i.test(u.pathname)) return;
+    e.preventDefault();
+    document.body.classList.remove('page-ready'); document.body.style.opacity='0';
+    setTimeout(function(){ location.href=a.href; }, 250);
+  }catch(err){}
+});
 </script>
 
 </body>
