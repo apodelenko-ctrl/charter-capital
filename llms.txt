@@ -51,6 +51,7 @@ Charter Capital является (i) производителем собстве
 
 ## Optional
 
+- [Политика конфиденциальности](https://ccapital.pro/privacy.html)
 - [Сайт-каркас (sitemap)](https://ccapital.pro/sitemap.xml)
 - [Контакт через Telegram](https://t.me/charter_capital)
 - [Email](mailto:hello@ccapital.pro)
