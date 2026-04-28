@@ -3,21 +3,50 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="color-scheme" content="light dark"/>
+<meta name="theme-color" content="#fbfaf6" media="(prefers-color-scheme: light)"/>
+<meta name="theme-color" content="#0a0e1a" media="(prefers-color-scheme: dark)"/>
+<meta name="format-detection" content="telephone=no"/>
+<meta name="referrer" content="strict-origin-when-cross-origin"/>
 <title>CP Property — Подобранная недвижимость Пхукета · Charter Capital</title>
 <meta name="description" content="CP Property · часть экосистемы Charter Capital. Прямые контракты с застройщиками Пхукета. Ноль комиссии покупателю. Пять прошедших скрининг проектов в Bang Tao, Layan, Kata, Karon и Rawai. Leasehold и freehold структуры с полной документацией."/>
+<meta name="keywords" content="недвижимость Пхукет, Bang Tao, Layan, Kata, Karon, Rawai, leasehold freehold, condo Phuket, инвестиционная недвижимость Таиланд, CP Property, Charter Capital"/>
+<meta name="author" content="Charter Capital"/>
+<meta name="geo.region" content="TH"/>
+<meta name="geo.placename" content="Phuket"/>
+<meta name="geo.position" content="7.8804;98.3923"/>
+<meta name="ICBM" content="7.8804, 98.3923"/>
+<meta name="language" content="Russian"/>
+<meta name="content-language" content="ru"/>
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1"/>
+<meta name="yandex" content="index,follow"/>
+
+<link rel="canonical" href="https://ccapital.pro/property.html"/>
+<link rel="alternate" hreflang="ru" href="https://ccapital.pro/property.html"/>
+<link rel="alternate" hreflang="en" href="https://ccapital.pro/property-en.html"/>
+<link rel="alternate" hreflang="x-default" href="https://ccapital.pro/property.html"/>
+
 <meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Charter Capital"/>
 <meta property="og:title" content="CP Property — Подобранная недвижимость Пхукета · Charter Capital"/>
 <meta property="og:description" content="Прямые контракты с застройщиком. Ноль комиссии покупателю. Пять подобранных проектов Пхукета под единым мандатом."/>
 <meta property="og:url" content="https://ccapital.pro/property.html"/>
 <meta property="og:image" content="https://ccapital.pro/assets/property/the-modeva-exterior-4-1.jpg"/>
+<meta property="og:image:alt" content="CP Property — недвижимость Пхукета"/>
 <meta property="og:locale" content="ru_RU"/>
 <meta property="og:locale:alternate" content="en_US"/>
-<link rel="canonical" href="https://ccapital.pro/property.html"/>
-<link rel="alternate" hreflang="ru" href="https://ccapital.pro/property.html"/>
-<link rel="alternate" hreflang="en" href="https://ccapital.pro/property-en.html"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="CP Property — Пхукет"/>
+<meta name="twitter:description" content="Прямые контракты с застройщиком. Ноль комиссии покупателю."/>
+<meta name="twitter:image" content="https://ccapital.pro/assets/property/the-modeva-exterior-4-1.jpg"/>
+
+<link rel="dns-prefetch" href="https://fonts.googleapis.com"/>
+<link rel="dns-prefetch" href="https://fonts.gstatic.com"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap" media="print" onload="this.media='all'"/>
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap"/></noscript>
 <style>
 :root{
   --bg:#fff;
@@ -186,8 +215,10 @@ section.s.dark p{color:rgba(255,255,255,.74)}
 .mech-disclaimer{margin-top:22px;font-size:12px;color:var(--muted);line-height:1.65;padding:14px 18px;background:var(--bg-soft);border-left:2px solid var(--gold);border-radius:0 var(--radius) var(--radius) 0}
 
 /* LOCATIONS */
-.loc-grid{display:grid;grid-template-columns:0.85fr 1.15fr;gap:36px;align-items:start}
-.loc-list{display:flex;flex-direction:column;gap:10px}
+.loc-grid{display:flex;flex-direction:column;gap:32px}
+.loc-list{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.loc-list .loc-item:nth-child(5){grid-column:1 / -1}
+@media(max-width:760px){.loc-list{grid-template-columns:1fr}.loc-list .loc-item:nth-child(5){grid-column:auto}}
 .loc-item{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;padding:18px 22px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);transition:border-color .15s ease,background .15s ease}
 .loc-item:hover{border-color:var(--gold);background:#fffaf0}
 .loc-item .n{font-size:11px;font-weight:700;letter-spacing:.18em;color:var(--gold)}
@@ -198,7 +229,7 @@ section.s.dark p{color:rgba(255,255,255,.74)}
 .loc-map{position:relative;background:#06080f;border-radius:var(--radius-lg);overflow:hidden;color:#fff;display:grid;grid-template-columns:1fr 220px;gap:0;border:1px solid #1f2937}
 .phuket-canvas{
   position:relative;
-  aspect-ratio:1024/682;
+  aspect-ratio:1100/1024;
   background:radial-gradient(ellipse at 50% 50%,#0e1322 0%,#06080f 80%);
   overflow:hidden;
 }
@@ -333,7 +364,7 @@ footer.f{background:#06080f;color:#94a3b8;padding:64px 0 32px;border-top:1px sol
 @media (max-width:1080px){.intel-grid{grid-template-columns:1fr 1fr}.process-list{grid-template-columns:1fr 1fr}.own-grid{grid-template-columns:1fr 1fr}}
 @media (max-width:980px){
   .cat-grid{grid-template-columns:1fr}
-  .mech-grid,.gidr-grid,.loc-grid{grid-template-columns:1fr;gap:36px}
+  .mech-grid,.gidr-grid{grid-template-columns:1fr;gap:36px}
   .contact-grid{grid-template-columns:1fr}
   .f-grid{grid-template-columns:1fr 1fr}
   .loc-map{grid-template-columns:1fr}
@@ -364,6 +395,78 @@ footer.f{background:#06080f;color:#94a3b8;padding:64px 0 32px;border-top:1px sol
   .mech-row:last-child .mech-cell:last-child{border-bottom:0}
 }
 </style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://ccapital.pro/#organization",
+      "name": "Charter Capital",
+      "url": "https://ccapital.pro/",
+      "logo": "https://ccapital.pro/assets/logic/15-passport-gate.webp",
+      "slogan": "Когда двери закрываются, мы открываем мир",
+      "sameAs": ["https://t.me/charter_capital"],
+      "contactPoint": [{
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "email": "hello@ccapital.pro",
+        "url": "https://t.me/charter_capital",
+        "availableLanguage": ["Russian", "English"]
+      }]
+    },
+    {
+      "@type": "RealEstateAgent",
+      "@id": "https://ccapital.pro/property.html#realestate",
+      "name": "CP Property by Charter Capital",
+      "parentOrganization": {"@id": "https://ccapital.pro/#organization"},
+      "url": "https://ccapital.pro/property.html",
+      "description": "Подобранная недвижимость Пхукета. Прямые контракты с застройщиками. Ноль комиссии покупателю. Пять прошедших скрининг проектов в Bang Tao, Layan, Kata, Karon, Rawai.",
+      "areaServed": [
+        {"@type": "Place", "name": "Phuket, Thailand"},
+        {"@type": "Place", "name": "Bang Tao"},
+        {"@type": "Place", "name": "Layan"},
+        {"@type": "Place", "name": "Kata"},
+        {"@type": "Place", "name": "Karon"},
+        {"@type": "Place", "name": "Rawai"}
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 7.8804,
+        "longitude": 98.3923
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://ccapital.pro/property.html#webpage",
+      "url": "https://ccapital.pro/property.html",
+      "name": "CP Property — Подобранная недвижимость Пхукета",
+      "isPartOf": {"@id": "https://ccapital.pro/#website"},
+      "inLanguage": "ru-RU",
+      "primaryImageOfPage": "https://ccapital.pro/assets/property/the-modeva-exterior-4-1.jpg"
+    },
+    {
+      "@type": "ItemList",
+      "name": "Подобранные проекты Пхукета",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "url": "https://ccapital.pro/projects/the-modeva.html", "name": "The Modeva"},
+        {"@type": "ListItem", "position": 2, "url": "https://ccapital.pro/projects/the-title-adora.html", "name": "The Title Adora"},
+        {"@type": "ListItem", "position": 3, "url": "https://ccapital.pro/projects/the-title-artrio.html", "name": "The Title Artrio"},
+        {"@type": "ListItem", "position": 4, "url": "https://ccapital.pro/projects/the-title-katabello.html", "name": "The Title Katabello"},
+        {"@type": "ListItem", "position": 5, "url": "https://ccapital.pro/projects/title-vivi.html", "name": "Title Vivi"}
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Charter Capital", "item": "https://ccapital.pro/"},
+        {"@type": "ListItem", "position": 2, "name": "CP Property", "item": "https://ccapital.pro/property.html"}
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -739,11 +842,11 @@ footer.f{background:#06080f;color:#94a3b8;padding:64px 0 32px;border-top:1px sol
       <div class="loc-map" aria-label="Карта Пхукета с расположением проектов">
         <div class="phuket-canvas" aria-hidden="true">
           <img class="phuket-map-img" src="/assets/property/phuket-map.png" alt="Карта Пхукета — расположение пяти проектов CP Property" loading="lazy"/>
-          <button type="button" class="map-pin" style="--x:33.5%;--y:38%" data-pin="bangtao" aria-label="Bang Tao · 3 проекта"><span>1</span></button>
-          <button type="button" class="map-pin" style="--x:38%;--y:25.5%" data-pin="layan" aria-label="Layan · 1 проект"><span>2</span></button>
-          <button type="button" class="map-pin" style="--x:34%;--y:52%" data-pin="patong" aria-label="Patong · выборочно"><span>3</span></button>
-          <button type="button" class="map-pin" style="--x:38%;--y:65%" data-pin="kata" aria-label="Kata · Karon · 1 проект"><span>4</span></button>
-          <button type="button" class="map-pin" style="--x:46%;--y:82%" data-pin="rawai" aria-label="Rawai · Nai Harn · южный коридор"><span>5</span></button>
+          <button type="button" class="map-pin" style="--x:24.5%;--y:26.9%" data-pin="bangtao" aria-label="Bang Tao · 3 проекта"><span>1</span></button>
+          <button type="button" class="map-pin" style="--x:27.3%;--y:16.6%" data-pin="layan" aria-label="Layan · 1 проект"><span>2</span></button>
+          <button type="button" class="map-pin" style="--x:25%;--y:40%" data-pin="patong" aria-label="Patong · выборочно"><span>3</span></button>
+          <button type="button" class="map-pin" style="--x:29%;--y:53.7%" data-pin="kata" aria-label="Kata · Karon · 1 проект"><span>4</span></button>
+          <button type="button" class="map-pin" style="--x:34.5%;--y:66.4%" data-pin="rawai" aria-label="Rawai · Nai Harn · южный коридор"><span>5</span></button>
         </div>
         <div class="map-legend">
           <div class="map-legend-row"><span class="map-legend-num">1</span><div><div class="map-legend-name">Bang Tao</div><div class="map-legend-meta">3 проекта · Tier 1</div></div></div>
