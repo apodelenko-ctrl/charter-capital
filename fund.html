@@ -249,6 +249,55 @@ p{color:var(--text-soft);font-weight:400;line-height:1.65;font-size:16px}
 .sens-table td{color:var(--text-soft)}
 .sens-note{font-size:12px;color:var(--muted);margin-top:14px;line-height:1.6}
 
+/* ─── CHARTS (analytics SVGs) ──────────────────────────── */
+.charts{
+  display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:38px;
+}
+.chart-card{
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  border-radius:12px;padding:18px;
+  display:flex;flex-direction:column;gap:14px;
+}
+.chart-img{
+  border-radius:8px;overflow:hidden;background:#1f2936;
+  aspect-ratio:16/8;
+}
+.chart-img img{display:block;width:100%;height:100%;object-fit:cover}
+.chart-card figcaption h4{
+  color:#fff;font-size:1.05rem;font-weight:500;letter-spacing:-.005em;margin-bottom:6px;
+}
+.chart-card figcaption p{
+  font-size:13px;line-height:1.55;color:#cbd5e1;margin:0;
+}
+
+/* ─── OBJECTS GALLERY ──────────────────────────────────── */
+.objects-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px;
+}
+.object-card{
+  background:#fff;border:1px solid var(--line);border-radius:10px;
+  overflow:hidden;display:flex;flex-direction:column;
+  transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;
+}
+.object-card:hover{transform:translateY(-3px);border-color:#9ca3af;box-shadow:0 14px 30px rgba(0,0,0,.08)}
+.object-img{aspect-ratio:16/10;overflow:hidden;background:#0a0a0a}
+.object-img img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .35s ease}
+.object-card:hover .object-img img{transform:scale(1.04)}
+.object-card figcaption{padding:18px 20px 20px;display:flex;flex-direction:column;gap:8px}
+.object-tag{
+  font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--gold);
+}
+.object-card h4{
+  font-size:15px;font-weight:600;color:var(--ink);
+  letter-spacing:-.005em;line-height:1.25;
+}
+.object-meta{
+  display:flex;flex-direction:column;gap:4px;
+  margin-top:4px;padding-top:10px;border-top:1px dashed var(--line);
+  font-size:12.5px;color:var(--muted);font-feature-settings:'tnum';
+}
+
 /* ─── PROTECT (3 cards on dark) ───────────────────────── */
 .protect-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px}
 .protect-card{
@@ -327,7 +376,8 @@ footer.f{
 /* ─── Responsive ───────────────────────────────────────── */
 @media(max-width:1100px){
   .blk,.hero-body{padding:56px 32px}
-  .programs,.examples,.protect-grid{grid-template-columns:1fr}
+  .programs,.examples,.protect-grid,.charts{grid-template-columns:1fr}
+  .objects-grid{grid-template-columns:1fr 1fr}
   .how-grid{grid-template-columns:1fr 1fr}
   .metrics{grid-template-columns:1fr 1fr}
   .topbar-nav{display:none}
@@ -342,7 +392,7 @@ footer.f{
   .blk,.hero-body{padding:48px 22px}
   .hero-actions .btn{width:100%;justify-content:center}
   .deck.contact .blk{padding:64px 22px}
-  .how-grid,.metrics{grid-template-columns:1fr}
+  .how-grid,.metrics,.objects-grid{grid-template-columns:1fr}
   .hero-meta{gap:24px}
   .hero-meta-item .v{font-size:1.25rem}
 }
@@ -360,6 +410,7 @@ footer.f{
       <a href="#how">Как работает</a>
       <a href="#programs">Стратегии</a>
       <a href="#examples">Расчёт</a>
+      <a href="#objects">Объекты</a>
       <a href="#protect">Защита</a>
       <a href="#faq">FAQ</a>
       <a href="#contact">Контакт</a>
@@ -374,7 +425,7 @@ footer.f{
 
 <!-- ─── DECK 1 · HERO ────────────────────────────────────── -->
 <section class="deck hero-deck">
-  <img class="hero-img" src="assets/logic/12-pool-vertical.png" alt="Charter Asia Fund — premium real estate Phuket"/>
+  <img class="hero-img" src="assets/fund/villa-exterior-1.jpg" alt="Charter Asia Fund — premium real estate Phuket"/>
   <div class="hero-body">
     <div class="hero-flag">
       <span class="dot"></span>
@@ -583,6 +634,115 @@ footer.f{
         <span class="desc">Органический рост без признаков перегрева.</span>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ─── DECK 5.5 · АНАЛИТИКА В ГРАФИКАХ (dark) ──────────── -->
+<section class="deck dark">
+  <div class="blk">
+    <span class="kicker">Пхукет в реальных цифрах</span>
+    <h2 class="title">Стабильная база для купона. Понятная логика для роста.</h2>
+    <p class="lead" style="margin-top:6px">Сочетание высокой заполняемости курортов и устойчивого среднего дохода с аренды формирует чистую доходность 5–7% годовых. Цены растут плавно, на 3–6% в год, отражая органический спрос без перегрева — это создаёт идеальную структуру для гибридной стратегии «доход + рост».</p>
+    <div class="charts">
+      <figure class="chart-card">
+        <div class="chart-img"><img src="assets/fund/chart-occupancy-yield.svg" alt="Occupancy & ADR with Yield band" loading="lazy"/></div>
+        <figcaption>
+          <h4>Загрузка курорта &amp; ADR · Yield 5–7%</h4>
+          <p>Высокая заполняемость (72–80%) и устойчивый средний доход с аренды ($135–165 за ночь) формируют стабильную чистую доходность. Актив работает независимо от сезонных колебаний — именно эту стабильность фонд использует как основу купонной программы.</p>
+        </figcaption>
+      </figure>
+      <figure class="chart-card">
+        <div class="chart-img"><img src="assets/fund/chart-price-trend.svg" alt="Price trend +3–6% YoY" loading="lazy"/></div>
+        <figcaption>
+          <h4>Тренд цен · +3–6% год к&nbsp;году</h4>
+          <p>Цены на курортную недвижимость Пхукета растут плавно, без перегрева. Этот тренд создаёт основу для гибридной стратегии: сочетание стабильной аренды и умеренного прироста капитала даёт инвесторам две выгоды одновременно — регулярный доход и рост стоимости актива.</p>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ─── DECK 5.7 · ОБЪЕКТЫ В ПОРТФЕЛЕ ────────────────────── -->
+<section class="deck cream" id="objects">
+  <div class="blk">
+    <span class="kicker muted">Примеры объектов</span>
+    <h2 class="title">Что попадает в портфель</h2>
+    <p class="lead">В портфель фонда попадают только премиум-объекты с подтверждёнными рейтингами по нашей внутренней модели — приоритет ликвидности, предсказуемому денежному потоку и качественному застройщику. Иллюстративные примеры объектов на Пхукете в сегментах, в которых работает фонд.</p>
+    <div class="objects-grid">
+      <figure class="object-card">
+        <div class="object-img"><img src="assets/fund/villa-exterior-1.jpg" alt="Premium condominium · Bang Tao" loading="lazy"/></div>
+        <figcaption>
+          <span class="object-tag">Bang Tao · 5★</span>
+          <h4>Премиум-condo, 500 м от пляжа</h4>
+          <div class="object-meta">
+            <span>1–2 BR · 29–95 м²</span>
+            <span>Freehold / Leasehold</span>
+            <span>Высокая капитализация</span>
+          </div>
+        </figcaption>
+      </figure>
+      <figure class="object-card">
+        <div class="object-img"><img src="assets/fund/villa-exterior-2.jpg" alt="Resort villa exterior" loading="lazy"/></div>
+        <figcaption>
+          <span class="object-tag">Resort segment</span>
+          <h4>Курортная вилла под управление</h4>
+          <div class="object-meta">
+            <span>2–4 BR · от 120 м²</span>
+            <span>Property management</span>
+            <span>Стабильный yield</span>
+          </div>
+        </figcaption>
+      </figure>
+      <figure class="object-card">
+        <div class="object-img"><img src="assets/fund/villa-exterior-3.jpg" alt="Premium development" loading="lazy"/></div>
+        <figcaption>
+          <span class="object-tag">Pre-launch</span>
+          <h4>Девелоперский дисконт на котловане</h4>
+          <div class="object-meta">
+            <span>1–3 BR</span>
+            <span>−15–20% вход</span>
+            <span>Цель +25–30% за 3 года</span>
+          </div>
+        </figcaption>
+      </figure>
+      <figure class="object-card">
+        <div class="object-img"><img src="assets/fund/condo-interior-1.jpg" alt="Premium interior" loading="lazy"/></div>
+        <figcaption>
+          <span class="object-tag">Interior · move-in</span>
+          <h4>Готовые интерьеры под аренду</h4>
+          <div class="object-meta">
+            <span>Furnished package</span>
+            <span>ADR $135–165</span>
+            <span>Заполняемость 72–78%</span>
+          </div>
+        </figcaption>
+      </figure>
+      <figure class="object-card">
+        <div class="object-img"><img src="assets/fund/villa-exterior-4.jpg" alt="Resort exterior" loading="lazy"/></div>
+        <figcaption>
+          <span class="object-tag">Boutique resort</span>
+          <h4>Бутик-сегмент с операционным доходом</h4>
+          <div class="object-meta">
+            <span>Лимитированный фонд</span>
+            <span>Управляющая компания</span>
+            <span>Бар, спа, охрана 24/7</span>
+          </div>
+        </figcaption>
+      </figure>
+      <figure class="object-card">
+        <div class="object-img"><img src="assets/fund/condo-interior-2.jpg" alt="Studio interior" loading="lazy"/></div>
+        <figcaption>
+          <span class="object-tag">1BR · entry segment</span>
+          <h4>Компактный 1BR — стартовый вход</h4>
+          <div class="object-meta">
+            <span>27–41 м²</span>
+            <span>от $130 000</span>
+            <span>Базовая программа купона</span>
+          </div>
+        </figcaption>
+      </figure>
+    </div>
+    <p style="margin-top:36px;font-size:13px;color:var(--muted);max-width:62ch;line-height:1.6">Иллюстрации — общий уровень и сегмент объектов, в которых работает фонд. Конкретный список объектов в портфеле и условия по каждому проекту фиксируются в инвестиционных документах фонда (Memorandum, Subscription Agreement).</p>
   </div>
 </section>
 

@@ -1,0 +1,98 @@
+<svg width="800" height="400" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="occGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+<stop offset="0%" style="stop-color:#348E8C;stop-opacity:0.2"/>
+<stop offset="100%" style="stop-color:#348E8C;stop-opacity:0.05"/>
+</linearGradient>
+<linearGradient id="adrGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+<stop offset="0%" style="stop-color:#FF76B7;stop-opacity:0.2"/>
+<stop offset="100%" style="stop-color:#FF76B7;stop-opacity:0.05"/>
+</linearGradient>
+</defs>
+<rect width="800" height="400" fill="#1F2936"/>
+<g>
+<!-- Background Grid -->
+<line x1="80" y1="50" x2="80" y2="350" stroke="#374151" stroke-width="1"/>
+<line x1="140" y1="50" x2="140" y2="350" stroke="#374151" stroke-width="1"/>
+<line x1="200" y1="50" x2="200" y2="350" stroke="#374151" stroke-width="1"/>
+<line x1="260" y1="50" x2="260" y2="350" stroke="#374151" stroke-width="1"/>
+<line x1="320" y1="50" x2="320" y2="350" stroke="#374151" stroke-width="1"/>
+<line x1="380" y1="50" x2="380" y2="350" stroke="#374151" stroke-width="1"/>
+<line x1="440" y1="50" x2="440" y2="350" stroke="#374151" stroke-width="1"/>
+<line x1="500" y1="50" x2="500" y2="350" stroke="#374151" stroke-width="1"/>
+<line x1="560" y1="50" x2="560" y2="350" stroke="#374151" stroke-width="1"/>
+<line x1="620" y1="50" x2="620" y2="350" stroke="#374151" stroke-width="1"/>
+<line x1="680" y1="50" x2="680" y2="350" stroke="#374151" stroke-width="1"/>
+<line x1="740" y1="50" x2="740" y2="350" stroke="#374151" stroke-width="1"/>
+<line x1="800" y1="50" x2="800" y2="350" stroke="#374151" stroke-width="1"/>
+<line x1="80" y1="50" x2="800" y2="50" stroke="#374151" stroke-width="1"/>
+<line x1="80" y1="100" x2="800" y2="100" stroke="#374151" stroke-width="1"/>
+<line x1="80" y1="150" x2="800" y2="150" stroke="#374151" stroke-width="1"/>
+<line x1="80" y1="200" x2="800" y2="200" stroke="#374151" stroke-width="1"/>
+<line x1="80" y1="250" x2="800" y2="250" stroke="#374151" stroke-width="1"/>
+<line x1="80" y1="300" x2="800" y2="300" stroke="#374151" stroke-width="1"/>
+<line x1="80" y1="350" x2="800" y2="350" stroke="#374151" stroke-width="1"/>
+</g>
+<!-- Yield Band -->
+<rect x="80" y="320" width="720" height="30" fill="#164833"/>
+<!-- Occupancy Line -->
+<path d="M80 300 L140 290 L200 260 L260 250 L320 240 L380 230 L440 220 L500 210 L560 200 L620 190 L680 180 L740 170 L800 160" stroke="#348E8C" stroke-width="4" fill="none"/>
+<!-- ADR Line -->
+<path d="M80 280 L140 270 L200 250 L260 230 L320 210 L380 190 L440 170 L500 150 L560 130 L620 110 L680 90 L740 70 L800 50" stroke="#FF76B7" stroke-width="4" fill="none"/>
+<!-- Data Points -->
+<circle cx="80" cy="300" r="6" fill="#348E8C"/>
+<circle cx="140" cy="290" r="6" fill="#348E8C"/>
+<circle cx="200" cy="260" r="6" fill="#348E8C"/>
+<circle cx="260" cy="250" r="6" fill="#348E8C"/>
+<circle cx="320" cy="240" r="6" fill="#348E8C"/>
+<circle cx="380" cy="230" r="6" fill="#348E8C"/>
+<circle cx="440" cy="220" r="6" fill="#348E8C"/>
+<circle cx="500" cy="210" r="6" fill="#348E8C"/>
+<circle cx="560" cy="200" r="6" fill="#348E8C"/>
+<circle cx="620" cy="190" r="6" fill="#348E8C"/>
+<circle cx="680" cy="180" r="6" fill="#348E8C"/>
+<circle cx="740" cy="170" r="6" fill="#348E8C"/>
+<circle cx="800" cy="160" r="6" fill="#348E8C"/>
+<!-- ADR Data Points -->
+<rect x="77" y="277" width="6" height="6" fill="#FF76B7"/>
+<rect x="137" y="267" width="6" height="6" fill="#FF76B7"/>
+<rect x="197" y="247" width="6" height="6" fill="#FF76B7"/>
+<rect x="257" y="227" width="6" height="6" fill="#FF76B7"/>
+<rect x="317" y="207" width="6" height="6" fill="#FF76B7"/>
+<rect x="377" y="187" width="6" height="6" fill="#FF76B7"/>
+<rect x="437" y="167" width="6" height="6" fill="#FF76B7"/>
+<rect x="497" y="147" width="6" height="6" fill="#FF76B7"/>
+<rect x="557" y="127" width="6" height="6" fill="#FF76B7"/>
+<rect x="617" y="107" width="6" height="6" fill="#FF76B7"/>
+<rect x="677" y="87" width="6" height="6" fill="#FF76B7"/>
+<rect x="737" y="67" width="6" height="6" fill="#FF76B7"/>
+<rect x="797" y="47" width="6" height="6" fill="#FF76B7"/>
+<!-- Title -->
+<text x="400" y="30" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="18" font-weight="bold">Phuket Resort Market: Occupancy &amp; ADR with Yield Band</text>
+<!-- Y-axis Labels -->
+<text x="60" y="60" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="12">85%</text>
+<text x="60" y="110" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="12">80%</text>
+<text x="60" y="160" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="12">75%</text>
+<text x="60" y="210" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="12">70%</text>
+<text x="60" y="260" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="12">65%</text>
+<!-- X-axis Labels -->
+<text x="80" y="380" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="12">Jan</text>
+<text x="140" y="380" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="12">Feb</text>
+<text x="200" y="380" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="12">Mar</text>
+<text x="260" y="380" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="12">Apr</text>
+<text x="320" y="380" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="12">May</text>
+<text x="380" y="380" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="12">Jun</text>
+<text x="440" y="380" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="12">Jul</text>
+<text x="500" y="380" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="12">Aug</text>
+<text x="560" y="380" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="12">Sep</text>
+<text x="620" y="380" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="12">Oct</text>
+<text x="680" y="380" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="12">Nov</text>
+<text x="740" y="380" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="12">Dec</text>
+<!-- Legend -->
+<circle cx="100" cy="320" r="4" fill="#348E8C"/>
+<text x="115" y="325" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="12">Occupancy, %</text>
+<rect x="250" y="316" width="8" height="8" fill="#FF76B7"/>
+<text x="265" y="325" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="12">ADR, USD</text>
+<rect x="400" y="316" width="20" height="8" fill="#164833"/>
+<text x="430" y="325" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="12">Yield band 5-7%</text>
+</svg>
