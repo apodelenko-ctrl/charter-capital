@@ -344,58 +344,82 @@ section.s.dark p{color:rgba(255,255,255,.74)}
 .doc-paper-3 .doc-org{color:#a08156}
 .doc-paper-3 .doc-stamp{color:#a08156}
 
-/* ─── BLOCK 3: ЮРИДИЧЕСКАЯ ЧИСТКА (светофор) ─────────── */
-.legal-grid{
-  display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:center;
+/* ─── BLOCK 3: ЮРИДИЧЕСКАЯ ЧИСТКА (full-bleed FSSP) ──────── */
+.s-legal{
+  position:relative;color:#fff;overflow:hidden;isolation:isolate;
+  padding:140px 32px;
+  min-height:760px;
 }
-.legal-text h2{margin-bottom:18px}
-.legal-text > p{font-size:17px;line-height:1.7;color:var(--body);margin-bottom:14px}
-.legal-text strong{color:var(--ink);font-weight:600}
+.legal-bg{
+  position:absolute;inset:0;z-index:-2;
+  background:url('assets/logic/17-stopped-at-border.png') center/cover no-repeat;
+}
+.legal-overlay{
+  position:absolute;inset:0;z-index:-1;
+  background:
+    linear-gradient(180deg,rgba(6,8,15,.55) 0%,rgba(6,8,15,.78) 60%,rgba(6,8,15,.92) 100%),
+    radial-gradient(circle at 22% 30%,rgba(220,38,38,.12) 0%,transparent 55%);
+}
+.legal-content{
+  position:relative;z-index:1;
+  display:grid;grid-template-columns:1.1fr 1fr;gap:64px;
+  align-items:start;
+}
+.legal-headline{display:flex;flex-direction:column;gap:14px;max-width:60ch}
+.legal-headline h2{
+  color:#fff;font-size:clamp(2rem,4vw,3.4rem);font-weight:300;
+  letter-spacing:-.04em;line-height:1.04;margin-bottom:6px;
+}
+.legal-headline h2 strong{color:#fca5a5;font-weight:500}
+.legal-intro{
+  color:rgba(255,255,255,.82);font-size:16px;line-height:1.65;
+  font-weight:300;
+}
+.legal-intro strong{color:#fff;font-weight:600}
 .legal-list{
-  margin-top:26px;display:flex;flex-direction:column;gap:14px;
+  display:flex;flex-direction:column;gap:12px;
 }
 .legal-item{
-  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
-  padding:16px 20px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:var(--radius);
+  padding:18px 22px;
+  display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;
+  backdrop-filter:blur(8px);
+  transition:border-color .15s ease,background .15s ease;
 }
-.legal-item-ic{
-  width:36px;height:36px;border-radius:8px;
-  background:var(--bg-soft);color:var(--muted);
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+.legal-item:hover{
+  background:rgba(255,255,255,.08);
+  border-color:rgba(252,165,165,.4);
 }
-.legal-item-ic svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8}
-.legal-item h4{font-size:14.5px;font-weight:600;margin-bottom:3px;color:var(--ink)}
-.legal-item p{font-size:13px;line-height:1.55;color:var(--muted);margin:0}
-/* Border-stop visual (replaces traffic-light) */
-.legal-vis{
-  position:relative;border-radius:14px;overflow:hidden;
-  box-shadow:0 24px 50px -8px rgba(0,0,0,.25),0 0 0 1px rgba(0,0,0,.05);
+.legal-item-num{
+  font-size:11px;font-weight:700;letter-spacing:.18em;color:#fca5a5;
+  padding-top:3px;
 }
-.legal-vis img{
-  display:block;width:100%;height:auto;
-  aspect-ratio:16/11;object-fit:cover;
+.legal-item h4{
+  font-size:15px;font-weight:600;color:#fff;letter-spacing:-.005em;
+  line-height:1.25;margin-bottom:5px;
 }
-.legal-vis-caption{
-  position:absolute;left:0;right:0;bottom:0;
-  padding:32px 28px 26px;
-  background:linear-gradient(180deg,transparent 0%,rgba(6,8,15,.66) 38%,rgba(6,8,15,.92) 100%);
-  color:#fff;
+.legal-item p{
+  font-size:13px;line-height:1.55;color:rgba(255,255,255,.7);margin:0;
 }
-.legal-vis-caption .lvc-label{
+.legal-callout{
+  grid-column:1 / -1;
+  margin-top:8px;padding-top:24px;
+  border-top:1px solid rgba(255,255,255,.1);
+  display:flex;align-items:center;gap:18px;flex-wrap:wrap;
+}
+.lvc-label{
   display:inline-block;
   font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
-  color:#fca5a5;background:rgba(220,38,38,.18);
-  border:1px solid rgba(220,38,38,.4);
-  padding:5px 11px;border-radius:3px;margin-bottom:12px;
+  color:#fca5a5;background:rgba(220,38,38,.16);
+  border:1px solid rgba(220,38,38,.42);
+  padding:6px 12px;border-radius:3px;flex-shrink:0;
 }
-.legal-vis-caption strong{
-  display:block;font-size:clamp(1.1rem,1.7vw,1.5rem);
-  font-weight:500;color:#fff;letter-spacing:-.015em;line-height:1.2;
-  margin-bottom:6px;
-}
-.legal-vis-caption p{
-  font-size:13px;color:rgba(255,255,255,.78);line-height:1.55;
-  margin:0;max-width:42ch;
+.legal-callout strong{
+  font-size:clamp(1.1rem,1.7vw,1.4rem);
+  font-weight:400;color:#fff;letter-spacing:-.015em;line-height:1.3;
+  flex:1;min-width:240px;
 }
 
 /* ─── BLOCK 4: ЛЕГЕНДЫ ДЛЯ ВЫЕЗДА ─────────────────────── */
@@ -491,11 +515,11 @@ footer.f{
 
 /* ─── Responsive ───────────────────────────────────────── */
 @media (max-width:980px){
-  .cash-grid,.docs-grid,.legal-grid,.legends-grid{grid-template-columns:1fr;gap:32px}
+  .cash-grid,.docs-grid,.legends-grid{grid-template-columns:1fr;gap:32px}
   .more-grid{grid-template-columns:1fr 1fr}
   .doc-types{grid-template-columns:1fr}
-  .legal-vis img{aspect-ratio:16/10}
-  .legal-vis-caption{padding:24px 22px 22px}
+  .legal-content{grid-template-columns:1fr;gap:36px}
+  .s-legal{padding:96px 32px;min-height:auto}
   .f-grid{grid-template-columns:1fr 1fr}
 }
 @media (max-width:640px){
@@ -507,9 +531,11 @@ footer.f{
   .topbar-brand .tag{display:none}
   .topbar-nav{display:none}
   .more-grid{grid-template-columns:1fr}
-  .legal-vis img{aspect-ratio:4/3}
-  .legal-vis-caption{padding:18px 18px 16px}
-  .legal-vis-caption strong{font-size:1.05rem}
+  .s-legal{padding:72px 22px}
+  .legal-overlay{
+    background:
+      linear-gradient(180deg,rgba(6,8,15,.78) 0%,rgba(6,8,15,.9) 60%,rgba(6,8,15,.95) 100%);
+  }
   .contact{padding:48px 24px}
   .f-grid{grid-template-columns:1fr;gap:28px}
   .hero-meta{gap:24px}
@@ -719,61 +745,59 @@ footer.f{
   </div>
 </section>
 
-<!-- BLOCK 3: ЮРИДИЧЕСКАЯ ЧИСТКА — fix the FSSP-stop trap -->
-<section class="s cream-2" id="legal">
-  <div class="container">
-    <div class="legal-grid">
-      <div class="legal-text">
-        <span class="kicker green">Блок 3 · Юридическая чистка</span>
-        <h2>Чтобы вас не остановили на самой границе.</h2>
-        <p>Самая частая ловушка тех, кто думает «тихо доеду до самолёта» — <strong>постановление о запрете на выезд</strong>. На пограничном контроле система ФССП срабатывает за 4 секунды. Дальше — обратный путь домой и потерянный билет.</p>
-        <p>Долги, просрочки по кредитам, алименты, исполнительные производства, налоговые неоплаты — каждая из этих ниток превращается в флажок в ФССП. Юридическая чистка перед выходом — не паранойя, а базовая проверка: <strong>что в исполнительных производствах, что в кредитной истории, что в алиментах, что в военкомате</strong>. И где можно закрыть, где договориться, где реструктурировать.</p>
-        <div class="legal-list">
-          <div class="legal-item">
-            <div class="legal-item-ic"><svg viewBox="0 0 24 24"><path d="M21 12c0 5-9 12-9 12s-9-7-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="12" r="2.5"/></svg></div>
-            <div>
-              <h4>Проверка ФССП на запрет выезда</h4>
-              <p>Полная сверка с базой исполнительных производств. Стоит делать за 6–8 недель до планируемой даты — времени хватает закрыть или оспорить.</p>
-            </div>
-          </div>
-          <div class="legal-item">
-            <div class="legal-item-ic"><svg viewBox="0 0 24 24"><path d="M12 1v22M5 5h11.5a3.5 3.5 0 0 1 0 7H5M5 12h12a3.5 3.5 0 0 1 0 7H5"/></svg></div>
-            <div>
-              <h4>Долги, кредиты, рассрочки</h4>
-              <p>Реструктуризация, мировые соглашения, переоформление просроченных кредитов — без публичных судов, без объявления «уезжаю». Тихая работа с банками и взыскателями.</p>
-            </div>
-          </div>
-          <div class="legal-item">
-            <div class="legal-item-ic"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 11h-6M20 8v6"/></svg></div>
-            <div>
-              <h4>Алименты, исполнительные производства</h4>
-              <p>Урегулирование задолженности по алиментам, мировые с приставами, отложение взысканий. Эти статьи — самый частый блокер ФССП.</p>
-            </div>
-          </div>
-          <div class="legal-item">
-            <div class="legal-item-ic"><svg viewBox="0 0 24 24"><path d="M3 21h18M6 21V10l6-4 6 4v11M10 21v-5h4v5"/></svg></div>
-            <div>
-              <h4>Военкомат и воинский учёт</h4>
-              <p>Корректное снятие с учёта где возможно, бронь от ИТ-аккредитованной компании где применимо. Если категория уже свежая — план «удалённой коммуникации» через нотариальную доверенность.</p>
-            </div>
-          </div>
-          <div class="legal-item">
-            <div class="legal-item-ic"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M21 12c0 5-4 9-9 9s-9-4-9-9 4-9 9-9 9 4 9 9z"/></svg></div>
-            <div>
-              <h4>Налоги: 3-НДФЛ, ИП, ООО</h4>
-              <p>Финальные декларации, закрытие ИП без хвостов, ликвидация или продажа доли в ООО. Чтобы инспекция не выслала запрос «через год».</p>
-            </div>
-          </div>
+<!-- BLOCK 3: ЮРИДИЧЕСКАЯ ЧИСТКА — full-bleed FSSP scene -->
+<section class="s-legal" id="legal" aria-label="Юридическая чистка перед выездом">
+  <div class="legal-bg" aria-hidden="true"></div>
+  <div class="legal-overlay" aria-hidden="true"></div>
+  <div class="container legal-content">
+    <div class="legal-headline">
+      <span class="kicker green">Блок 3 · Юридическая чистка</span>
+      <h2>Они улетают. <strong>Вы — нет.</strong></h2>
+      <p class="legal-intro">Самая частая ловушка тех, кто думает «тихо доеду до самолёта» — <strong>постановление о запрете на выезд</strong>. На пограничном контроле система ФССП срабатывает за 4&nbsp;секунды. Дальше — обратный путь домой и потерянный билет.</p>
+      <p class="legal-intro">Долги, просрочки по кредитам, алименты, исполнительные производства, налоговые неоплаты — каждая из этих ниток превращается в флажок в ФССП. Юридическая чистка — не паранойя. Это <strong>базовая проверка перед билетами</strong>: где можно закрыть, где договориться, где реструктурировать.</p>
+    </div>
+
+    <div class="legal-list">
+      <div class="legal-item">
+        <span class="legal-item-num">01</span>
+        <div>
+          <h4>Проверка ФССП на запрет выезда</h4>
+          <p>Полная сверка с базой исполнительных производств. Стоит делать за 6–8 недель до планируемой даты — времени хватает закрыть или оспорить.</p>
         </div>
       </div>
-      <div class="legal-vis" aria-hidden="true">
-        <img src="assets/logic/17-stopped-at-border.png" alt="Запрет на выезд — ФССП на пограничном контроле" loading="lazy"/>
-        <div class="legal-vis-caption">
-          <span class="lvc-label">Без чистки</span>
-          <strong>Они улетают. Вы — нет.</strong>
-          <p>Пока вы у стойки с горящим красным «ФССП», коллеги из соседнего рейса уже на посадке. Запрет снимается за 4–8 недель. Билет — за один день, но обратный.</p>
+      <div class="legal-item">
+        <span class="legal-item-num">02</span>
+        <div>
+          <h4>Долги, кредиты, рассрочки</h4>
+          <p>Реструктуризация, мировые соглашения, переоформление просроченных кредитов — без публичных судов, без объявления «уезжаю».</p>
         </div>
       </div>
+      <div class="legal-item">
+        <span class="legal-item-num">03</span>
+        <div>
+          <h4>Алименты и исполнительные производства</h4>
+          <p>Урегулирование задолженности, мировые с приставами, отложение взысканий. Эти статьи — самый частый блокер ФССП.</p>
+        </div>
+      </div>
+      <div class="legal-item">
+        <span class="legal-item-num">04</span>
+        <div>
+          <h4>Военкомат и воинский учёт</h4>
+          <p>Корректное снятие с учёта где возможно, бронь от ИТ-аккредитованной компании. Иначе — план «удалённой коммуникации» через нотариальную доверенность.</p>
+        </div>
+      </div>
+      <div class="legal-item">
+        <span class="legal-item-num">05</span>
+        <div>
+          <h4>Налоги: 3-НДФЛ, ИП, ООО</h4>
+          <p>Финальные декларации, закрытие ИП без хвостов, ликвидация или продажа доли в ООО. Чтобы инспекция не выслала запрос «через год».</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="legal-callout">
+      <span class="lvc-label">Без чистки</span>
+      <strong>Запрет снимается за 4–8 недель. Билет — за один день, но обратный.</strong>
     </div>
   </div>
 </section>
