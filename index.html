@@ -448,6 +448,7 @@ section.s.dark p{color:rgba(255,255,255,.72)}
   font-size:9px;font-weight:800;color:#fff;letter-spacing:.04em;
 }
 .push-app-icon-bank{background:#21a038}
+.push-app-icon-sc{background:#005c2c;color:#fff;font-size:8.5px}
 .push-app-name{font-size:11px;color:rgba(255,255,255,.78);font-weight:500;letter-spacing:.01em}
 .push-time-rel{font-size:10.5px;color:rgba(255,255,255,.5);font-feature-settings:'tnum'}
 .push-title{font-size:13.5px;font-weight:700;color:#fff;letter-spacing:-.005em;margin-top:2px}
@@ -494,6 +495,87 @@ section.s.dark p{color:rgba(255,255,255,.72)}
   font-size:11.5px;color:#fca5a5;line-height:1.45;
 }
 .exch-action strong{color:#fecaca;font-weight:700}
+
+/* Email mock (triggers 01, 03, 06) */
+.email-mock{
+  background:#fff;color:var(--ink);
+  border:1px solid var(--line);border-radius:8px;
+  padding:14px 16px;
+  display:flex;flex-direction:column;gap:8px;
+  box-shadow:0 8px 18px rgba(0,0,0,.06);
+  font-feature-settings:'tnum';
+}
+.email-head{
+  display:flex;justify-content:space-between;align-items:flex-start;gap:10px;
+  padding-bottom:8px;border-bottom:1px solid var(--line-soft);
+}
+.email-from{display:flex;align-items:center;gap:9px;min-width:0}
+.email-from-icon{
+  width:30px;height:30px;border-radius:6px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  font-size:9.5px;font-weight:800;color:#fff;letter-spacing:.04em;
+}
+.email-from-name{font-size:12.5px;font-weight:600;color:var(--ink);letter-spacing:-.005em;line-height:1.2}
+.email-from-meta{font-size:10.5px;color:var(--muted);letter-spacing:.01em;margin-top:2px}
+.email-flag{
+  font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  padding:3px 8px;border-radius:3px;flex-shrink:0;
+  white-space:nowrap;
+}
+.email-flag-red{background:#fef2f2;color:#991b1b;border:1px solid #fecaca}
+.email-flag-amber{background:#fffbeb;color:#92400e;border:1px solid #fde68a}
+.email-subj{font-size:12.5px;font-weight:700;color:var(--ink);line-height:1.3;letter-spacing:-.005em}
+.email-body{font-size:12px;line-height:1.55;color:var(--body)}
+.email-body strong{color:var(--ink);font-weight:700}
+
+/* Conscript notice mockup (trigger 05) */
+.conscript-paper{
+  background:#f3efe2;color:#2c2820;
+  border:1px solid #d4cca8;border-radius:2px;
+  padding:14px 16px 12px;
+  font-family:'Inter','Times New Roman',serif;
+  font-size:11px;line-height:1.5;
+  position:relative;
+  box-shadow:0 8px 18px rgba(0,0,0,.12);
+  background-image:repeating-linear-gradient(180deg,transparent 0,transparent 17px,rgba(160,140,90,.07) 17px,rgba(160,140,90,.07) 18px);
+}
+.conscript-paper::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:#9b1a1a;
+}
+.conscript-stamp{
+  position:absolute;top:14px;right:14px;
+  width:42px;height:42px;border-radius:50%;
+  border:1.5px solid #9b1a1a;
+  display:flex;align-items:center;justify-content:center;
+  font-size:8px;font-weight:800;letter-spacing:.04em;text-align:center;line-height:1;
+  color:#9b1a1a;background:rgba(155,26,26,.05);
+  transform:rotate(-8deg);
+  font-family:'Inter',sans-serif;
+}
+.conscript-org{
+  font-size:9.5px;line-height:1.5;color:#3a3528;
+  padding-right:55px;margin-bottom:6px;
+}
+.conscript-org strong{
+  font-size:10.5px;font-weight:700;letter-spacing:.06em;
+  display:block;color:#1a1a1a;margin-bottom:2px;
+}
+.conscript-title{
+  text-align:center;font-size:13px;font-weight:800;letter-spacing:.22em;
+  color:#9b1a1a;margin:10px 0 8px;
+  padding:5px 0;border-top:1.5px solid #9b1a1a;border-bottom:1.5px solid #9b1a1a;
+}
+.conscript-body{
+  font-size:11px;line-height:1.6;text-align:center;
+  margin:0 0 10px;color:#2c2820;
+}
+.conscript-body strong{color:#1a1a1a;font-weight:700}
+.conscript-foot{
+  font-size:9.5px;color:#5a4f37;text-align:right;
+  border-top:1px dashed #c4ba94;padding-top:5px;line-height:1.4;
+}
+.conscript-sign{font-style:italic;display:inline-block;margin-top:1px;color:#7a6a47;letter-spacing:.04em}
 
 /* ─── WHAT WE DO ────────────────────────────────────────── */
 .do-grid{
@@ -861,6 +943,24 @@ footer.f{
         <div class="num">01</div>
         <h3>Закрыли счёт или попросили подтвердить источник средств — а его нет</h3>
         <p>Российский банк закрылся под санкциями или сам попросил уйти. Зарубежный банк прислал KYC-запрос, и понятно, что выписка из «Сбера за 2018 год» — это не ответ.</p>
+        <div class="trigger-mock" aria-hidden="true">
+          <div class="email-mock">
+            <div class="email-head">
+              <div class="email-from">
+                <span class="email-from-icon" style="background:#e60000">HSB</span>
+                <div>
+                  <div class="email-from-name">HSBC Compliance</div>
+                  <div class="email-from-meta">edd@hsbc.com · today</div>
+                </div>
+              </div>
+              <span class="email-flag email-flag-amber">EDD Required</span>
+            </div>
+            <div class="email-subj">Account №&nbsp;41-770418 · Enhanced Due Diligence request</div>
+            <div class="email-body">
+              Please submit within <strong>15 business days</strong>: 12-month bank statements, Source-of-Wealth declaration, contracts evidencing origin of funds. Non-response triggers account closure.
+            </div>
+          </div>
+        </div>
         <div class="what"><strong>Что нужно:</strong> Source-of-Funds досье и онбординг в банк, который читает ваш кейс.</div>
       </div>
       <div class="trigger">
@@ -870,7 +970,7 @@ footer.f{
         <div class="trigger-mock" aria-hidden="true">
           <div class="phone-frame">
             <div class="phone-status-bar">
-              <span class="status-time">14:32</span>
+              <span class="status-time">09:14</span>
               <div class="status-icons">
                 <span class="signal-bars"><i></i><i></i><i></i><i></i></span>
                 <span class="status-battery"></span>
@@ -879,13 +979,13 @@ footer.f{
             <div class="push-card">
               <div class="push-head">
                 <div class="push-app">
-                  <span class="push-app-icon push-app-icon-bank">СБ</span>
-                  <span class="push-app-name">СБЕР Онлайн</span>
+                  <span class="push-app-icon push-app-icon-sc">SC</span>
+                  <span class="push-app-name">Standard Chartered</span>
                 </div>
-                <span class="push-time-rel">сейчас</span>
+                <span class="push-time-rel">now</span>
               </div>
-              <div class="push-title">Платёж заблокирован</div>
-              <div class="push-text">USD&nbsp;87 400 в адрес BENEFICIARY LLC. Требуется подтверждение источника средств. Свяжитесь с банком в течение 7&nbsp;дней.</div>
+              <div class="push-title">Outgoing payment blocked</div>
+              <div class="push-text">USD&nbsp;87,400 to BENEFICIARY LTD returned to sender. Submit Source-of-Funds documentation to release pending transfer.</div>
             </div>
           </div>
         </div>
@@ -895,6 +995,24 @@ footer.f{
         <div class="num">03</div>
         <h3>Я уже за границей, а локальный банк меня не открывает</h3>
         <p>Кипр, Португалия, ОАЭ, Сербия, Грузия — везде один и тот же отказ: «к сожалению, по вашему профилю». Банк не объясняет — потому что не обязан.</p>
+        <div class="trigger-mock" aria-hidden="true">
+          <div class="email-mock">
+            <div class="email-head">
+              <div class="email-from">
+                <span class="email-from-icon" style="background:#a30019">BCP</span>
+                <div>
+                  <div class="email-from-name">Banco Comercial Português</div>
+                  <div class="email-from-meta">noreply@bcp.pt · 2 days ago</div>
+                </div>
+              </div>
+              <span class="email-flag email-flag-red">Declined</span>
+            </div>
+            <div class="email-subj">Application №&nbsp;A-2026-0481 · Personal account opening</div>
+            <div class="email-body">
+              Following review of your application, BCP is unable to proceed with the account opening. <strong>We do not provide reasons</strong> for our decisions.
+            </div>
+          </div>
+        </div>
         <div class="what"><strong>Что нужно:</strong> правильный банк под ваш статус + AML-папка под него.</div>
       </div>
       <div class="trigger">
@@ -933,14 +1051,51 @@ footer.f{
       </div>
       <div class="trigger">
         <div class="num">05</div>
-        <h3>Завтра повестка. Нужен ВНЖ или второе гражданство — срочно</h3>
-        <p>Активный мужчина 22–55, своя семья, вторая волна мобилизации — реалистичный сценарий. Без статуса вы не пересекаете границу даже один раз. Со статусом — у вас остаётся жизнь.</p>
-        <div class="what"><strong>Что нужно:</strong> CBI-программа (3–4 мес) или ВНЖ под выезд (2–6 мес).</div>
+        <h3>Семья в РФ. Сын 17, дочь 19. Повестка может прийти на адрес</h3>
+        <p>Я уже здесь, бизнес работает удалённо, но семья ещё там. Без них это не дом. Самим выехать «по туристу» с российскими паспортами — на пограничном контроле уже не каждый раз получается.</p>
+        <div class="trigger-mock" aria-hidden="true">
+          <div class="conscript-paper">
+            <div class="conscript-stamp">МО<br/>РФ</div>
+            <div class="conscript-org">
+              <strong>ВОЕННЫЙ КОМИССАРИАТ</strong>
+              г. Москвы · Хамовнический район
+            </div>
+            <div class="conscript-title">ПОВЕСТКА</div>
+            <div class="conscript-body">
+              Гр. <strong>ИВАНОВУ&nbsp;А.&nbsp;С.</strong>, 2008&nbsp;г.&nbsp;р.<br/>
+              Явиться <strong>15&nbsp;апреля 2026 г.</strong> в&nbsp;10:00<br/>
+              для уточнения сведений воинского учёта.
+            </div>
+            <div class="conscript-foot">
+              Военный комиссар<br/>
+              <span class="conscript-sign">— подпись —&nbsp;&nbsp;печать</span>
+            </div>
+          </div>
+        </div>
+        <div class="what"><strong>Что нужно:</strong> ВНЖ для семьи через воссоединение (с моим резидентством) + удалённая подача без приезда лично.</div>
       </div>
       <div class="trigger">
         <div class="num">06</div>
         <h3>Перевезти бизнес. ВЭД встал, российская компания — токсичный контрагент</h3>
         <p>Партнёры в Европе и Азии больше не подписывают договоры с РФ-резидентами. Расчёты идут через посредников с маржой 5–9%. Каждый месяц — это минус прибыль и плюс риск AML.</p>
+        <div class="trigger-mock" aria-hidden="true">
+          <div class="email-mock">
+            <div class="email-head">
+              <div class="email-from">
+                <span class="email-from-icon" style="background:#0066a1">M</span>
+                <div>
+                  <div class="email-from-name">Maersk · Procurement</div>
+                  <div class="email-from-meta">contracts@maersk.com · last week</div>
+                </div>
+              </div>
+              <span class="email-flag email-flag-red">Suspended</span>
+            </div>
+            <div class="email-subj">Re: Master Service Agreement 2026 · Notice of suspension</div>
+            <div class="email-body">
+              Following our updated counterparty risk policy, we cannot renew the framework agreement with entities incorporated in the Russian Federation. <strong>Please reach out via your EU subsidiary</strong> or alternate jurisdiction.
+            </div>
+          </div>
+        </div>
         <div class="what"><strong>Что нужно:</strong> компания HK/SG/CY/UAE + расчётный счёт + чистый контрагент.</div>
       </div>
     </div>
