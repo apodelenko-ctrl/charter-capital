@@ -185,7 +185,7 @@ p{color:var(--body);font-weight:400;line-height:1.7}
     url('assets/logic/15-passport-gate.webp') 25% 30% / cover no-repeat,
     var(--bg-darker);
   display:flex;flex-direction:column;justify-content:flex-end;
-  padding:160px 32px 80px;
+  padding:160px 32px 140px;
   overflow:hidden;
   color:#fff;
 }
@@ -195,7 +195,7 @@ p{color:var(--body);font-weight:400;line-height:1.7}
       linear-gradient(180deg, rgba(6,8,15,0) 0%, rgba(6,8,15,0) 22%, rgba(6,8,15,.32) 50%, rgba(6,8,15,.82) 80%, rgba(6,8,15,.94) 100%),
       url('assets/logic/15-passport-gate-800w.webp');
     background-position: 25% 30%, 25% 30%;
-    padding:120px 28px 60px;
+    padding:120px 28px 96px;
   }
 }
 .hero::before{
@@ -211,10 +211,13 @@ p{color:var(--body);font-weight:400;line-height:1.7}
 .hero-flags{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px}
 .hero-flag{
   display:inline-flex;align-items:center;gap:10px;
-  background:rgba(220,38,38,.14);border:1px solid rgba(220,38,38,.45);
+  background:rgba(16,10,12,.88);
+  border:1px solid rgba(220,38,38,.48);
   padding:7px 16px;border-radius:999px;
   font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
   color:#fca5a5;
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  box-shadow:0 4px 22px rgba(0,0,0,.38);
 }
 .hero-flag .dot{width:6px;height:6px;border-radius:50%;background:#ef4444;animation:pulse 2s ease infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
@@ -972,7 +975,7 @@ footer.f{
 @media (max-width:640px){
   .container,.container-sm{padding:0 22px}
   section.s{padding:80px 0}
-  .hero{padding:120px 22px 64px}
+  .hero{padding:120px 22px 92px}
   .hero-actions .btn{width:100%;justify-content:center}
   .triggers-grid{grid-template-columns:1fr}
   .topbar-nav{display:none}
