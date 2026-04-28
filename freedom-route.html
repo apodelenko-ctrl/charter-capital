@@ -25,7 +25,7 @@
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="Charter Capital"/>
 <meta property="og:title" content="Маршрут в свободный мир · Charter Capital"/>
-<meta property="og:description" content="Когда двери закрываются — Charter Capital открывает мир без искусственных границ. Один маршрут, где Ваша семья, капитал и бизнес снова становятся управляемыми."/>
+<meta property="og:description" content="Когда двери закрываются — Charter Capital открывает мир без искусственных границ. Один маршрут, где ваша семья, капитал и бизнес снова становятся управляемыми."/>
 <meta property="og:url" content="https://ccapital.pro/freedom-route.html"/>
 <meta property="og:image" content="https://ccapital.pro/assets/freedom-route/hero-open-world.webp"/>
 <meta property="og:image:alt" content="Маршрут в свободный мир — Charter Capital"/>
@@ -900,42 +900,21 @@ section.s.cream .kicker{color:var(--gold)}
   border-radius:999px;
 }
 
-.route-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
-  background:var(--line-dark);
-  border:1px solid var(--line-dark);
-  border-radius:var(--radius-lg);overflow:hidden;
+.route-converge--stack{
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:26px;
+  text-align:center;
+  margin-top:40px;padding:40px 40px;
 }
-.route-cell{
-  background:#0a0e1a;
-  padding:32px 28px 30px;
-  display:flex;flex-direction:column;gap:10px;
-  transition:background .2s ease;position:relative;
-  min-height:170px;
+.route-diagnostic-lead{
+  position:relative;z-index:1;
+  margin:0;max-width:46ch;font-size:clamp(1.05rem,1.4vw,1.28rem);
+  line-height:1.52;color:rgba(255,255,255,.88);font-weight:300;
+  letter-spacing:-.01em;
 }
-.route-cell:hover{background:#10162a}
-.route-cell::before{
-  content:'';position:absolute;left:28px;top:0;width:30px;height:1px;
-  background:linear-gradient(90deg,var(--gold) 0%,transparent 100%);
-}
-.route-cell .num{
-  font-size:11px;font-weight:600;letter-spacing:.2em;
-  color:var(--gold-warm);text-transform:uppercase;
-  display:flex;align-items:center;gap:10px;
-}
-.route-cell .num .ic{
-  width:28px;height:28px;border-radius:50%;
-  border:1px solid rgba(160,129,86,.4);
-  background:rgba(160,129,86,.08);
-  display:flex;align-items:center;justify-content:center;
-  color:var(--gold-soft);
-}
-.route-cell .num .ic svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-.route-cell h4{
-  font-size:1.08rem;font-weight:500;letter-spacing:-.015em;
-  color:#fff;line-height:1.3;
-}
-.route-cell p{font-size:13.5px;color:rgba(255,255,255,.62);line-height:1.55;font-weight:400}
+.route-converge--stack .route-converge-end{justify-content:center}
 
 .route-converge{
   margin-top:48px;padding:36px 44px;
@@ -1574,6 +1553,12 @@ section.s.cream .kicker{color:var(--gold)}
   color:var(--gold-warm);font-style:italic;font-weight:300;
 }
 .final-cta-crown strong{color:var(--gold-warm);font-weight:500}
+.final-cta-crown.subtle{
+  font-size:clamp(.95rem,1.2vw,1.12rem);line-height:1.52;
+  padding:20px 22px;margin-bottom:30px;background:rgba(255,255,255,.035);
+  border-color:rgba(255,255,255,.14);box-shadow:none;
+  color:rgba(255,255,255,.92);
+}
 .final-cta-quote-soft{
   font-family:'Cormorant Garamond',serif;
   font-size:clamp(1.05rem,1.6vw,1.4rem);
@@ -1687,7 +1672,6 @@ footer.f{
   .private-bridge-text{padding:48px 40px}
   .pv-pillars{grid-template-columns:1fr;gap:16px}
   .scenarios{grid-template-columns:1fr 1fr}
-  .route-grid{grid-template-columns:1fr 1fr}
   .roles-grid{grid-template-columns:1fr 1fr}
   .freedom-glimpses{grid-template-columns:1fr 1fr}
   .freedom-glimpses .glimpse:last-child{grid-column:1 / -1;aspect-ratio:16/8}
@@ -1741,7 +1725,6 @@ footer.f{
   body{padding-bottom:78px}
 }
 @media(max-width:560px){
-  .route-grid{grid-template-columns:1fr}
   .tn-col{padding:32px 26px}
   .scenario-body{padding:20px 22px 18px}
   .f-grid{grid-template-columns:1fr}
@@ -1849,10 +1832,10 @@ footer.f{
       </a>
     </div>
     <nav class="topbar-nav">
+      <a href="#cases">Ситуации</a>
       <a href="#idea">Идея</a>
       <a href="#freedom">Свобода</a>
       <a href="#route">Маршрут</a>
-      <a href="#cases">Ситуации</a>
       <a href="#private" class="is-gold">Private Office</a>
       <a href="property.html">Недвижимость</a>
       <a href="#contact">Контакт</a>
@@ -1884,12 +1867,12 @@ footer.f{
         <strong>Charter&nbsp;Capital</strong> открывает <span class="em">мир без искусственных границ.</span>
       </h1>
       <p class="hero-sub">
-        Для&nbsp;Вас, Вашей семьи, Вашего капитала и&nbsp;Вашего бизнеса.<br/>
+        Для&nbsp;вас, вашей семьи, вашего капитала и&nbsp;вашего бизнеса.<br/>
         Спокойно, законно, с&nbsp;понятной финансовой историей.
       </p>
       <p class="hero-formula">
-        Вы&nbsp;не&nbsp;хотите «счёт за&nbsp;границей».<br/>
-        <strong>Вы хотите снова свободно жить, двигаться, владеть капиталом</strong> и&nbsp;выбирать будущее для семьи.
+        вы&nbsp;не&nbsp;хотите «счёт за&nbsp;границей».<br/>
+        <strong>вы хотите снова свободно жить, двигаться, владеть капиталом</strong> и&nbsp;выбирать будущее для семьи.
       </p>
       <p class="hero-line">
         Мы&nbsp;собираем международный маршрут.
@@ -1909,7 +1892,7 @@ footer.f{
       </div>
       <div class="hero-trust">
         <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-12V5l-8-3-8 3v5c0 8 8 12 8 12z"/></svg>
-        <span>Первый разговор — не&nbsp;продажа. Это карта рисков: где Вы&nbsp;сейчас, что можно делать, а&nbsp;что лучше не&nbsp;трогать без подготовки.</span>
+        <span>Первый разговор — не&nbsp;продажа. Это карта рисков: где вы&nbsp;сейчас, что можно делать, а&nbsp;что лучше не&nbsp;трогать без подготовки.</span>
       </div>
       <p class="hero-quote">
         Свобода больше не&nbsp;даётся автоматически.<br/>
@@ -1948,8 +1931,8 @@ footer.f{
     <div class="s-head s-head-center">
       <span class="kicker">Центр сборки маршрута</span>
       <h2>
-        Charter&nbsp;Capital — это <em class="gold-em">не&nbsp;одна услуга</em>.<br/>
-        Это <strong>центр сборки</strong> Вашего международного маршрута.
+        вам не&nbsp;нужен ещё один подрядчик.<br/>
+        вам нужен маршрут, где&nbsp;<strong>всё связано</strong>.
       </h2>
     </div>
 
@@ -1965,7 +1948,7 @@ footer.f{
           <li><span class="src">Брокер</span> — продаёт недвижимость.</li>
           <li><span class="src">Налоговый&nbsp;консультант</span> — считает резидентность.</li>
         </ul>
-        <p class="assembly-fragments-foot">Каждый — про свой кусок. Никто — про <strong>всю Вашу ситуацию</strong>.</p>
+        <p class="assembly-fragments-foot">Каждый — про свой кусок. Никто — про <strong>всю вашу ситуацию</strong>.</p>
       </div>
 
       <div class="assembly-arrow" aria-hidden="true">
@@ -1977,11 +1960,10 @@ footer.f{
       <div class="assembly-unified">
         <span class="kicker bright">Один маршрут</span>
         <p>
-          Вам нужен <strong>не&nbsp;набор подрядчиков</strong>.<br/>
-          Вам нужен маршрут, где семья, капитал, бизнес, банк и&nbsp;документы <strong>не&nbsp;противоречат друг&nbsp;другу</strong>.
+          <strong>Charter&nbsp;Capital</strong> сводит юриста, банк, документы по&nbsp;капиталу и&nbsp;второй контур в&nbsp;одну цепочку — чтобы шаги <strong>не&nbsp;ломали друг друга</strong>.
         </p>
         <p class="assembly-claim">
-          Этим занимается <em>Charter&nbsp;Capital</em>.
+          Семья, капитал, бизнес и&nbsp;документы — в&nbsp;одной логике. Этим занимается <em>Charter&nbsp;Capital</em>.
         </p>
       </div>
     </div>
@@ -1989,7 +1971,7 @@ footer.f{
     <!-- 8-card grid · all elements in one place -->
     <div class="assembly-grid-head">
       <span class="kicker muted">Один маршрут · все элементы</span>
-      <h3>Восемь линий, которые обычно ведут разные люди.</h3>
+      <h3>Один маршрут — восемь направлений, которые редко ведёт один человек.</h3>
     </div>
 
     <div class="assembly-grid">
@@ -2001,7 +1983,7 @@ footer.f{
       <article class="ah-card">
         <span class="ah-num">02</span>
         <h4>Банк · EMI · приватный канал</h4>
-        <p>Подбор под Ваш профиль и&nbsp;капитал. Подача через подготовленную папку, а&nbsp;не&nbsp;«вслепую».</p>
+        <p>Подбор под ваш профиль и&nbsp;капитал. Подача через подготовленную папку, а&nbsp;не&nbsp;«вслепую».</p>
       </article>
       <article class="ah-card">
         <span class="ah-num">03</span>
@@ -2049,26 +2031,113 @@ footer.f{
 </section>
 
 <!-- ─────────────────────────────────────────────────────────
-     SECTION 2 · IDEA — Вы хотите свободу
+     SECTION · SCENARIOS (раньше ниже — поднято после сборки)
+     ───────────────────────────────────────────────────────── -->
+<section class="s" id="cases">
+  <div class="container">
+    <div class="s-head">
+      <span class="kicker">Ситуации</span>
+      <h2>С&nbsp;чем приходят предприниматели.</h2>
+      <p>Шесть типичных запросов 2026&nbsp;года. <strong>Если хотя&nbsp;бы один совпадает</strong> — это наш разговор.</p>
+    </div>
+
+    <div class="scenarios">
+      <article class="scenario">
+        <div class="scenario-img">
+          <img src="assets/freedom-route/family-relocation.webp" loading="lazy" alt="Семейный маршрут — школа, документы, переезд"/>
+          <span class="scenario-num">01 · Семья</span>
+        </div>
+        <div class="scenario-body">
+          <h4>Хочу вывезти семью, но&nbsp;не&nbsp;понимаю, с&nbsp;чего начать</h4>
+          <p>Нужен не&nbsp;просто ВНЖ. Нужен маршрут: страна, школа, счёт, документы, капитал, налоговая логика.</p>
+          <a href="#contact" class="scenario-cta"><span>Построить семейный маршрут</span><span class="arr">→</span></a>
+        </div>
+      </article>
+
+      <article class="scenario">
+        <div class="scenario-img">
+          <img src="assets/freedom-route/business-holding.webp" loading="lazy" alt="Бизнес и международный холдинг"/>
+          <span class="scenario-num">02 · Бизнес</span>
+        </div>
+        <div class="scenario-body">
+          <h4>Бизнес в&nbsp;СНГ работает. Прибыль хочу в&nbsp;свободном мире</h4>
+          <p>Нужен второй контур: компания, договоры, счёт, объяснение экономического смысла, документы по&nbsp;прибыли.</p>
+          <a href="#contact" class="scenario-cta"><span>Собрать бизнес-контур</span><span class="arr">→</span></a>
+        </div>
+      </article>
+
+      <article class="scenario">
+        <div class="scenario-img">
+          <img src="assets/freedom-route/crypto-bankability.webp" loading="lazy" alt="Крипта и регулируемый банковский крипто-выход"/>
+          <span class="scenario-num">03 · Крипта</span>
+        </div>
+        <div class="scenario-body">
+          <h4>Крипта есть. Банк её не&nbsp;принимает</h4>
+          <p>Нужна история: откуда монеты, где точки идентификации, какие биржи, какие транзакции, какой регулируемый крипто-выход.</p>
+          <a href="#contact" class="scenario-cta"><span>Проверить крипто-историю</span><span class="arr">→</span></a>
+        </div>
+      </article>
+
+      <article class="scenario">
+        <div class="scenario-img">
+          <img src="assets/freedom-route/real-estate-route.webp" loading="lazy" alt="Покупка недвижимости за границей и подготовка документов"/>
+          <span class="scenario-num">04 · Актив</span>
+        </div>
+        <div class="scenario-body">
+          <h4>Продал актив дома. Хочу купить недвижимость за&nbsp;границей</h4>
+          <p>Нужна цепочка: актив&nbsp;→&nbsp;продажа&nbsp;→&nbsp;налоговая история&nbsp;→&nbsp;банк&nbsp;→&nbsp;покупка&nbsp;→&nbsp;дальнейшее использование.</p>
+          <a href="#contact" class="scenario-cta"><span>Подготовить покупку</span><span class="arr">→</span></a>
+        </div>
+      </article>
+
+      <article class="scenario">
+        <div class="scenario-img">
+          <img src="assets/freedom-route/international-holding.webp" loading="lazy" alt="Международный холдинг — Лондон, Сингапур, Гонконг, Дубай"/>
+          <span class="scenario-num">05 · Холдинг</span>
+        </div>
+        <div class="scenario-body">
+          <h4>Хочу холдинг — Британия, Сингапур, Гонконг или ОАЭ</h4>
+          <p>Нужна структура, которая выглядит не&nbsp;как пустая коробка, а&nbsp;как понятный международный бизнес-контур.</p>
+          <a href="#contact" class="scenario-cta"><span>Спроектировать холдинг</span><span class="arr">→</span></a>
+        </div>
+      </article>
+
+      <article class="scenario">
+        <div class="scenario-img">
+          <img src="assets/freedom-route/one-country-risk.webp" loading="lazy" alt="Резервный план и независимость от одной страны"/>
+          <span class="scenario-num">06 · Резерв</span>
+        </div>
+        <div class="scenario-body">
+          <h4>Я&nbsp;устал зависеть от&nbsp;одной страны</h4>
+          <p>Нужна финансовая подушка, резервный счёт, понятный план. И&nbsp;документы, которые не&nbsp;придётся собирать в&nbsp;панике.</p>
+          <a href="#contact" class="scenario-cta"><span>Создать резервный план</span><span class="arr">→</span></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────────────────────
+     SECTION · IDEA — вы хотите свободу
      ───────────────────────────────────────────────────────── -->
 <section class="s" id="idea">
   <div class="container">
     <div class="s-head">
       <span class="kicker">Идея</span>
-      <h2>Вы хотите не&nbsp;«счёт за&nbsp;границей». Вы&nbsp;хотите свободу.</h2>
+      <h2>вы хотите не&nbsp;«счёт за&nbsp;границей». вы&nbsp;хотите свободу.</h2>
       <p class="lead-human">
-        Это не&nbsp;про красивую жизнь ради картинки. Это про <strong>право самому выбирать</strong>, где живёт Ваша семья и&nbsp;где находится Ваш капитал.
+        Это не&nbsp;про красивую жизнь ради картинки. Это про <strong>право самому выбирать</strong>, где живёт ваша семья и&nbsp;где находится ваш капитал.
       </p>
     </div>
     <div class="dream-reality" id="freedom">
       <div class="dr-col dr-want">
-        <span class="kicker">Что Вы хотите вернуть</span>
+        <span class="kicker">Что вы хотите вернуть</span>
         <ul class="dr-list">
           <li><span class="dr-icon" aria-hidden="true">✦</span><span>Поездки с&nbsp;детьми — самолёт, <strong>Disneyland&nbsp;Paris</strong>, нормальная карта мира.</span></li>
           <li><span class="dr-icon" aria-hidden="true">✦</span><span>Воскресные прогулки с&nbsp;любимой по&nbsp;<strong>озеру Комо</strong>, а&nbsp;не&nbsp;по&nbsp;новостям.</span></li>
-          <li><span class="dr-icon" aria-hidden="true">✦</span><span><strong>Школа без промывки мозгов</strong> — там, где Вы&nbsp;сами выбираете программу.</span></li>
+          <li><span class="dr-icon" aria-hidden="true">✦</span><span><strong>Школа без промывки мозгов</strong> — там, где вы&nbsp;сами выбираете программу.</span></li>
           <li><span class="dr-icon" aria-hidden="true">✦</span><span>Финансовая подушка <strong>в&nbsp;безопасном месте</strong>, которую не&nbsp;заберёт завтрашний указ.</span></li>
-          <li><span class="dr-icon" aria-hidden="true">✦</span><span>Бизнес, который <strong>продолжает работать</strong> — даже когда Вы уже не&nbsp;там.</span></li>
+          <li><span class="dr-icon" aria-hidden="true">✦</span><span>Бизнес, который <strong>продолжает работать</strong> — даже когда вы уже не&nbsp;там.</span></li>
           <li><span class="dr-icon" aria-hidden="true">✦</span><span>Право <strong>не&nbsp;зависеть</strong> от&nbsp;чиновника, силовика, банка или нового запрета.</span></li>
         </ul>
       </div>
@@ -2163,7 +2232,7 @@ footer.f{
           <li>Паспорт стал фактором риска.</li>
           <li>Компания из&nbsp;СНГ пугает контрагентов.</li>
           <li>Крипта не&nbsp;воспринимается как нормальный капитал.</li>
-          <li>Дети растут в&nbsp;системе, которую Вы&nbsp;больше не&nbsp;выбираете.</li>
+          <li>Дети растут в&nbsp;системе, которую вы&nbsp;больше не&nbsp;выбираете.</li>
           <li>Прибыль есть, но&nbsp;вывести её в&nbsp;свободный мир сложно.</li>
         </ul>
       </div>
@@ -2172,8 +2241,8 @@ footer.f{
     <div class="tn-empathy">
       <p>
         <span class="dot" aria-hidden="true"></span>
-        Вы&nbsp;не&nbsp;стали хуже как клиент.
-        <em>Просто система стала <strong>читать Вас иначе</strong>.</em>
+        вы&nbsp;не&nbsp;стали хуже как клиент.
+        <em>Просто система стала <strong>читать вас иначе</strong>.</em>
       </p>
     </div>
 
@@ -2192,7 +2261,7 @@ footer.f{
     <div class="s-head">
       <span class="kicker">Маршрут</span>
       <h2>Мы строим новый маршрут.</h2>
-      <p>Не&nbsp;отдельный счёт. Не&nbsp;отдельную компанию. Не&nbsp;«юриста по&nbsp;ВНЖ». <strong>Маршрут</strong>, в&nbsp;котором человек, семья, бизнес и&nbsp;капитал движутся в&nbsp;одну сторону.</p>
+      <p>Мы&nbsp;не&nbsp;продаём отдельные продукты — связываем линии в&nbsp;маршрут, где человек, семья, бизнес и&nbsp;капитал движутся согласованно.</p>
     </div>
 
     <figure class="route-hero">
@@ -2255,59 +2324,8 @@ footer.f{
       </ul>
     </div>
 
-    <div class="route-grid">
-      <div class="route-cell">
-        <span class="num"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a8 8 0 0 1 16 0v2"/></svg></span>01 · Личная релокация</span>
-        <h4>Куда Вы&nbsp;едете и&nbsp;кем Вы&nbsp;там становитесь</h4>
-        <p>Страна входа, статус, налоговая логика. План на&nbsp;3–5 лет, а&nbsp;не&nbsp;на&nbsp;ближайший рейс.</p>
-      </div>
-      <div class="route-cell">
-        <span class="num"><span class="ic"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V11z"/><path d="M9 22V12h6v10"/></svg></span>02 · Семейный маршрут</span>
-        <h4>Жена, дети, родители — в&nbsp;одной логике</h4>
-        <p>ВНЖ через воссоединение, школа, врачи, документы. Без панических переездов и&nbsp;«срочно к&nbsp;понедельнику».</p>
-      </div>
-      <div class="route-cell">
-        <span class="num"><span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/></svg></span>03 · Банковский счёт</span>
-        <h4>Банк, который читает Ваш кейс, а&nbsp;не&nbsp;паспорт</h4>
-        <p>Подбор под Ваш профиль и&nbsp;капитал. Подача через подготовленную папку.</p>
-      </div>
-      <div class="route-cell">
-        <span class="num"><span class="ic"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l7-4 7 4v13M9 21v-8h6v8"/></svg></span>04 · Компания или холдинг</span>
-        <h4>HK · SG · UAE · UK · CY</h4>
-        <p>Там, где это даёт реальный экономический смысл. Substance, директор, бухгалтерия — где требуется.</p>
-      </div>
-      <div class="route-cell">
-        <span class="num"><span class="ic"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span>05 · Документы по&nbsp;капиталу</span>
-        <h4>Биография денег под целевой банк</h4>
-        <p>Контракты, выписки, налоги, цепочка владения активом — собранные в&nbsp;один связный нарратив.</p>
-      </div>
-      <div class="route-cell">
-        <span class="num"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span>06 · Крипто-выход в&nbsp;фиат</span>
-        <h4>Прозрачная история транзакций, которую банк примет</h4>
-        <p>Аудит цепочки в&nbsp;блокчейне, AML-папка, регулируемый крипто-выход. Без P2P и&nbsp;серых обменников.</p>
-      </div>
-      <div class="route-cell">
-        <span class="num"><span class="ic"><svg viewBox="0 0 24 24"><path d="M3 21V9l9-6 9 6v12"/><path d="M9 21v-7h6v7"/></svg></span>07 · Инвестиции и&nbsp;недвижимость</span>
-        <h4>Понятные международные активы</h4>
-        <p>Вход в&nbsp;недвижимость, фонды, реальные активы — с&nbsp;документами под банк и&nbsp;налоговую страны прибытия.</p>
-      </div>
-      <div class="route-cell">
-        <span class="num"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6l4 2"/></svg></span>08 · Финансовая подушка</span>
-        <h4>Резерв вне старой системы</h4>
-        <p>Счёт и&nbsp;ликвидность за&nbsp;границей. Спокойно, на&nbsp;долгий срок, без необходимости спешить.</p>
-      </div>
-      <div class="route-cell">
-        <span class="num"><span class="ic"><svg viewBox="0 0 24 24"><path d="M3 12h6l3-9 3 9h6"/><path d="M5 12v8h14v-8"/></svg></span>09 · Сохранение бизнеса</span>
-        <h4>Где это возможно — оставляем работать дома</h4>
-        <p>Параллельно строим второй контур. Прибыль и&nbsp;операционка — там, где это даёт смысл.</p>
-      </div>
-    </div>
-
-    <div class="route-converge">
-      <p>
-        Все девять линий сходятся в&nbsp;<strong>одну архитектуру</strong>.<br/>
-        Не&nbsp;набор услуг — а&nbsp;маршрут с&nbsp;понятной логикой и&nbsp;понятным следующим шагом.
-      </p>
+    <div class="route-converge route-converge--stack">
+      <p class="route-diagnostic-lead">Все детали маршрута уточняются на&nbsp;диагностике.</p>
       <div class="route-converge-end">
         <span>Один маршрут</span>
         <span class="arrow-bar"></span>
@@ -2329,10 +2347,10 @@ footer.f{
 
     <div class="structure-grid">
       <div class="structure-text">
-        <p class="structure-intro">Когда Вы&nbsp;приходите в&nbsp;банк, через 6&nbsp;секунд вашу историю сканирует не&nbsp;человек, а&nbsp;<strong>compliance-протокол</strong>.</p>
-        <p class="structure-intro">Банк хочет понять не&nbsp;«хороший&nbsp;ли&nbsp;Вы&nbsp;человек». Банк хочет понять <strong>восемь конкретных вещей</strong>.</p>
+        <p class="structure-intro">Когда вы&nbsp;приходите в&nbsp;банк, первым вас читает не&nbsp;менеджер, а&nbsp;<strong>риск-профиль</strong>: паспорт, страна, происхождение средств, история операций и&nbsp;документы.</p>
+        <p class="structure-intro">Банку нужны не «оценки характера», а&nbsp;<strong>восемь конкретных ответов</strong> — в связной истории капитала и активности.</p>
         <div class="bank-chips">
-          <span class="bank-chip">Кто Вы?</span>
+          <span class="bank-chip">Кто вы?</span>
           <span class="bank-chip">Откуда капитал?</span>
           <span class="bank-chip">Как заработан?</span>
           <span class="bank-chip">Почему движется сейчас?</span>
@@ -2346,7 +2364,7 @@ footer.f{
         <img src="assets/freedom-route/bank-questions.webp" loading="lazy" alt="Банк хочет понять историю человека и капитала"/>
         <figcaption class="structure-visual-card">
           <div class="label">Compliance-проверка</div>
-          <div class="text">Банк смотрит на&nbsp;Вашу биографию глазами протокола. Папка должна отвечать заранее.</div>
+          <div class="text">Банк смотрит на&nbsp;вашу биографию глазами протокола. Папка должна отвечать заранее.</div>
         </figcaption>
       </figure>
     </div>
@@ -2354,11 +2372,11 @@ footer.f{
     <div class="roles-grid">
       <div class="role-cell">
         <div class="role-label">Юрист</div>
-        <div class="role-text">видит&nbsp;Ваш статус.</div>
+        <div class="role-text">видит&nbsp;ваш статус.</div>
       </div>
       <div class="role-cell">
         <div class="role-label">Налоговый</div>
-        <div class="role-text">— Вашу резидентность.</div>
+        <div class="role-text">— вашу резидентность.</div>
       </div>
       <div class="role-cell">
         <div class="role-label">Банк</div>
@@ -2370,7 +2388,7 @@ footer.f{
       </div>
       <div class="role-cell">
         <div class="role-label">Off-ramp</div>
-        <div class="role-text">— Вашу крипто-историю.</div>
+        <div class="role-text">— вашу крипто-историю.</div>
       </div>
     </div>
 
@@ -2392,100 +2410,13 @@ footer.f{
   <div class="tb-content">
     <span class="tb-mark">Charter&nbsp;Capital · Слой&nbsp;перевода</span>
     <h2 class="tb-line">
-      Мы&nbsp;переводим Вашу <em>реальную жизнь</em><br/>
+      Мы&nbsp;переводим вашу <em>реальную жизнь</em><br/>
       на&nbsp;язык, который понимает <strong>международная финансовая система</strong>.
     </h2>
     <p class="tb-sub">
       Не&nbsp;юристы, не&nbsp;релокаторы, не&nbsp;обменник.<br/>
-      Архитекторы маршрута между Вашей биографией и&nbsp;миром, где капитал нужно объяснять.
+      Архитекторы маршрута между вашей биографией и&nbsp;миром, где капитал нужно объяснять.
     </p>
-  </div>
-</section>
-
-<!-- ─────────────────────────────────────────────────────────
-     SECTION 6 · SCENARIOS — С чем приходят
-     ───────────────────────────────────────────────────────── -->
-<section class="s" id="cases">
-  <div class="container">
-    <div class="s-head">
-      <span class="kicker">Ситуации</span>
-      <h2>С&nbsp;чем приходят предприниматели.</h2>
-      <p>Шесть типичных запросов 2026&nbsp;года. <strong>Если хотя&nbsp;бы один совпадает</strong> — это наш разговор.</p>
-    </div>
-
-    <div class="scenarios">
-      <article class="scenario">
-        <div class="scenario-img">
-          <img src="assets/freedom-route/family-relocation.webp" loading="lazy" alt="Семейный маршрут — школа, документы, переезд"/>
-          <span class="scenario-num">01 · Семья</span>
-        </div>
-        <div class="scenario-body">
-          <h4>Хочу вывезти семью, но&nbsp;не&nbsp;понимаю, с&nbsp;чего начать</h4>
-          <p>Нужен не&nbsp;просто ВНЖ. Нужен маршрут: страна, школа, счёт, документы, капитал, налоговая логика.</p>
-          <a href="#contact" class="scenario-cta"><span>Построить семейный маршрут</span><span class="arr">→</span></a>
-        </div>
-      </article>
-
-      <article class="scenario">
-        <div class="scenario-img">
-          <img src="assets/freedom-route/business-holding.webp" loading="lazy" alt="Бизнес и международный холдинг"/>
-          <span class="scenario-num">02 · Бизнес</span>
-        </div>
-        <div class="scenario-body">
-          <h4>Бизнес в&nbsp;СНГ работает. Прибыль хочу в&nbsp;свободном мире</h4>
-          <p>Нужен второй контур: компания, договоры, счёт, объяснение экономического смысла, документы по&nbsp;прибыли.</p>
-          <a href="#contact" class="scenario-cta"><span>Собрать бизнес-контур</span><span class="arr">→</span></a>
-        </div>
-      </article>
-
-      <article class="scenario">
-        <div class="scenario-img">
-          <img src="assets/freedom-route/crypto-bankability.webp" loading="lazy" alt="Крипта и регулируемый банковский крипто-выход"/>
-          <span class="scenario-num">03 · Крипта</span>
-        </div>
-        <div class="scenario-body">
-          <h4>Крипта есть. Банк её не&nbsp;принимает</h4>
-          <p>Нужна история: откуда монеты, где точки идентификации, какие биржи, какие транзакции, какой регулируемый крипто-выход.</p>
-          <a href="#contact" class="scenario-cta"><span>Проверить крипто-историю</span><span class="arr">→</span></a>
-        </div>
-      </article>
-
-      <article class="scenario">
-        <div class="scenario-img">
-          <img src="assets/freedom-route/real-estate-route.webp" loading="lazy" alt="Покупка недвижимости за границей и подготовка документов"/>
-          <span class="scenario-num">04 · Актив</span>
-        </div>
-        <div class="scenario-body">
-          <h4>Продал актив дома. Хочу купить недвижимость за&nbsp;границей</h4>
-          <p>Нужна цепочка: актив&nbsp;→&nbsp;продажа&nbsp;→&nbsp;налоговая история&nbsp;→&nbsp;банк&nbsp;→&nbsp;покупка&nbsp;→&nbsp;дальнейшее использование.</p>
-          <a href="#contact" class="scenario-cta"><span>Подготовить покупку</span><span class="arr">→</span></a>
-        </div>
-      </article>
-
-      <article class="scenario">
-        <div class="scenario-img">
-          <img src="assets/freedom-route/international-holding.webp" loading="lazy" alt="Международный холдинг — Лондон, Сингапур, Гонконг, Дубай"/>
-          <span class="scenario-num">05 · Холдинг</span>
-        </div>
-        <div class="scenario-body">
-          <h4>Хочу холдинг — Британия, Сингапур, Гонконг или ОАЭ</h4>
-          <p>Нужна структура, которая выглядит не&nbsp;как пустая коробка, а&nbsp;как понятный международный бизнес-контур.</p>
-          <a href="#contact" class="scenario-cta"><span>Спроектировать холдинг</span><span class="arr">→</span></a>
-        </div>
-      </article>
-
-      <article class="scenario">
-        <div class="scenario-img">
-          <img src="assets/freedom-route/one-country-risk.webp" loading="lazy" alt="Резервный план и независимость от одной страны"/>
-          <span class="scenario-num">06 · Резерв</span>
-        </div>
-        <div class="scenario-body">
-          <h4>Я&nbsp;устал зависеть от&nbsp;одной страны</h4>
-          <p>Нужна финансовая подушка, резервный счёт, понятный план. И&nbsp;документы, которые не&nbsp;придётся собирать в&nbsp;панике.</p>
-          <a href="#contact" class="scenario-cta"><span>Создать резервный план</span><span class="arr">→</span></a>
-        </div>
-      </article>
-    </div>
   </div>
 </section>
 
@@ -2558,7 +2489,7 @@ footer.f{
       <article class="pv-pillar">
         <span class="pv-num">II</span>
         <h3>Банк должен понять происхождение и&nbsp;цель</h3>
-        <p>Не&nbsp;«хороший&nbsp;ли Вы человек», а&nbsp;<em>как</em> Ваш капитал был заработан, <em>зачем</em> он&nbsp;здесь и&nbsp;<em>что</em> с&nbsp;ним будет дальше.</p>
+        <p>Не&nbsp;«хороший&nbsp;ли вы человек», а&nbsp;<em>как</em> ваш капитал был заработан, <em>зачем</em> он&nbsp;здесь и&nbsp;<em>что</em> с&nbsp;ним будет дальше.</p>
         <ul class="pv-meta">
           <li>Объяснение для&nbsp;банка</li>
           <li>Вход в&nbsp;private-банк</li>
@@ -2579,7 +2510,7 @@ footer.f{
 
     <div class="pv-close">
       <p class="pv-close-line">
-        Ваш капитал должен не&nbsp;просто переместиться. <br/>
+        Капитал должен не&nbsp;просто переместиться. <br/>
         Он&nbsp;должен <strong>стать понятным свободному миру</strong>.
       </p>
       <a href="private.html" class="btn btn-gold btn-lg pv-cta">Перейти в&nbsp;Private&nbsp;Office <span class="arr">→</span></a>
@@ -2594,14 +2525,12 @@ footer.f{
   <div class="container">
     <div class="result-grid">
       <div class="result-text">
-        <span class="kicker">Результат</span>
-        <h2>Не&nbsp;набор услуг — <em style="font-style:normal;color:var(--gold-warm);font-weight:400">карта новой жизни</em>.</h2>
-        <p>После первой работы у&nbsp;Вас на&nbsp;руках появляется <strong>не&nbsp;куча договоров</strong>, а&nbsp;понятный документ: что у&nbsp;Вас есть, чего нет, и&nbsp;что делать дальше.</p>
+        <span class="kicker">Route&nbsp;Diagnostic · результат</span>
+        <h2>Первая карта вашего маршрута</h2>
+        <p>После первого разбора у&nbsp;вас на&nbsp;руках — <strong>рабочая карта</strong>: риски, документы, реалистичные варианты и&nbsp;ближайшие 90&nbsp;дней. Не&nbsp;куча договоров — понятный следующий шаг.</p>
         <ul class="result-bullets">
-          <li><span class="n">01</span><span>Понимаете, где Вы&nbsp;сейчас.</span></li>
-          <li><span class="n">02</span><span>Видите, какие двери ещё можно открыть.</span></li>
-          <li><span class="n">03</span><span>Знаете, какие документы нужны.</span></li>
-          <li><span class="n">04</span><span>Двигаетесь без хаоса.</span></li>
+          <li><span class="n">01</span><span>Видите, где вы&nbsp;сейчас и&nbsp;что ещё можно открыть.</span></li>
+          <li><span class="n">02</span><span>Знаете, какие документы собрать без сюрпризов.</span></li>
         </ul>
       </div>
 
@@ -2647,7 +2576,7 @@ footer.f{
         </div>
         <div class="result-card-foot">
           <div class="result-card-foot-l">
-            <span class="result-card-foot-label">Ваш ракурс</span>
+            <span class="result-card-foot-label">ваш ракурс</span>
             <span class="result-card-foot-val">Без догадок, без паники</span>
           </div>
           <span class="result-card-foot-tag">Ясность</span>
@@ -2667,27 +2596,20 @@ footer.f{
         <img src="assets/freedom-route/final-route-light.webp" loading="lazy" alt="Первый шаг к свободному международному маршруту"/>
       </div>
       <div class="final-cta-inner">
-        <p class="final-cta-crown">
-          Вы&nbsp;приходите <em>не&nbsp;за&nbsp;счётом</em>, компанией или ВНЖ.<br/>
-          Вы&nbsp;приходите за&nbsp;<strong>маршрутом</strong>, где Ваша семья, капитал и&nbsp;бизнес <strong>снова становятся управляемыми</strong>.
-        </p>
-
         <span class="kicker bright">Первый шаг</span>
-        <h2>Первый шаг — <strong>понять маршрут</strong>.</h2>
+        <h2>Сначала маршрут. Потом действие. <strong>Не&nbsp;наоборот.</strong></h2>
 
-        <p class="final-cta-quote-soft">
-          Сначала маршрут. Потом действие. <em>Не&nbsp;наоборот.</em>
+        <p class="final-cta-crown subtle">
+          вы&nbsp;приходите не&nbsp;за&nbsp;отдельным счётом, компанией или ВНЖ — а&nbsp;за&nbsp;связной картой, где ваша семья, капитал и&nbsp;бизнес <strong>снова становятся управляемыми</strong>.
         </p>
 
         <div class="final-cta-list">
-          <div class="final-cta-list-line">Не&nbsp;надо сразу открывать компанию.</div>
-          <div class="final-cta-list-line">Не&nbsp;надо сразу переводить деньги.</div>
-          <div class="final-cta-list-line">Не&nbsp;надо сразу подаваться в&nbsp;банк.</div>
-          <div class="final-cta-list-line">Не&nbsp;надо сначала делать то, что потом придётся объяснять.</div>
+          <div class="final-cta-list-line">Сначала — диагностика маршрута и&nbsp;рисков под NDA.</div>
+          <div class="final-cta-list-line">Потом — документы, структура и&nbsp;переговоры с&nbsp;банком уже в&nbsp;логике кейса.</div>
         </div>
 
         <p class="final-cta-bridge">
-          Сначала нужно понять: <strong>где главный риск</strong>, что можно делать сейчас, что нельзя трогать без подготовки, какие документы собрать, какая страна подходит и&nbsp;какой маршрут реалистичен.
+          За&nbsp;30&nbsp;минут — не&nbsp;«продажа», а&nbsp;<strong>карта вашей ситуации</strong>: что можно трогать сейчас, а&nbsp;что лучше не&nbsp;трогать без подготовки.
         </p>
 
         <div class="final-cta-actions">
@@ -2797,7 +2719,7 @@ document.addEventListener('click',function(e){
 // Subtle reveal on scroll
 (function(){
   if(!('IntersectionObserver' in window)) return;
-  var els=document.querySelectorAll('.manifesto-line,.dr-list li,.ah-card,.scenario,.route-cell,.tn-col,.escape-row,.glimpse,.role-cell,.result-row,.bank-chip,.private-chip,.pull-quote-text,.assembly-anchor');
+  var els=document.querySelectorAll('.manifesto-line,.dr-list li,.ah-card,.scenario,.route-diagnostic-lead,.tn-col,.escape-row,.glimpse,.role-cell,.result-row,.bank-chip,.private-chip,.pull-quote-text,.assembly-anchor');
   els.forEach(function(el){
     el.style.opacity='0';
     el.style.transform='translateY(14px)';
@@ -2821,7 +2743,7 @@ document.addEventListener('click',function(e){
   document.querySelectorAll('.ah-card').forEach(function(el,i){ el.dataset.delay=String(i*50); });
   document.querySelectorAll('.glimpse').forEach(function(el,i){ el.dataset.delay=String(i*100); });
   document.querySelectorAll('.scenario').forEach(function(el,i){ el.dataset.delay=String(i*60); });
-  document.querySelectorAll('.route-cell').forEach(function(el,i){ el.dataset.delay=String(i*40); });
+  document.querySelectorAll('.route-diagnostic-lead').forEach(function(el,i){ el.dataset.delay=String(i*40); });
   document.querySelectorAll('.bank-chip').forEach(function(el,i){ el.dataset.delay=String(i*40); });
   document.querySelectorAll('.private-chip').forEach(function(el,i){ el.dataset.delay=String(i*60); });
   document.querySelectorAll('.role-cell').forEach(function(el,i){ el.dataset.delay=String(i*50); });
