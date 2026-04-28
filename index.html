@@ -187,21 +187,30 @@ p{color:var(--body);font-weight:400;line-height:1.7}
   position:relative;
   min-height:100vh;
   background:
-    linear-gradient(90deg,rgba(6,8,15,.92) 0%,rgba(6,8,15,.62) 48%,rgba(6,8,15,.18) 100%),
-    url('assets/logic/15-passport-gate.webp') center/cover no-repeat,
+    linear-gradient(180deg, rgba(6,8,15,0) 0%, rgba(6,8,15,0) 25%, rgba(6,8,15,.30) 52%, rgba(6,8,15,.78) 82%, rgba(6,8,15,.92) 100%),
+    url('assets/logic/15-passport-gate.webp') 25% 30% / cover no-repeat,
     var(--bg-darker);
-  display:flex;flex-direction:column;justify-content:center;
-  padding:140px 32px 80px;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:160px 32px 80px;
   overflow:hidden;
   color:#fff;
 }
 @media (max-width:768px){
-  .hero{background-image:linear-gradient(90deg,rgba(6,8,15,.92) 0%,rgba(6,8,15,.62) 48%,rgba(6,8,15,.18) 100%),url('assets/logic/15-passport-gate-800w.webp')}
+  .hero{
+    background-image:
+      linear-gradient(180deg, rgba(6,8,15,0) 0%, rgba(6,8,15,0) 22%, rgba(6,8,15,.32) 50%, rgba(6,8,15,.82) 80%, rgba(6,8,15,.94) 100%),
+      url('assets/logic/15-passport-gate-800w.webp');
+    background-position: 25% 30%, 25% 30%;
+    padding:120px 28px 60px;
+  }
 }
 .hero::before{
   content:'';position:absolute;inset:0;
-  background:radial-gradient(circle at 82% 55%,rgba(217,178,113,.15) 0%,transparent 55%),
-             radial-gradient(circle at 14% 28%,rgba(220,38,38,.08) 0%,transparent 55%);
+  background:
+    radial-gradient(ellipse 320px 200px at 22% 18%, rgba(255,250,230,.22) 0%, transparent 65%),
+    radial-gradient(circle at 22% 18%, rgba(80,135,235,.16) 0%, transparent 35%),
+    radial-gradient(ellipse 360px 260px at 20% 38%, rgba(255,210,150,.13) 0%, transparent 70%),
+    radial-gradient(circle at 78% 50%, rgba(217,178,113,.18) 0%, transparent 55%);
   pointer-events:none;
 }
 .hero-inner{position:relative;max-width:1240px;margin:0 auto;width:100%}
@@ -221,25 +230,19 @@ p{color:var(--body);font-weight:400;line-height:1.7}
   font-size:clamp(2.4rem,5.6vw,4.8rem);
   letter-spacing:-.045em;line-height:1.02;
   font-weight:300;margin-bottom:28px;
+  text-shadow:0 2px 24px rgba(0,0,0,.55), 0 1px 2px rgba(0,0,0,.35);
 }
 .hero h1 strong{font-weight:600;color:#fff}
 .hero-sub{
-  color:rgba(255,255,255,.72);
+  color:rgba(255,255,255,.78);
   font-size:clamp(1rem,1.4vw,1.25rem);
   max-width:62ch;line-height:1.55;font-weight:300;
   margin-bottom:48px;
+  text-shadow:0 1px 14px rgba(0,0,0,.55);
 }
-.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:80px}
-.hero-meta{
-  display:flex;gap:48px;flex-wrap:wrap;
-  padding-top:36px;border-top:1px solid rgba(255,255,255,.12);
-  max-width:760px;
-}
-.hero-meta-item{display:flex;flex-direction:column;gap:4px}
-.hero-meta-item .v{font-size:1.6rem;font-weight:600;color:#fff;letter-spacing:-.02em}
-.hero-meta-item .l{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:30px}
 
-/* ─── HERO OTHER CONTOURS NAV (under meta) ─────────────── */
+/* ─── HERO OTHER CONTOURS NAV ──────────────────────────── */
 .hero-other{
   display:flex;flex-wrap:wrap;align-items:center;gap:8px;
   margin-top:30px;padding-top:24px;
@@ -984,8 +987,6 @@ footer.f{
   .scoring{padding:36px 24px}
   .contact{padding:48px 24px}
   .f-grid{grid-template-columns:1fr}
-  .hero-meta{gap:24px}
-  .hero-meta-item .v{font-size:1.3rem}
 }
 </style>
 
@@ -1179,25 +1180,6 @@ footer.f{
       <a href="#routes" class="btn btn-primary btn-lg">Подобрать маршрут <span class="arr">→</span></a>
       <a href="#scoring" class="btn btn-ghost btn-lg">Скоринг готовности · 60&nbsp;сек</a>
     </div>
-    <div class="hero-meta">
-      <div class="hero-meta-item">
-        <div class="v">5</div>
-        <div class="l">Контуров: люди · капитал · бизнес</div>
-      </div>
-      <div class="hero-meta-item">
-        <div class="v">18+</div>
-        <div class="l">Юрисдикций входа</div>
-      </div>
-      <div class="hero-meta-item">
-        <div class="v">100%</div>
-        <div class="l">В рамках регулирования</div>
-      </div>
-      <div class="hero-meta-item">
-        <div class="v">24ч</div>
-        <div class="l">До первого ответа</div>
-      </div>
-    </div>
-
     <div class="hero-other">
       <span class="hero-other-label">Не ваш случай?</span>
       <a class="hero-other-pill" href="homeland.html">

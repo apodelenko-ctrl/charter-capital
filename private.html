@@ -37,7 +37,8 @@
 <link rel="dns-prefetch" href="https://fonts.gstatic.com"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link rel="preload" as="image" href="assets/logic/21-private-library.jpg" fetchpriority="high"/>
+<link rel="preload" as="image" href="assets/logic/21-private-library.webp" fetchpriority="high" media="(min-width: 769px)"/>
+<link rel="preload" as="image" href="assets/logic/21-private-library-800w.webp" fetchpriority="high" media="(max-width: 768px)"/>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap" media="print" onload="this.media='all'"/>
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap"/></noscript>
@@ -196,8 +197,11 @@ p{color:var(--text-soft);font-weight:400;line-height:1.65;font-size:16px}
   content:'';position:absolute;inset:0;z-index:-1;
 }
 .cc-hero--private{
-  background-image:url('assets/logic/21-private-library.jpg');
+  background-image:url('assets/logic/21-private-library.webp');
   background-position:center 40%;
+}
+@media(max-width:768px){
+  .cc-hero--private{background-image:url('assets/logic/21-private-library-800w.webp')}
 }
 .cc-hero--private::before{
   background:
@@ -720,7 +724,11 @@ footer.f{
 
 <!-- ─── DECK 2 · ДИАГНОЗ (split) ─────────────────────────── -->
 <section class="deck split" id="diagnosis">
-  <img src="assets/logic/22-abandoned-case.jpg" alt="Капитал без биографии — заброшенный портфель в архиве банка" loading="lazy"/>
+  <picture>
+    <source media="(max-width: 768px)" srcset="assets/logic/22-abandoned-case-800w.webp" type="image/webp"/>
+    <source srcset="assets/logic/22-abandoned-case.webp" type="image/webp"/>
+    <img src="assets/logic/22-abandoned-case.jpg" alt="Капитал без биографии — заброшенный портфель в архиве банка" loading="lazy"/>
+  </picture>
   <div class="panel">
     <span class="kicker red">Диагноз</span>
     <h2 class="title">Ваши деньги в РФ — это <strong>мусор</strong> для западного банка, пока у них нет понятной биографии.</h2>

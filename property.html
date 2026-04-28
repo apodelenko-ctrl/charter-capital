@@ -841,7 +841,10 @@ footer.f{background:#06080f;color:#94a3b8;padding:64px 0 32px;border-top:1px sol
 
       <div class="loc-map" aria-label="Карта Пхукета с расположением проектов">
         <div class="phuket-canvas" aria-hidden="true">
-          <img class="phuket-map-img" src="/assets/property/phuket-map.png" alt="Карта Пхукета — расположение пяти проектов CP Property" loading="lazy"/>
+          <picture>
+            <source srcset="/assets/property/phuket-map.webp" type="image/webp"/>
+            <img class="phuket-map-img" src="/assets/property/phuket-map.png" alt="Карта Пхукета — расположение пяти проектов CP Property" loading="lazy"/>
+          </picture>
           <button type="button" class="map-pin" style="--x:24.5%;--y:26.9%" data-pin="bangtao" aria-label="Bang Tao · 3 проекта"><span>1</span></button>
           <button type="button" class="map-pin" style="--x:27.3%;--y:16.6%" data-pin="layan" aria-label="Layan · 1 проект"><span>2</span></button>
           <button type="button" class="map-pin" style="--x:25%;--y:40%" data-pin="patong" aria-label="Patong · выборочно"><span>3</span></button>
