@@ -172,32 +172,6 @@ p{color:var(--body);font-weight:400;line-height:1.7}
   color:#fca5a5;
 }
 .hero-flag .dot{width:6px;height:6px;border-radius:50%;background:#ef4444;animation:pulse 2s ease infinite}
-.hero-flag.hero-flag-link{
-  background:rgba(160,129,86,.12);
-  border-color:rgba(160,129,86,.45);
-  color:#cfc4a2;
-  text-decoration:none;cursor:pointer;
-  transition:background .18s ease,border-color .18s ease,transform .18s ease;
-}
-.hero-flag.hero-flag-link:hover{
-  background:rgba(160,129,86,.22);
-  border-color:rgba(160,129,86,.65);
-  color:#f1eee3;transform:translateY(-1px);
-}
-.hero-flag.hero-flag-link .arr,.hero-flag.hero-flag-private .arr{transition:transform .18s ease}
-.hero-flag.hero-flag-link:hover .arr,.hero-flag.hero-flag-private:hover .arr{transform:translateX(3px)}
-.hero-flag.hero-flag-private{
-  background:rgba(255,255,255,.05);
-  border-color:rgba(255,255,255,.22);
-  color:rgba(255,255,255,.85);
-  text-decoration:none;cursor:pointer;
-  transition:background .18s ease,border-color .18s ease,transform .18s ease,color .18s ease;
-}
-.hero-flag.hero-flag-private:hover{
-  background:rgba(255,255,255,.1);
-  border-color:rgba(255,255,255,.45);
-  color:#fff;transform:translateY(-1px);
-}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 .hero h1{
   color:#fff;
@@ -222,6 +196,39 @@ p{color:var(--body);font-weight:400;line-height:1.7}
 .hero-meta-item{display:flex;flex-direction:column;gap:4px}
 .hero-meta-item .v{font-size:1.6rem;font-weight:600;color:#fff;letter-spacing:-.02em}
 .hero-meta-item .l{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+
+/* ─── HERO OTHER CONTOURS NAV (under meta) ─────────────── */
+.hero-other{
+  display:flex;flex-wrap:wrap;align-items:center;gap:8px;
+  margin-top:30px;padding-top:24px;
+  border-top:1px solid rgba(255,255,255,.08);
+  max-width:920px;
+}
+.hero-other-label{
+  font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(255,255,255,.4);margin-right:6px;
+}
+.hero-other-pill{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:12px;font-weight:500;letter-spacing:.02em;
+  color:rgba(255,255,255,.78);
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.12);
+  padding:7px 12px 7px 14px;border-radius:999px;
+  text-decoration:none;
+  transition:all .18s ease;
+}
+.hero-other-pill:hover{
+  color:#fff;
+  background:rgba(255,255,255,.1);
+  border-color:rgba(255,255,255,.32);
+  transform:translateY(-1px);
+}
+.hero-other-pill .arr{
+  color:rgba(255,255,255,.55);transition:transform .18s ease,color .18s ease;
+  font-size:14px;
+}
+.hero-other-pill:hover .arr{transform:translateX(2px);color:#fff}
 
 /* ─── SECTION wrapper ───────────────────────────────────── */
 section.s{padding:120px 0;position:relative}
@@ -969,18 +976,6 @@ footer.f{
         <span class="dot"></span>
         <span>2026 — окно сужается каждый месяц</span>
       </span>
-      <a class="hero-flag hero-flag-link" href="homeland.html">
-        <span>Если проблема ещё на родине</span>
-        <span class="arr">→</span>
-      </a>
-      <a class="hero-flag hero-flag-link" href="freedom-route.html">
-        <span>Маршрут в&nbsp;свободный мир · СНГ&nbsp;→&nbsp;мир</span>
-        <span class="arr">→</span>
-      </a>
-      <a class="hero-flag hero-flag-private" href="private.html">
-        <span>Капитал от&nbsp;$1М · Private Office</span>
-        <span class="arr">→</span>
-      </a>
     </div>
     <h1>Когда двери закрываются —<br/><strong>Charter&nbsp;Capital открывает мир</strong> без искусственных границ.</h1>
     <p class="hero-sub">
@@ -992,11 +987,11 @@ footer.f{
     </div>
     <div class="hero-meta">
       <div class="hero-meta-item">
-        <div class="v">3</div>
-        <div class="l">Контура: люди / бизнес / капитал</div>
+        <div class="v">5</div>
+        <div class="l">Контуров: люди · капитал · бизнес</div>
       </div>
       <div class="hero-meta-item">
-        <div class="v">15+</div>
+        <div class="v">18+</div>
         <div class="l">Юрисдикций входа</div>
       </div>
       <div class="hero-meta-item">
@@ -1007,6 +1002,22 @@ footer.f{
         <div class="v">24ч</div>
         <div class="l">До первого ответа</div>
       </div>
+    </div>
+
+    <div class="hero-other">
+      <span class="hero-other-label">Не ваш случай?</span>
+      <a class="hero-other-pill" href="homeland.html">
+        <span>Я ещё в&nbsp;РФ</span><span class="arr">→</span>
+      </a>
+      <a class="hero-other-pill" href="freedom-route.html">
+        <span>Я из&nbsp;СНГ</span><span class="arr">→</span>
+      </a>
+      <a class="hero-other-pill" href="private.html">
+        <span>Капитал от&nbsp;$1М</span><span class="arr">→</span>
+      </a>
+      <a class="hero-other-pill" href="fund.html">
+        <span>Хочу инвестировать</span><span class="arr">→</span>
+      </a>
     </div>
   </div>
 </section>
@@ -1397,7 +1408,7 @@ footer.f{
         </div>
         <div class="route-cta">
           <span class="route-cell"><span class="l">Действие</span><span class="v muted">Аудит ВЭД → встреча</span></span>
-          <a href="corporate.html" class="more">Подробнее <span class="arr">→</span></a>
+          <a href="#contact" class="more">Запросить <span class="arr">→</span></a>
         </div>
       </article>
 
@@ -1542,7 +1553,7 @@ footer.f{
           <div class="sr-dim"><span class="sr-dim-key">Происхождение</span><span class="sr-dim-val">Откуда капитал изначально</span></div>
           <div class="sr-dim"><span class="sr-dim-key">Хронология</span><span class="sr-dim-val">Связность по датам</span></div>
         </div>
-        <a href="sourceready-scoring-sandbox.html" class="btn btn-primary btn-lg">Запросить разбор кейса <span class="arr">→</span></a>
+        <a href="#contact" class="btn btn-primary btn-lg">Запросить разбор кейса <span class="arr">→</span></a>
         <p class="sr-foot">Четыре измерения, а не одна общая оценка. Сжато. Под контролем советника.</p>
       </div>
 
@@ -1674,11 +1685,9 @@ footer.f{
         <h5>Контуры</h5>
         <ul>
           <li><a href="homeland.html">Подготовка к&nbsp;исходу · ещё в&nbsp;РФ</a></li>
-          <li><a href="freedom-route.html">Маршрут в&nbsp;свободный мир</a></li>
-          <li><a href="private.html">Private Office · от&nbsp;$1М</a></li>
-          <li><a href="fund.html">Charter Asia Fund · от&nbsp;$25K</a></li>
-          <li><a href="corporate.html">Бизнес / ВЭД</a></li>
-          <li><a href="sourceready-scoring-sandbox.html">Скоринг готовности</a></li>
+          <li><a href="freedom-route.html">Маршрут в&nbsp;свободный мир · СНГ</a></li>
+          <li><a href="private.html">Private Office · от&nbsp;$1&nbsp;000&nbsp;000</a></li>
+          <li><a href="fund.html">Charter Asia Fund · от&nbsp;$25&nbsp;000</a></li>
         </ul>
       </div>
       <div class="f-col">

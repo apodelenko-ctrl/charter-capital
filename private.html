@@ -167,6 +167,16 @@ p{color:var(--text-soft);font-weight:400;line-height:1.65;font-size:16px}
   object-fit:cover;object-position:center 30%;
   filter:brightness(.55) saturate(1.05);
 }
+.hero-img--bottom{
+  height:min(42vw,460px);
+  object-position:center 50%;
+  filter:brightness(.78) saturate(1.05);
+}
+.hero-deck--text-first .hero-body{padding:88px 72px 64px}
+@media(max-width:880px){
+  .hero-deck--text-first .hero-body{padding:64px 28px 40px}
+  .hero-img--bottom{height:min(60vw,360px)}
+}
 .hero-body{padding:64px 72px 72px;position:relative}
 .hero-flag{
   display:inline-flex;align-items:center;gap:10px;
@@ -323,6 +333,47 @@ p{color:var(--text-soft);font-weight:400;line-height:1.65;font-size:16px}
   }
   .path-arrow svg{transform:rotate(90deg);width:18px;height:18px;flex-shrink:0}
   .path-arrow-sub{max-width:none}
+}
+
+/* ─── CALENDAR TIMELINE ────────────────────────────────── */
+.cal{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:42px;
+}
+.cal-phase{
+  background:#fff;border:1px solid var(--line);border-radius:10px;
+  padding:26px 24px 22px;
+  display:flex;flex-direction:column;gap:14px;
+  position:relative;overflow:hidden;
+  transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;
+}
+.cal-phase:hover{transform:translateY(-3px);border-color:#9ca3af;box-shadow:0 14px 30px rgba(0,0,0,.06)}
+.cal-phase::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--gold) 0%,transparent 100%);
+}
+.cal-phase--featured{border-color:var(--gold);box-shadow:0 0 0 4px rgba(160,129,86,.12)}
+.cal-phase--featured::before{background:var(--gold)}
+.cal-head{display:flex;flex-direction:column;gap:4px;padding-bottom:14px;border-bottom:1px solid var(--line-soft)}
+.cal-period{
+  font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--gold);
+}
+.cal-head h3{font-size:1.1rem;font-weight:500;color:var(--ink);letter-spacing:-.015em;line-height:1.2}
+.cal-list{
+  list-style:none;display:flex;flex-direction:column;gap:8px;margin:0;padding:0;
+}
+.cal-list li{
+  font-size:13px;color:var(--text-soft);line-height:1.5;
+  padding-left:14px;position:relative;
+}
+.cal-list li::before{
+  content:'';position:absolute;left:0;top:8px;width:4px;height:4px;border-radius:50%;background:var(--gold);
+}
+@media(max-width:1100px){
+  .cal{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  .cal{grid-template-columns:1fr}
 }
 
 /* ─── HUB ───────────────────────────────────────────────── */
@@ -547,8 +598,7 @@ footer.f{
 <main>
 
 <!-- ─── DECK 1 · HERO ────────────────────────────────────── -->
-<section class="deck hero-deck">
-  <img class="hero-img" src="assets/logic/18-private-office-sg.png" alt="Charter Capital · Private Office — вид на Marina Bay из частного банкинг-кабинета"/>
+<section class="deck hero-deck hero-deck--text-first">
   <div class="hero-body">
     <div class="hero-flag">
       <span class="dot"></span>
@@ -580,6 +630,7 @@ footer.f{
       </div>
     </div>
   </div>
+  <img class="hero-img hero-img--bottom" src="assets/logic/18-private-office-sg.png" alt="Charter Capital · Private Office — вид на Marina Bay из частного банкинг-кабинета"/>
 </section>
 
 <!-- ─── DECK 2 · ДИАГНОЗ (split) ─────────────────────────── -->
@@ -625,30 +676,7 @@ footer.f{
   </div>
 </section>
 
-<!-- ─── DECK 4 · ЧИСТЫЙ КОНТУР ───────────────────────────── -->
-<section class="deck" id="path">
-  <div class="blk">
-    <span class="kicker">Архитектура · Путь капитала</span>
-    <h2 class="title">Чистый контур — это всегда три ступени, не больше</h2>
-    <p class="lead">Не пять SPV в матрёшку, не семь юрисдикций «для запутывания». Чем проще структура, тем легче её защитить перед EDD-офицером.</p>
-    <div class="steps">
-      <div class="step">
-        <h4><span class="n">01</span>Вход</h4>
-        <p>Капитал заходит в инвестиционный контур через прозрачный договор с внутренней проверкой. На этом этапе фиксируется намерение инвестора и документально подтверждается источник средств.</p>
-      </div>
-      <div class="step">
-        <h4><span class="n">02</span>Substance — реальная деятельность</h4>
-        <p>Капитал работает. Реальная операционная деятельность в white-list юрисдикции: контракты, выручка, налоговая отчётность. След, который банк проверяет не на слово, а через независимый аудит.</p>
-      </div>
-      <div class="step">
-        <h4><span class="n">03</span>Чистый выход</h4>
-        <p>Выход из раунда инвестиций: средства приходят на ваш счёт в банке уровня Tier-1 уже с полной документальной историей — от инвестиционного решения до распределения дохода.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── DECK 4.5 · КАРТА ДВИЖЕНИЯ КАПИТАЛА (dark, geo-flow) ── -->
+<!-- ─── DECK 4 · КАРТА ДВИЖЕНИЯ КАПИТАЛА (dark, geo-flow) ── -->
 <section class="deck dark" id="path-map">
   <div class="blk">
     <span class="kicker">Карта движения капитала</span>
@@ -698,40 +726,71 @@ footer.f{
   </div>
 </section>
 
-<!-- ─── DECK 5 · ВРЕМЕННАЯ ШКАЛА (dark + image) ──────────── -->
-<section class="deck dark">
+<!-- ─── DECK 5 · КАЛЕНДАРНЫЙ TIMELINE ────────────────────── -->
+<section class="deck">
   <div class="blk">
-    <span class="kicker">12–18 месяцев</span>
-    <h2 class="title">Как мы строим это пошагово</h2>
-    <p class="lead" style="margin-top:6px">Каждый шаг — отдельный юридический протокол с верифицируемым результатом. Если шаг не сработал, мы не двигаемся к следующему.</p>
-    <div class="timeline">
-      <div class="tl-col">
-        <div class="item">
-          <h4>Шаг 1 · Вход в инвестиционный контур</h4>
-          <p>Подписание инвестиционного меморандума или договора участия в холдинге Сингапура. Внутренняя проверка по стандартам KYC/AML подтверждает легитимность намерений и источника. Это якорная точка, от которой считается новая биография капитала.</p>
-        </div>
-        <div class="item">
-          <h4>Шаг 3 · Создание реальной деятельности</h4>
-          <p>Операционное управление активом: арендные потоки, управляющая компания, бухгалтерия, налоговая отчётность. Substance — не декорация, а именно то, что банк смотрит при углублённой проверке.</p>
-        </div>
-      </div>
-      <div class="timeline-center">
-        <div class="tl-badge">1</div>
-        <div class="tl-badge">2</div>
-        <div class="tl-badge">3</div>
-        <div class="tl-badge">4</div>
-      </div>
-      <div class="tl-col">
-        <div class="item">
-          <h4>Шаг 2 · Капитализация в твёрдый актив</h4>
-          <p>Капитал распределяется в реальный портфель — премиум-недвижимость на Пхукете, Дубае, в Лиссабоне; инфраструктурные проекты; частные фонды. Сделка фиксируется через холдинг с полной историей операций.</p>
-        </div>
-        <div class="item">
-          <h4>Шаг 4 · Чистый выход</h4>
-          <p>Выплата инвестиционного дохода или возврат тела капитала на ваш счёт — с полной банковской биографией каждой операции. На этой точке вы перестаёте быть «русским с деньгами» и становитесь «инвестором с прозрачной доходностью».</p>
-        </div>
-      </div>
+    <span class="kicker">12–18 месяцев · по календарю</span>
+    <h2 class="title">Что происходит каждый квартал — по&nbsp;неделям и&nbsp;документам</h2>
+    <p class="lead" style="margin-top:6px">Каждая фаза — это набор подписанных документов и зафиксированных операций. Не маркетинговый план, а календарь, по которому работает мандат.</p>
+
+    <div class="cal">
+      <article class="cal-phase">
+        <header class="cal-head">
+          <span class="cal-period">Месяц 1–3</span>
+          <h3>Diagnostic + Setup</h3>
+        </header>
+        <ul class="cal-list">
+          <li>Аудит источника капитала, on-chain аудит крипты (если применимо)</li>
+          <li>Карта рисков по каждому целевому банку, дорожная карта</li>
+          <li>Регистрация холдинговой компании в Сингапуре</li>
+          <li>Открытие операционного счёта на холдинг</li>
+          <li>Подписание инвестиционного меморандума</li>
+        </ul>
+      </article>
+
+      <article class="cal-phase cal-phase--featured">
+        <header class="cal-head">
+          <span class="cal-period">Месяц 4–6</span>
+          <h3>Капитализация в&nbsp;актив</h3>
+        </header>
+        <ul class="cal-list">
+          <li>Подбор объекта недвижимости (Пхукет / Дубай / Лиссабон)</li>
+          <li>Регистрация SPV под объект</li>
+          <li>Перевод инвестиционного транша через холдинг</li>
+          <li>Land Department: оформление права собственности</li>
+          <li>Подписание управляющего контракта (property management)</li>
+        </ul>
+      </article>
+
+      <article class="cal-phase">
+        <header class="cal-head">
+          <span class="cal-period">Месяц 7–12</span>
+          <h3>Substance · реальная экономика</h3>
+        </header>
+        <ul class="cal-list">
+          <li>Запуск арендных потоков на счёт SPV</li>
+          <li>Налоговая регистрация в стране актива</li>
+          <li>Подача первой годовой декларации</li>
+          <li>Аудит SG-холдинга по международным стандартам</li>
+          <li>Параллельная работа с целевым банком (pre-onboarding)</li>
+        </ul>
+      </article>
+
+      <article class="cal-phase">
+        <header class="cal-head">
+          <span class="cal-period">Месяц 13–18</span>
+          <h3>Чистый выход + onboarding</h3>
+        </header>
+        <ul class="cal-list">
+          <li>Распределение дохода или выход из инвестиционного раунда</li>
+          <li>Подача пакета SoF/SoW в целевой Tier-1 банк</li>
+          <li>Личное сопровождение EDD-интервью</li>
+          <li>Открытие частного счёта на ваш ID</li>
+          <li>Передача всего архива операций — собственность клиента</li>
+        </ul>
+      </article>
     </div>
+    <p style="margin-top:32px;font-size:13px;color:var(--muted);max-width:62ch;line-height:1.6">Точные сроки каждой фазы зависят от размера капитала, числа юрисдикций и сложности конкретного целевого банка. На первой встрече фиксируется индивидуальный план-график для вашего мандата.</p>
   </div>
 </section>
 
@@ -934,11 +993,9 @@ footer.f{
       <h5>Контуры</h5>
       <ul>
         <li><a href="homeland.html">Подготовка к исходу · ещё в РФ</a></li>
-        <li><a href="index.html">Основной агрегатор · от $50K</a></li>
-        <li><a href="private.html">Private Office · от $1М</a></li>
-        <li><a href="fund.html">Charter Asia Fund · от $25K</a></li>
-        <li><a href="corporate.html">Corporate · ВЭД</a></li>
-        <li><a href="sourceready-scoring-sandbox.html">Скоринг готовности</a></li>
+        <li><a href="freedom-route.html">Маршрут в свободный мир · СНГ</a></li>
+        <li><a href="index.html">Основной агрегатор · от $50&nbsp;000</a></li>
+        <li><a href="fund.html">Charter Asia Fund · от $25&nbsp;000</a></li>
       </ul>
     </div>
     <div class="f-col">
