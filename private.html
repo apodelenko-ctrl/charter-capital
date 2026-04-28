@@ -157,44 +157,52 @@ h1,h2,h3,h4{font-weight:300;letter-spacing:-.035em;line-height:1.06;color:var(--
 p{color:var(--text-soft);font-weight:400;line-height:1.65;font-size:16px}
 .deck.dark p{color:var(--text-on-dark-soft)}
 
-/* ─── HERO ──────────────────────────────────────────────── */
-.hero-deck{
-  background:#020202;color:#fff;
-  position:relative;overflow:hidden;
+/* ─── HERO (full-bleed background) ─────────────────────── */
+.cc-hero{
+  position:relative;min-height:min(96vh,860px);
+  background-color:#020202;background-size:cover;background-position:center;background-repeat:no-repeat;
+  display:flex;align-items:center;
+  isolation:isolate;overflow:hidden;
 }
-.hero-img{
-  display:block;width:100%;height:min(48vw,540px);
-  object-fit:cover;object-position:center 30%;
-  filter:brightness(.55) saturate(1.05);
+.cc-hero::before{
+  content:'';position:absolute;inset:0;z-index:-1;
 }
-.hero-img--bottom{
-  height:min(42vw,460px);
-  object-position:center 50%;
-  filter:brightness(.78) saturate(1.05);
+.cc-hero--private{
+  background-image:url('assets/logic/18-private-office-sg.png');
+  background-position:center 30%;
 }
-.hero-deck--text-first .hero-body{padding:88px 72px 64px}
-@media(max-width:880px){
-  .hero-deck--text-first .hero-body{padding:64px 28px 40px}
-  .hero-img--bottom{height:min(60vw,360px)}
+.cc-hero--private::before{
+  background:
+    linear-gradient(135deg,rgba(6,8,15,.88) 0%,rgba(6,8,15,.55) 50%,rgba(6,8,15,.32) 100%),
+    radial-gradient(circle at 80% 70%,rgba(160,129,86,.18) 0%,transparent 60%);
 }
-.hero-body{padding:64px 72px 72px;position:relative}
+.cc-hero-body{
+  position:relative;z-index:1;width:100%;
+  max-width:1280px;margin:0 auto;
+  padding:160px 72px 100px;
+  color:#fff;
+}
 .hero-flag{
   display:inline-flex;align-items:center;gap:10px;
-  background:rgba(160,129,86,.12);border:1px solid rgba(160,129,86,.4);
+  background:rgba(160,129,86,.14);border:1px solid rgba(160,129,86,.45);
   padding:7px 16px;border-radius:999px;
   font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
   color:var(--gold-soft);margin-bottom:32px;
 }
 .hero-flag .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2.4s ease infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-.hero-deck .title{color:#fff;max-width:24ch}
+.cc-hero .title{color:#fff;max-width:24ch}
 .hero-second{
   font-size:clamp(1.05rem,1.55vw,1.35rem);
   font-weight:300;color:var(--gold-soft);
   letter-spacing:-.01em;line-height:1.4;
-  margin:8px 0 22px;max-width:48ch;
+  margin:8px 0 22px;max-width:52ch;
 }
-.hero-deck .lead{color:var(--text-on-dark-soft);max-width:62ch;margin-top:6px}
+.cc-hero .lead{color:var(--text-on-dark-soft);max-width:62ch;margin-top:6px}
+@media(max-width:880px){
+  .cc-hero{min-height:auto}
+  .cc-hero-body{padding:120px 28px 64px}
+}
 .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:42px}
 .btn{
   display:inline-flex;align-items:center;gap:8px;
@@ -597,16 +605,16 @@ footer.f{
 
 <main>
 
-<!-- ─── DECK 1 · HERO ────────────────────────────────────── -->
-<section class="deck hero-deck hero-deck--text-first">
-  <div class="hero-body">
+<!-- ─── DECK 1 · HERO (full-bleed background) ───────────── -->
+<section class="cc-hero cc-hero--private">
+  <div class="cc-hero-body">
     <div class="hero-flag">
       <span class="dot"></span>
       <span>Private Office · Закрытый контур · от&nbsp;$1&nbsp;000&nbsp;000</span>
     </div>
     <h1 class="title"><strong>Архитекторы легитимности</strong> и безупречной биографии вашего капитала.</h1>
-    <p class="hero-second">Когда сумма исключает шорткаты, маршрут — единственный продукт.</p>
-    <p class="lead">Мы проводим капитал через структурированные инвестиции в Сингапурский фонд недвижимости, формируем substance и реальный paper-trail — и через выход из инвестиционного раунда возвращаем средства на ваши целевые счета в ЕС / Британии / Швейцарии уже <strong>чистыми деньгами с проверяемой банковской биографией</strong>. Для частных клиентов с активами от&nbsp;$1&nbsp;000&nbsp;000.</p>
+    <p class="hero-second">Когда сумма исключает короткие пути, маршрут — единственный продукт.</p>
+    <p class="lead">Мы проводим капитал через структурированные инвестиции в Сингапурский фонд недвижимости, формируем реальную экономическую активность и подтверждённую документальную историю — и через выход из инвестиционного раунда возвращаем средства на ваши целевые счета в ЕС, Британии и Швейцарии уже <strong>чистыми деньгами с проверяемой банковской биографией</strong>. Для частных клиентов с активами от&nbsp;$1&nbsp;000&nbsp;000.</p>
     <div class="hero-actions">
       <a href="#engagement" class="btn btn-gold btn-lg">Запросить мандат<span class="arr">→</span></a>
       <a href="index.html" class="btn btn-outline-dark btn-lg">Капитал ниже $1М — основной агрегатор</a>
@@ -630,7 +638,6 @@ footer.f{
       </div>
     </div>
   </div>
-  <img class="hero-img hero-img--bottom" src="assets/logic/18-private-office-sg.png" alt="Charter Capital · Private Office — вид на Marina Bay из частного банкинг-кабинета"/>
 </section>
 
 <!-- ─── DECK 2 · ДИАГНОЗ (split) ─────────────────────────── -->
@@ -681,13 +688,13 @@ footer.f{
   <div class="blk">
     <span class="kicker">Карта движения капитала</span>
     <h2 class="title">Россия → Сингапур → Пхукет → ЕС / Британия</h2>
-    <p class="lead" style="margin-top:6px">Капитал не телепортируется. Он проходит четыре чётко документируемые точки за 12–18&nbsp;месяцев — и в каждой формирует свой слой биографии. Это и есть «инженерия документа», которая на выходе даёт вашему счёту в Tier-1 чистоту, неотличимую от инвестиционного return'а европейского резидента.</p>
+    <p class="lead" style="margin-top:6px">Капитал не телепортируется. Он проходит четыре чётко документируемые точки за 12–18&nbsp;месяцев — и в каждой формирует свой слой биографии. Это и есть «инженерия документа», которая на выходе даёт вашему счёту в крупном международном банке чистоту, неотличимую от инвестиционного дохода европейского резидента.</p>
     <div class="path-flow">
       <div class="path-stage path-stage-rf">
         <div class="path-stage-num">01</div>
         <div class="path-stage-label">Россия</div>
         <div class="path-stage-state">Капитал без биографии</div>
-        <div class="path-stage-desc">Источник как есть: РФ-бизнес, недвижимость, депозиты, накопления. Документально подтверждённое происхождение по российскому праву — для Tier-1 пока «шум».</div>
+        <div class="path-stage-desc">Источник как есть: РФ-бизнес, недвижимость, депозиты, накопления. Документально подтверждённое происхождение по российскому праву — для зарубежного банка пока «шум».</div>
       </div>
       <div class="path-arrow">
         <div class="path-arrow-label">Subscription</div>
@@ -698,7 +705,7 @@ footer.f{
         <div class="path-stage-num">02</div>
         <div class="path-stage-label">Сингапур</div>
         <div class="path-stage-state">SG&nbsp;Fund · Holding</div>
-        <div class="path-stage-desc">Капитал входит в холдинг white-list юрисдикции. Section&nbsp;10L: иностранный доход не облагается. Audit под GAAP, налоговая прозрачность для Tier-1.</div>
+        <div class="path-stage-desc">Капитал входит в холдинг признанной мировой юрисдикции. По правилу Section&nbsp;10L иностранный доход не облагается. Аудит по международным стандартам, налоговая прозрачность для крупных банков.</div>
       </div>
       <div class="path-arrow">
         <div class="path-arrow-label">Investment</div>
@@ -709,17 +716,17 @@ footer.f{
         <div class="path-stage-num">03</div>
         <div class="path-stage-label">Пхукет</div>
         <div class="path-stage-state">Real&nbsp;Estate · Substance</div>
-        <div class="path-stage-desc">Премиум-недвижимость в дефицитном хабе. Land Department reg., аренда, операционный доход, налоги — substance, который банк проверяет независимо.</div>
+        <div class="path-stage-desc">Премиум-недвижимость в дефицитном хабе. Регистрация в Land Department, аренда, операционный доход, налоги — реальная экономика, которую банк проверяет независимо.</div>
       </div>
       <div class="path-arrow">
         <div class="path-arrow-label">Exit</div>
         <svg viewBox="0 0 48 16" aria-hidden="true"><path d="M0 8h44m-7-6 7 6-7 6" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
-        <div class="path-arrow-sub">Выход из раунда + paper-trail</div>
+        <div class="path-arrow-sub">Выход из раунда + документальная история</div>
       </div>
       <div class="path-stage path-stage-eu">
         <div class="path-stage-num">04</div>
         <div class="path-stage-label">ЕС / UK / CH</div>
-        <div class="path-stage-state">Tier-1 банковский счёт</div>
+        <div class="path-stage-state">Счёт в крупном банке</div>
         <div class="path-stage-desc">Возврат тела капитала и дохода на ваш частный счёт в Julius Baer / Pictet / EFG / Lombard Odier. Чистые деньги с проверяемой биографией.</div>
       </div>
     </div>
@@ -772,14 +779,14 @@ footer.f{
           <li>Налоговая регистрация в стране актива</li>
           <li>Подача первой годовой декларации</li>
           <li>Аудит SG-холдинга по международным стандартам</li>
-          <li>Параллельная работа с целевым банком (pre-onboarding)</li>
+          <li>Параллельная работа с целевым банком (предварительные согласования)</li>
         </ul>
       </article>
 
       <article class="cal-phase">
         <header class="cal-head">
           <span class="cal-period">Месяц 13–18</span>
-          <h3>Чистый выход + onboarding</h3>
+          <h3>Чистый выход + открытие счёта</h3>
         </header>
         <ul class="cal-list">
           <li>Распределение дохода или выход из инвестиционного раунда</li>
@@ -796,13 +803,13 @@ footer.f{
 
 <!-- ─── DECK 6 · РЕАЛЬНЫЙ АКТИВ (split) ──────────────────── -->
 <section class="deck split">
-  <img src="assets/logic/10-villa-color.png" alt="Реальный актив как фундамент substance"/>
+  <img src="assets/logic/10-villa-color.png" alt="Реальный актив как фундамент капитала"/>
   <div class="panel">
     <span class="kicker">Substance — реальная экономика</span>
     <h2 class="title">Реальный актив — единственная защита от вопроса «откуда».</h2>
     <p>Substance — не маркетинговое слово, а набор документов, который банк может проверить независимо: договор аренды, налоговая декларация в стране актива, фотофиксация, оценка независимого оценщика, выписки операционного счёта.</p>
-    <p>Премиум-недвижимость в дефицитных хабах — Пхукет, Дубай Marina, центр Лиссабона — делает substance прочным: банк может позвонить и убедиться, что объект физически существует, доход начисляется, налоги платятся.</p>
-    <p>Бумажные SPV без реального актива substance не создают. Банк замечает это в первой же выписке — и закрывает разговор.</p>
+    <p>Премиум-недвижимость в дефицитных хабах — Пхукет, Дубай Marina, центр Лиссабона — делает реальную экономику прочной: банк может позвонить и убедиться, что объект физически существует, доход начисляется, налоги платятся.</p>
+    <p>Бумажные SPV без реального актива такой экономики не создают. Банк замечает это в первой же выписке — и закрывает разговор.</p>
   </div>
 </section>
 
@@ -815,11 +822,11 @@ footer.f{
     <div class="before-after">
       <div class="before">
         <h4>До · Нежелательный клиент</h4>
-        <p>Постоянные KYC-уточнения, частичные блокировки операций, статус «Russia exposure», отказы Tier-1. Каждая транзакция — потенциальный foulup. Каждый перевод — повод для очередной EDD-папки.</p>
+        <p>Постоянные уточнения по KYC, частичные блокировки операций, статус «Russia exposure», отказы крупных банков. Каждая транзакция — потенциальная проблема. Каждый перевод — повод для очередной проверки.</p>
       </div>
       <div class="after">
         <h4>После · Белый инвестор</h4>
-        <p>Прозрачный задокументированный поток дохода. Банковский профиль с понятным источником богатства. Tier-1 onboarding проходит за 6–10 недель, а не за 9 месяцев с просьбами «дополнить документы».</p>
+        <p>Прозрачный задокументированный поток дохода. Банковский профиль с понятным источником богатства. Открытие счёта в крупном банке проходит за 6–10 недель, а не за 9 месяцев с просьбами «дополнить документы».</p>
       </div>
     </div>
   </div>
@@ -829,13 +836,13 @@ footer.f{
 <section class="deck dark" id="hubs">
   <div class="blk">
     <span class="kicker">География</span>
-    <h2 class="title">Три хаба для substance — и почему именно эти</h2>
-    <p class="lead" style="margin-top:6px">Мы не работаем в 50 юрисдикциях. Мы работаем там, где у нас есть рабочая инфраструктура и где банковская система Tier-1 принимает substance без оговорок.</p>
+    <h2 class="title">Где работает капитал — три точки на карте Азии и Европы</h2>
+    <p class="lead" style="margin-top:6px">Мы не работаем в 50 юрисдикциях. Мы работаем там, где у нас есть рабочая инфраструктура и где крупные международные банки принимают реальную экономическую активность без оговорок.</p>
     <div class="hubs">
       <div class="hub hub-fund">
         <div class="flag">Сингапур</div>
         <h3>Charter Asia Fund</h3>
-        <p>Сингапурский приватный фонд для инвестирования в курортную недвижимость Азии. Купон 6,5% / рост +25% / гибрид 11–14% IRR. Минимальный вход $25&nbsp;000. Это и есть «оболочка» T2-маршрута: ваш капитал входит в фонд, работает в substance-объектах, выходит через clean exit на ваш счёт уровня Tier-1.</p>
+        <p>Сингапурский приватный фонд для инвестирования в курортную недвижимость Азии. Купон 6,5% / рост +25% / гибрид 11–14% IRR. Минимальный вход $25&nbsp;000. Это и есть «оболочка» полного мандата: ваш капитал входит в фонд, работает в реальных активах, выходит через продажу доли уже чистыми деньгами на ваш счёт в крупном международном банке.</p>
         <ul>
           <li>Управление: Charter Capital · Сингапур</li>
           <li>Применимое право: Сингапур · SIAC</li>
@@ -846,7 +853,7 @@ footer.f{
       <div class="hub">
         <div class="flag">Сингапур · холдинг</div>
         <h3>SG Holding</h3>
-        <p>Юрисдикция white-list, налоговая прозрачность для Tier-1. По Section 10L иностранный доход не облагается налогом, если не переводится в Сингапур — это основа схемы.</p>
+        <p>Юрисдикция с прозрачной репутацией, признаваемая мировыми банками. По правилу Section 10L иностранный доход не облагается налогом, если не переводится в Сингапур — это и есть основа всей схемы.</p>
         <ul>
           <li>Холдинговая компания + офис</li>
           <li>Аудит по международным стандартам</li>
@@ -855,8 +862,8 @@ footer.f{
       </div>
       <div class="hub">
         <div class="flag">Пхукет · Таиланд</div>
-        <h3>Недвижимость как substance</h3>
-        <p>Премиум-курортная недвижимость — реальный актив, который банк проверяет независимо. 70% острова — заповедные горы, девелоперское предложение ограничено по природе. Тайский бат — одна из стабильных валют Азии.</p>
+        <h3>Недвижимость как реальная экономика</h3>
+        <p>Премиум-курортная недвижимость — реальный актив, который банк может проверить независимо: позвонить, увидеть фотографии, сверить выписку. 70% острова — заповедные горы и джунгли, девелоперское предложение ограничено самой природой. Тайский бат — одна из стабильных валют Азии.</p>
         <ul>
           <li>Регистрация в Land Department</li>
           <li>Договор аренды + property management</li>
@@ -865,8 +872,8 @@ footer.f{
       </div>
       <div class="hub">
         <div class="flag">ОАЭ · Mainland</div>
-        <h3>Mainland — не Free Zone</h3>
-        <p>Только структуры с реальной операционной деятельностью. Free Zone без офиса и сотрудников — это транзит, а транзит сегодня — красный флаг. Mainland с substance даёт доступ к private banking уровня Mashreq и Emirates NBD.</p>
+        <h3>Только реальные операции — без транзита</h3>
+        <p>Только структуры с настоящей операционной деятельностью. Free Zone без офиса и сотрудников — это транзит, а транзит сегодня сразу подсвечивает банк красным. Mainland с реальной активностью даёт доступ к private banking уровня Mashreq и Emirates NBD.</p>
         <ul>
           <li>Mainland LLC + офис</li>
           <li>Открытие счёта: Mashreq Private, ENBD Private</li>
@@ -947,7 +954,7 @@ footer.f{
           <li><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span><strong>Санкционными лицами.</strong> OFAC / EU / UK / OFSI — однозначное «нет», даже если кейс выглядит чисто.</span></li>
           <li><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span><strong>Активным уголовным розыском.</strong> Interpol Red Notice, открытые дела за рубежом — нет.</span></li>
           <li><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span><strong>«Мутным» происхождением.</strong> Mixers, Tornado, обналичка, незадекларированный нал. Мы не отбеливаем — мы строим белое заново или отказываемся.</span></li>
-          <li><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span><strong>Транзитом без substance.</strong> ОАЭ Free Zone «для печати», номиналы — это серые сигналы 2026, мы их не строим.</span></li>
+          <li><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span><strong>Транзитом без реальной деятельности.</strong> ОАЭ Free Zone «для печати», номиналы — это серые сигналы 2026, мы их не строим.</span></li>
         </ul>
       </div>
       <div class="bound yes">

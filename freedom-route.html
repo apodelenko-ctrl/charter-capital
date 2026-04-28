@@ -1,4 +1,4 @@
-да<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8"/>
@@ -9,14 +9,17 @@
 <meta property="og:title" content="Маршрут в свободный мир · Charter Capital"/>
 <meta property="og:description" content="Когда двери закрываются — Charter Capital открывает мир без искусственных границ. Маршрут для предпринимателей из СНГ: семья, капитал, банк, компания, ВНЖ, крипто-выход."/>
 <meta property="og:url" content="https://ccapital.pro/freedom-route.html"/>
+<meta property="og:image" content="https://ccapital.pro/assets/freedom-route/hero-open-world.webp"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="preload" as="image" href="assets/freedom-route/hero-open-world.webp" fetchpriority="high"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
 :root{
   --bg:#06080f;
   --bg-2:#0a0e1a;
   --bg-3:#0f1422;
+  --bg-light:#15192a;
   --paper:#fbfaf6;
   --ink:#0a0a0a;
   --ink-2:#1a1a1a;
@@ -32,7 +35,9 @@
   --line:#e5e7eb;
   --line-soft:#f1f5f9;
   --gold:#a08156;
+  --gold-bright:#c9a368;
   --gold-soft:#cfc4a2;
+  --gold-warm:#e8d4a8;
   --gold-glow:rgba(160,129,86,.18);
   --blue:#2563eb;
   --blue-soft:#93c5fd;
@@ -41,6 +46,7 @@
   --green:#16a34a;
   --radius:8px;
   --radius-lg:14px;
+  --radius-xl:20px;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -71,17 +77,19 @@ h4{font-size:1rem;font-weight:600;letter-spacing:-.01em}
 p{color:var(--on-dark-soft);font-weight:400;line-height:1.7}
 
 .container{max-width:1240px;margin:0 auto;padding:0 32px}
+.container-wide{max-width:1320px;margin:0 auto;padding:0 32px}
 .container-sm{max-width:920px;margin:0 auto;padding:0 32px}
 .container-narrow{max-width:760px;margin:0 auto;padding:0 32px}
 
 .kicker{
   display:inline-block;
   font-size:11px;font-weight:600;
-  letter-spacing:.2em;text-transform:uppercase;
+  letter-spacing:.22em;text-transform:uppercase;
   color:var(--gold-soft);margin-bottom:18px;
 }
 .kicker.muted{color:var(--on-dark-mute)}
 .kicker.blue{color:var(--blue-soft)}
+.kicker.bright{color:var(--gold-warm)}
 
 .btn{
   display:inline-flex;align-items:center;gap:8px;
@@ -100,6 +108,8 @@ p{color:var(--on-dark-soft);font-weight:400;line-height:1.7}
 .btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.06)}
 .btn-outline{background:transparent;color:#fff;border-color:rgba(160,129,86,.5)}
 .btn-outline:hover{border-color:var(--gold);background:rgba(160,129,86,.08)}
+.btn-light{background:#fff;color:var(--ink)}
+.btn-light:hover{background:var(--gold-warm);transform:translateY(-1px);box-shadow:0 14px 28px rgba(232,212,168,.34)}
 
 /* ─── TOPBAR ─────────────────────────────────────────────── */
 #topbar{
@@ -119,7 +129,8 @@ p{color:var(--on-dark-soft);font-weight:400;line-height:1.7}
   max-width:1320px;height:100%;margin:0 auto;padding:0 32px;
   display:flex;align-items:center;justify-content:space-between;gap:16px;
 }
-.topbar-brand{display:flex;align-items:baseline;gap:14px;color:#fff;min-width:0}
+.topbar-left{display:flex;align-items:baseline;gap:14px;min-width:0}
+.topbar-brand{display:flex;align-items:baseline;gap:14px;color:#fff}
 .topbar-brand .name{font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase}
 .topbar-brand .tag{
   font-size:11px;font-weight:300;color:var(--gold-soft);
@@ -136,6 +147,13 @@ p{color:var(--on-dark-soft);font-weight:400;line-height:1.7}
 }
 .topbar-nav a:hover{color:#fff;background:rgba(255,255,255,.06)}
 .topbar-nav a.is-gold{color:var(--gold-soft)}
+.topbar-right{display:flex;align-items:center;gap:12px}
+.topbar-link{
+  font-size:11px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--on-dark-faint);padding:8px 6px;
+  transition:color .15s ease;
+}
+.topbar-link:hover{color:var(--gold-soft)}
 .topbar-cta{
   font-family:inherit;font-size:11px;font-weight:600;
   letter-spacing:.16em;text-transform:uppercase;
@@ -149,26 +167,24 @@ p{color:var(--on-dark-soft);font-weight:400;line-height:1.7}
 /* ─── HERO ──────────────────────────────────────────────── */
 .hero{
   position:relative;min-height:100vh;
-  padding:140px 32px 100px;
+  padding:130px 32px 90px;
   overflow:hidden;
   display:flex;align-items:center;
-  background:
-    radial-gradient(ellipse at 78% 50%,rgba(160,129,86,.18) 0%,transparent 55%),
-    radial-gradient(ellipse at 12% 18%,rgba(37,99,235,.08) 0%,transparent 55%),
-    linear-gradient(180deg,#06080f 0%,#0a0e1a 100%);
+  background:#06080f;
 }
 .hero::before{
   content:'';position:absolute;inset:0;
-  background-image:
-    radial-gradient(circle at 50% 100%,rgba(160,129,86,.12) 0%,transparent 40%),
-    linear-gradient(180deg,transparent 0%,rgba(6,8,15,.6) 90%);
+  background:
+    radial-gradient(ellipse at 78% 40%,rgba(160,129,86,.18) 0%,transparent 55%),
+    radial-gradient(ellipse at 12% 18%,rgba(37,99,235,.06) 0%,transparent 55%),
+    linear-gradient(180deg,#06080f 0%,#0a0e1a 100%);
   pointer-events:none;
 }
 .hero-grid{
   position:relative;z-index:1;
   max-width:1320px;margin:0 auto;
   display:grid;grid-template-columns:1.05fr .95fr;
-  gap:80px;align-items:center;width:100%;
+  gap:72px;align-items:center;width:100%;
 }
 .hero-flag{
   display:inline-flex;align-items:center;gap:10px;
@@ -183,7 +199,7 @@ p{color:var(--on-dark-soft);font-weight:400;line-height:1.7}
   color:#fff;max-width:18ch;
   font-size:clamp(2.4rem,5.4vw,4.6rem);
   line-height:1.02;letter-spacing:-.045em;
-  font-weight:300;margin-bottom:30px;
+  font-weight:300;margin-bottom:28px;
 }
 .hero h1 strong{font-weight:600;color:#fff}
 .hero h1 .em{color:var(--gold-soft);font-weight:400;font-style:normal}
@@ -191,16 +207,27 @@ p{color:var(--on-dark-soft);font-weight:400;line-height:1.7}
   color:rgba(255,255,255,.78);
   font-size:clamp(1.05rem,1.5vw,1.3rem);
   line-height:1.5;font-weight:300;
-  max-width:54ch;margin-bottom:24px;
+  max-width:54ch;margin-bottom:22px;
   letter-spacing:-.005em;
 }
-.hero-support{
-  color:rgba(255,255,255,.6);
-  font-size:15px;line-height:1.65;font-weight:400;
-  max-width:54ch;margin-bottom:42px;
+.hero-line{
+  font-size:14.5px;line-height:1.65;color:rgba(255,255,255,.72);
+  margin:0 0 14px;max-width:54ch;
 }
-.hero-support strong{color:rgba(255,255,255,.85);font-weight:500}
-.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:24px}
+.hero-line strong{color:#fff;font-weight:500}
+.hero-stack{
+  display:flex;flex-wrap:wrap;gap:8px 14px;
+  margin-bottom:36px;
+  font-size:13.5px;letter-spacing:-.005em;
+  color:rgba(255,255,255,.62);
+}
+.hero-stack span{
+  position:relative;padding-right:14px;
+}
+.hero-stack span:not(:last-child)::after{
+  content:'·';position:absolute;right:0;color:var(--gold);font-weight:600;
+}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:28px}
 .hero-trust{
   display:flex;align-items:flex-start;gap:10px;
   font-size:12.5px;color:rgba(255,255,255,.5);
@@ -208,24 +235,123 @@ p{color:var(--on-dark-soft);font-weight:400;line-height:1.7}
 }
 .hero-trust svg{width:14px;height:14px;stroke:var(--gold-soft);fill:none;stroke-width:1.6;flex-shrink:0;margin-top:3px}
 
-/* Hero visual: light-corridor / open door SVG */
+/* Hero visual: photo + glow + route micro-card */
 .hero-visual{
   position:relative;
-  aspect-ratio:1/1;
-  max-width:540px;
-  margin-left:auto;
+  width:100%;
+  aspect-ratio:16/10;
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  box-shadow:0 30px 80px -20px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.05);
 }
-.hero-visual svg{width:100%;height:auto;display:block;overflow:visible}
-@keyframes drift{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-6px)}
+.hero-visual::before{
+  content:'';position:absolute;inset:0;z-index:2;
+  background:linear-gradient(110deg,rgba(6,8,15,.55) 0%,rgba(6,8,15,.05) 45%,transparent 70%),
+             linear-gradient(0deg,rgba(6,8,15,.4) 0%,transparent 40%);
+  pointer-events:none;
 }
-.hero-visual-glow{
-  position:absolute;inset:0;
-  background:radial-gradient(circle at 50% 50%,rgba(160,129,86,.25) 0%,transparent 55%);
-  filter:blur(40px);pointer-events:none;
-  animation:drift 8s ease-in-out infinite;
+.hero-visual img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center;
+  z-index:1;
 }
+.hero-visual-card{
+  position:absolute;left:24px;bottom:24px;z-index:3;
+  display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;
+  background:rgba(6,8,15,.78);
+  border:1px solid rgba(160,129,86,.32);
+  border-radius:var(--radius);
+  padding:14px 18px;
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  max-width:calc(100% - 48px);
+}
+.hero-visual-card .vc-icon{
+  width:30px;height:30px;border-radius:50%;
+  border:1px solid rgba(160,129,86,.4);
+  background:rgba(160,129,86,.12);
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;color:var(--gold-soft);font-weight:700;
+}
+.hero-visual-card .vc-text{display:flex;flex-direction:column;gap:2px;min-width:0}
+.hero-visual-card .vc-label{font-size:10px;font-weight:700;letter-spacing:.16em;color:var(--gold-soft);text-transform:uppercase}
+.hero-visual-card .vc-line{font-size:13px;color:#fff;font-weight:500;letter-spacing:-.005em;line-height:1.3}
+.hero-visual-card .vc-arrow{
+  width:28px;height:28px;border-radius:50%;
+  background:var(--gold);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:14px;
+}
+
+/* ─── PULL QUOTE ────────────────────────────────────────── */
+.pull-quote{
+  padding:76px 32px;
+  background:linear-gradient(180deg,#06080f 0%,#0d1220 50%,#06080f 100%);
+  border-top:1px solid var(--line-dark);
+  border-bottom:1px solid var(--line-dark);
+  text-align:center;position:relative;overflow:hidden;
+}
+.pull-quote::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 50%,rgba(160,129,86,.1) 0%,transparent 60%);
+  pointer-events:none;
+}
+.pull-quote-inner{position:relative;z-index:1;max-width:920px;margin:0 auto}
+.pull-quote-mark{
+  font-family:'Cormorant Garamond',serif;
+  font-size:64px;line-height:1;color:var(--gold);
+  margin-bottom:6px;display:block;font-weight:400;
+  height:30px;overflow:visible;
+}
+.pull-quote-text{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.5rem,3.4vw,2.6rem);
+  font-weight:300;line-height:1.25;
+  color:#fff;letter-spacing:-.015em;
+  font-style:italic;
+}
+.pull-quote-text em{color:var(--gold-soft);font-style:italic;font-weight:400}
+.pull-quote-attr{
+  display:block;margin-top:22px;
+  font-family:'Inter',sans-serif;
+  font-size:11px;font-weight:600;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--on-dark-mute);
+  font-style:normal;
+}
+
+/* ─── PAIN TICKER ───────────────────────────────────────── */
+.ticker-strip{
+  background:#06080f;
+  border-bottom:1px solid var(--line-dark);
+  padding:18px 0;overflow:hidden;
+  position:relative;
+}
+.ticker-strip::before,
+.ticker-strip::after{
+  content:'';position:absolute;top:0;bottom:0;width:140px;z-index:2;
+  pointer-events:none;
+}
+.ticker-strip::before{left:0;background:linear-gradient(90deg,#06080f 0%,transparent 100%)}
+.ticker-strip::after{right:0;background:linear-gradient(-90deg,#06080f 0%,transparent 100%)}
+.ticker-track{
+  display:flex;gap:48px;
+  width:max-content;
+  animation:ticker 60s linear infinite;
+}
+@keyframes ticker{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(-50%)}
+}
+.ticker-item{
+  display:inline-flex;align-items:center;gap:14px;
+  font-size:13px;letter-spacing:.04em;
+  color:var(--on-dark-mute);font-weight:400;
+  white-space:nowrap;
+}
+.ticker-item .dot{
+  width:5px;height:5px;border-radius:50%;background:var(--gold);
+  flex-shrink:0;
+}
+.ticker-strip:hover .ticker-track{animation-play-state:paused}
 
 /* ─── SECTION wrapper ───────────────────────────────────── */
 section.s{padding:130px 0;position:relative}
@@ -244,7 +370,7 @@ section.s.cream .kicker{color:var(--gold)}
 .s-head .kicker{margin-bottom:20px}
 .s-head h2{margin-bottom:18px}
 .s-head p{font-size:17px;color:var(--on-dark-mute);font-weight:400;line-height:1.65}
-section.s.cream .s-head p{color:var(--text-muted)}
+.s-head p strong{color:#fff;font-weight:500}
 
 /* ─── SECTION 2 — Manifesto / Freedom ──────────────────── */
 .manifesto{
@@ -261,14 +387,90 @@ section.s.cream .s-head p{color:var(--text-muted)}
 .manifesto-line:hover{border-left-color:var(--gold);padding-left:34px}
 .manifesto-line strong{font-weight:400;color:var(--gold-soft)}
 .manifesto-close{
-  margin-top:12px;font-size:16px;line-height:1.7;
-  color:rgba(255,255,255,.7);max-width:60ch;
+  margin:64px 0 0;font-size:16px;line-height:1.7;
+  color:rgba(255,255,255,.7);max-width:62ch;
 }
 .manifesto-close strong{color:#fff;font-weight:500}
 
+.freedom-glimpses{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+  margin-top:64px;
+}
+.glimpse{
+  position:relative;
+  aspect-ratio:4/3;
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  box-shadow:0 16px 38px -12px rgba(0,0,0,.6);
+  transition:transform .3s ease,box-shadow .3s ease;
+}
+.glimpse:hover{transform:translateY(-4px);box-shadow:0 22px 48px -12px rgba(0,0,0,.7)}
+.glimpse img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;
+  transition:transform .8s ease;
+}
+.glimpse:hover img{transform:scale(1.04)}
+.glimpse::before{
+  content:'';position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg,rgba(6,8,15,.05) 0%,rgba(6,8,15,.85) 100%);
+}
+.glimpse-text{
+  position:absolute;left:22px;right:22px;bottom:20px;z-index:2;
+  color:#fff;
+}
+.glimpse-text .kicker{
+  font-size:10px;letter-spacing:.2em;color:var(--gold-warm);
+  margin-bottom:6px;display:block;
+}
+.glimpse-text .line{
+  font-size:15.5px;font-weight:500;line-height:1.35;
+  letter-spacing:-.005em;
+}
+
+.freedom-key{
+  margin-top:56px;padding:28px 32px;
+  background:rgba(160,129,86,.04);
+  border:1px solid rgba(160,129,86,.22);
+  border-left:3px solid var(--gold);
+  border-radius:var(--radius);
+  font-size:17px;line-height:1.55;
+  color:rgba(255,255,255,.85);font-weight:300;letter-spacing:-.005em;
+  max-width:74ch;
+}
+.freedom-key strong{color:var(--gold-soft);font-weight:500}
+
 /* ─── SECTION 3 — Old vs Now ───────────────────────────── */
+.old-routes-banner{
+  position:relative;
+  width:100%;
+  aspect-ratio:32/9;
+  max-height:420px;
+  border-radius:var(--radius-lg);overflow:hidden;
+  margin-bottom:56px;
+  box-shadow:0 20px 50px -16px rgba(0,0,0,.6);
+}
+.old-routes-banner img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;
+}
+.old-routes-banner::before{
+  content:'';position:absolute;inset:0;z-index:1;
+  background:linear-gradient(90deg,rgba(6,8,15,.85) 0%,rgba(6,8,15,.4) 50%,rgba(6,8,15,.7) 100%);
+}
+.old-routes-banner-text{
+  position:absolute;left:36px;bottom:28px;z-index:2;
+  color:#fff;max-width:60%;
+}
+.old-routes-banner-text .kicker{color:var(--red-soft);margin-bottom:8px;font-size:10px;letter-spacing:.22em}
+.old-routes-banner-text h3{
+  font-size:clamp(1.2rem,2.2vw,1.8rem);font-weight:300;
+  letter-spacing:-.02em;line-height:1.15;color:#fff;
+}
+.old-routes-banner-text h3 strong{color:var(--red-soft);font-weight:500}
+
 .then-now{
-  display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:24px;
+  display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:0;
 }
 .tn-col{
   background:rgba(255,255,255,.02);
@@ -281,16 +483,16 @@ section.s.cream .s-head p{color:var(--text-muted)}
 }
 .tn-col.then::before{
   content:'';position:absolute;inset:0;
-  background:radial-gradient(circle at 80% 0%,rgba(127,29,29,.12) 0%,transparent 60%);
+  background:radial-gradient(circle at 80% 0%,rgba(127,29,29,.08) 0%,transparent 60%);
   pointer-events:none;
 }
 .tn-col.now{
   background:linear-gradient(180deg,rgba(20,24,38,.7) 0%,rgba(15,20,34,.95) 100%);
-  border-color:rgba(160,129,86,.22);
+  border-color:rgba(245,158,11,.18);
 }
 .tn-col.now::before{
   content:'';position:absolute;inset:0;
-  background:radial-gradient(circle at 80% 0%,rgba(160,129,86,.14) 0%,transparent 60%);
+  background:radial-gradient(circle at 80% 0%,rgba(245,158,11,.08) 0%,transparent 60%);
   pointer-events:none;
 }
 .tn-label{
@@ -300,8 +502,8 @@ section.s.cream .s-head p{color:var(--text-muted)}
   letter-spacing:.22em;text-transform:uppercase;
   padding:5px 12px;border-radius:4px;margin-bottom:18px;
 }
-.tn-col.then .tn-label{background:rgba(127,29,29,.16);color:#fca5a5;border:1px solid rgba(127,29,29,.32)}
-.tn-col.now .tn-label{background:rgba(160,129,86,.14);color:var(--gold-soft);border:1px solid rgba(160,129,86,.36)}
+.tn-col.then .tn-label{background:rgba(127,29,29,.12);color:#fca5a5;border:1px solid rgba(127,29,29,.28)}
+.tn-col.now .tn-label{background:rgba(245,158,11,.1);color:#fcd34d;border:1px solid rgba(245,158,11,.3)}
 .tn-col h3{position:relative;z-index:1;margin-bottom:24px;font-weight:300;letter-spacing:-.02em}
 .tn-list{position:relative;z-index:1;list-style:none;display:flex;flex-direction:column;gap:14px}
 .tn-list li{
@@ -314,8 +516,8 @@ section.s.cream .s-head p{color:var(--text-muted)}
   content:'';display:block;width:6px;height:6px;border-radius:50%;
   margin-top:8px;flex-shrink:0;
 }
-.tn-col.then .tn-list li::before{background:rgba(252,165,165,.35)}
-.tn-col.now .tn-list li::before{background:var(--gold)}
+.tn-col.then .tn-list li::before{background:rgba(252,165,165,.3)}
+.tn-col.now .tn-list li::before{background:#fcd34d}
 .tn-close{
   margin-top:48px;padding:32px 36px;
   background:rgba(255,255,255,.03);
@@ -329,10 +531,46 @@ section.s.cream .s-head p{color:var(--text-muted)}
 .tn-close strong{color:#fff;font-weight:500}
 
 /* ─── SECTION 4 — New Route ────────────────────────────── */
-.route-intro{
-  font-size:18px;line-height:1.6;color:rgba(255,255,255,.78);
-  margin-bottom:48px;max-width:64ch;font-weight:300;
+.route-hero{
+  position:relative;width:100%;
+  aspect-ratio:16/9;max-height:560px;
+  border-radius:var(--radius-lg);overflow:hidden;
+  margin-bottom:56px;
+  box-shadow:0 24px 60px -18px rgba(0,0,0,.7);
 }
+.route-hero img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;
+}
+.route-hero::before{
+  content:'';position:absolute;inset:0;z-index:1;
+  background:linear-gradient(135deg,rgba(6,8,15,.65) 0%,rgba(6,8,15,.15) 40%,rgba(6,8,15,.4) 100%);
+}
+.route-hero-text{
+  position:absolute;left:48px;top:40px;z-index:2;color:#fff;max-width:46%;
+}
+.route-hero-text .kicker{color:var(--gold-warm);font-size:10px;letter-spacing:.24em;margin-bottom:10px}
+.route-hero-text h3{
+  font-size:clamp(1.3rem,2.3vw,1.9rem);
+  font-weight:300;letter-spacing:-.025em;line-height:1.18;color:#fff;
+}
+.route-hero-text h3 strong{color:var(--gold-warm);font-weight:500}
+.route-hero-pills{
+  position:absolute;right:36px;bottom:32px;z-index:2;
+  display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end;
+  max-width:54%;
+}
+.route-hero-pill{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:7px 14px;border-radius:999px;
+  background:rgba(6,8,15,.7);
+  border:1px solid rgba(255,255,255,.18);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  font-size:11.5px;font-weight:500;letter-spacing:.04em;
+  color:rgba(255,255,255,.92);
+}
+.route-hero-pill .d{width:5px;height:5px;border-radius:50%;background:var(--gold-warm)}
+
 .route-grid{
   display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
   background:var(--line-dark);
@@ -341,136 +579,207 @@ section.s.cream .s-head p{color:var(--text-muted)}
 }
 .route-cell{
   background:#0a0e1a;
-  padding:30px 28px;
+  padding:32px 28px 30px;
   display:flex;flex-direction:column;gap:10px;
   transition:background .2s ease;position:relative;
-  min-height:160px;
+  min-height:170px;
 }
 .route-cell:hover{background:#10162a}
-.route-cell .num{
-  font-size:11px;font-weight:600;letter-spacing:.18em;
-  color:var(--gold);text-transform:uppercase;
+.route-cell::before{
+  content:'';position:absolute;left:28px;top:0;width:30px;height:1px;
+  background:linear-gradient(90deg,var(--gold) 0%,transparent 100%);
 }
+.route-cell .num{
+  font-size:11px;font-weight:600;letter-spacing:.2em;
+  color:var(--gold-warm);text-transform:uppercase;
+  display:flex;align-items:center;gap:10px;
+}
+.route-cell .num .ic{
+  width:28px;height:28px;border-radius:50%;
+  border:1px solid rgba(160,129,86,.4);
+  background:rgba(160,129,86,.08);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--gold-soft);
+}
+.route-cell .num .ic svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .route-cell h4{
   font-size:1.08rem;font-weight:500;letter-spacing:-.015em;
-  color:#fff;line-height:1.25;
+  color:#fff;line-height:1.3;
 }
-.route-cell p{font-size:13.5px;color:rgba(255,255,255,.6);line-height:1.55;font-weight:400}
+.route-cell p{font-size:13.5px;color:rgba(255,255,255,.62);line-height:1.55;font-weight:400}
+
 .route-converge{
-  margin-top:48px;padding:36px 40px;
+  margin-top:48px;padding:36px 44px;
   background:linear-gradient(135deg,#0a0e1a 0%,#1a1a1a 100%);
   border:1px solid rgba(160,129,86,.22);
   border-radius:var(--radius-lg);
-  display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:center;
-  position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:space-between;gap:32px;
+  flex-wrap:wrap;position:relative;overflow:hidden;
 }
 .route-converge::before{
   content:'';position:absolute;top:-100px;right:-80px;
   width:340px;height:340px;border-radius:50%;
-  background:radial-gradient(circle,rgba(160,129,86,.14) 0%,transparent 65%);
+  background:radial-gradient(circle,rgba(160,129,86,.12) 0%,transparent 65%);
   pointer-events:none;
 }
 .route-converge p{
   position:relative;z-index:1;
   font-size:17px;line-height:1.55;color:rgba(255,255,255,.85);font-weight:300;
-  letter-spacing:-.005em;max-width:50ch;
+  letter-spacing:-.005em;max-width:54ch;
 }
-.route-converge p strong{color:#fff;font-weight:500}
-.route-svg{position:relative;z-index:1;width:100%;max-width:340px;justify-self:end}
-.route-svg svg{width:100%;height:auto;display:block}
+.route-converge p strong{color:var(--gold-warm);font-weight:500}
+.route-converge-end{
+  position:relative;z-index:1;
+  font-size:11px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--gold-soft);font-weight:600;
+  display:flex;align-items:center;gap:14px;
+  white-space:nowrap;
+}
+.route-converge-end .arrow-bar{
+  width:48px;height:1px;background:var(--gold);
+  position:relative;
+}
+.route-converge-end .arrow-bar::after{
+  content:'';position:absolute;right:-1px;top:-3px;
+  width:7px;height:7px;border-right:1px solid var(--gold);border-top:1px solid var(--gold);
+  transform:rotate(45deg);
+}
 
 /* ─── SECTION 5 — Structure ────────────────────────────── */
+.structure-grid{
+  display:grid;grid-template-columns:1.05fr .95fr;gap:48px;
+  margin-bottom:48px;align-items:stretch;
+}
+.structure-text{display:flex;flex-direction:column;gap:24px;justify-content:center}
 .structure-intro{
-  font-size:20px;line-height:1.55;color:rgba(255,255,255,.85);
+  font-size:clamp(1.05rem,1.4vw,1.35rem);line-height:1.5;color:rgba(255,255,255,.85);
   font-weight:300;letter-spacing:-.01em;
-  max-width:60ch;margin-bottom:56px;
+  max-width:54ch;
 }
-.structure-block{
-  display:grid;grid-template-columns:1fr 1fr;gap:48px;
-  margin-bottom:56px;align-items:start;
+.structure-intro strong{color:var(--gold-warm);font-weight:500}
+.bank-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.bank-chip{
+  display:inline-flex;align-items:center;
+  font-size:13px;font-weight:400;letter-spacing:-.005em;
+  padding:9px 16px;border-radius:999px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.12);
+  color:rgba(255,255,255,.82);
+  transition:all .2s ease;
 }
-.structure-card{
-  background:rgba(255,255,255,.025);
-  border:1px solid var(--line-dark);
-  border-radius:var(--radius-lg);
-  padding:36px 32px;
+.bank-chip:hover{
+  border-color:rgba(160,129,86,.4);
+  background:rgba(160,129,86,.08);
+  color:var(--gold-warm);
 }
-.structure-card h4{
-  font-size:13px;font-weight:600;letter-spacing:.16em;
-  text-transform:uppercase;color:var(--gold-soft);
-  margin-bottom:20px;
+.structure-visual{
+  position:relative;border-radius:var(--radius-lg);overflow:hidden;
+  box-shadow:0 18px 44px -12px rgba(0,0,0,.6);
+  min-height:340px;
 }
-.structure-card ul{list-style:none;display:flex;flex-direction:column;gap:11px}
-.structure-card li{
-  display:grid;grid-template-columns:auto 1fr;gap:12px;
-  font-size:14.5px;color:rgba(255,255,255,.78);line-height:1.55;
+.structure-visual img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;
 }
-.structure-card li::before{
-  content:'';display:block;width:5px;height:5px;border-radius:50%;
-  background:var(--gold);margin-top:8px;flex-shrink:0;
+.structure-visual::before{
+  content:'';position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg,rgba(6,8,15,.2) 0%,rgba(6,8,15,.65) 100%);
 }
-.structure-list{
-  background:rgba(255,255,255,.025);
-  border:1px solid var(--line-dark);
-  border-radius:var(--radius-lg);
-  padding:36px 32px;
-  display:flex;flex-direction:column;gap:14px;
-}
-.structure-list-row{
-  display:grid;grid-template-columns:140px 1fr;gap:18px;
-  padding:8px 0;border-bottom:1px solid rgba(255,255,255,.05);
-  font-size:14.5px;line-height:1.5;
-}
-.structure-list-row:last-child{border-bottom:none}
-.structure-list-row .who{
-  color:var(--gold-soft);font-weight:500;letter-spacing:.005em;
-}
-.structure-list-row .what{color:rgba(255,255,255,.7)}
-.structure-key{
-  margin-top:0;padding:36px 40px;
-  background:linear-gradient(135deg,rgba(160,129,86,.08) 0%,rgba(160,129,86,.02) 100%);
+.structure-visual-card{
+  position:absolute;left:24px;right:24px;bottom:22px;z-index:2;
+  background:rgba(6,8,15,.78);
   border:1px solid rgba(160,129,86,.28);
-  border-left:3px solid var(--gold);
   border-radius:var(--radius);
-  font-size:clamp(1.1rem,1.5vw,1.4rem);font-weight:300;
-  letter-spacing:-.015em;line-height:1.4;color:#fff;
-  max-width:74ch;
+  padding:14px 18px;
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
 }
-.structure-key strong{color:var(--gold-soft);font-weight:500}
+.structure-visual-card .label{font-size:10px;font-weight:700;letter-spacing:.22em;color:var(--gold-soft);text-transform:uppercase;margin-bottom:4px}
+.structure-visual-card .text{font-size:13.5px;color:#fff;line-height:1.4;font-weight:400}
+
+.roles-grid{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:1px;
+  background:var(--line-dark);
+  border:1px solid var(--line-dark);
+  border-radius:var(--radius-lg);overflow:hidden;
+  margin-bottom:56px;
+}
+.role-cell{
+  background:#0a0e1a;padding:24px 22px;
+  display:flex;flex-direction:column;gap:6px;
+}
+.role-cell .role-label{
+  font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold-soft);
+}
+.role-cell .role-text{font-size:13.5px;color:rgba(255,255,255,.78);line-height:1.5}
+
+.structure-key{
+  padding:42px 48px;
+  background:linear-gradient(135deg,rgba(160,129,86,.1) 0%,rgba(160,129,86,.02) 100%);
+  border:1px solid rgba(160,129,86,.32);
+  border-radius:var(--radius-lg);
+  font-size:clamp(1.15rem,1.8vw,1.55rem);font-weight:300;
+  letter-spacing:-.02em;line-height:1.32;color:#fff;
+  max-width:none;text-align:center;
+}
+.structure-key strong{color:var(--gold-warm);font-weight:500}
 
 /* ─── SECTION 6 — Scenarios ────────────────────────────── */
-.scenarios{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.scenarios{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .scenario{
   background:rgba(255,255,255,.025);
   border:1px solid var(--line-dark);
   border-radius:var(--radius-lg);
-  padding:32px 28px;
-  display:flex;flex-direction:column;gap:14px;
-  transition:all .25s ease;position:relative;overflow:hidden;
+  overflow:hidden;
+  display:flex;flex-direction:column;
+  transition:all .25s ease;position:relative;
 }
 .scenario:hover{
-  border-color:rgba(160,129,86,.35);
+  border-color:rgba(160,129,86,.4);
   transform:translateY(-3px);
-  box-shadow:0 18px 36px rgba(0,0,0,.35);
+  box-shadow:0 20px 40px rgba(0,0,0,.4);
 }
-.scenario::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg,transparent 0%,rgba(160,129,86,.5) 50%,transparent 100%);
-  opacity:0;transition:opacity .25s ease;
+.scenario-img{
+  position:relative;aspect-ratio:3/2;overflow:hidden;
 }
-.scenario:hover::before{opacity:1}
+.scenario-img img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;
+  transition:transform .8s ease;
+}
+.scenario:hover .scenario-img img{transform:scale(1.05)}
+.scenario-img::after{
+  content:'';position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg,rgba(6,8,15,.1) 0%,rgba(6,8,15,.55) 100%);
+}
 .scenario-num{
-  font-size:11px;font-weight:600;letter-spacing:.18em;
-  color:var(--gold);text-transform:uppercase;
+  position:absolute;left:16px;top:14px;z-index:2;
+  font-size:10.5px;font-weight:700;letter-spacing:.22em;
+  color:var(--gold-warm);text-transform:uppercase;
+  background:rgba(6,8,15,.75);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  padding:5px 11px;border-radius:4px;
+  border:1px solid rgba(160,129,86,.32);
 }
-.scenario h4{
-  font-size:1.12rem;font-weight:500;letter-spacing:-.015em;
+.scenario-body{padding:24px 26px 22px;display:flex;flex-direction:column;gap:12px;flex:1}
+.scenario-body h4{
+  font-size:1.08rem;font-weight:500;letter-spacing:-.015em;
   color:#fff;line-height:1.3;
 }
-.scenario p{
-  font-size:14px;line-height:1.6;color:rgba(255,255,255,.66);
-  margin-top:auto;padding-top:14px;border-top:1px solid rgba(255,255,255,.06);
+.scenario-body p{
+  font-size:13.5px;line-height:1.6;color:rgba(255,255,255,.66);
 }
+.scenario-cta{
+  margin-top:auto;padding-top:14px;border-top:1px solid rgba(255,255,255,.06);
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:12.5px;font-weight:600;letter-spacing:.04em;
+  color:var(--gold-soft);
+  transition:color .15s ease,gap .2s ease;
+  gap:8px;
+}
+.scenario-cta .arr{transition:transform .2s ease}
+.scenario:hover .scenario-cta{color:var(--gold-warm)}
+.scenario:hover .scenario-cta .arr{transform:translateX(3px)}
 
 /* ─── SECTION 7 — Escape vs Transition ─────────────────── */
 .transition-section{
@@ -483,9 +792,20 @@ section.s.cream .s-head p{color:var(--text-muted)}
 .transition-section::before{
   content:'';position:absolute;inset:0;
   background:
-    radial-gradient(ellipse at 0% 50%,rgba(127,29,29,.08) 0%,transparent 40%),
-    radial-gradient(ellipse at 100% 50%,rgba(160,129,86,.14) 0%,transparent 45%);
+    radial-gradient(ellipse at 10% 50%,rgba(127,29,29,.06) 0%,transparent 40%),
+    radial-gradient(ellipse at 90% 50%,rgba(160,129,86,.16) 0%,transparent 45%);
   pointer-events:none;
+}
+.transition-line{
+  position:absolute;left:0;right:0;top:50%;height:2px;
+  background:linear-gradient(90deg,
+    rgba(127,29,29,0) 0%,
+    rgba(127,29,29,.5) 18%,
+    rgba(60,60,60,.6) 50%,
+    rgba(160,129,86,.5) 82%,
+    rgba(232,212,168,0) 100%
+  );
+  transform:translateY(-1px);z-index:0;opacity:.7;
 }
 .transition-inner{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 32px;text-align:center}
 .transition-inner h2{
@@ -493,16 +813,17 @@ section.s.cream .s-head p{color:var(--text-muted)}
   letter-spacing:-.04em;line-height:1.08;color:#fff;
   margin-bottom:60px;max-width:24ch;margin-left:auto;margin-right:auto;
 }
-.transition-inner h2 strong{color:var(--gold-soft);font-weight:400}
+.transition-inner h2 .escape{color:#fca5a5;font-weight:300}
+.transition-inner h2 strong{color:var(--gold-warm);font-weight:500}
 .escape-vs{
   display:grid;grid-template-columns:1fr auto 1fr;gap:32px;
-  align-items:center;margin:0 auto 56px;max-width:920px;
+  align-items:stretch;margin:0 auto 64px;max-width:920px;
 }
 .escape-col{display:flex;flex-direction:column;gap:14px}
 .escape-row{
   font-size:clamp(1rem,1.5vw,1.2rem);
   font-weight:300;letter-spacing:-.015em;line-height:1.45;
-  padding:16px 22px;border-radius:var(--radius);
+  padding:18px 24px;border-radius:var(--radius);
 }
 .escape-col.left .escape-row{
   background:rgba(127,29,29,.08);
@@ -511,17 +832,18 @@ section.s.cream .s-head p{color:var(--text-muted)}
   text-align:right;
 }
 .escape-col.right .escape-row{
-  background:rgba(160,129,86,.06);
+  background:rgba(160,129,86,.08);
   border:1px solid rgba(160,129,86,.32);
   color:#fff;
   text-align:left;
 }
-.escape-col.right .escape-row strong{color:var(--gold-soft);font-weight:500}
+.escape-col.right .escape-row strong{color:var(--gold-warm);font-weight:500}
 .escape-vs-divider{
   font-size:14px;font-weight:600;letter-spacing:.2em;
   text-transform:uppercase;color:var(--on-dark-mute);
   writing-mode:vertical-rl;transform:rotate(180deg);
   padding:18px 4px;
+  display:flex;align-items:center;
 }
 .transition-close{
   font-size:clamp(1.05rem,1.5vw,1.3rem);
@@ -529,148 +851,195 @@ section.s.cream .s-head p{color:var(--text-muted)}
   line-height:1.5;letter-spacing:-.01em;
   max-width:62ch;margin:0 auto;
 }
-.transition-close strong{color:var(--gold-soft);font-weight:500}
+.transition-close strong{color:var(--gold-warm);font-weight:500}
 
 /* ─── SECTION 8 — Private Office Bridge ────────────────── */
 .private-bridge{
-  background:linear-gradient(135deg,#06080f 0%,#1a1a1a 60%,#0a0e1a 100%);
-  border:1px solid rgba(160,129,86,.28);
-  border-radius:var(--radius-lg);
-  padding:64px 56px;
-  display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;
+  position:relative;
+  border-radius:var(--radius-xl);
+  overflow:hidden;
+  min-height:520px;
+  display:grid;grid-template-columns:1fr 1fr;
+  border:1px solid rgba(160,129,86,.22);
+  box-shadow:0 30px 80px -24px rgba(0,0,0,.7);
+}
+.private-bridge-img{
   position:relative;overflow:hidden;
 }
-.private-bridge::before{
+.private-bridge-img img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;
+}
+.private-bridge-img::after{
+  content:'';position:absolute;inset:0;z-index:1;
+  background:linear-gradient(90deg,rgba(6,8,15,0) 0%,rgba(6,8,15,.55) 100%);
+}
+.private-bridge-text{
+  background:linear-gradient(135deg,#06080f 0%,#1a1a1a 100%);
+  padding:56px 56px 56px 48px;
+  display:flex;flex-direction:column;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.private-bridge-text::before{
   content:'';position:absolute;top:-150px;right:-150px;
-  width:480px;height:480px;border-radius:50%;
-  background:radial-gradient(circle,rgba(160,129,86,.18) 0%,transparent 65%);
+  width:400px;height:400px;border-radius:50%;
+  background:radial-gradient(circle,rgba(160,129,86,.16) 0%,transparent 65%);
   pointer-events:none;
 }
-.private-bridge::after{
-  content:'';position:absolute;bottom:-120px;left:-100px;
-  width:360px;height:360px;border-radius:50%;
-  background:radial-gradient(circle,rgba(37,99,235,.08) 0%,transparent 65%);
-  pointer-events:none;
-}
-.private-bridge-text{position:relative;z-index:1}
+.private-bridge-text > *{position:relative;z-index:1}
 .private-flag{
-  display:inline-block;font-size:10.5px;font-weight:700;
-  letter-spacing:.22em;text-transform:uppercase;color:var(--gold-soft);
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:10.5px;font-weight:700;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--gold-soft);
   background:rgba(160,129,86,.12);border:1px solid rgba(160,129,86,.34);
-  padding:6px 14px;border-radius:999px;margin-bottom:22px;
+  padding:7px 16px;border-radius:999px;margin-bottom:24px;
+  align-self:flex-start;
 }
-.private-bridge h3{
-  font-size:clamp(1.5rem,2.6vw,2.3rem);
+.private-flag .d{width:5px;height:5px;border-radius:50%;background:var(--gold);animation:pulse 2.6s ease infinite}
+.private-bridge-text h3{
+  font-size:clamp(1.4rem,2.3vw,2.1rem);
   font-weight:300;letter-spacing:-.025em;line-height:1.15;
-  color:#fff;margin-bottom:20px;
+  color:#fff;margin-bottom:18px;
 }
-.private-bridge h3 strong{color:var(--gold-soft);font-weight:500}
-.private-bridge p{
-  color:rgba(255,255,255,.72);font-size:15px;line-height:1.7;
-  margin-bottom:18px;max-width:54ch;
+.private-bridge-text h3 strong{color:var(--gold-warm);font-weight:500}
+.private-bridge-text > p{
+  color:rgba(255,255,255,.72);font-size:14.5px;line-height:1.65;
+  margin-bottom:14px;max-width:48ch;
 }
-.private-key{
-  font-size:17px;font-weight:300;line-height:1.5;
-  color:#fff;letter-spacing:-.01em;
-  padding:20px 24px;margin:6px 0 26px;
-  background:rgba(160,129,86,.08);
-  border-left:3px solid var(--gold);border-radius:0 var(--radius) var(--radius) 0;
-  max-width:60ch;
+.private-chips{
+  display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 28px;
 }
-.private-key strong{color:var(--gold-soft);font-weight:500}
-.private-bridge-cta{position:relative;z-index:1;display:flex;justify-content:flex-end}
+.private-chip{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12px;font-weight:500;letter-spacing:.005em;
+  padding:8px 14px;border-radius:6px;
+  background:rgba(160,129,86,.06);
+  border:1px solid rgba(160,129,86,.28);
+  color:var(--gold-warm);
+}
+.private-chip .d{width:4px;height:4px;border-radius:50%;background:var(--gold);}
+.private-bridge-cta{display:flex;gap:12px;flex-wrap:wrap}
 
-/* ─── SECTION 9 — What you get ─────────────────────────── */
-.you-get-intro{
-  font-size:18px;line-height:1.65;color:rgba(255,255,255,.78);
-  margin-bottom:42px;font-weight:300;letter-spacing:-.005em;
-  max-width:62ch;
+/* ─── SECTION 9 — Result Dashboard ─────────────────────── */
+.result-grid{
+  display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:start;
 }
-.you-get-list{
-  display:grid;grid-template-columns:1fr 1fr;gap:0 56px;
-  background:rgba(255,255,255,.025);
-  border:1px solid var(--line-dark);
+.result-text h2{margin-bottom:18px}
+.result-text > p{
+  color:var(--on-dark-mute);font-size:16px;line-height:1.7;
+  margin-bottom:20px;max-width:50ch;
+}
+.result-text > p strong{color:#fff;font-weight:500}
+.result-bullets{
+  list-style:none;display:flex;flex-direction:column;gap:12px;
+  margin-top:24px;
+}
+.result-bullets li{
+  display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;
+  font-size:14.5px;line-height:1.5;color:rgba(255,255,255,.85);
+}
+.result-bullets li .n{
+  font-size:11px;font-weight:700;letter-spacing:.05em;
+  color:var(--gold-warm);
+  width:22px;flex-shrink:0;
+  font-feature-settings:'tnum';
+}
+
+.result-card{
+  background:linear-gradient(160deg,rgba(255,255,255,.04) 0%,rgba(255,255,255,.01) 100%);
+  border:1px solid rgba(255,255,255,.1);
   border-radius:var(--radius-lg);
-  padding:32px 40px;
-  margin-bottom:32px;
+  padding:28px 30px;
+  font-feature-settings:'tnum';
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
 }
-.you-get-item{
-  display:grid;grid-template-columns:auto 1fr;gap:16px;
+.result-card-head{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  padding-bottom:16px;margin-bottom:8px;
+  border-bottom:1px solid rgba(255,255,255,.08);gap:14px;
+}
+.result-card-id{font-size:10px;letter-spacing:.18em;color:rgba(255,255,255,.55);text-transform:uppercase}
+.result-card-stage{font-size:10px;letter-spacing:.16em;color:var(--gold-soft);text-transform:uppercase}
+.result-row{
+  display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;
   padding:14px 0;border-bottom:1px solid rgba(255,255,255,.05);
-  font-size:14.5px;line-height:1.5;color:rgba(255,255,255,.82);
 }
-.you-get-item:last-child,.you-get-item:nth-last-child(2){border-bottom:none}
-@media(max-width:780px){
-  .you-get-item:nth-last-child(2){border-bottom:1px solid rgba(255,255,255,.05)}
-  .you-get-item:last-child{border-bottom:none}
+.result-row:last-of-type{border-bottom:none}
+.result-row .label{display:flex;flex-direction:column;gap:3px;min-width:0}
+.result-row .name{font-size:13px;font-weight:500;color:#fff;letter-spacing:.005em}
+.result-row .meta{font-size:11.5px;color:rgba(255,255,255,.55);letter-spacing:.005em}
+.result-tag{
+  font-size:9.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  padding:5px 11px;border-radius:3px;flex-shrink:0;
+  white-space:nowrap;
 }
-.you-get-item .ic{
-  width:22px;height:22px;border-radius:50%;
+.result-tag.r-defined{background:rgba(160,129,86,.16);color:var(--gold-warm);border:1px solid rgba(160,129,86,.4)}
+.result-tag.r-progress{background:rgba(147,197,253,.12);color:var(--blue-soft);border:1px solid rgba(147,197,253,.32)}
+.result-tag.r-prepare{background:rgba(255,255,255,.05);color:rgba(255,255,255,.78);border:1px solid rgba(255,255,255,.18)}
+.result-card-foot{
+  margin-top:18px;padding-top:18px;border-top:1px solid rgba(255,255,255,.08);
+  display:flex;justify-content:space-between;align-items:center;gap:14px;
+}
+.result-card-foot-l{display:flex;flex-direction:column;gap:2px}
+.result-card-foot-label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.result-card-foot-val{font-size:13px;font-weight:500;color:#fff;letter-spacing:.005em}
+.result-card-foot-tag{
+  font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  padding:6px 12px;border-radius:3px;
+  background:rgba(160,129,86,.18);color:var(--gold-warm);
   border:1px solid rgba(160,129,86,.45);
-  background:rgba(160,129,86,.1);
-  display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;margin-top:1px;
 }
-.you-get-item .ic svg{width:11px;height:11px;stroke:var(--gold-soft);fill:none;stroke-width:2.4}
-.you-get-close{
-  font-size:17px;line-height:1.55;color:#fff;font-weight:300;
-  padding:24px 32px;background:rgba(160,129,86,.06);
-  border:1px solid rgba(160,129,86,.24);border-left:3px solid var(--gold);
-  border-radius:var(--radius);max-width:64ch;
-  letter-spacing:-.005em;
-}
-.you-get-close strong{color:var(--gold-soft);font-weight:500}
 
 /* ─── SECTION 10 — Final CTA ───────────────────────────── */
 .final-cta{
-  background:linear-gradient(180deg,#0a0e1a 0%,#06080f 100%);
-  border-radius:var(--radius-lg);padding:80px 64px;
-  text-align:center;color:#fff;position:relative;overflow:hidden;
-  border:1px solid var(--line-dark);
+  position:relative;
+  border-radius:var(--radius-xl);overflow:hidden;
+  text-align:center;color:#fff;
+  border:1px solid rgba(232,212,168,.18);
+  box-shadow:0 30px 80px -20px rgba(0,0,0,.6);
 }
-.final-cta::before{
+.final-cta-img{position:absolute;inset:0;z-index:0}
+.final-cta-img img{width:100%;height:100%;object-fit:cover;object-position:center 65%}
+.final-cta-img::after{
   content:'';position:absolute;inset:0;
   background:
-    radial-gradient(circle at 50% 0%,rgba(160,129,86,.18) 0%,transparent 60%),
-    radial-gradient(circle at 50% 100%,rgba(37,99,235,.06) 0%,transparent 60%);
-  pointer-events:none;
+    linear-gradient(180deg,rgba(6,8,15,.4) 0%,rgba(6,8,15,.78) 100%),
+    radial-gradient(ellipse at 50% 0%,rgba(232,212,168,.16) 0%,transparent 60%);
 }
-.final-cta-inner{position:relative;z-index:1;max-width:760px;margin:0 auto}
+.final-cta-inner{
+  position:relative;z-index:1;padding:96px 56px 80px;
+  max-width:760px;margin:0 auto;
+}
 .final-cta h2{
-  color:#fff;font-size:clamp(1.9rem,3.4vw,2.8rem);
-  margin-bottom:28px;font-weight:200;letter-spacing:-.035em;
-  line-height:1.1;
+  color:#fff;font-size:clamp(1.9rem,3.6vw,3rem);
+  margin-bottom:30px;font-weight:200;letter-spacing:-.035em;
+  line-height:1.08;
 }
+.final-cta h2 strong{color:var(--gold-warm);font-weight:400}
 .final-cta-list{
   display:flex;flex-direction:column;gap:8px;
-  margin:0 auto 32px;max-width:60ch;text-align:left;
+  margin:0 auto 28px;max-width:50ch;text-align:left;
 }
 .final-cta-list-line{
   font-size:15.5px;line-height:1.55;
-  color:rgba(255,255,255,.72);font-weight:300;
+  color:rgba(255,255,255,.78);font-weight:300;
   padding-left:24px;position:relative;
 }
 .final-cta-list-line::before{
   content:'—';position:absolute;left:0;top:0;
-  color:var(--gold);font-weight:600;
+  color:var(--gold-warm);font-weight:600;
 }
 .final-cta-bridge{
-  font-size:17px;line-height:1.6;color:rgba(255,255,255,.88);
+  font-size:17px;line-height:1.6;color:rgba(255,255,255,.92);
   margin:24px auto 40px;max-width:62ch;font-weight:300;letter-spacing:-.005em;
 }
-.final-cta-bridge strong{color:#fff;font-weight:500}
+.final-cta-bridge strong{color:var(--gold-warm);font-weight:500}
 .final-cta-actions{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:24px}
 .final-cta-note{
-  font-size:13px;color:rgba(255,255,255,.5);
+  font-size:13px;color:rgba(255,255,255,.62);
   letter-spacing:.04em;line-height:1.6;
 }
-.final-cta-note strong{color:rgba(255,255,255,.85);font-weight:500}
-
-/* ─── CONTACT mini ─────────────────────────────────────── */
-.contact-strip{
-  display:flex;justify-content:center;flex-wrap:wrap;gap:14px;
-  margin-bottom:18px;
-}
+.final-cta-note strong{color:#fff;font-weight:500}
 
 /* ─── FOOTER ───────────────────────────────────────────── */
 footer.f{
@@ -712,35 +1081,47 @@ footer.f{
 .sticky-cta:hover .arr{transform:translateX(3px)}
 
 /* ─── Responsive ───────────────────────────────────────── */
-@media(max-width:1024px){
+@media(max-width:1100px){
   .hero-grid{grid-template-columns:1fr;gap:48px}
-  .hero-visual{max-width:420px;margin:0 auto}
-  .route-converge{grid-template-columns:1fr;gap:32px}
-  .route-svg{justify-self:center;max-width:260px}
-  .private-bridge{grid-template-columns:1fr;gap:32px;padding:48px 40px}
-  .private-bridge-cta{justify-content:flex-start}
+  .hero-visual{max-width:640px;margin:0 auto;width:100%}
+  .route-converge{justify-content:flex-start}
+  .private-bridge{grid-template-columns:1fr;min-height:auto}
+  .private-bridge-img{aspect-ratio:16/9}
+  .private-bridge-text{padding:48px 40px}
   .scenarios{grid-template-columns:1fr 1fr}
   .route-grid{grid-template-columns:1fr 1fr}
-  .structure-block{grid-template-columns:1fr;gap:24px}
+  .roles-grid{grid-template-columns:1fr 1fr}
+  .freedom-glimpses{grid-template-columns:1fr 1fr}
+  .freedom-glimpses .glimpse:last-child{grid-column:1 / -1;aspect-ratio:16/8}
+  .structure-grid{grid-template-columns:1fr;gap:32px}
+  .structure-visual{min-height:300px;aspect-ratio:16/9}
+  .result-grid{grid-template-columns:1fr;gap:36px}
 }
 @media(max-width:780px){
   .topbar-brand .tag{display:none}
   .topbar-nav{display:none}
+  .topbar-link{display:none}
   section.s{padding:88px 0}
   section.s.tight{padding:64px 0}
   .hero{padding:120px 22px 80px;min-height:auto}
-  .container,.container-sm,.container-narrow{padding:0 22px}
+  .container,.container-wide,.container-sm,.container-narrow{padding:0 22px}
   .hero-actions .btn{width:100%;justify-content:center}
   .then-now{grid-template-columns:1fr;gap:20px}
   .escape-vs{grid-template-columns:1fr;gap:14px}
   .escape-col.left .escape-row,.escape-col.right .escape-row{text-align:left}
   .escape-vs-divider{writing-mode:initial;transform:none;justify-self:center}
   .scenarios{grid-template-columns:1fr}
-  .you-get-list{grid-template-columns:1fr;padding:24px 28px}
-  .final-cta{padding:56px 28px}
-  .private-bridge{padding:36px 28px}
-  .route-converge{padding:32px 28px}
-  .private-key,.you-get-close{padding:18px 22px}
+  .freedom-glimpses{grid-template-columns:1fr}
+  .freedom-glimpses .glimpse:last-child{grid-column:auto;aspect-ratio:4/3}
+  .roles-grid{grid-template-columns:1fr}
+  .route-hero-text{position:relative;left:0;top:0;padding:24px 24px 8px;max-width:100%;background:linear-gradient(180deg,rgba(6,8,15,.85) 0%,rgba(6,8,15,.4) 100%)}
+  .route-hero-pills{position:absolute;left:24px;right:24px;bottom:20px;justify-content:flex-start;max-width:none}
+  .old-routes-banner{aspect-ratio:4/3;max-height:none}
+  .old-routes-banner-text{left:24px;right:24px;bottom:22px;max-width:none}
+  .private-bridge-text{padding:36px 28px}
+  .pull-quote{padding:56px 22px}
+  .final-cta-inner{padding:64px 28px 56px}
+  .structure-key{padding:28px 28px}
   .f-grid{grid-template-columns:1fr 1fr;gap:28px}
   .sticky-cta{display:flex}
   body{padding-bottom:78px}
@@ -748,13 +1129,19 @@ footer.f{
 @media(max-width:560px){
   .route-grid{grid-template-columns:1fr}
   .tn-col{padding:32px 26px}
-  .structure-card,.structure-list{padding:28px 24px}
-  .structure-list-row{grid-template-columns:1fr;gap:4px}
-  .structure-list-row .who{font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+  .scenario-body{padding:20px 22px 18px}
   .f-grid{grid-template-columns:1fr}
   .hero h1{font-size:2.1rem}
   .manifesto-line{font-size:1.15rem;padding-left:18px}
   .manifesto-line:hover{padding-left:22px}
+  .hero-visual-card{left:14px;bottom:14px;padding:10px 14px;gap:10px}
+  .hero-visual-card .vc-icon{display:none}
+}
+
+/* ─── Reduced motion ───────────────────────────────────── */
+@media (prefers-reduced-motion: reduce){
+  .ticker-track{animation:none}
+  *{transition-duration:.01ms !important;animation-duration:.01ms !important}
 }
 </style>
 </head>
@@ -762,18 +1149,24 @@ footer.f{
 
 <header id="topbar">
   <div class="topbar-inner">
-    <a href="/" class="topbar-brand">
-      <span class="name">Charter Capital</span>
-      <span class="tag">Маршрут в свободный мир</span>
-    </a>
+    <div class="topbar-left">
+      <a href="/" class="topbar-brand">
+        <span class="name">Charter Capital</span>
+        <span class="tag">Маршрут в свободный мир</span>
+      </a>
+    </div>
     <nav class="topbar-nav">
       <a href="#idea">Идея</a>
+      <a href="#freedom">Свобода</a>
       <a href="#route">Маршрут</a>
       <a href="#cases">Ситуации</a>
       <a href="#private" class="is-gold">Private Office</a>
       <a href="#contact">Контакт</a>
     </nav>
-    <a href="#contact" class="topbar-cta">Разобрать маршрут</a>
+    <div class="topbar-right">
+      <a href="/" class="topbar-link">Основной сайт</a>
+      <a href="#contact" class="topbar-cta">Разобрать маршрут</a>
+    </div>
   </div>
 </header>
 
@@ -794,84 +1187,76 @@ footer.f{
         <strong>Charter&nbsp;Capital</strong> открывает <span class="em">мир без искусственных границ.</span>
       </h1>
       <p class="hero-sub">
-        Для предпринимателей из&nbsp;СНГ, которые хотят перенести себя, семью, капитал и&nbsp;бизнес в&nbsp;свободный мир — спокойно, законно и&nbsp;с&nbsp;понятной финансовой историей.
+        Для&nbsp;Вас, Вашей семьи, Вашего капитала и&nbsp;Вашего бизнеса.<br/>
+        Спокойно, законно, с&nbsp;понятной финансовой историей.
       </p>
-      <p class="hero-support">
-        Мы собираем международный маршрут: <strong>банковский счёт, компания, документы по&nbsp;капиталу, ВНЖ, крипто-выход, инвестиции и&nbsp;финансовая подушка за&nbsp;границей.</strong>
-        Чтобы вы могли снова свободно жить, путешествовать, учить детей, покупать недвижимость, развивать бизнес и&nbsp;не&nbsp;зависеть от&nbsp;старой системы.
+      <p class="hero-line">
+        Мы&nbsp;собираем международный маршрут.
       </p>
+      <div class="hero-stack">
+        <span>Банк</span>
+        <span>Компания</span>
+        <span>Документы по&nbsp;капиталу</span>
+        <span>ВНЖ</span>
+        <span>Крипто-выход</span>
+        <span>Инвестиции</span>
+        <span>Финансовая подушка</span>
+      </div>
       <div class="hero-actions">
         <a href="#contact" class="btn btn-gold btn-lg">Разобрать мой маршрут <span class="arr">→</span></a>
         <a href="#contact" class="btn btn-outline btn-lg">Проверить капитал перед банком <span class="arr">→</span></a>
       </div>
       <div class="hero-trust">
         <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-12V5l-8-3-8 3v5c0 8 8 12 8 12z"/></svg>
-        <span>Первый разговор — не&nbsp;продажа. Это карта рисков: где вы&nbsp;сейчас, что можно делать, а&nbsp;что лучше не&nbsp;трогать без подготовки.</span>
+        <span>Первый разговор — не&nbsp;продажа. Это карта рисков: где Вы&nbsp;сейчас, что можно делать, а&nbsp;что лучше не&nbsp;трогать без подготовки.</span>
       </div>
     </div>
+
     <div class="hero-visual" aria-hidden="true">
-      <div class="hero-visual-glow"></div>
-      <svg viewBox="0 0 540 540" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="doorLight" x1="50%" y1="0%" x2="50%" y2="100%">
-            <stop offset="0%" stop-color="#cfc4a2" stop-opacity="0"/>
-            <stop offset="50%" stop-color="#cfc4a2" stop-opacity=".95"/>
-            <stop offset="100%" stop-color="#a08156" stop-opacity=".75"/>
-          </linearGradient>
-          <linearGradient id="doorFrame" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stop-color="#1f2937"/>
-            <stop offset="100%" stop-color="#0a0e1a"/>
-          </linearGradient>
-          <radialGradient id="hSun" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#fff" stop-opacity=".9"/>
-            <stop offset="40%" stop-color="#cfc4a2" stop-opacity=".4"/>
-            <stop offset="100%" stop-color="#a08156" stop-opacity="0"/>
-          </radialGradient>
-          <linearGradient id="lineG" x1="0%" y1="50%" x2="100%" y2="50%">
-            <stop offset="0%" stop-color="#a08156" stop-opacity="0"/>
-            <stop offset="50%" stop-color="#cfc4a2" stop-opacity=".7"/>
-            <stop offset="100%" stop-color="#cfc4a2" stop-opacity="0"/>
-          </linearGradient>
-        </defs>
-        <!-- ambient horizon -->
-        <circle cx="270" cy="270" r="220" fill="url(#hSun)" opacity=".55"/>
-
-        <!-- left door (closed, dark) -->
-        <rect x="110" y="120" width="120" height="320" rx="4" fill="url(#doorFrame)" stroke="#2a2f3d" stroke-width="1.2"/>
-        <rect x="120" y="130" width="100" height="300" rx="2" fill="#0a0e1a" stroke="#1f2937" stroke-width="1"/>
-        <circle cx="207" cy="280" r="3" fill="#3a4456"/>
-
-        <!-- right door (opening, light pours out) -->
-        <g transform="translate(310 120)">
-          <!-- light beam -->
-          <path d="M0 0 L120 -40 L120 360 L0 320 Z" fill="url(#doorLight)" opacity=".75"/>
-          <!-- door frame -->
-          <rect x="0" y="0" width="120" height="320" fill="none" stroke="#a08156" stroke-width="1.4" opacity=".45"/>
-          <!-- door panel pivoted open -->
-          <path d="M0 0 L-22 12 L-22 332 L0 320 Z" fill="#0d1220" stroke="#3a4456" stroke-width="1"/>
-          <circle cx="-5" cy="172" r="2.5" fill="#cfc4a2"/>
-        </g>
-
-        <!-- horizon line -->
-        <line x1="60" y1="450" x2="480" y2="450" stroke="url(#lineG)" stroke-width="1"/>
-        <line x1="100" y1="470" x2="440" y2="470" stroke="url(#lineG)" stroke-width=".6" opacity=".6"/>
-
-        <!-- route lines converging through right door -->
-        <g opacity=".7">
-          <path d="M40 480 Q200 460 360 280" fill="none" stroke="#a08156" stroke-width="1.1" stroke-dasharray="3 3"/>
-          <path d="M40 510 Q220 490 380 290" fill="none" stroke="#a08156" stroke-width=".8" stroke-dasharray="2 4" opacity=".7"/>
-          <path d="M60 460 Q220 440 360 280" fill="none" stroke="#cfc4a2" stroke-width=".8" stroke-dasharray="2 5" opacity=".5"/>
-        </g>
-
-        <!-- nodes along the route -->
-        <circle cx="120" cy="488" r="3" fill="#cfc4a2"/>
-        <circle cx="220" cy="468" r="3.5" fill="#cfc4a2"/>
-        <circle cx="290" cy="380" r="3" fill="#cfc4a2"/>
-        <circle cx="340" cy="320" r="2.5" fill="#fff"/>
-      </svg>
+      <img src="assets/freedom-route/hero-open-world.webp" alt="" fetchpriority="high"/>
+      <div class="hero-visual-card">
+        <span class="vc-icon">→</span>
+        <div class="vc-text">
+          <span class="vc-label">Family · Capital · Business</span>
+          <span class="vc-line">Один маршрут в&nbsp;свободный мир</span>
+        </div>
+        <span class="vc-arrow">→</span>
+      </div>
     </div>
   </div>
 </section>
+
+<!-- ─── PULL QUOTE 1 ─────────────────────────────────────── -->
+<section class="pull-quote" aria-hidden="true">
+  <div class="pull-quote-inner">
+    <span class="pull-quote-mark">“</span>
+    <p class="pull-quote-text">
+      Свобода больше не&nbsp;даётся автоматически.<br/>
+      <em>Её&nbsp;нужно правильно структурировать.</em>
+    </p>
+  </div>
+</section>
+
+<!-- ─── PAIN TICKER ──────────────────────────────────────── -->
+<div class="ticker-strip" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ticker-item"><span class="dot"></span>Банк не&nbsp;открывает счёт</span>
+    <span class="ticker-item"><span class="dot"></span>Платёж завис</span>
+    <span class="ticker-item"><span class="dot"></span>Дети остаются в&nbsp;старой системе</span>
+    <span class="ticker-item"><span class="dot"></span>Бизнес работает, но&nbsp;прибыль заперта</span>
+    <span class="ticker-item"><span class="dot"></span>Крипта есть, но&nbsp;банк её не&nbsp;понимает</span>
+    <span class="ticker-item"><span class="dot"></span>Компания нужна за&nbsp;границей</span>
+    <span class="ticker-item"><span class="dot"></span>Капитал должен стать понятным</span>
+    <!-- duplicate for seamless loop -->
+    <span class="ticker-item"><span class="dot"></span>Банк не&nbsp;открывает счёт</span>
+    <span class="ticker-item"><span class="dot"></span>Платёж завис</span>
+    <span class="ticker-item"><span class="dot"></span>Дети остаются в&nbsp;старой системе</span>
+    <span class="ticker-item"><span class="dot"></span>Бизнес работает, но&nbsp;прибыль заперта</span>
+    <span class="ticker-item"><span class="dot"></span>Крипта есть, но&nbsp;банк её не&nbsp;понимает</span>
+    <span class="ticker-item"><span class="dot"></span>Компания нужна за&nbsp;границей</span>
+    <span class="ticker-item"><span class="dot"></span>Капитал должен стать понятным</span>
+  </div>
+</div>
 
 <!-- ─────────────────────────────────────────────────────────
      SECTION 2 · IDEA — Вы хотите свободу
@@ -880,21 +1265,50 @@ footer.f{
   <div class="container">
     <div class="s-head">
       <span class="kicker">Идея</span>
-      <h2>Вы хотите не «счёт за&nbsp;границей». Вы хотите свободу.</h2>
+      <h2>Вы хотите не&nbsp;«счёт за&nbsp;границей». Вы&nbsp;хотите свободу.</h2>
     </div>
-    <div class="manifesto">
+    <div class="manifesto" id="freedom">
       <div class="manifesto-line">Свободу посадить детей в&nbsp;самолёт и&nbsp;отвезти их в&nbsp;<strong>Disneyland Paris</strong>.</div>
       <div class="manifesto-line">Свободу гулять с&nbsp;любимой по&nbsp;<strong>озеру Комо</strong>.</div>
       <div class="manifesto-line">Свободу выбрать <strong>школу, страну и&nbsp;будущее</strong> для семьи.</div>
       <div class="manifesto-line">Свободу держать <strong>финансовую подушку</strong> там, где её не&nbsp;заберут завтра.</div>
-      <div class="manifesto-line">Свободу строить бизнес <strong>не&nbsp;только там</strong>, где вам разрешили.</div>
+      <div class="manifesto-line">Свободу строить бизнес <strong>не&nbsp;только там</strong>, где Вам разрешили.</div>
       <div class="manifesto-line">Свободу не&nbsp;зависеть от&nbsp;чиновника, силовика, банка или нового запрета.</div>
     </div>
+
+    <div class="freedom-glimpses">
+      <figure class="glimpse">
+        <img src="assets/freedom-route/freedom-family-paris.webp" loading="lazy" alt="Семейная поездка в Европу как символ свободного движения"/>
+        <figcaption class="glimpse-text">
+          <span class="kicker">Семья</span>
+          <span class="line">Дети, которые видят мир — не&nbsp;по&nbsp;учебникам.</span>
+        </figcaption>
+      </figure>
+      <figure class="glimpse">
+        <img src="assets/freedom-route/freedom-lake-como.webp" loading="lazy" alt="Спокойная жизнь и путешествия в свободном мире"/>
+        <figcaption class="glimpse-text">
+          <span class="kicker">Жизнь</span>
+          <span class="line">Воскресенье у&nbsp;воды, а&nbsp;не&nbsp;в&nbsp;новостях.</span>
+        </figcaption>
+      </figure>
+      <figure class="glimpse">
+        <img src="assets/freedom-route/financial-cushion.webp" loading="lazy" alt="Финансовая подушка за границей и план новой жизни"/>
+        <figcaption class="glimpse-text">
+          <span class="kicker">Капитал</span>
+          <span class="line">Подушка, которую не&nbsp;заберёт завтрашний указ.</span>
+        </figcaption>
+      </figure>
+    </div>
+
     <p class="manifesto-close">
-      Но <strong>свободный мир устроен иначе.</strong> Он не&nbsp;принимает капитал «на&nbsp;слово». Он хочет видеть документы, историю, происхождение средств и&nbsp;понятный маршрут.
-      <br/><br/>
-      Charter Capital помогает пройти этот путь.
+      Это не&nbsp;про красивую жизнь ради картинки.<br/>
+      Это про право самому выбирать, где живёт Ваша семья и&nbsp;где находится Ваш капитал.
     </p>
+
+    <div class="freedom-key">
+      Свободный мир устроен иначе. Он&nbsp;не&nbsp;принимает капитал «на&nbsp;слово».<br/>
+      Он&nbsp;хочет видеть <strong>документы, историю, происхождение средств и&nbsp;понятный маршрут</strong>.
+    </div>
   </div>
 </section>
 
@@ -907,9 +1321,17 @@ footer.f{
       <span class="kicker muted">Контекст 2026</span>
       <h2>Старые маршруты больше не&nbsp;работают.</h2>
       <p>
-        Раньше всё было проще: бизнес работает, деньги приходят, банк обслуживает, семья живёт рядом, поездки за&nbsp;границу — вопрос денег и&nbsp;желания. Теперь всё иначе.
+        Раньше всё было проще. Бизнес работает, деньги приходят, банк обслуживает, поездки за&nbsp;границу — вопрос денег и&nbsp;желания. <strong>Теперь всё иначе.</strong>
       </p>
     </div>
+
+    <figure class="old-routes-banner">
+      <img src="assets/freedom-route/old-routes-closed.webp" loading="lazy" alt="Старые маршруты больше не работают — закрытые гейты и обрывы линий"/>
+      <figcaption class="old-routes-banner-text">
+        <span class="kicker">Карта 2018</span>
+        <h3>Маршруты, которые работали ещё вчера, сегодня <strong>обрываются&nbsp;на&nbsp;границе</strong>.</h3>
+      </figcaption>
+    </figure>
 
     <div class="then-now">
       <div class="tn-col then">
@@ -932,14 +1354,15 @@ footer.f{
           <li>Паспорт стал фактором риска.</li>
           <li>Компания из&nbsp;СНГ пугает контрагентов.</li>
           <li>Крипта не&nbsp;воспринимается как нормальный капитал.</li>
-          <li>Дети растут в&nbsp;системе, которую вы&nbsp;больше не&nbsp;выбираете.</li>
+          <li>Дети растут в&nbsp;системе, которую Вы&nbsp;больше не&nbsp;выбираете.</li>
           <li>Прибыль есть, но&nbsp;вывести её в&nbsp;свободный мир сложно.</li>
         </ul>
       </div>
     </div>
 
     <div class="tn-close">
-      <strong>Проблема не&nbsp;в&nbsp;том, что мир закрылся.</strong> Проблема в&nbsp;том, что старые маршруты перестали работать.
+      Проблема не&nbsp;в&nbsp;том, что мир закрылся.<br/>
+      <strong>Проблема в&nbsp;том, что старые маршруты перестали работать.</strong>
     </div>
   </div>
 </section>
@@ -952,93 +1375,79 @@ footer.f{
     <div class="s-head">
       <span class="kicker">Маршрут</span>
       <h2>Мы строим новый маршрут.</h2>
-      <p>Charter Capital соединяет в&nbsp;одну логику человека, семью, бизнес и&nbsp;капитал.</p>
+      <p>Не&nbsp;отдельный счёт. Не&nbsp;отдельную компанию. Не&nbsp;«юриста по&nbsp;ВНЖ». <strong>Маршрут</strong>, в&nbsp;котором человек, семья, бизнес и&nbsp;капитал движутся в&nbsp;одну сторону.</p>
     </div>
+
+    <figure class="route-hero">
+      <img src="assets/freedom-route/new-route-map.webp" loading="lazy" alt="Личная релокация, семья, бизнес и капитал соединяются в один маршрут"/>
+      <figcaption class="route-hero-text">
+        <span class="kicker">Архитектура</span>
+        <h3>Несколько линий — <strong>один путь</strong>.<br/>Личная история, семья, бизнес и&nbsp;капитал — в&nbsp;одной логике.</h3>
+      </figcaption>
+      <div class="route-hero-pills" aria-hidden="true">
+        <span class="route-hero-pill"><span class="d"></span>Человек</span>
+        <span class="route-hero-pill"><span class="d"></span>Семья</span>
+        <span class="route-hero-pill"><span class="d"></span>Бизнес</span>
+        <span class="route-hero-pill"><span class="d"></span>Капитал</span>
+      </div>
+    </figure>
 
     <div class="route-grid">
       <div class="route-cell">
-        <span class="num">01</span>
-        <h4>Личная релокация</h4>
-        <p>Страна входа, статус, налоговая логика, понятный план для следующих 3–5 лет.</p>
+        <span class="num"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a8 8 0 0 1 16 0v2"/></svg></span>01 · Личная релокация</span>
+        <h4>Куда Вы&nbsp;едете и&nbsp;кем Вы&nbsp;там становитесь</h4>
+        <p>Страна входа, статус, налоговая логика. План на&nbsp;3–5 лет, а&nbsp;не&nbsp;на&nbsp;ближайший рейс.</p>
       </div>
       <div class="route-cell">
-        <span class="num">02</span>
-        <h4>Семейный маршрут</h4>
-        <p>ВНЖ через воссоединение, школа, врачи, документы — без панических переездов.</p>
+        <span class="num"><span class="ic"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V11z"/><path d="M9 22V12h6v10"/></svg></span>02 · Семейный маршрут</span>
+        <h4>Жена, дети, родители — в&nbsp;одной логике</h4>
+        <p>ВНЖ через воссоединение, школа, врачи, документы. Без панических переездов и&nbsp;«срочно к&nbsp;понедельнику».</p>
       </div>
       <div class="route-cell">
-        <span class="num">03</span>
-        <h4>Банковский счёт</h4>
-        <p>Подбор банка под ваш профиль и&nbsp;капитал. Подача через подготовленную папку.</p>
+        <span class="num"><span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/></svg></span>03 · Банковский счёт</span>
+        <h4>Банк, который читает Ваш кейс, а&nbsp;не&nbsp;паспорт</h4>
+        <p>Подбор под Ваш профиль и&nbsp;капитал. Подача через подготовленную папку.</p>
       </div>
       <div class="route-cell">
-        <span class="num">04</span>
-        <h4>Компания или холдинг</h4>
-        <p>HK · SG · UAE · UK · CY — там, где это даёт реальный экономический смысл.</p>
+        <span class="num"><span class="ic"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l7-4 7 4v13M9 21v-8h6v8"/></svg></span>04 · Компания или холдинг</span>
+        <h4>HK · SG · UAE · UK · CY</h4>
+        <p>Там, где это даёт реальный экономический смысл. Substance, директор, бухгалтерия — где требуется.</p>
       </div>
       <div class="route-cell">
-        <span class="num">05</span>
-        <h4>Документы по&nbsp;происхождению капитала</h4>
-        <p>Биография капитала под целевой банк: контракты, выписки, налоги, цепочка владения.</p>
+        <span class="num"><span class="ic"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span>05 · Документы по&nbsp;капиталу</span>
+        <h4>Биография денег под целевой банк</h4>
+        <p>Контракты, выписки, налоги, цепочка владения активом — собранные в&nbsp;один связный нарратив.</p>
       </div>
       <div class="route-cell">
-        <span class="num">06</span>
-        <h4>Крипто-выход в&nbsp;фиат</h4>
-        <p>On-chain аудит, AML-папка, регулируемый off-ramp. Без P2P и&nbsp;серых обменников.</p>
+        <span class="num"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span>06 · Крипто-выход в&nbsp;фиат</span>
+        <h4>On-chain история, которую банк примет</h4>
+        <p>Аудит цепочки, AML-папка, регулируемый off-ramp. Без P2P и&nbsp;серых обменников.</p>
       </div>
       <div class="route-cell">
-        <span class="num">07</span>
-        <h4>Инвестиции и&nbsp;недвижимость</h4>
-        <p>Вход в&nbsp;понятные международные активы — с&nbsp;документами под банк и&nbsp;налоговую.</p>
+        <span class="num"><span class="ic"><svg viewBox="0 0 24 24"><path d="M3 21V9l9-6 9 6v12"/><path d="M9 21v-7h6v7"/></svg></span>07 · Инвестиции и&nbsp;недвижимость</span>
+        <h4>Понятные международные активы</h4>
+        <p>Вход в&nbsp;недвижимость, фонды, real assets — с&nbsp;документами под банк и&nbsp;налоговую страны прибытия.</p>
       </div>
       <div class="route-cell">
-        <span class="num">08</span>
-        <h4>Финансовая подушка за&nbsp;границей</h4>
-        <p>Резервный счёт и&nbsp;ликвидность вне старой системы. Спокойно, на&nbsp;долгий срок.</p>
+        <span class="num"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6l4 2"/></svg></span>08 · Финансовая подушка</span>
+        <h4>Резерв вне старой системы</h4>
+        <p>Счёт и&nbsp;ликвидность за&nbsp;границей. Спокойно, на&nbsp;долгий срок, без необходимости спешить.</p>
       </div>
       <div class="route-cell">
-        <span class="num">09</span>
-        <h4>Сохранение работающего бизнеса</h4>
-        <p>Где это возможно — оставляем оборот дома и&nbsp;аккуратно строим второй контур.</p>
+        <span class="num"><span class="ic"><svg viewBox="0 0 24 24"><path d="M3 12h6l3-9 3 9h6"/><path d="M5 12v8h14v-8"/></svg></span>09 · Сохранение бизнеса</span>
+        <h4>Где это возможно — оставляем работать дома</h4>
+        <p>Параллельно строим второй контур. Прибыль и&nbsp;операционка — там, где это даёт смысл.</p>
       </div>
     </div>
 
     <div class="route-converge">
       <p>
-        <strong>Не&nbsp;отдельный счёт.</strong> Не&nbsp;отдельную компанию. Не&nbsp;«юриста по&nbsp;ВНЖ».<br/>
-        А&nbsp;маршрут, в&nbsp;котором человек, семья, бизнес и&nbsp;капитал движутся в&nbsp;одну сторону.
+        Все девять линий сходятся в&nbsp;<strong>одну архитектуру</strong>.<br/>
+        Не&nbsp;набор услуг — а&nbsp;маршрут с&nbsp;понятной логикой и&nbsp;понятным следующим шагом.
       </p>
-      <div class="route-svg" aria-hidden="true">
-        <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="rcLine" x1="0%" y1="50%" x2="100%" y2="50%">
-              <stop offset="0%" stop-color="#a08156" stop-opacity=".25"/>
-              <stop offset="100%" stop-color="#cfc4a2" stop-opacity=".95"/>
-            </linearGradient>
-          </defs>
-          <!-- 4 lines converging into 1 -->
-          <path d="M10 30 Q160 30 280 100" fill="none" stroke="url(#rcLine)" stroke-width="1.6"/>
-          <path d="M10 80 Q160 80 280 100" fill="none" stroke="url(#rcLine)" stroke-width="1.6"/>
-          <path d="M10 130 Q160 130 280 100" fill="none" stroke="url(#rcLine)" stroke-width="1.6"/>
-          <path d="M10 180 Q160 180 280 100" fill="none" stroke="url(#rcLine)" stroke-width="1.6"/>
-          <!-- merged path forward -->
-          <path d="M280 100 L310 100" stroke="#cfc4a2" stroke-width="2"/>
-          <!-- start nodes -->
-          <circle cx="10" cy="30" r="3" fill="#a08156"/>
-          <circle cx="10" cy="80" r="3" fill="#a08156"/>
-          <circle cx="10" cy="130" r="3" fill="#a08156"/>
-          <circle cx="10" cy="180" r="3" fill="#a08156"/>
-          <!-- merge node -->
-          <circle cx="280" cy="100" r="5" fill="#cfc4a2"/>
-          <!-- end arrow -->
-          <path d="M306 96 L314 100 L306 104" fill="none" stroke="#cfc4a2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-          <!-- labels -->
-          <text x="20" y="24" fill="#94a3b8" font-family="Inter,sans-serif" font-size="9" letter-spacing="0.5">Человек</text>
-          <text x="20" y="74" fill="#94a3b8" font-family="Inter,sans-serif" font-size="9" letter-spacing="0.5">Семья</text>
-          <text x="20" y="124" fill="#94a3b8" font-family="Inter,sans-serif" font-size="9" letter-spacing="0.5">Бизнес</text>
-          <text x="20" y="174" fill="#94a3b8" font-family="Inter,sans-serif" font-size="9" letter-spacing="0.5">Капитал</text>
-          <text x="244" y="86" fill="#cfc4a2" font-family="Inter,sans-serif" font-size="9" letter-spacing="1" font-weight="600">МАРШРУТ</text>
-        </svg>
+      <div class="route-converge-end">
+        <span>Один маршрут</span>
+        <span class="arrow-bar"></span>
       </div>
     </div>
   </div>
@@ -1052,53 +1461,70 @@ footer.f{
     <div class="s-head">
       <span class="kicker">Структура</span>
       <h2>Свобода требует структуры.</h2>
+      <p>Свободный мир открыт. Но&nbsp;он&nbsp;<strong>задаёт вопросы</strong>. И&nbsp;на&nbsp;каждый есть свой документ.</p>
     </div>
 
-    <p class="structure-intro">
-      Свободный мир открыт. Но&nbsp;он&nbsp;задаёт вопросы.
-    </p>
-
-    <div class="structure-block">
-      <div class="structure-card">
-        <h4>Банк хочет понять</h4>
-        <ul>
-          <li>кто вы;</li>
-          <li>откуда капитал;</li>
-          <li>как он&nbsp;был заработан;</li>
-          <li>почему он&nbsp;движется сейчас;</li>
-          <li>зачем вам счёт;</li>
-          <li>какая будет активность;</li>
-          <li>почему выбрана эта страна;</li>
-          <li>какие документы подтверждают историю.</li>
-        </ul>
+    <div class="structure-grid">
+      <div class="structure-text">
+        <p class="structure-intro">Когда Вы&nbsp;приходите в&nbsp;банк, через 6&nbsp;секунд вашу историю сканирует не&nbsp;человек, а&nbsp;<strong>compliance-протокол</strong>.</p>
+        <p class="structure-intro">Банк хочет понять не&nbsp;«хороший&nbsp;ли&nbsp;Вы&nbsp;человек». Банк хочет понять <strong>восемь конкретных вещей</strong>.</p>
+        <div class="bank-chips">
+          <span class="bank-chip">Кто Вы?</span>
+          <span class="bank-chip">Откуда капитал?</span>
+          <span class="bank-chip">Как заработан?</span>
+          <span class="bank-chip">Почему движется сейчас?</span>
+          <span class="bank-chip">Зачем счёт?</span>
+          <span class="bank-chip">Какая активность?</span>
+          <span class="bank-chip">Почему эта страна?</span>
+          <span class="bank-chip">Какие документы подтверждают?</span>
+        </div>
       </div>
-      <div class="structure-list">
-        <div class="structure-list-row">
-          <div class="who">Юрист</div>
-          <div class="what">хочет понимать ваш статус.</div>
-        </div>
-        <div class="structure-list-row">
-          <div class="who">Налоговый консультант</div>
-          <div class="what">— вашу резидентность.</div>
-        </div>
-        <div class="structure-list-row">
-          <div class="who">Банк</div>
-          <div class="what">— происхождение средств.</div>
-        </div>
-        <div class="structure-list-row">
-          <div class="who">Инвест. платформа</div>
-          <div class="what">— экономический смысл.</div>
-        </div>
-        <div class="structure-list-row">
-          <div class="who">Регулируемый off-ramp</div>
-          <div class="what">— вашу крипто-историю.</div>
-        </div>
+      <figure class="structure-visual">
+        <img src="assets/freedom-route/bank-questions.webp" loading="lazy" alt="Банк хочет понять историю человека и капитала"/>
+        <figcaption class="structure-visual-card">
+          <div class="label">Compliance review</div>
+          <div class="text">Банк смотрит на&nbsp;вашу биографию глазами протокола. Папка должна отвечать заранее.</div>
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="roles-grid">
+      <div class="role-cell">
+        <div class="role-label">Юрист</div>
+        <div class="role-text">видит&nbsp;Ваш статус.</div>
+      </div>
+      <div class="role-cell">
+        <div class="role-label">Налоговый</div>
+        <div class="role-text">— Вашу резидентность.</div>
+      </div>
+      <div class="role-cell">
+        <div class="role-label">Банк</div>
+        <div class="role-text">— происхождение средств.</div>
+      </div>
+      <div class="role-cell">
+        <div class="role-label">Платформа</div>
+        <div class="role-text">— экономический смысл.</div>
+      </div>
+      <div class="role-cell">
+        <div class="role-label">Off-ramp</div>
+        <div class="role-text">— Вашу крипто-историю.</div>
       </div>
     </div>
 
     <div class="structure-key">
-      Мы переводим вашу <strong>реальную жизнь</strong> на&nbsp;язык, который понимает международная финансовая система.
+      Мы переводим Вашу <strong>реальную жизнь</strong> на&nbsp;язык, который понимает международная финансовая система.
     </div>
+  </div>
+</section>
+
+<!-- ─── PULL QUOTE 2 ─────────────────────────────────────── -->
+<section class="pull-quote" aria-hidden="true">
+  <div class="pull-quote-inner">
+    <span class="pull-quote-mark">“</span>
+    <p class="pull-quote-text">
+      Свободный мир открыт <em>для&nbsp;тех</em>,<br/>
+      кто может объяснить свой капитал.
+    </p>
   </div>
 </section>
 
@@ -1110,39 +1536,80 @@ footer.f{
     <div class="s-head">
       <span class="kicker">Ситуации</span>
       <h2>С&nbsp;чем приходят предприниматели.</h2>
-      <p>Шесть типичных запросов 2026 года. Если хотя бы один совпадает — это наш разговор.</p>
+      <p>Шесть типичных запросов 2026&nbsp;года. <strong>Если хотя&nbsp;бы один совпадает</strong> — это наш разговор.</p>
     </div>
 
     <div class="scenarios">
       <article class="scenario">
-        <span class="scenario-num">01</span>
-        <h4>Хочу вывезти семью, но&nbsp;не&nbsp;понимаю, с&nbsp;чего начать</h4>
-        <p>Нужен не&nbsp;просто ВНЖ. Нужен маршрут: страна, школа, счёт, документы, капитал, налоговая логика.</p>
+        <div class="scenario-img">
+          <img src="assets/freedom-route/family-relocation.webp" loading="lazy" alt="Семейный маршрут — школа, документы, переезд"/>
+          <span class="scenario-num">01 · Семья</span>
+        </div>
+        <div class="scenario-body">
+          <h4>Хочу вывезти семью, но&nbsp;не&nbsp;понимаю, с&nbsp;чего начать</h4>
+          <p>Нужен не&nbsp;просто ВНЖ. Нужен маршрут: страна, школа, счёт, документы, капитал, налоговая логика.</p>
+          <a href="#contact" class="scenario-cta"><span>Построить семейный маршрут</span><span class="arr">→</span></a>
+        </div>
       </article>
+
       <article class="scenario">
-        <span class="scenario-num">02</span>
-        <h4>Бизнес в&nbsp;СНГ работает, но&nbsp;я&nbsp;хочу прибыль в&nbsp;свободном мире</h4>
-        <p>Нужен второй контур: компания, договоры, счёт, объяснение экономического смысла, документы по&nbsp;прибыли.</p>
+        <div class="scenario-img">
+          <img src="assets/freedom-route/business-holding.webp" loading="lazy" alt="Бизнес и международный холдинг"/>
+          <span class="scenario-num">02 · Бизнес</span>
+        </div>
+        <div class="scenario-body">
+          <h4>Бизнес в&nbsp;СНГ работает. Прибыль хочу в&nbsp;свободном мире</h4>
+          <p>Нужен второй контур: компания, договоры, счёт, объяснение экономического смысла, документы по&nbsp;прибыли.</p>
+          <a href="#contact" class="scenario-cta"><span>Собрать бизнес-контур</span><span class="arr">→</span></a>
+        </div>
       </article>
+
       <article class="scenario">
-        <span class="scenario-num">03</span>
-        <h4>Есть крипта, но&nbsp;банк её не&nbsp;принимает</h4>
-        <p>Нужна история: откуда монеты, где KYC-точки, какие биржи, какие транзакции, какой regulated off-ramp.</p>
+        <div class="scenario-img">
+          <img src="assets/freedom-route/crypto-bankability.webp" loading="lazy" alt="Крипта и регулируемый банковский off-ramp"/>
+          <span class="scenario-num">03 · Крипта</span>
+        </div>
+        <div class="scenario-body">
+          <h4>Крипта есть. Банк её не&nbsp;принимает</h4>
+          <p>Нужна история: откуда монеты, где KYC-точки, какие биржи, какие транзакции, какой regulated off-ramp.</p>
+          <a href="#contact" class="scenario-cta"><span>Проверить крипто-историю</span><span class="arr">→</span></a>
+        </div>
       </article>
+
       <article class="scenario">
-        <span class="scenario-num">04</span>
-        <h4>Продал актив дома, хочу купить недвижимость за&nbsp;границей</h4>
-        <p>Нужна цепочка: актив&nbsp;→&nbsp;продажа&nbsp;→&nbsp;налоговая история&nbsp;→&nbsp;банк&nbsp;→&nbsp;покупка&nbsp;→&nbsp;дальнейшее использование капитала.</p>
+        <div class="scenario-img">
+          <img src="assets/freedom-route/real-estate-route.webp" loading="lazy" alt="Покупка недвижимости за границей и подготовка документов"/>
+          <span class="scenario-num">04 · Актив</span>
+        </div>
+        <div class="scenario-body">
+          <h4>Продал актив дома. Хочу купить недвижимость за&nbsp;границей</h4>
+          <p>Нужна цепочка: актив&nbsp;→&nbsp;продажа&nbsp;→&nbsp;налоговая история&nbsp;→&nbsp;банк&nbsp;→&nbsp;покупка&nbsp;→&nbsp;дальнейшее использование.</p>
+          <a href="#contact" class="scenario-cta"><span>Подготовить покупку</span><span class="arr">→</span></a>
+        </div>
       </article>
+
       <article class="scenario">
-        <span class="scenario-num">05</span>
-        <h4>Хочу холдинг для бизнеса в&nbsp;Британии, Сингапуре, Гонконге или ОАЭ</h4>
-        <p>Нужна структура, которая выглядит не&nbsp;как пустая коробка, а&nbsp;как понятный международный бизнес-контур.</p>
+        <div class="scenario-img">
+          <img src="assets/freedom-route/international-holding.webp" loading="lazy" alt="Международный холдинг — Лондон, Сингапур, Гонконг, Дубай"/>
+          <span class="scenario-num">05 · Холдинг</span>
+        </div>
+        <div class="scenario-body">
+          <h4>Хочу холдинг — Британия, Сингапур, Гонконг или ОАЭ</h4>
+          <p>Нужна структура, которая выглядит не&nbsp;как пустая коробка, а&nbsp;как понятный международный бизнес-контур.</p>
+          <a href="#contact" class="scenario-cta"><span>Спроектировать холдинг</span><span class="arr">→</span></a>
+        </div>
       </article>
+
       <article class="scenario">
-        <span class="scenario-num">06</span>
-        <h4>Я&nbsp;устал зависеть от&nbsp;одной страны</h4>
-        <p>Нужна финансовая подушка, резервный счёт, понятный план и&nbsp;документы, которые не&nbsp;придётся собирать в&nbsp;панике.</p>
+        <div class="scenario-img">
+          <img src="assets/freedom-route/one-country-risk.webp" loading="lazy" alt="Резервный план и независимость от одной страны"/>
+          <span class="scenario-num">06 · Резерв</span>
+        </div>
+        <div class="scenario-body">
+          <h4>Я&nbsp;устал зависеть от&nbsp;одной страны</h4>
+          <p>Нужна финансовая подушка, резервный счёт, понятный план. И&nbsp;документы, которые не&nbsp;придётся собирать в&nbsp;панике.</p>
+          <a href="#contact" class="scenario-cta"><span>Создать резервный план</span><span class="arr">→</span></a>
+        </div>
       </article>
     </div>
   </div>
@@ -1152,9 +1619,10 @@ footer.f{
      SECTION 7 · ESCAPE vs TRANSITION
      ───────────────────────────────────────────────────────── -->
 <section class="transition-section" aria-labelledby="transitionH">
+  <div class="transition-line" aria-hidden="true"></div>
   <div class="transition-inner">
     <span class="kicker">Философия</span>
-    <h2 id="transitionH">Мы не&nbsp;продаём <em style="font-style:normal;color:#fca5a5;font-weight:300">побег</em>. Мы строим <strong>переход</strong>.</h2>
+    <h2 id="transitionH">Мы не&nbsp;продаём <span class="escape">побег</span>.<br/>Мы строим <strong>переход</strong>.</h2>
 
     <div class="escape-vs">
       <div class="escape-col left">
@@ -1166,12 +1634,13 @@ footer.f{
       <div class="escape-col right">
         <div class="escape-row"><strong>Переход</strong> — это маршрут.</div>
         <div class="escape-row"><strong>Переход</strong> создаёт историю.</div>
-        <div class="escape-row"><strong>Переход</strong> опирается на&nbsp;документы, банки, юристов, структуру и&nbsp;последовательность.</div>
+        <div class="escape-row"><strong>Переход</strong> опирается на&nbsp;документы, банки, юристов и&nbsp;последовательность.</div>
       </div>
     </div>
 
     <p class="transition-close">
-      Charter Capital помогает не&nbsp;<em style="font-style:normal;color:#fca5a5">исчезнуть</em> из&nbsp;старой системы, а&nbsp;<strong>аккуратно войти в&nbsp;новую</strong>.
+      Charter Capital помогает не&nbsp;<span style="color:#fca5a5">исчезнуть</span> из&nbsp;старой системы,<br/>
+      а&nbsp;<strong>аккуратно войти в&nbsp;новую</strong>.
     </p>
   </div>
 </section>
@@ -1182,50 +1651,111 @@ footer.f{
 <section class="s tight" id="private">
   <div class="container">
     <div class="private-bridge">
+      <div class="private-bridge-img" aria-hidden="true">
+        <img src="assets/freedom-route/private-capital-architecture.webp" loading="lazy" alt="Private Office для капитала от одного миллиона долларов"/>
+      </div>
       <div class="private-bridge-text">
-        <span class="private-flag">Private Office · от&nbsp;$1&nbsp;000&nbsp;000</span>
+        <span class="private-flag"><span class="d"></span>Private Office · Capital&nbsp;$1M+</span>
         <h3>Если капитал от&nbsp;$1M — нужен не&nbsp;маршрут, а&nbsp;<strong>архитектура</strong>.</h3>
         <p>Крупный капитал нельзя просто «перевести». Его нужно подготовить.</p>
-        <p>Для&nbsp;капитала от&nbsp;$1M мы&nbsp;собираем private-контур: биография капитала, Source&nbsp;of&nbsp;Wealth, bank-ready file, инвестиционная структура, недвижимость или real assets, private banking route, семейная стратегия и&nbsp;крипто-история, если нужно.</p>
-        <div class="private-key">
-          Ваш капитал должен не&nbsp;просто переместиться.<br/>
-          Он&nbsp;должен <strong>стать понятным свободному миру</strong>.
+        <p>Для&nbsp;капитала от&nbsp;$1M мы&nbsp;собираем private-контур — не&nbsp;набор услуг, а&nbsp;связную работу:</p>
+        <div class="private-chips">
+          <span class="private-chip"><span class="d"></span>Capital&nbsp;Biography</span>
+          <span class="private-chip"><span class="d"></span>Source&nbsp;of&nbsp;Wealth</span>
+          <span class="private-chip"><span class="d"></span>Bank-ready&nbsp;file</span>
+          <span class="private-chip"><span class="d"></span>Real&nbsp;Assets · Private&nbsp;Banking</span>
         </div>
-      </div>
-      <div class="private-bridge-cta">
-        <a href="private.html" class="btn btn-gold btn-lg">Перейти в&nbsp;Private Office <span class="arr">→</span></a>
+        <p style="font-size:15px;color:#fff;margin-bottom:28px;font-weight:300;line-height:1.5">
+          Ваш капитал должен не&nbsp;просто переместиться.<br/>
+          Он&nbsp;должен <strong style="color:var(--gold-warm)">стать понятным свободному миру</strong>.
+        </p>
+        <div class="private-bridge-cta">
+          <a href="private.html" class="btn btn-gold btn-lg">Перейти в&nbsp;Private Office <span class="arr">→</span></a>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ─────────────────────────────────────────────────────────
-     SECTION 9 · WHAT YOU GET — Карта новой жизни
+     SECTION 9 · RESULT — Карта новой жизни (dashboard)
      ───────────────────────────────────────────────────────── -->
 <section class="s alt">
   <div class="container">
-    <div class="s-head">
-      <span class="kicker">Результат</span>
-      <h2>В&nbsp;результате у&nbsp;вас появляется не&nbsp;набор услуг, а&nbsp;<em style="font-style:normal;color:#cfc4a2;font-weight:400">карта новой жизни</em>.</h2>
-    </div>
-    <p class="you-get-intro">Вы понимаете:</p>
+    <div class="result-grid">
+      <div class="result-text">
+        <span class="kicker">Результат</span>
+        <h2>Не&nbsp;набор услуг — <em style="font-style:normal;color:var(--gold-warm);font-weight:400">карта новой жизни</em>.</h2>
+        <p>После первой работы у&nbsp;Вас на&nbsp;руках появляется <strong>не&nbsp;куча договоров</strong>, а&nbsp;понятный документ: что у&nbsp;Вас есть, чего нет, и&nbsp;что делать дальше.</p>
+        <ul class="result-bullets">
+          <li><span class="n">01</span><span>Понимаете, где Вы&nbsp;сейчас.</span></li>
+          <li><span class="n">02</span><span>Видите, какие двери ещё можно открыть.</span></li>
+          <li><span class="n">03</span><span>Знаете, какие документы нужны.</span></li>
+          <li><span class="n">04</span><span>Двигаетесь без хаоса.</span></li>
+        </ul>
+      </div>
 
-    <div class="you-get-list">
-      <div class="you-get-item"><span class="ic"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span>где вы&nbsp;сейчас;</span></div>
-      <div class="you-get-item"><span class="ic"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span>какие двери закрыты;</span></div>
-      <div class="you-get-item"><span class="ic"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span>какие двери ещё можно открыть;</span></div>
-      <div class="you-get-item"><span class="ic"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span>какой банк, страна или структура подходят;</span></div>
-      <div class="you-get-item"><span class="ic"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span>какие документы нужны;</span></div>
-      <div class="you-get-item"><span class="ic"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span>какие действия опасны;</span></div>
-      <div class="you-get-item"><span class="ic"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span>как защитить семью;</span></div>
-      <div class="you-get-item"><span class="ic"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span>как сохранить бизнес;</span></div>
-      <div class="you-get-item"><span class="ic"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span>как создать резервный капитал за&nbsp;границей;</span></div>
-      <div class="you-get-item"><span class="ic"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span>как двигаться без хаоса.</span></div>
+      <div class="result-card" aria-hidden="true">
+        <div class="result-card-head">
+          <span class="result-card-id">CASE · FR-2026 · Personal route</span>
+          <span class="result-card-stage">Working file</span>
+        </div>
+        <div class="result-row">
+          <div class="label">
+            <span class="name">Route Map</span>
+            <span class="meta">Семья · бизнес · капитал · банк</span>
+          </div>
+          <span class="result-tag r-defined">Defined</span>
+        </div>
+        <div class="result-row">
+          <div class="label">
+            <span class="name">Bank Readiness</span>
+            <span class="meta">Source-of-Funds · история · хронология</span>
+          </div>
+          <span class="result-tag r-progress">In&nbsp;progress</span>
+        </div>
+        <div class="result-row">
+          <div class="label">
+            <span class="name">Family Safety</span>
+            <span class="meta">ВНЖ · школа · резидентность</span>
+          </div>
+          <span class="result-tag r-defined">Defined</span>
+        </div>
+        <div class="result-row">
+          <div class="label">
+            <span class="name">Capital Structure</span>
+            <span class="meta">Холдинг · substance · контракты</span>
+          </div>
+          <span class="result-tag r-prepare">Ready&nbsp;to&nbsp;prepare</span>
+        </div>
+        <div class="result-row">
+          <div class="label">
+            <span class="name">Next 90 Days</span>
+            <span class="meta">Конкретные шаги, без хаоса</span>
+          </div>
+          <span class="result-tag r-defined">Defined</span>
+        </div>
+        <div class="result-card-foot">
+          <div class="result-card-foot-l">
+            <span class="result-card-foot-label">Your view</span>
+            <span class="result-card-foot-val">Без догадок, без паники</span>
+          </div>
+          <span class="result-card-foot-tag">Clarity</span>
+        </div>
+      </div>
     </div>
+  </div>
+</section>
 
-    <div class="you-get-close">
-      <strong>Главное</strong> — вы&nbsp;перестаёте действовать вслепую.
-    </div>
+<!-- ─── PULL QUOTE 3 ─────────────────────────────────────── -->
+<section class="pull-quote" aria-hidden="true">
+  <div class="pull-quote-inner">
+    <span class="pull-quote-mark">“</span>
+    <p class="pull-quote-text">
+      Сначала маршрут.<br/>
+      Потом действие.<br/>
+      <em>Не&nbsp;наоборот.</em>
+    </p>
   </div>
 </section>
 
@@ -1233,11 +1763,14 @@ footer.f{
      SECTION 10 · FINAL CTA
      ───────────────────────────────────────────────────────── -->
 <section class="s tight" id="contact">
-  <div class="container-sm">
+  <div class="container">
     <div class="final-cta">
+      <div class="final-cta-img" aria-hidden="true">
+        <img src="assets/freedom-route/final-route-light.webp" loading="lazy" alt="Первый шаг к свободному международному маршруту"/>
+      </div>
       <div class="final-cta-inner">
-        <span class="kicker blue">Первый шаг</span>
-        <h2>Первый шаг — понять маршрут.</h2>
+        <span class="kicker bright">Первый шаг</span>
+        <h2>Первый шаг — <strong>понять маршрут</strong>.</h2>
 
         <div class="final-cta-list">
           <div class="final-cta-list-line">Не&nbsp;надо сразу открывать компанию.</div>
@@ -1247,11 +1780,11 @@ footer.f{
         </div>
 
         <p class="final-cta-bridge">
-          Сначала нужно понять: <strong>где главный риск</strong>, что можно делать сейчас, что нельзя трогать без подготовки, какие документы собрать, какая страна подходит и&nbsp;какой финансовый маршрут реалистичен.
+          Сначала нужно понять: <strong>где главный риск</strong>, что можно делать сейчас, что нельзя трогать без подготовки, какие документы собрать, какая страна подходит и&nbsp;какой маршрут реалистичен.
         </p>
 
-        <div class="contact-strip">
-          <a href="https://t.me/charter_capital" class="btn btn-gold btn-lg" target="_blank" rel="noopener">
+        <div class="final-cta-actions">
+          <a href="https://t.me/charter_capital" class="btn btn-light btn-lg" target="_blank" rel="noopener">
             Разобрать мой маршрут <span class="arr">→</span>
           </a>
           <a href="mailto:hello@ccapital.pro" class="btn btn-ghost btn-lg">hello@ccapital.pro</a>
@@ -1280,16 +1813,17 @@ footer.f{
       <div class="f-col">
         <h5>Контуры</h5>
         <ul>
+          <li><a href="/">Основной сайт Charter Capital</a></li>
           <li><a href="homeland.html">Подготовка к&nbsp;исходу · ещё в&nbsp;РФ</a></li>
-          <li><a href="index.html">Основной агрегатор · от&nbsp;$50&nbsp;000</a></li>
-          <li><a href="private.html">Private Office · от&nbsp;$1&nbsp;000&nbsp;000</a></li>
-          <li><a href="fund.html">Charter Asia Fund · от&nbsp;$25&nbsp;000</a></li>
+          <li><a href="private.html">Private Office · от&nbsp;$1М</a></li>
+          <li><a href="corporate.html">Бизнес / ВЭД</a></li>
         </ul>
       </div>
       <div class="f-col">
         <h5>Разделы</h5>
         <ul>
           <li><a href="#idea">Идея</a></li>
+          <li><a href="#freedom">Свобода</a></li>
           <li><a href="#route">Маршрут</a></li>
           <li><a href="#cases">Ситуации</a></li>
           <li><a href="#private">Private Office</a></li>
@@ -1353,17 +1887,17 @@ document.addEventListener('click',function(e){
   }catch(err){}
 });
 
-// Subtle reveal on scroll for manifesto + scenario cards
+// Subtle reveal on scroll
 (function(){
   if(!('IntersectionObserver' in window)) return;
-  var els=document.querySelectorAll('.manifesto-line,.scenario,.route-cell,.tn-col,.escape-row');
+  var els=document.querySelectorAll('.manifesto-line,.scenario,.route-cell,.tn-col,.escape-row,.glimpse,.role-cell,.result-row,.bank-chip,.private-chip,.pull-quote-text');
   els.forEach(function(el){
     el.style.opacity='0';
     el.style.transform='translateY(14px)';
     el.style.transition='opacity .6s ease, transform .6s ease';
   });
   var io=new IntersectionObserver(function(entries){
-    entries.forEach(function(entry,i){
+    entries.forEach(function(entry){
       if(entry.isIntersecting){
         var el=entry.target;
         var delay=parseInt(el.dataset.delay||'0',10);
@@ -1375,10 +1909,14 @@ document.addEventListener('click',function(e){
       }
     });
   },{threshold:.12,rootMargin:'0px 0px -60px 0px'});
-  // Stagger manifesto lines
-  document.querySelectorAll('.manifesto-line').forEach(function(el,i){ el.dataset.delay=String(i*90); });
+  document.querySelectorAll('.manifesto-line').forEach(function(el,i){ el.dataset.delay=String(i*80); });
+  document.querySelectorAll('.glimpse').forEach(function(el,i){ el.dataset.delay=String(i*100); });
   document.querySelectorAll('.scenario').forEach(function(el,i){ el.dataset.delay=String(i*60); });
   document.querySelectorAll('.route-cell').forEach(function(el,i){ el.dataset.delay=String(i*40); });
+  document.querySelectorAll('.bank-chip').forEach(function(el,i){ el.dataset.delay=String(i*40); });
+  document.querySelectorAll('.private-chip').forEach(function(el,i){ el.dataset.delay=String(i*60); });
+  document.querySelectorAll('.role-cell').forEach(function(el,i){ el.dataset.delay=String(i*50); });
+  document.querySelectorAll('.result-row').forEach(function(el,i){ el.dataset.delay=String(i*70); });
   els.forEach(function(el){ io.observe(el); });
 })();
 </script>

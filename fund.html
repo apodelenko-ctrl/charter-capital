@@ -121,13 +121,29 @@ p{color:var(--text-soft);font-weight:400;line-height:1.65;font-size:16px}
 .deck.dark p{color:#cbd5e1}
 
 /* ─── HERO ──────────────────────────────────────────────── */
-.hero-deck{background:#020202;color:#fff;position:relative;overflow:hidden}
-.hero-img{
-  display:block;width:100%;height:min(48vw,540px);
-  object-fit:cover;object-position:center 35%;
-  filter:brightness(.62) saturate(1.05);
+.cc-hero{
+  position:relative;min-height:min(96vh,860px);
+  background-color:#020202;background-size:cover;background-position:center;background-repeat:no-repeat;
+  display:flex;align-items:center;
+  isolation:isolate;overflow:hidden;
 }
-.hero-body{padding:64px 72px 72px;position:relative}
+.cc-hero::before{
+  content:'';position:absolute;inset:0;z-index:-1;
+}
+.cc-hero--fund{
+  background-image:url('assets/fund/villa-hero.jpg');
+}
+.cc-hero--fund::before{
+  background:
+    linear-gradient(180deg,rgba(6,8,15,.20) 0%,rgba(6,8,15,.55) 55%,rgba(6,8,15,.92) 100%),
+    radial-gradient(circle at 20% 80%,rgba(160,129,86,.16) 0%,transparent 60%);
+}
+.cc-hero-body{
+  position:relative;z-index:1;width:100%;
+  max-width:1280px;margin:0 auto;
+  padding:160px 72px 100px;
+  color:#fff;
+}
 .hero-flag{
   display:inline-flex;align-items:center;gap:10px;
   background:rgba(160,129,86,.14);border:1px solid rgba(160,129,86,.45);
@@ -137,9 +153,13 @@ p{color:var(--text-soft);font-weight:400;line-height:1.65;font-size:16px}
 }
 .hero-flag .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2.4s ease infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-.hero-deck .title{color:#fff;max-width:24ch}
+.cc-hero .title{color:#fff;max-width:24ch}
+@media(max-width:880px){
+  .cc-hero{min-height:auto}
+  .cc-hero-body{padding:120px 28px 64px}
+}
 .hero-second{font-size:clamp(1.05rem,1.55vw,1.35rem);font-weight:300;color:var(--gold-soft);letter-spacing:-.01em;line-height:1.4;margin:8px 0 22px;max-width:48ch}
-.hero-deck .lead{color:#cbd5e1;max-width:62ch;margin-top:6px}
+.cc-hero .lead{color:#cbd5e1;max-width:62ch;margin-top:6px}
 .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:42px}
 .btn{
   display:inline-flex;align-items:center;gap:8px;
@@ -423,15 +443,14 @@ footer.f{
 
 <main>
 
-<!-- ─── DECK 1 · HERO ────────────────────────────────────── -->
-<section class="deck hero-deck">
-  <img class="hero-img" src="assets/fund/villa-exterior-1.jpg" alt="Charter Asia Fund — premium real estate Phuket"/>
-  <div class="hero-body">
+<!-- ─── DECK 1 · HERO (full-bleed background) ───────────── -->
+<section class="cc-hero cc-hero--fund">
+  <div class="cc-hero-body">
     <div class="hero-flag">
       <span class="dot"></span>
       <span>Charter Asia Fund · сингапурская инвестиционная программа</span>
     </div>
-    <h1 class="title">Реальный Пхукет — <strong>от $25 000</strong>.</h1>
+    <h1 class="title">Реальный Пхукет — <strong>от $25&nbsp;000</strong>.</h1>
     <p class="hero-second">Доход и рост на основе данных, а не обещаний. Сингапурский приватный фонд Charter Capital для инвестирования в курортную недвижимость Азии.</p>
     <p class="lead">Купон, рост или гибрид — выбираете стратегию, мы выбираем объекты. Фракционная модель: премиум-локации без покупки целой квартиры. Юридическая, операционная и сервисная инфраструктура — на стороне фонда.</p>
     <div class="hero-actions">
