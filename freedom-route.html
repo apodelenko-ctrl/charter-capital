@@ -3,17 +3,46 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="color-scheme" content="dark light"/>
+<meta name="theme-color" content="#06080f" media="(prefers-color-scheme: dark)"/>
+<meta name="theme-color" content="#fbfaf6" media="(prefers-color-scheme: light)"/>
+<meta name="format-detection" content="telephone=no"/>
+<meta name="referrer" content="strict-origin-when-cross-origin"/>
 <title>Маршрут в свободный мир | Charter Capital</title>
 <meta name="description" content="Charter Capital помогает предпринимателям из СНГ перенести себя, семью, капитал и бизнес в свободный мир: банковский маршрут, документы по капиталу, компания, ВНЖ, крипто-выход и финансовая подушка за границей."/>
+<meta name="keywords" content="релокация предпринимателя, банковский счёт за рубежом, ВНЖ за инвестиции, гражданство за инвестиции, крипто-выход, международный холдинг, Сингапур, Гонконг, ОАЭ, Великобритания, Charter Capital"/>
+<meta name="author" content="Charter Capital"/>
+<meta name="geo.region" content="SG"/>
+<meta name="language" content="Russian"/>
+<meta name="content-language" content="ru"/>
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1"/>
+<meta name="yandex" content="index,follow"/>
+
+<link rel="canonical" href="https://ccapital.pro/freedom-route.html"/>
+<link rel="alternate" hreflang="ru" href="https://ccapital.pro/freedom-route.html"/>
+<link rel="alternate" hreflang="x-default" href="https://ccapital.pro/freedom-route.html"/>
+
 <meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Charter Capital"/>
 <meta property="og:title" content="Маршрут в свободный мир · Charter Capital"/>
 <meta property="og:description" content="Когда двери закрываются — Charter Capital открывает мир без искусственных границ. Маршрут для предпринимателей из СНГ: семья, капитал, банк, компания, ВНЖ, крипто-выход."/>
 <meta property="og:url" content="https://ccapital.pro/freedom-route.html"/>
 <meta property="og:image" content="https://ccapital.pro/assets/freedom-route/hero-open-world.webp"/>
+<meta property="og:image:alt" content="Маршрут в свободный мир — Charter Capital"/>
+<meta property="og:locale" content="ru_RU"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Маршрут в свободный мир · Charter Capital"/>
+<meta name="twitter:description" content="Семья, капитал, банк, компания, ВНЖ, крипто-выход — один международный маршрут."/>
+<meta name="twitter:image" content="https://ccapital.pro/assets/freedom-route/hero-open-world.webp"/>
+
+<link rel="dns-prefetch" href="https://fonts.googleapis.com"/>
+<link rel="dns-prefetch" href="https://fonts.gstatic.com"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link rel="preload" as="image" href="assets/freedom-route/hero-open-world.webp" fetchpriority="high"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&family=Cormorant+Garamond:wght@300;400;500&display=swap"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&family=Cormorant+Garamond:wght@300;400;500&display=swap" media="print" onload="this.media='all'"/>
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&family=Cormorant+Garamond:wght@300;400;500&display=swap"/></noscript>
 <style>
 :root{
   --bg:#06080f;
@@ -167,51 +196,64 @@ p{color:var(--on-dark-soft);font-weight:400;line-height:1.7}
 /* ─── HERO ──────────────────────────────────────────────── */
 .hero{
   position:relative;min-height:100vh;
-  padding:130px 32px 90px;
+  padding:140px 32px 100px;
   overflow:hidden;
   display:flex;align-items:center;
   background:#06080f;
 }
-.hero::before{
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:78% center;
+}
+.hero-bg::after{
   content:'';position:absolute;inset:0;
   background:
-    radial-gradient(ellipse at 78% 40%,rgba(160,129,86,.18) 0%,transparent 55%),
-    radial-gradient(ellipse at 12% 18%,rgba(37,99,235,.06) 0%,transparent 55%),
-    linear-gradient(180deg,#06080f 0%,#0a0e1a 100%);
+    linear-gradient(96deg,
+      rgba(6,8,15,.96) 0%,
+      rgba(6,8,15,.9)  30%,
+      rgba(6,8,15,.7)  52%,
+      rgba(6,8,15,.32) 78%,
+      rgba(6,8,15,.18) 100%),
+    radial-gradient(ellipse at 78% 38%,rgba(232,212,168,.1) 0%,transparent 55%),
+    linear-gradient(180deg,rgba(6,8,15,.18) 0%,rgba(6,8,15,.55) 100%);
   pointer-events:none;
 }
-.hero-grid{
+.hero-content{
   position:relative;z-index:1;
-  max-width:1320px;margin:0 auto;
-  display:grid;grid-template-columns:1.05fr .95fr;
-  gap:72px;align-items:center;width:100%;
+  max-width:1320px;margin:0 auto;width:100%;
 }
+.hero-copy{max-width:680px}
 .hero-flag{
   display:inline-flex;align-items:center;gap:10px;
-  background:rgba(160,129,86,.1);border:1px solid rgba(160,129,86,.36);
+  background:rgba(160,129,86,.16);
+  border:1px solid rgba(160,129,86,.42);
   padding:7px 16px;border-radius:999px;
   font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--gold-soft);margin-bottom:32px;
+  color:var(--gold-soft);margin-bottom:30px;
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
 }
 .hero-flag .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2.6s ease infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 .hero h1{
-  color:#fff;max-width:18ch;
+  color:#fff;max-width:16ch;
   font-size:clamp(2.4rem,5.4vw,4.6rem);
   line-height:1.02;letter-spacing:-.045em;
   font-weight:300;margin-bottom:28px;
+  text-shadow:0 2px 30px rgba(0,0,0,.4);
 }
 .hero h1 strong{font-weight:600;color:#fff}
-.hero h1 .em{color:var(--gold-soft);font-weight:400;font-style:normal}
+.hero h1 .em{color:var(--gold-warm);font-weight:400;font-style:normal}
 .hero-sub{
-  color:rgba(255,255,255,.78);
+  color:rgba(255,255,255,.86);
   font-size:clamp(1.05rem,1.5vw,1.3rem);
   line-height:1.5;font-weight:300;
-  max-width:54ch;margin-bottom:22px;
+  max-width:52ch;margin-bottom:22px;
   letter-spacing:-.005em;
+  text-shadow:0 1px 16px rgba(0,0,0,.5);
 }
 .hero-line{
-  font-size:14.5px;line-height:1.65;color:rgba(255,255,255,.72);
+  font-size:14.5px;line-height:1.65;color:rgba(255,255,255,.78);
   margin:0 0 14px;max-width:54ch;
 }
 .hero-line strong{color:#fff;font-weight:500}
@@ -219,104 +261,50 @@ p{color:var(--on-dark-soft);font-weight:400;line-height:1.7}
   display:flex;flex-wrap:wrap;gap:8px 14px;
   margin-bottom:36px;
   font-size:13.5px;letter-spacing:-.005em;
-  color:rgba(255,255,255,.62);
+  color:rgba(255,255,255,.7);
 }
-.hero-stack span{
-  position:relative;padding-right:14px;
-}
+.hero-stack span{position:relative;padding-right:14px}
 .hero-stack span:not(:last-child)::after{
-  content:'·';position:absolute;right:0;color:var(--gold);font-weight:600;
+  content:'·';position:absolute;right:0;color:var(--gold-warm);font-weight:600;
 }
 .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:28px}
 .hero-trust{
   display:flex;align-items:flex-start;gap:10px;
-  font-size:12.5px;color:rgba(255,255,255,.5);
+  font-size:12.5px;color:rgba(255,255,255,.6);
   line-height:1.6;max-width:48ch;
 }
 .hero-trust svg{width:14px;height:14px;stroke:var(--gold-soft);fill:none;stroke-width:1.6;flex-shrink:0;margin-top:3px}
 
-/* Hero visual: photo + glow + route micro-card */
-.hero-visual{
+/* Hero closing pull-line — integrated, not standalone */
+.hero-quote{
   position:relative;
-  width:100%;
-  aspect-ratio:16/10;
-  border-radius:var(--radius-lg);
-  overflow:hidden;
-  box-shadow:0 30px 80px -20px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.05);
+  margin-top:42px;padding:26px 0 0 26px;
+  border-top:1px solid rgba(160,129,86,.28);
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.2rem,1.7vw,1.6rem);
+  font-weight:300;font-style:italic;
+  line-height:1.32;
+  color:rgba(255,255,255,.92);
+  letter-spacing:-.005em;
+  max-width:54ch;
 }
-.hero-visual::before{
-  content:'';position:absolute;inset:0;z-index:2;
-  background:linear-gradient(110deg,rgba(6,8,15,.55) 0%,rgba(6,8,15,.05) 45%,transparent 70%),
-             linear-gradient(0deg,rgba(6,8,15,.4) 0%,transparent 40%);
-  pointer-events:none;
+.hero-quote::before{
+  content:'\201C';
+  position:absolute;left:-2px;top:14px;
+  font-family:'Cormorant Garamond',serif;
+  font-size:54px;font-style:normal;line-height:1;
+  color:var(--gold-warm);
 }
-.hero-visual img{
-  position:absolute;inset:0;width:100%;height:100%;
-  object-fit:cover;object-position:center;
-  z-index:1;
-}
-.hero-visual-card{
-  position:absolute;left:24px;bottom:24px;z-index:3;
-  display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;
-  background:rgba(6,8,15,.78);
-  border:1px solid rgba(160,129,86,.32);
-  border-radius:var(--radius);
-  padding:14px 18px;
-  backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);
-  max-width:calc(100% - 48px);
-}
-.hero-visual-card .vc-icon{
-  width:30px;height:30px;border-radius:50%;
-  border:1px solid rgba(160,129,86,.4);
-  background:rgba(160,129,86,.12);
-  display:flex;align-items:center;justify-content:center;
-  font-size:11px;color:var(--gold-soft);font-weight:700;
-}
-.hero-visual-card .vc-text{display:flex;flex-direction:column;gap:2px;min-width:0}
-.hero-visual-card .vc-label{font-size:10px;font-weight:700;letter-spacing:.16em;color:var(--gold-soft);text-transform:uppercase}
-.hero-visual-card .vc-line{font-size:13px;color:#fff;font-weight:500;letter-spacing:-.005em;line-height:1.3}
-.hero-visual-card .vc-arrow{
-  width:28px;height:28px;border-radius:50%;
-  background:var(--gold);color:#fff;
-  display:flex;align-items:center;justify-content:center;font-size:14px;
-}
+.hero-quote em{color:var(--gold-warm);font-style:italic;font-weight:400}
 
-/* ─── PULL QUOTE ────────────────────────────────────────── */
-.pull-quote{
-  padding:76px 32px;
-  background:linear-gradient(180deg,#06080f 0%,#0d1220 50%,#06080f 100%);
-  border-top:1px solid var(--line-dark);
-  border-bottom:1px solid var(--line-dark);
-  text-align:center;position:relative;overflow:hidden;
-}
-.pull-quote::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse at 50% 50%,rgba(160,129,86,.1) 0%,transparent 60%);
-  pointer-events:none;
-}
-.pull-quote-inner{position:relative;z-index:1;max-width:920px;margin:0 auto}
-.pull-quote-mark{
+/* Inline editorial pull-line (used inside structure / final CTA) */
+.inline-quote{
   font-family:'Cormorant Garamond',serif;
-  font-size:64px;line-height:1;color:var(--gold);
-  margin-bottom:6px;display:block;font-weight:400;
-  height:30px;overflow:visible;
+  font-weight:300;font-style:italic;
+  line-height:1.32;color:#fff;
+  letter-spacing:-.015em;
 }
-.pull-quote-text{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(1.5rem,3.4vw,2.6rem);
-  font-weight:300;line-height:1.25;
-  color:#fff;letter-spacing:-.015em;
-  font-style:italic;
-}
-.pull-quote-text em{color:var(--gold-soft);font-style:italic;font-weight:400}
-.pull-quote-attr{
-  display:block;margin-top:22px;
-  font-family:'Inter',sans-serif;
-  font-size:11px;font-weight:600;letter-spacing:.22em;
-  text-transform:uppercase;color:var(--on-dark-mute);
-  font-style:normal;
-}
+.inline-quote em{color:var(--gold-warm);font-style:italic;font-weight:400}
 
 /* ─── PAIN TICKER ───────────────────────────────────────── */
 .ticker-strip{
@@ -371,6 +359,15 @@ section.s.cream .kicker{color:var(--gold)}
 .s-head h2{margin-bottom:18px}
 .s-head p{font-size:17px;color:var(--on-dark-mute);font-weight:400;line-height:1.65}
 .s-head p strong{color:#fff;font-weight:500}
+.s-head .lead-human{
+  margin-top:24px;font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.2rem,1.6vw,1.5rem);
+  font-weight:300;font-style:italic;
+  line-height:1.4;color:rgba(255,255,255,.92);
+  letter-spacing:-.005em;max-width:60ch;
+  padding-left:18px;border-left:2px solid rgba(160,129,86,.4);
+}
+.s-head .lead-human strong{color:var(--gold-warm);font-style:italic;font-weight:400}
 
 /* ─── SECTION 2 — Manifesto / Freedom ──────────────────── */
 .manifesto{
@@ -714,15 +711,30 @@ section.s.cream .kicker{color:var(--gold)}
 .role-cell .role-text{font-size:13.5px;color:rgba(255,255,255,.78);line-height:1.5}
 
 .structure-key{
-  padding:42px 48px;
+  padding:48px 56px;
   background:linear-gradient(135deg,rgba(160,129,86,.1) 0%,rgba(160,129,86,.02) 100%);
   border:1px solid rgba(160,129,86,.32);
   border-radius:var(--radius-lg);
-  font-size:clamp(1.15rem,1.8vw,1.55rem);font-weight:300;
-  letter-spacing:-.02em;line-height:1.32;color:#fff;
-  max-width:none;text-align:center;
+  text-align:center;
 }
-.structure-key strong{color:var(--gold-warm);font-weight:500}
+.structure-key-quote{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.4rem,2.4vw,2.1rem);
+  font-style:italic;font-weight:300;
+  line-height:1.28;color:rgba(255,255,255,.94);
+  letter-spacing:-.015em;
+  max-width:680px;margin:0 auto 26px;
+  padding-bottom:26px;
+  border-bottom:1px solid rgba(160,129,86,.26);
+}
+.structure-key-quote em{color:var(--gold-warm);font-style:italic;font-weight:400}
+.structure-key-line{
+  font-size:clamp(1.15rem,1.8vw,1.55rem);
+  font-weight:300;letter-spacing:-.02em;
+  line-height:1.32;color:#fff;
+  max-width:760px;margin:0 auto;
+}
+.structure-key-line strong{color:var(--gold-warm);font-weight:500}
 
 /* ─── SECTION 6 — Scenarios ────────────────────────────── */
 .scenarios{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
@@ -1010,6 +1022,17 @@ section.s.cream .kicker{color:var(--gold)}
   position:relative;z-index:1;padding:96px 56px 80px;
   max-width:760px;margin:0 auto;
 }
+.final-cta-quote{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.3rem,2.3vw,1.95rem);
+  font-style:italic;font-weight:300;
+  line-height:1.3;color:rgba(255,255,255,.94);
+  letter-spacing:-.015em;
+  max-width:560px;margin:0 auto 32px;
+  padding-bottom:30px;
+  border-bottom:1px solid rgba(232,212,168,.28);
+}
+.final-cta-quote em{color:var(--gold-warm);font-style:italic;font-weight:400}
 .final-cta h2{
   color:#fff;font-size:clamp(1.9rem,3.6vw,3rem);
   margin-bottom:30px;font-weight:200;letter-spacing:-.035em;
@@ -1082,8 +1105,17 @@ footer.f{
 
 /* ─── Responsive ───────────────────────────────────────── */
 @media(max-width:1100px){
-  .hero-grid{grid-template-columns:1fr;gap:48px}
-  .hero-visual{max-width:640px;margin:0 auto;width:100%}
+  .hero-bg img{object-position:80% center}
+  .hero-bg::after{
+    background:
+      linear-gradient(96deg,
+        rgba(6,8,15,.97) 0%,
+        rgba(6,8,15,.92) 38%,
+        rgba(6,8,15,.78) 60%,
+        rgba(6,8,15,.5) 90%),
+      linear-gradient(180deg,rgba(6,8,15,.25) 0%,rgba(6,8,15,.65) 100%);
+  }
+  .hero-copy{max-width:580px}
   .route-converge{justify-content:flex-start}
   .private-bridge{grid-template-columns:1fr;min-height:auto}
   .private-bridge-img{aspect-ratio:16/9}
@@ -1103,9 +1135,20 @@ footer.f{
   .topbar-link{display:none}
   section.s{padding:88px 0}
   section.s.tight{padding:64px 0}
-  .hero{padding:120px 22px 80px;min-height:auto}
+  .hero{padding:120px 22px 80px;min-height:88vh}
+  .hero-bg img{object-position:72% center}
+  .hero-bg::after{
+    background:
+      linear-gradient(180deg,
+        rgba(6,8,15,.78) 0%,
+        rgba(6,8,15,.85) 60%,
+        rgba(6,8,15,.95) 100%),
+      linear-gradient(96deg,rgba(6,8,15,.3) 0%,rgba(6,8,15,0) 60%);
+  }
   .container,.container-wide,.container-sm,.container-narrow{padding:0 22px}
   .hero-actions .btn{width:100%;justify-content:center}
+  .hero-quote{margin-top:34px;padding:22px 0 0 22px;font-size:1.15rem}
+  .hero-quote::before{font-size:42px;top:8px}
   .then-now{grid-template-columns:1fr;gap:20px}
   .escape-vs{grid-template-columns:1fr;gap:14px}
   .escape-col.left .escape-row,.escape-col.right .escape-row{text-align:left}
@@ -1119,9 +1162,10 @@ footer.f{
   .old-routes-banner{aspect-ratio:4/3;max-height:none}
   .old-routes-banner-text{left:24px;right:24px;bottom:22px;max-width:none}
   .private-bridge-text{padding:36px 28px}
-  .pull-quote{padding:56px 22px}
   .final-cta-inner{padding:64px 28px 56px}
-  .structure-key{padding:28px 28px}
+  .structure-key{padding:32px 28px}
+  .structure-key-quote{padding-bottom:22px;margin-bottom:22px}
+  .s-head .lead-human{padding-left:14px}
   .f-grid{grid-template-columns:1fr 1fr;gap:28px}
   .sticky-cta{display:flex}
   body{padding-bottom:78px}
@@ -1134,8 +1178,6 @@ footer.f{
   .hero h1{font-size:2.1rem}
   .manifesto-line{font-size:1.15rem;padding-left:18px}
   .manifesto-line:hover{padding-left:22px}
-  .hero-visual-card{left:14px;bottom:14px;padding:10px 14px;gap:10px}
-  .hero-visual-card .vc-icon{display:none}
 }
 
 /* ─── Reduced motion ───────────────────────────────────── */
@@ -1144,6 +1186,68 @@ footer.f{
   *{transition-duration:.01ms !important;animation-duration:.01ms !important}
 }
 </style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://ccapital.pro/#organization",
+      "name": "Charter Capital",
+      "url": "https://ccapital.pro/",
+      "logo": "https://ccapital.pro/assets/logic/15-passport-gate.webp",
+      "slogan": "Когда двери закрываются, мы открываем мир",
+      "sameAs": ["https://t.me/charter_capital"],
+      "contactPoint": [{
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "email": "hello@ccapital.pro",
+        "url": "https://t.me/charter_capital",
+        "availableLanguage": ["Russian", "English"]
+      }]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://ccapital.pro/freedom-route.html#webpage",
+      "url": "https://ccapital.pro/freedom-route.html",
+      "name": "Маршрут в свободный мир — Charter Capital",
+      "isPartOf": {"@id": "https://ccapital.pro/#website"},
+      "about": {"@id": "https://ccapital.pro/#organization"},
+      "inLanguage": "ru-RU",
+      "primaryImageOfPage": "https://ccapital.pro/assets/freedom-route/hero-open-world.webp",
+      "description": "Charter Capital помогает предпринимателям из СНГ перенести себя, семью, капитал и бизнес в свободный мир: банковский маршрут, документы по капиталу, компания, ВНЖ, крипто-выход и финансовая подушка за границей."
+    },
+    {
+      "@type": "Service",
+      "name": "Маршрут в свободный мир",
+      "provider": {"@id": "https://ccapital.pro/#organization"},
+      "areaServed": ["RU", "CIS", "SG", "HK", "AE", "GB"],
+      "serviceType": "Релокация предпринимателя и капитала",
+      "description": "Семья, капитал, банк, компания, ВНЖ, крипто-выход — один международный маршрут.",
+      "url": "https://ccapital.pro/freedom-route.html",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Этапы маршрута",
+        "itemListElement": [
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Банковский маршрут (SG/HK/AE/EU/CH)"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Документы по капиталу (SoF/SoW)"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Корпоративная структура (Pte Ltd / Limited / Free Zone / UK Ltd)"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "ВНЖ и гражданство через лицензированных партнёров"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Crypto off-ramp"}}
+        ]
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Charter Capital", "item": "https://ccapital.pro/"},
+        {"@type": "ListItem", "position": 2, "name": "Маршрут в свободный мир", "item": "https://ccapital.pro/freedom-route.html"}
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -1177,7 +1281,10 @@ footer.f{
      SECTION 1 · HERO
      ───────────────────────────────────────────────────────── -->
 <section class="hero" id="top">
-  <div class="hero-grid">
+  <div class="hero-bg" aria-hidden="true">
+    <img src="assets/freedom-route/hero-open-world.webp" alt="" fetchpriority="high"/>
+  </div>
+  <div class="hero-content">
     <div class="hero-copy">
       <span class="hero-flag">
         <span class="dot"></span>
@@ -1211,30 +1318,11 @@ footer.f{
         <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-12V5l-8-3-8 3v5c0 8 8 12 8 12z"/></svg>
         <span>Первый разговор — не&nbsp;продажа. Это карта рисков: где Вы&nbsp;сейчас, что можно делать, а&nbsp;что лучше не&nbsp;трогать без подготовки.</span>
       </div>
+      <p class="hero-quote">
+        Свобода больше не&nbsp;даётся автоматически.<br/>
+        <em>Её&nbsp;нужно правильно структурировать.</em>
+      </p>
     </div>
-
-    <div class="hero-visual" aria-hidden="true">
-      <img src="assets/freedom-route/hero-open-world.webp" alt="" fetchpriority="high"/>
-      <div class="hero-visual-card">
-        <span class="vc-icon">→</span>
-        <div class="vc-text">
-          <span class="vc-label">Family · Capital · Business</span>
-          <span class="vc-line">Один маршрут в&nbsp;свободный мир</span>
-        </div>
-        <span class="vc-arrow">→</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── PULL QUOTE 1 ─────────────────────────────────────── -->
-<section class="pull-quote" aria-hidden="true">
-  <div class="pull-quote-inner">
-    <span class="pull-quote-mark">“</span>
-    <p class="pull-quote-text">
-      Свобода больше не&nbsp;даётся автоматически.<br/>
-      <em>Её&nbsp;нужно правильно структурировать.</em>
-    </p>
   </div>
 </section>
 
@@ -1267,6 +1355,9 @@ footer.f{
     <div class="s-head">
       <span class="kicker">Идея</span>
       <h2>Вы хотите не&nbsp;«счёт за&nbsp;границей». Вы&nbsp;хотите свободу.</h2>
+      <p class="lead-human">
+        Это не&nbsp;про красивую жизнь ради картинки. Это про <strong>право самому выбирать</strong>, где живёт Ваша семья и&nbsp;где находится Ваш капитал.
+      </p>
     </div>
     <div class="manifesto" id="freedom">
       <div class="manifesto-line">Свободу посадить детей в&nbsp;самолёт и&nbsp;отвезти их в&nbsp;<strong>Disneyland Paris</strong>.</div>
@@ -1300,11 +1391,6 @@ footer.f{
         </figcaption>
       </figure>
     </div>
-
-    <p class="manifesto-close">
-      Это не&nbsp;про красивую жизнь ради картинки.<br/>
-      Это про право самому выбирать, где живёт Ваша семья и&nbsp;где находится Ваш капитал.
-    </p>
 
     <div class="freedom-key">
       Свободный мир устроен иначе. Он&nbsp;не&nbsp;принимает капитал «на&nbsp;слово».<br/>
@@ -1513,19 +1599,13 @@ footer.f{
     </div>
 
     <div class="structure-key">
-      Мы переводим Вашу <strong>реальную жизнь</strong> на&nbsp;язык, который понимает международная финансовая система.
+      <p class="structure-key-quote">
+        Свободный мир открыт <em>для&nbsp;тех</em>, кто может объяснить свой капитал.
+      </p>
+      <p class="structure-key-line">
+        Мы переводим Вашу <strong>реальную жизнь</strong> на&nbsp;язык, который понимает международная финансовая система.
+      </p>
     </div>
-  </div>
-</section>
-
-<!-- ─── PULL QUOTE 2 ─────────────────────────────────────── -->
-<section class="pull-quote" aria-hidden="true">
-  <div class="pull-quote-inner">
-    <span class="pull-quote-mark">“</span>
-    <p class="pull-quote-text">
-      Свободный мир открыт <em>для&nbsp;тех</em>,<br/>
-      кто может объяснить свой капитал.
-    </p>
   </div>
 </section>
 
@@ -1748,18 +1828,6 @@ footer.f{
   </div>
 </section>
 
-<!-- ─── PULL QUOTE 3 ─────────────────────────────────────── -->
-<section class="pull-quote" aria-hidden="true">
-  <div class="pull-quote-inner">
-    <span class="pull-quote-mark">“</span>
-    <p class="pull-quote-text">
-      Сначала маршрут.<br/>
-      Потом действие.<br/>
-      <em>Не&nbsp;наоборот.</em>
-    </p>
-  </div>
-</section>
-
 <!-- ─────────────────────────────────────────────────────────
      SECTION 10 · FINAL CTA
      ───────────────────────────────────────────────────────── -->
@@ -1770,6 +1838,9 @@ footer.f{
         <img src="assets/freedom-route/final-route-light.webp" loading="lazy" alt="Первый шаг к свободному международному маршруту"/>
       </div>
       <div class="final-cta-inner">
+        <p class="final-cta-quote">
+          Сначала маршрут. Потом действие. <em>Не&nbsp;наоборот.</em>
+        </p>
         <span class="kicker bright">Первый шаг</span>
         <h2>Первый шаг — <strong>понять маршрут</strong>.</h2>
 
