@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Charter Asia Fund — инвестиции в курортную недвижимость Азии от $25 000</title>
+<meta name="description" content="Charter Asia Fund — сингапурская инвестиционная программа Charter Capital. Купон 6,5% годовых, рост +25% за 3 года или гибрид 11–14% IRR. Реальная курортная недвижимость Пхукета. Минимальный вход $25 000."/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Charter Asia Fund — инвестиции в курортную недвижимость Азии от $25 000"/>
+<meta property="og:description" content="Сингапурский приватный фонд Charter Capital для инвестирования в курортную недвижимость Азии. Купон, рост или гибрид."/>
+<meta property="og:url" content="https://ccapital.pro/fund.html"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#050505;
+  --paper:#fbfaf6;
+  --paper-2:#f3f0e8;
+  --line:#d1d5db;
+  --line-soft:#e5e7eb;
+  --line-dark:#1f2937;
+  --ink:#0a0a0a;
+  --text:#0f172a;
+  --text-soft:#374151;
+  --muted:#6b7280;
+  --gold:#a08156;
+  --gold-soft:#cfc4a2;
+  --green:#0f5132;
+  --blue:#1a3a8c;
+  --red:#b91c1c;
+  --radius:8px;
+  --radius-lg:14px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',-apple-system,sans-serif;
+  background:var(--bg);
+  color:#f8fafc;
+  font-size:16px;line-height:1.6;font-weight:400;
+  -webkit-font-smoothing:antialiased;
+  opacity:0;transition:opacity .35s ease;
+}
+body.page-ready{opacity:1}
+::selection{background:var(--gold);color:#fff}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:#0a0a0a}
+::-webkit-scrollbar-thumb{background:#374151;border-radius:3px}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit}
+
+/* ─── TOPBAR ────────────────────────────────────────────── */
+#topbar{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  height:64px;background:rgba(5,5,5,.92);
+  border-bottom:1px solid var(--line-dark);
+  backdrop-filter:saturate(180%) blur(14px);
+}
+.topbar-inner{
+  max-width:1320px;height:100%;margin:0 auto;padding:0 32px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+.topbar-left{display:flex;align-items:baseline;gap:14px;min-width:0;color:#fff}
+.topbar-brand{font-size:13px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#fff}
+.topbar-tag{
+  font-size:11px;font-weight:300;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--gold);border-left:1px solid #2a2a2a;padding-left:14px;
+}
+.topbar-nav{display:flex;align-items:center;gap:2px;flex:1;justify-content:center}
+.topbar-nav a{
+  font-size:11px;font-weight:500;letter-spacing:.13em;text-transform:uppercase;
+  color:#94a3b8;padding:8px 14px;border-radius:6px;
+  transition:color .15s ease,background .15s ease;
+}
+.topbar-nav a:hover{color:#fff;background:rgba(255,255,255,.06)}
+.topbar-right{display:flex;align-items:center;gap:10px}
+.topbar-link{
+  font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold-soft);padding:8px 14px;border-radius:6px;
+  transition:color .15s ease,background .15s ease;
+}
+.topbar-link:hover{color:#fff;background:rgba(255,255,255,.06)}
+
+main{padding-top:64px;background:#0a0a0a}
+
+/* ─── DECK ──────────────────────────────────────────────── */
+.deck{max-width:1280px;margin:0 auto;background:var(--paper);color:var(--ink);position:relative}
+.deck.dark{background:#020202;color:#fff}
+.deck.dark h1,.deck.dark h2,.deck.dark h3,.deck.dark h4{color:#fff}
+.deck.dark p{color:#cbd5e1}
+.deck.cream{background:var(--paper-2)}
+.blk{padding:88px 72px}
+@media(max-width:880px){.blk{padding:56px 28px}}
+
+.kicker{
+  display:inline-block;font-size:11px;font-weight:600;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:18px;
+}
+.kicker.muted{color:var(--muted)}
+.kicker.gold{color:var(--gold)}
+.deck.dark .kicker{color:var(--gold-soft)}
+.deck.dark .kicker.muted{color:#94a3b8}
+
+h1,h2,h3,h4{font-weight:300;letter-spacing:-.035em;line-height:1.06;color:var(--ink)}
+.title{
+  font-size:clamp(2rem,4.2vw,4rem);
+  font-weight:300;line-height:1.04;letter-spacing:-.04em;margin-bottom:22px;
+}
+.title strong{font-weight:700}
+.lead{font-size:clamp(1rem,1.32vw,1.4rem);line-height:1.6;color:var(--text-soft);max-width:70ch;font-weight:400}
+.deck.dark .title{color:#fff}
+.deck.dark .lead{color:#cbd5e1}
+
+.subhead{font-size:clamp(1.25rem,1.8vw,1.7rem);font-weight:500;letter-spacing:-.02em;line-height:1.18;margin-bottom:14px;color:var(--ink)}
+.deck.dark .subhead{color:#fff}
+
+p{color:var(--text-soft);font-weight:400;line-height:1.65;font-size:16px}
+.deck.dark p{color:#cbd5e1}
+
+/* ─── HERO ──────────────────────────────────────────────── */
+.hero-deck{background:#020202;color:#fff;position:relative;overflow:hidden}
+.hero-img{
+  display:block;width:100%;height:min(48vw,540px);
+  object-fit:cover;object-position:center 35%;
+  filter:brightness(.62) saturate(1.05);
+}
+.hero-body{padding:64px 72px 72px;position:relative}
+.hero-flag{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(160,129,86,.14);border:1px solid rgba(160,129,86,.45);
+  padding:7px 16px;border-radius:999px;
+  font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--gold-soft);margin-bottom:32px;
+}
+.hero-flag .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2.4s ease infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero-deck .title{color:#fff;max-width:24ch}
+.hero-second{font-size:clamp(1.05rem,1.55vw,1.35rem);font-weight:300;color:var(--gold-soft);letter-spacing:-.01em;line-height:1.4;margin:8px 0 22px;max-width:48ch}
+.hero-deck .lead{color:#cbd5e1;max-width:62ch;margin-top:6px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:42px}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:inherit;font-size:13px;font-weight:500;
+  padding:14px 24px;border-radius:6px;cursor:pointer;
+  border:1px solid transparent;text-decoration:none;
+  transition:all .18s ease;letter-spacing:.02em;white-space:nowrap;
+}
+.btn .arr{transition:transform .18s ease}
+.btn:hover .arr{transform:translateX(3px)}
+.btn-gold{background:var(--gold);color:#fff;border-color:var(--gold)}
+.btn-gold:hover{background:#8e7148;border-color:#8e7148;transform:translateY(-1px)}
+.btn-outline-dark{background:transparent;color:#fff;border-color:rgba(255,255,255,.45)}
+.btn-outline-dark:hover{border-color:#fff;background:rgba(255,255,255,.06)}
+.btn-dark{background:var(--ink);color:#fff;border-color:var(--ink)}
+.btn-dark:hover{background:#000;transform:translateY(-1px)}
+.btn-outline{background:transparent;color:var(--ink);border-color:#9ca3af}
+.btn-outline:hover{border-color:var(--ink);background:rgba(0,0,0,.03)}
+.btn-lg{padding:16px 30px;font-size:14px}
+.hero-meta{
+  display:flex;flex-wrap:wrap;gap:48px;
+  margin-top:64px;padding-top:34px;
+  border-top:1px solid rgba(255,255,255,.12);max-width:780px;
+}
+.hero-meta-item{display:flex;flex-direction:column;gap:4px}
+.hero-meta-item .v{font-size:1.5rem;font-weight:600;color:#fff;letter-spacing:-.02em}
+.hero-meta-item .l{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+
+/* ─── PROGRAMS ──────────────────────────────────────────── */
+.programs{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px;
+}
+.program{
+  background:#fff;border:1px solid var(--line);border-radius:10px;
+  padding:32px 28px;display:flex;flex-direction:column;gap:14px;
+  transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;
+}
+.program:hover{transform:translateY(-3px);border-color:#9ca3af;box-shadow:0 14px 30px rgba(0,0,0,.08)}
+.program.featured{border:1px solid var(--gold);box-shadow:0 0 0 4px rgba(160,129,86,.12)}
+.program-flag{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.program h3{font-size:1.5rem;font-weight:500;letter-spacing:-.02em;line-height:1.15;color:var(--ink)}
+.program-tag{font-size:13px;color:var(--text-soft);font-style:italic;line-height:1.55}
+.program-meta{
+  display:flex;flex-direction:column;gap:8px;margin-top:8px;
+  padding-top:18px;border-top:1px solid var(--line-soft);
+}
+.program-row{display:flex;justify-content:space-between;font-size:13.5px}
+.program-row .l{color:var(--muted)}
+.program-row .v{color:var(--ink);font-weight:600;font-feature-settings:'tnum'}
+.program-bottom{margin-top:8px;padding-top:14px;border-top:1px dashed var(--line);font-size:12px;color:var(--muted);line-height:1.5}
+
+/* ─── HOW IT WORKS ─────────────────────────────────────── */
+.how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:38px}
+.how-step{
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;
+  padding:24px 22px;display:flex;flex-direction:column;gap:10px;
+}
+.how-step-num{font-size:11px;font-weight:700;letter-spacing:.18em;color:var(--gold)}
+.how-step h4{font-size:1.05rem;font-weight:500;color:#fff;letter-spacing:-.005em;line-height:1.2}
+.how-step p{font-size:13.5px;line-height:1.55;color:#cbd5e1;margin:0}
+
+/* ─── EXAMPLE / SIMULATIONS ───────────────────────────── */
+.examples{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px}
+.example{
+  background:#fff;border:1px solid var(--line);border-radius:8px;
+  padding:24px 22px;display:flex;flex-direction:column;gap:10px;
+}
+.example.featured{border-color:var(--gold)}
+.example h4{font-size:1.1rem;font-weight:500;color:var(--ink);letter-spacing:-.01em;margin-bottom:2px}
+.example-tag{font-size:12px;color:var(--muted);font-style:italic}
+.example-flow{
+  display:flex;flex-direction:column;gap:5px;margin-top:8px;
+  padding-top:14px;border-top:1px solid var(--line-soft);
+  font-feature-settings:'tnum';
+}
+.example-row{display:flex;justify-content:space-between;font-size:13px;color:var(--text-soft);padding:2px 0}
+.example-row strong{color:var(--ink);font-weight:700}
+.example-row.outflow strong{color:var(--red)}
+.example-row.inflow strong{color:var(--green)}
+.example-result{
+  margin-top:8px;padding-top:14px;border-top:1px solid var(--line-soft);
+  display:grid;grid-template-columns:1fr 1fr;gap:10px;
+}
+.example-result .lbl{font-size:10.5px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px}
+.example-result .val{font-size:1.1rem;font-weight:700;color:var(--ink);letter-spacing:-.01em}
+
+/* ─── SENSITIVITY TABLE ───────────────────────────────── */
+.sens-table-wrap{margin-top:32px;overflow-x:auto}
+.sens-table{
+  width:100%;border-collapse:separate;border-spacing:0;
+  font-feature-settings:'tnum';font-size:13.5px;
+  background:#fff;border:1px solid var(--line);border-radius:8px;
+  overflow:hidden;
+}
+.sens-table th,.sens-table td{
+  padding:14px 18px;text-align:center;
+  border-bottom:1px solid var(--line-soft);
+  border-right:1px solid var(--line-soft);
+}
+.sens-table th:last-child,.sens-table td:last-child{border-right:none}
+.sens-table tr:last-child th,.sens-table tr:last-child td{border-bottom:none}
+.sens-table th{
+  background:#f8fafc;color:var(--ink);font-weight:600;
+  font-size:12px;letter-spacing:.04em;text-transform:uppercase;
+}
+.sens-table td:first-child,.sens-table th:first-child{text-align:left;font-weight:600;color:var(--ink)}
+.sens-table td{color:var(--text-soft)}
+.sens-note{font-size:12px;color:var(--muted);margin-top:14px;line-height:1.6}
+
+/* ─── PROTECT (3 cards on dark) ───────────────────────── */
+.protect-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px}
+.protect-card{
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:10px;
+  padding:26px 24px;display:flex;flex-direction:column;gap:10px;
+}
+.protect-card h4{font-size:1.1rem;font-weight:500;color:#fff;letter-spacing:-.01em}
+.protect-card ul{list-style:none;display:flex;flex-direction:column;gap:7px;margin-top:6px}
+.protect-card li{font-size:13px;color:#cbd5e1;line-height:1.55;padding-left:14px;position:relative}
+.protect-card li::before{
+  content:'';position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;background:var(--gold);
+}
+.protect-card li strong{color:#fff;font-weight:600}
+
+/* ─── METRICS GRID ─────────────────────────────────────── */
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:38px}
+.metric{
+  background:#fff;border:1px solid var(--line);border-radius:8px;
+  padding:24px 22px;display:flex;flex-direction:column;gap:6px;
+}
+.metric .v{font-size:1.8rem;font-weight:600;color:var(--ink);letter-spacing:-.02em;line-height:1;font-feature-settings:'tnum'}
+.metric .l{font-size:12px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;font-weight:600}
+.metric .desc{font-size:12.5px;color:var(--text-soft);line-height:1.5;margin-top:4px}
+
+/* ─── FAQ ──────────────────────────────────────────────── */
+.faq{margin-top:38px;display:flex;flex-direction:column;gap:8px}
+.faq-item{
+  background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden;
+  transition:border-color .18s ease;
+}
+.faq-item[open]{border-color:#9ca3af}
+.faq-q{
+  padding:18px 22px;font-size:14.5px;font-weight:500;color:var(--ink);
+  cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:14px;
+  list-style:none;
+}
+.faq-q::-webkit-details-marker{display:none}
+.faq-q::after{content:'+';font-size:20px;color:var(--gold);font-weight:300;transition:transform .18s ease}
+.faq-item[open] .faq-q::after{transform:rotate(45deg)}
+.faq-a{padding:0 22px 20px;font-size:13.5px;line-height:1.65;color:var(--text-soft)}
+
+/* ─── CONTACT ──────────────────────────────────────────── */
+.deck.contact{background:#020202;color:#fff;text-align:center}
+.deck.contact .blk{padding:96px 32px}
+.deck.contact h2{color:#fff;font-size:clamp(2rem,3.5vw,3rem);font-weight:300;margin-bottom:18px;letter-spacing:-.03em}
+.deck.contact p{color:#cbd5e1;max-width:60ch;margin:0 auto 36px;font-size:17px;line-height:1.62}
+.contact-channels{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-bottom:32px}
+.contact-note{font-size:12px;color:#94a3b8;max-width:60ch;margin:0 auto;line-height:1.6;letter-spacing:.02em}
+.contact-note strong{color:#f8fafc}
+
+/* ─── FOOTER ───────────────────────────────────────────── */
+footer.f{
+  background:#000;color:#94a3b8;
+  padding:48px 32px 32px;border-top:1px solid #111827;
+}
+.f-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:42px}
+.f-brand .name{font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#fff;margin-bottom:10px}
+.f-brand .tag{color:var(--gold);font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px}
+.f-brand p{font-size:12.5px;color:#94a3b8;line-height:1.6;max-width:42ch}
+.f-col h5{font-size:11px;font-weight:700;letter-spacing:.14em;color:#fff;text-transform:uppercase;margin-bottom:14px}
+.f-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.f-col li a{font-size:13px;color:#94a3b8;transition:color .15s ease}
+.f-col li a:hover{color:#fff}
+.f-bottom{
+  max-width:1280px;margin:36px auto 0;padding-top:18px;border-top:1px solid #111827;
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
+  font-size:11px;color:#64748b;letter-spacing:.04em;
+}
+.f-disclaimer{
+  max-width:1280px;margin:18px auto 0;
+  background:rgba(160,129,86,.08);border:1px solid rgba(160,129,86,.18);
+  border-radius:6px;padding:14px 18px;
+  font-size:11.5px;color:#cbd5e1;line-height:1.65;
+}
+
+/* ─── Responsive ───────────────────────────────────────── */
+@media(max-width:1100px){
+  .blk,.hero-body{padding:56px 32px}
+  .programs,.examples,.protect-grid{grid-template-columns:1fr}
+  .how-grid{grid-template-columns:1fr 1fr}
+  .metrics{grid-template-columns:1fr 1fr}
+  .topbar-nav{display:none}
+  .f-inner{grid-template-columns:1fr;gap:28px}
+}
+@media(max-width:640px){
+  #topbar{height:56px}
+  main{padding-top:56px}
+  .topbar-inner{padding:0 18px}
+  .topbar-tag{display:none}
+  .topbar-link{display:none}
+  .blk,.hero-body{padding:48px 22px}
+  .hero-actions .btn{width:100%;justify-content:center}
+  .deck.contact .blk{padding:64px 22px}
+  .how-grid,.metrics{grid-template-columns:1fr}
+  .hero-meta{gap:24px}
+  .hero-meta-item .v{font-size:1.25rem}
+}
+</style>
+</head>
+<body>
+
+<header id="topbar">
+  <div class="topbar-inner">
+    <a href="index.html" class="topbar-left">
+      <span class="topbar-brand">Charter Capital</span>
+      <span class="topbar-tag">Charter Asia Fund · от&nbsp;$25K</span>
+    </a>
+    <nav class="topbar-nav">
+      <a href="#how">Как работает</a>
+      <a href="#programs">Стратегии</a>
+      <a href="#examples">Расчёт</a>
+      <a href="#protect">Защита</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Контакт</a>
+    </nav>
+    <div class="topbar-right">
+      <a href="private.html" class="topbar-link">Private&nbsp;Office&nbsp;→</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ─── DECK 1 · HERO ────────────────────────────────────── -->
+<section class="deck hero-deck">
+  <img class="hero-img" src="assets/logic/12-pool-vertical.png" alt="Charter Asia Fund — premium real estate Phuket"/>
+  <div class="hero-body">
+    <div class="hero-flag">
+      <span class="dot"></span>
+      <span>Charter Asia Fund · сингапурская инвестиционная программа</span>
+    </div>
+    <h1 class="title">Реальный Пхукет — <strong>от $25 000</strong>.</h1>
+    <p class="hero-second">Доход и рост на основе данных, а не обещаний. Сингапурский приватный фонд Charter Capital для инвестирования в курортную недвижимость Азии.</p>
+    <p class="lead">Купон, рост или гибрид — выбираете стратегию, мы выбираем объекты. Фракционная модель: премиум-локации без покупки целой квартиры. Юридическая, операционная и сервисная инфраструктура — на стороне фонда.</p>
+    <div class="hero-actions">
+      <a href="#programs" class="btn btn-gold btn-lg">Посмотреть стратегии<span class="arr">→</span></a>
+      <a href="#contact" class="btn btn-outline-dark btn-lg">Запросить меморандум</a>
+    </div>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="v">$25K</div>
+        <div class="l">Минимальный вход</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="v">USD</div>
+        <div class="l">Базовая валюта</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="v">6,5%</div>
+        <div class="l">Купон p.a. · ежегодно</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="v">11–14%</div>
+        <div class="l">Гибрид · IRR ориентир</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── DECK 2 · КАК РАБОТАЕТ (dark) ─────────────────────── -->
+<section class="deck dark" id="how">
+  <div class="blk">
+    <span class="kicker">Как мы инвестируем ваш капитал</span>
+    <h2 class="title">Четыре шага — и ваш капитал работает в Азии</h2>
+    <p class="lead" style="margin-top:6px">Простая логика. Прозрачные процессы. Отчётность ежеквартально. Купонные выплаты — ежегодно; выход по росту — при достижении таргетов.</p>
+    <div class="how-grid">
+      <div class="how-step">
+        <span class="how-step-num">01</span>
+        <h4>Выбираете стратегию</h4>
+        <p>Купон, рост или гибрид — и вносите от $25 000. Можно комбинировать или ребалансировать в течение горизонта.</p>
+      </div>
+      <div class="how-step">
+        <span class="how-step-num">02</span>
+        <h4>Мы собираем пул</h4>
+        <p>Заходим в объекты с высокими рейтингами по нашей внутренней аналитической модели — приоритет ликвидности и предсказуемому денежному потоку.</p>
+      </div>
+      <div class="how-step">
+        <span class="how-step-num">03</span>
+        <h4>Деньги работают</h4>
+        <p>Видите движение в отчётности: сделки, статусы, загрузка, выплаты, ключевые события. Личный кабинет + email.</p>
+      </div>
+      <div class="how-step">
+        <span class="how-step-num">04</span>
+        <h4>Получаете результат</h4>
+        <p>Купонные выплаты ежегодно. Выход по росту — при достижении таргетов (ввод объекта или перепродажа доли).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── DECK 3 · ПРОГРАММЫ ───────────────────────────────── -->
+<section class="deck" id="programs">
+  <div class="blk">
+    <span class="kicker">Три стратегии — под любые цели</span>
+    <h2 class="title">Купон, рост или гибрид</h2>
+    <p class="lead">Купонный пул — стабильный доход 6,5% годовых от арендного потока действующих объектов. Пул роста — вход на стадии строительства с целью ~25–30% за 3 года. Гибрид — сочетание дохода и роста с целевой IRR 11–14%.</p>
+    <div class="programs">
+      <article class="program">
+        <span class="program-flag">Программа · купон</span>
+        <h3>Купонный доход</h3>
+        <p class="program-tag">Стабильный поток в долларах от аренды действующих объектов.</p>
+        <div class="program-meta">
+          <div class="program-row"><span class="l">Минимум вложения</span><span class="v">$25 000</span></div>
+          <div class="program-row"><span class="l">Купон</span><span class="v">6,5% p.a.</span></div>
+          <div class="program-row"><span class="l">Выплаты</span><span class="v">Ежегодно</span></div>
+          <div class="program-row"><span class="l">Возврат капитала</span><span class="v">24 мес.</span></div>
+          <div class="program-row"><span class="l">Цель IRR</span><span class="v">~6,5%</span></div>
+        </div>
+        <div class="program-bottom">Классический доходный поток. Подходит инвесторам, которым нужен предсказуемый денежный поток без волатильности девелоперских стадий.</div>
+      </article>
+      <article class="program featured">
+        <span class="program-flag">Программа · гибрид · топ</span>
+        <h3>Hybrid Income + Growth</h3>
+        <p class="program-tag">Доход и рост — два источника одной инвестиции.</p>
+        <div class="program-meta">
+          <div class="program-row"><span class="l">Минимум вложения</span><span class="v">$25 000</span></div>
+          <div class="program-row"><span class="l">Доход-шеринг</span><span class="v">6–9% p.a.</span></div>
+          <div class="program-row"><span class="l">Целевая IRR</span><span class="v">11–14% p.a.</span></div>
+          <div class="program-row"><span class="l">MOIC ориентир</span><span class="v">1,35×–1,45×</span></div>
+          <div class="program-row"><span class="l">Горизонт</span><span class="v">3–5 лет</span></div>
+        </div>
+        <div class="program-bottom">Уникальная модель: вход на этапе котлована, арендный поток после сдачи, выход на пике. Опция продления до 7 лет.</div>
+      </article>
+      <article class="program">
+        <span class="program-flag">Программа · рост</span>
+        <h3>Capital Growth</h3>
+        <p class="program-tag">Инвестируйте в рост Пхукета — на ранних стадиях.</p>
+        <div class="program-meta">
+          <div class="program-row"><span class="l">Минимум вложения</span><span class="v">$25 000</span></div>
+          <div class="program-row"><span class="l">Целевой рост</span><span class="v">+25–30% за 3 года</span></div>
+          <div class="program-row"><span class="l">Средняя IRR</span><span class="v">9–11% p.a.</span></div>
+          <div class="program-row"><span class="l">Купон</span><span class="v">—</span></div>
+          <div class="program-row"><span class="l">Горизонт</span><span class="v">3 года</span></div>
+        </div>
+        <div class="program-bottom">Вход на стадии котлована по дисконту, фиксация результата при вводе или перепродаже. Доход формируется на выходе.</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ─── DECK 4 · ПРИМЕР РАСЧЁТА (cream) ──────────────────── -->
+<section class="deck cream" id="examples">
+  <div class="blk">
+    <span class="kicker muted">Пример расчёта · инвестиция $25 000</span>
+    <h2 class="title">Логика кэшфлоу — без обещаний</h2>
+    <p class="lead">Иллюстративные расчёты для трёх стратегий: где деньги выходят, где приходят, какой ориентир по IRR и MOIC. Это не гарантия — фактический результат зависит от сроков, структуры, комиссий и рыночных условий.</p>
+    <div class="examples">
+      <article class="example">
+        <h4>Купонный доход</h4>
+        <p class="example-tag">6,5% p.a., возврат капитала через 24 мес.</p>
+        <div class="example-flow">
+          <div class="example-row outflow"><span>Год 0 · взнос</span><strong>−$25 000</strong></div>
+          <div class="example-row inflow"><span>Год 1 · купон</span><strong>+$1 625</strong></div>
+          <div class="example-row inflow"><span>Год 2 · купон + возврат</span><strong>+$26 625</strong></div>
+        </div>
+        <div class="example-result">
+          <div><div class="lbl">IRR</div><div class="val">~6,5%</div></div>
+          <div><div class="lbl">MOIC (2 года)</div><div class="val">~1,13×</div></div>
+        </div>
+      </article>
+      <article class="example featured">
+        <h4>Hybrid (mid-case, 4 года)</h4>
+        <p class="example-tag">Аренда ~8% p.a. + рост капитала на выходе.</p>
+        <div class="example-flow">
+          <div class="example-row outflow"><span>Год 0 · взнос</span><strong>−$25 000</strong></div>
+          <div class="example-row inflow"><span>Годы 1–3 · аренда</span><strong>+$2 000/год</strong></div>
+          <div class="example-row inflow"><span>Год 4 · аренда + выход</span><strong>+$2 000 + апсайд</strong></div>
+        </div>
+        <div class="example-result">
+          <div><div class="lbl">IRR</div><div class="val">~11–12%</div></div>
+          <div><div class="lbl">MOIC (4 года)</div><div class="val">~1,45×</div></div>
+        </div>
+      </article>
+      <article class="example">
+        <h4>Capital Growth</h4>
+        <p class="example-tag">Цель: +25% за 3 года, без купона.</p>
+        <div class="example-flow">
+          <div class="example-row outflow"><span>Год 0 · взнос</span><strong>−$25 000</strong></div>
+          <div class="example-row"><span>Годы 1–2</span><strong>$0</strong></div>
+          <div class="example-row inflow"><span>Год 3 · выход</span><strong>+$31 250</strong></div>
+        </div>
+        <div class="example-result">
+          <div><div class="lbl">IRR</div><div class="val">~7,7%</div></div>
+          <div><div class="lbl">MOIC (3 года)</div><div class="val">1,25×</div></div>
+        </div>
+      </article>
+    </div>
+
+    <h3 class="subhead" style="margin-top:56px">Чувствительность Hybrid: IRR при разных параметрах</h3>
+    <p style="font-size:14.5px;color:var(--text-soft);max-width:60ch">Инвестиция $25 000, горизонт 4 года. Ячейка — ориентир IRR при сочетании годовой аренды и апсайда на выходе.</p>
+    <div class="sens-table-wrap">
+      <table class="sens-table">
+        <thead>
+          <tr><th>Аренда / Апсайд</th><th>+15%</th><th>+18%</th><th>+20%</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>7% p.a.</td><td>~10,2%</td><td>~10,8%</td><td>~11,2%</td></tr>
+          <tr><td>8% p.a.</td><td>~11,2%</td><td>~11,8%</td><td>~12,2%</td></tr>
+          <tr><td>9% p.a.</td><td>~12,1%</td><td>~12,7%</td><td>~13,1%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="sens-note">Значения округлены; фактический результат зависит от сроков, структуры, комиссий и рыночных условий. Диапазон по стратегии заявлен как ~11–14% IRR; верхняя граница достигается при более высоком апсайде/загрузке.</p>
+  </div>
+</section>
+
+<!-- ─── DECK 5 · ПХУКЕТ В ЦИФРАХ ─────────────────────────── -->
+<section class="deck">
+  <div class="blk">
+    <span class="kicker">Пхукет сегодня</span>
+    <h2 class="title">Высокий спрос. Ограниченное предложение. Понятная логика роста.</h2>
+    <p class="lead">Главный курорт Юго-Восточной Азии с круглогодичным inbound-спросом и растущим пулом постоянных резидентов. Загрузка аренды держится высокой даже вне пика сезона. Это даёт устойчивую базу для купонного дохода и фундамент для ростовой стратегии.</p>
+    <div class="metrics">
+      <div class="metric">
+        <span class="l">Загрузка resort</span>
+        <span class="v">72–78%</span>
+        <span class="desc">Среднегодовая заполняемость качественных курортных объектов.</span>
+      </div>
+      <div class="metric">
+        <span class="l">ADR</span>
+        <span class="v">$135–165</span>
+        <span class="desc">Средний доход с одной ночи в долларах США.</span>
+      </div>
+      <div class="metric">
+        <span class="l">Yield нетто</span>
+        <span class="v">5–7%</span>
+        <span class="desc">Чистая доходность после операционных расходов.</span>
+      </div>
+      <div class="metric">
+        <span class="l">Темпы цен</span>
+        <span class="v">+3–6% г/г</span>
+        <span class="desc">Органический рост без признаков перегрева.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── DECK 6 · ЗАЩИТА ИНВЕСТОРА (dark) ─────────────────── -->
+<section class="deck dark" id="protect">
+  <div class="blk">
+    <span class="kicker">Защита инвестора · структура и контроль</span>
+    <h2 class="title">Ваши средства защищены структурой, а не только обещаниями.</h2>
+    <p class="lead" style="margin-top:6px">Сингапурская юрисдикция, договорная база, KYC/AML до подписки, ежегодный независимый аудит, прозрачные правила выкупа и выхода — всё это в инвестиционных документах фонда.</p>
+    <div class="protect-grid">
+      <div class="protect-card">
+        <h4>Структура и юрисдикция</h4>
+        <ul>
+          <li><strong>Юрисдикция:</strong> Сингапур · приватный фонд под управлением Charter Capital</li>
+          <li><strong>Участие:</strong> через договорную базу (Subscription / Shareholders documents)</li>
+          <li><strong>Применимое право:</strong> Сингапур; арбитраж по правилам SIAC</li>
+          <li><strong>KYC/AML:</strong> онлайн-процедуры до подписки</li>
+        </ul>
+      </div>
+      <div class="protect-card">
+        <h4>Движение средств · Section 10L</h4>
+        <ul>
+          <li><strong>Активы:</strong> приобретаются на баланс SPV под контролем фонда</li>
+          <li><strong>Доход:</strong> аккумулируется на зарубежных операционных счетах фонда (вне Сингапура)</li>
+          <li><strong>Section 10L:</strong> foreign-sourced gains не remitted в Сингапур, ориентир — не облагаются</li>
+          <li><strong>Эскроу:</strong> возможен под отдельные сделки</li>
+        </ul>
+      </div>
+      <div class="protect-card">
+        <h4>Контроль и отчётность</h4>
+        <ul>
+          <li><strong>Аудит:</strong> независимый ежегодный (международная firm)</li>
+          <li><strong>Документы:</strong> Memorandum, Subscription Agreement, KYC Pack</li>
+          <li><strong>Отчётность:</strong> личный кабинет + email · ежеквартально</li>
+          <li><strong>Выход:</strong> механизм перепродажи доли или обратного выкупа фондом</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── DECK 7 · АНАЛИТИКА ──────────────────────────────── -->
+<section class="deck">
+  <div class="blk">
+    <span class="kicker">Внутренняя аналитическая модель Charter</span>
+    <h2 class="title">Решения принимает не «инвест-мода», а данные.</h2>
+    <p class="lead">Десятки тысяч локальных параметров по Пхукету: сделки и прайс-листы, темпы строительства и выдачи разрешений, плотность застройки по кварталам, сезонная загрузка аренды, история ввода очередей, рейтинги девелоперов, транспортные потоки, FX-параметры. Каждый объект «раскладывается» на признаки и получает итоговый рейтинг A–E.</p>
+    <div class="metrics">
+      <div class="metric">
+        <span class="l">Доходность аренды</span>
+        <span class="v">25%</span>
+        <span class="desc">Вес в общей оценке: чистый поток после расходов и налогов.</span>
+      </div>
+      <div class="metric">
+        <span class="l">Репутация девелопера</span>
+        <span class="v">20%</span>
+        <span class="desc">История ввода объектов в срок, качество отделки, претензии.</span>
+      </div>
+      <div class="metric">
+        <span class="l">Тренд цен района</span>
+        <span class="v">15%</span>
+        <span class="desc">Динамика last-mile цен, ликвидность вторичного рынка.</span>
+      </div>
+      <div class="metric">
+        <span class="l">Прочие факторы</span>
+        <span class="v">40%</span>
+        <span class="desc">Инфраструктура, FX, шум/экология, виза, доступность пляжа.</span>
+      </div>
+    </div>
+    <p style="margin-top:24px;font-size:14px;color:var(--muted);max-width:62ch;line-height:1.6">Веса обновляются по мере поступления данных. Мы не угадываем «где сейчас модно» — мы сверяем портфель с цифрами и режем риск до того, как он становится проблемой.</p>
+  </div>
+</section>
+
+<!-- ─── DECK 8 · FAQ (cream) ─────────────────────────────── -->
+<section class="deck cream" id="faq">
+  <div class="blk">
+    <span class="kicker muted">FAQ · участие в фонде</span>
+    <h2 class="title">Что чаще всего спрашивают</h2>
+    <div class="faq">
+      <details class="faq-item">
+        <summary class="faq-q">Чем фонд отличается от покупки квартиры на Пхукете?</summary>
+        <div class="faq-a">Фонд агрегирует капитал и приобретает несколько объектов в премиальных локациях. Вы получаете долю и денежный поток, но без обязательств по управлению, ремонтам, поиску арендаторов, налогам и сезонным простоям. Юридическая, операционная и сервисная инфраструктура — на стороне фонда.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Какая минимальная сумма участия?</summary>
+        <div class="faq-a">$25 000. Это позволяет участвовать в премиум-объектах через фракционную модель — то, что напрямую купить за такую сумму невозможно.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Как работает купон 6,5%?</summary>
+        <div class="faq-a">Купон выплачивается из чистого арендного потока действующих объектов. Выплаты — ежегодно на ваши банковские реквизиты в USD. Возврат тела капитала — через 24 месяца от даты подписки.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Как достигается рост ~25–30% за 3 года?</summary>
+        <div class="faq-a">Вход на стадии котлована по девелоперскому дисконту 15–20%. К моменту ввода объекта рыночная цена закладывается выше за счёт спроса и инфляции. Выход — продажа доли при вводе или перепродаже на вторичном рынке.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Можно ли сочетать стратегии?</summary>
+        <div class="faq-a">Да. Вы можете распределить $25 000 по двум-трём стратегиям пропорционально или ребалансировать их в течение горизонта. Гибридная программа уже сочетает доход и рост в одной структуре.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Где хранятся средства до инвестирования?</summary>
+        <div class="faq-a">На корпоративных счетах фонда в Сингапуре или на эскроу-счетах по конкретным проектам. Расходование происходит поэтапно согласно подписанным договорам с девелоперами.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Кто владеет объектами?</summary>
+        <div class="faq-a">Активы приобретаются на баланс SPV под контролем фонда. Инвесторы владеют долями или акциями соответствующих SPV пропорционально участию.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Можно ли выйти раньше срока?</summary>
+        <div class="faq-a">Да. Предусмотрен механизм раннего выхода — перепродажа доли новому инвестору или обратный выкуп фондом. Возможна комиссия до 3% от суммы. Все условия закреплены в инвестиционных документах.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Кто проверяет отчётность?</summary>
+        <div class="faq-a">Годовая отчётность проходит независимый аудит и предоставляется участникам. Дополнительно публикуются краткие квартальные апдейты по портфелю в личном кабинете.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">В какой валюте работает фонд?</summary>
+        <div class="faq-a">Базовая валюта — USD. Все купонные выплаты и возвраты — в USD. Тайский бат используется только на уровне SPV для покупки активов и операционной деятельности; FX-риск управляется фондом.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ─── DECK 9 · CONTACT ─────────────────────────────────── -->
+<section class="deck contact" id="contact">
+  <div class="blk">
+    <span class="kicker">Первый шаг</span>
+    <h2>$25 000 — выберите стратегию, мы возьмём на себя остальное.</h2>
+    <p>Анализ, сделки, управление, отчётность. Напишите — пришлём меморандум, календарь раунда и персональное распределение по стратегиям.</p>
+    <div class="contact-channels">
+      <a href="https://t.me/charter_capital" class="btn btn-gold btn-lg" target="_blank" rel="noopener">Telegram <span class="arr">→</span></a>
+      <a href="mailto:fund@ccapital.pro" class="btn btn-outline-dark btn-lg">fund@ccapital.pro</a>
+      <a href="#contact" class="btn btn-outline-dark btn-lg">Запросить меморандум</a>
+    </div>
+    <p class="contact-note">Средства размещаются на корпоративных счетах фонда в Сингапуре. <strong>Не пишите в обычной почте</strong> номера счетов и реквизиты сделок — пришлём защищённую форму после первого ответа.</p>
+  </div>
+</section>
+
+</main>
+
+<!-- ─── FOOTER ────────────────────────────────────────────── -->
+<footer class="f">
+  <div class="f-inner">
+    <div class="f-brand">
+      <div class="name">Charter Capital</div>
+      <div class="tag">Charter Asia Fund · Singapore</div>
+      <p>Сингапурская инвестиционная программа Charter Capital. Реальная курортная недвижимость Азии: купон, рост или гибрид. Минимальный вход $25 000. Юридическая, операционная и сервисная инфраструктура — на стороне фонда.</p>
+    </div>
+    <div class="f-col">
+      <h5>Контуры</h5>
+      <ul>
+        <li><a href="homeland.html">Подготовка к&nbsp;исходу · ещё в&nbsp;РФ</a></li>
+        <li><a href="index.html">Основной агрегатор · от&nbsp;$50K</a></li>
+        <li><a href="private.html">Private Office · от&nbsp;$1М</a></li>
+        <li><a href="fund.html">Charter Asia Fund · от&nbsp;$25K</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h5>Контакт</h5>
+      <ul>
+        <li><a href="https://t.me/charter_capital" target="_blank" rel="noopener">Telegram</a></li>
+        <li><a href="mailto:fund@ccapital.pro">fund@ccapital.pro</a></li>
+        <li><a href="https://ccapital.pro">ccapital.pro</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="f-disclaimer">
+    Charter Asia Fund — приватная инвестиционная программа Charter Capital, оформленная в сингапурской юрисдикции. Информация на этой странице носит индикативный характер и не является публичной офертой, юридической или налоговой консультацией. Фактические условия участия и доходности фиксируются в инвестиционных документах фонда (Memorandum, Subscription Agreement) и могут отличаться в зависимости от проекта и рыночных условий. Инвесторам рекомендуется получать независимую юридическую и налоговую консультацию в своих юрисдикциях. Вложения сопряжены с рисками, включая риски недвижимости, рынка, валютные и регуляторные.
+  </div>
+  <div class="f-bottom">
+    <span>© 2026 Charter Capital · Charter Asia Fund</span>
+    <span>Обновлено: апрель 2026</span>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  requestAnimationFrame(function () { document.body.classList.add('page-ready'); });
+});
+
+// Smooth fade transition between local html pages
+document.addEventListener('click',function(e){
+  var a=e.target.closest('a[href]');
+  if(!a||a.target==='_blank'||e.metaKey||e.ctrlKey||e.shiftKey) return;
+  var href=a.getAttribute('href');
+  if(!href||href.startsWith('#')||href.startsWith('mailto:')||href.startsWith('javascript:')||href.startsWith('tel:')) return;
+  try{
+    var u=new URL(a.href,location.href);
+    if(u.origin!==location.origin) return;
+    if(!/\.html($|[?#])/i.test(u.pathname)) return;
+    e.preventDefault();
+    document.body.classList.remove('page-ready'); document.body.style.opacity='0';
+    setTimeout(function(){ location.href=a.href; }, 250);
+  }catch(err){}
+});
+</script>
+
+</body>
+</html>

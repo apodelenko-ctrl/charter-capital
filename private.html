@@ -339,6 +339,21 @@ p{color:var(--text-soft);font-weight:400;line-height:1.65;font-size:16px}
 .hub ul li::before{
   content:'';position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;background:var(--gold);
 }
+.hub.hub-fund{
+  border:1px solid rgba(160,129,86,.5);
+  box-shadow:0 0 0 4px rgba(160,129,86,.08);
+  background:#0e0e0e;
+}
+.hub-link{
+  display:inline-flex;align-items:center;gap:8px;
+  margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.08);
+  font-size:12.5px;font-weight:600;letter-spacing:.04em;
+  color:var(--gold);text-decoration:none;
+  transition:color .15s ease;
+}
+.hub-link:hover{color:var(--gold-soft)}
+.hub-arr{transition:transform .18s ease}
+.hub-link:hover .hub-arr{transform:translateX(3px)}
 
 /* ─── ENGAGEMENT TIERS (pricing) ───────────────────────── */
 .tiers{
@@ -677,7 +692,7 @@ footer.f{
         <div class="path-stage-num">04</div>
         <div class="path-stage-label">ЕС / UK / CH</div>
         <div class="path-stage-state">Tier-1 банковский счёт</div>
-        <div class="path-stage-desc">Возврат тела капитала и дохода на ваш частный счёт в Julius Baer / Pictet / EFG / Lombard Odier. Чистые деньги с проверяемой биографией.</div>
+        <div class="path-stage-desc">Возврат тела капитала и дохода на ваш частный счёт в крупном private-банке Швейцарии или Лихтенштейна. Чистые деньги с проверяемой биографией.</div>
       </div>
     </div>
   </div>
@@ -758,14 +773,25 @@ footer.f{
     <h2 class="title">Три хаба для substance — и почему именно эти</h2>
     <p class="lead" style="margin-top:6px">Мы не работаем в 50 юрисдикциях. Мы работаем там, где у нас есть рабочая инфраструктура и где банковская система Tier-1 принимает substance без оговорок.</p>
     <div class="hubs">
-      <div class="hub">
+      <div class="hub hub-fund">
         <div class="flag">Сингапур</div>
-        <h3>Сингапурский холдинг</h3>
-        <p>Юрисдикция white-list, налоговая прозрачность для Tier-1. По Section 10L иностранный доход не облагается налогом, если не переводится в Сингапур — это и есть основа схемы.</p>
+        <h3>Charter Asia Fund</h3>
+        <p>Сингапурский приватный фонд для инвестирования в курортную недвижимость Азии. Купон 6,5% / рост +25% / гибрид 11–14% IRR. Минимальный вход $25&nbsp;000. Это и есть «оболочка» T2-маршрута: ваш капитал входит в фонд, работает в substance-объектах, выходит через clean exit на ваш счёт уровня Tier-1.</p>
+        <ul>
+          <li>Управление: Charter Capital · Сингапур</li>
+          <li>Применимое право: Сингапур · SIAC</li>
+          <li>Section 10L: foreign-sourced gains</li>
+        </ul>
+        <a href="fund.html" class="hub-link">Посмотреть программу фонда <span class="hub-arr">→</span></a>
+      </div>
+      <div class="hub">
+        <div class="flag">Сингапур · холдинг</div>
+        <h3>SG Holding</h3>
+        <p>Юрисдикция white-list, налоговая прозрачность для Tier-1. По Section 10L иностранный доход не облагается налогом, если не переводится в Сингапур — это основа схемы.</p>
         <ul>
           <li>Холдинговая компания + офис</li>
           <li>Аудит по международным стандартам</li>
-          <li>Открытие счёта: DBS, UOB, Bank of Singapore</li>
+          <li>Открытие счёта в крупных сингапурских банках</li>
         </ul>
       </div>
       <div class="hub">
@@ -781,10 +807,10 @@ footer.f{
       <div class="hub">
         <div class="flag">ОАЭ · Mainland</div>
         <h3>Mainland — не Free Zone</h3>
-        <p>Только структуры с реальной операционной деятельностью. Free Zone без офиса и сотрудников — это транзит, а транзит сегодня — красный флаг. Mainland с substance даёт доступ к private banking уровня Mashreq и Emirates NBD.</p>
+        <p>Только структуры с реальной операционной деятельностью. Free Zone без офиса и сотрудников — это транзит, а транзит сегодня — красный флаг. Mainland с substance даёт доступ к крупным private-банкам ОАЭ.</p>
         <ul>
           <li>Mainland LLC + офис</li>
-          <li>Открытие счёта: Mashreq Private, ENBD Private</li>
+          <li>Открытие счёта в крупном private-банке ОАЭ</li>
           <li>Налоговое резидентство в ОАЭ</li>
         </ul>
       </div>
@@ -822,7 +848,7 @@ footer.f{
           <li>Аудит из T1 + полная реализация маршрута</li>
           <li>Корпоративная архитектура: сингапурский фонд + недвижимость на Пхукете + банковский контур ЕС/UK</li>
           <li>Substance-инфраструктура: офис, директор, бухгалтерия, аудит</li>
-          <li>Открытие счетов в 1–2 банках уровня Tier-1 (DBS, EFG, Julius Baer, Vontobel)</li>
+          <li>Открытие счетов в 1–2 банках уровня Tier-1 (Сингапур, Швейцария, Лихтенштейн)</li>
           <li>Сопровождение проверочных интервью лично</li>
           <li>Налоговая регистрация и подача отчётности за первый год</li>
           <li>Персональный fiduciary-советник на все 18&nbsp;месяцев</li>
@@ -840,7 +866,7 @@ footer.f{
           <li>Траст или фонд для передачи капитала по поколениям</li>
           <li>Закрытый пул инвестиционных идей</li>
           <li>Сопровождение 24/7, ежегодный пересмотр архитектуры</li>
-          <li>Прямой канал с private-banking партнёрами (Julius Baer, Pictet, EFG, Lombard Odier)</li>
+          <li>Прямой канал с крупными private-banking партнёрами в Швейцарии и Лихтенштейне</li>
         </ul>
         <div class="tier-note">Только по приглашению. Due diligence работает в обе стороны: мы изучаем вас, вы изучаете нас.</div>
       </div>
@@ -910,6 +936,7 @@ footer.f{
         <li><a href="homeland.html">Подготовка к исходу · ещё в РФ</a></li>
         <li><a href="index.html">Основной агрегатор · от $50K</a></li>
         <li><a href="private.html">Private Office · от $1М</a></li>
+        <li><a href="fund.html">Charter Asia Fund · от $25K</a></li>
         <li><a href="corporate.html">Corporate · ВЭД</a></li>
         <li><a href="sourceready-scoring-sandbox.html">Скоринг готовности</a></li>
       </ul>
