@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Charter Capital — паромщик для людей и капиталов из РФ</title>
-<meta name="description" content="Если банки уже не ваши — мы знаем маршрут. Charter Capital перевозит людей, бизнесы и капитал из России в банковский мир, который их принимает. Счета, компании, ВНЖ, гражданство, легализация крипто-капитала."/>
+<title>Charter Capital — когда двери закрываются, мы открываем мир</title>
+<meta name="description" content="Когда все двери закрываются — Charter открывает мир для вас и вашего капитала. Без искусственных границ. Релокация, банковский доступ, легализация капитала, ВНЖ, гражданство, off-ramp для частных лиц, бизнесов и капитала из России."/>
 <meta property="og:type" content="website"/>
-<meta property="og:title" content="Charter Capital — паромщик для людей и капиталов из РФ"/>
-<meta property="og:description" content="Закрыли счёт. Деньги застряли. Завтра повестка. Крипта на Ledger. Мы знаем маршрут."/>
+<meta property="og:title" content="Charter Capital — когда двери закрываются, мы открываем мир"/>
+<meta property="og:description" content="Charter открывает мир для вас и вашего капитала. Без искусственных границ. Для частных лиц, бизнесов и капитала, которым стандартная банковская система больше не отвечает."/>
 <meta property="og:url" content="https://ccapital.pro/"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -202,6 +202,40 @@ section.s.alt{background:var(--bg-soft)}
 section.s.dark{background:var(--bg-darker);color:#fff}
 section.s.dark h2,section.s.dark h3{color:#fff}
 section.s.dark p{color:rgba(255,255,255,.72)}
+
+/* ─── IMAGE BAND (full-bleed visual divider) ────────────── */
+.image-band{
+  position:relative;
+  height:340px;
+  background-position:center;background-size:cover;background-repeat:no-repeat;
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;overflow:hidden;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.image-band::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(6,8,15,.62) 0%,rgba(6,8,15,.82) 100%);
+}
+.image-band-text{
+  position:relative;z-index:1;
+  color:#fff;max-width:780px;padding:0 32px;
+}
+.image-band-text .kicker{
+  display:inline-block;color:rgba(255,255,255,.65);
+  font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+  margin-bottom:16px;
+}
+.image-band-text h3{
+  font-size:clamp(1.4rem,2.6vw,2.4rem);
+  font-weight:300;color:#fff;
+  letter-spacing:-.025em;line-height:1.18;
+}
+.image-band-text h3 strong{font-weight:600}
+@media(max-width:640px){
+  .image-band{height:240px}
+  .image-band-text h3{font-size:1.3rem}
+}
 
 .s-head{margin-bottom:56px;max-width:740px}
 .s-head h2{margin-bottom:14px}
@@ -524,7 +558,7 @@ footer.f{
   <div class="topbar-inner">
     <a href="/" class="topbar-brand">
       <span class="name">Charter Capital</span>
-      <span class="tag">Паромщик для людей и капиталов из РФ</span>
+      <span class="tag">Когда двери закрываются — мы открываем мир</span>
     </a>
     <nav class="topbar-nav">
       <a href="#triggers">Боль</a>
@@ -546,9 +580,9 @@ footer.f{
       <span class="dot"></span>
       <span>2026 — окно сужается каждый месяц</span>
     </div>
-    <h1>Если банки уже&nbsp;не&nbsp;ваши — мы знаем&nbsp;<strong>маршрут</strong>.</h1>
+    <h1>Когда все двери закрываются —<br/><strong>Charter открывает мир</strong> для вас и вашего капитала.</h1>
     <p class="hero-sub">
-      Charter Capital перевозит людей, бизнесы и капитал из России в банковский мир, который их принимает. Не обещаем «обойти комплаенс» — строим биографию, которую он принимает.
+      Без искусственных границ. Для частных лиц, бизнесов и капитала, которым стандартная банковская система больше не отвечает. Не обходим комплаенс — строим биографию, которую он принимает.
     </p>
     <div class="hero-actions">
       <a href="#routes" class="btn btn-primary btn-lg">Подобрать маршрут <span class="arr">→</span></a>
@@ -621,6 +655,14 @@ footer.f{
         <div class="what"><strong>Что нужно:</strong> компания HK/SG/CY/UAE + расчётный счёт + чистый контрагент.</div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- VISUAL BAND 1 -->
+<section class="image-band" style="background-image:url('assets/logic/02-bank-bio.png')" aria-hidden="true">
+  <div class="image-band-text">
+    <span class="kicker">Биография капитала</span>
+    <h3>Единственный паспорт, который читает банк — и&nbsp;<strong>тот, который мы делаем</strong>.</h3>
   </div>
 </section>
 
@@ -867,6 +909,14 @@ footer.f{
   </div>
 </section>
 
+<!-- VISUAL BAND 2 -->
+<section class="image-band" style="background-image:url('assets/logic/05-architecture.png')" aria-hidden="true">
+  <div class="image-band-text">
+    <span class="kicker">Архитектура</span>
+    <h3>Без искусственных границ —<br/>с <strong>реальной архитектурой</strong>, которую банк проверяет независимо.</h3>
+  </div>
+</section>
+
 <!-- SCORING CTA -->
 <section class="s alt" id="scoring">
   <div class="container">
@@ -964,7 +1014,7 @@ footer.f{
     <div class="f-grid">
       <div class="f-brand">
         <div class="logo">Charter Capital</div>
-        <p>Концирж-сервис для перевозки людей, бизнесов и капитала. Производство — Source-of-Funds досье, AML-пакеты, юр. структурирование. Концирж — счета, компании, ВНЖ, гражданство, off-ramp.</p>
+        <p>Когда все двери закрываются — Charter открывает мир для вас и вашего капитала. Без искусственных границ. Часть задачи делают наши партнёры — счета, компании, ВНЖ, гражданство, off-ramp. Часть мы сами — SoF/SoW досье, AML-пакеты, юридическое структурирование, сопровождение онбординга.</p>
       </div>
       <div class="f-col">
         <h5>Контуры</h5>
@@ -996,7 +1046,7 @@ footer.f{
       Charter Capital выступает (i) производителем собственных продуктов — досье SoF/SoW, AML-пакеты, юр. структурирование, сопровождение онбординга и (ii) концирж-агентом для услуг лицензированных партнёров — банков, EMI, корпоративных провайдеров, юристов по ВНЖ и CBI-программам. Услуги партнёров оказываются партнёрами и регулируются их юрисдикциями. Charter Capital не предоставляет инвестиционных, налоговых и юридических советов в смысле локального законодательства любой страны. Любая информация на сайте носит индикативный характер и не является публичной офертой.
     </div>
     <div class="f-bottom">
-      <span>© 2026 Charter Capital — Паромщик для людей и капиталов из РФ</span>
+      <span>© 2026 Charter Capital — Когда двери закрываются, мы открываем мир</span>
       <span>Обновлено: апрель 2026</span>
     </div>
   </div>
