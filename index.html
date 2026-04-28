@@ -163,14 +163,29 @@ p{color:var(--body);font-weight:400;line-height:1.7}
   pointer-events:none;
 }
 .hero-inner{position:relative;max-width:1240px;margin:0 auto;width:100%}
+.hero-flags{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px}
 .hero-flag{
   display:inline-flex;align-items:center;gap:10px;
   background:rgba(220,38,38,.14);border:1px solid rgba(220,38,38,.45);
   padding:7px 16px;border-radius:999px;
   font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
-  color:#fca5a5;margin-bottom:32px;
+  color:#fca5a5;
 }
 .hero-flag .dot{width:6px;height:6px;border-radius:50%;background:#ef4444;animation:pulse 2s ease infinite}
+.hero-flag.hero-flag-link{
+  background:rgba(160,129,86,.12);
+  border-color:rgba(160,129,86,.45);
+  color:#cfc4a2;
+  text-decoration:none;cursor:pointer;
+  transition:background .18s ease,border-color .18s ease,transform .18s ease;
+}
+.hero-flag.hero-flag-link:hover{
+  background:rgba(160,129,86,.22);
+  border-color:rgba(160,129,86,.65);
+  color:#f1eee3;transform:translateY(-1px);
+}
+.hero-flag.hero-flag-link .arr{transition:transform .18s ease}
+.hero-flag.hero-flag-link:hover .arr{transform:translateX(3px)}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 .hero h1{
   color:#fff;
@@ -794,9 +809,15 @@ footer.f{
 <!-- HERO -->
 <section class="hero" id="hero">
   <div class="hero-inner">
-    <div class="hero-flag">
-      <span class="dot"></span>
-      <span>2026 — окно сужается каждый месяц</span>
+    <div class="hero-flags">
+      <span class="hero-flag">
+        <span class="dot"></span>
+        <span>2026 — окно сужается каждый месяц</span>
+      </span>
+      <a class="hero-flag hero-flag-link" href="homeland.html">
+        <span>Если проблема ещё на родине</span>
+        <span class="arr">→</span>
+      </a>
     </div>
     <h1>Когда двери закрываются —<br/><strong>Charter&nbsp;Capital открывает мир</strong> без искусственных границ.</h1>
     <p class="hero-sub">
@@ -1333,6 +1354,7 @@ footer.f{
       <div class="f-col">
         <h5>Контуры</h5>
         <ul>
+          <li><a href="homeland.html">Подготовка к&nbsp;исходу · ещё в&nbsp;РФ</a></li>
           <li><a href="private.html">Private Office · от&nbsp;$250K</a></li>
           <li><a href="corporate.html">Бизнес / ВЭД</a></li>
           <li><a href="sourceready-scoring-sandbox.html">Скоринг готовности</a></li>
