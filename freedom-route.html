@@ -27,19 +27,20 @@
 <meta property="og:title" content="Маршрут в свободный мир · Charter Capital"/>
 <meta property="og:description" content="Когда двери закрываются — Charter Capital открывает мир без искусственных границ. Один маршрут, где ваша семья, капитал и бизнес снова становятся управляемыми."/>
 <meta property="og:url" content="https://ccapital.pro/freedom-route.html"/>
-<meta property="og:image" content="https://ccapital.pro/assets/freedom-route/hero-open-world.webp"/>
+<meta property="og:image" content="https://ccapital.pro/assets/logic/15-passport-gate.webp"/>
 <meta property="og:image:alt" content="Маршрут в свободный мир — Charter Capital"/>
 <meta property="og:locale" content="ru_RU"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Маршрут в свободный мир · Charter Capital"/>
 <meta name="twitter:description" content="Один международный маршрут — где семья, капитал, бизнес и банк работают вместе. Charter Capital собирает это в одну систему."/>
-<meta name="twitter:image" content="https://ccapital.pro/assets/freedom-route/hero-open-world.webp"/>
+<meta name="twitter:image" content="https://ccapital.pro/assets/logic/15-passport-gate.webp"/>
 
 <link rel="dns-prefetch" href="https://fonts.googleapis.com"/>
 <link rel="dns-prefetch" href="https://fonts.gstatic.com"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link rel="preload" as="image" href="assets/freedom-route/hero-open-world.webp" fetchpriority="high"/>
+<link rel="preload" as="image" href="assets/logic/15-passport-gate.webp" fetchpriority="high" media="(min-width:769px)"/>
+<link rel="preload" as="image" href="assets/logic/15-passport-gate-800w.webp" fetchpriority="high" media="(max-width:768px)"/>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&family=Cormorant+Garamond:wght@300;400;500&display=swap"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&family=Cormorant+Garamond:wght@300;400;500&display=swap" media="print" onload="this.media='all'"/>
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&family=Cormorant+Garamond:wght@300;400;500&display=swap"/></noscript>
@@ -204,19 +205,19 @@ p{color:var(--on-dark-soft);font-weight:400;line-height:1.7}
 .hero-bg{position:absolute;inset:0;z-index:0}
 .hero-bg img{
   position:absolute;inset:0;width:100%;height:100%;
-  object-fit:cover;object-position:78% center;
+  object-fit:cover;object-position:72% 42%;
 }
 .hero-bg::after{
   content:'';position:absolute;inset:0;
   background:
-    linear-gradient(96deg,
-      rgba(6,8,15,.96) 0%,
-      rgba(6,8,15,.9)  30%,
-      rgba(6,8,15,.7)  52%,
-      rgba(6,8,15,.32) 78%,
-      rgba(6,8,15,.18) 100%),
-    radial-gradient(ellipse at 78% 38%,rgba(232,212,168,.1) 0%,transparent 55%),
-    linear-gradient(180deg,rgba(6,8,15,.18) 0%,rgba(6,8,15,.55) 100%);
+    linear-gradient(92deg,
+      rgba(6,8,15,.86) 0%,
+      rgba(6,8,15,.62) 32%,
+      rgba(6,8,15,.28) 52%,
+      rgba(6,8,15,.08) 72%,
+      rgba(6,8,15,0)   100%),
+    radial-gradient(ellipse at 76% 40%,rgba(232,212,168,.14) 0%,transparent 52%),
+    linear-gradient(180deg,rgba(6,8,15,0) 0%,rgba(6,8,15,.4) 100%);
   pointer-events:none;
 }
 .hero-content{
@@ -236,11 +237,11 @@ p{color:var(--on-dark-soft);font-weight:400;line-height:1.7}
 .hero-flag .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2.6s ease infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 .hero h1{
-  color:#fff;max-width:16ch;
-  font-size:clamp(2.4rem,5.4vw,4.6rem);
-  line-height:1.02;letter-spacing:-.045em;
-  font-weight:300;margin-bottom:28px;
-  text-shadow:0 2px 30px rgba(0,0,0,.4);
+  color:#fff;max-width:22ch;
+  font-size:clamp(1.65rem,3.15vw,2.85rem);
+  line-height:1.08;letter-spacing:-.038em;
+  font-weight:300;margin-bottom:24px;
+  text-shadow:0 2px 28px rgba(0,0,0,.45);
 }
 .hero h1 strong{font-weight:600;color:#fff}
 .hero h1 .em{color:var(--gold-warm);font-weight:400;font-style:normal}
@@ -1646,15 +1647,15 @@ footer.f{
 
 /* ─── Responsive ───────────────────────────────────────── */
 @media(max-width:1100px){
-  .hero-bg img{object-position:80% center}
+  .hero-bg img{object-position:76% 40%}
   .hero-bg::after{
     background:
-      linear-gradient(96deg,
-        rgba(6,8,15,.97) 0%,
-        rgba(6,8,15,.92) 38%,
-        rgba(6,8,15,.78) 60%,
-        rgba(6,8,15,.5) 90%),
-      linear-gradient(180deg,rgba(6,8,15,.25) 0%,rgba(6,8,15,.65) 100%);
+      linear-gradient(92deg,
+        rgba(6,8,15,.9) 0%,
+        rgba(6,8,15,.72) 38%,
+        rgba(6,8,15,.42) 62%,
+        rgba(6,8,15,.12) 88%),
+      linear-gradient(180deg,rgba(6,8,15,.1) 0%,rgba(6,8,15,.5) 100%);
   }
   .hero-copy{max-width:580px}
   .assembly-grid{grid-template-columns:repeat(2,1fr)}
@@ -1692,14 +1693,14 @@ footer.f{
   section.s{padding:88px 0}
   section.s.tight{padding:64px 0}
   .hero{padding:120px 22px 80px;min-height:88vh}
-  .hero-bg img{object-position:72% center}
+  .hero-bg img{object-position:68% 38%}
   .hero-bg::after{
     background:
       linear-gradient(180deg,
-        rgba(6,8,15,.78) 0%,
-        rgba(6,8,15,.85) 60%,
-        rgba(6,8,15,.95) 100%),
-      linear-gradient(96deg,rgba(6,8,15,.3) 0%,rgba(6,8,15,0) 60%);
+        rgba(6,8,15,.5) 0%,
+        rgba(6,8,15,.62) 55%,
+        rgba(6,8,15,.75) 100%),
+      linear-gradient(96deg,rgba(6,8,15,.72) 0%,rgba(6,8,15,.15) 58%,rgba(6,8,15,0) 78%);
   }
   .container,.container-wide,.container-sm,.container-narrow{padding:0 22px}
   .hero-actions .btn{width:100%;justify-content:center}
@@ -1794,7 +1795,7 @@ footer.f{
       "isPartOf": {"@id": "https://ccapital.pro/#website"},
       "about": {"@id": "https://ccapital.pro/#organization"},
       "inLanguage": "ru-RU",
-      "primaryImageOfPage": "https://ccapital.pro/assets/freedom-route/hero-open-world.webp",
+      "primaryImageOfPage": "https://ccapital.pro/assets/logic/15-passport-gate.webp",
       "description": "Charter Capital помогает предпринимателям из СНГ перенести себя, семью, капитал и бизнес в свободный мир: банковский маршрут, документы по капиталу, компания, ВНЖ, крипто-выход и финансовая подушка за границей."
     },
     {
@@ -1861,7 +1862,10 @@ footer.f{
      ───────────────────────────────────────────────────────── -->
 <section class="hero" id="top">
   <div class="hero-bg" aria-hidden="true">
-    <img src="assets/freedom-route/hero-open-world.webp" alt="" fetchpriority="high"/>
+    <picture>
+      <source media="(max-width:768px)" srcset="assets/logic/15-passport-gate-800w.webp"/>
+      <img src="assets/logic/15-passport-gate.webp" alt="" fetchpriority="high"/>
+    </picture>
   </div>
   <div class="hero-content">
     <div class="hero-copy">
