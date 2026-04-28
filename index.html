@@ -385,6 +385,101 @@ section.s.dark p{color:rgba(255,255,255,.72)}
 }
 .trigger .what strong{color:var(--ink);font-weight:600}
 
+/* ─── TRIGGER MOCKS (in-card visual proofs) ─────────────── */
+.trigger-mock{margin-top:4px}
+/* Phone push notification (trigger 02) */
+.phone-frame{
+  background:linear-gradient(180deg,#1c1c1e 0%,#0a0a0a 100%);
+  border-radius:18px;padding:12px 10px 14px;
+  position:relative;
+  box-shadow:0 10px 22px rgba(0,0,0,.18),inset 0 0 0 1px rgba(255,255,255,.05);
+}
+.phone-status-bar{
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:10px;color:rgba(255,255,255,.78);font-weight:600;letter-spacing:.02em;
+  padding:0 8px 8px;
+  font-feature-settings:'tnum';
+}
+.status-icons{display:flex;align-items:center;gap:6px}
+.signal-bars{display:inline-flex;align-items:flex-end;gap:1.5px;height:10px}
+.signal-bars i{display:inline-block;width:2.5px;background:rgba(255,255,255,.85);border-radius:1px}
+.signal-bars i:nth-child(1){height:3px}
+.signal-bars i:nth-child(2){height:5px}
+.signal-bars i:nth-child(3){height:7px}
+.signal-bars i:nth-child(4){height:9px;background:rgba(255,255,255,.45)}
+.status-battery{
+  width:18px;height:9px;border:1px solid rgba(255,255,255,.55);border-radius:2px;position:relative;
+  background:linear-gradient(90deg,rgba(255,255,255,.85) 0%,rgba(255,255,255,.85) 60%,transparent 60%,transparent 100%);
+  background-clip:content-box;padding:1px;
+}
+.status-battery::after{
+  content:'';position:absolute;right:-3px;top:2px;width:2px;height:5px;background:rgba(255,255,255,.55);border-radius:0 1px 1px 0;
+}
+.push-card{
+  background:rgba(40,40,42,.95);
+  border-radius:14px;padding:12px 14px 13px;
+  color:#fff;font-size:13px;line-height:1.45;
+  display:flex;flex-direction:column;gap:4px;
+  border:1px solid rgba(255,255,255,.06);
+}
+.push-head{
+  display:flex;justify-content:space-between;align-items:center;
+  padding-bottom:4px;
+}
+.push-app{display:flex;align-items:center;gap:8px}
+.push-app-icon{
+  width:22px;height:22px;border-radius:6px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:9px;font-weight:800;color:#fff;letter-spacing:.04em;
+}
+.push-app-icon-bank{background:#21a038}
+.push-app-name{font-size:11px;color:rgba(255,255,255,.78);font-weight:500;letter-spacing:.01em}
+.push-time-rel{font-size:10.5px;color:rgba(255,255,255,.5);font-feature-settings:'tnum'}
+.push-title{font-size:13.5px;font-weight:700;color:#fff;letter-spacing:-.005em;margin-top:2px}
+.push-text{font-size:12.5px;color:rgba(255,255,255,.78);line-height:1.45}
+
+/* Crypto exchange withdrawal frozen (trigger 04) */
+.exch-frame{
+  background:#0e1014;
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:8px;padding:14px 14px 12px;
+  display:flex;flex-direction:column;gap:8px;
+  box-shadow:0 10px 22px rgba(0,0,0,.18);
+  font-feature-settings:'tnum';
+}
+.exch-head{
+  display:flex;justify-content:space-between;align-items:center;
+  padding-bottom:9px;border-bottom:1px solid rgba(255,255,255,.07);
+  gap:8px;flex-wrap:wrap;
+}
+.exch-title{display:flex;align-items:center;gap:8px;color:#e2e8f0;font-size:11.5px;font-weight:500;letter-spacing:.01em}
+.exch-logo{
+  width:18px;height:18px;border-radius:4px;background:#f3ba2f;color:#0e1014;
+  display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;
+}
+.exch-status{
+  font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  background:rgba(245,158,11,.12);color:#fbbf24;border:1px solid rgba(245,158,11,.3);
+  padding:3px 8px;border-radius:3px;
+}
+.exch-body{display:flex;flex-direction:column;gap:5px}
+.exch-row{
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:12px;color:rgba(255,255,255,.55);font-weight:400;
+  padding:3px 0;
+}
+.exch-row .exch-label{color:rgba(255,255,255,.5);font-size:11.5px}
+.exch-row strong{color:#fff;font-weight:600}
+.exch-row .exch-amount{font-size:13.5px;font-weight:700;letter-spacing:-.01em;color:#fff;font-feature-settings:'tnum'}
+.exch-frozen{color:#fb7185 !important;font-weight:700}
+.exch-action{
+  margin-top:5px;padding:9px 11px;
+  background:rgba(220,38,38,.1);border:1px solid rgba(220,38,38,.25);
+  border-radius:4px;
+  font-size:11.5px;color:#fca5a5;line-height:1.45;
+}
+.exch-action strong{color:#fecaca;font-weight:700}
+
 /* ─── WHAT WE DO ────────────────────────────────────────── */
 .do-grid{
   display:grid;grid-template-columns:1fr 1fr;gap:24px;
@@ -751,6 +846,28 @@ footer.f{
         <div class="num">02</div>
         <h3>Деньги застряли. SWIFT не идёт, платёжки возвращаются, EMI блокирует</h3>
         <p>Платежи зависают на 2–4 недели, поставщики перестают отгружать, контрагенты уходят. Каждый отказ — это red flag в досье на следующий банк.</p>
+        <div class="trigger-mock" aria-hidden="true">
+          <div class="phone-frame">
+            <div class="phone-status-bar">
+              <span class="status-time">14:32</span>
+              <div class="status-icons">
+                <span class="signal-bars"><i></i><i></i><i></i><i></i></span>
+                <span class="status-battery"></span>
+              </div>
+            </div>
+            <div class="push-card">
+              <div class="push-head">
+                <div class="push-app">
+                  <span class="push-app-icon push-app-icon-bank">СБ</span>
+                  <span class="push-app-name">СБЕР Онлайн</span>
+                </div>
+                <span class="push-time-rel">сейчас</span>
+              </div>
+              <div class="push-title">Платёж заблокирован</div>
+              <div class="push-text">USD&nbsp;87 400 в адрес BENEFICIARY LLC. Требуется подтверждение источника средств. Свяжитесь с банком в течение 7&nbsp;дней.</div>
+            </div>
+          </div>
+        </div>
         <div class="what"><strong>Что нужно:</strong> второй платёжный контур и распакованный SoF под него.</div>
       </div>
       <div class="trigger">
@@ -763,6 +880,34 @@ footer.f{
         <div class="num">04</div>
         <h3>Крипта на Ledger / бирже — нужно занести в фиат банка ЕС</h3>
         <p>$50K, $300K, $1.5M в BTC/USDT — это не просто «продать». Это on-chain история, которую банк прочтёт за 6 секунд. Без AML-папки фиат не закрепится.</p>
+        <div class="trigger-mock" aria-hidden="true">
+          <div class="exch-frame">
+            <div class="exch-head">
+              <div class="exch-title">
+                <span class="exch-logo">B</span>
+                <span>Binance · Withdrawal</span>
+              </div>
+              <span class="exch-status">Pending Review</span>
+            </div>
+            <div class="exch-body">
+              <div class="exch-row">
+                <span class="exch-label">Amount</span>
+                <span class="exch-amount">2.45&nbsp;BTC</span>
+              </div>
+              <div class="exch-row">
+                <span class="exch-label">Network</span>
+                <strong>Bitcoin · BTC</strong>
+              </div>
+              <div class="exch-row">
+                <span class="exch-label">Status</span>
+                <strong class="exch-frozen">⏵ Frozen — AML Check</strong>
+              </div>
+              <div class="exch-action">
+                <strong>Action required:</strong> submit Source-of-Funds documentation within 72&nbsp;h
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="what"><strong>Что нужно:</strong> аудит цепочки + AML-пакет + регулируемый off-ramp.</div>
       </div>
       <div class="trigger">
