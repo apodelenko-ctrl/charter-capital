@@ -181,8 +181,9 @@ p{color:var(--body);font-weight:400;line-height:1.7}
   position:relative;
   min-height:100vh;
   background:
-    linear-gradient(180deg, rgba(6,8,15,0) 0%, rgba(6,8,15,0) 25%, rgba(6,8,15,.30) 52%, rgba(6,8,15,.78) 82%, rgba(6,8,15,.92) 100%),
-    url('assets/logic/15-passport-gate.webp') 25% 30% / cover no-repeat,
+    linear-gradient(180deg, rgba(6,8,15,0) 0%, rgba(6,8,15,0) 58%, rgba(6,8,15,.22) 88%, rgba(6,8,15,.38) 100%),
+    linear-gradient(90deg, rgba(6,8,15,.88) 0%, rgba(6,8,15,.52) 32%, rgba(6,8,15,.18) 46%, rgba(6,8,15,.04) 58%, rgba(6,8,15,0) 72%),
+    url('assets/logic/15-passport-gate.webp') 70% 42% / cover no-repeat,
     var(--bg-darker);
   display:flex;flex-direction:column;justify-content:flex-end;
   padding:160px 32px 80px;
@@ -191,20 +192,21 @@ p{color:var(--body);font-weight:400;line-height:1.7}
 }
 @media (max-width:768px){
   .hero{
-    background-image:
-      linear-gradient(180deg, rgba(6,8,15,0) 0%, rgba(6,8,15,0) 22%, rgba(6,8,15,.32) 50%, rgba(6,8,15,.82) 80%, rgba(6,8,15,.94) 100%),
-      url('assets/logic/15-passport-gate-800w.webp');
-    background-position: 25% 30%, 25% 30%;
+    background:
+      linear-gradient(180deg, rgba(6,8,15,0) 0%, rgba(6,8,15,0) 52%, rgba(6,8,15,.28) 86%, rgba(6,8,15,.48) 100%),
+      linear-gradient(90deg, rgba(6,8,15,.90) 0%, rgba(6,8,15,.55) 40%, rgba(6,8,15,.20) 52%, rgba(6,8,15,0) 70%),
+      url('assets/logic/15-passport-gate-800w.webp') 64% 38% / cover no-repeat,
+      var(--bg-darker);
     padding:120px 28px 60px;
   }
 }
 .hero::before{
   content:'';position:absolute;inset:0;
   background:
-    radial-gradient(ellipse 320px 200px at 22% 18%, rgba(255,250,230,.22) 0%, transparent 65%),
-    radial-gradient(circle at 22% 18%, rgba(80,135,235,.16) 0%, transparent 35%),
-    radial-gradient(ellipse 360px 260px at 20% 38%, rgba(255,210,150,.13) 0%, transparent 70%),
-    radial-gradient(circle at 78% 50%, rgba(217,178,113,.18) 0%, transparent 55%);
+    radial-gradient(ellipse 320px 200px at 22% 18%, rgba(255,250,230,.18) 0%, transparent 65%),
+    radial-gradient(circle at 22% 18%, rgba(80,135,235,.12) 0%, transparent 35%),
+    radial-gradient(ellipse 360px 260px at 20% 38%, rgba(255,210,150,.10) 0%, transparent 70%),
+    radial-gradient(circle at 78% 48%, rgba(255,235,190,.14) 0%, transparent 50%);
   pointer-events:none;
 }
 .hero-inner{position:relative;max-width:1240px;margin:0 auto;width:100%}
