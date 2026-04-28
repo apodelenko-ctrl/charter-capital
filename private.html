@@ -3,16 +3,45 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="color-scheme" content="dark light"/>
+<meta name="theme-color" content="#06080f" media="(prefers-color-scheme: dark)"/>
+<meta name="theme-color" content="#fbfaf6" media="(prefers-color-scheme: light)"/>
+<meta name="format-detection" content="telephone=no"/>
+<meta name="referrer" content="strict-origin-when-cross-origin"/>
 <title>Private Office · Charter Capital — когда двери закрываются, мы открываем мир</title>
 <meta name="description" content="Charter Capital · Private Office. Архитекторы легитимности и безупречной биографии вашего капитала. Структурированные инвестиции в Сингапурский фонд недвижимости с выходом на счета EU/UK/Швейцарии чистыми деньгами. Для частных клиентов с активами от $1 000 000."/>
+<meta name="author" content="Charter Capital"/>
+<meta name="geo.region" content="SG"/>
+<meta name="language" content="Russian"/>
+<meta name="content-language" content="ru"/>
+<meta name="robots" content="noindex, nofollow"/>
+<meta name="yandex" content="noindex, nofollow"/>
+
+<link rel="canonical" href="https://ccapital.pro/private.html"/>
+<link rel="alternate" hreflang="ru" href="https://ccapital.pro/private.html"/>
+
 <meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Charter Capital"/>
 <meta property="og:title" content="Private Office · Charter Capital — когда двери закрываются, мы открываем мир"/>
 <meta property="og:description" content="Архитекторы легитимности и безупречной биографии вашего капитала. SG-фонд → недвижимость → выход на счета EU / UK / Швейцарии чистыми деньгами. От $1 000 000."/>
 <meta property="og:url" content="https://ccapital.pro/private.html"/>
-<meta name="robots" content="noindex, nofollow"/>
+<meta property="og:image" content="https://ccapital.pro/assets/logic/18-private-office-sg.webp"/>
+<meta property="og:image:alt" content="Charter Capital · Private Office"/>
+<meta property="og:locale" content="ru_RU"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Private Office · Charter Capital"/>
+<meta name="twitter:description" content="Архитекторы легитимности капитала. Для частных клиентов с активами от $1 000 000."/>
+<meta name="twitter:image" content="https://ccapital.pro/assets/logic/18-private-office-sg.webp"/>
+
+<link rel="dns-prefetch" href="https://fonts.googleapis.com"/>
+<link rel="dns-prefetch" href="https://fonts.gstatic.com"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<link rel="preload" as="image" href="assets/logic/18-private-office-sg.webp" fetchpriority="high" media="(min-width: 769px)"/>
+<link rel="preload" as="image" href="assets/logic/18-private-office-sg-800w.webp" fetchpriority="high" media="(max-width: 768px)"/>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap" media="print" onload="this.media='all'"/>
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap"/></noscript>
 <style>
 :root{
   --bg:#050505;
@@ -168,8 +197,11 @@ p{color:var(--text-soft);font-weight:400;line-height:1.65;font-size:16px}
   content:'';position:absolute;inset:0;z-index:-1;
 }
 .cc-hero--private{
-  background-image:url('assets/logic/18-private-office-sg.png');
+  background-image:url('assets/logic/18-private-office-sg.webp');
   background-position:center 30%;
+}
+@media (max-width:768px){
+  .cc-hero--private{background-image:url('assets/logic/18-private-office-sg-800w.webp')}
 }
 .cc-hero--private::before{
   background:
@@ -579,6 +611,73 @@ footer.f{
   .deck.dark .grid-4{grid-template-columns:1fr}
 }
 </style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://ccapital.pro/#organization",
+      "name": "Charter Capital",
+      "url": "https://ccapital.pro/",
+      "logo": "https://ccapital.pro/assets/logic/15-passport-gate.webp",
+      "slogan": "Когда двери закрываются, мы открываем мир",
+      "sameAs": ["https://t.me/charter_capital"],
+      "contactPoint": [{
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "email": "hello@ccapital.pro",
+        "url": "https://t.me/charter_capital",
+        "availableLanguage": ["Russian", "English"]
+      }]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://ccapital.pro/private.html#webpage",
+      "url": "https://ccapital.pro/private.html",
+      "name": "Private Office · Charter Capital",
+      "isPartOf": {"@id": "https://ccapital.pro/#website"},
+      "inLanguage": "ru-RU",
+      "primaryImageOfPage": "https://ccapital.pro/assets/logic/18-private-office-sg.webp",
+      "audience": {
+        "@type": "Audience",
+        "name": "High-Net-Worth Individuals",
+        "audienceType": "Частные клиенты с активами от $1 000 000"
+      }
+    },
+    {
+      "@type": "FinancialService",
+      "name": "Charter Capital · Private Office",
+      "provider": {"@id": "https://ccapital.pro/#organization"},
+      "areaServed": ["RU", "CIS", "SG", "GB", "CH"],
+      "serviceType": "Структурированные инвестиции в сингапурский фонд недвижимости",
+      "description": "Архитекторы легитимности и безупречной биографии капитала. SG-фонд → недвижимость → выход на счета EU/UK/Швейцарии чистыми деньгами. Для частных клиентов с активами от $1 000 000.",
+      "url": "https://ccapital.pro/private.html",
+      "feesAndCommissionsSpecification": "Концирж-агент. Услуги лицензированных партнёров регулируются их юрисдикциями.",
+      "offers": {
+        "@type": "Offer",
+        "name": "Private Office Mandate",
+        "eligibleCustomerType": "BusinessEntity / High-Net-Worth Individual",
+        "availability": "https://schema.org/LimitedAvailability",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "minPrice": "1000000",
+          "priceCurrency": "USD",
+          "description": "Минимальный размер активов клиента"
+        }
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Charter Capital", "item": "https://ccapital.pro/"},
+        {"@type": "ListItem", "position": 2, "name": "Private Office", "item": "https://ccapital.pro/private.html"}
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

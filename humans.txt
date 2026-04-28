@@ -1,0 +1,37 @@
+/* TEAM */
+
+  Charter Capital
+  When the doors close — we open the world.
+  Когда двери закрываются, мы открываем мир.
+
+  Site: https://ccapital.pro
+  Contact: hello@ccapital.pro
+  Telegram: https://t.me/charter_capital
+
+/* COMPANY */
+
+  Brand: Charter Capital
+  Operating jurisdictions: Singapore, Thailand, Hong Kong, UAE, United Kingdom
+  Focus: AML / SoF-SoW dossiers · banking onboarding · corporate structuring ·
+         residency & citizenship support · crypto off-ramp · Asia resort real estate ·
+         private fund (Charter Asia Fund) · China hub (WET SOLUTION).
+
+  Charter Capital — реальная действующая компания. Не ICO, не криптопроект,
+  не "обход санкций". Реальный международный консьерж для предпринимателей
+  и приватных клиентов из России и СНГ.
+
+/* DISCLOSURE */
+
+  Charter Capital выступает (i) производителем собственных продуктов
+  (досье SoF/SoW, AML-пакеты, юридическое структурирование, сопровождение
+  онбординга) и (ii) консьерж-агентом для услуг лицензированных партнёров
+  (банков, EMI, корпоративных провайдеров, юристов по ВНЖ и CBI-программам).
+  Услуги партнёров оказываются партнёрами и регулируются их юрисдикциями.
+
+/* SITE */
+
+  Last updated: 2026-04-28
+  Standards: HTML5, CSS3, ES6+, JSON-LD (schema.org), Open Graph, robots.txt,
+             sitemap.xml, llms.txt
+  Languages: ru, en
+  Hosting: GitHub Pages (CNAME → ccapital.pro)

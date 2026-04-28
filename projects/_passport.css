@@ -74,9 +74,10 @@ p{color:var(--body);font-weight:400;line-height:1.7}
   transition:background .25s ease,border-color .25s ease;
 }
 #topbar.solid{
-  background:rgba(255,255,255,.96);
-  backdrop-filter:saturate(180%) blur(10px);
-  border-bottom-color:var(--line);
+  background:rgba(255,255,255,.72);
+  backdrop-filter:saturate(180%) blur(18px);
+  -webkit-backdrop-filter:saturate(180%) blur(18px);
+  border-bottom-color:rgba(15,23,42,.06);
 }
 .topbar-inner{
   max-width:1320px;margin:0 auto;padding:18px 32px;

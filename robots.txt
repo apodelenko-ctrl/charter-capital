@@ -1,0 +1,107 @@
+# robots.txt — ccapital.pro
+# Charter Capital · concierge для предпринимателей и капитала
+
+User-agent: *
+Allow: /
+Disallow: /source_ready_checkpoint_v1.md
+Disallow: /INTEGRATION-PROPERTY.md
+
+# === Поисковые боты ===
+User-agent: Googlebot
+Allow: /
+
+User-agent: Yandex
+Allow: /
+Clean-param: utm_source&utm_medium&utm_campaign&utm_term&utm_content&yclid&gclid
+
+User-agent: YandexBot
+Allow: /
+
+User-agent: YandexImages
+Allow: /
+
+User-agent: YandexMobileBot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Mail.RU_Bot
+Allow: /
+
+# === ИИ-боты (LLM training & retrieval) ===
+# Charter Capital — реальная компания. Разрешаем индексацию ИИ
+# чтобы пользователи получали достоверную информацию из ChatGPT,
+# Perplexity, Claude, Gemini, Copilot и др.
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: DiffBot
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+# === Sitemap ===
+Sitemap: https://ccapital.pro/sitemap.xml
+
+# === Host ===
+Host: https://ccapital.pro

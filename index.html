@@ -3,15 +3,53 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="color-scheme" content="light dark"/>
+<meta name="theme-color" content="#06080f" media="(prefers-color-scheme: dark)"/>
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)"/>
+<meta name="format-detection" content="telephone=no"/>
+<meta name="referrer" content="strict-origin-when-cross-origin"/>
 <title>Charter Capital — когда двери закрываются, мы открываем мир</title>
 <meta name="description" content="Когда все двери закрываются — Charter открывает мир для вас и вашего капитала. Без искусственных границ. Релокация, банковский доступ, легализация капитала, ВНЖ, гражданство, off-ramp для частных лиц, бизнесов и капитала из России."/>
+<meta name="keywords" content="релокация из России, банковский счёт за рубежом, легализация капитала, AML досье, Source of Funds, ВНЖ, гражданство за инвестиции, инвестиции в Сингапуре, недвижимость Пхукет, off-ramp крипто, Charter Capital, ccapital"/>
+<meta name="author" content="Charter Capital"/>
+<meta name="geo.region" content="SG"/>
+<meta name="geo.placename" content="Singapore"/>
+<meta name="language" content="Russian"/>
+<meta name="content-language" content="ru"/>
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"/>
+<meta name="googlebot" content="index,follow,max-image-preview:large"/>
+<meta name="yandex" content="index,follow"/>
+<!-- <meta name="yandex-verification" content="ВАШ_КОД_ВЕРИФИКАЦИИ"/> -->
+<!-- <meta name="google-site-verification" content="ВАШ_КОД_ВЕРИФИКАЦИИ"/> -->
+
+<link rel="canonical" href="https://ccapital.pro/"/>
+<link rel="alternate" hreflang="ru" href="https://ccapital.pro/"/>
+<link rel="alternate" hreflang="x-default" href="https://ccapital.pro/"/>
+
 <meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Charter Capital"/>
 <meta property="og:title" content="Charter Capital — когда двери закрываются, мы открываем мир"/>
 <meta property="og:description" content="Charter открывает мир для вас и вашего капитала. Без искусственных границ. Для частных лиц, бизнесов и капитала, которым стандартная банковская система больше не отвечает."/>
 <meta property="og:url" content="https://ccapital.pro/"/>
+<meta property="og:image" content="https://ccapital.pro/assets/logic/15-passport-gate.webp"/>
+<meta property="og:image:width" content="1600"/>
+<meta property="og:image:height" content="1066"/>
+<meta property="og:image:alt" content="Charter Capital — когда двери закрываются, мы открываем мир"/>
+<meta property="og:locale" content="ru_RU"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Charter Capital — когда двери закрываются, мы открываем мир"/>
+<meta name="twitter:description" content="Релокация, банковский доступ, легализация капитала, ВНЖ, гражданство, off-ramp. Реальный международный консьерж для предпринимателей и приватных клиентов."/>
+<meta name="twitter:image" content="https://ccapital.pro/assets/logic/15-passport-gate.webp"/>
+
+<link rel="dns-prefetch" href="https://fonts.googleapis.com"/>
+<link rel="dns-prefetch" href="https://fonts.gstatic.com"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="preload" as="image" href="assets/logic/15-passport-gate.webp" fetchpriority="high" media="(min-width: 769px)"/>
+<link rel="preload" as="image" href="assets/logic/15-passport-gate-800w.webp" fetchpriority="high" media="(max-width: 768px)"/>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" media="print" onload="this.media='all'"/>
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"/></noscript>
 <style>
 :root{
   --bg:#fff;
@@ -102,9 +140,10 @@ p{color:var(--body);font-weight:400;line-height:1.7}
   transition:background .25s ease,border-color .25s ease;
 }
 #topbar.solid{
-  background:rgba(255,255,255,.96);
-  backdrop-filter:saturate(180%) blur(10px);
-  border-bottom-color:var(--line);
+  background:rgba(255,255,255,.72);
+  backdrop-filter:saturate(180%) blur(18px);
+  -webkit-backdrop-filter:saturate(180%) blur(18px);
+  border-bottom-color:rgba(15,23,42,.06);
 }
 .topbar-inner{
   max-width:1320px;margin:0 auto;padding:18px 32px;
@@ -149,12 +188,15 @@ p{color:var(--body);font-weight:400;line-height:1.7}
   min-height:100vh;
   background:
     linear-gradient(90deg,rgba(6,8,15,.92) 0%,rgba(6,8,15,.62) 48%,rgba(6,8,15,.18) 100%),
-    url('assets/logic/15-passport-gate.png') center/cover no-repeat,
+    url('assets/logic/15-passport-gate.webp') center/cover no-repeat,
     var(--bg-darker);
   display:flex;flex-direction:column;justify-content:center;
   padding:140px 32px 80px;
   overflow:hidden;
   color:#fff;
+}
+@media (max-width:768px){
+  .hero{background-image:linear-gradient(90deg,rgba(6,8,15,.92) 0%,rgba(6,8,15,.62) 48%,rgba(6,8,15,.18) 100%),url('assets/logic/15-passport-gate-800w.webp')}
 }
 .hero::before{
   content:'';position:absolute;inset:0;
@@ -946,6 +988,157 @@ footer.f{
   .hero-meta-item .v{font-size:1.3rem}
 }
 </style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://ccapital.pro/#organization",
+      "name": "Charter Capital",
+      "alternateName": ["Чартер Капитал", "ccapital", "ccapital.pro"],
+      "url": "https://ccapital.pro/",
+      "logo": "https://ccapital.pro/assets/logic/15-passport-gate.webp",
+      "image": "https://ccapital.pro/assets/logic/15-passport-gate.webp",
+      "description": "Частный консьерж и архитектор легитимности капитала для предпринимателей и приватных клиентов из России и СНГ. Релокация, банковский онбординг, корпоративные структуры, инвестиции в Азии, юридическая чистка перед выездом.",
+      "slogan": "Когда двери закрываются, мы открываем мир",
+      "foundingDate": "2024",
+      "areaServed": [
+        {"@type": "Country", "name": "Singapore"},
+        {"@type": "Country", "name": "Thailand"},
+        {"@type": "Country", "name": "Hong Kong"},
+        {"@type": "Country", "name": "United Arab Emirates"},
+        {"@type": "Country", "name": "United Kingdom"},
+        {"@type": "Country", "name": "Russia"},
+        {"@type": "Place", "name": "СНГ / CIS"}
+      ],
+      "knowsAbout": [
+        "AML compliance",
+        "Source of Funds (SoF)",
+        "Source of Wealth (SoW)",
+        "Banking onboarding",
+        "Singapore corporate structuring",
+        "Hong Kong company formation",
+        "UAE Free Zone & Mainland",
+        "UK Limited company",
+        "Residency by Investment",
+        "Citizenship by Investment",
+        "Crypto off-ramp",
+        "Phuket resort real estate",
+        "Singapore private fund",
+        "China trade hub"
+      ],
+      "sameAs": [
+        "https://t.me/charter_capital"
+      ],
+      "contactPoint": [{
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "email": "hello@ccapital.pro",
+        "url": "https://t.me/charter_capital",
+        "availableLanguage": ["Russian", "English"],
+        "areaServed": ["RU", "SG", "TH", "HK", "AE", "GB", "Worldwide"]
+      }]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://ccapital.pro/#website",
+      "url": "https://ccapital.pro/",
+      "name": "Charter Capital",
+      "description": "Когда двери закрываются, мы открываем мир. Частный консьерж для предпринимателей и приватных клиентов из России и СНГ.",
+      "publisher": {"@id": "https://ccapital.pro/#organization"},
+      "inLanguage": "ru-RU"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://ccapital.pro/#webpage",
+      "url": "https://ccapital.pro/",
+      "name": "Charter Capital — когда двери закрываются, мы открываем мир",
+      "isPartOf": {"@id": "https://ccapital.pro/#website"},
+      "about": {"@id": "https://ccapital.pro/#organization"},
+      "inLanguage": "ru-RU",
+      "primaryImageOfPage": "https://ccapital.pro/assets/logic/15-passport-gate.webp",
+      "description": "Когда все двери закрываются — Charter открывает мир для вас и вашего капитала. Без искусственных границ. Релокация, банковский доступ, легализация капитала, ВНЖ, гражданство, off-ramp."
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://ccapital.pro/#service",
+      "name": "Charter Capital — концирж международного капитала",
+      "provider": {"@id": "https://ccapital.pro/#organization"},
+      "areaServed": ["RU", "CIS", "SG", "TH", "HK", "AE", "GB"],
+      "serviceType": [
+        "AML досье и Source of Funds / Source of Wealth (SoF/SoW)",
+        "Банковский онбординг (SG / HK / AE / EU / UK / CH)",
+        "Корпоративные структуры (Pte Ltd, Limited, Free Zone, UK Ltd)",
+        "Подготовка ВНЖ и CBI через лицензированных партнёров",
+        "Crypto off-ramp через регулируемые площадки",
+        "Структурированные инвестиции в Сингапурский фонд недвижимости",
+        "Курортная недвижимость Пхукета (CP Property)",
+        "China Hub — торговые операции и товарно-сырьевые потоки (WET SOLUTION)"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Направления Charter Capital",
+        "itemListElement": [
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Маршрут в свободный мир", "url": "https://ccapital.pro/freedom-route.html"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Подготовка к исходу", "url": "https://ccapital.pro/homeland.html"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Private Office (от $1 000 000)", "url": "https://ccapital.pro/private.html"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Charter Asia Fund (от $25 000)", "url": "https://ccapital.pro/fund.html"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "CP Property — недвижимость Пхукета", "url": "https://ccapital.pro/property.html"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "WET SOLUTION — China Hub", "url": "https://ccapital.pro/wet-solution.html"}}
+        ]
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://ccapital.pro/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Что такое Charter Capital?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Charter Capital — частный консьерж и архитектор легитимности капитала для предпринимателей и приватных клиентов из России и СНГ. Помогает перенести семью, бизнес и капитал в международную систему через подготовку AML-биографии, банковский онбординг, корпоративные структуры в Сингапуре/Гонконге/ОАЭ/UK, инвестиции в курортную недвижимость Азии и юридическую чистку перед выездом."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Charter Capital — это банк или финансовый советник?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Нет. Charter Capital сам не открывает счета и не даёт инвестиционных, налоговых или юридических советов в смысле локального законодательства. Charter Capital выступает (i) производителем собственных продуктов — досье SoF/SoW, AML-пакеты, юр. структурирование, сопровождение онбординга — и (ii) консьерж-агентом для услуг лицензированных партнёров (банков, EMI, корпоративных провайдеров, юристов по ВНЖ и CBI-программам)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Это «обход санкций»?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Нет. Charter Capital не продаёт «обходы» и не обещает невозможного. Все услуги оказываются через лицензированных партнёров строго в правовом поле партнёрских юрисдикций (Сингапур, Гонконг, ОАЭ, Великобритания)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Какие минимальные суммы для работы?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Charter Asia Fund (Сингапур) — от $25 000. Private Office — от $1 000 000 активов. CP Property (недвижимость Пхукета) — по проектам, прямые контракты с застройщиком, ноль комиссии покупателю."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Как связаться с Charter Capital?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Telegram: https://t.me/charter_capital · Email: hello@ccapital.pro · Сайт: https://ccapital.pro"
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

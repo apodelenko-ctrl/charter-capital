@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemaps-image/1.1">
+
+  <url>
+    <loc>https://ccapital.pro/</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ccapital.pro/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ccapital.pro/"/>
+    <image:image>
+      <image:loc>https://ccapital.pro/assets/logic/15-passport-gate.webp</image:loc>
+      <image:title>Charter Capital — когда двери закрываются, мы открываем мир</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://ccapital.pro/freedom-route.html</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ccapital.pro/freedom-route.html"/>
+    <image:image>
+      <image:loc>https://ccapital.pro/assets/freedom-route/hero-open-world.webp</image:loc>
+      <image:title>Маршрут в свободный мир — Charter Capital</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://ccapital.pro/private.html</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ccapital.pro/private.html"/>
+    <image:image>
+      <image:loc>https://ccapital.pro/assets/logic/18-private-office-sg.webp</image:loc>
+      <image:title>Charter Capital · Private Office</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://ccapital.pro/fund.html</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ccapital.pro/fund.html"/>
+    <image:image>
+      <image:loc>https://ccapital.pro/assets/fund/villa-hero.webp</image:loc>
+      <image:title>Charter Asia Fund</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://ccapital.pro/homeland.html</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ccapital.pro/homeland.html"/>
+  </url>
+
+  <url>
+    <loc>https://ccapital.pro/property.html</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ccapital.pro/property.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ccapital.pro/property-en.html"/>
+    <image:image>
+      <image:loc>https://ccapital.pro/assets/property/the-modeva-exterior-4-1.jpg</image:loc>
+      <image:title>CP Property — недвижимость Пхукета</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://ccapital.pro/property-en.html</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ccapital.pro/property-en.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ccapital.pro/property.html"/>
+  </url>
+
+  <url>
+    <loc>https://ccapital.pro/wet-solution.html</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ccapital.pro/wet-solution.html"/>
+  </url>
+
+  <!-- Property project pages -->
+  <url>
+    <loc>https://ccapital.pro/projects/the-modeva.html</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ccapital.pro/projects/the-modeva.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ccapital.pro/projects/the-modeva-en.html"/>
+  </url>
+  <url>
+    <loc>https://ccapital.pro/projects/the-modeva-en.html</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ccapital.pro/projects/the-modeva-en.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ccapital.pro/projects/the-modeva.html"/>
+  </url>
+
+  <url>
+    <loc>https://ccapital.pro/projects/the-title-adora.html</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ccapital.pro/projects/the-title-adora.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ccapital.pro/projects/the-title-adora-en.html"/>
+  </url>
+  <url>
+    <loc>https://ccapital.pro/projects/the-title-adora-en.html</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ccapital.pro/projects/the-title-adora-en.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ccapital.pro/projects/the-title-adora.html"/>
+  </url>
+
+  <url>
+    <loc>https://ccapital.pro/projects/the-title-artrio.html</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ccapital.pro/projects/the-title-artrio.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ccapital.pro/projects/the-title-artrio-en.html"/>
+  </url>
+  <url>
+    <loc>https://ccapital.pro/projects/the-title-artrio-en.html</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ccapital.pro/projects/the-title-artrio-en.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ccapital.pro/projects/the-title-artrio.html"/>
+  </url>
+
+  <url>
+    <loc>https://ccapital.pro/projects/the-title-katabello.html</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ccapital.pro/projects/the-title-katabello.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ccapital.pro/projects/the-title-katabello-en.html"/>
+  </url>
+  <url>
+    <loc>https://ccapital.pro/projects/the-title-katabello-en.html</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ccapital.pro/projects/the-title-katabello-en.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ccapital.pro/projects/the-title-katabello.html"/>
+  </url>
+
+  <url>
+    <loc>https://ccapital.pro/projects/title-vivi.html</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ccapital.pro/projects/title-vivi.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ccapital.pro/projects/title-vivi-en.html"/>
+  </url>
+  <url>
+    <loc>https://ccapital.pro/projects/title-vivi-en.html</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ccapital.pro/projects/title-vivi-en.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ccapital.pro/projects/title-vivi.html"/>
+  </url>
+
+</urlset>
