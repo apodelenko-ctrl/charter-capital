@@ -199,80 +199,76 @@ section.s.dark p{color:rgba(255,255,255,.74)}
 .s-head h2{margin-bottom:14px}
 .s-head p{font-size:17px;color:var(--muted);font-weight:400}
 
-/* ─── BLOCK 1: НАЛИЧНЫЙ РУБЛЬ ─────────────────────────── */
-.cash-grid{
-  display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center;
+/* ─── BLOCK 1: ДЕНЬГИ (full-bleed cash-prep) ───────────── */
+.s-cash{
+  position:relative;color:#fff;overflow:hidden;isolation:isolate;
+  padding:140px 32px;min-height:760px;
 }
-.cash-text h2{margin-bottom:18px}
-.cash-text p{font-size:17px;line-height:1.7;color:var(--body);margin-bottom:14px}
-.cash-text p strong{color:var(--ink);font-weight:600}
-.cash-list{
-  margin-top:24px;display:flex;flex-direction:column;gap:14px;
+.cash-bg{
+  position:absolute;inset:0;z-index:-2;
+  background:url('assets/logic/19-cash-prep.png') center/cover no-repeat;
 }
+.cash-overlay{
+  position:absolute;inset:0;z-index:-1;
+  background:
+    linear-gradient(180deg,rgba(20,12,4,.45) 0%,rgba(20,12,4,.7) 60%,rgba(20,12,4,.92) 100%),
+    radial-gradient(circle at 78% 30%,rgba(217,119,6,.14) 0%,transparent 55%);
+}
+.cash-content{
+  position:relative;z-index:1;
+  display:grid;grid-template-columns:1.05fr 1fr;gap:64px;
+  align-items:start;
+}
+.cash-headline{display:flex;flex-direction:column;gap:14px;max-width:60ch}
+.cash-headline h2{
+  color:#fff;font-size:clamp(2rem,4vw,3.4rem);font-weight:300;
+  letter-spacing:-.04em;line-height:1.04;margin-bottom:6px;
+}
+.cash-headline h2 strong{color:#fcd34d;font-weight:500}
+.cash-intro{
+  color:rgba(255,255,255,.82);font-size:16px;line-height:1.65;font-weight:300;
+}
+.cash-intro strong{color:#fff;font-weight:600}
+.cash-list{display:flex;flex-direction:column;gap:12px}
 .cash-item{
-  display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;
-  padding:18px 20px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  background:rgba(0,0,0,.32);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:var(--radius);
+  padding:18px 22px;
+  display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  transition:border-color .15s ease,background .15s ease;
+}
+.cash-item:hover{
+  background:rgba(0,0,0,.42);
+  border-color:rgba(252,211,77,.4);
 }
 .cash-item-num{
-  width:30px;height:30px;border-radius:50%;
-  background:var(--red-soft);color:var(--red-dark);
-  display:flex;align-items:center;justify-content:center;
-  font-size:12px;font-weight:700;flex-shrink:0;
+  font-size:11px;font-weight:700;letter-spacing:.18em;color:#fcd34d;
+  padding-top:3px;
 }
-.cash-item h4{font-size:15px;font-weight:600;margin-bottom:4px;color:var(--ink)}
-.cash-item p{font-size:13.5px;line-height:1.55;color:var(--muted);margin:0}
-/* Cash visual — stacked notes */
-.cash-vis{
-  position:relative;height:380px;
-  display:flex;align-items:center;justify-content:center;
+.cash-item h4{
+  font-size:15px;font-weight:600;color:#fff;letter-spacing:-.005em;
+  line-height:1.25;margin-bottom:5px;
 }
-.note-stack{
-  position:relative;width:88%;max-width:380px;height:240px;
+.cash-item p{
+  font-size:13px;line-height:1.55;color:rgba(255,255,255,.7);margin:0;
 }
-.note{
-  position:absolute;border-radius:8px;
-  width:100%;height:130px;
-  box-shadow:0 14px 30px -8px rgba(0,0,0,.18),0 0 0 1px rgba(0,0,0,.04);
-  display:flex;flex-direction:column;justify-content:space-between;
-  padding:18px 22px;
-  font-feature-settings:'tnum';
+.cash-callout{
+  grid-column:1 / -1;
+  margin-top:8px;padding-top:24px;
+  border-top:1px solid rgba(255,255,255,.1);
+  display:flex;align-items:center;gap:18px;flex-wrap:wrap;
 }
-.note-rub{
-  background:linear-gradient(135deg,#5b3923 0%,#8b5a3c 60%,#5b3923 100%);
-  color:#f5e6d3;
-  top:0;left:0;transform:rotate(-7deg) translateY(0);
+.cash-callout strong{
+  font-size:clamp(1.1rem,1.7vw,1.4rem);
+  font-weight:400;color:#fff;letter-spacing:-.015em;line-height:1.3;
+  flex:1;min-width:240px;
 }
-.note-rub::before{
-  content:'';position:absolute;inset:0;border:1px solid rgba(245,230,211,.15);border-radius:8px;
-  background:radial-gradient(circle at 30% 50%,rgba(245,230,211,.08) 0%,transparent 60%);
-  pointer-events:none;
+.lvc-label.amber{
+  color:#fcd34d;background:rgba(217,119,6,.18);
+  border-color:rgba(217,119,6,.45);
 }
-.note-rub .rub-amt{font-size:34px;font-weight:800;letter-spacing:-.02em}
-.note-rub .rub-tag{font-size:10.5px;letter-spacing:.16em;font-weight:600;text-transform:uppercase;opacity:.7}
-.note-rub .rub-bottom{display:flex;justify-content:space-between;align-items:flex-end;font-size:9px;letter-spacing:.04em;opacity:.55;text-transform:uppercase}
-.note-usd{
-  background:linear-gradient(135deg,#1e3a2c 0%,#2d5a44 60%,#1e3a2c 100%);
-  color:#dcefc4;
-  top:60px;left:32px;transform:rotate(4deg);
-}
-.note-usd::before{
-  content:'';position:absolute;inset:0;border:1px solid rgba(220,239,196,.15);border-radius:8px;
-  pointer-events:none;
-}
-.note-usd .rub-amt{font-size:34px;font-weight:800;letter-spacing:-.02em}
-.note-usd .rub-tag{font-size:10.5px;letter-spacing:.16em;font-weight:600;text-transform:uppercase;opacity:.65}
-.note-usd .rub-bottom{display:flex;justify-content:space-between;align-items:flex-end;font-size:9px;letter-spacing:.04em;opacity:.55;text-transform:uppercase}
-.cash-arrow{
-  position:absolute;top:50%;left:50%;
-  transform:translate(-50%,-50%);
-  width:84px;height:84px;border-radius:50%;
-  background:#fff;border:2px solid var(--ink);
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.4rem;font-weight:700;color:var(--ink);
-  box-shadow:0 12px 30px rgba(0,0,0,.14);
-  z-index:2;
-}
-.cash-arrow svg{width:32px;height:32px;stroke:var(--ink);fill:none;stroke-width:2.2}
 
 /* ─── BLOCK 2: ДОКУМЕНТЫ (стопки контрактов) ────────────── */
 .docs-grid{
@@ -515,11 +511,11 @@ footer.f{
 
 /* ─── Responsive ───────────────────────────────────────── */
 @media (max-width:980px){
-  .cash-grid,.docs-grid,.legends-grid{grid-template-columns:1fr;gap:32px}
+  .docs-grid,.legends-grid{grid-template-columns:1fr;gap:32px}
   .more-grid{grid-template-columns:1fr 1fr}
   .doc-types{grid-template-columns:1fr}
-  .legal-content{grid-template-columns:1fr;gap:36px}
-  .s-legal{padding:96px 32px;min-height:auto}
+  .legal-content,.cash-content{grid-template-columns:1fr;gap:36px}
+  .s-legal,.s-cash{padding:96px 32px;min-height:auto}
   .f-grid{grid-template-columns:1fr 1fr}
 }
 @media (max-width:640px){
@@ -531,16 +527,19 @@ footer.f{
   .topbar-brand .tag{display:none}
   .topbar-nav{display:none}
   .more-grid{grid-template-columns:1fr}
-  .s-legal{padding:72px 22px}
+  .s-legal,.s-cash{padding:72px 22px}
   .legal-overlay{
     background:
       linear-gradient(180deg,rgba(6,8,15,.78) 0%,rgba(6,8,15,.9) 60%,rgba(6,8,15,.95) 100%);
+  }
+  .cash-overlay{
+    background:
+      linear-gradient(180deg,rgba(20,12,4,.7) 0%,rgba(20,12,4,.88) 60%,rgba(20,12,4,.95) 100%);
   }
   .contact{padding:48px 24px}
   .f-grid{grid-template-columns:1fr;gap:28px}
   .hero-meta{gap:24px}
   .hero-meta-item .v{font-size:1.25rem}
-  .cash-vis{height:300px}
   .docs-vis{height:380px}
   .doc-paper{padding:14px 16px;font-size:10.5px}
   .legend-item{padding:14px 16px;gap:12px}
@@ -611,66 +610,43 @@ footer.f{
   </div>
 </section>
 
-<!-- BLOCK 1: НАЛИЧНЫЙ РУБЛЬ -->
-<section class="s cream" id="cash">
-  <div class="container">
-    <div class="cash-grid">
-      <div class="cash-text">
-        <span class="kicker">Блок 1 · Деньги</span>
-        <h2>Наличный рубль не пересечёт границу — но капитал может.</h2>
-        <p>Везти 5 миллионов наличными — это статья. <strong>Перевести их в фиат банка ЕС напрямую</strong> — почти всегда отказ: банк не принимает рублёвый источник без построенной биографии. Между этими двумя крайностями — узкий легальный коридор, который мы строим до выезда.</p>
-        <p>Чем раньше начать — тем дешевле, длиннее и тише путь. За 6 недель собирается то, что за 6 дней не собирается ни за какие деньги.</p>
-        <div class="cash-list">
-          <div class="cash-item">
-            <div class="cash-item-num">1</div>
-            <div>
-              <h4>Аудит рублёвых сбережений</h4>
-              <p>Происхождение, документы, налоговый след. Что закрывается до выезда, что выводится через зарубежный счёт, что остаётся под доверенностью.</p>
-            </div>
-          </div>
-          <div class="cash-item">
-            <div class="cash-item-num">2</div>
-            <div>
-              <h4>Цепочка «рубль → валюта → зарубежный фиат»</h4>
-              <p>Через какие банки и брокерские счета можно реально провести сегодня, какой документальный след это оставит, как это будет читаться в банке прибытия.</p>
-            </div>
-          </div>
-          <div class="cash-item">
-            <div class="cash-item-num">3</div>
-            <div>
-              <h4>Налоговая позиция последнего года</h4>
-              <p>3-НДФЛ, статус нерезидента, закрытие ИП/ООО без хвостов, амнистия капитала где применимо. Чтобы «через год прислали запрос» — не пришло.</p>
-            </div>
-          </div>
+<!-- BLOCK 1: НАЛИЧНЫЙ РУБЛЬ — full-bleed cash-prep scene -->
+<section class="s-cash" id="cash" aria-label="Деньги перед выездом">
+  <div class="cash-bg" aria-hidden="true"></div>
+  <div class="cash-overlay" aria-hidden="true"></div>
+  <div class="container cash-content">
+    <div class="cash-headline">
+      <span class="kicker amber">Блок 1 · Деньги</span>
+      <h2>Наличный рубль не пересечёт границу — <strong>но капитал может</strong>.</h2>
+      <p class="cash-intro">Везти 5 миллионов наличными — это статья. <strong>Перевести их в фиат банка ЕС напрямую</strong> — почти всегда отказ: банк не принимает рублёвый источник без построенной биографии. Между этими двумя крайностями — узкий легальный коридор, который мы строим до выезда.</p>
+      <p class="cash-intro">Чем раньше начать — тем дешевле, длиннее и тише путь. <strong>За 6 недель</strong> собирается то, что за 6 дней не собирается ни за какие деньги.</p>
+    </div>
+    <div class="cash-list">
+      <div class="cash-item">
+        <span class="cash-item-num">01</span>
+        <div>
+          <h4>Аудит рублёвых сбережений</h4>
+          <p>Происхождение, документы, налоговый след. Что закрывается до выезда, что выводится через зарубежный счёт, что остаётся под доверенностью.</p>
         </div>
       </div>
-      <div class="cash-vis" aria-hidden="true">
-        <div class="note-stack">
-          <div class="note note-rub">
-            <div>
-              <div class="rub-tag">Bank of Russia</div>
-              <div class="rub-amt">5 000 000 ₽</div>
-            </div>
-            <div class="rub-bottom">
-              <span>RUB · cash</span>
-              <span>не вывезти</span>
-            </div>
-          </div>
-          <div class="note note-usd">
-            <div>
-              <div class="rub-tag">Federal Reserve</div>
-              <div class="rub-amt">$ 60 000</div>
-            </div>
-            <div class="rub-bottom">
-              <span>USD · accounted</span>
-              <span>с биографией</span>
-            </div>
-          </div>
-        </div>
-        <div class="cash-arrow">
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      <div class="cash-item">
+        <span class="cash-item-num">02</span>
+        <div>
+          <h4>Цепочка «рубль&nbsp;→&nbsp;валюта&nbsp;→&nbsp;зарубежный фиат»</h4>
+          <p>Через какие банки и брокерские счета можно реально провести сегодня, какой документальный след это оставит, как это будет читаться в банке прибытия.</p>
         </div>
       </div>
+      <div class="cash-item">
+        <span class="cash-item-num">03</span>
+        <div>
+          <h4>Налоговая позиция последнего года</h4>
+          <p>3-НДФЛ, статус нерезидента, закрытие ИП/ООО без хвостов, амнистия капитала где применимо. Чтобы «через год прислали запрос» — не пришло.</p>
+        </div>
+      </div>
+    </div>
+    <div class="cash-callout">
+      <span class="lvc-label amber">Между двумя крайностями</span>
+      <strong>Не «вывезти». И не «перевести напрямую». Третий путь — построить биографию.</strong>
     </div>
   </div>
 </section>

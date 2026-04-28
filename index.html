@@ -184,8 +184,20 @@ p{color:var(--body);font-weight:400;line-height:1.7}
   border-color:rgba(160,129,86,.65);
   color:#f1eee3;transform:translateY(-1px);
 }
-.hero-flag.hero-flag-link .arr{transition:transform .18s ease}
-.hero-flag.hero-flag-link:hover .arr{transform:translateX(3px)}
+.hero-flag.hero-flag-link .arr,.hero-flag.hero-flag-private .arr{transition:transform .18s ease}
+.hero-flag.hero-flag-link:hover .arr,.hero-flag.hero-flag-private:hover .arr{transform:translateX(3px)}
+.hero-flag.hero-flag-private{
+  background:rgba(255,255,255,.05);
+  border-color:rgba(255,255,255,.22);
+  color:rgba(255,255,255,.85);
+  text-decoration:none;cursor:pointer;
+  transition:background .18s ease,border-color .18s ease,transform .18s ease,color .18s ease;
+}
+.hero-flag.hero-flag-private:hover{
+  background:rgba(255,255,255,.1);
+  border-color:rgba(255,255,255,.45);
+  color:#fff;transform:translateY(-1px);
+}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 .hero h1{
   color:#fff;
@@ -693,51 +705,93 @@ section.s.dark p{color:rgba(255,255,255,.72)}
   .vip-bar .btn{justify-content:center}
 }
 
-/* ─── SCORING CTA ───────────────────────────────────────── */
-.scoring{
-  background:linear-gradient(135deg,#0a0e1a 0%,#1e293b 100%);
+/* ─── SOURCEREADY (pre-submission readiness) ────────────── */
+.sr-block{
+  background:linear-gradient(135deg,#06080f 0%,#1a1f2c 100%);
   border-radius:var(--radius-lg);padding:64px;
-  display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:center;
+  display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center;
   color:#fff;position:relative;overflow:hidden;
 }
-.scoring::before{
+.sr-block::before{
   content:'';position:absolute;top:-100px;right:-100px;
-  width:360px;height:360px;border-radius:50%;
-  background:radial-gradient(circle,rgba(37,99,235,.25) 0%,transparent 65%);
+  width:380px;height:380px;border-radius:50%;
+  background:radial-gradient(circle,rgba(37,99,235,.18) 0%,transparent 65%);
   pointer-events:none;
 }
-.scoring h3{color:#fff;font-size:1.85rem;font-weight:300;line-height:1.15;margin-bottom:14px;letter-spacing:-.025em}
-.scoring p{color:rgba(255,255,255,.74);font-size:15px;line-height:1.65;margin-bottom:28px;max-width:48ch}
-.scoring-points{
-  display:flex;flex-direction:column;gap:10px;margin-bottom:32px;
+.sr-text h3{
+  color:#fff;font-size:clamp(1.5rem,2.4vw,2.2rem);
+  font-weight:300;line-height:1.15;margin-bottom:18px;letter-spacing:-.025em;
 }
-.scoring-points li{
-  list-style:none;font-size:13px;color:rgba(255,255,255,.82);
-  display:flex;gap:10px;align-items:center;
+.sr-lead{
+  color:rgba(255,255,255,.78);font-size:15px;line-height:1.65;
+  margin-bottom:14px;max-width:54ch;
 }
-.scoring-points li::before{
-  content:'';width:5px;height:5px;border-radius:50%;background:var(--blue);flex-shrink:0;
+.sr-lead strong{color:#fff;font-weight:600}
+.sr-dims{
+  display:grid;grid-template-columns:1fr 1fr;gap:8px;
+  margin:24px 0 28px;
+  padding:18px 0;border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08);
 }
-.scoring-vis{
-  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
-  border-radius:var(--radius-lg);padding:30px;
-  display:flex;flex-direction:column;gap:14px;position:relative;z-index:1;
+.sr-dim{display:flex;flex-direction:column;gap:2px;padding:6px 0}
+.sr-dim-key{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#93c5fd;font-family:'Inter',monospace}
+.sr-dim-val{font-size:12.5px;color:rgba(255,255,255,.66);letter-spacing:.005em}
+.sr-foot{
+  margin-top:18px;font-size:11.5px;color:rgba(255,255,255,.5);
+  letter-spacing:.04em;font-style:italic;
 }
-.scoring-row{display:flex;justify-content:space-between;align-items:center;gap:14px}
-.scoring-row .lbl{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.5)}
-.scoring-row .val{font-size:13px;font-weight:600;color:#fff;font-feature-settings:'tnum'}
-.scoring-bar{height:6px;border-radius:3px;background:rgba(255,255,255,.08);overflow:hidden}
-.scoring-bar i{display:block;height:100%;border-radius:3px;background:linear-gradient(90deg,#3b82f6,#60a5fa)}
-.scoring-result{
-  margin-top:8px;padding-top:14px;border-top:1px solid rgba(255,255,255,.08);
+
+/* SourceReady visual card mockup */
+.sr-card{
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:var(--radius-lg);padding:24px 22px 22px;
+  display:flex;flex-direction:column;gap:0;
+  position:relative;z-index:1;
+  font-feature-settings:'tnum';
+  backdrop-filter:blur(8px);
+}
+.sr-card-head{
   display:flex;justify-content:space-between;align-items:flex-end;
+  padding-bottom:14px;margin-bottom:8px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  font-family:'Inter',ui-monospace,monospace;gap:14px;
 }
-.scoring-result .lbl{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.55)}
-.scoring-result .score{font-size:2.4rem;font-weight:700;color:#fff;letter-spacing:-.03em;line-height:1}
-.scoring-result .badge{
-  background:rgba(34,197,94,.16);color:#86efac;border:1px solid rgba(34,197,94,.4);
-  padding:5px 12px;border-radius:4px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+.sr-case-id{font-size:10px;letter-spacing:.16em;color:rgba(255,255,255,.55);text-transform:uppercase}
+.sr-case-stage{font-size:10px;letter-spacing:.14em;color:#93c5fd;text-transform:uppercase}
+.sr-row{
+  display:flex;justify-content:space-between;align-items:center;gap:12px;
+  padding:12px 0;border-bottom:1px solid rgba(255,255,255,.04);
 }
+.sr-row:last-of-type{border-bottom:none}
+.sr-row-label{display:flex;flex-direction:column;gap:2px;min-width:0}
+.sr-row-name{font-size:12.5px;font-weight:600;color:#fff;letter-spacing:.005em}
+.sr-row-meta{font-size:11px;color:rgba(255,255,255,.5);letter-spacing:.005em}
+.sr-row-active{background:rgba(252,165,165,.04);margin:0 -10px;padding-left:10px;padding-right:10px;border-radius:4px}
+.sr-row-after{background:rgba(134,239,172,.05);margin:0 -10px;padding-left:10px;padding-right:10px;border-radius:4px}
+.sr-tag{
+  font-size:9.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  padding:4px 9px;border-radius:3px;flex-shrink:0;font-feature-settings:'tnum';
+  white-space:nowrap;
+}
+.sr-tag.sr-ok{background:rgba(34,197,94,.14);color:#86efac;border:1px solid rgba(34,197,94,.35)}
+.sr-tag.sr-weak{background:rgba(220,38,38,.14);color:#fca5a5;border:1px solid rgba(220,38,38,.4)}
+.sr-tag.sr-warn{background:rgba(245,158,11,.12);color:#fcd34d;border:1px solid rgba(245,158,11,.35)}
+.sr-tag.sr-ready{background:rgba(34,197,94,.16);color:#86efac;border:1px solid rgba(34,197,94,.45);font-weight:700;letter-spacing:.12em;padding:6px 12px;font-size:10px}
+.sr-divider{
+  display:flex;align-items:center;gap:14px;
+  margin:14px 0 4px;padding:0 0;
+  font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:#93c5fd;
+}
+.sr-divider::before,.sr-divider::after{
+  content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(147,197,253,.4) 50%,transparent 100%);
+}
+.sr-result{
+  margin-top:14px;padding-top:18px;border-top:1px solid rgba(255,255,255,.1);
+  display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;
+}
+.sr-result-l{display:flex;flex-direction:column;gap:2px}
+.sr-result-label{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.sr-result-score{font-size:1.8rem;font-weight:700;color:#fff;letter-spacing:-.025em;line-height:1}
 
 /* ─── BOUNDARIES ────────────────────────────────────────── */
 .bound-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px}
@@ -846,7 +900,8 @@ footer.f{
   .triggers-grid{grid-template-columns:1fr 1fr}
   .do-grid{grid-template-columns:1fr}
   .routes{grid-template-columns:1fr;gap:28px}
-  .scoring{grid-template-columns:1fr;padding:44px 32px}
+  .sr-block{grid-template-columns:1fr;padding:44px 32px;gap:36px}
+  .sr-dims{grid-template-columns:1fr}
   .bound-grid{grid-template-columns:1fr}
   .f-grid{grid-template-columns:1fr 1fr;gap:32px}
 }
@@ -898,6 +953,10 @@ footer.f{
       </span>
       <a class="hero-flag hero-flag-link" href="homeland.html">
         <span>Если проблема ещё на родине</span>
+        <span class="arr">→</span>
+      </a>
+      <a class="hero-flag hero-flag-private" href="private.html">
+        <span>Капитал от&nbsp;$1М · Private Office</span>
         <span class="arr">→</span>
       </a>
     </div>
@@ -1444,35 +1503,79 @@ footer.f{
   </div>
 </section>
 
-<!-- SCORING CTA -->
+<!-- SOURCEREADY · PRE-SUBMISSION READINESS -->
 <section class="s alt" id="scoring">
   <div class="container">
-    <div class="scoring">
-      <div>
-        <span class="kicker" style="color:#93c5fd">Лид-магнит · 60 секунд</span>
-        <h3>Проверьте, как ваш кейс читается банком — до того, как банк его прочтёт</h3>
-        <p>Скоринг основан на фреймворке SourceReady — внутренней методике, по которой мы оцениваем готовность кейса к комплаенс-проверке Tier-1. Те же двадцать домен-вопросов, на которые смотрит банк. Никто не сохраняет ваши ответы.</p>
-        <ul class="scoring-points">
-          <li>D1: качество Source-of-Funds (документальная база)</li>
-          <li>D2: связность Source-of-Wealth (биография капитала)</li>
-          <li>Эскалация: PEP, санкции, юрисдикции</li>
-          <li>Блокеры: identity-конфликты, серые маршруты</li>
-        </ul>
-        <a href="sourceready-scoring-sandbox.html" class="btn btn-primary btn-lg">Запустить скоринг <span class="arr">→</span></a>
+    <div class="sr-block">
+      <div class="sr-text">
+        <span class="kicker" style="color:#93c5fd">SourceReady · Pre-submission readiness</span>
+        <h3>Прежде чем ваш кейс попадает в Tier-1 — мы прогоняем его через свою систему. Видим слабые точки до того, как их видит банк.</h3>
+        <p class="sr-lead"><strong>SourceReady — собственная разработка Charter Capital.</strong> Структурированный workspace, в котором мы собираем фрагментированную клиентскую информацию (письма, выписки, договоры, нарративные заметки) в работающий case record. Ищем разрывы, тестируем хронологию, оцениваем readiness — и дорабатываем папку до тех пор, пока система не показывает зелёный свет по всем четырём измерениям.</p>
+        <p class="sr-lead">Клиент не запускает скоринг сам. Это часть нашей внутренней работы: <strong>мы готовим кейс, мы тестируем кейс, мы подаём кейс</strong>. Когда оценка ≥ 85 — идём в банк. Раньше — не идём.</p>
+        <div class="sr-dims">
+          <div class="sr-dim"><span class="sr-dim-key">Structure</span><span class="sr-dim-val">Сделка, стороны, путь</span></div>
+          <div class="sr-dim"><span class="sr-dim-key">Path</span><span class="sr-dim-val">Платёжный след</span></div>
+          <div class="sr-dim"><span class="sr-dim-key">Origin</span><span class="sr-dim-val">Происхождение капитала</span></div>
+          <div class="sr-dim"><span class="sr-dim-key">Continuity</span><span class="sr-dim-val">Хронология и связность</span></div>
+        </div>
+        <a href="sourceready-scoring-sandbox.html" class="btn btn-primary btn-lg">Запросить разбор кейса <span class="arr">→</span></a>
+        <p class="sr-foot">Diagnostic dimensions, not a single score. Summary-first. Advisor-led.</p>
       </div>
-      <div class="scoring-vis" aria-hidden="true">
-        <div class="scoring-row"><span class="lbl">D1 · SoF</span><span class="val">82 / 100</span></div>
-        <div class="scoring-bar"><i style="width:82%"></i></div>
-        <div class="scoring-row"><span class="lbl">D2 · SoW</span><span class="val">68 / 100</span></div>
-        <div class="scoring-bar"><i style="width:68%"></i></div>
-        <div class="scoring-row"><span class="lbl">Эскалация</span><span class="val">PEP — нет</span></div>
-        <div class="scoring-row"><span class="lbl">Блокеры</span><span class="val">не выявлены</span></div>
-        <div class="scoring-result">
-          <div>
-            <div class="lbl">Раw score</div>
-            <div class="score">77</div>
+
+      <div class="sr-card" aria-hidden="true">
+        <div class="sr-card-head">
+          <div class="sr-case-id">CASE · SR-0421 · Cross-border · Pre-review</div>
+          <div class="sr-case-stage">Working file</div>
+        </div>
+        <div class="sr-row">
+          <div class="sr-row-label">
+            <span class="sr-row-name">Structure</span>
+            <span class="sr-row-meta">Transaction · 2 parties · 1 intermediary</span>
           </div>
-          <div class="badge">Needs Reinforcement</div>
+          <span class="sr-tag sr-ok">OK</span>
+        </div>
+        <div class="sr-row">
+          <div class="sr-row-label">
+            <span class="sr-row-name">Path</span>
+            <span class="sr-row-meta">Q2 2023 · statement excerpted</span>
+          </div>
+          <span class="sr-tag sr-ok">OK</span>
+        </div>
+        <div class="sr-row sr-row-active">
+          <div class="sr-row-label">
+            <span class="sr-row-name">Origin</span>
+            <span class="sr-row-meta">Wealth narrative · source thin</span>
+          </div>
+          <span class="sr-tag sr-weak">WEAK</span>
+        </div>
+        <div class="sr-row sr-row-active">
+          <div class="sr-row-label">
+            <span class="sr-row-name">Continuity</span>
+            <span class="sr-row-meta">Gap 2020–2021 · 18 months</span>
+          </div>
+          <span class="sr-tag sr-warn">WARN</span>
+        </div>
+        <div class="sr-divider"><span>Charter работает над ↓</span></div>
+        <div class="sr-row sr-row-after">
+          <div class="sr-row-label">
+            <span class="sr-row-name">Origin</span>
+            <span class="sr-row-meta">Wealth · structured + verified</span>
+          </div>
+          <span class="sr-tag sr-ok">OK</span>
+        </div>
+        <div class="sr-row sr-row-after">
+          <div class="sr-row-label">
+            <span class="sr-row-name">Continuity</span>
+            <span class="sr-row-meta">Chronology · aligned</span>
+          </div>
+          <span class="sr-tag sr-ok">OK</span>
+        </div>
+        <div class="sr-result">
+          <div class="sr-result-l">
+            <span class="sr-result-label">Readiness</span>
+            <strong class="sr-result-score">88 / 100</strong>
+          </div>
+          <span class="sr-tag sr-ready">READY · Tier-1 submit</span>
         </div>
       </div>
     </div>
