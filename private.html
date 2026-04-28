@@ -135,7 +135,7 @@ button{font-family:inherit}
 }
 .topbar-cta:hover{border-color:#fff;background:rgba(255,255,255,.06)}
 
-main{padding-top:64px;background:#0a0a0a}
+main{padding-top:64px;background:var(--paper)}
 
 /* ─── DECK ──────────────────────────────────────────────── */
 .deck{
@@ -144,6 +144,12 @@ main{padding-top:64px;background:#0a0a0a}
   position:relative;
 }
 .deck + .deck{margin-top:0}
+/* dark / cream sections go full-bleed across the viewport;
+   their inner .blk content stays max-width 1280 centered */
+.deck.dark,.deck.cream,.deck.contact{max-width:none;margin:0}
+.deck.dark > .blk,.deck.cream > .blk,.deck.contact > .blk{
+  max-width:1280px;margin-left:auto;margin-right:auto;
+}
 .deck.dark{background:#020202;color:#fff}
 .deck.dark h1,.deck.dark h2,.deck.dark h3,.deck.dark h4{color:#fff}
 .deck.dark p{color:var(--text-on-dark-soft)}
