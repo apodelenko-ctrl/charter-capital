@@ -312,63 +312,42 @@ section.s.deep{background:#080b16}
 .s-head{margin-bottom:48px;max-width:760px}
 .s-head p{font-size:17px;color:var(--ink-mute);font-weight:400;line-height:1.65}
 
-/* ─── LITE / PRO SWITCH ────────────────────────────────── */
-.split{
-  display:grid;grid-template-columns:1fr 1fr;gap:24px;
+/* ─── BRIDGE · slim intro to Lite/Pro detail blocks ─────── */
+.bridge{
+  position:relative;padding:54px 0 36px;
+  background:linear-gradient(180deg,#06080f 0%,#0a0e1a 100%);
 }
-.split-card{
-  position:relative;
-  border-radius:var(--radius-xl);
-  padding:44px 40px;
-  border:1px solid var(--line);
-  background:linear-gradient(180deg,rgba(20,26,43,.55) 0%,rgba(12,17,32,.7) 100%);
-  overflow:hidden;
-  transition:transform .3s ease,border-color .3s ease;
+.bridge::before{
+  content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:60%;height:1px;
+  background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.18) 50%,transparent 100%);
 }
-.split-card:hover{transform:translateY(-3px);border-color:var(--line-soft)}
-.split-card.lite{background:linear-gradient(160deg,rgba(59,130,246,.08) 0%,rgba(59,130,246,.02) 60%,rgba(20,26,43,.45) 100%);border-color:rgba(59,130,246,.22)}
-.split-card.pro{background:linear-gradient(160deg,rgba(160,129,86,.08) 0%,rgba(160,129,86,.02) 60%,rgba(20,26,43,.45) 100%);border-color:rgba(160,129,86,.22)}
-.split-card .badge{
-  position:absolute;top:24px;right:24px;
-  font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
-  padding:6px 12px;border-radius:999px;
+.bridge-row{
+  display:grid;grid-template-columns:auto 1fr auto;gap:32px;align-items:center;
 }
-.split-card.lite .badge{background:rgba(59,130,246,.12);color:var(--blue-soft);border:1px solid rgba(59,130,246,.32)}
-.split-card.pro .badge{background:rgba(160,129,86,.12);color:var(--gold-warm);border:1px solid rgba(160,129,86,.32)}
-.split-card .num{
-  font-family:var(--mono);font-size:11px;letter-spacing:.22em;
-  color:var(--ink-faint);margin-bottom:14px;
+.bridge-row .kicker{margin:0;align-self:center}
+.bridge-title{
+  font-size:clamp(1.25rem,2vw,1.65rem);font-weight:300;letter-spacing:-.025em;
+  line-height:1.25;margin:0;color:#fff;
 }
-.split-card h3{
-  font-size:clamp(1.8rem,2.6vw,2.1rem);font-weight:400;
-  margin-bottom:14px;letter-spacing:-.025em;
+.bridge-title strong{font-weight:500;color:var(--blue-soft)}
+.bridge-sub{
+  display:none;
 }
-.split-card.lite h3 strong{color:var(--blue-soft);font-weight:500}
-.split-card.pro h3 strong{color:var(--gold-warm);font-weight:500}
-.split-card .desc{
-  font-size:15px;line-height:1.55;color:var(--ink-soft);margin-bottom:24px;
+.bridge-jump{display:flex;gap:10px;flex-wrap:wrap}
+.bridge-pill{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;
+  color:#fff;text-decoration:none;
+  background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.42);
+  padding:9px 14px;border-radius:999px;
+  transition:all .2s ease;
 }
-.split-card .ulist{list-style:none;padding:0;margin:0 0 26px 0;display:grid;gap:10px}
-.split-card .ulist li{
-  position:relative;padding-left:22px;
-  font-size:14px;line-height:1.5;color:var(--ink-soft);
-}
-.split-card .ulist li::before{
-  content:'';position:absolute;left:0;top:8px;
-  width:8px;height:1px;background:rgba(255,255,255,.4);
-}
-.split-card.lite .ulist li::before{background:var(--blue)}
-.split-card.pro .ulist li::before{background:var(--gold)}
-.split-card .meta{
-  display:flex;flex-wrap:wrap;gap:8px 18px;margin-bottom:24px;
-  padding-top:20px;border-top:1px solid rgba(255,255,255,.06);
-}
-.split-card .meta-item{display:flex;flex-direction:column;gap:4px}
-.split-card .meta-item .l{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint)}
-.split-card .meta-item .v{font-size:13.5px;color:#fff;font-weight:500}
-.split-card .cta{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;letter-spacing:.04em;color:#fff;border-bottom:1px solid rgba(255,255,255,.3);padding-bottom:3px}
-.split-card.lite .cta:hover{color:var(--blue-soft);border-color:var(--blue)}
-.split-card.pro .cta:hover{color:var(--gold-warm);border-color:var(--gold)}
+.bridge-pill:hover{background:rgba(59,130,246,.18);border-color:var(--blue);transform:translateY(-1px)}
+.bridge-pill.gold{background:rgba(160,129,86,.1);border-color:rgba(160,129,86,.42)}
+.bridge-pill.gold:hover{background:rgba(160,129,86,.2);border-color:var(--gold)}
+.bridge-pill .arr{transition:transform .2s ease;color:var(--ink-mute)}
+.bridge-pill:hover .arr{transform:translateY(2px);color:#fff}
 
 /* ─── AML PIPELINE ────────────────────────────────────── */
 .aml{
@@ -922,8 +901,9 @@ footer.f{
   .hsw-tab{padding:18px 18px 20px}
   .hsw-tab .name{font-size:16px}
   .hsw-tab .desc{font-size:13px}
-  .split{grid-template-columns:1fr;gap:14px}
-  .split-card{padding:32px 26px}
+  .bridge-row{grid-template-columns:1fr;gap:14px;text-align:left}
+  .bridge-jump{gap:8px}
+  .bridge-pill{font-size:11px}
   .aml-pipe{grid-template-columns:repeat(3,1fr);gap:18px;row-gap:24px}
   .aml-pipe::before{display:none}
   .aml-grid{grid-template-columns:1fr}
@@ -1095,64 +1075,11 @@ footer.f{
   </div>
 </section>
 
-<!-- ───────────── LITE / PRO SWITCH ───────────── -->
-<section class="s alt" id="switch">
-  <div class="container">
-    <div class="s-head">
-      <span class="kicker"><span class="num">[01]</span>Развилка продукта</span>
-      <h2>Два режима исполнения. Один operations desk.</h2>
-      <p>Платежи до&nbsp;$50k идут по&nbsp;быстрому потоку. Сложные задачи&nbsp;— через архитектурный review. И&nbsp;там и&nbsp;там действует одна и&nbsp;та&nbsp;же AML-броня и&nbsp;один и&nbsp;тот&nbsp;же transaction&nbsp;file.</p>
-    </div>
-
-    <div class="split">
-      <div class="split-card lite">
-        <span class="badge">Pay · Lite</span>
-        <div class="num">[01] Быстрый поток</div>
-        <h3>Иностранный инвойс <strong>до&nbsp;$50k</strong>&nbsp;— в&nbsp;работу в&nbsp;день обращения.</h3>
-        <p class="desc">Поставщики, подрядчики, сервисные счета, digital&nbsp;/ IT&nbsp;/ marketing&nbsp;/ consulting. Регулярные небольшие ВЭД-платежи, которые должны идти спокойно и&nbsp;документально корректно.</p>
-        <ul class="ulist">
-          <li>Загрузка инвойса и&nbsp;реквизитов</li>
-          <li>Проверка документов и&nbsp;назначения</li>
-          <li>Расчёт маршрута и&nbsp;комиссии</li>
-          <li>Исполнение через агентский контур</li>
-          <li>Подтверждение и&nbsp;закрывающие документы</li>
-        </ul>
-        <div class="meta">
-          <div class="meta-item"><div class="l">Сумма</div><div class="v">до $50k</div></div>
-          <div class="meta-item"><div class="l">Срок</div><div class="v">в день обращения*</div></div>
-          <div class="meta-item"><div class="l">Документы</div><div class="v">Transaction&nbsp;File</div></div>
-        </div>
-        <a href="#intake" class="cta">Загрузить инвойс <span class="arr">→</span></a>
-      </div>
-
-      <div class="split-card pro">
-        <span class="badge">Pay · Pro</span>
-        <div class="num">[02] Архитектурный контур</div>
-        <h3>Сложные платёжные решения и&nbsp;<strong>чувствительные маршруты</strong>.</h3>
-        <p class="desc">Суммы выше $50k, нестандартные валюты, чувствительные получатели и&nbsp;юрисдикции, банки с&nbsp;жёстким входящим комплаенсом, многоэтапные агентские модели и&nbsp;операции с&nbsp;высокой вероятностью банковского запроса.</p>
-        <ul class="ulist">
-          <li>Review desk: разбор задачи и&nbsp;ограничений</li>
-          <li>Архитектурный пресет под банк получателя</li>
-          <li>Расширенный transaction&nbsp;file и&nbsp;agent-сопровождение</li>
-          <li>Подготовка ответов на&nbsp;возможные запросы</li>
-          <li>Многоэтапные модели и&nbsp;chain&nbsp;of&nbsp;custody</li>
-        </ul>
-        <div class="meta">
-          <div class="meta-item"><div class="l">Сумма</div><div class="v">от&nbsp;$50k</div></div>
-          <div class="meta-item"><div class="l">Срок</div><div class="v">после review</div></div>
-          <div class="meta-item"><div class="l">Документы</div><div class="v">Расширенный TF</div></div>
-        </div>
-        <a href="#intake-pro" class="cta">Запросить review <span class="arr">→</span></a>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ───────────── AML BROKER ───────────── -->
 <section class="s aml" id="aml">
   <div class="container">
     <div class="s-head">
-      <span class="kicker"><span class="num">[02]</span>AML-броня как процесс</span>
+      <span class="kicker"><span class="num">[01]</span>AML-броня как процесс</span>
       <h2>AML-броня&nbsp;— не&nbsp;значок, <strong style="color:var(--blue-soft);font-weight:500">а&nbsp;конвейер</strong>.</h2>
       <p>Платёж проходит девять последовательных проверок до&nbsp;того, как уйдут деньги. Это и&nbsp;есть «броня»: не&nbsp;щит на&nbsp;иконке, а&nbsp;операционная дисциплина, в&nbsp;которой каждая стадия имеет владельца, артефакт и&nbsp;статус.</p>
     </div>
@@ -1209,7 +1136,7 @@ footer.f{
 <section class="s mtn" id="mtn">
   <div class="container">
     <div class="s-head">
-      <span class="kicker"><span class="num">[03]</span>Маршрут и&nbsp;тропа</span>
+      <span class="kicker"><span class="num">[02]</span>Маршрут и&nbsp;тропа</span>
       <h2>Народная тропа осыпается. <strong style="color:var(--green-soft);font-weight:500">Контролируемый коридор&nbsp;— нет.</strong></h2>
       <p>Массовые платёжные маршруты переполнены: по&nbsp;ним пошли все, и&nbsp;они стали дорогими, медленными и&nbsp;рискованными. Чем больше толпа, тем быстрее осыпается тропа. CCAPITAL Pay строит другой маршрут&nbsp;— controlled private corridor с&nbsp;checkpoint-логикой.</p>
     </div>
@@ -1351,11 +1278,26 @@ footer.f{
   </div>
 </section>
 
+<!-- ───────────── BRIDGE · intro to Lite/Pro details ───────────── -->
+<section class="bridge" id="switch" aria-label="Развилка продукта">
+  <div class="container">
+    <div class="bridge-row">
+      <span class="kicker mute"><span class="num">[03]</span>Развилка продукта</span>
+      <h2 class="bridge-title">Два режима исполнения. <strong>Один operations desk.</strong></h2>
+      <p class="bridge-sub">До&nbsp;$50k платёж идёт по&nbsp;быстрому потоку. Сложные задачи&nbsp;— через архитектурный review. И&nbsp;там и&nbsp;там работает одна AML-броня и&nbsp;один transaction&nbsp;file. Дальше&nbsp;— детали по&nbsp;каждому режиму.</p>
+      <div class="bridge-jump">
+        <a href="#lite" class="bridge-pill">Pay&nbsp;Lite · до&nbsp;$50k <span class="arr">↓</span></a>
+        <a href="#pro" class="bridge-pill gold">Pay&nbsp;Pro · от&nbsp;$50k <span class="arr">↓</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ───────────── PAY LITE DETAIL ───────────── -->
 <section class="s alt" id="lite">
   <div class="container">
     <div class="s-head">
-      <span class="kicker"><span class="num">[04]</span>Pay Lite · быстрый поток</span>
+      <span class="kicker"><span class="num">[04]</span>Pay&nbsp;Lite · быстрый поток</span>
       <h2>Иностранный инвойс <strong style="color:var(--blue-soft);font-weight:500">в&nbsp;день обращения</strong>.</h2>
       <p>Главный коммерческий поток&nbsp;— и&nbsp;первая входная точка в&nbsp;инфраструктуру CCAPITAL. Не&nbsp;«младший тариф»: та&nbsp;же AML-логика, тот&nbsp;же transaction&nbsp;file, просто маршрут уже выстроен под понятный сценарий.</p>
     </div>
@@ -2115,7 +2057,7 @@ document.addEventListener('click',function(e){
 // Subtle reveal on scroll
 (function(){
   if(!('IntersectionObserver' in window)) return;
-  var els=document.querySelectorAll('.split-card,.aml-card,.case-card,.eco-card,.tfile-row,.recv-row,.faq,.detail-vis,.detail-text .row,.mtn-side,.ops-shell');
+  var els=document.querySelectorAll('.bridge-pill,.aml-card,.case-card,.eco-card,.tfile-row,.recv-row,.faq,.detail-vis,.detail-text .row,.mtn-side,.ops-shell');
   els.forEach(function(el){
     el.style.opacity='0';
     el.style.transform='translateY(14px)';
@@ -2131,7 +2073,7 @@ document.addEventListener('click',function(e){
       }
     });
   },{threshold:.12,rootMargin:'0px 0px -60px 0px'});
-  document.querySelectorAll('.split-card').forEach(function(el,i){ el.dataset.delay=String(i*70); });
+  document.querySelectorAll('.bridge-pill').forEach(function(el,i){ el.dataset.delay=String(i*120); });
   document.querySelectorAll('.aml-card').forEach(function(el,i){ el.dataset.delay=String(i*40); });
   document.querySelectorAll('.case-card').forEach(function(el,i){ el.dataset.delay=String(i*45); });
   document.querySelectorAll('.eco-card').forEach(function(el,i){ el.dataset.delay=String(i*35); });
