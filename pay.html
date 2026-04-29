@@ -24,17 +24,22 @@
 <meta property="og:title" content="CCAPITAL Pay — ВЭД-платежи с AML-бронёй"/>
 <meta property="og:description" content="Pay Lite — иностранный инвойс до $50k в работу за день. Pay Pro — сложные маршруты под банк получателя. Агентская инфраструктура и transaction file."/>
 <meta property="og:url" content="https://ccapital.pro/pay.html"/>
-<meta property="og:image" content="https://ccapital.pro/assets/logic/14-open-arch.webp"/>
-<meta property="og:image:alt" content="CCAPITAL Pay — операционный desk для ВЭД-платежей"/>
+<meta property="og:image" content="https://ccapital.pro/assets/pay/hero-corridor.webp"/>
+<meta property="og:image:width" content="1536"/>
+<meta property="og:image:height" content="1024"/>
+<meta property="og:image:alt" content="CCAPITAL Pay — проводник платежа через защищённый коридор"/>
 <meta property="og:locale" content="ru_RU"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="CCAPITAL Pay — ВЭД-платежи с AML-бронёй"/>
 <meta name="twitter:description" content="Агентская инфраструктура для ВЭД-платежей. Pay Lite до $50k, Pay Pro для сложных решений, AML-броня и transaction file."/>
-<meta name="twitter:image" content="https://ccapital.pro/assets/logic/14-open-arch.webp"/>
+<meta name="twitter:image" content="https://ccapital.pro/assets/pay/hero-corridor.webp"/>
 
 <link rel="dns-prefetch" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="preload" as="image" href="assets/pay/hero-corridor.webp" fetchpriority="high" media="(min-width:1101px)"/>
+<link rel="preload" as="image" href="assets/pay/hero-corridor-1100w.webp" fetchpriority="high" media="(min-width:769px) and (max-width:1100px)"/>
+<link rel="preload" as="image" href="assets/pay/hero-corridor-800w.webp" fetchpriority="high" media="(max-width:768px)"/>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" media="print" onload="this.media='all'"/>
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"/></noscript>
@@ -186,15 +191,15 @@ main{padding-top:64px}
   padding:120px 32px 80px;
   overflow:hidden;display:flex;align-items:center;
   background:
-    radial-gradient(circle at 82% 18%,rgba(59,130,246,.16) 0%,transparent 55%),
-    radial-gradient(circle at 12% 78%,rgba(160,129,86,.10) 0%,transparent 55%),
+    radial-gradient(circle at 82% 18%,rgba(59,130,246,.18) 0%,transparent 55%),
+    radial-gradient(circle at 12% 78%,rgba(160,129,86,.12) 0%,transparent 55%),
     linear-gradient(180deg,#06080f 0%,#080b16 50%,#06080f 100%);
 }
 .hero::before{
   content:'';position:absolute;inset:0;
   background-image:
-    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+    linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);
   background-size:64px 64px;
   mask-image:radial-gradient(ellipse at center,#000 30%,transparent 75%);
   -webkit-mask-image:radial-gradient(ellipse at center,#000 30%,transparent 75%);
@@ -203,126 +208,134 @@ main{padding-top:64px}
 .hero-inner{
   position:relative;z-index:1;
   max-width:1320px;margin:0 auto;width:100%;
-  display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center;
+  display:grid;grid-template-columns:1.05fr 1fr;gap:64px;align-items:center;
 }
-.hero-copy{max-width:660px}
-.hero-flag{
+.hero-copy{max-width:600px}
+.hero-kicker{
   display:inline-flex;align-items:center;gap:10px;
-  background:rgba(59,130,246,.12);border:1px solid rgba(59,130,246,.42);
-  padding:7px 16px;border-radius:999px;
-  font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--blue-soft);margin-bottom:30px;
-  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.32em;text-transform:uppercase;
+  color:var(--blue-soft);margin-bottom:22px;
 }
-.hero-flag .dot{width:6px;height:6px;border-radius:50%;background:var(--blue);animation:pulse 2.4s ease infinite}
+.hero-kicker .dot{width:6px;height:6px;border-radius:50%;background:var(--blue);animation:pulse 2.4s ease infinite}
+.hero-kicker .pipe{color:var(--ink-faint);font-weight:300;letter-spacing:.1em}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.85)}}
 .hero h1{
-  color:#fff;max-width:18ch;
-  font-size:clamp(2.2rem,4.6vw,3.7rem);
+  color:#fff;max-width:16ch;
+  font-size:clamp(2.3rem,4.6vw,3.8rem);
   line-height:1.04;letter-spacing:-.04em;
-  font-weight:300;margin-bottom:24px;
+  font-weight:300;margin-bottom:22px;
 }
 .hero h1 strong{font-weight:600;color:#fff}
-.hero h1 .em{color:var(--blue-soft);font-weight:400}
+.hero h1 .em{color:var(--blue-soft);font-weight:500}
 .hero-sub{
   color:rgba(255,255,255,.78);
-  font-size:clamp(1rem,1.4vw,1.18rem);
+  font-size:clamp(1rem,1.35vw,1.15rem);
   line-height:1.55;font-weight:300;
-  max-width:54ch;margin-bottom:28px;
+  max-width:52ch;margin-bottom:14px;
 }
-.hero-formula{
-  position:relative;margin:6px 0 30px;padding:16px 0 16px 22px;
-  border-left:2px solid var(--blue);
-  font-size:clamp(1rem,1.45vw,1.18rem);
-  font-weight:300;line-height:1.5;color:rgba(255,255,255,.94);
-  max-width:54ch;
+.hero-note{
+  font-family:var(--mono);font-size:12px;color:var(--ink-faint);
+  letter-spacing:.04em;line-height:1.5;max-width:50ch;margin-bottom:30px;
 }
-.hero-formula strong{color:var(--blue-soft);font-weight:500}
-.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px}
-.hero-pills{
-  display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;
-  padding-top:24px;border-top:1px solid rgba(255,255,255,.08);
-}
-.hero-pill{
-  display:inline-flex;align-items:center;gap:8px;
-  font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.08em;
-  color:var(--ink-mute);padding:7px 12px;border-radius:999px;
-  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);
-}
-.hero-pill .d{width:5px;height:5px;border-radius:50%;background:var(--blue-soft)}
-.hero-pill.gold .d{background:var(--gold-warm)}
 
-/* ─── HERO VISUAL · console diagram ───────────────────── */
-.console{
-  position:relative;width:100%;
-  border-radius:var(--radius-lg);
-  background:linear-gradient(180deg,rgba(20,26,43,.8) 0%,rgba(12,17,32,.85) 100%);
+/* ─── HERO SWITCH · segmented control ──────────────────── */
+.hsw{
+  position:relative;
+  border:1px solid var(--line);border-radius:var(--radius-xl);
+  background:linear-gradient(180deg,rgba(20,26,43,.62) 0%,rgba(12,17,32,.78) 100%);
+  padding:8px;
+  box-shadow:0 24px 60px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.04);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  max-width:560px;
+}
+.hsw-label{
+  position:absolute;top:-10px;left:18px;
+  font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--ink-faint);background:#080b16;padding:0 10px;
+}
+.hsw-tabs{
+  display:grid;grid-template-columns:1fr 1fr;
+  background:rgba(0,0,0,.35);border-radius:14px;padding:5px;position:relative;
+  border:1px solid rgba(255,255,255,.04);
+}
+.hsw-tab{
+  position:relative;
+  padding:12px 18px;border-radius:11px;background:transparent;border:none;
+  font-family:inherit;cursor:pointer;text-align:left;
+  display:flex;flex-direction:column;gap:3px;
+  transition:background .25s ease,color .25s ease,box-shadow .25s ease;
+  color:var(--ink-mute);z-index:1;
+}
+.hsw-tab .name{
+  font-size:14px;font-weight:600;letter-spacing:.05em;color:var(--ink-soft);
+}
+.hsw-tab .meta{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--ink-faint);
+}
+.hsw-tab.is-active{
+  background:linear-gradient(180deg,rgba(59,130,246,.22) 0%,rgba(59,130,246,.08) 100%);
+  box-shadow:0 0 0 1px rgba(59,130,246,.45),0 12px 28px rgba(59,130,246,.18);
+}
+.hsw-tab.is-active .name{color:#fff}
+.hsw-tab.is-active .meta{color:var(--blue-soft)}
+.hsw-tab.gold.is-active{
+  background:linear-gradient(180deg,rgba(160,129,86,.22) 0%,rgba(160,129,86,.08) 100%);
+  box-shadow:0 0 0 1px rgba(160,129,86,.5),0 12px 28px rgba(160,129,86,.18);
+}
+.hsw-tab.gold.is-active .meta{color:var(--gold-warm)}
+.hsw-tab:hover:not(.is-active){background:rgba(255,255,255,.03)}
+
+.hsw-panels{position:relative;padding:22px 22px 18px}
+.hsw-panel{display:none;animation:hswFade .35s ease}
+.hsw-panel.is-active{display:block}
+@keyframes hswFade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.hsw-panel .desc{
+  font-size:14.5px;line-height:1.55;color:var(--ink-soft);margin-bottom:14px;
+}
+.hsw-panel .chips{
+  display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;
+}
+.hsw-panel .chip{
+  display:inline-flex;align-items:center;gap:7px;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;
+  color:var(--ink-mute);padding:6px 10px;border-radius:999px;
+  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);
+}
+.hsw-panel .chip .d{width:5px;height:5px;border-radius:50%;background:var(--blue-soft)}
+.hsw-panel.pro .chip .d{background:var(--gold-warm)}
+.hsw-panel .cta-row{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.hsw-panel .cta-meta{font-family:var(--mono);font-size:10.5px;color:var(--ink-faint);letter-spacing:.04em}
+
+/* ─── HERO IMAGE ──────────────────────────────────────── */
+.hero-art{
+  position:relative;width:100%;aspect-ratio:3/2;
+  border-radius:var(--radius-xl);overflow:hidden;
   border:1px solid var(--line);
-  padding:22px;
-  box-shadow:0 30px 70px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.04);
-  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  box-shadow:0 40px 90px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.04);
+  background:#06080f;
 }
-.console-bar{
-  display:flex;align-items:center;justify-content:space-between;
-  padding-bottom:14px;margin-bottom:16px;
-  border-bottom:1px solid var(--line);
-  font-family:var(--mono);font-size:11px;color:var(--ink-mute);letter-spacing:.06em;
+.hero-art img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  transform:scale(1.01);
 }
-.console-bar .left{display:flex;align-items:center;gap:10px}
-.console-bar .case-id{color:#fff;letter-spacing:.18em}
-.console-bar .right{display:flex;align-items:center;gap:8px;color:var(--green-soft)}
-.console-bar .right .dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s ease infinite}
-.console-pipeline{
-  display:grid;grid-template-columns:repeat(7,1fr);gap:0;
-  position:relative;margin-bottom:18px;
+.hero-art::after{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse at 70% 50%,transparent 0%,rgba(6,8,15,.18) 70%,rgba(6,8,15,.55) 100%),
+    linear-gradient(180deg,rgba(6,8,15,.05) 0%,rgba(6,8,15,.45) 100%);
+  pointer-events:none;
 }
-.console-pipeline::before{
-  content:'';position:absolute;top:18px;left:6%;right:6%;height:1px;
-  background:linear-gradient(90deg,rgba(59,130,246,.4) 0%,rgba(59,130,246,.6) 50%,rgba(160,129,86,.4) 100%);
+.hero-art-cap{
+  position:absolute;left:18px;bottom:14px;z-index:2;
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--ink-mute);
+  background:rgba(6,8,15,.55);
+  border:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  padding:6px 12px;border-radius:999px;
 }
-.cp-node{
-  position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;
-}
-.cp-node .ring{
-  width:36px;height:36px;border-radius:50%;
-  background:#0c1120;border:1.5px solid var(--line-soft);
-  display:grid;place-items:center;
-  font-family:var(--mono);font-size:10px;color:var(--ink-mute);
-  position:relative;z-index:1;
-}
-.cp-node.is-done .ring{border-color:var(--green);color:var(--green-soft);background:rgba(34,197,94,.08)}
-.cp-node.is-active .ring{border-color:var(--blue);color:var(--blue-soft);background:rgba(59,130,246,.08);box-shadow:0 0 0 4px rgba(59,130,246,.12)}
-.cp-node.is-active .ring::after{
-  content:'';position:absolute;inset:-6px;border-radius:50%;
-  border:1px solid var(--blue);opacity:.4;
-  animation:ringPulse 2.2s ease infinite;
-}
-@keyframes ringPulse{0%{opacity:.5;transform:scale(.95)}100%{opacity:0;transform:scale(1.25)}}
-.cp-node .lbl{
-  font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;
-  color:var(--ink-faint);text-align:center;line-height:1.3;
-}
-.cp-node.is-active .lbl{color:#fff}
-.cp-node.is-done .lbl{color:var(--green-soft)}
-.console-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:14px}
-.console-cell{
-  background:#0a0e1a;border:1px solid var(--line);border-radius:var(--radius);
-  padding:14px;
-}
-.console-cell .lbl{
-  font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;
-  text-transform:uppercase;color:var(--ink-faint);margin-bottom:10px;
-}
-.console-cell .row{
-  display:flex;align-items:center;justify-content:space-between;
-  font-size:12.5px;padding:5px 0;color:var(--ink-soft);
-}
-.console-cell .row + .row{border-top:1px dashed rgba(255,255,255,.04)}
-.console-cell .row .v{font-family:var(--mono);font-size:11.5px;color:#fff}
-.console-cell .row .v.green{color:var(--green-soft)}
-.console-cell .row .v.blue{color:var(--blue-soft)}
-.console-cell .row .v.gold{color:var(--gold-warm)}
-.console-cell .row .v.amber{color:var(--amber-soft)}
+.hero-art-cap .d{width:5px;height:5px;border-radius:50%;background:var(--gold-warm)}
 
 /* ─── SECTION wrapper ─────────────────────────────────── */
 section.s{padding:96px 0;position:relative}
@@ -921,8 +934,10 @@ footer.f{
 
 /* ─── Responsive ──────────────────────────────────────── */
 @media(max-width:1100px){
-  .hero-inner{grid-template-columns:1fr;gap:48px}
-  .console{max-width:600px;margin-left:auto;margin-right:auto}
+  .hero-inner{grid-template-columns:1fr;gap:36px}
+  .hero-copy{max-width:none}
+  .hero-art{order:-1;aspect-ratio:16/9;max-width:780px;margin:0 auto}
+  .hsw{max-width:none}
   .recv-grid{grid-template-columns:1fr;gap:32px}
   .tfile-grid{grid-template-columns:1fr;gap:32px}
   .ops-body{grid-template-columns:1fr 1fr}
@@ -939,7 +954,13 @@ footer.f{
   section.s{padding:72px 0}
   .container,.container-wide,.container-sm,.container-narrow{padding:0 22px}
   .hero{padding:96px 22px 60px}
-  .hero-actions .btn{width:100%;justify-content:center}
+  .hero-art{aspect-ratio:4/3}
+  .hsw-tab{padding:10px 14px}
+  .hsw-tab .name{font-size:13px}
+  .hsw-tab .meta{font-size:9.5px}
+  .hsw-panels{padding:18px 16px}
+  .hsw-panel .desc{font-size:13.5px}
+  .hsw-panel .cta-row .btn{width:100%;justify-content:center}
   .split{grid-template-columns:1fr;gap:14px}
   .split-card{padding:32px 26px}
   .aml-pipe{grid-template-columns:repeat(3,1fr);gap:18px;row-gap:24px}
@@ -957,9 +978,6 @@ footer.f{
   .eco-grid{grid-template-columns:1fr 1fr}
   .notdo-grid{grid-template-columns:1fr}
   .intake-form.is-active{grid-template-columns:1fr}
-  .console-pipeline{grid-template-columns:repeat(4,1fr);row-gap:22px}
-  .console-pipeline::before{display:none}
-  .console-grid{grid-template-columns:1fr}
   .f-grid{grid-template-columns:1fr;gap:28px}
   .f-bottom{flex-direction:column;align-items:flex-start;gap:8px}
 }
@@ -1001,7 +1019,7 @@ footer.f{
       "isPartOf": {"@type":"WebSite","@id":"https://ccapital.pro/#website","url":"https://ccapital.pro/","name":"Charter Capital","publisher":{"@id":"https://ccapital.pro/#organization"}},
       "about": {"@id": "https://ccapital.pro/#organization"},
       "inLanguage": "ru-RU",
-      "primaryImageOfPage": "https://ccapital.pro/assets/logic/14-open-arch.webp",
+      "primaryImageOfPage": "https://ccapital.pro/assets/pay/hero-corridor.webp",
       "description": "Агентская инфраструктура для ВЭД-платежей: Pay Lite до $50k, Pay Pro для сложных решений, AML-логика, санкционная нейтральность и transaction file."
     },
     {
@@ -1058,7 +1076,7 @@ footer.f{
     </nav>
     <div class="topbar-right">
       <a href="/" class="topbar-link">Основной&nbsp;сайт</a>
-      <a href="#intake" class="topbar-cta">Загрузить инвойс</a>
+      <a href="#intake" class="topbar-cta">Начать платёж</a>
     </div>
   </div>
 </header>
@@ -1069,69 +1087,74 @@ footer.f{
 <section class="hero" id="top">
   <div class="hero-inner">
     <div class="hero-copy">
-      <span class="hero-flag">
+      <div class="hero-kicker">
         <span class="dot"></span>
-        <span>CCAPITAL · Pay · ВЭД-платежи</span>
-      </span>
+        <span>CCAPITAL · Pay</span>
+        <span class="pipe">·</span>
+        <span>ВЭД-платежи</span>
+      </div>
       <h1>
-        ВЭД-платёж готовится <strong>к&nbsp;приёму</strong>,<br/>
-        а&nbsp;не к&nbsp;<span class="em">отправке</span>.
+        ВЭД-платежи <span class="em">с&nbsp;гарантией доставки</span>.
       </h1>
       <p class="hero-sub">
-        Агентская инфраструктура Charter Capital для исполнения ВЭД-платежей с&nbsp;AML-бронёй. Не&nbsp;обменник и&nbsp;не&nbsp;агент из&nbsp;Telegram&nbsp;— операционный desk, в&nbsp;котором каждый платёж собирается как коммерческая операция с&nbsp;документами и&nbsp;понятным основанием.
+        Оплачиваем зарубежные инвойсы через агентскую инфраструктуру: с&nbsp;AML-бронёй, санкционной проверкой, правильными документами и&nbsp;логикой, рассчитанной на&nbsp;банк получателя.
       </p>
-      <p class="hero-formula">
-        <strong>Pay&nbsp;Lite</strong>&nbsp;— иностранный инвойс до&nbsp;$50k берём в&nbsp;работу в&nbsp;день обращения.<br/>
-        <strong>Pay&nbsp;Pro</strong>&nbsp;— сложные маршруты собираем под банк получателя, с&nbsp;расширенным transaction&nbsp;file.
+      <p class="hero-note">
+        Для задач, принятых в&nbsp;работу после проверки документов, получателя и&nbsp;маршрута.
       </p>
-      <div class="hero-actions">
-        <a href="#intake" class="btn btn-primary btn-lg">Загрузить инвойс · Pay&nbsp;Lite <span class="arr">→</span></a>
-        <a href="#intake-pro" class="btn btn-ghost btn-lg">Pro review</a>
-      </div>
-      <div class="hero-pills">
-        <span class="hero-pill"><span class="d"></span>В&nbsp;работу&nbsp;— в&nbsp;день обращения</span>
-        <span class="hero-pill"><span class="d"></span>До&nbsp;$50k&nbsp;— Pay&nbsp;Lite</span>
-        <span class="hero-pill gold"><span class="d"></span>Свыше $50k&nbsp;— Pay&nbsp;Pro</span>
-        <span class="hero-pill"><span class="d"></span>Transaction&nbsp;file на&nbsp;каждую операцию</span>
+
+      <!-- HERO SWITCH -->
+      <div class="hsw" role="tablist" aria-label="Сценарий платежа">
+        <span class="hsw-label">Выберите сценарий платежа</span>
+        <div class="hsw-tabs">
+          <button type="button" class="hsw-tab is-active" data-flow="lite" role="tab" aria-selected="true" aria-controls="hsw-lite">
+            <span class="name">Pay&nbsp;Lite</span>
+            <span class="meta">Быстрый платёж · до&nbsp;$50k</span>
+          </button>
+          <button type="button" class="hsw-tab gold" data-flow="pro" role="tab" aria-selected="false" aria-controls="hsw-pro">
+            <span class="name">Pay&nbsp;Pro</span>
+            <span class="meta">Сложный платёж · review</span>
+          </button>
+        </div>
+
+        <div class="hsw-panels">
+          <div class="hsw-panel lite is-active" id="hsw-lite" role="tabpanel" aria-labelledby="Pay Lite">
+            <p class="desc">Для понятных инвойсов, иностранных поставщиков, подрядчиков и&nbsp;сервисных счетов. Берём в&nbsp;работу в&nbsp;день обращения при корректных документах и&nbsp;доступном маршруте.</p>
+            <div class="chips">
+              <span class="chip"><span class="d"></span>До&nbsp;$50k</span>
+              <span class="chip"><span class="d"></span>В&nbsp;работу&nbsp;— в&nbsp;день обращения</span>
+              <span class="chip"><span class="d"></span>Transaction&nbsp;File</span>
+            </div>
+            <div class="cta-row">
+              <a href="#intake" class="btn btn-primary btn-lg" data-go="lite">Отправить инвойс <span class="arr">→</span></a>
+              <span class="cta-meta">Заявка получит номер кейса · ответ в&nbsp;день обращения</span>
+            </div>
+          </div>
+
+          <div class="hsw-panel pro" id="hsw-pro" role="tabpanel" aria-labelledby="Pay Pro">
+            <p class="desc">Для сумм выше $50k, чувствительных юрисдикций, сложных получателей, банков с&nbsp;жёстким входящим комплаенсом и&nbsp;маршрутов, где нужна архитектура исполнения.</p>
+            <div class="chips">
+              <span class="chip"><span class="d"></span>От&nbsp;$50k</span>
+              <span class="chip"><span class="d"></span>Архитектурный review до&nbsp;запуска</span>
+              <span class="chip"><span class="d"></span>Расширенный TF</span>
+            </div>
+            <div class="cta-row">
+              <a href="#intake-pro" class="btn btn-gold btn-lg" data-go="pro">Разобрать платёж <span class="arr">→</span></a>
+              <span class="cta-meta">Review&nbsp;desk возьмёт задачу под senior-оператора</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- HERO VISUAL · operations console -->
-    <aside class="console" aria-hidden="true">
-      <div class="console-bar">
-        <div class="left">
-          <span>OPERATIONS&nbsp;DESK</span>
-          <span class="case-id">CASE&nbsp;#PC-2026-0418</span>
-        </div>
-        <div class="right">
-          <span class="dot"></span><span>LIVE&nbsp;PIPELINE</span>
-        </div>
-      </div>
-      <div class="console-pipeline">
-        <div class="cp-node is-done"><div class="ring">01</div><div class="lbl">Invoice</div></div>
-        <div class="cp-node is-done"><div class="ring">02</div><div class="lbl">KYB</div></div>
-        <div class="cp-node is-done"><div class="ring">03</div><div class="lbl">AML</div></div>
-        <div class="cp-node is-active"><div class="ring">04</div><div class="lbl">Sanctions</div></div>
-        <div class="cp-node"><div class="ring">05</div><div class="lbl">Agent</div></div>
-        <div class="cp-node"><div class="ring">06</div><div class="lbl">Receiving<br/>Bank</div></div>
-        <div class="cp-node"><div class="ring">07</div><div class="lbl">Documents</div></div>
-      </div>
-      <div class="console-grid">
-        <div class="console-cell">
-          <div class="lbl">Operation</div>
-          <div class="row"><span>Principal</span><span class="v">RU&nbsp;Trading&nbsp;LLC</span></div>
-          <div class="row"><span>Beneficiary</span><span class="v">IT&nbsp;Coffee&nbsp;Roasters&nbsp;S.r.l.</span></div>
-          <div class="row"><span>Amount</span><span class="v">€&nbsp;15&nbsp;000.00</span></div>
-          <div class="row"><span>Purpose</span><span class="v gold">Goods · INV&nbsp;2026/0418</span></div>
-        </div>
-        <div class="console-cell">
-          <div class="lbl">AML lens</div>
-          <div class="row"><span>Document base</span><span class="v green">OK</span></div>
-          <div class="row"><span>Beneficiary check</span><span class="v green">OK</span></div>
-          <div class="row"><span>Sanctions screen</span><span class="v blue">RUNNING</span></div>
-          <div class="row"><span>Receiving bank</span><span class="v amber">REVIEW</span></div>
-        </div>
-      </div>
+    <!-- HERO VISUAL · cinematic guide through controlled corridor -->
+    <aside class="hero-art" aria-label="Проводник платежа через защищённый коридор">
+      <picture>
+        <source media="(min-width:1101px)" srcset="assets/pay/hero-corridor.webp"/>
+        <source media="(min-width:769px)" srcset="assets/pay/hero-corridor-1100w.webp"/>
+        <img src="assets/pay/hero-corridor-800w.webp" alt="" fetchpriority="high" decoding="async"/>
+      </picture>
+      <span class="hero-art-cap"><span class="d"></span>Controlled&nbsp;corridor · до&nbsp;банка получателя</span>
     </aside>
   </div>
 </section>
@@ -2054,6 +2077,31 @@ document.addEventListener('DOMContentLoaded', function () {
   window.addEventListener('scroll',tick,{passive:true}); tick();
 })();
 
+// Hero switch (Lite / Pro) — segmented control
+(function(){
+  var heroTabs=document.querySelectorAll('.hsw-tab');
+  var heroPanels=document.querySelectorAll('.hsw-panel');
+  function activate(which){
+    heroTabs.forEach(function(t){
+      var on=t.dataset.flow===which;
+      t.classList.toggle('is-active',on);
+      t.setAttribute('aria-selected',on?'true':'false');
+    });
+    heroPanels.forEach(function(p){
+      p.classList.toggle('is-active',p.classList.contains(which));
+    });
+  }
+  heroTabs.forEach(function(t){ t.addEventListener('click',function(){ activate(t.dataset.flow); }); });
+  // CTA inside panel pre-selects intake tab
+  document.querySelectorAll('.hsw-panel [data-go]').forEach(function(a){
+    a.addEventListener('click',function(){
+      var which=a.dataset.go;
+      var ev=new CustomEvent('intake:set',{detail:which});
+      window.dispatchEvent(ev);
+    });
+  });
+})();
+
 // Intake tab switch (Lite / Pro)
 (function(){
   var tabs=document.querySelectorAll('.intake-tab');
@@ -2069,6 +2117,8 @@ document.addEventListener('DOMContentLoaded', function () {
     formPro.classList.toggle('is-active',which==='pro');
   }
   tabs.forEach(function(t){ t.addEventListener('click',function(){ activate(t.dataset.tab); }); });
+  // hero switch can pre-select intake tab
+  window.addEventListener('intake:set',function(e){ activate(e.detail==='pro'?'pro':'lite'); });
   // anchor #intake-pro auto-switches to Pro
   function syncFromHash(){
     var h=location.hash.replace('#','');
@@ -2135,7 +2185,7 @@ document.addEventListener('click',function(e){
 // Subtle reveal on scroll
 (function(){
   if(!('IntersectionObserver' in window)) return;
-  var els=document.querySelectorAll('.split-card,.aml-card,.case-card,.eco-card,.tfile-row,.recv-row,.faq,.detail-vis,.detail-text .row,.mtn-side,.ops-shell,.console');
+  var els=document.querySelectorAll('.split-card,.aml-card,.case-card,.eco-card,.tfile-row,.recv-row,.faq,.detail-vis,.detail-text .row,.mtn-side,.ops-shell,.hero-art');
   els.forEach(function(el){
     el.style.opacity='0';
     el.style.transform='translateY(14px)';
