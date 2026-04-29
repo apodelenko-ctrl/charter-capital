@@ -37,8 +37,7 @@
 <link rel="dns-prefetch" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link rel="preload" as="image" href="assets/pay/hero-corridor.webp" fetchpriority="high" media="(min-width:1101px)"/>
-<link rel="preload" as="image" href="assets/pay/hero-corridor-1100w.webp" fetchpriority="high" media="(min-width:769px) and (max-width:1100px)"/>
+<link rel="preload" as="image" href="assets/pay/hero-corridor.webp" fetchpriority="high" media="(min-width:769px)"/>
 <link rel="preload" as="image" href="assets/pay/hero-corridor-800w.webp" fetchpriority="high" media="(max-width:768px)"/>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" media="print" onload="this.media='all'"/>
@@ -185,157 +184,125 @@ p{color:var(--ink-soft);font-weight:400;line-height:1.7}
 
 main{padding-top:64px}
 
-/* ─── HERO ──────────────────────────────────────────────── */
+/* ─── HERO · full-bleed background ─────────────────────── */
 .hero{
-  position:relative;min-height:96vh;
-  padding:120px 32px 80px;
+  position:relative;min-height:100vh;
+  padding:140px 32px 100px;
   overflow:hidden;display:flex;align-items:center;
   background:
-    radial-gradient(circle at 82% 18%,rgba(59,130,246,.18) 0%,transparent 55%),
-    radial-gradient(circle at 12% 78%,rgba(160,129,86,.12) 0%,transparent 55%),
-    linear-gradient(180deg,#06080f 0%,#080b16 50%,#06080f 100%);
+    linear-gradient(95deg,rgba(6,8,15,.92) 0%,rgba(6,8,15,.7) 38%,rgba(6,8,15,.32) 70%,rgba(6,8,15,.18) 100%),
+    url('assets/pay/hero-corridor.webp') center/cover no-repeat,
+    var(--bg);
+  color:#fff;
 }
 .hero::before{
-  content:'';position:absolute;inset:0;
-  background-image:
-    linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);
-  background-size:64px 64px;
-  mask-image:radial-gradient(ellipse at center,#000 30%,transparent 75%);
-  -webkit-mask-image:radial-gradient(ellipse at center,#000 30%,transparent 75%);
-  pointer-events:none;
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(circle at 82% 22%,rgba(59,130,246,.16) 0%,transparent 55%),
+    radial-gradient(circle at 14% 78%,rgba(160,129,86,.12) 0%,transparent 55%),
+    linear-gradient(180deg,rgba(6,8,15,0) 0%,rgba(6,8,15,.05) 60%,rgba(6,8,15,.55) 100%);
+}
+@media(max-width:768px){
+  .hero{
+    background:
+      linear-gradient(180deg,rgba(6,8,15,.55) 0%,rgba(6,8,15,.78) 60%,rgba(6,8,15,.94) 100%),
+      url('assets/pay/hero-corridor-800w.webp') center/cover no-repeat,
+      var(--bg);
+    padding:110px 24px 72px;
+  }
 }
 .hero-inner{
   position:relative;z-index:1;
-  max-width:1320px;margin:0 auto;width:100%;
-  display:grid;grid-template-columns:1.05fr 1fr;gap:64px;align-items:center;
+  max-width:1240px;margin:0 auto;width:100%;
 }
-.hero-copy{max-width:600px}
+.hero-copy{max-width:660px}
 .hero-kicker{
   display:inline-flex;align-items:center;gap:10px;
   font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.32em;text-transform:uppercase;
-  color:var(--blue-soft);margin-bottom:22px;
+  color:var(--blue-soft);margin-bottom:24px;
 }
 .hero-kicker .dot{width:6px;height:6px;border-radius:50%;background:var(--blue);animation:pulse 2.4s ease infinite}
 .hero-kicker .pipe{color:var(--ink-faint);font-weight:300;letter-spacing:.1em}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.85)}}
 .hero h1{
-  color:#fff;max-width:16ch;
-  font-size:clamp(2.3rem,4.6vw,3.8rem);
-  line-height:1.04;letter-spacing:-.04em;
+  color:#fff;max-width:18ch;
+  font-size:clamp(2.3rem,5vw,4rem);
+  line-height:1.03;letter-spacing:-.04em;
   font-weight:300;margin-bottom:22px;
+  text-shadow:0 2px 22px rgba(0,0,0,.55);
 }
 .hero h1 strong{font-weight:600;color:#fff}
 .hero h1 .em{color:var(--blue-soft);font-weight:500}
 .hero-sub{
-  color:rgba(255,255,255,.78);
-  font-size:clamp(1rem,1.35vw,1.15rem);
+  color:rgba(255,255,255,.84);
+  font-size:clamp(1rem,1.35vw,1.18rem);
   line-height:1.55;font-weight:300;
-  max-width:52ch;margin-bottom:14px;
+  max-width:54ch;margin-bottom:14px;
+  text-shadow:0 1px 14px rgba(0,0,0,.55);
 }
 .hero-note{
-  font-family:var(--mono);font-size:12px;color:var(--ink-faint);
-  letter-spacing:.04em;line-height:1.5;max-width:50ch;margin-bottom:30px;
+  font-family:var(--mono);font-size:12px;color:rgba(255,255,255,.55);
+  letter-spacing:.04em;line-height:1.5;max-width:54ch;margin-bottom:36px;
 }
 
-/* ─── HERO SWITCH · segmented control ──────────────────── */
+/* ─── HERO SWITCH · simple two-mode picker ─────────────── */
 .hsw{
-  position:relative;
-  border:1px solid var(--line);border-radius:var(--radius-xl);
-  background:linear-gradient(180deg,rgba(20,26,43,.62) 0%,rgba(12,17,32,.78) 100%);
-  padding:8px;
-  box-shadow:0 24px 60px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.04);
-  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-  max-width:560px;
-}
-.hsw-label{
-  position:absolute;top:-10px;left:18px;
-  font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;
-  color:var(--ink-faint);background:#080b16;padding:0 10px;
-}
-.hsw-tabs{
-  display:grid;grid-template-columns:1fr 1fr;
-  background:rgba(0,0,0,.35);border-radius:14px;padding:5px;position:relative;
-  border:1px solid rgba(255,255,255,.04);
+  display:grid;grid-template-columns:1fr 1fr;gap:14px;
+  max-width:760px;
 }
 .hsw-tab{
-  position:relative;
-  padding:12px 18px;border-radius:11px;background:transparent;border:none;
-  font-family:inherit;cursor:pointer;text-align:left;
-  display:flex;flex-direction:column;gap:3px;
-  transition:background .25s ease,color .25s ease,box-shadow .25s ease;
-  color:var(--ink-mute);z-index:1;
+  position:relative;display:flex;flex-direction:column;gap:8px;
+  padding:22px 24px 24px;border-radius:var(--radius-lg);
+  background:rgba(8,11,22,.55);
+  border:1px solid rgba(255,255,255,.12);
+  text-decoration:none;color:#fff;font-family:inherit;text-align:left;
+  cursor:pointer;
+  transition:transform .25s ease,border-color .25s ease,background .25s ease,box-shadow .25s ease;
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+}
+.hsw-tab:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.28);background:rgba(8,11,22,.7)}
+.hsw-tab.is-active{
+  background:linear-gradient(180deg,rgba(59,130,246,.18) 0%,rgba(8,11,22,.78) 100%);
+  border-color:rgba(59,130,246,.6);
+  box-shadow:0 0 0 1px rgba(59,130,246,.4),0 24px 50px rgba(59,130,246,.14);
+}
+.hsw-tab.gold.is-active{
+  background:linear-gradient(180deg,rgba(160,129,86,.2) 0%,rgba(8,11,22,.78) 100%);
+  border-color:rgba(160,129,86,.65);
+  box-shadow:0 0 0 1px rgba(160,129,86,.45),0 24px 50px rgba(160,129,86,.14);
+}
+.hsw-tab .head{
+  display:flex;align-items:baseline;justify-content:space-between;gap:10px;
 }
 .hsw-tab .name{
-  font-size:14px;font-weight:600;letter-spacing:.05em;color:var(--ink-soft);
+  font-size:18px;font-weight:600;letter-spacing:-.005em;color:#fff;
 }
+.hsw-tab .badge{
+  font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  padding:4px 10px;border-radius:999px;
+  color:var(--blue-soft);background:rgba(59,130,246,.12);border:1px solid rgba(59,130,246,.34);
+}
+.hsw-tab.gold .badge{color:var(--gold-warm);background:rgba(160,129,86,.12);border-color:rgba(160,129,86,.34)}
 .hsw-tab .meta{
-  font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--ink-faint);
+  font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--ink-mute);
 }
-.hsw-tab.is-active{
-  background:linear-gradient(180deg,rgba(59,130,246,.22) 0%,rgba(59,130,246,.08) 100%);
-  box-shadow:0 0 0 1px rgba(59,130,246,.45),0 12px 28px rgba(59,130,246,.18);
+.hsw-tab .desc{
+  font-size:14px;line-height:1.55;color:rgba(255,255,255,.78);margin-top:4px;
 }
-.hsw-tab.is-active .name{color:#fff}
-.hsw-tab.is-active .meta{color:var(--blue-soft)}
-.hsw-tab.gold.is-active{
-  background:linear-gradient(180deg,rgba(160,129,86,.22) 0%,rgba(160,129,86,.08) 100%);
-  box-shadow:0 0 0 1px rgba(160,129,86,.5),0 12px 28px rgba(160,129,86,.18);
+.hsw-tab .arr-row{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.08);
+  font-family:inherit;
 }
-.hsw-tab.gold.is-active .meta{color:var(--gold-warm)}
-.hsw-tab:hover:not(.is-active){background:rgba(255,255,255,.03)}
-
-.hsw-panels{position:relative;padding:22px 22px 18px}
-.hsw-panel{display:none;animation:hswFade .35s ease}
-.hsw-panel.is-active{display:block}
-@keyframes hswFade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-.hsw-panel .desc{
-  font-size:14.5px;line-height:1.55;color:var(--ink-soft);margin-bottom:14px;
-}
-.hsw-panel .chips{
-  display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;
-}
-.hsw-panel .chip{
-  display:inline-flex;align-items:center;gap:7px;
-  font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;
-  color:var(--ink-mute);padding:6px 10px;border-radius:999px;
-  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);
-}
-.hsw-panel .chip .d{width:5px;height:5px;border-radius:50%;background:var(--blue-soft)}
-.hsw-panel.pro .chip .d{background:var(--gold-warm)}
-.hsw-panel .cta-row{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
-.hsw-panel .cta-meta{font-family:var(--mono);font-size:10.5px;color:var(--ink-faint);letter-spacing:.04em}
-
-/* ─── HERO IMAGE ──────────────────────────────────────── */
-.hero-art{
-  position:relative;width:100%;aspect-ratio:3/2;
-  border-radius:var(--radius-xl);overflow:hidden;
-  border:1px solid var(--line);
-  box-shadow:0 40px 90px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.04);
-  background:#06080f;
-}
-.hero-art img{
-  width:100%;height:100%;object-fit:cover;display:block;
-  transform:scale(1.01);
-}
-.hero-art::after{
-  content:'';position:absolute;inset:0;
-  background:
-    radial-gradient(ellipse at 70% 50%,transparent 0%,rgba(6,8,15,.18) 70%,rgba(6,8,15,.55) 100%),
-    linear-gradient(180deg,rgba(6,8,15,.05) 0%,rgba(6,8,15,.45) 100%);
-  pointer-events:none;
-}
-.hero-art-cap{
-  position:absolute;left:18px;bottom:14px;z-index:2;
+.hsw-tab .go{
   display:inline-flex;align-items:center;gap:8px;
-  font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--ink-mute);
-  background:rgba(6,8,15,.55);
-  border:1px solid rgba(255,255,255,.08);
-  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-  padding:6px 12px;border-radius:999px;
+  font-size:13px;font-weight:500;letter-spacing:.02em;color:#fff;
 }
-.hero-art-cap .d{width:5px;height:5px;border-radius:50%;background:var(--gold-warm)}
+.hsw-tab .go .arr{transition:transform .2s ease}
+.hsw-tab:hover .go .arr{transform:translateY(2px)}
+.hsw-tab .hint{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:var(--ink-faint);
+}
 
 /* ─── SECTION wrapper ─────────────────────────────────── */
 section.s{padding:96px 0;position:relative}
@@ -934,9 +901,6 @@ footer.f{
 
 /* ─── Responsive ──────────────────────────────────────── */
 @media(max-width:1100px){
-  .hero-inner{grid-template-columns:1fr;gap:36px}
-  .hero-copy{max-width:none}
-  .hero-art{order:-1;aspect-ratio:16/9;max-width:780px;margin:0 auto}
   .hsw{max-width:none}
   .recv-grid{grid-template-columns:1fr;gap:32px}
   .tfile-grid{grid-template-columns:1fr;gap:32px}
@@ -953,14 +917,11 @@ footer.f{
   .topbar-brand .tag{display:none}
   section.s{padding:72px 0}
   .container,.container-wide,.container-sm,.container-narrow{padding:0 22px}
-  .hero{padding:96px 22px 60px}
-  .hero-art{aspect-ratio:4/3}
-  .hsw-tab{padding:10px 14px}
-  .hsw-tab .name{font-size:13px}
-  .hsw-tab .meta{font-size:9.5px}
-  .hsw-panels{padding:18px 16px}
-  .hsw-panel .desc{font-size:13.5px}
-  .hsw-panel .cta-row .btn{width:100%;justify-content:center}
+  .hero{padding:104px 22px 64px}
+  .hsw{grid-template-columns:1fr;gap:10px}
+  .hsw-tab{padding:18px 18px 20px}
+  .hsw-tab .name{font-size:16px}
+  .hsw-tab .desc{font-size:13px}
   .split{grid-template-columns:1fr;gap:14px}
   .split-card{padding:32px 26px}
   .aml-pipe{grid-template-columns:repeat(3,1fr);gap:18px;row-gap:24px}
@@ -1103,59 +1064,34 @@ footer.f{
         Для задач, принятых в&nbsp;работу после проверки документов, получателя и&nbsp;маршрута.
       </p>
 
-      <!-- HERO SWITCH -->
-      <div class="hsw" role="tablist" aria-label="Сценарий платежа">
-        <span class="hsw-label">Выберите сценарий платежа</span>
-        <div class="hsw-tabs">
-          <button type="button" class="hsw-tab is-active" data-flow="lite" role="tab" aria-selected="true" aria-controls="hsw-lite">
+      <!-- HERO SWITCH · two modes · anchor to detail sections below -->
+      <div class="hsw" role="navigation" aria-label="Сценарий платежа">
+        <a class="hsw-tab is-active" href="#lite" data-flow="lite" aria-current="page">
+          <div class="head">
             <span class="name">Pay&nbsp;Lite</span>
-            <span class="meta">Быстрый платёж · до&nbsp;$50k</span>
-          </button>
-          <button type="button" class="hsw-tab gold" data-flow="pro" role="tab" aria-selected="false" aria-controls="hsw-pro">
+            <span class="badge">до&nbsp;$50k</span>
+          </div>
+          <span class="meta">Быстрый платёж</span>
+          <p class="desc">Понятные инвойсы, иностранные поставщики, подрядчики и&nbsp;сервисные счета. Берём в&nbsp;работу в&nbsp;день обращения при корректных документах.</p>
+          <div class="arr-row">
+            <span class="go">К&nbsp;разделу Pay&nbsp;Lite <span class="arr">↓</span></span>
+            <span class="hint">scroll</span>
+          </div>
+        </a>
+        <a class="hsw-tab gold" href="#pro" data-flow="pro">
+          <div class="head">
             <span class="name">Pay&nbsp;Pro</span>
-            <span class="meta">Сложный платёж · review</span>
-          </button>
-        </div>
-
-        <div class="hsw-panels">
-          <div class="hsw-panel lite is-active" id="hsw-lite" role="tabpanel" aria-labelledby="Pay Lite">
-            <p class="desc">Для понятных инвойсов, иностранных поставщиков, подрядчиков и&nbsp;сервисных счетов. Берём в&nbsp;работу в&nbsp;день обращения при корректных документах и&nbsp;доступном маршруте.</p>
-            <div class="chips">
-              <span class="chip"><span class="d"></span>До&nbsp;$50k</span>
-              <span class="chip"><span class="d"></span>В&nbsp;работу&nbsp;— в&nbsp;день обращения</span>
-              <span class="chip"><span class="d"></span>Transaction&nbsp;File</span>
-            </div>
-            <div class="cta-row">
-              <a href="#intake" class="btn btn-primary btn-lg" data-go="lite">Отправить инвойс <span class="arr">→</span></a>
-              <span class="cta-meta">Заявка получит номер кейса · ответ в&nbsp;день обращения</span>
-            </div>
+            <span class="badge">от&nbsp;$50k</span>
           </div>
-
-          <div class="hsw-panel pro" id="hsw-pro" role="tabpanel" aria-labelledby="Pay Pro">
-            <p class="desc">Для сумм выше $50k, чувствительных юрисдикций, сложных получателей, банков с&nbsp;жёстким входящим комплаенсом и&nbsp;маршрутов, где нужна архитектура исполнения.</p>
-            <div class="chips">
-              <span class="chip"><span class="d"></span>От&nbsp;$50k</span>
-              <span class="chip"><span class="d"></span>Архитектурный review до&nbsp;запуска</span>
-              <span class="chip"><span class="d"></span>Расширенный TF</span>
-            </div>
-            <div class="cta-row">
-              <a href="#intake-pro" class="btn btn-gold btn-lg" data-go="pro">Разобрать платёж <span class="arr">→</span></a>
-              <span class="cta-meta">Review&nbsp;desk возьмёт задачу под senior-оператора</span>
-            </div>
+          <span class="meta">Сложный платёж · review</span>
+          <p class="desc">Чувствительные юрисдикции, сложные получатели, банки с&nbsp;жёстким комплаенсом. Сначала архитектурный review, затем исполнение.</p>
+          <div class="arr-row">
+            <span class="go">К&nbsp;разделу Pay&nbsp;Pro <span class="arr">↓</span></span>
+            <span class="hint">scroll</span>
           </div>
-        </div>
+        </a>
       </div>
     </div>
-
-    <!-- HERO VISUAL · cinematic guide through controlled corridor -->
-    <aside class="hero-art" aria-label="Проводник платежа через защищённый коридор">
-      <picture>
-        <source media="(min-width:1101px)" srcset="assets/pay/hero-corridor.webp"/>
-        <source media="(min-width:769px)" srcset="assets/pay/hero-corridor-1100w.webp"/>
-        <img src="assets/pay/hero-corridor-800w.webp" alt="" fetchpriority="high" decoding="async"/>
-      </picture>
-      <span class="hero-art-cap"><span class="d"></span>Controlled&nbsp;corridor · до&nbsp;банка получателя</span>
-    </aside>
   </div>
 </section>
 
@@ -2077,25 +2013,19 @@ document.addEventListener('DOMContentLoaded', function () {
   window.addEventListener('scroll',tick,{passive:true}); tick();
 })();
 
-// Hero switch (Lite / Pro) — segmented control
+// Hero switch — two anchor cards; visually highlight the one being hovered/clicked
 (function(){
   var heroTabs=document.querySelectorAll('.hsw-tab');
-  var heroPanels=document.querySelectorAll('.hsw-panel');
   function activate(which){
-    heroTabs.forEach(function(t){
-      var on=t.dataset.flow===which;
-      t.classList.toggle('is-active',on);
-      t.setAttribute('aria-selected',on?'true':'false');
-    });
-    heroPanels.forEach(function(p){
-      p.classList.toggle('is-active',p.classList.contains(which));
-    });
+    heroTabs.forEach(function(t){ t.classList.toggle('is-active',t.dataset.flow===which); });
   }
-  heroTabs.forEach(function(t){ t.addEventListener('click',function(){ activate(t.dataset.flow); }); });
-  // CTA inside panel pre-selects intake tab
-  document.querySelectorAll('.hsw-panel [data-go]').forEach(function(a){
-    a.addEventListener('click',function(){
-      var which=a.dataset.go;
+  heroTabs.forEach(function(t){
+    t.addEventListener('mouseenter',function(){ activate(t.dataset.flow); });
+    t.addEventListener('focus',function(){ activate(t.dataset.flow); });
+    // anchor link does the scroll natively; we just sync the intake tab below
+    t.addEventListener('click',function(){
+      var which=t.dataset.flow;
+      activate(which);
       var ev=new CustomEvent('intake:set',{detail:which});
       window.dispatchEvent(ev);
     });
@@ -2185,7 +2115,7 @@ document.addEventListener('click',function(e){
 // Subtle reveal on scroll
 (function(){
   if(!('IntersectionObserver' in window)) return;
-  var els=document.querySelectorAll('.split-card,.aml-card,.case-card,.eco-card,.tfile-row,.recv-row,.faq,.detail-vis,.detail-text .row,.mtn-side,.ops-shell,.hero-art');
+  var els=document.querySelectorAll('.split-card,.aml-card,.case-card,.eco-card,.tfile-row,.recv-row,.faq,.detail-vis,.detail-text .row,.mtn-side,.ops-shell');
   els.forEach(function(el){
     el.style.opacity='0';
     el.style.transform='translateY(14px)';
