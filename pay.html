@@ -8,9 +8,9 @@
 <meta name="theme-color" content="#fbfaf6" media="(prefers-color-scheme: light)"/>
 <meta name="format-detection" content="telephone=no"/>
 <meta name="referrer" content="strict-origin-when-cross-origin"/>
-<title>CCAPITAL Pay — ВЭД-платежи с AML-бронёй</title>
+<title>Charter Capital · Pay — ВЭД-платежи с защитой</title>
 <meta name="description" content="ВЭД-платежи через сеть платёжных агентов: Pay Lite до $50k, Pay Pro для сложных задач. Защита платежа, проверка получателя, санкционная чистота и досье операции."/>
-<meta name="keywords" content="ВЭД-платежи, оплата иностранного инвойса, платёжный агент, защита платежа, AML, санкции, досье операции, CCAPITAL Pay, Charter Capital"/>
+<meta name="keywords" content="ВЭД-платежи, оплата иностранного инвойса, платёжный агент, защита платежа, AML, санкции, досье операции, Charter Capital Pay, Charter Capital"/>
 <meta name="author" content="Charter Capital"/>
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1"/>
 <meta name="yandex" content="index,follow"/>
@@ -21,16 +21,16 @@
 
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="Charter Capital"/>
-<meta property="og:title" content="CCAPITAL Pay — ВЭД-платежи с AML-бронёй"/>
+<meta property="og:title" content="Charter Capital · Pay — ВЭД-платежи с защитой"/>
 <meta property="og:description" content="Pay Lite — иностранный инвойс до $50k в работу за день. Pay Pro — сложные маршруты под банк получателя. Защита платежа и досье операции."/>
 <meta property="og:url" content="https://ccapital.pro/pay.html"/>
 <meta property="og:image" content="https://ccapital.pro/assets/pay/hero-corridor.webp"/>
 <meta property="og:image:width" content="1536"/>
 <meta property="og:image:height" content="1024"/>
-<meta property="og:image:alt" content="CCAPITAL Pay — проводник платежа через защищённый коридор"/>
+<meta property="og:image:alt" content="Charter Capital · Pay — проводник платежа через защищённый коридор"/>
 <meta property="og:locale" content="ru_RU"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="CCAPITAL Pay — ВЭД-платежи с AML-бронёй"/>
+<meta name="twitter:title" content="Charter Capital · Pay — ВЭД-платежи с защитой"/>
 <meta name="twitter:description" content="ВЭД-платежи через сеть платёжных агентов. Pay Lite до $50k, Pay Pro для сложных задач, защита платежа и досье операции."/>
 <meta name="twitter:image" content="https://ccapital.pro/assets/pay/hero-corridor.webp"/>
 
@@ -852,6 +852,21 @@ section.s.deep{background:#080b16}
 .final-actions{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
 .final-actions .btn{width:100%;justify-content:space-between}
 
+/* ─── Sticky CTA (mobile) ─────────────────────────────── */
+.sticky-cta{
+  display:none;position:fixed;bottom:14px;left:14px;right:14px;z-index:90;
+  background:linear-gradient(180deg,var(--blue) 0%,#2563eb 100%);
+  border:1px solid rgba(147,197,253,.55);
+  border-radius:var(--radius-lg);
+  padding:13px 18px;
+  align-items:center;justify-content:space-between;gap:12px;
+  color:#fff;font-size:13.5px;font-weight:600;letter-spacing:.02em;
+  text-decoration:none;
+  box-shadow:0 18px 42px rgba(0,0,0,.5),0 0 0 1px rgba(59,130,246,.4);
+}
+.sticky-cta .arr{transition:transform .2s ease}
+.sticky-cta:hover .arr,.sticky-cta:focus-visible .arr{transform:translateX(3px)}
+
 /* ─── FOOTER ──────────────────────────────────────────── */
 footer.f{
   background:#06080f;color:#94a3b8;
@@ -894,6 +909,8 @@ footer.f{
   .topbar-nav{display:none}
   .topbar-link{display:none}
   .topbar-brand .tag{display:none}
+  .sticky-cta{display:flex}
+  body{padding-bottom:74px}
   section.s{padding:72px 0}
   .container,.container-wide,.container-sm,.container-narrow{padding:0 22px}
   .hero{padding:104px 22px 64px}
@@ -923,9 +940,41 @@ footer.f{
   .f-bottom{flex-direction:column;align-items:flex-start;gap:8px}
 }
 @media(max-width:460px){
-  .hero h1{font-size:2rem}
+  .hero{padding:96px 18px 56px;min-height:auto}
+  .hero h1{font-size:2rem;letter-spacing:-.035em}
+  .hero-kicker{font-size:10px;letter-spacing:.2em;flex-wrap:wrap}
+  .container,.container-wide,.container-sm,.container-narrow{padding:0 18px}
+  .hsw-tab{padding:16px 16px 18px}
+  .hsw-tab .name{font-size:15px}
+  .hsw-tab .badge{font-size:9px;padding:3px 8px}
+  .intake-shell{padding:24px 18px 28px}
   .intake-tabs{display:flex;width:100%}
-  .intake-tab{flex:1;text-align:center;padding:10px 12px;font-size:11px}
+  .intake-tab{flex:1;text-align:center;padding:10px 8px;font-size:11px}
+  .intake-tab .sub{display:block;margin-left:0;margin-top:2px}
+  .bridge{padding:42px 0 28px}
+  .bridge-pill{font-size:10.5px;padding:8px 12px}
+  .case-card{padding:20px 18px}
+  .aml-card{padding:18px 16px}
+  .aml-pipe{grid-template-columns:repeat(2,1fr);gap:14px;row-gap:18px}
+  .aml-node .lbl{font-size:9.5px}
+  .mtn-side{min-height:300px;padding:22px}
+  .mtn-checkpoints{gap:6px}
+  .mtn-cp{font-size:9.5px;padding:5px 8px}
+  .ops-bar{flex-direction:column;align-items:flex-start;gap:8px;padding:12px 16px}
+  .ops-bar .case{font-size:10.5px}
+  .ops-bar .right{font-size:9.5px;flex-wrap:wrap;gap:8px}
+  .ops-col{padding:16px}
+  .tfile-card{padding:22px 18px}
+  .tfile-row{grid-template-columns:28px 1fr auto;gap:10px;padding:11px 0}
+  .tfile-row .body .t{font-size:13px}
+  .tfile-row .body .d{font-size:11.5px}
+  .recv-vis{padding:20px}
+  .recv-row{font-size:10.5px;padding:8px 10px}
+  .final-card{padding:32px 22px}
+  .final-actions .btn{font-size:13px;padding:14px 18px}
+  .field input,.field select,.field textarea{font-size:13.5px;padding:10px 12px}
+  .field-radio label{padding:8px 12px;font-size:12.5px}
+  .sticky-cta{font-size:13px;padding:12px 16px}
 }
 @media (prefers-reduced-motion: reduce){
   *{animation-duration:.01ms !important;transition-duration:.01ms !important}
@@ -956,7 +1005,7 @@ footer.f{
       "@type": "WebPage",
       "@id": "https://ccapital.pro/pay.html#webpage",
       "url": "https://ccapital.pro/pay.html",
-      "name": "CCAPITAL Pay — ВЭД-платежи с AML-бронёй",
+      "name": "Charter Capital · Pay — ВЭД-платежи с защитой",
       "isPartOf": {"@type":"WebSite","@id":"https://ccapital.pro/#website","url":"https://ccapital.pro/","name":"Charter Capital","publisher":{"@id":"https://ccapital.pro/#organization"}},
       "about": {"@id": "https://ccapital.pro/#organization"},
       "inLanguage": "ru-RU",
@@ -965,7 +1014,8 @@ footer.f{
     },
     {
       "@type": "Service",
-      "name": "CCAPITAL Pay",
+      "name": "Charter Capital Pay",
+      "alternateName": "Charter Capital · Pay",
       "provider": {"@id": "https://ccapital.pro/#organization"},
       "areaServed": ["RU","CIS","SG","HK","AE","GB","EU"],
       "serviceType": "ВЭД-платежи через сеть платёжных агентов",
@@ -985,7 +1035,7 @@ footer.f{
     {
       "@type": "FAQPage",
       "mainEntity": [
-        {"@type":"Question","name":"Что такое CCAPITAL Pay?","acceptedAnswer":{"@type":"Answer","text":"Агентская инфраструктура Charter Capital для исполнения ВЭД-платежей. Не обменник и не «агент из Telegram» — оперативный центр, в котором каждый платёж собирается как коммерческая операция: с документами, основанием и досье операции."}},
+        {"@type":"Question","name":"Что такое Charter Capital Pay?","acceptedAnswer":{"@type":"Answer","text":"Агентская инфраструктура Charter Capital для исполнения ВЭД-платежей. Не обменник и не «агент из Telegram» — оперативный центр, в котором каждый платёж собирается как коммерческая операция: с документами, основанием и досье операции."}},
         {"@type":"Question","name":"Чем отличается от обычного платёжного агента?","acceptedAnswer":{"@type":"Answer","text":"Мы готовим платёж не только к отправке, но и к приёму: AML-логика, санкционная чистота, документы под банк получателя. Поэтому платежи реже зависают и реже возвращаются."}},
         {"@type":"Question","name":"Что такое защита платежа?","acceptedAnswer":{"@type":"Answer","text":"Встроенная дисциплина: проверка основания, документов, получателя, маршрута и соответствия суммы и назначения. Заранее закрываем слабые места операции до отправки денег."}},
         {"@type":"Question","name":"Как работает Pay Lite?","acceptedAnswer":{"@type":"Answer","text":"Для инвойсов до $50k. Загружаете инвойс, указываете вашу компанию-плательщика и получателя, мы возвращаем условия. После исполнения — подтверждение и закрывающие документы."}},
@@ -1003,7 +1053,7 @@ footer.f{
     <div class="topbar-left">
       <a href="/" class="topbar-brand">
         <span class="name">Charter Capital</span>
-        <span class="tag">CCAPITAL · Pay</span>
+        <span class="tag">Pay</span>
       </a>
     </div>
     <nav class="topbar-nav">
@@ -1030,7 +1080,9 @@ footer.f{
     <div class="hero-copy">
       <div class="hero-kicker">
         <span class="dot"></span>
-        <span>CCAPITAL · Pay</span>
+        <span>Charter Capital</span>
+        <span class="pipe">·</span>
+        <span>Pay</span>
         <span class="pipe">·</span>
         <span>ВЭД-платежи</span>
       </div>
@@ -1138,7 +1190,7 @@ footer.f{
     <div class="s-head">
       <span class="kicker"><span class="num">[02]</span>Маршрут и&nbsp;тропа</span>
       <h2>Народная тропа осыпается. <strong style="color:var(--green-soft);font-weight:500">Контролируемый коридор&nbsp;— нет.</strong></h2>
-      <p>Массовые платёжные маршруты переполнены: по&nbsp;ним пошли все, и&nbsp;они стали дорогими, медленными и&nbsp;рискованными. Чем больше толпа, тем быстрее осыпается тропа. CCAPITAL Pay строит другой маршрут&nbsp;— <strong>частный коридор с&nbsp;контрольными точками</strong>, где каждая стадия имеет смысл и&nbsp;каждая подписана.</p>
+      <p>Массовые платёжные маршруты переполнены: по&nbsp;ним пошли все, и&nbsp;они стали дорогими, медленными и&nbsp;рискованными. Чем больше толпа, тем быстрее осыпается тропа. Charter Capital · Pay строит другой маршрут&nbsp;— <strong>частный коридор с&nbsp;контрольными точками</strong>, где каждая стадия имеет смысл и&nbsp;каждая подписана.</p>
     </div>
 
     <div class="mtn-stage">
@@ -1378,7 +1430,7 @@ footer.f{
       <div class="recv-text">
         <span class="kicker"><span class="num">[06]</span>Взгляд банка получателя</span>
         <h2>Главное лицо платежа&nbsp;— это <strong>банк, который его примет</strong>.</h2>
-        <p class="lead">Обычные агенты думают, как платёж <em>отправить</em>. CCAPITAL Pay думает, как он&nbsp;будет <em>принят</em>. Любую операцию в&nbsp;конце смотрит банк получателя&nbsp;— и&nbsp;именно его восприятие решает, пройдёт платёж или ляжет в&nbsp;ручную проверку.</p>
+        <p class="lead">Обычные агенты думают, как платёж <em>отправить</em>. Charter Capital · Pay думает, как он&nbsp;будет <em>принят</em>. Любую операцию в&nbsp;конце смотрит банк получателя&nbsp;— и&nbsp;именно его восприятие решает, пройдёт платёж или ляжет в&nbsp;ручную проверку.</p>
         <ul>
           <li><strong>Что банк увидит.</strong> Имя плательщика, агента, назначение и&nbsp;основание&nbsp;— и&nbsp;насколько это совпадает с&nbsp;профилем получателя.</li>
           <li><strong>Что ему&nbsp;не&nbsp;нравится.</strong> Невнятные формулировки, бессмысленные цепочки, валюты не&nbsp;из&nbsp;отрасли, документы только с&nbsp;одной стороны.</li>
@@ -1599,15 +1651,15 @@ footer.f{
 <section class="s eco" id="eco">
   <div class="container">
     <div class="s-head">
-      <span class="kicker"><span class="num">[10]</span>Экосистема CCAPITAL</span>
+      <span class="kicker"><span class="num">[10]</span>Экосистема Charter Capital</span>
       <h2>Pay&nbsp;— входная точка. <strong style="color:var(--gold-warm);font-weight:500">Если задача сложнее&nbsp;— она&nbsp;уходит внутрь.</strong></h2>
-      <p>CCAPITAL Pay не&nbsp;живёт отдельно. За&nbsp;ним стоит сеть агентов, AML-компетенция, частный офис для крупных капиталов и&nbsp;корпоративное сопровождение. Простая заявка может остаться в&nbsp;Lite&nbsp;— а&nbsp;может пойти глубже, если задача требует архитектуры.</p>
+      <p>Pay не&nbsp;живёт отдельно. За&nbsp;ним стоит сеть агентов, AML-компетенция, частный офис для крупных капиталов и&nbsp;корпоративное сопровождение. Простая заявка может остаться в&nbsp;Lite&nbsp;— а&nbsp;может пойти глубже, если задача требует архитектуры.</p>
     </div>
 
     <div class="eco-grid">
-      <a class="eco-card is-current" href="#switch" aria-label="CCAPITAL Pay">
+      <a class="eco-card is-current" href="#switch" aria-label="Charter Capital · Pay">
         <span class="ic">PY</span>
-        <h4>CCAPITAL Pay</h4>
+        <h4>Charter Capital · Pay</h4>
         <p>ВЭД-платежи. Lite до&nbsp;$50k и&nbsp;Pro&nbsp;— для&nbsp;сложных решений.</p>
         <span class="arr">Вы здесь</span>
       </a>
@@ -1646,7 +1698,7 @@ footer.f{
       <div class="notdo-text">
         <span class="kicker red"><span class="num">[11]</span>Чего мы не делаем. Никогда.</span>
         <h2>Защита платежа работает только с&nbsp;<strong>реальными</strong> коммерческими задачами.</h2>
-        <p class="lead">Если операцию невозможно собрать как понятную для AML-проверок и&nbsp;чистую по&nbsp;санкциям коммерческую сделку, мы&nbsp;её&nbsp;не&nbsp;берём. Это не&nbsp;«позиция» и&nbsp;не&nbsp;«осторожность». Это&nbsp;то, чем CCAPITAL Pay отличается от&nbsp;случайного агента.</p>
+        <p class="lead">Если операцию невозможно собрать как понятную для AML-проверок и&nbsp;чистую по&nbsp;санкциям коммерческую сделку, мы&nbsp;её&nbsp;не&nbsp;берём. Это не&nbsp;«позиция» и&nbsp;не&nbsp;«осторожность». Это&nbsp;то, чем Charter Capital · Pay отличается от&nbsp;случайного агента.</p>
         <p class="lead">Отказ всегда лучше потерянного банка, замороженного счёта и&nbsp;вопросов через два года. Поэтому решение «не&nbsp;брать»&nbsp;— это часть продукта.</p>
       </div>
       <div class="notdo-list">
@@ -1676,7 +1728,7 @@ footer.f{
 
     <div class="faq-list">
       <details class="faq">
-        <summary>Что такое CCAPITAL Pay?</summary>
+        <summary>Что такое Charter&nbsp;Capital · Pay?</summary>
         <div class="answer">
           <p>Агентская инфраструктура Charter&nbsp;Capital для исполнения ВЭД-платежей. Это не&nbsp;обменник и&nbsp;не&nbsp;«агент из&nbsp;Telegram», а&nbsp;оперативный центр, в&nbsp;котором каждый платёж собирается как коммерческая операция: с&nbsp;документами, основанием, AML-логикой и&nbsp;досье операции.</p>
         </div>
@@ -1684,7 +1736,7 @@ footer.f{
       <details class="faq">
         <summary>Чем Pay отличается от&nbsp;обычного платёжного агента?</summary>
         <div class="answer">
-          <p>Обычный агент думает, как платёж <em>отправить</em>. CCAPITAL Pay думает, как он&nbsp;будет <em>принят</em> банком получателя: какие документы и&nbsp;формулировки нужны заранее, как платёж выглядит в&nbsp;общей картине внешней финансовой системы.</p>
+          <p>Обычный агент думает, как платёж <em>отправить</em>. Charter Capital · Pay думает, как он&nbsp;будет <em>принят</em> банком получателя: какие документы и&nbsp;формулировки нужны заранее, как платёж выглядит в&nbsp;общей картине внешней финансовой системы.</p>
           <p>Поэтому платежи реже зависают, реже возвращаются и&nbsp;реже становятся причиной заморозки счетов спустя время.</p>
         </div>
       </details>
@@ -1894,6 +1946,12 @@ footer.f{
 
 </main>
 
+<!-- Sticky mobile CTA -->
+<a href="#intake" class="sticky-cta" aria-label="Начать платёж">
+  <span>Начать платёж</span>
+  <span class="arr">→</span>
+</a>
+
 <footer class="f">
   <div class="container">
     <div class="f-grid">
@@ -1927,16 +1985,16 @@ footer.f{
         <h5>Контакт</h5>
         <ul>
           <li><a href="https://t.me/charter_capital" target="_blank" rel="noopener">Telegram</a></li>
-          <li><a href="mailto:hello@ccapital.pro?subject=CCAPITAL%20Pay%20intake">hello@ccapital.pro</a></li>
+          <li><a href="mailto:hello@ccapital.pro?subject=Charter%20Capital%20Pay%20%E2%80%94%20%D0%B7%D0%B0%D1%8F%D0%B2%D0%BA%D0%B0">hello@ccapital.pro</a></li>
           <li><a href="https://ccapital.pro">ccapital.pro</a></li>
         </ul>
       </div>
     </div>
     <div class="f-disclaimer">
-      Информация на&nbsp;странице не&nbsp;является публичной офертой. CCAPITAL&nbsp;Pay не&nbsp;принимает поручения без предварительной проверки клиента, документов, назначения платежа, получателя и&nbsp;допустимости маршрута. Сервис предназначен для реальных коммерческих задач бизнеса и&nbsp;не&nbsp;используется для фиктивных операций, сокрытия происхождения средств, обхода санкционных ограничений или операций без экономического основания. Итоговая модель работы, комиссия, сроки и&nbsp;комплект документов согласуются индивидуально.
+      Информация на&nbsp;странице не&nbsp;является публичной офертой. Charter Capital · Pay не&nbsp;принимает поручения без предварительной проверки клиента, документов, назначения платежа, получателя и&nbsp;допустимости маршрута. Сервис предназначен для реальных коммерческих задач бизнеса и&nbsp;не&nbsp;используется для фиктивных операций, сокрытия происхождения средств, обхода санкционных ограничений или операций без экономического основания. Итоговая модель работы, комиссия, сроки и&nbsp;комплект документов согласуются индивидуально.
     </div>
     <div class="f-bottom">
-      <span>© 2026 Charter Capital · CCAPITAL&nbsp;Pay</span>
+      <span>© 2026 Charter Capital · Pay</span>
       <span>Обновлено: апрель 2026</span>
     </div>
   </div>
@@ -2025,7 +2083,7 @@ document.addEventListener('DOMContentLoaded', function () {
       var id=caseId(flow==='pro'?'PR':'PL');
       var p=payload(form);
       try{ localStorage.setItem('ccapital_pay_'+id, JSON.stringify({id:id,flow:flow,data:p.obj,ts:Date.now()})); }catch(_){}
-      var subject='[CCAPITAL Pay · '+(flow==='pro'?'Pro review':'Lite intake')+'] '+id;
+      var subject='[Charter Capital · Pay · '+(flow==='pro'?'Pro · разбор':'Lite · заявка')+'] '+id;
       var body='CASE '+id+'\nFlow: '+(flow==='pro'?'Pay Pro':'Pay Lite')+'\n\n'+p.text+'\n\n— отправлено с pay.html';
       var mailto='mailto:'+EMAIL+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
       // быстрый ack
