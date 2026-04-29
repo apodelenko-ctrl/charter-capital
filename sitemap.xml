@@ -61,6 +61,19 @@
   </url>
 
   <url>
+    <loc>https://ccapital.pro/pay.html</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ccapital.pro/pay.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ccapital.pro/pay.html"/>
+    <image:image>
+      <image:loc>https://ccapital.pro/assets/logic/14-open-arch.webp</image:loc>
+      <image:title>CCAPITAL Pay — ВЭД-платежи с AML-бронёй</image:title>
+    </image:image>
+  </url>
+
+  <url>
     <loc>https://ccapital.pro/property.html</loc>
     <lastmod>2026-04-28</lastmod>
     <changefreq>weekly</changefreq>

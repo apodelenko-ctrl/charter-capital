@@ -1,0 +1,2165 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="color-scheme" content="dark light"/>
+<meta name="theme-color" content="#06080f" media="(prefers-color-scheme: dark)"/>
+<meta name="theme-color" content="#fbfaf6" media="(prefers-color-scheme: light)"/>
+<meta name="format-detection" content="telephone=no"/>
+<meta name="referrer" content="strict-origin-when-cross-origin"/>
+<title>CCAPITAL Pay — ВЭД-платежи с AML-бронёй</title>
+<meta name="description" content="Агентская инфраструктура для ВЭД-платежей: Pay Lite до $50k, Pay Pro для сложных решений, AML-логика, санкционная нейтральность и transaction file."/>
+<meta name="keywords" content="ВЭД-платежи, агентский платёж, AML-броня, оплата иностранного инвойса, платёжный агент, transaction file, санкционная нейтральность, CCAPITAL Pay, Charter Capital"/>
+<meta name="author" content="Charter Capital"/>
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1"/>
+<meta name="yandex" content="index,follow"/>
+
+<link rel="canonical" href="https://ccapital.pro/pay.html"/>
+<link rel="alternate" hreflang="ru" href="https://ccapital.pro/pay.html"/>
+<link rel="alternate" hreflang="x-default" href="https://ccapital.pro/pay.html"/>
+
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Charter Capital"/>
+<meta property="og:title" content="CCAPITAL Pay — ВЭД-платежи с AML-бронёй"/>
+<meta property="og:description" content="Pay Lite — иностранный инвойс до $50k в работу за день. Pay Pro — сложные маршруты под банк получателя. Агентская инфраструктура и transaction file."/>
+<meta property="og:url" content="https://ccapital.pro/pay.html"/>
+<meta property="og:image" content="https://ccapital.pro/assets/logic/14-open-arch.webp"/>
+<meta property="og:image:alt" content="CCAPITAL Pay — операционный desk для ВЭД-платежей"/>
+<meta property="og:locale" content="ru_RU"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="CCAPITAL Pay — ВЭД-платежи с AML-бронёй"/>
+<meta name="twitter:description" content="Агентская инфраструктура для ВЭД-платежей. Pay Lite до $50k, Pay Pro для сложных решений, AML-броня и transaction file."/>
+<meta name="twitter:image" content="https://ccapital.pro/assets/logic/14-open-arch.webp"/>
+
+<link rel="dns-prefetch" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" media="print" onload="this.media='all'"/>
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"/></noscript>
+
+<style>
+:root{
+  --bg:#06080f;
+  --bg-2:#0a0e1a;
+  --bg-3:#0f1422;
+  --bg-4:#141a2b;
+  --panel:#0c1120;
+  --line:#1c2336;
+  --line-soft:#26304a;
+  --ink:#f8fafc;
+  --ink-soft:#cbd5e1;
+  --ink-mute:#94a3b8;
+  --ink-faint:#64748b;
+  --gold:#a08156;
+  --gold-warm:#e8d4a8;
+  --gold-soft:#cfc4a2;
+  --blue:#3b82f6;
+  --blue-soft:#93c5fd;
+  --blue-deep:#1e3a8a;
+  --green:#22c55e;
+  --green-soft:#86efac;
+  --red:#ef4444;
+  --red-soft:#fca5a5;
+  --amber:#f59e0b;
+  --amber-soft:#fcd34d;
+  --radius:8px;
+  --radius-lg:14px;
+  --radius-xl:22px;
+  --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  background:var(--bg);color:var(--ink);
+  font-size:16px;line-height:1.6;font-weight:400;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  opacity:0;transition:opacity .35s ease;overflow-x:hidden;
+}
+body.page-ready{opacity:1}
+::selection{background:var(--blue);color:#fff}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:#0a0a0a}
+::-webkit-scrollbar-thumb{background:#374151;border-radius:3px}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit}
+
+h1,h2,h3,h4{font-weight:300;letter-spacing:-.035em;line-height:1.06;color:#fff}
+h1{font-size:clamp(2.1rem,4.4vw,3.6rem)}
+h2{font-size:clamp(1.7rem,3.1vw,2.6rem)}
+h3{font-size:clamp(1.2rem,1.85vw,1.55rem);font-weight:400;letter-spacing:-.02em}
+h4{font-size:1rem;font-weight:600;letter-spacing:-.01em}
+p{color:var(--ink-soft);font-weight:400;line-height:1.7}
+
+.container{max-width:1240px;margin:0 auto;padding:0 32px}
+.container-wide{max-width:1320px;margin:0 auto;padding:0 32px}
+.container-sm{max-width:920px;margin:0 auto;padding:0 32px}
+.container-narrow{max-width:760px;margin:0 auto;padding:0 32px}
+
+.kicker{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--mono);
+  font-size:11px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--blue-soft);margin-bottom:18px;
+}
+.kicker.gold{color:var(--gold-soft)}
+.kicker.mute{color:var(--ink-mute)}
+.kicker .num{color:var(--ink-faint)}
+.kicker.red{color:var(--red-soft)}
+.kicker.green{color:var(--green-soft)}
+
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:inherit;font-size:13px;font-weight:500;
+  padding:14px 24px;border-radius:var(--radius);
+  cursor:pointer;border:1px solid transparent;text-decoration:none;
+  transition:all .2s ease;letter-spacing:.02em;white-space:nowrap;
+}
+.btn-lg{padding:16px 28px;font-size:14px}
+.btn .arr{transition:transform .2s ease;display:inline-block}
+.btn:hover .arr{transform:translateX(4px)}
+.btn-primary{background:var(--blue);color:#fff;border-color:var(--blue);box-shadow:0 0 0 1px rgba(59,130,246,.4),0 12px 28px rgba(59,130,246,.22)}
+.btn-primary:hover{background:#2563eb;border-color:#2563eb;transform:translateY(-1px);box-shadow:0 0 0 1px rgba(59,130,246,.6),0 18px 36px rgba(59,130,246,.34)}
+.btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.34)}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.06)}
+.btn-outline{background:transparent;color:#fff;border-color:rgba(160,129,86,.5)}
+.btn-outline:hover{border-color:var(--gold);background:rgba(160,129,86,.08)}
+.btn-gold{background:var(--gold);color:#fff;border-color:var(--gold)}
+.btn-gold:hover{background:#8e7148;border-color:#8e7148;transform:translateY(-1px);box-shadow:0 14px 28px rgba(160,129,86,.32)}
+
+/* ─── TOPBAR ─────────────────────────────────────────────── */
+#topbar{
+  position:fixed;top:0;left:0;right:0;z-index:1000;height:64px;
+  background:rgba(6,8,15,0);
+  border-bottom:1px solid transparent;
+  transition:background .3s ease,border-color .3s ease,backdrop-filter .3s ease;
+}
+#topbar.solid{
+  background:rgba(6,8,15,.55);
+  backdrop-filter:saturate(150%) blur(14px);
+  -webkit-backdrop-filter:saturate(150%) blur(14px);
+  border-bottom-color:rgba(255,255,255,.06);
+}
+.topbar-inner{
+  max-width:1320px;height:100%;margin:0 auto;padding:0 32px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+.topbar-left{display:flex;align-items:baseline;gap:14px;min-width:0}
+.topbar-brand{display:flex;align-items:baseline;gap:14px;color:#fff}
+.topbar-brand .name{font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase}
+.topbar-brand .tag{
+  font-size:11px;font-weight:300;color:var(--blue-soft);
+  border-left:1px solid #2a2a2a;padding-left:14px;letter-spacing:.04em;
+}
+.topbar-nav{display:flex;align-items:center;gap:2px}
+.topbar-nav a{
+  font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-mute);padding:8px 14px;border-radius:6px;
+  transition:color .15s ease,background .15s ease;
+}
+.topbar-nav a:hover{color:#fff;background:rgba(255,255,255,.06)}
+.topbar-nav a.is-blue{color:var(--blue-soft)}
+.topbar-right{display:flex;align-items:center;gap:12px}
+.topbar-link{
+  font-size:11px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-faint);padding:8px 6px;
+  transition:color .15s ease;
+}
+.topbar-link:hover{color:var(--blue-soft)}
+.topbar-cta{
+  font-family:inherit;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  background:var(--blue);color:#fff;cursor:pointer;
+  border:1px solid var(--blue);padding:9px 16px;border-radius:6px;text-decoration:none;
+  transition:all .15s ease;
+  box-shadow:0 0 0 1px rgba(59,130,246,.3),0 8px 18px rgba(59,130,246,.18);
+}
+.topbar-cta:hover{background:#2563eb;border-color:#2563eb}
+
+main{padding-top:64px}
+
+/* ─── HERO ──────────────────────────────────────────────── */
+.hero{
+  position:relative;min-height:96vh;
+  padding:120px 32px 80px;
+  overflow:hidden;display:flex;align-items:center;
+  background:
+    radial-gradient(circle at 82% 18%,rgba(59,130,246,.16) 0%,transparent 55%),
+    radial-gradient(circle at 12% 78%,rgba(160,129,86,.10) 0%,transparent 55%),
+    linear-gradient(180deg,#06080f 0%,#080b16 50%,#06080f 100%);
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(ellipse at center,#000 30%,transparent 75%);
+  -webkit-mask-image:radial-gradient(ellipse at center,#000 30%,transparent 75%);
+  pointer-events:none;
+}
+.hero-inner{
+  position:relative;z-index:1;
+  max-width:1320px;margin:0 auto;width:100%;
+  display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center;
+}
+.hero-copy{max-width:660px}
+.hero-flag{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(59,130,246,.12);border:1px solid rgba(59,130,246,.42);
+  padding:7px 16px;border-radius:999px;
+  font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--blue-soft);margin-bottom:30px;
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+}
+.hero-flag .dot{width:6px;height:6px;border-radius:50%;background:var(--blue);animation:pulse 2.4s ease infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.85)}}
+.hero h1{
+  color:#fff;max-width:18ch;
+  font-size:clamp(2.2rem,4.6vw,3.7rem);
+  line-height:1.04;letter-spacing:-.04em;
+  font-weight:300;margin-bottom:24px;
+}
+.hero h1 strong{font-weight:600;color:#fff}
+.hero h1 .em{color:var(--blue-soft);font-weight:400}
+.hero-sub{
+  color:rgba(255,255,255,.78);
+  font-size:clamp(1rem,1.4vw,1.18rem);
+  line-height:1.55;font-weight:300;
+  max-width:54ch;margin-bottom:28px;
+}
+.hero-formula{
+  position:relative;margin:6px 0 30px;padding:16px 0 16px 22px;
+  border-left:2px solid var(--blue);
+  font-size:clamp(1rem,1.45vw,1.18rem);
+  font-weight:300;line-height:1.5;color:rgba(255,255,255,.94);
+  max-width:54ch;
+}
+.hero-formula strong{color:var(--blue-soft);font-weight:500}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px}
+.hero-pills{
+  display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;
+  padding-top:24px;border-top:1px solid rgba(255,255,255,.08);
+}
+.hero-pill{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.08em;
+  color:var(--ink-mute);padding:7px 12px;border-radius:999px;
+  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);
+}
+.hero-pill .d{width:5px;height:5px;border-radius:50%;background:var(--blue-soft)}
+.hero-pill.gold .d{background:var(--gold-warm)}
+
+/* ─── HERO VISUAL · console diagram ───────────────────── */
+.console{
+  position:relative;width:100%;
+  border-radius:var(--radius-lg);
+  background:linear-gradient(180deg,rgba(20,26,43,.8) 0%,rgba(12,17,32,.85) 100%);
+  border:1px solid var(--line);
+  padding:22px;
+  box-shadow:0 30px 70px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.04);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+}
+.console-bar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-bottom:14px;margin-bottom:16px;
+  border-bottom:1px solid var(--line);
+  font-family:var(--mono);font-size:11px;color:var(--ink-mute);letter-spacing:.06em;
+}
+.console-bar .left{display:flex;align-items:center;gap:10px}
+.console-bar .case-id{color:#fff;letter-spacing:.18em}
+.console-bar .right{display:flex;align-items:center;gap:8px;color:var(--green-soft)}
+.console-bar .right .dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s ease infinite}
+.console-pipeline{
+  display:grid;grid-template-columns:repeat(7,1fr);gap:0;
+  position:relative;margin-bottom:18px;
+}
+.console-pipeline::before{
+  content:'';position:absolute;top:18px;left:6%;right:6%;height:1px;
+  background:linear-gradient(90deg,rgba(59,130,246,.4) 0%,rgba(59,130,246,.6) 50%,rgba(160,129,86,.4) 100%);
+}
+.cp-node{
+  position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;
+}
+.cp-node .ring{
+  width:36px;height:36px;border-radius:50%;
+  background:#0c1120;border:1.5px solid var(--line-soft);
+  display:grid;place-items:center;
+  font-family:var(--mono);font-size:10px;color:var(--ink-mute);
+  position:relative;z-index:1;
+}
+.cp-node.is-done .ring{border-color:var(--green);color:var(--green-soft);background:rgba(34,197,94,.08)}
+.cp-node.is-active .ring{border-color:var(--blue);color:var(--blue-soft);background:rgba(59,130,246,.08);box-shadow:0 0 0 4px rgba(59,130,246,.12)}
+.cp-node.is-active .ring::after{
+  content:'';position:absolute;inset:-6px;border-radius:50%;
+  border:1px solid var(--blue);opacity:.4;
+  animation:ringPulse 2.2s ease infinite;
+}
+@keyframes ringPulse{0%{opacity:.5;transform:scale(.95)}100%{opacity:0;transform:scale(1.25)}}
+.cp-node .lbl{
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;
+  color:var(--ink-faint);text-align:center;line-height:1.3;
+}
+.cp-node.is-active .lbl{color:#fff}
+.cp-node.is-done .lbl{color:var(--green-soft)}
+.console-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:14px}
+.console-cell{
+  background:#0a0e1a;border:1px solid var(--line);border-radius:var(--radius);
+  padding:14px;
+}
+.console-cell .lbl{
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--ink-faint);margin-bottom:10px;
+}
+.console-cell .row{
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:12.5px;padding:5px 0;color:var(--ink-soft);
+}
+.console-cell .row + .row{border-top:1px dashed rgba(255,255,255,.04)}
+.console-cell .row .v{font-family:var(--mono);font-size:11.5px;color:#fff}
+.console-cell .row .v.green{color:var(--green-soft)}
+.console-cell .row .v.blue{color:var(--blue-soft)}
+.console-cell .row .v.gold{color:var(--gold-warm)}
+.console-cell .row .v.amber{color:var(--amber-soft)}
+
+/* ─── SECTION wrapper ─────────────────────────────────── */
+section.s{padding:96px 0;position:relative}
+section.s.tight{padding:72px 0}
+section.s.alt{background:linear-gradient(180deg,#06080f 0%,#0a0e1a 60%,#06080f 100%)}
+section.s.deep{background:#080b16}
+.s-head{margin-bottom:48px;max-width:760px}
+.s-head p{font-size:17px;color:var(--ink-mute);font-weight:400;line-height:1.65}
+
+/* ─── LITE / PRO SWITCH ────────────────────────────────── */
+.split{
+  display:grid;grid-template-columns:1fr 1fr;gap:24px;
+}
+.split-card{
+  position:relative;
+  border-radius:var(--radius-xl);
+  padding:44px 40px;
+  border:1px solid var(--line);
+  background:linear-gradient(180deg,rgba(20,26,43,.55) 0%,rgba(12,17,32,.7) 100%);
+  overflow:hidden;
+  transition:transform .3s ease,border-color .3s ease;
+}
+.split-card:hover{transform:translateY(-3px);border-color:var(--line-soft)}
+.split-card.lite{background:linear-gradient(160deg,rgba(59,130,246,.08) 0%,rgba(59,130,246,.02) 60%,rgba(20,26,43,.45) 100%);border-color:rgba(59,130,246,.22)}
+.split-card.pro{background:linear-gradient(160deg,rgba(160,129,86,.08) 0%,rgba(160,129,86,.02) 60%,rgba(20,26,43,.45) 100%);border-color:rgba(160,129,86,.22)}
+.split-card .badge{
+  position:absolute;top:24px;right:24px;
+  font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  padding:6px 12px;border-radius:999px;
+}
+.split-card.lite .badge{background:rgba(59,130,246,.12);color:var(--blue-soft);border:1px solid rgba(59,130,246,.32)}
+.split-card.pro .badge{background:rgba(160,129,86,.12);color:var(--gold-warm);border:1px solid rgba(160,129,86,.32)}
+.split-card .num{
+  font-family:var(--mono);font-size:11px;letter-spacing:.22em;
+  color:var(--ink-faint);margin-bottom:14px;
+}
+.split-card h3{
+  font-size:clamp(1.8rem,2.6vw,2.1rem);font-weight:400;
+  margin-bottom:14px;letter-spacing:-.025em;
+}
+.split-card.lite h3 strong{color:var(--blue-soft);font-weight:500}
+.split-card.pro h3 strong{color:var(--gold-warm);font-weight:500}
+.split-card .desc{
+  font-size:15px;line-height:1.55;color:var(--ink-soft);margin-bottom:24px;
+}
+.split-card .ulist{list-style:none;padding:0;margin:0 0 26px 0;display:grid;gap:10px}
+.split-card .ulist li{
+  position:relative;padding-left:22px;
+  font-size:14px;line-height:1.5;color:var(--ink-soft);
+}
+.split-card .ulist li::before{
+  content:'';position:absolute;left:0;top:8px;
+  width:8px;height:1px;background:rgba(255,255,255,.4);
+}
+.split-card.lite .ulist li::before{background:var(--blue)}
+.split-card.pro .ulist li::before{background:var(--gold)}
+.split-card .meta{
+  display:flex;flex-wrap:wrap;gap:8px 18px;margin-bottom:24px;
+  padding-top:20px;border-top:1px solid rgba(255,255,255,.06);
+}
+.split-card .meta-item{display:flex;flex-direction:column;gap:4px}
+.split-card .meta-item .l{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint)}
+.split-card .meta-item .v{font-size:13.5px;color:#fff;font-weight:500}
+.split-card .cta{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;letter-spacing:.04em;color:#fff;border-bottom:1px solid rgba(255,255,255,.3);padding-bottom:3px}
+.split-card.lite .cta:hover{color:var(--blue-soft);border-color:var(--blue)}
+.split-card.pro .cta:hover{color:var(--gold-warm);border-color:var(--gold)}
+
+/* ─── AML PIPELINE ────────────────────────────────────── */
+.aml{
+  background:linear-gradient(180deg,#06080f 0%,#0a0e1a 50%,#06080f 100%);
+}
+.aml-pipe{
+  display:grid;grid-template-columns:repeat(9,1fr);gap:0;
+  margin:24px 0 36px;position:relative;
+}
+.aml-pipe::before{
+  content:'';position:absolute;top:24px;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,
+    rgba(59,130,246,.5) 0%,rgba(59,130,246,.5) 22%,
+    rgba(160,129,86,.6) 50%,
+    rgba(34,197,94,.5) 78%,rgba(34,197,94,.5) 100%);
+}
+.aml-node{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
+.aml-node .ic{
+  width:48px;height:48px;border-radius:50%;
+  background:#0a0e1a;border:1.5px solid var(--line-soft);
+  display:grid;place-items:center;
+  position:relative;z-index:1;
+  font-family:var(--mono);font-size:10px;color:var(--ink-mute);
+}
+.aml-node .ic svg{width:20px;height:20px;stroke:var(--ink-soft);fill:none;stroke-width:1.6}
+.aml-node:nth-child(-n+3) .ic{border-color:rgba(59,130,246,.4)}
+.aml-node:nth-child(-n+3) .ic svg{stroke:var(--blue-soft)}
+.aml-node:nth-child(n+4):nth-child(-n+6) .ic{border-color:rgba(160,129,86,.4)}
+.aml-node:nth-child(n+4):nth-child(-n+6) .ic svg{stroke:var(--gold-warm)}
+.aml-node:nth-child(n+7) .ic{border-color:rgba(34,197,94,.4)}
+.aml-node:nth-child(n+7) .ic svg{stroke:var(--green-soft)}
+.aml-node .lbl{font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--ink-soft);max-width:80px;line-height:1.3}
+.aml-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px;
+}
+.aml-card{
+  background:rgba(255,255,255,.02);border:1px solid var(--line);
+  border-radius:var(--radius-lg);padding:22px;
+  transition:border-color .25s ease,background .25s ease;
+}
+.aml-card:hover{border-color:var(--line-soft);background:rgba(255,255,255,.035)}
+.aml-card .num{
+  font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--blue-soft);margin-bottom:10px;
+}
+.aml-card h4{font-size:17px;margin-bottom:8px;font-weight:500;letter-spacing:-.01em}
+.aml-card p{font-size:13.5px;line-height:1.6;color:var(--ink-mute)}
+
+/* ─── MOUNTAIN PATH ───────────────────────────────────── */
+.mtn{
+  background:linear-gradient(180deg,#06080f 0%,#080b16 100%);
+  position:relative;overflow:hidden;
+}
+.mtn-stage{
+  display:grid;grid-template-columns:1fr 1fr;gap:24px;
+  margin-top:36px;align-items:stretch;
+}
+.mtn-side{
+  position:relative;border-radius:var(--radius-xl);overflow:hidden;
+  border:1px solid var(--line);min-height:480px;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:28px;
+}
+.mtn-side svg{
+  position:absolute;inset:0;width:100%;height:100%;display:block;
+}
+.mtn-side .body{position:relative;z-index:2}
+.mtn-side .label{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;
+  margin-bottom:10px;
+}
+.mtn-side.crowded .label{color:var(--red-soft)}
+.mtn-side.controlled .label{color:var(--green-soft)}
+.mtn-side h3{font-size:clamp(1.3rem,2vw,1.65rem);font-weight:400;margin-bottom:10px;color:#fff}
+.mtn-side p{font-size:14px;line-height:1.55;color:var(--ink-mute);max-width:38ch}
+.mtn-checkpoints{
+  display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;
+}
+.mtn-cp{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.3);
+  padding:6px 10px;border-radius:6px;
+  font-family:var(--mono);font-size:10.5px;color:var(--green-soft);letter-spacing:.04em;
+}
+.mtn-cp .arr{color:var(--ink-faint);margin:0 -2px}
+.mtn-warn{
+  display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;
+}
+.mtn-warn span{
+  display:inline-flex;align-items:center;
+  background:rgba(220,38,38,.08);border:1px solid rgba(220,38,38,.28);
+  padding:5px 9px;border-radius:6px;
+  font-family:var(--mono);font-size:10px;color:var(--red-soft);letter-spacing:.04em;
+}
+
+/* ─── PAY LITE / PAY PRO DETAIL ───────────────────────── */
+.detail{
+  display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start;
+}
+.detail-text h3{font-size:clamp(1.5rem,2.4vw,2rem);font-weight:300;margin-bottom:18px;letter-spacing:-.03em}
+.detail-text h3 strong{font-weight:500}
+.detail.lite .detail-text h3 strong{color:var(--blue-soft)}
+.detail.pro .detail-text h3 strong{color:var(--gold-warm)}
+.detail-text .lead{font-size:16px;line-height:1.65;color:var(--ink-soft);margin-bottom:22px}
+.detail-text .row{
+  display:grid;grid-template-columns:130px 1fr;gap:16px;
+  padding:14px 0;border-top:1px solid var(--line);
+}
+.detail-text .row:last-child{border-bottom:1px solid var(--line)}
+.detail-text .row .l{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint)}
+.detail-text .row .v{font-size:14px;color:var(--ink-soft);line-height:1.5}
+.detail-text .row .v strong{color:#fff;font-weight:500}
+.detail-vis{
+  background:linear-gradient(180deg,rgba(20,26,43,.6) 0%,rgba(12,17,32,.8) 100%);
+  border:1px solid var(--line);border-radius:var(--radius-lg);
+  padding:24px;min-height:360px;display:flex;flex-direction:column;
+}
+.detail-vis .vis-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-bottom:14px;margin-bottom:14px;border-bottom:1px solid var(--line);
+}
+.detail-vis .vis-title{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:#fff;text-transform:uppercase}
+.detail-vis .vis-tag{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--ink-faint)}
+.vis-list{display:grid;gap:10px}
+.vis-row{
+  display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;
+  padding:11px 12px;border-radius:6px;background:rgba(255,255,255,.025);border:1px solid var(--line);
+}
+.vis-row .lbl{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--ink-soft)}
+.vis-row .lbl .ic{
+  width:26px;height:26px;border-radius:50%;
+  background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.3);
+  display:grid;place-items:center;
+}
+.vis-row .lbl .ic svg{width:13px;height:13px;stroke:var(--blue-soft);fill:none;stroke-width:1.6}
+.vis-row .stat{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+  padding:4px 10px;border-radius:4px;
+}
+.vis-row .stat.done{color:var(--green-soft);background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.3)}
+.vis-row .stat.run{color:var(--blue-soft);background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.3)}
+.vis-row .stat.wait{color:var(--ink-faint);background:rgba(255,255,255,.04);border:1px solid var(--line)}
+
+/* ─── RECEIVING BANK ──────────────────────────────────── */
+.recv{
+  background:linear-gradient(180deg,#0a0e1a 0%,#0f1422 60%,#0a0e1a 100%);
+}
+.recv-grid{
+  display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;
+}
+.recv-text h2 strong{color:var(--blue-soft);font-weight:500}
+.recv-text .lead{font-size:17px;line-height:1.65;color:var(--ink-soft);margin-bottom:26px}
+.recv-text ul{list-style:none;padding:0;margin:0;display:grid;gap:14px}
+.recv-text ul li{
+  position:relative;padding-left:32px;font-size:14.5px;line-height:1.55;color:var(--ink-soft);
+}
+.recv-text ul li::before{
+  content:'';position:absolute;left:0;top:7px;width:18px;height:1px;
+  background:linear-gradient(90deg,var(--blue) 0%,transparent 100%);
+}
+.recv-text ul li strong{color:#fff;font-weight:500}
+.recv-vis{
+  background:linear-gradient(180deg,rgba(20,26,43,.6) 0%,rgba(12,17,32,.8) 100%);
+  border:1px solid var(--line);border-radius:var(--radius-lg);
+  padding:26px;
+}
+.recv-vis .head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-bottom:14px;margin-bottom:18px;border-bottom:1px solid var(--line);
+}
+.recv-vis .head .ttl{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:#fff;text-transform:uppercase}
+.recv-vis .head .stat{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10px;color:var(--green-soft);letter-spacing:.12em}
+.recv-vis .head .stat .d{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s ease infinite}
+.recv-rows{display:grid;gap:8px}
+.recv-row{
+  display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;
+  padding:9px 11px;border-radius:6px;
+  background:rgba(255,255,255,.02);border:1px solid var(--line);
+  font-family:var(--mono);font-size:11.5px;
+}
+.recv-row .q{color:var(--ink-soft)}
+.recv-row .a{color:var(--green-soft);font-weight:500}
+.recv-row .a.amber{color:var(--amber-soft)}
+
+/* ─── OPS DESK pseudo-interface ──────────────────────── */
+.ops{background:#06080f}
+.ops-shell{
+  background:linear-gradient(180deg,rgba(20,26,43,.7) 0%,rgba(8,11,22,.85) 100%);
+  border:1px solid var(--line);border-radius:var(--radius-xl);
+  overflow:hidden;
+  box-shadow:0 40px 100px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.04);
+}
+.ops-bar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 22px;border-bottom:1px solid var(--line);
+  background:rgba(0,0,0,.2);
+}
+.ops-bar .left{display:flex;align-items:center;gap:14px}
+.ops-bar .dots{display:flex;gap:6px}
+.ops-bar .dots span{width:8px;height:8px;border-radius:50%;background:#1c2336}
+.ops-bar .dots span:nth-child(1){background:#ef4444}
+.ops-bar .dots span:nth-child(2){background:#f59e0b}
+.ops-bar .dots span:nth-child(3){background:#22c55e}
+.ops-bar .case{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;color:#fff}
+.ops-bar .right{display:flex;align-items:center;gap:14px;font-family:var(--mono);font-size:10.5px;color:var(--ink-faint);letter-spacing:.06em}
+.ops-bar .stat{display:inline-flex;align-items:center;gap:6px}
+.ops-bar .stat .d{width:6px;height:6px;border-radius:50%;background:var(--blue);animation:pulse 2s ease infinite}
+.ops-body{
+  display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:0;
+}
+.ops-col{padding:20px 22px;border-right:1px solid var(--line)}
+.ops-col:last-child{border-right:0}
+.ops-col h5{
+  font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--ink-faint);margin-bottom:14px;font-weight:500;
+}
+.ops-timeline{list-style:none;padding:0;margin:0;display:grid;gap:0}
+.ops-step{
+  position:relative;padding:10px 0 10px 28px;
+  font-size:13px;color:var(--ink-soft);
+  border-left:1px dashed rgba(255,255,255,.08);
+  margin-left:6px;
+}
+.ops-step::before{
+  content:'';position:absolute;left:-6px;top:14px;
+  width:11px;height:11px;border-radius:50%;background:#0a0e1a;border:2px solid var(--line-soft);
+}
+.ops-step.done::before{background:rgba(34,197,94,.18);border-color:var(--green)}
+.ops-step.active::before{background:rgba(59,130,246,.18);border-color:var(--blue);box-shadow:0 0 0 4px rgba(59,130,246,.12)}
+.ops-step.wait::before{background:#0a0e1a}
+.ops-step .t{display:flex;align-items:center;gap:8px;font-weight:500;color:#fff}
+.ops-step .t .ts{font-family:var(--mono);font-size:9.5px;color:var(--ink-faint);letter-spacing:.12em}
+.ops-step.wait .t{color:var(--ink-mute)}
+.ops-step .d{font-size:12px;color:var(--ink-mute);margin-top:3px;line-height:1.45}
+
+.ops-doc-list{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.ops-doc{
+  display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;
+  padding:10px 12px;border-radius:6px;
+  background:rgba(255,255,255,.025);border:1px solid var(--line);
+  font-family:var(--mono);font-size:11.5px;color:var(--ink-soft);
+}
+.ops-doc .ic{
+  width:22px;height:22px;border-radius:5px;
+  background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.28);
+  display:grid;place-items:center;color:var(--blue-soft);font-size:10px;font-weight:600;
+}
+.ops-doc .ic.gold{background:rgba(160,129,86,.1);border-color:rgba(160,129,86,.28);color:var(--gold-warm)}
+.ops-doc .stat{font-size:10px;letter-spacing:.12em;text-transform:uppercase}
+.ops-doc .stat.ok{color:var(--green-soft)}
+.ops-doc .stat.run{color:var(--blue-soft)}
+.ops-doc .stat.wait{color:var(--ink-faint)}
+
+.ops-flag{display:grid;gap:6px}
+.ops-flag .row{
+  display:flex;align-items:center;justify-content:space-between;
+  font-family:var(--mono);font-size:11.5px;color:var(--ink-soft);
+  padding:6px 0;border-bottom:1px dashed rgba(255,255,255,.06);
+}
+.ops-flag .row:last-child{border-bottom:0}
+.ops-flag .row .v{color:#fff}
+.ops-flag .row .v.ok{color:var(--green-soft)}
+.ops-flag .row .v.amber{color:var(--amber-soft)}
+.ops-flag .row .v.blue{color:var(--blue-soft)}
+
+/* ─── TRANSACTION FILE ─────────────────────────────────── */
+.tfile{
+  background:linear-gradient(180deg,#0a0e1a 0%,#0f1422 60%,#0a0e1a 100%);
+}
+.tfile-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:48px;align-items:start}
+.tfile-text h2 strong{color:var(--gold-warm);font-weight:500}
+.tfile-text .lead{font-size:17px;line-height:1.65;color:var(--ink-soft);margin-bottom:18px}
+.tfile-text p + p{margin-top:14px}
+.tfile-card{
+  background:linear-gradient(180deg,rgba(160,129,86,.05) 0%,rgba(20,26,43,.55) 100%);
+  border:1px solid rgba(160,129,86,.22);
+  border-radius:var(--radius-lg);padding:28px;
+}
+.tfile-card .head{
+  display:flex;align-items:flex-start;justify-content:space-between;gap:14px;
+  padding-bottom:18px;margin-bottom:18px;border-bottom:1px solid rgba(160,129,86,.18);
+}
+.tfile-card .head .l{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:8px}
+.tfile-card .head .v{font-size:18px;color:#fff;font-weight:500;letter-spacing:-.01em}
+.tfile-card .head .seal{
+  font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold-warm);padding:6px 12px;border-radius:999px;
+  background:rgba(160,129,86,.1);border:1px solid rgba(160,129,86,.34);
+  white-space:nowrap;
+}
+.tfile-rows{list-style:none;padding:0;margin:0;display:grid;gap:0}
+.tfile-row{
+  display:grid;grid-template-columns:36px 1fr auto;gap:14px;align-items:center;
+  padding:13px 0;border-bottom:1px dashed rgba(160,129,86,.14);
+}
+.tfile-row:last-child{border-bottom:0}
+.tfile-row .n{
+  font-family:var(--mono);font-size:11px;color:var(--gold-warm);letter-spacing:.12em;
+  text-align:center;
+}
+.tfile-row .body .t{font-size:14px;color:#fff;font-weight:500;letter-spacing:-.005em}
+.tfile-row .body .d{font-size:12.5px;color:var(--ink-mute);line-height:1.4;margin-top:2px}
+.tfile-row .stat{
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--green-soft);padding:4px 9px;border-radius:4px;
+  background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.28);
+}
+.tfile-row .stat.optional{color:var(--ink-faint);background:rgba(255,255,255,.03);border-color:var(--line)}
+
+/* ─── USE CASES ───────────────────────────────────────── */
+.cases-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:16px;
+}
+.case-card{
+  background:rgba(255,255,255,.025);border:1px solid var(--line);
+  border-radius:var(--radius-lg);padding:24px;
+  transition:transform .25s ease,border-color .25s ease,background .25s ease;
+}
+.case-card:hover{transform:translateY(-2px);border-color:var(--line-soft);background:rgba(255,255,255,.04)}
+.case-card .tag{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--blue-soft);margin-bottom:14px;
+}
+.case-card .tag .d{width:5px;height:5px;border-radius:50%;background:var(--blue)}
+.case-card .tag.gold{color:var(--gold-warm)}
+.case-card .tag.gold .d{background:var(--gold-warm)}
+.case-card h4{font-size:17px;font-weight:500;margin-bottom:8px;letter-spacing:-.01em;color:#fff}
+.case-card .amt{font-family:var(--mono);font-size:13px;color:var(--ink-mute);margin-bottom:10px;letter-spacing:.04em}
+.case-card p{font-size:13px;line-height:1.55;color:var(--ink-mute)}
+.case-card .meta{
+  display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;
+  padding-top:14px;border-top:1px dashed rgba(255,255,255,.06);
+}
+.case-card .meta span{
+  font-family:var(--mono);font-size:10px;color:var(--ink-faint);letter-spacing:.06em;
+  padding:3px 7px;border-radius:4px;background:rgba(255,255,255,.03);
+}
+
+/* ─── ECOSYSTEM ───────────────────────────────────────── */
+.eco{
+  background:linear-gradient(180deg,#06080f 0%,#0a0e1a 50%,#06080f 100%);
+}
+.eco-grid{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:14px;
+}
+.eco-card{
+  background:rgba(255,255,255,.025);border:1px solid var(--line);
+  border-radius:var(--radius-lg);padding:22px;
+  display:flex;flex-direction:column;gap:10px;text-decoration:none;
+  transition:border-color .25s ease,background .25s ease,transform .25s ease;
+}
+.eco-card:hover{border-color:var(--line-soft);background:rgba(255,255,255,.04);transform:translateY(-2px)}
+.eco-card.is-current{
+  background:linear-gradient(160deg,rgba(59,130,246,.12) 0%,rgba(59,130,246,.02) 100%);
+  border-color:rgba(59,130,246,.34);
+}
+.eco-card .ic{
+  width:34px;height:34px;border-radius:8px;
+  background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.28);
+  display:grid;place-items:center;
+  font-family:var(--mono);font-size:11px;font-weight:600;color:var(--blue-soft);letter-spacing:.04em;
+}
+.eco-card.is-gold .ic{background:rgba(160,129,86,.08);border-color:rgba(160,129,86,.28);color:var(--gold-warm)}
+.eco-card h4{font-size:14.5px;font-weight:600;letter-spacing:-.005em;color:#fff;margin-top:4px}
+.eco-card p{font-size:12.5px;line-height:1.5;color:var(--ink-mute)}
+.eco-card .arr{margin-top:auto;font-size:13px;color:var(--ink-faint);letter-spacing:.04em}
+.eco-card:hover .arr{color:#fff}
+
+/* ─── NOT PROCESSING ─────────────────────────────────── */
+.notdo{
+  background:linear-gradient(180deg,#0a0e1a 0%,#0c0a0a 60%,#0a0e1a 100%);
+}
+.notdo-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start;
+}
+.notdo-text h2 strong{color:var(--red-soft);font-weight:500}
+.notdo-text .lead{font-size:16px;line-height:1.65;color:var(--ink-soft);margin-bottom:14px}
+.notdo-list{
+  background:rgba(220,38,38,.04);border:1px solid rgba(220,38,38,.22);
+  border-radius:var(--radius-lg);padding:24px;
+}
+.notdo-list ul{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.notdo-list li{
+  position:relative;padding-left:28px;font-size:14px;line-height:1.5;color:var(--ink-soft);
+}
+.notdo-list li::before{
+  content:'';position:absolute;left:0;top:7px;width:14px;height:1px;background:var(--red-soft);
+}
+.notdo-list li strong{color:#fff;font-weight:500}
+
+/* ─── FAQ ─────────────────────────────────────────────── */
+.faq-list{display:grid;gap:8px}
+.faq{
+  background:rgba(255,255,255,.02);border:1px solid var(--line);
+  border-radius:var(--radius);overflow:hidden;
+  transition:border-color .25s ease,background .25s ease;
+}
+.faq[open]{border-color:var(--line-soft);background:rgba(255,255,255,.035)}
+.faq summary{
+  cursor:pointer;list-style:none;
+  padding:18px 22px;display:flex;align-items:center;justify-content:space-between;gap:18px;
+  font-size:15px;font-weight:500;color:#fff;letter-spacing:-.005em;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{
+  content:'+';font-family:var(--mono);font-size:18px;color:var(--ink-faint);
+  transition:transform .25s ease,color .25s ease;flex-shrink:0;
+}
+.faq[open] summary::after{content:'−';color:var(--blue-soft)}
+.faq .answer{padding:0 22px 22px 22px;font-size:14px;line-height:1.65;color:var(--ink-soft)}
+.faq .answer p + p{margin-top:10px}
+
+/* ─── INTAKE FORM ─────────────────────────────────────── */
+.intake{
+  background:linear-gradient(180deg,#0a0e1a 0%,#0f1422 50%,#0a0e1a 100%);
+}
+.intake-shell{
+  background:linear-gradient(180deg,rgba(20,26,43,.7) 0%,rgba(8,11,22,.85) 100%);
+  border:1px solid var(--line);border-radius:var(--radius-xl);
+  padding:36px 36px 40px;
+  box-shadow:0 30px 80px rgba(0,0,0,.5);
+}
+.intake-tabs{
+  display:inline-flex;background:rgba(0,0,0,.3);border:1px solid var(--line);
+  border-radius:999px;padding:4px;margin-bottom:28px;
+}
+.intake-tab{
+  padding:9px 22px;border-radius:999px;background:transparent;border:none;
+  font-family:inherit;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-mute);cursor:pointer;transition:all .2s ease;
+}
+.intake-tab.is-active{background:var(--blue);color:#fff;box-shadow:0 6px 18px rgba(59,130,246,.32)}
+.intake-tab.is-active.gold{background:var(--gold);box-shadow:0 6px 18px rgba(160,129,86,.32)}
+.intake-tab .sub{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;opacity:.75;margin-left:6px;text-transform:none}
+.intake-form{display:none}
+.intake-form.is-active{display:grid;grid-template-columns:1fr 1fr;gap:14px 18px}
+.intake-form .full{grid-column:1 / -1}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint)}
+.field input,.field select,.field textarea{
+  font-family:inherit;font-size:14px;color:#fff;
+  background:rgba(0,0,0,.25);border:1px solid var(--line);border-radius:6px;
+  padding:11px 14px;outline:none;transition:border-color .15s ease,background .15s ease;
+}
+.field input::placeholder,.field textarea::placeholder{color:var(--ink-faint)}
+.field input:focus,.field select:focus,.field textarea:focus{
+  border-color:var(--blue);background:rgba(0,0,0,.4);
+  box-shadow:0 0 0 3px rgba(59,130,246,.18);
+}
+.field textarea{resize:vertical;min-height:88px;line-height:1.5}
+.field-radio{display:flex;flex-wrap:wrap;gap:8px}
+.field-radio label{
+  font-family:inherit;font-size:13px;color:var(--ink-soft);text-transform:none;letter-spacing:0;
+  background:rgba(0,0,0,.25);border:1px solid var(--line);border-radius:6px;
+  padding:9px 14px;cursor:pointer;transition:all .15s ease;
+}
+.field-radio input{display:none}
+.field-radio input:checked + span{color:#fff}
+.field-radio label:has(input:checked){border-color:var(--blue);background:rgba(59,130,246,.1)}
+.field-file{
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding:14px;border:1px dashed var(--line-soft);border-radius:6px;
+  background:rgba(0,0,0,.2);font-size:13px;color:var(--ink-mute);
+}
+.field-file .l{display:flex;align-items:center;gap:10px}
+.field-file .l .ic{
+  width:30px;height:30px;border-radius:6px;
+  background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.3);
+  display:grid;place-items:center;color:var(--blue-soft);font-size:14px;
+}
+.field-file input[type=file]{
+  font-family:inherit;font-size:12px;color:var(--ink-mute);max-width:220px;
+}
+.field-file input[type=file]::file-selector-button{
+  font-family:inherit;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  color:#fff;background:rgba(59,130,246,.18);border:1px solid rgba(59,130,246,.4);
+  padding:6px 12px;border-radius:5px;cursor:pointer;margin-right:10px;
+}
+.intake-foot{
+  grid-column:1 / -1;display:flex;align-items:center;justify-content:space-between;
+  gap:16px;flex-wrap:wrap;margin-top:8px;
+}
+.intake-note{font-family:var(--mono);font-size:11px;color:var(--ink-faint);letter-spacing:.04em;max-width:46ch;line-height:1.5}
+
+/* ─── FINAL CTA ───────────────────────────────────────── */
+.final{
+  background:
+    radial-gradient(circle at 80% 30%,rgba(59,130,246,.18) 0%,transparent 55%),
+    radial-gradient(circle at 18% 80%,rgba(160,129,86,.10) 0%,transparent 55%),
+    linear-gradient(135deg,#06080f 0%,#0a0e1a 100%);
+}
+.final-card{
+  border:1px solid var(--line);border-radius:var(--radius-xl);
+  padding:54px 48px;
+  background:linear-gradient(180deg,rgba(20,26,43,.5) 0%,rgba(8,11,22,.7) 100%);
+  display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center;
+}
+.final-card .kicker{margin-bottom:16px}
+.final-card h2{font-weight:300;font-size:clamp(1.8rem,3.2vw,2.6rem);letter-spacing:-.03em;margin-bottom:14px}
+.final-card h2 strong{color:var(--blue-soft);font-weight:500}
+.final-card p{font-size:16px;line-height:1.6;color:var(--ink-soft);max-width:54ch}
+.final-actions{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.final-actions .btn{width:100%;justify-content:space-between}
+
+/* ─── FOOTER ──────────────────────────────────────────── */
+footer.f{
+  background:#06080f;color:#94a3b8;
+  padding:80px 0 40px;border-top:1px solid var(--line);
+}
+.f-grid{
+  display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px;
+  margin-bottom:36px;
+}
+.f-brand .logo{font-size:14px;letter-spacing:.22em;text-transform:uppercase;color:#fff;margin-bottom:12px;font-weight:600}
+.f-brand p{font-size:13.5px;line-height:1.55;color:var(--ink-mute);max-width:48ch}
+.f-col h5{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:14px}
+.f-col ul{list-style:none;padding:0;margin:0}
+.f-col ul li + li{margin-top:9px}
+.f-col a{color:var(--ink-soft);font-size:13.5px;transition:color .15s ease}
+.f-col a:hover{color:var(--blue-soft)}
+.f-disclaimer{
+  font-size:12px;line-height:1.6;color:var(--ink-faint);
+  padding:24px 0;border-top:1px solid var(--line);max-width:none;
+}
+.f-bottom{
+  border-top:1px solid var(--line);padding-top:20px;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
+}
+.f-bottom span{font-size:11.5px;color:var(--ink-faint);font-family:var(--mono);letter-spacing:.06em}
+
+/* ─── Responsive ──────────────────────────────────────── */
+@media(max-width:1100px){
+  .hero-inner{grid-template-columns:1fr;gap:48px}
+  .console{max-width:600px;margin-left:auto;margin-right:auto}
+  .recv-grid{grid-template-columns:1fr;gap:32px}
+  .tfile-grid{grid-template-columns:1fr;gap:32px}
+  .ops-body{grid-template-columns:1fr 1fr}
+  .ops-col:nth-child(3){grid-column:1 / -1;border-right:0;border-top:1px solid var(--line)}
+  .eco-grid{grid-template-columns:repeat(3,1fr)}
+  .cases-grid{grid-template-columns:repeat(2,1fr)}
+  .final-card{grid-template-columns:1fr;text-align:left;padding:40px 32px}
+  .f-grid{grid-template-columns:1fr 1fr;gap:32px}
+}
+@media(max-width:780px){
+  .topbar-nav{display:none}
+  .topbar-link{display:none}
+  .topbar-brand .tag{display:none}
+  section.s{padding:72px 0}
+  .container,.container-wide,.container-sm,.container-narrow{padding:0 22px}
+  .hero{padding:96px 22px 60px}
+  .hero-actions .btn{width:100%;justify-content:center}
+  .split{grid-template-columns:1fr;gap:14px}
+  .split-card{padding:32px 26px}
+  .aml-pipe{grid-template-columns:repeat(3,1fr);gap:18px;row-gap:24px}
+  .aml-pipe::before{display:none}
+  .aml-grid{grid-template-columns:1fr}
+  .mtn-stage{grid-template-columns:1fr;gap:14px}
+  .mtn-side{min-height:340px}
+  .detail{grid-template-columns:1fr;gap:24px}
+  .detail-text .row{grid-template-columns:1fr;gap:4px}
+  .detail-text .row .l{font-size:10px}
+  .ops-body{grid-template-columns:1fr}
+  .ops-col{border-right:0;border-bottom:1px solid var(--line)}
+  .ops-col:last-child{border-bottom:0}
+  .cases-grid{grid-template-columns:1fr}
+  .eco-grid{grid-template-columns:1fr 1fr}
+  .notdo-grid{grid-template-columns:1fr}
+  .intake-form.is-active{grid-template-columns:1fr}
+  .console-pipeline{grid-template-columns:repeat(4,1fr);row-gap:22px}
+  .console-pipeline::before{display:none}
+  .console-grid{grid-template-columns:1fr}
+  .f-grid{grid-template-columns:1fr;gap:28px}
+  .f-bottom{flex-direction:column;align-items:flex-start;gap:8px}
+}
+@media(max-width:460px){
+  .hero h1{font-size:2rem}
+  .intake-tabs{display:flex;width:100%}
+  .intake-tab{flex:1;text-align:center;padding:10px 12px;font-size:11px}
+}
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.01ms !important;transition-duration:.01ms !important}
+}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://ccapital.pro/#organization",
+      "name": "Charter Capital",
+      "url": "https://ccapital.pro/",
+      "logo": "https://ccapital.pro/assets/logic/15-passport-gate.webp",
+      "slogan": "Когда двери закрываются, мы открываем мир",
+      "sameAs": ["https://t.me/charter_capital"],
+      "contactPoint": [{
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "email": "hello@ccapital.pro",
+        "url": "https://t.me/charter_capital",
+        "availableLanguage": ["Russian", "English"]
+      }]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://ccapital.pro/pay.html#webpage",
+      "url": "https://ccapital.pro/pay.html",
+      "name": "CCAPITAL Pay — ВЭД-платежи с AML-бронёй",
+      "isPartOf": {"@type":"WebSite","@id":"https://ccapital.pro/#website","url":"https://ccapital.pro/","name":"Charter Capital","publisher":{"@id":"https://ccapital.pro/#organization"}},
+      "about": {"@id": "https://ccapital.pro/#organization"},
+      "inLanguage": "ru-RU",
+      "primaryImageOfPage": "https://ccapital.pro/assets/logic/14-open-arch.webp",
+      "description": "Агентская инфраструктура для ВЭД-платежей: Pay Lite до $50k, Pay Pro для сложных решений, AML-логика, санкционная нейтральность и transaction file."
+    },
+    {
+      "@type": "Service",
+      "name": "CCAPITAL Pay",
+      "provider": {"@id": "https://ccapital.pro/#organization"},
+      "areaServed": ["RU","CIS","SG","HK","AE","GB","EU"],
+      "serviceType": "ВЭД-платежи через агентскую инфраструктуру",
+      "description": "Pay Lite — иностранный инвойс до $50k в работу за день. Pay Pro — сложные маршруты под банк получателя. AML-броня, санкционная нейтральность, transaction file.",
+      "url": "https://ccapital.pro/pay.html",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Режимы исполнения",
+        "itemListElement": [
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"Pay Lite — ВЭД-платежи до $50k"}},
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"Pay Pro — сложные платежные решения"}},
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"Transaction File — досье операции"}},
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"Receiving Bank Lens — подготовка платежа к приёму"}}
+        ]
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"Что такое CCAPITAL Pay?","acceptedAnswer":{"@type":"Answer","text":"Агентская инфраструктура Charter Capital для исполнения ВЭД-платежей. Не обменник и не «агент из Telegram» — операционный desk, который собирает платёж как коммерческую операцию с документами, основанием и transaction file."}},
+        {"@type":"Question","name":"Чем отличается от обычного платёжного агента?","acceptedAnswer":{"@type":"Answer","text":"Мы готовим платёж не только к отправке, но и к приёму: AML-логика, санкционная нейтральность, документы под банк получателя. Поэтому платежи реже зависают и реже возвращаются."}},
+        {"@type":"Question","name":"Что такое AML-броня?","acceptedAnswer":{"@type":"Answer","text":"Встроенная операционная дисциплина: проверка основания, документов, получателя, маршрута и соответствия суммы и назначения. Заранее закрываем слабые места операции до отправки денег."}},
+        {"@type":"Question","name":"Как работает Pay Lite?","acceptedAnswer":{"@type":"Answer","text":"Для инвойсов до $50k. Загружаете инвойс, указываете принципала и получателя, мы возвращаем условия исполнения. После исполнения — подтверждение и закрывающие документы."}},
+        {"@type":"Question","name":"Что нужно для старта?","acceptedAnswer":{"@type":"Answer","text":"Реквизиты компании-принципала, контактное лицо, реквизиты получателя, инвойс или контракт, понятное назначение платежа. Без этого работу не начинаем."}}
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header id="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-left">
+      <a href="/" class="topbar-brand">
+        <span class="name">Charter Capital</span>
+        <span class="tag">CCAPITAL · Pay</span>
+      </a>
+    </div>
+    <nav class="topbar-nav">
+      <a href="#switch">Lite&nbsp;/&nbsp;Pro</a>
+      <a href="#aml" class="is-blue">AML-броня</a>
+      <a href="#mtn">Маршрут</a>
+      <a href="#ops">Operations&nbsp;desk</a>
+      <a href="#tfile">Transaction&nbsp;file</a>
+      <a href="#cases">Кейсы</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="topbar-right">
+      <a href="/" class="topbar-link">Основной&nbsp;сайт</a>
+      <a href="#intake" class="topbar-cta">Загрузить инвойс</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ───────────── HERO ───────────── -->
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <span class="hero-flag">
+        <span class="dot"></span>
+        <span>CCAPITAL · Pay · ВЭД-платежи</span>
+      </span>
+      <h1>
+        ВЭД-платёж готовится <strong>к&nbsp;приёму</strong>,<br/>
+        а&nbsp;не к&nbsp;<span class="em">отправке</span>.
+      </h1>
+      <p class="hero-sub">
+        Агентская инфраструктура Charter Capital для исполнения ВЭД-платежей с&nbsp;AML-бронёй. Не&nbsp;обменник и&nbsp;не&nbsp;агент из&nbsp;Telegram&nbsp;— операционный desk, в&nbsp;котором каждый платёж собирается как коммерческая операция с&nbsp;документами и&nbsp;понятным основанием.
+      </p>
+      <p class="hero-formula">
+        <strong>Pay&nbsp;Lite</strong>&nbsp;— иностранный инвойс до&nbsp;$50k берём в&nbsp;работу в&nbsp;день обращения.<br/>
+        <strong>Pay&nbsp;Pro</strong>&nbsp;— сложные маршруты собираем под банк получателя, с&nbsp;расширенным transaction&nbsp;file.
+      </p>
+      <div class="hero-actions">
+        <a href="#intake" class="btn btn-primary btn-lg">Загрузить инвойс · Pay&nbsp;Lite <span class="arr">→</span></a>
+        <a href="#intake-pro" class="btn btn-ghost btn-lg">Pro review</a>
+      </div>
+      <div class="hero-pills">
+        <span class="hero-pill"><span class="d"></span>В&nbsp;работу&nbsp;— в&nbsp;день обращения</span>
+        <span class="hero-pill"><span class="d"></span>До&nbsp;$50k&nbsp;— Pay&nbsp;Lite</span>
+        <span class="hero-pill gold"><span class="d"></span>Свыше $50k&nbsp;— Pay&nbsp;Pro</span>
+        <span class="hero-pill"><span class="d"></span>Transaction&nbsp;file на&nbsp;каждую операцию</span>
+      </div>
+    </div>
+
+    <!-- HERO VISUAL · operations console -->
+    <aside class="console" aria-hidden="true">
+      <div class="console-bar">
+        <div class="left">
+          <span>OPERATIONS&nbsp;DESK</span>
+          <span class="case-id">CASE&nbsp;#PC-2026-0418</span>
+        </div>
+        <div class="right">
+          <span class="dot"></span><span>LIVE&nbsp;PIPELINE</span>
+        </div>
+      </div>
+      <div class="console-pipeline">
+        <div class="cp-node is-done"><div class="ring">01</div><div class="lbl">Invoice</div></div>
+        <div class="cp-node is-done"><div class="ring">02</div><div class="lbl">KYB</div></div>
+        <div class="cp-node is-done"><div class="ring">03</div><div class="lbl">AML</div></div>
+        <div class="cp-node is-active"><div class="ring">04</div><div class="lbl">Sanctions</div></div>
+        <div class="cp-node"><div class="ring">05</div><div class="lbl">Agent</div></div>
+        <div class="cp-node"><div class="ring">06</div><div class="lbl">Receiving<br/>Bank</div></div>
+        <div class="cp-node"><div class="ring">07</div><div class="lbl">Documents</div></div>
+      </div>
+      <div class="console-grid">
+        <div class="console-cell">
+          <div class="lbl">Operation</div>
+          <div class="row"><span>Principal</span><span class="v">RU&nbsp;Trading&nbsp;LLC</span></div>
+          <div class="row"><span>Beneficiary</span><span class="v">IT&nbsp;Coffee&nbsp;Roasters&nbsp;S.r.l.</span></div>
+          <div class="row"><span>Amount</span><span class="v">€&nbsp;15&nbsp;000.00</span></div>
+          <div class="row"><span>Purpose</span><span class="v gold">Goods · INV&nbsp;2026/0418</span></div>
+        </div>
+        <div class="console-cell">
+          <div class="lbl">AML lens</div>
+          <div class="row"><span>Document base</span><span class="v green">OK</span></div>
+          <div class="row"><span>Beneficiary check</span><span class="v green">OK</span></div>
+          <div class="row"><span>Sanctions screen</span><span class="v blue">RUNNING</span></div>
+          <div class="row"><span>Receiving bank</span><span class="v amber">REVIEW</span></div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ───────────── LITE / PRO SWITCH ───────────── -->
+<section class="s alt" id="switch">
+  <div class="container">
+    <div class="s-head">
+      <span class="kicker"><span class="num">[01]</span>Развилка продукта</span>
+      <h2>Два режима исполнения. Один operations desk.</h2>
+      <p>Платежи до&nbsp;$50k идут по&nbsp;быстрому потоку. Сложные задачи&nbsp;— через архитектурный review. И&nbsp;там и&nbsp;там действует одна и&nbsp;та&nbsp;же AML-броня и&nbsp;один и&nbsp;тот&nbsp;же transaction&nbsp;file.</p>
+    </div>
+
+    <div class="split">
+      <div class="split-card lite">
+        <span class="badge">Pay · Lite</span>
+        <div class="num">[01] Быстрый поток</div>
+        <h3>Иностранный инвойс <strong>до&nbsp;$50k</strong>&nbsp;— в&nbsp;работу в&nbsp;день обращения.</h3>
+        <p class="desc">Поставщики, подрядчики, сервисные счета, digital&nbsp;/ IT&nbsp;/ marketing&nbsp;/ consulting. Регулярные небольшие ВЭД-платежи, которые должны идти спокойно и&nbsp;документально корректно.</p>
+        <ul class="ulist">
+          <li>Загрузка инвойса и&nbsp;реквизитов</li>
+          <li>Проверка документов и&nbsp;назначения</li>
+          <li>Расчёт маршрута и&nbsp;комиссии</li>
+          <li>Исполнение через агентский контур</li>
+          <li>Подтверждение и&nbsp;закрывающие документы</li>
+        </ul>
+        <div class="meta">
+          <div class="meta-item"><div class="l">Сумма</div><div class="v">до $50k</div></div>
+          <div class="meta-item"><div class="l">Срок</div><div class="v">в день обращения*</div></div>
+          <div class="meta-item"><div class="l">Документы</div><div class="v">Transaction&nbsp;File</div></div>
+        </div>
+        <a href="#intake" class="cta">Загрузить инвойс <span class="arr">→</span></a>
+      </div>
+
+      <div class="split-card pro">
+        <span class="badge">Pay · Pro</span>
+        <div class="num">[02] Архитектурный контур</div>
+        <h3>Сложные платёжные решения и&nbsp;<strong>чувствительные маршруты</strong>.</h3>
+        <p class="desc">Суммы выше $50k, нестандартные валюты, чувствительные получатели и&nbsp;юрисдикции, банки с&nbsp;жёстким входящим комплаенсом, многоэтапные агентские модели и&nbsp;операции с&nbsp;высокой вероятностью банковского запроса.</p>
+        <ul class="ulist">
+          <li>Review desk: разбор задачи и&nbsp;ограничений</li>
+          <li>Архитектурный пресет под банк получателя</li>
+          <li>Расширенный transaction&nbsp;file и&nbsp;agent-сопровождение</li>
+          <li>Подготовка ответов на&nbsp;возможные запросы</li>
+          <li>Многоэтапные модели и&nbsp;chain&nbsp;of&nbsp;custody</li>
+        </ul>
+        <div class="meta">
+          <div class="meta-item"><div class="l">Сумма</div><div class="v">от&nbsp;$50k</div></div>
+          <div class="meta-item"><div class="l">Срок</div><div class="v">после review</div></div>
+          <div class="meta-item"><div class="l">Документы</div><div class="v">Расширенный TF</div></div>
+        </div>
+        <a href="#intake-pro" class="cta">Запросить review <span class="arr">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── AML BROKER ───────────── -->
+<section class="s aml" id="aml">
+  <div class="container">
+    <div class="s-head">
+      <span class="kicker"><span class="num">[02]</span>AML-броня как процесс</span>
+      <h2>AML-броня&nbsp;— не&nbsp;значок, <strong style="color:var(--blue-soft);font-weight:500">а&nbsp;конвейер</strong>.</h2>
+      <p>Платёж проходит девять последовательных проверок до&nbsp;того, как уйдут деньги. Это и&nbsp;есть «броня»: не&nbsp;щит на&nbsp;иконке, а&nbsp;операционная дисциплина, в&nbsp;которой каждая стадия имеет владельца, артефакт и&nbsp;статус.</p>
+    </div>
+
+    <!-- pipeline -->
+    <div class="aml-pipe" role="list" aria-label="AML pipeline">
+      <div class="aml-node" role="listitem"><div class="ic"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="lbl">Invoice</div></div>
+      <div class="aml-node" role="listitem"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg></div><div class="lbl">Principal</div></div>
+      <div class="aml-node" role="listitem"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M3 21l4-4 4 4M13 21l4-4 4 4"/></svg></div><div class="lbl">Beneficiary</div></div>
+      <div class="aml-node" role="listitem"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M3 10h18M8 6V4M16 6V4"/></svg></div><div class="lbl">KYB</div></div>
+      <div class="aml-node" role="listitem"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2L4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4z"/></svg></div><div class="lbl">AML</div></div>
+      <div class="aml-node" role="listitem"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></div><div class="lbl">Sanctions</div></div>
+      <div class="aml-node" role="listitem"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M2 12h6M16 12h6M12 2v6M12 16v6"/></svg></div><div class="lbl">Agent</div></div>
+      <div class="aml-node" role="listitem"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 22V11l9-6 9 6v11"/><path d="M9 22v-7h6v7"/></svg></div><div class="lbl">Receiving&nbsp;Bank</div></div>
+      <div class="aml-node" role="listitem"><div class="ic"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M9 13l2 2 4-4"/></svg></div><div class="lbl">Documents</div></div>
+    </div>
+
+    <div class="aml-grid">
+      <div class="aml-card">
+        <div class="num">[A] Основание</div>
+        <h4>Реальный коммерческий смысл</h4>
+        <p>Инвойс или контракт описывает понятную услугу или товар. Назначение платежа соответствует деятельности принципала. Сумма и&nbsp;частота&nbsp;— объяснимы.</p>
+      </div>
+      <div class="aml-card">
+        <div class="num">[B] Принципал</div>
+        <h4>KYB и&nbsp;деятельность</h4>
+        <p>Юрисдикция, регистрация, бенефициары, сфера деятельности. Сопоставление операции с&nbsp;профилем компании, а&nbsp;не&nbsp;«просто формальные документы».</p>
+      </div>
+      <div class="aml-card">
+        <div class="num">[C] Получатель</div>
+        <h4>Beneficiary lens</h4>
+        <p>Юридическое лицо, страна, отрасль, репутация, наличие признаков фасадных компаний, проверка по&nbsp;санкционным и&nbsp;adverse-media спискам.</p>
+      </div>
+      <div class="aml-card">
+        <div class="num">[D] Маршрут</div>
+        <h4>Логика пути и&nbsp;валюты</h4>
+        <p>Сочетание стран отправителя, агента, банка-корреспондента и&nbsp;банка получателя. Без избыточных «петель», которые сами по&nbsp;себе становятся вопросом.</p>
+      </div>
+      <div class="aml-card">
+        <div class="num">[E] Объяснимость</div>
+        <h4>Готовность к&nbsp;вопросу</h4>
+        <p>Каждая операция должна выдерживать вопросы банка, бухгалтерии, налогового консультанта и&nbsp;партнёра. Заранее формулируем, чем&nbsp;именно она объясняется.</p>
+      </div>
+      <div class="aml-card">
+        <div class="num">[F] Файл операции</div>
+        <h4>Transaction&nbsp;File</h4>
+        <p>Полный документальный след: инвойс, поручение, реквизиты, отчёт агента, подтверждения. Не&nbsp;«платёжка в&nbsp;PDF», а&nbsp;структурированное досье.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── MOUNTAIN PATH ───────────── -->
+<section class="s mtn" id="mtn">
+  <div class="container">
+    <div class="s-head">
+      <span class="kicker"><span class="num">[03]</span>Маршрут и&nbsp;тропа</span>
+      <h2>Народная тропа осыпается. <strong style="color:var(--green-soft);font-weight:500">Контролируемый коридор&nbsp;— нет.</strong></h2>
+      <p>Массовые платёжные маршруты переполнены: по&nbsp;ним пошли все, и&nbsp;они стали дорогими, медленными и&nbsp;рискованными. Чем больше толпа, тем быстрее осыпается тропа. CCAPITAL Pay строит другой маршрут&nbsp;— controlled private corridor с&nbsp;checkpoint-логикой.</p>
+    </div>
+
+    <div class="mtn-stage">
+      <!-- crowded path -->
+      <div class="mtn-side crowded">
+        <svg viewBox="0 0 600 480" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs>
+            <linearGradient id="skyRed" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stop-color="#1a0e10"/>
+              <stop offset="100%" stop-color="#0a0608"/>
+            </linearGradient>
+            <linearGradient id="rockRed" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stop-color="#3a1a18" stop-opacity=".7"/>
+              <stop offset="100%" stop-color="#1a0a08" stop-opacity=".95"/>
+            </linearGradient>
+          </defs>
+          <rect x="0" y="0" width="600" height="480" fill="url(#skyRed)"/>
+          <!-- distant peaks -->
+          <path d="M0 290 L80 200 L160 250 L260 170 L360 230 L460 180 L560 240 L600 210 L600 480 L0 480 Z" fill="#1a1212" opacity=".6"/>
+          <path d="M0 340 L100 260 L200 310 L300 240 L420 300 L520 260 L600 320 L600 480 L0 480 Z" fill="url(#rockRed)"/>
+          <!-- the path: zig-zag, eroded -->
+          <path d="M40 460 Q120 400 180 410 T300 350 T440 320 T560 240" fill="none" stroke="#7a3030" stroke-width="3" stroke-dasharray="6 4" opacity=".7"/>
+          <!-- crowd dots -->
+          <g fill="#cf5a4a" opacity=".85">
+            <circle cx="80" cy="450" r="3"/><circle cx="100" cy="445" r="3"/><circle cx="120" cy="440" r="3"/>
+            <circle cx="160" cy="425" r="3"/><circle cx="190" cy="420" r="3"/><circle cx="220" cy="410" r="3"/>
+            <circle cx="260" cy="395" r="3"/><circle cx="290" cy="380" r="3"/><circle cx="320" cy="372" r="3"/>
+            <circle cx="365" cy="350" r="3"/><circle cx="395" cy="345" r="3"/><circle cx="430" cy="335" r="3"/>
+            <circle cx="470" cy="320" r="3"/>
+          </g>
+          <!-- falling debris -->
+          <g fill="#5a2a26" opacity=".8">
+            <polygon points="220,180 232,196 214,200"/>
+            <polygon points="320,140 330,158 314,162"/>
+            <polygon points="430,200 440,216 424,220"/>
+            <polygon points="500,160 510,176 494,180"/>
+          </g>
+          <!-- erosion cracks -->
+          <g stroke="#3a1a18" stroke-width="1" opacity=".7" fill="none">
+            <path d="M150 410 L155 430"/><path d="M260 360 L268 384"/>
+            <path d="M380 330 L388 354"/><path d="M480 300 L490 326"/>
+          </g>
+          <!-- side-fade -->
+          <linearGradient id="fadeR" x1="0" x2="1" y1="0" y2="0">
+            <stop offset="0%" stop-color="#06080f" stop-opacity=".05"/>
+            <stop offset="100%" stop-color="#06080f" stop-opacity=".95"/>
+          </linearGradient>
+          <rect x="0" y="0" width="600" height="480" fill="url(#fadeR)"/>
+        </svg>
+        <div class="body">
+          <div class="label">Народная тропа</div>
+          <h3>Перегруженный маршрут</h3>
+          <p>Толпа агентов, повторяющиеся схемы, банки знают и&nbsp;маркируют этот трафик. С&nbsp;каждым месяцем&nbsp;— тоньше слой и&nbsp;дороже камень.</p>
+          <div class="mtn-warn">
+            <span>cost↑</span><span>delay↑</span><span>return↑</span><span>fail-rate↑</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- controlled corridor -->
+      <div class="mtn-side controlled">
+        <svg viewBox="0 0 600 480" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs>
+            <linearGradient id="skyBlue" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stop-color="#0a1124"/>
+              <stop offset="100%" stop-color="#06080f"/>
+            </linearGradient>
+            <linearGradient id="rockBlue" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stop-color="#152038" stop-opacity=".75"/>
+              <stop offset="100%" stop-color="#0a0e1a" stop-opacity=".95"/>
+            </linearGradient>
+            <linearGradient id="trail" x1="0" x2="1" y1="0" y2="0">
+              <stop offset="0%" stop-color="#3b82f6" stop-opacity=".9"/>
+              <stop offset="50%" stop-color="#a08156" stop-opacity=".95"/>
+              <stop offset="100%" stop-color="#22c55e" stop-opacity=".9"/>
+            </linearGradient>
+          </defs>
+          <rect x="0" y="0" width="600" height="480" fill="url(#skyBlue)"/>
+          <path d="M0 300 L80 230 L180 270 L280 210 L390 250 L490 200 L600 240 L600 480 L0 480 Z" fill="#101830" opacity=".65"/>
+          <path d="M0 350 L120 280 L240 320 L360 270 L480 310 L600 280 L600 480 L0 480 Z" fill="url(#rockBlue)"/>
+          <!-- engineered corridor -->
+          <path d="M30 460 Q120 420 200 400 T380 340 T560 260" fill="none" stroke="url(#trail)" stroke-width="3"/>
+          <!-- guardrail dots -->
+          <g fill="#3b82f6" opacity=".5">
+            <circle cx="60" cy="446" r="2"/><circle cx="110" cy="430" r="2"/><circle cx="160" cy="416" r="2"/>
+            <circle cx="220" cy="395" r="2"/><circle cx="280" cy="372" r="2"/><circle cx="340" cy="352" r="2"/>
+            <circle cx="400" cy="332" r="2"/><circle cx="460" cy="310" r="2"/><circle cx="520" cy="285" r="2"/>
+          </g>
+          <!-- checkpoints (numbered) -->
+          <g>
+            <g transform="translate(70,440)">
+              <circle r="11" fill="#0a0e1a" stroke="#3b82f6" stroke-width="1.5"/>
+              <text text-anchor="middle" y="3" font-family="ui-monospace,monospace" font-size="9" fill="#93c5fd">01</text>
+            </g>
+            <g transform="translate(170,408)">
+              <circle r="11" fill="#0a0e1a" stroke="#3b82f6" stroke-width="1.5"/>
+              <text text-anchor="middle" y="3" font-family="ui-monospace,monospace" font-size="9" fill="#93c5fd">02</text>
+            </g>
+            <g transform="translate(270,378)">
+              <circle r="11" fill="#0a0e1a" stroke="#a08156" stroke-width="1.5"/>
+              <text text-anchor="middle" y="3" font-family="ui-monospace,monospace" font-size="9" fill="#e8d4a8">03</text>
+            </g>
+            <g transform="translate(370,344)">
+              <circle r="11" fill="#0a0e1a" stroke="#a08156" stroke-width="1.5"/>
+              <text text-anchor="middle" y="3" font-family="ui-monospace,monospace" font-size="9" fill="#e8d4a8">04</text>
+            </g>
+            <g transform="translate(470,304)">
+              <circle r="11" fill="#0a0e1a" stroke="#22c55e" stroke-width="1.5"/>
+              <text text-anchor="middle" y="3" font-family="ui-monospace,monospace" font-size="9" fill="#86efac">05</text>
+            </g>
+            <g transform="translate(550,266)">
+              <circle r="11" fill="#0a0e1a" stroke="#22c55e" stroke-width="1.5"/>
+              <text text-anchor="middle" y="3" font-family="ui-monospace,monospace" font-size="9" fill="#86efac">06</text>
+            </g>
+          </g>
+          <linearGradient id="fadeL" x1="0" x2="1" y1="0" y2="0">
+            <stop offset="0%" stop-color="#06080f" stop-opacity=".95"/>
+            <stop offset="100%" stop-color="#06080f" stop-opacity=".05"/>
+          </linearGradient>
+          <rect x="0" y="0" width="600" height="480" fill="url(#fadeL)"/>
+        </svg>
+        <div class="body">
+          <div class="label">Controlled corridor</div>
+          <h3>Контролируемый частный коридор</h3>
+          <p>Шесть checkpoint-узлов между принципалом и&nbsp;банком получателя. Платёж не&nbsp;идёт «по&nbsp;популярной тропе»&nbsp;— он&nbsp;идёт по&nbsp;структуре, в&nbsp;которой каждый узел подписан и&nbsp;документирован.</p>
+          <div class="mtn-checkpoints">
+            <span class="mtn-cp">Invoice</span><span class="arr">→</span>
+            <span class="mtn-cp">KYB</span><span class="arr">→</span>
+            <span class="mtn-cp">AML</span><span class="arr">→</span>
+            <span class="mtn-cp">Sanctions</span><span class="arr">→</span>
+            <span class="mtn-cp">Agent</span><span class="arr">→</span>
+            <span class="mtn-cp">Receiving&nbsp;Bank</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── PAY LITE DETAIL ───────────── -->
+<section class="s alt" id="lite">
+  <div class="container">
+    <div class="s-head">
+      <span class="kicker"><span class="num">[04]</span>Pay Lite · быстрый поток</span>
+      <h2>Иностранный инвойс <strong style="color:var(--blue-soft);font-weight:500">в&nbsp;день обращения</strong>.</h2>
+      <p>Главный коммерческий поток&nbsp;— и&nbsp;первая входная точка в&nbsp;инфраструктуру CCAPITAL. Не&nbsp;«младший тариф»: та&nbsp;же AML-логика, тот&nbsp;же transaction&nbsp;file, просто маршрут уже выстроен под понятный сценарий.</p>
+    </div>
+
+    <div class="detail lite">
+      <div class="detail-text">
+        <h3>Что мы&nbsp;делаем в&nbsp;<strong>Pay&nbsp;Lite</strong></h3>
+        <p class="lead">Берём в&nbsp;работу платежи до&nbsp;эквивалента $50k по&nbsp;понятным иностранным инвойсам. Принимаем заявку, проверяем основание, согласовываем условия исполнения, проводим платёж через агентский контур и&nbsp;возвращаем подтверждение и&nbsp;документы.</p>
+        <div class="row"><div class="l">[01] Intake</div><div class="v"><strong>Загрузка инвойса</strong> и&nbsp;реквизитов принципала и&nbsp;получателя.</div></div>
+        <div class="row"><div class="l">[02] Review</div><div class="v"><strong>Проверка документов</strong>, назначения, получателя и&nbsp;маршрута.</div></div>
+        <div class="row"><div class="l">[03] Quote</div><div class="v"><strong>Условия исполнения</strong>: маршрут, сроки, комиссия, формальности.</div></div>
+        <div class="row"><div class="l">[04] Execute</div><div class="v"><strong>Исполнение</strong> через агентскую инфраструктуру.</div></div>
+        <div class="row"><div class="l">[05] File</div><div class="v"><strong>Transaction&nbsp;File</strong>: подтверждения и&nbsp;закрывающие документы.</div></div>
+      </div>
+
+      <div class="detail-vis">
+        <div class="vis-head">
+          <div class="vis-title">Pay&nbsp;Lite · pipeline</div>
+          <div class="vis-tag">CASE&nbsp;#PL-2026-0418</div>
+        </div>
+        <div class="vis-list">
+          <div class="vis-row"><div class="lbl"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg></span>Invoice received</div><div class="stat done">Done</div></div>
+          <div class="vis-row"><div class="lbl"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg></span>Principal · KYB</div><div class="stat done">Done</div></div>
+          <div class="vis-row"><div class="lbl"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2L4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4z"/></svg></span>AML profile</div><div class="stat done">Done</div></div>
+          <div class="vis-row"><div class="lbl"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/></svg></span>Sanctions screen</div><div class="stat run">Running</div></div>
+          <div class="vis-row"><div class="lbl"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M3 12h6M15 12h6"/></svg></span>Agent route</div><div class="stat wait">Queued</div></div>
+          <div class="vis-row"><div class="lbl"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 22V11l9-6 9 6v11"/></svg></span>Receiving bank lens</div><div class="stat wait">Queued</div></div>
+          <div class="vis-row"><div class="lbl"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M9 13l2 2 4-4"/></svg></span>Documents package</div><div class="stat wait">Pending</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── PAY PRO DETAIL ───────────── -->
+<section class="s deep" id="pro">
+  <div class="container">
+    <div class="s-head">
+      <span class="kicker gold"><span class="num">[05]</span>Pay Pro · архитектурный контур</span>
+      <h2>Когда платёж нужно <strong style="color:var(--gold-warm);font-weight:500">собрать</strong>, а&nbsp;не&nbsp;просто отправить.</h2>
+      <p>Сложные суммы и&nbsp;юрисдикции, чувствительные получатели, банки с&nbsp;жёстким входящим комплаенсом. Pay&nbsp;Pro начинается не&nbsp;с&nbsp;отправки, а&nbsp;с&nbsp;разбора задачи: что&nbsp;именно банк получателя должен увидеть, чтобы операция прошла без вопросов.</p>
+    </div>
+
+    <div class="detail pro">
+      <div class="detail-vis">
+        <div class="vis-head">
+          <div class="vis-title">Pay&nbsp;Pro · review desk</div>
+          <div class="vis-tag">CASE&nbsp;#PR-2026-0227</div>
+        </div>
+        <div class="vis-list">
+          <div class="vis-row"><div class="lbl"><span class="ic" style="background:rgba(160,129,86,.1);border-color:rgba(160,129,86,.3)"><svg viewBox="0 0 24 24" fill="none" stroke="#e8d4a8" stroke-width="1.6"><path d="M3 6h18M3 12h12M3 18h6"/></svg></span>Task brief</div><div class="stat done">Reviewed</div></div>
+          <div class="vis-row"><div class="lbl"><span class="ic" style="background:rgba(160,129,86,.1);border-color:rgba(160,129,86,.3)"><svg viewBox="0 0 24 24" fill="none" stroke="#e8d4a8" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/></svg></span>Jurisdiction map</div><div class="stat done">Drawn</div></div>
+          <div class="vis-row"><div class="lbl"><span class="ic" style="background:rgba(160,129,86,.1);border-color:rgba(160,129,86,.3)"><svg viewBox="0 0 24 24" fill="none" stroke="#e8d4a8" stroke-width="1.6"><path d="M3 22V11l9-6 9 6v11"/></svg></span>Receiving bank preset</div><div class="stat run">Tuning</div></div>
+          <div class="vis-row"><div class="lbl"><span class="ic" style="background:rgba(160,129,86,.1);border-color:rgba(160,129,86,.3)"><svg viewBox="0 0 24 24" fill="none" stroke="#e8d4a8" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M3 12h6M15 12h6"/></svg></span>Agent chain</div><div class="stat run">Building</div></div>
+          <div class="vis-row"><div class="lbl"><span class="ic" style="background:rgba(160,129,86,.1);border-color:rgba(160,129,86,.3)"><svg viewBox="0 0 24 24" fill="none" stroke="#e8d4a8" stroke-width="1.6"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg></span>Q&amp;A pre-script</div><div class="stat wait">Drafting</div></div>
+          <div class="vis-row"><div class="lbl"><span class="ic" style="background:rgba(160,129,86,.1);border-color:rgba(160,129,86,.3)"><svg viewBox="0 0 24 24" fill="none" stroke="#e8d4a8" stroke-width="1.6"><path d="M12 2L4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4z"/></svg></span>Extended TF</div><div class="stat wait">Pending</div></div>
+        </div>
+      </div>
+
+      <div class="detail-text">
+        <h3>Что входит в&nbsp;<strong>Pay&nbsp;Pro</strong></h3>
+        <p class="lead">Разбираем задачу до&nbsp;отправки денег: какие банки смотрят на&nbsp;операцию, какие документы они&nbsp;ожидают увидеть, на&nbsp;какие вопросы платёж должен ответить. Только после этого выстраиваем маршрут и&nbsp;запускаем исполнение.</p>
+        <div class="row"><div class="l">[01] Brief</div><div class="v"><strong>Описание задачи</strong>: суммы, юрисдикции, тип получателя, ограничения.</div></div>
+        <div class="row"><div class="l">[02] Lens</div><div class="v"><strong>Receiving Bank Lens</strong>: что банк-приёмник ожидает увидеть в&nbsp;этой операции.</div></div>
+        <div class="row"><div class="l">[03] Design</div><div class="v"><strong>Архитектура маршрута</strong>: агентская модель, валюта, корреспонденты.</div></div>
+        <div class="row"><div class="l">[04] Pre-Q&amp;A</div><div class="v"><strong>Готовность к&nbsp;вопросу</strong>: формулировки и&nbsp;документы заранее.</div></div>
+        <div class="row"><div class="l">[05] Run</div><div class="v"><strong>Исполнение</strong> с&nbsp;agent-сопровождением и&nbsp;пошаговым отчётом.</div></div>
+        <div class="row"><div class="l">[06] Extended TF</div><div class="v"><strong>Расширенный transaction&nbsp;file</strong>: маршрут, обоснования, отчёт агента.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── RECEIVING BANK ───────────── -->
+<section class="s recv" id="recv">
+  <div class="container">
+    <div class="recv-grid">
+      <div class="recv-text">
+        <span class="kicker"><span class="num">[06]</span>Receiving Bank Lens</span>
+        <h2>Главная инстанция платежа&nbsp;— это <strong>банк получателя</strong>.</h2>
+        <p class="lead">Обычные агенты думают, как платёж <em>отправить</em>. CCAPITAL Pay думает, как он&nbsp;будет <em>принят</em>. Потому что любую операцию в&nbsp;конце смотрит банк-приёмник&nbsp;— и&nbsp;именно его восприятие решает, пройдёт платёж или ляжет в&nbsp;ручную проверку.</p>
+        <ul>
+          <li><strong>Что увидит банк-приёмник.</strong> Имя плательщика, агента, назначение, основание&nbsp;— и&nbsp;соответствие профилю получателя.</li>
+          <li><strong>Что ему&nbsp;не&nbsp;нравится.</strong> Невнятные назначения, цепочки без смысла, валюты, не&nbsp;соответствующие отрасли, односторонние документы.</li>
+          <li><strong>Что закрывает вопросы.</strong> Корректный invoice, KYB, agent disclosure, transaction&nbsp;file&nbsp;— заранее, а&nbsp;не&nbsp;по&nbsp;запросу.</li>
+          <li><strong>Sanctions lens.</strong> Платёж не&nbsp;должен быть санкционно чувствительным ни&nbsp;по&nbsp;стороне отправителя, ни&nbsp;по&nbsp;получателя, ни&nbsp;по&nbsp;маршруту.</li>
+        </ul>
+      </div>
+
+      <aside class="recv-vis" aria-hidden="true">
+        <div class="head">
+          <span class="ttl">Receiving · check-list</span>
+          <span class="stat"><span class="d"></span>BANK&nbsp;READY</span>
+        </div>
+        <div class="recv-rows">
+          <div class="recv-row"><span class="q">Назначение читается</span><span class="a">YES</span></div>
+          <div class="recv-row"><span class="q">Совпадает с&nbsp;деятельностью</span><span class="a">YES</span></div>
+          <div class="recv-row"><span class="q">Документы согласованы</span><span class="a">YES</span></div>
+          <div class="recv-row"><span class="q">Цепочка без петель</span><span class="a">YES</span></div>
+          <div class="recv-row"><span class="q">Sanctions exposure</span><span class="a">NONE</span></div>
+          <div class="recv-row"><span class="q">Adverse media</span><span class="a">CLEAR</span></div>
+          <div class="recv-row"><span class="q">Agent disclosure</span><span class="a">PROVIDED</span></div>
+          <div class="recv-row"><span class="q">Готовность к&nbsp;вопросу</span><span class="a amber">SCRIPTED</span></div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── OPS DESK ───────────── -->
+<section class="s ops" id="ops">
+  <div class="container-wide">
+    <div class="s-head">
+      <span class="kicker"><span class="num">[07]</span>Operations desk</span>
+      <h2>Ваш кейс под номером, <strong style="color:var(--blue-soft);font-weight:500">а&nbsp;не&nbsp;в&nbsp;чате</strong>.</h2>
+      <p>Каждой операции присваивается номер, прикрепляется этап исполнения и&nbsp;собирается transaction&nbsp;file. Вы&nbsp;видите статус, а&nbsp;не&nbsp;слышите «в&nbsp;работе».</p>
+    </div>
+
+    <div class="ops-shell">
+      <div class="ops-bar">
+        <div class="left">
+          <div class="dots"><span></span><span></span><span></span></div>
+          <span class="case">CASE · PC-2026-0418 · IT/Coffee · €15,000</span>
+        </div>
+        <div class="right">
+          <span class="stat"><span class="d"></span>LIVE</span>
+          <span>UTC&nbsp;14:22</span>
+          <span>v 2.3.1</span>
+        </div>
+      </div>
+      <div class="ops-body">
+        <!-- TIMELINE -->
+        <div class="ops-col">
+          <h5>Timeline</h5>
+          <ul class="ops-timeline">
+            <li class="ops-step done">
+              <div class="t"><span>Intake</span><span class="ts">14:02</span></div>
+              <div class="d">Invoice and counterparties received.</div>
+            </li>
+            <li class="ops-step done">
+              <div class="t"><span>KYB · Principal</span><span class="ts">14:08</span></div>
+              <div class="d">Profile verified, activity matches purpose.</div>
+            </li>
+            <li class="ops-step done">
+              <div class="t"><span>AML profile</span><span class="ts">14:14</span></div>
+              <div class="d">Document base sound, beneficiary matched.</div>
+            </li>
+            <li class="ops-step active">
+              <div class="t"><span>Sanctions screen</span><span class="ts">14:22</span></div>
+              <div class="d">Multi-list screening, including adverse media.</div>
+            </li>
+            <li class="ops-step wait">
+              <div class="t"><span>Agent · route</span><span class="ts">—</span></div>
+              <div class="d">Route assignment after sanctions clearance.</div>
+            </li>
+            <li class="ops-step wait">
+              <div class="t"><span>Receiving bank lens</span><span class="ts">—</span></div>
+              <div class="d">Final check before execution.</div>
+            </li>
+            <li class="ops-step wait">
+              <div class="t"><span>Execution &amp; documents</span><span class="ts">—</span></div>
+              <div class="d">Transaction File assembled and delivered.</div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- DOCUMENTS -->
+        <div class="ops-col">
+          <h5>Documents · TF-2026-0418</h5>
+          <ul class="ops-doc-list">
+            <li class="ops-doc"><span class="ic">PDF</span><span>Invoice · INV-2026-0418</span><span class="stat ok">Linked</span></li>
+            <li class="ops-doc"><span class="ic">PDF</span><span>Principal · corporate set</span><span class="stat ok">Linked</span></li>
+            <li class="ops-doc"><span class="ic">PDF</span><span>Beneficiary card</span><span class="stat ok">Linked</span></li>
+            <li class="ops-doc"><span class="ic gold">DOC</span><span>Agent commission letter</span><span class="stat run">Drafting</span></li>
+            <li class="ops-doc"><span class="ic gold">DOC</span><span>AML / sanctions notes</span><span class="stat run">Updating</span></li>
+            <li class="ops-doc"><span class="ic">PDF</span><span>Route &amp; correspondents</span><span class="stat wait">Queued</span></li>
+            <li class="ops-doc"><span class="ic">PDF</span><span>Execution receipt</span><span class="stat wait">Pending</span></li>
+            <li class="ops-doc"><span class="ic">PDF</span><span>Closing pack</span><span class="stat wait">Pending</span></li>
+          </ul>
+        </div>
+
+        <!-- FLAGS -->
+        <div class="ops-col">
+          <h5>AML / Sanctions lens</h5>
+          <div class="ops-flag">
+            <div class="row"><span>Document base</span><span class="v ok">OK</span></div>
+            <div class="row"><span>Principal profile</span><span class="v ok">OK</span></div>
+            <div class="row"><span>Beneficiary check</span><span class="v ok">OK</span></div>
+            <div class="row"><span>Sanctions exposure</span><span class="v blue">SCREENING</span></div>
+            <div class="row"><span>Receiving bank fit</span><span class="v amber">REVIEW</span></div>
+            <div class="row"><span>Route logic</span><span class="v ok">CLEAN</span></div>
+            <div class="row"><span>Q&amp;A readiness</span><span class="v amber">DRAFTING</span></div>
+          </div>
+          <h5 style="margin-top:18px">Final pack</h5>
+          <div class="ops-flag">
+            <div class="row"><span>Transaction File</span><span class="v">Auto-assembled</span></div>
+            <div class="row"><span>Closing receipts</span><span class="v">PDF + sealed</span></div>
+            <div class="row"><span>Audit trail</span><span class="v">Retained</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── TRANSACTION FILE ───────────── -->
+<section class="s tfile" id="tfile">
+  <div class="container">
+    <div class="tfile-grid">
+      <div class="tfile-text">
+        <span class="kicker gold"><span class="num">[08]</span>Transaction File</span>
+        <h2>Не&nbsp;«платёжка», а&nbsp;<strong>досье операции</strong>.</h2>
+        <p class="lead">После исполнения клиент получает не&nbsp;один SWIFT-скрин, а&nbsp;структурированный transaction&nbsp;file&nbsp;— документ, который выдержит вопросы банка, бухгалтерии и&nbsp;партнёра спустя месяц или год.</p>
+        <p>В&nbsp;Pay&nbsp;Lite состав минимальный, но&nbsp;закрытый: основание, KYB, исполнение, подтверждение. В&nbsp;Pay&nbsp;Pro&nbsp;— расширенный: маршрут, корреспонденты, обоснования, отчёт агента, sanctions/AML notes.</p>
+        <p>Файл хранится у&nbsp;нас на&nbsp;стороне инфраструктуры и&nbsp;передаётся клиенту по&nbsp;факту исполнения. Все ссылки и&nbsp;идентификаторы&nbsp;— под номером кейса.</p>
+      </div>
+
+      <aside class="tfile-card" aria-hidden="true">
+        <div class="head">
+          <div>
+            <div class="l">Transaction&nbsp;File</div>
+            <div class="v">TF-2026-0418</div>
+          </div>
+          <span class="seal">Sealed</span>
+        </div>
+        <ul class="tfile-rows">
+          <li class="tfile-row"><div class="n">01</div><div class="body"><div class="t">Карточка принципала</div><div class="d">Учредительные, бенефициары, сфера деятельности.</div></div><div class="stat">Done</div></li>
+          <li class="tfile-row"><div class="n">02</div><div class="body"><div class="t">Инвойс / контракт</div><div class="d">Основание операции, спецификация, валюта.</div></div><div class="stat">Done</div></li>
+          <li class="tfile-row"><div class="n">03</div><div class="body"><div class="t">Агентское поручение</div><div class="d">Что именно поручено агенту, в&nbsp;каких пределах.</div></div><div class="stat">Done</div></li>
+          <li class="tfile-row"><div class="n">04</div><div class="body"><div class="t">Карточка получателя</div><div class="d">Beneficiary, банк-приёмник, страна, отрасль.</div></div><div class="stat">Done</div></li>
+          <li class="tfile-row"><div class="n">05</div><div class="body"><div class="t">AML / sanctions notes</div><div class="d">Лог проверок, lists, adverse media, выводы.</div></div><div class="stat">Done</div></li>
+          <li class="tfile-row"><div class="n">06</div><div class="body"><div class="t">Маршрут и&nbsp;корреспонденты</div><div class="d">Цепочка, валюта, FX, ожидаемые комиссии.</div></div><div class="stat">Done</div></li>
+          <li class="tfile-row"><div class="n">07</div><div class="body"><div class="t">Подтверждение получения средств</div><div class="d">SWIFT confirmation, статус принятия банком.</div></div><div class="stat">Done</div></li>
+          <li class="tfile-row"><div class="n">08</div><div class="body"><div class="t">Подтверждение исполнения</div><div class="d">Получение средств получателем, закрытие.</div></div><div class="stat">Done</div></li>
+          <li class="tfile-row"><div class="n">09</div><div class="body"><div class="t">Отчёт агента</div><div class="d">Что было сделано, какие ответы на&nbsp;запросы.</div></div><div class="stat">Done</div></li>
+          <li class="tfile-row"><div class="n">10</div><div class="body"><div class="t">Сводка операции</div><div class="d">Краткий human-readable summary файла.</div></div><div class="stat optional">Optional</div></li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── USE CASES ───────────── -->
+<section class="s alt" id="cases">
+  <div class="container">
+    <div class="s-head">
+      <span class="kicker"><span class="num">[09]</span>Реальные сценарии</span>
+      <h2>Шесть типичных платежей.<br/>Видите свой&nbsp;— это разговор.</h2>
+    </div>
+
+    <div class="cases-grid">
+      <div class="case-card">
+        <div class="tag"><span class="d"></span>Pay · Lite</div>
+        <h4>Поставщик кофе в&nbsp;Италии</h4>
+        <div class="amt">€&nbsp;15&nbsp;000 · IT&nbsp;→ EU</div>
+        <p>Регулярные закупки сырья. Инвойс есть, контракт есть. Берём в&nbsp;тот&nbsp;же день, отдаём transaction&nbsp;file.</p>
+        <div class="meta"><span>Goods</span><span>EUR</span><span>EU bank</span></div>
+      </div>
+      <div class="case-card">
+        <div class="tag"><span class="d"></span>Pay · Lite</div>
+        <h4>Подрядчик в&nbsp;Испании</h4>
+        <div class="amt">€&nbsp;15&nbsp;000 · ES</div>
+        <p>Услуги: design&nbsp;/ marketing&nbsp;/ consulting. Понятное основание, единичный платёж&nbsp;— делаем по&nbsp;стандартному маршруту.</p>
+        <div class="meta"><span>Services</span><span>EUR</span><span>EU bank</span></div>
+      </div>
+      <div class="case-card">
+        <div class="tag"><span class="d"></span>Pay · Lite</div>
+        <h4>Digital / IT-подрядчик ЕС</h4>
+        <div class="amt">$&nbsp;8&nbsp;000–22&nbsp;000 · monthly</div>
+        <p>Регулярные подписки, разработка, инфраструктура. Один и&nbsp;тот&nbsp;же агентский профиль, повторяющиеся реквизиты.</p>
+        <div class="meta"><span>Recurring</span><span>USD/EUR</span><span>SEPA/SWIFT</span></div>
+      </div>
+      <div class="case-card">
+        <div class="tag"><span class="d"></span>Pay · Lite</div>
+        <h4>Регулярные мелкие ВЭД-платежи</h4>
+        <div class="amt">$&nbsp;3&nbsp;000–12&nbsp;000 · per&nbsp;invoice</div>
+        <p>Сервисные счета, лицензии, SaaS, marketing platforms. Принципал один, агент один, transaction&nbsp;file&nbsp;— на&nbsp;каждый.</p>
+        <div class="meta"><span>SaaS / Ads</span><span>USD</span><span>Tier-1 banks</span></div>
+      </div>
+      <div class="case-card">
+        <div class="tag gold"><span class="d"></span>Pay · Pro</div>
+        <h4>Платёж выше $50k</h4>
+        <div class="amt">$&nbsp;50k&nbsp;+ · Tier-1 банк</div>
+        <p>Сумма триггерит ручной комплаенс банка-приёмника. Готовим receiving&nbsp;bank&nbsp;preset и&nbsp;Q&amp;A&nbsp;script до&nbsp;запуска.</p>
+        <div class="meta"><span>Architecture</span><span>FX</span><span>Sanctions lens</span></div>
+      </div>
+      <div class="case-card">
+        <div class="tag gold"><span class="d"></span>Pay · Pro</div>
+        <h4>Чувствительная юрисдикция</h4>
+        <div class="amt">Custom · senior review</div>
+        <p>Получатель в&nbsp;стране/отрасли с&nbsp;повышенным вниманием. Подбираем маршрут и&nbsp;документы заранее, без «попыток».</p>
+        <div class="meta"><span>Senior review</span><span>Multi-leg</span><span>Extended TF</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── ECOSYSTEM ───────────── -->
+<section class="s eco" id="eco">
+  <div class="container">
+    <div class="s-head">
+      <span class="kicker"><span class="num">[10]</span>Экосистема CCAPITAL</span>
+      <h2>Pay&nbsp;— входная точка. <strong style="color:var(--gold-warm);font-weight:500">Если задача сложнее&nbsp;— она&nbsp;уходит внутрь.</strong></h2>
+      <p>CCAPITAL Pay не&nbsp;живёт отдельно. За&nbsp;ним стоит инфраструктура агентов, AML-компетенция, private&nbsp;desk и&nbsp;корпоративная экспертиза. Простая заявка может остаться в&nbsp;Lite&nbsp;— а&nbsp;может пойти дальше, если требуется архитектура.</p>
+    </div>
+
+    <div class="eco-grid">
+      <a class="eco-card is-current" href="#switch" aria-label="CCAPITAL Pay">
+        <span class="ic">PY</span>
+        <h4>CCAPITAL Pay</h4>
+        <p>ВЭД-платежи. Lite до&nbsp;$50k и&nbsp;Pro для&nbsp;сложных решений.</p>
+        <span class="arr">Вы здесь</span>
+      </a>
+      <a class="eco-card" href="#aml">
+        <span class="ic">SR</span>
+        <h4>SourceReady · SR-подход</h4>
+        <p>Логика «чистоты» источника и&nbsp;истории капитала. Ядро AML-брони.</p>
+        <span class="arr">Открыть&nbsp;→</span>
+      </a>
+      <a class="eco-card" href="#switch">
+        <span class="ic">AG</span>
+        <h4>Agency Infrastructure</h4>
+        <p>Сеть агентов и&nbsp;корреспондентов под разные коридоры и&nbsp;валюты.</p>
+        <span class="arr">Открыть&nbsp;→</span>
+      </a>
+      <a class="eco-card is-gold" href="private.html">
+        <span class="ic">PD</span>
+        <h4>Private Desk</h4>
+        <p>Капитал от&nbsp;$1М. Архитектура легитимности и&nbsp;биография капитала.</p>
+        <span class="arr">private.html&nbsp;→</span>
+      </a>
+      <a class="eco-card is-gold" href="freedom-route.html">
+        <span class="ic">CA</span>
+        <h4>Corporate Advisory</h4>
+        <p>Холдинги, контрактная структура, корпоративная подача под банк.</p>
+        <span class="arr">freedom-route&nbsp;→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── NOT PROCESSING ───────────── -->
+<section class="s notdo" id="notdo">
+  <div class="container">
+    <div class="notdo-grid">
+      <div class="notdo-text">
+        <span class="kicker red"><span class="num">[11]</span>Чего мы не делаем. Никогда.</span>
+        <h2>AML-броня работает только с&nbsp;<strong>реальными</strong> коммерческими задачами.</h2>
+        <p class="lead">Если операцию невозможно собрать как AML-удобоваримую и&nbsp;санкционно нейтральную коммерческую сделку, мы&nbsp;её&nbsp;не&nbsp;берём. Это не&nbsp;«позиция» и&nbsp;не&nbsp;«осторожность». Это&nbsp;то, чем CCAPITAL Pay отличается от&nbsp;случайного агента.</p>
+        <p class="lead">Отказ всегда лучше потерянного банка, замороженного счёта и&nbsp;вопросов через два года. Поэтому решение «не&nbsp;брать»&nbsp;— это часть продукта.</p>
+      </div>
+      <div class="notdo-list">
+        <ul>
+          <li><strong>Фиктивные услуги.</strong> Платежи без реальной деятельности.</li>
+          <li><strong>Платежи без основания.</strong> Нет инвойса, контракта или понятной логики.</li>
+          <li><strong>Сомнительные получатели.</strong> Фасадные компании, нечитаемая отрасль.</li>
+          <li><strong>Санкционные товары и&nbsp;маршруты.</strong> Любые цепочки с&nbsp;санкционным риском.</li>
+          <li><strong>Dual-use без проверки.</strong> Технологии и&nbsp;оборудование двойного назначения.</li>
+          <li><strong>Скрытие реального бенефициара.</strong> Платежи «через прокладки».</li>
+          <li><strong>Операции без экономического смысла.</strong> Сумма, которая не&nbsp;объясняется.</li>
+          <li><strong>«Просто переведите деньги».</strong> Это не&nbsp;ВЭД-платёж и&nbsp;не&nbsp;наш кейс.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── FAQ ───────────── -->
+<section class="s alt" id="faq">
+  <div class="container container-sm">
+    <div class="s-head">
+      <span class="kicker"><span class="num">[12]</span>FAQ</span>
+      <h2>Частые вопросы.</h2>
+      <p>Если ответа здесь нет&nbsp;— спросите в&nbsp;intake-форме. Мы&nbsp;возвращаемся в&nbsp;день обращения.</p>
+    </div>
+
+    <div class="faq-list">
+      <details class="faq">
+        <summary>Что такое CCAPITAL Pay?</summary>
+        <div class="answer">
+          <p>Агентская инфраструктура Charter&nbsp;Capital для исполнения ВЭД-платежей. Это не&nbsp;обменник и&nbsp;не&nbsp;«агент из&nbsp;Telegram», а&nbsp;операционный desk, который собирает каждый платёж как коммерческую операцию: с&nbsp;документами, основанием, AML-логикой и&nbsp;transaction&nbsp;file.</p>
+        </div>
+      </details>
+      <details class="faq">
+        <summary>Чем Pay отличается от&nbsp;обычного платёжного агента?</summary>
+        <div class="answer">
+          <p>Обычный агент думает, как платёж <em>отправить</em>. CCAPITAL Pay думает, как он&nbsp;будет <em>принят</em> банком получателя: какие документы и&nbsp;формулировки нужны заранее, как платёж выглядит в&nbsp;общей картине внешней финансовой системы.</p>
+          <p>Поэтому платежи реже зависают, реже возвращаются и&nbsp;реже становятся причиной заморозки счетов спустя время.</p>
+        </div>
+      </details>
+      <details class="faq">
+        <summary>Что значит AML-броня?</summary>
+        <div class="answer">
+          <p>Встроенная операционная дисциплина из&nbsp;девяти проверок: invoice, principal, beneficiary, KYB, AML, sanctions, agent, receiving&nbsp;bank, documents. Это не&nbsp;«щит» и&nbsp;не&nbsp;маркетинговое слово&nbsp;— это конкретные стадии, у&nbsp;каждой из&nbsp;которых есть владелец и&nbsp;артефакт.</p>
+        </div>
+      </details>
+      <details class="faq">
+        <summary>А&nbsp;что с&nbsp;санкционной нейтральностью?</summary>
+        <div class="answer">
+          <p>Платёж не&nbsp;должен быть санкционно чувствительным ни&nbsp;по&nbsp;одной из&nbsp;сторон, ни&nbsp;по&nbsp;маршруту, ни&nbsp;по&nbsp;товарной/сервисной составляющей. Если хотя&nbsp;бы один элемент попадает в&nbsp;серую зону&nbsp;— мы&nbsp;операцию не&nbsp;берём.</p>
+        </div>
+      </details>
+      <details class="faq">
+        <summary>Как работает Pay&nbsp;Lite?</summary>
+        <div class="answer">
+          <p>Платежи до&nbsp;$50k. Загружаете инвойс, указываете принципала и&nbsp;получателя, мы&nbsp;возвращаем условия исполнения (маршрут, сроки, комиссия). После исполнения&nbsp;— подтверждение и&nbsp;закрывающие документы в&nbsp;transaction&nbsp;file.</p>
+        </div>
+      </details>
+      <details class="faq">
+        <summary>Всегда&nbsp;ли «до&nbsp;$50k»&nbsp;— это быстро?</summary>
+        <div class="answer">
+          <p>Берём в&nbsp;работу в&nbsp;день обращения, если документы корректны и&nbsp;маршрут доступен. Скорость самого исполнения зависит от&nbsp;банков и&nbsp;корреспондентов&nbsp;— это не&nbsp;«моментальный перевод», а&nbsp;нормальный SWIFT/SEPA-цикл.</p>
+        </div>
+      </details>
+      <details class="faq">
+        <summary>Что нужно для&nbsp;старта?</summary>
+        <div class="answer">
+          <p>Реквизиты компании-принципала, контактное лицо, реквизиты получателя, инвойс или контракт, понятное назначение. Без этих базовых вещей работа не&nbsp;начинается&nbsp;— это часть AML-брони, а&nbsp;не&nbsp;бюрократия.</p>
+        </div>
+      </details>
+      <details class="faq">
+        <summary>Что я&nbsp;получаю по&nbsp;факту исполнения?</summary>
+        <div class="answer">
+          <p>Transaction&nbsp;File с&nbsp;карточкой принципала, инвойсом, агентским поручением, картой маршрута, AML/sanctions notes, подтверждением исполнения и&nbsp;отчётом агента. В&nbsp;Pay&nbsp;Pro&nbsp;— расширенная версия со&nbsp;структурными обоснованиями.</p>
+        </div>
+      </details>
+      <details class="faq">
+        <summary>Что делать, если платёж сложный?</summary>
+        <div class="answer">
+          <p>Заполните Pay&nbsp;Pro&nbsp;review. Мы&nbsp;берём задачу на&nbsp;разбор: что банк-приёмник ожидает увидеть, какие документы нужны, какой агентский маршрут собрать. Только после согласования архитектуры запускаем исполнение.</p>
+        </div>
+      </details>
+      <details class="faq">
+        <summary>Можно&nbsp;ли без инвойса?</summary>
+        <div class="answer">
+          <p>Без инвойса или контракта&nbsp;— нет. Платёж без основания не&nbsp;собрать как AML-удобоваримую коммерческую операцию. Если у&nbsp;вас инвойс на&nbsp;стадии согласования&nbsp;— можно начать review параллельно.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── INTAKE ───────────── -->
+<section class="s intake" id="intake">
+  <div class="container">
+    <div class="s-head">
+      <span class="kicker"><span class="num">[13]</span>Оформить заявку</span>
+      <h2>Один умный intake. <strong style="color:var(--blue-soft);font-weight:500">Lite или Pro&nbsp;— выбираете сверху.</strong></h2>
+      <p>Заявка не&nbsp;уходит в&nbsp;«общий чат». Каждой присваивается номер кейса и&nbsp;ответственный оператор. Возвращаемся в&nbsp;день обращения.</p>
+    </div>
+
+    <div class="intake-shell">
+      <div class="intake-tabs" role="tablist" aria-label="Тип intake">
+        <button type="button" class="intake-tab is-active" data-tab="lite" role="tab" aria-selected="true">
+          Pay&nbsp;Lite <span class="sub">до&nbsp;$50k</span>
+        </button>
+        <button type="button" class="intake-tab gold" data-tab="pro" role="tab" aria-selected="false">
+          Pay&nbsp;Pro <span class="sub">review</span>
+        </button>
+      </div>
+
+      <!-- LITE FORM -->
+      <form class="intake-form is-active" id="form-lite" data-flow="lite" novalidate>
+        <div class="field"><label for="l-co">Компания принципала</label><input id="l-co" name="company" placeholder="OOO «Trading»" required/></div>
+        <div class="field"><label for="l-ju">Юрисдикция</label><input id="l-ju" name="jurisdiction" placeholder="RU / KZ / AM / AE …" required/></div>
+        <div class="field"><label for="l-id">ИНН / регистрационный номер</label><input id="l-id" name="reg_id" placeholder="ИНН или registry number" required/></div>
+        <div class="field"><label for="l-ct">Контактное лицо</label><input id="l-ct" name="contact" placeholder="Имя, должность" required/></div>
+        <div class="field"><label for="l-tg">Telegram&nbsp;/ WhatsApp</label><input id="l-tg" name="messenger" placeholder="@handle / +country code"/></div>
+        <div class="field"><label for="l-em">Email</label><input id="l-em" name="email" type="email" placeholder="hello@company.com" required/></div>
+        <div class="field"><label for="l-bc">Страна получателя</label><input id="l-bc" name="benef_country" placeholder="IT / DE / GB …" required/></div>
+        <div class="field"><label for="l-bn">Название получателя</label><input id="l-bn" name="benef_name" placeholder="Beneficiary Ltd" required/></div>
+        <div class="field"><label for="l-am">Сумма</label><input id="l-am" name="amount" inputmode="decimal" placeholder="15 000" required/></div>
+        <div class="field">
+          <label for="l-cu">Валюта</label>
+          <select id="l-cu" name="currency" required>
+            <option value="EUR">EUR</option><option value="USD">USD</option>
+            <option value="GBP">GBP</option><option value="CHF">CHF</option>
+            <option value="AED">AED</option><option value="SGD">SGD</option>
+            <option value="HKD">HKD</option><option value="other">Другая</option>
+          </select>
+        </div>
+        <div class="field full"><label for="l-pp">Назначение платежа</label><input id="l-pp" name="purpose" placeholder="Goods / Services / Software …" required/></div>
+        <div class="field full">
+          <label>Инвойс</label>
+          <div class="field-radio">
+            <label><input type="radio" name="invoice" value="yes" checked/><span>Есть</span></label>
+            <label><input type="radio" name="invoice" value="agreed"/><span>На&nbsp;согласовании</span></label>
+            <label><input type="radio" name="invoice" value="no"/><span>Нет</span></label>
+          </div>
+        </div>
+        <div class="field full">
+          <label>Загрузить инвойс (PDF / DOC / JPG)</label>
+          <div class="field-file">
+            <div class="l">
+              <span class="ic">↑</span>
+              <span>Прикрепите файл&nbsp;— или пришлите в&nbsp;Telegram после отправки заявки.</span>
+            </div>
+            <input type="file" name="file" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"/>
+          </div>
+          <!-- TODO: подключить storage endpoint, сейчас файл идёт в hand-off через Telegram/email -->
+        </div>
+        <div class="field"><label for="l-dl">Желаемый срок</label><input id="l-dl" name="deadline" placeholder="ASAP / в течение 3 дней / неделя"/></div>
+        <div class="field"><label for="l-cm">Комментарий</label><input id="l-cm" name="comment" placeholder="Контекст, ограничения, особенности"/></div>
+
+        <div class="intake-foot">
+          <p class="intake-note">Отправляя заявку, вы&nbsp;соглашаетесь, что мы&nbsp;вернёмся в&nbsp;течение рабочего дня и&nbsp;что итоговые условия&nbsp;— маршрут, комиссия, сроки и&nbsp;набор документов&nbsp;— согласуются индивидуально.</p>
+          <button type="submit" class="btn btn-primary btn-lg">Отправить · Pay&nbsp;Lite <span class="arr">→</span></button>
+        </div>
+      </form>
+
+      <!-- PRO FORM -->
+      <form class="intake-form" id="form-pro" data-flow="pro" novalidate>
+        <div class="field full"><label for="p-task">Описание задачи</label><textarea id="p-task" name="task" placeholder="Кратко: что нужно сделать, какие ограничения, сроки, контекст." required></textarea></div>
+        <div class="field"><label for="p-am">Сумма</label><input id="p-am" name="amount" inputmode="decimal" placeholder="120 000" required/></div>
+        <div class="field">
+          <label for="p-cu">Валюта</label>
+          <select id="p-cu" name="currency" required>
+            <option value="EUR">EUR</option><option value="USD">USD</option>
+            <option value="GBP">GBP</option><option value="CHF">CHF</option>
+            <option value="AED">AED</option><option value="SGD">SGD</option>
+            <option value="HKD">HKD</option><option value="other">Другая</option>
+          </select>
+        </div>
+        <div class="field"><label for="p-cp">Страна принципала</label><input id="p-cp" name="principal_country" placeholder="RU / KZ / AM / AE …" required/></div>
+        <div class="field"><label for="p-cb">Страна получателя</label><input id="p-cb" name="benef_country" placeholder="DE / GB / SG / US …" required/></div>
+        <div class="field"><label for="p-bt">Тип получателя</label>
+          <select id="p-bt" name="benef_type" required>
+            <option>Корпоративный</option>
+            <option>Финансовый институт</option>
+            <option>Государственный контрагент</option>
+            <option>Физическое лицо</option>
+            <option>Иное</option>
+          </select>
+        </div>
+        <div class="field"><label>Контракт</label>
+          <div class="field-radio">
+            <label><input type="radio" name="contract" value="yes" checked/><span>Есть</span></label>
+            <label><input type="radio" name="contract" value="draft"/><span>Драфт</span></label>
+            <label><input type="radio" name="contract" value="no"/><span>Нет</span></label>
+          </div>
+        </div>
+        <div class="field"><label>Инвойс</label>
+          <div class="field-radio">
+            <label><input type="radio" name="invoice" value="yes" checked/><span>Есть</span></label>
+            <label><input type="radio" name="invoice" value="agreed"/><span>В работе</span></label>
+            <label><input type="radio" name="invoice" value="no"/><span>Нет</span></label>
+          </div>
+        </div>
+        <div class="field"><label>Маршрут</label>
+          <div class="field-radio">
+            <label><input type="radio" name="route_used" value="yes"/><span>Использовался</span></label>
+            <label><input type="radio" name="route_used" value="new" checked/><span>Новый маршрут</span></label>
+          </div>
+        </div>
+        <div class="field"><label>Ожидается&nbsp;ли вопрос от&nbsp;банка получателя?</label>
+          <div class="field-radio">
+            <label><input type="radio" name="bank_q" value="yes"/><span>Да</span></label>
+            <label><input type="radio" name="bank_q" value="possible" checked/><span>Возможно</span></label>
+            <label><input type="radio" name="bank_q" value="no"/><span>Нет</span></label>
+          </div>
+        </div>
+        <div class="field full"><label for="p-docs">Какие документы есть</label><textarea id="p-docs" name="docs_have" placeholder="Контракт, инвойс, KYB-пакет, корп.документы, переписка с банком…"></textarea></div>
+        <div class="field"><label for="p-tg">Telegram&nbsp;/ WhatsApp</label><input id="p-tg" name="messenger" placeholder="@handle / +country code"/></div>
+        <div class="field"><label for="p-em">Email</label><input id="p-em" name="email" type="email" placeholder="hello@company.com" required/></div>
+        <div class="field"><label for="p-dl">Желаемый срок</label><input id="p-dl" name="deadline" placeholder="когда нужно закрыть"/></div>
+        <div class="field"><label for="p-cm">Комментарий</label><input id="p-cm" name="comment" placeholder="Чувствительные обстоятельства, история задачи"/></div>
+
+        <div class="intake-foot">
+          <p class="intake-note">Pay&nbsp;Pro начинается с&nbsp;review&nbsp;desk: до&nbsp;запуска исполнения мы&nbsp;разберём задачу, оценим маршрут и&nbsp;банк-приёмник, подготовим Q&amp;A&nbsp;script.</p>
+          <button type="submit" class="btn btn-gold btn-lg">Отправить · Pro&nbsp;review <span class="arr">→</span></button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── FINAL CTA ───────────── -->
+<section class="s final" id="contact">
+  <div class="container container-wide">
+    <div class="final-card">
+      <div>
+        <span class="kicker"><span class="num">[14]</span>Готовы начать?</span>
+        <h2>Загрузите инвойс <strong>или</strong> опишите сложную задачу.</h2>
+        <p>Pay&nbsp;Lite&nbsp;— берём в&nbsp;работу в&nbsp;день обращения, если документы и&nbsp;основание корректны. Pay&nbsp;Pro&nbsp;— review&nbsp;desk соберёт архитектуру до&nbsp;запуска. И&nbsp;там, и&nbsp;там&nbsp;— один operations&nbsp;desk и&nbsp;один transaction&nbsp;file.</p>
+      </div>
+      <div class="final-actions">
+        <a href="#intake" class="btn btn-primary btn-lg" id="goLite">Загрузить инвойс · Pay&nbsp;Lite <span class="arr">→</span></a>
+        <a href="#intake-pro" class="btn btn-gold btn-lg" id="goPro">Сложный платёж · Pay&nbsp;Pro <span class="arr">→</span></a>
+        <a href="https://t.me/charter_capital" class="btn btn-ghost" target="_blank" rel="noopener">Telegram · быстрый разговор <span class="arr">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="f">
+  <div class="container">
+    <div class="f-grid">
+      <div class="f-brand">
+        <div class="logo">Charter Capital · Pay</div>
+        <p>Агентская инфраструктура Charter&nbsp;Capital для исполнения ВЭД-платежей с&nbsp;AML-бронёй. Pay&nbsp;Lite&nbsp;— до&nbsp;$50k. Pay&nbsp;Pro&nbsp;— сложные маршруты под банк получателя. Каждая операция&nbsp;— с&nbsp;transaction&nbsp;file.</p>
+      </div>
+      <div class="f-col">
+        <h5>Контуры</h5>
+        <ul>
+          <li><a href="/">Charter&nbsp;Capital · основной сайт</a></li>
+          <li><a href="freedom-route.html">Маршрут в&nbsp;свободный мир</a></li>
+          <li><a href="private.html">Private&nbsp;Office · от&nbsp;$1М</a></li>
+          <li><a href="fund.html">Charter&nbsp;Asia&nbsp;Fund</a></li>
+          <li><a href="property.html">CP&nbsp;Property · Пхукет</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h5>Pay</h5>
+        <ul>
+          <li><a href="#switch">Pay&nbsp;Lite&nbsp;/ Pay&nbsp;Pro</a></li>
+          <li><a href="#aml">AML-броня</a></li>
+          <li><a href="#mtn">Маршрут</a></li>
+          <li><a href="#ops">Operations&nbsp;desk</a></li>
+          <li><a href="#tfile">Transaction&nbsp;file</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#intake">Intake</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h5>Контакт</h5>
+        <ul>
+          <li><a href="https://t.me/charter_capital" target="_blank" rel="noopener">Telegram</a></li>
+          <li><a href="mailto:hello@ccapital.pro?subject=CCAPITAL%20Pay%20intake">hello@ccapital.pro</a></li>
+          <li><a href="https://ccapital.pro">ccapital.pro</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="f-disclaimer">
+      Информация на&nbsp;странице не&nbsp;является публичной офертой. CCAPITAL&nbsp;Pay не&nbsp;принимает поручения без предварительной проверки клиента, документов, назначения платежа, получателя и&nbsp;допустимости маршрута. Сервис предназначен для реальных коммерческих задач бизнеса и&nbsp;не&nbsp;используется для фиктивных операций, сокрытия происхождения средств, обхода санкционных ограничений или операций без экономического основания. Итоговая модель работы, комиссия, сроки и&nbsp;комплект документов согласуются индивидуально.
+    </div>
+    <div class="f-bottom">
+      <span>© 2026 Charter Capital · CCAPITAL&nbsp;Pay</span>
+      <span>Обновлено: апрель 2026</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  requestAnimationFrame(function () { document.body.classList.add('page-ready'); });
+});
+
+// Topbar solid on scroll
+(function(){
+  var bar=document.getElementById('topbar');
+  if(!bar) return;
+  function tick(){ if(window.scrollY>120) bar.classList.add('solid'); else bar.classList.remove('solid'); }
+  window.addEventListener('scroll',tick,{passive:true}); tick();
+})();
+
+// Intake tab switch (Lite / Pro)
+(function(){
+  var tabs=document.querySelectorAll('.intake-tab');
+  var formLite=document.getElementById('form-lite');
+  var formPro=document.getElementById('form-pro');
+  function activate(which){
+    tabs.forEach(function(t){
+      var on=t.dataset.tab===which;
+      t.classList.toggle('is-active',on);
+      t.setAttribute('aria-selected',on?'true':'false');
+    });
+    formLite.classList.toggle('is-active',which==='lite');
+    formPro.classList.toggle('is-active',which==='pro');
+  }
+  tabs.forEach(function(t){ t.addEventListener('click',function(){ activate(t.dataset.tab); }); });
+  // anchor #intake-pro auto-switches to Pro
+  function syncFromHash(){
+    var h=location.hash.replace('#','');
+    if(h==='intake-pro'){ activate('pro'); var el=document.getElementById('intake'); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); }
+    else if(h==='intake'){ activate('lite'); }
+  }
+  window.addEventListener('hashchange',syncFromHash); syncFromHash();
+  var goPro=document.getElementById('goPro'); if(goPro) goPro.addEventListener('click',function(){ activate('pro'); });
+  var goLite=document.getElementById('goLite'); if(goLite) goLite.addEventListener('click',function(){ activate('lite'); });
+})();
+
+// Intake submit handoff (no backend yet) — собираем mailto + сохраняем в localStorage
+(function(){
+  var TG='https://t.me/charter_capital';
+  var EMAIL='hello@ccapital.pro';
+  function caseId(prefix){
+    var d=new Date(); var pad=function(n){return String(n).padStart(2,'0')};
+    return prefix+'-'+d.getFullYear()+pad(d.getMonth()+1)+pad(d.getDate())+'-'+Math.floor(Math.random()*9000+1000);
+  }
+  function payload(form){
+    var fd=new FormData(form); var lines=[]; var obj={};
+    fd.forEach(function(v,k){
+      if(k==='file' && v && v.name){ lines.push(k+': '+v.name+' (передам в Telegram)'); obj[k]=v.name; return; }
+      if(typeof v==='string'){ lines.push(k+': '+v); obj[k]=v; }
+    });
+    return {text:lines.join('\n'),obj:obj};
+  }
+  document.querySelectorAll('.intake-form').forEach(function(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var flow=form.dataset.flow||'lite';
+      var id=caseId(flow==='pro'?'PR':'PL');
+      var p=payload(form);
+      try{ localStorage.setItem('ccapital_pay_'+id, JSON.stringify({id:id,flow:flow,data:p.obj,ts:Date.now()})); }catch(_){}
+      var subject='[CCAPITAL Pay · '+(flow==='pro'?'Pro review':'Lite intake')+'] '+id;
+      var body='CASE '+id+'\nFlow: '+(flow==='pro'?'Pay Pro':'Pay Lite')+'\n\n'+p.text+'\n\n— отправлено с pay.html';
+      var mailto='mailto:'+EMAIL+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+      // быстрый ack
+      var btn=form.querySelector('button[type=submit]');
+      if(btn){ var orig=btn.innerHTML; btn.innerHTML='Отправляем · '+id; btn.disabled=true; setTimeout(function(){ btn.innerHTML=orig; btn.disabled=false; },2400); }
+      // открываем mail-клиент + предлагаем Telegram
+      window.location.href=mailto;
+      setTimeout(function(){ window.open(TG,'_blank','noopener'); },800);
+    });
+  });
+})();
+
+// Smooth fade transition between local html pages
+document.addEventListener('click',function(e){
+  var a=e.target.closest('a[href]');
+  if(!a||a.target==='_blank'||e.metaKey||e.ctrlKey||e.shiftKey) return;
+  var href=a.getAttribute('href');
+  if(!href||href.startsWith('#')||href.startsWith('mailto:')||href.startsWith('javascript:')||href.startsWith('tel:')) return;
+  try{
+    var u=new URL(a.href,location.href);
+    if(u.origin!==location.origin) return;
+    if(!/\.html($|[?#])/i.test(u.pathname) && u.pathname!=='/') return;
+    e.preventDefault();
+    document.body.classList.remove('page-ready'); document.body.style.opacity='0';
+    setTimeout(function(){ location.href=a.href; }, 250);
+  }catch(err){}
+});
+
+// Subtle reveal on scroll
+(function(){
+  if(!('IntersectionObserver' in window)) return;
+  var els=document.querySelectorAll('.split-card,.aml-card,.case-card,.eco-card,.tfile-row,.recv-row,.faq,.detail-vis,.detail-text .row,.mtn-side,.ops-shell,.console');
+  els.forEach(function(el){
+    el.style.opacity='0';
+    el.style.transform='translateY(14px)';
+    el.style.transition='opacity .55s ease, transform .55s ease';
+  });
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        var el=entry.target;
+        var delay=parseInt(el.dataset.delay||'0',10);
+        setTimeout(function(){ el.style.opacity='1'; el.style.transform='translateY(0)'; }, delay);
+        io.unobserve(el);
+      }
+    });
+  },{threshold:.12,rootMargin:'0px 0px -60px 0px'});
+  document.querySelectorAll('.split-card').forEach(function(el,i){ el.dataset.delay=String(i*70); });
+  document.querySelectorAll('.aml-card').forEach(function(el,i){ el.dataset.delay=String(i*40); });
+  document.querySelectorAll('.case-card').forEach(function(el,i){ el.dataset.delay=String(i*45); });
+  document.querySelectorAll('.eco-card').forEach(function(el,i){ el.dataset.delay=String(i*35); });
+  document.querySelectorAll('.tfile-row').forEach(function(el,i){ el.dataset.delay=String(i*22); });
+  document.querySelectorAll('.recv-row').forEach(function(el,i){ el.dataset.delay=String(i*28); });
+  document.querySelectorAll('.faq').forEach(function(el,i){ el.dataset.delay=String(i*30); });
+  els.forEach(function(el){ io.observe(el); });
+})();
+</script>
+</body>
+</html>
