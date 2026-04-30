@@ -8,8 +8,8 @@
 <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)"/>
 <meta name="format-detection" content="telephone=no"/>
 <meta name="referrer" content="strict-origin-when-cross-origin"/>
-<title>Charter Capital - когда двери закрываются, мы открываем мир</title>
-<meta name="description" content="Charter Capital - центр сборки международного маршрута для предпринимателей из СНГ. Семья, капитал, банк, компания, ВНЖ, инвестиции и финансовая подушка - в одной архитектуре. Спокойно, законно, с понятной финансовой историей."/>
+<title>Charter Capital — когда двери закрываются, мы открываем мир</title>
+<meta name="description" content="Charter Capital — центр сборки международного маршрута для предпринимателей из СНГ. Семья, капитал, банк, компания, ВНЖ, инвестиции и финансовая подушка — в одной архитектуре. Спокойно, законно, с понятной финансовой историей."/>
 <meta name="keywords" content="Charter Capital, международный маршрут, релокация капитала, банковский счёт за рубежом, легализация капитала, происхождение средств, ВНЖ, гражданство за инвестиции, инвестиции в Сингапуре, недвижимость Пхукет, крипто-выход, private банк, ccapital"/>
 <meta name="author" content="Charter Capital"/>
 <meta name="geo.region" content="SG"/>
@@ -30,17 +30,17 @@
 
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="Charter Capital"/>
-<meta property="og:title" content="Charter Capital - когда двери закрываются, мы открываем мир без искусственных границ"/>
+<meta property="og:title" content="Charter Capital — когда двери закрываются, мы открываем мир без искусственных границ"/>
 <meta property="og:description" content="Центр сборки международного маршрута для предпринимателей из СНГ. Один маршрут, в котором семья, капитал, бизнес и банк не противоречат друг другу. Спокойно, законно, с понятной финансовой историей."/>
 <meta property="og:url" content="https://ccapital.pro/"/>
 <meta property="og:image" content="https://ccapital.pro/assets/logic/15-passport-gate.webp"/>
 <meta property="og:image:width" content="1536"/>
 <meta property="og:image:height" content="1024"/>
-<meta property="og:image:alt" content="Charter Capital - когда двери закрываются, мы открываем мир"/>
+<meta property="og:image:alt" content="Charter Capital — когда двери закрываются, мы открываем мир"/>
 <meta property="og:locale" content="ru_RU"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="Charter Capital - когда двери закрываются, мы открываем мир без искусственных границ"/>
-<meta name="twitter:description" content="Один международный маршрут - где семья, капитал, бизнес и банк работают вместе. Charter Capital собирает это в одну систему."/>
+<meta name="twitter:title" content="Charter Capital — когда двери закрываются, мы открываем мир без искусственных границ"/>
+<meta name="twitter:description" content="Один международный маршрут — где семья, капитал, бизнес и банк работают вместе. Charter Capital собирает это в одну систему."/>
 <meta name="twitter:image" content="https://ccapital.pro/assets/logic/15-passport-gate.webp"/>
 
 <link rel="dns-prefetch" href="https://mc.yandex.ru"/>
@@ -179,7 +179,7 @@ p{color:var(--body);font-weight:400;line-height:1.7}
 }
 .topbar-cta:hover{border-color:#fff;background:rgba(255,255,255,.06)}
 
-/* ─── TOPBAR, DROPDOWNS ───────────────────────────────── */
+/* ─── TOPBAR · DROPDOWNS ───────────────────────────────── */
 .nav-sep{
   width:1px;height:18px;background:rgba(255,255,255,.14);
   margin:0 6px;display:inline-block;
@@ -1171,17 +1171,17 @@ footer.f{
       "@type": "WebPage",
       "@id": "https://ccapital.pro/#webpage",
       "url": "https://ccapital.pro/",
-      "name": "Charter Capital - когда двери закрываются, мы открываем мир",
+      "name": "Charter Capital — когда двери закрываются, мы открываем мир",
       "isPartOf": {"@id": "https://ccapital.pro/#website"},
       "about": {"@id": "https://ccapital.pro/#organization"},
       "inLanguage": "ru-RU",
       "primaryImageOfPage": "https://ccapital.pro/assets/logic/15-passport-gate.webp",
-      "description": "Когда все двери закрываются - Charter открывает мир для вас и вашего капитала. Без искусственных границ. Релокация, банковский доступ, легализация капитала, ВНЖ, гражданство, off-ramp."
+      "description": "Когда все двери закрываются — Charter открывает мир для вас и вашего капитала. Без искусственных границ. Релокация, банковский доступ, легализация капитала, ВНЖ, гражданство, off-ramp."
     },
     {
       "@type": "ProfessionalService",
       "@id": "https://ccapital.pro/#service",
-      "name": "Charter Capital - концирж международного капитала",
+      "name": "Charter Capital — концирж международного капитала",
       "provider": {"@id": "https://ccapital.pro/#organization"},
       "areaServed": ["RU", "CIS", "SG", "TH", "HK", "AE", "GB"],
       "serviceType": [
@@ -1192,7 +1192,7 @@ footer.f{
         "Crypto off-ramp через регулируемые площадки",
         "Структурированные инвестиции в Сингапурский фонд недвижимости",
         "Курортная недвижимость Пхукета (CP Property)",
-        "China Hub - торговые операции и товарно-сырьевые потоки (WET SOLUTION)"
+        "China Hub — торговые операции и товарно-сырьевые потоки (WET SOLUTION)"
       ],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
@@ -1202,8 +1202,8 @@ footer.f{
           {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Подготовка к исходу", "url": "https://ccapital.pro/homeland.html"}},
           {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Private Office (от $1 000 000)", "url": "https://ccapital.pro/private.html"}},
           {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Charter Asia Fund (от $25 000)", "url": "https://ccapital.pro/fund.html"}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "CP Property - недвижимость Пхукета", "url": "https://ccapital.pro/property.html"}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "WET SOLUTION - China Hub", "url": "https://ccapital.pro/wet-solution.html"}}
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "CP Property — недвижимость Пхукета", "url": "https://ccapital.pro/property.html"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "WET SOLUTION — China Hub", "url": "https://ccapital.pro/wet-solution.html"}}
         ]
       }
     },
@@ -1216,15 +1216,15 @@ footer.f{
           "name": "Что такое Charter Capital?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Charter Capital - частный консьерж и архитектор легитимности капитала для предпринимателей и приватных клиентов из России и СНГ. Помогает перенести семью, бизнес и капитал в международную систему через подготовку AML-биографии, банковский онбординг, корпоративные структуры в Сингапуре/Гонконге/ОАЭ/UK, инвестиции в курортную недвижимость Азии и юридическую чистку перед выездом."
+            "text": "Charter Capital — частный консьерж и архитектор легитимности капитала для предпринимателей и приватных клиентов из России и СНГ. Помогает перенести семью, бизнес и капитал в международную систему через подготовку AML-биографии, банковский онбординг, корпоративные структуры в Сингапуре/Гонконге/ОАЭ/UK, инвестиции в курортную недвижимость Азии и юридическую чистку перед выездом."
           }
         },
         {
           "@type": "Question",
-          "name": "Charter Capital - это банк или финансовый советник?",
+          "name": "Charter Capital — это банк или финансовый советник?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Нет. Charter Capital сам не открывает счета и не даёт инвестиционных, налоговых или юридических советов в смысле локального законодательства. Charter Capital выступает (i) производителем собственных продуктов - досье SoF/SoW, AML-пакеты, юр. структурирование, сопровождение онбординга - и (ii) консьерж-агентом для услуг лицензированных партнёров (банков, EMI, корпоративных провайдеров, юристов по ВНЖ и CBI-программам)."
+            "text": "Нет. Charter Capital сам не открывает счета и не даёт инвестиционных, налоговых или юридических советов в смысле локального законодательства. Charter Capital выступает (i) производителем собственных продуктов — досье SoF/SoW, AML-пакеты, юр. структурирование, сопровождение онбординга — и (ii) консьерж-агентом для услуг лицензированных партнёров (банков, EMI, корпоративных провайдеров, юристов по ВНЖ и CBI-программам)."
           }
         },
         {
@@ -1240,7 +1240,7 @@ footer.f{
           "name": "Какие минимальные суммы для работы?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Charter Asia Fund (Сингапур) - от $25 000. Private Office - от $1 000 000 активов. CP Property (недвижимость Пхукета) - по проектам, прямые контракты с застройщиком, ноль комиссии покупателю."
+            "text": "Charter Asia Fund (Сингапур) — от $25 000. Private Office — от $1 000 000 активов. CP Property (недвижимость Пхукета) — по проектам, прямые контракты с застройщиком, ноль комиссии покупателю."
           }
         },
         {
@@ -1248,7 +1248,7 @@ footer.f{
           "name": "Как связаться с Charter Capital?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Telegram: https://t.me/charter_capital, Email: hello@ccapital.pro, Сайт: https://ccapital.pro"
+            "text": "Telegram: https://t.me/charter_capital · Email: hello@ccapital.pro · Сайт: https://ccapital.pro"
           }
         }
       ]
@@ -1276,7 +1276,7 @@ footer.f{
   <div class="topbar-inner">
     <a href="/" class="topbar-brand">
       <span class="name">Charter Capital</span>
-      <span class="tag">Когда двери закрываются - мы открываем мир</span>
+      <span class="tag">Когда двери закрываются — мы открываем мир</span>
     </a>
     <nav class="topbar-nav">
       <div class="nav-dd" data-dd="products">
@@ -1313,7 +1313,7 @@ footer.f{
         <div class="nav-dd-menu" id="dd-cases" role="menu" aria-label="Где вы сейчас">
           <a class="nav-dd-item" href="homeland.html" role="menuitem">
             <span class="nav-dd-ic red">RU</span>
-            <span class="nav-dd-body"><span class="t">Я ещё в России</span><span class="d">Готовлюсь к выезду - деньги, документы, ФССП</span></span>
+            <span class="nav-dd-body"><span class="t">Я ещё в России</span><span class="d">Готовлюсь к выезду — деньги, документы, ФССП</span></span>
           </a>
           <a class="nav-dd-item is-current" href="/" role="menuitem" aria-current="page">
             <span class="nav-dd-ic green">EU</span>
@@ -1321,7 +1321,7 @@ footer.f{
           </a>
           <a class="nav-dd-item" href="freedom-route.html" role="menuitem">
             <span class="nav-dd-ic">?</span>
-            <span class="nav-dd-body"><span class="t">Только задумываюсь о переезде</span><span class="d">Маршрут в свободный мир - для предпринимателей из СНГ</span></span>
+            <span class="nav-dd-body"><span class="t">Только задумываюсь о переезде</span><span class="d">Маршрут в свободный мир — для предпринимателей из СНГ</span></span>
           </a>
           <a class="nav-dd-item" href="private.html" role="menuitem">
             <span class="nav-dd-ic gold">1M</span>
@@ -1347,16 +1347,16 @@ footer.f{
     <div class="hero-flags">
       <span class="hero-flag">
         <span class="dot"></span>
-        <span>2026 - окно сужается каждый месяц</span>
+        <span>2026 — окно сужается каждый месяц</span>
       </span>
     </div>
-    <h1>Когда двери закрываются -<br/><strong>Charter&nbsp;Capital открывает мир</strong> без искусственных границ.</h1>
+    <h1>Когда двери закрываются —<br/><strong>Charter&nbsp;Capital открывает мир</strong> без искусственных границ.</h1>
     <p class="hero-sub">
-      Для&nbsp;Вас, Вашего капитала и&nbsp;Бизнеса. Не обходим комплаенс - строим биографию, которую он&nbsp;принимает.
+      Для&nbsp;Вас, Вашего капитала и&nbsp;Бизнеса. Не обходим комплаенс — строим биографию, которую он&nbsp;принимает.
     </p>
     <div class="hero-actions">
       <a href="#routes" class="btn btn-primary btn-lg btn-magnetic">Подобрать маршрут <span class="arr">→</span></a>
-      <a href="#scoring" class="btn btn-ghost btn-lg btn-magnetic">Скоринг готовности, 60&nbsp;сек</a>
+      <a href="#scoring" class="btn btn-ghost btn-lg btn-magnetic">Скоринг готовности · 60&nbsp;сек</a>
     </div>
     <div class="hero-other">
       <span class="hero-other-label">Не ваш случай?</span>
@@ -1373,7 +1373,7 @@ footer.f{
         <span>Хочу инвестировать</span><span class="arr">→</span>
       </a>
       <a class="hero-other-pill" href="property.html">
-        <span>Купить недвижимость, Пхукет</span><span class="arr">→</span>
+        <span>Купить недвижимость · Пхукет</span><span class="arr">→</span>
       </a>
     </div>
   </div>
@@ -1385,13 +1385,13 @@ footer.f{
     <div class="s-head">
       <span class="kicker red">Если у вас сейчас вот так</span>
       <h2>Шесть болей, с которыми мы работаем каждый день</h2>
-      <p>Если совпадает хотя бы одна - это наш разговор. Если совпадает три - это срочный разговор.</p>
+      <p>Если совпадает хотя бы одна — это наш разговор. Если совпадает три — это срочный разговор.</p>
     </div>
     <div class="triggers-grid">
       <div class="trigger">
         <div class="num">01</div>
-        <h3>Закрыли счёт или попросили подтвердить источник средств - а его нет</h3>
-        <p>Российский банк закрылся под санкциями или сам попросил уйти. Зарубежный банк прислал KYC-запрос, и понятно, что выписка из «Сбера за 2018 год» - это не ответ.</p>
+        <h3>Закрыли счёт или попросили подтвердить источник средств — а его нет</h3>
+        <p>Российский банк закрылся под санкциями или сам попросил уйти. Зарубежный банк прислал KYC-запрос, и понятно, что выписка из «Сбера за 2018 год» — это не ответ.</p>
         <div class="trigger-mock" aria-hidden="true">
           <div class="email-mock">
             <div class="email-head">
@@ -1399,12 +1399,12 @@ footer.f{
                 <span class="email-from-icon" style="background:#e60000">HSB</span>
                 <div>
                   <div class="email-from-name">HSBC Compliance</div>
-                  <div class="email-from-meta">edd@hsbc.com, today</div>
+                  <div class="email-from-meta">edd@hsbc.com · today</div>
                 </div>
               </div>
               <span class="email-flag email-flag-amber">EDD Required</span>
             </div>
-            <div class="email-subj">Account №&nbsp;41-770418, Enhanced Due Diligence request</div>
+            <div class="email-subj">Account №&nbsp;41-770418 · Enhanced Due Diligence request</div>
             <div class="email-body">
               Please submit within <strong>15 business days</strong>: 12-month bank statements, Source-of-Wealth declaration, contracts evidencing origin of funds. Non-response triggers account closure.
             </div>
@@ -1415,7 +1415,7 @@ footer.f{
       <div class="trigger">
         <div class="num">02</div>
         <h3>Деньги застряли. SWIFT не идёт, платёжки возвращаются, EMI блокирует</h3>
-        <p>Платежи зависают на 2-4 недели, поставщики перестают отгружать, контрагенты уходят. Каждый отказ - это red flag в досье на следующий банк.</p>
+        <p>Платежи зависают на 2–4 недели, поставщики перестают отгружать, контрагенты уходят. Каждый отказ — это red flag в досье на следующий банк.</p>
         <div class="trigger-mock" aria-hidden="true">
           <div class="phone-frame">
             <div class="phone-status-bar">
@@ -1443,7 +1443,7 @@ footer.f{
       <div class="trigger">
         <div class="num">03</div>
         <h3>Я уже за границей, а локальный банк меня не открывает</h3>
-        <p>Кипр, Португалия, ОАЭ, Сербия, Грузия - везде один и тот же отказ: «к сожалению, по вашему профилю». Банк не объясняет - потому что не обязан.</p>
+        <p>Кипр, Португалия, ОАЭ, Сербия, Грузия — везде один и тот же отказ: «к сожалению, по вашему профилю». Банк не объясняет — потому что не обязан.</p>
         <div class="trigger-mock" aria-hidden="true">
           <div class="email-mock">
             <div class="email-head">
@@ -1451,12 +1451,12 @@ footer.f{
                 <span class="email-from-icon" style="background:#a30019">BCP</span>
                 <div>
                   <div class="email-from-name">Banco Comercial Português</div>
-                  <div class="email-from-meta">noreply@bcp.pt, 2 days ago</div>
+                  <div class="email-from-meta">noreply@bcp.pt · 2 days ago</div>
                 </div>
               </div>
               <span class="email-flag email-flag-red">Declined</span>
             </div>
-            <div class="email-subj">Application №&nbsp;A-2026-0481, Personal account opening</div>
+            <div class="email-subj">Application №&nbsp;A-2026-0481 · Personal account opening</div>
             <div class="email-body">
               Following review of your application, BCP is unable to proceed with the account opening. <strong>We do not provide reasons</strong> for our decisions.
             </div>
@@ -1466,14 +1466,14 @@ footer.f{
       </div>
       <div class="trigger">
         <div class="num">04</div>
-        <h3>Крипта на Ledger / бирже - нужно занести в фиат банка ЕС</h3>
-        <p>$50K, $300K, $1.5M в BTC/USDT - это не просто «продать». Это on-chain история, которую банк прочтёт за 6 секунд. Без AML-папки фиат не закрепится.</p>
+        <h3>Крипта на Ledger / бирже — нужно занести в фиат банка ЕС</h3>
+        <p>$50K, $300K, $1.5M в BTC/USDT — это не просто «продать». Это on-chain история, которую банк прочтёт за 6 секунд. Без AML-папки фиат не закрепится.</p>
         <div class="trigger-mock" aria-hidden="true">
           <div class="exch-frame">
             <div class="exch-head">
               <div class="exch-title">
                 <span class="exch-logo">B</span>
-                <span>Binance, Withdrawal</span>
+                <span>Binance · Withdrawal</span>
               </div>
               <span class="exch-status">Pending Review</span>
             </div>
@@ -1484,11 +1484,11 @@ footer.f{
               </div>
               <div class="exch-row">
                 <span class="exch-label">Network</span>
-                <strong>Bitcoin, BTC</strong>
+                <strong>Bitcoin · BTC</strong>
               </div>
               <div class="exch-row">
                 <span class="exch-label">Status</span>
-                <strong class="exch-frozen">⏵ Frozen - AML Check</strong>
+                <strong class="exch-frozen">⏵ Frozen — AML Check</strong>
               </div>
               <div class="exch-action">
                 <strong>Action required:</strong> submit Source-of-Funds documentation within 72&nbsp;h
@@ -1501,13 +1501,13 @@ footer.f{
       <div class="trigger">
         <div class="num">05</div>
         <h3>Семья в РФ. Сын 17, дочь 19. Повестка может прийти на адрес</h3>
-        <p>Я уже здесь, бизнес работает удалённо, но семья ещё там. Без них это не дом. Самим выехать «по туристу» с российскими паспортами - на пограничном контроле уже не каждый раз получается.</p>
+        <p>Я уже здесь, бизнес работает удалённо, но семья ещё там. Без них это не дом. Самим выехать «по туристу» с российскими паспортами — на пограничном контроле уже не каждый раз получается.</p>
         <div class="trigger-mock" aria-hidden="true">
           <div class="conscript-paper">
             <div class="conscript-stamp">МО<br/>РФ</div>
             <div class="conscript-org">
               <strong>ВОЕННЫЙ КОМИССАРИАТ</strong>
-              г. Москвы, Хамовнический район
+              г. Москвы · Хамовнический район
             </div>
             <div class="conscript-title">ПОВЕСТКА</div>
             <div class="conscript-body">
@@ -1517,7 +1517,7 @@ footer.f{
             </div>
             <div class="conscript-foot">
               Военный комиссар<br/>
-              <span class="conscript-sign">- подпись - &nbsp;печать</span>
+              <span class="conscript-sign">— подпись —&nbsp;&nbsp;печать</span>
             </div>
           </div>
         </div>
@@ -1525,21 +1525,21 @@ footer.f{
       </div>
       <div class="trigger">
         <div class="num">06</div>
-        <h3>Перевезти бизнес. ВЭД встал, российская компания - токсичный контрагент</h3>
-        <p>Партнёры в Европе и Азии больше не подписывают договоры с РФ-резидентами. Расчёты идут через посредников с маржой 5-9%. Каждый месяц - это минус прибыль и плюс риск AML.</p>
+        <h3>Перевезти бизнес. ВЭД встал, российская компания — токсичный контрагент</h3>
+        <p>Партнёры в Европе и Азии больше не подписывают договоры с РФ-резидентами. Расчёты идут через посредников с маржой 5–9%. Каждый месяц — это минус прибыль и плюс риск AML.</p>
         <div class="trigger-mock" aria-hidden="true">
           <div class="email-mock">
             <div class="email-head">
               <div class="email-from">
                 <span class="email-from-icon" style="background:#0066a1">M</span>
                 <div>
-                  <div class="email-from-name">Maersk, Procurement</div>
-                  <div class="email-from-meta">contracts@maersk.com, last week</div>
+                  <div class="email-from-name">Maersk · Procurement</div>
+                  <div class="email-from-meta">contracts@maersk.com · last week</div>
                 </div>
               </div>
               <span class="email-flag email-flag-red">Suspended</span>
             </div>
-            <div class="email-subj">Re: Master Service Agreement 2026, Notice of suspension</div>
+            <div class="email-subj">Re: Master Service Agreement 2026 · Notice of suspension</div>
             <div class="email-body">
               Following our updated counterparty risk policy, we cannot renew the framework agreement with entities incorporated in the Russian Federation. <strong>Please reach out via your EU subsidiary</strong> or alternate jurisdiction.
             </div>
@@ -1551,7 +1551,7 @@ footer.f{
   </div>
 </section>
 
-<!-- VISUAL BAND 1 - bank rejection letter mockup -->
+<!-- VISUAL BAND 1 — bank rejection letter mockup -->
 <section class="band-letter" aria-hidden="true">
   <div class="band-letter-grid">
     <article class="bank-letter">
@@ -1560,7 +1560,7 @@ footer.f{
           <svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21V12h6v9"/></svg>
           <span>MERIDIAN BANK SA</span>
         </div>
-        <div class="bank-letter-meta">Compliance Dept, Genève</div>
+        <div class="bank-letter-meta">Compliance Dept · Genève</div>
       </div>
       <div class="bank-letter-body">
         <div class="subject">Re: Application №&nbsp;PA-4471 / Persönliches Konto</div>
@@ -1571,13 +1571,13 @@ footer.f{
           В открытии счёта <strong>ОТКАЗАНО</strong>
         </div>
         <p>В соответствии с применимым регулированием банк не имеет возможности раскрывать конкретные основания принятого решения. Решение является окончательным и обжалованию во внесудебном порядке не подлежит.</p>
-        <p class="signature">С уважением,<br/>Compliance Department<br/>MERIDIAN BANK SA, Geneva, Switzerland</p>
+        <p class="signature">С уважением,<br/>Compliance Department<br/>MERIDIAN BANK SA · Geneva, Switzerland</p>
       </div>
     </article>
     <div class="band-message">
       <span class="kicker">Биография капитала</span>
-      <h3>Банки - бездушные <strong>AML-роботы</strong>.<br/>Но с подготовленным <strong>Charter Capital кейсом</strong> система к&nbsp;Вам повернётся лицом.</h3>
-      <p class="band-sub">Тот же банк, тот же compliance-офицер, та же политика - но другая папка на входе. Разница не в удаче, а в архитектуре кейса.</p>
+      <h3>Банки — бездушные <strong>AML-роботы</strong>.<br/>Но с подготовленным <strong>Charter Capital кейсом</strong> система к&nbsp;Вам повернётся лицом.</h3>
+      <p class="band-sub">Тот же банк, тот же compliance-офицер, та же политика — но другая папка на входе. Разница не в удаче, а в архитектуре кейса.</p>
     </div>
   </div>
 </section>
@@ -1587,50 +1587,50 @@ footer.f{
   <div class="container">
     <div class="s-head">
       <span class="kicker">Что мы делаем</span>
-      <h2>Часть задачи - у партнёров. Часть - у нас.</h2>
-      <p>Мы не делаем вид, что регистрируем компании в Гонконге своими руками или сами выпускаем ВНЖ Черногории. Этим занимаются локальные специалисты - корпсервисы, нотариусы, иммиграционные юристы, регулируемые off-ramp'ы. Их зона компетенции узкая, но глубокая.</p>
-      <p style="margin-top:12px">Наша зона - соединить пять-шесть таких услуг в один маршрут так, чтобы банк его принял. Подобрать партнёра под ваш профиль, упаковать историю капитала под целевой банк, сопроводить EDD-интервью.</p>
+      <h2>Часть задачи — у партнёров. Часть — у нас.</h2>
+      <p>Мы не делаем вид, что регистрируем компании в Гонконге своими руками или сами выпускаем ВНЖ Черногории. Этим занимаются локальные специалисты — корпсервисы, нотариусы, иммиграционные юристы, регулируемые off-ramp'ы. Их зона компетенции узкая, но глубокая.</p>
+      <p style="margin-top:12px">Наша зона — соединить пять-шесть таких услуг в один маршрут так, чтобы банк его принял. Подобрать партнёра под ваш профиль, упаковать историю капитала под целевой банк, сопроводить EDD-интервью.</p>
     </div>
     <div class="do-grid">
       <div class="do-col">
         <div class="do-head">
           <div class="label">Подбираем у партнёров</div>
-          <h3>У партнёров - узкая локальная компетенция</h3>
+          <h3>У партнёров — узкая локальная компетенция</h3>
           <p>Только проверенные кабинеты. Только маршруты, по которым уже прошли наши клиенты.</p>
         </div>
         <div class="do-list">
           <div class="do-item">
             <div class="ic">01</div>
             <div>
-              <h4>Счета - банки и EMI</h4>
+              <h4>Счета — банки и EMI</h4>
               <p>Personal и corporate в ЕС, ОАЭ, Азии, Кавказе, Грузии. От локальных до Tier-1 private. Подбор под ваш профиль.</p>
             </div>
           </div>
           <div class="do-item">
             <div class="ic">02</div>
             <div>
-              <h4>Компании - HK, SG, UAE, CY, MNE, BVI</h4>
-              <p>Регистрация и сопровождение. Substance-package, директор, адрес, бухгалтерия - где требуется.</p>
+              <h4>Компании — HK, SG, UAE, CY, MNE, BVI</h4>
+              <p>Регистрация и сопровождение. Substance-package, директор, адрес, бухгалтерия — где требуется.</p>
             </div>
           </div>
           <div class="do-item">
             <div class="ic">03</div>
             <div>
-              <h4>ВНЖ - Черногория, Сербия, Таиланд, ОАЭ, Армения</h4>
+              <h4>ВНЖ — Черногория, Сербия, Таиланд, ОАЭ, Армения</h4>
               <p>Юр. сопровождение от подачи до карты. Помощь с обоснованием цели пребывания.</p>
             </div>
           </div>
           <div class="do-item">
             <div class="ic">04</div>
             <div>
-              <h4>Гражданство - CBI Карибы, Вануату</h4>
+              <h4>Гражданство — CBI Карибы, Вануату</h4>
               <p>Полный цикл: due diligence, инвестиция или взнос, сопровождение клятвы, паспорт.</p>
             </div>
           </div>
           <div class="do-item">
             <div class="ic">05</div>
             <div>
-              <h4>Крипта на фиат - регулируемый off-ramp</h4>
+              <h4>Крипта на фиат — регулируемый off-ramp</h4>
               <p>Партнёры с лицензиями VASP / MiCA / FinCEN. Не P2P. Не «знакомый обменник».</p>
             </div>
           </div>
@@ -1639,7 +1639,7 @@ footer.f{
       <div class="do-col dark">
         <div class="do-head">
           <div class="label">Делаем сами</div>
-          <h3>Делаем сами - потому что без этого связка не работает</h3>
+          <h3>Делаем сами — потому что без этого связка не работает</h3>
           <p>Это и есть Charter Capital. Всё, что между «купить услугу» и «банк её принял».</p>
         </div>
         <div class="do-list">
@@ -1661,7 +1661,7 @@ footer.f{
             <div class="ic">C</div>
             <div>
               <h4>Юр. структурирование</h4>
-              <p>Контур владения: SPV, holding, trust где оправдано. Без перебора - банк замечает «кораблик матрёшки».</p>
+              <p>Контур владения: SPV, holding, trust где оправдано. Без перебора — банк замечает «кораблик матрёшки».</p>
             </div>
           </div>
           <div class="do-item">
@@ -1675,7 +1675,7 @@ footer.f{
             <div class="ic">E</div>
             <div>
               <h4>Подготовка под репатриацию / легализацию в стране прибытия</h4>
-              <p>Если вы уже в ЕС/ОАЭ с капиталом или криптой - папка под местный налоговый и банковский контур.</p>
+              <p>Если вы уже в ЕС/ОАЭ с капиталом или криптой — папка под местный налоговый и банковский контур.</p>
             </div>
           </div>
         </div>
@@ -1690,17 +1690,17 @@ footer.f{
     <div class="s-head">
       <span class="kicker">Маршруты</span>
       <h2>Три типовых сценария, которые мы собираем чаще всего</h2>
-      <p>Каждый маршрут - это связка из 3-5 услуг, упакованная в один проект с предсказуемым сроком и индикативной ценой. Если ваша ситуация не попадает ни в один - мы соберём индивидуально.</p>
+      <p>Каждый маршрут — это связка из 3–5 услуг, упакованная в один проект с предсказуемым сроком и индикативной ценой. Если ваша ситуация не попадает ни в один — мы соберём индивидуально.</p>
     </div>
 
     <div class="routes">
       <article class="route featured">
         <span class="route-tag">Самый частый</span>
         <div class="route-head">
-          <span class="id">М-01, Релокация</span>
+          <span class="id">М-01 · Релокация</span>
           <h3>Релокация ЕС / ОАЭ под ключ</h3>
         </div>
-        <p class="route-pain">Для активного человека с капиталом <strong>$50K-$2M</strong>, который выходит из РФ долгосрочно. ВНЖ, банк, история капитала - собранные так, чтобы через 5 лет можно было получить второе гражданство по натурализации.</p>
+        <p class="route-pain">Для активного человека с капиталом <strong>$50K–$2M</strong>, который выходит из РФ долгосрочно. ВНЖ, банк, история капитала — собранные так, чтобы через 5 лет можно было получить второе гражданство по натурализации.</p>
         <div class="route-steps">
           <div class="route-step"><span class="n">1</span>ВНЖ под выбранный паспорт (Черногория / Сербия / Таиланд / ОАЭ)</div>
           <div class="route-step"><span class="n">2</span>SoF / SoW досье под целевой банк</div>
@@ -1711,15 +1711,15 @@ footer.f{
         <div class="route-foot">
           <div class="route-cell">
             <div class="l">Срок</div>
-            <div class="v">4-8 мес</div>
+            <div class="v">4–8 мес</div>
           </div>
           <div class="route-cell">
             <div class="l">Сумма проекта</div>
-            <div class="v">$25K-$80K</div>
+            <div class="v">$25K–$80K</div>
           </div>
           <div class="route-cell">
             <div class="l">Гос. сборы</div>
-            <div class="v muted">отдельно, $5K-$30K</div>
+            <div class="v muted">отдельно, $5K–$30K</div>
           </div>
           <div class="route-cell">
             <div class="l">Подходит, если</div>
@@ -1734,10 +1734,10 @@ footer.f{
 
       <article class="route">
         <div class="route-head">
-          <span class="id">М-02, Бизнес</span>
+          <span class="id">М-02 · Бизнес</span>
           <h3>Перевозка бизнеса HK / SG / UAE / CY</h3>
         </div>
-        <p class="route-pain">Для предпринимателей, у кого <strong>ВЭД встал</strong>: партнёры не подписывают с РФ-резидентом, расчёты идут с маржой посредников 5-9%. Цель - отвязать операционку от российского периметра без перерыва выручки.</p>
+        <p class="route-pain">Для предпринимателей, у кого <strong>ВЭД встал</strong>: партнёры не подписывают с РФ-резидентом, расчёты идут с маржой посредников 5–9%. Цель — отвязать операционку от российского периметра без перерыва выручки.</p>
         <div class="route-steps">
           <div class="route-step"><span class="n">1</span>Регистрация компании (выбор юрисдикции по типу бизнеса)</div>
           <div class="route-step"><span class="n">2</span>Substance-package: директор, адрес, бухгалтерия</div>
@@ -1748,15 +1748,15 @@ footer.f{
         <div class="route-foot">
           <div class="route-cell">
             <div class="l">Срок</div>
-            <div class="v">6-10 нед</div>
+            <div class="v">6–10 нед</div>
           </div>
           <div class="route-cell">
             <div class="l">Сумма проекта</div>
-            <div class="v">$12K-$45K</div>
+            <div class="v">$12K–$45K</div>
           </div>
           <div class="route-cell">
             <div class="l">Гос. сборы</div>
-            <div class="v muted">отдельно, $3K-$15K</div>
+            <div class="v muted">отдельно, $3K–$15K</div>
           </div>
           <div class="route-cell">
             <div class="l">Подходит, если</div>
@@ -1771,10 +1771,10 @@ footer.f{
 
       <article class="route">
         <div class="route-head">
-          <span class="id">М-03, Крипто</span>
+          <span class="id">М-03 · Крипто</span>
           <h3>Леджер → Банк ЕС / ОАЭ</h3>
         </div>
-        <p class="route-pain">Для крипто-холдеров с <strong>$50K-$5M</strong> в BTC/ETH/USDT, кому нужно занести в фиат и закрепить в банке, который не закроет счёт через 3 месяца. On-chain история - это уже досье, его читают.</p>
+        <p class="route-pain">Для крипто-холдеров с <strong>$50K–$5M</strong> в BTC/ETH/USDT, кому нужно занести в фиат и закрепить в банке, который не закроет счёт через 3 месяца. On-chain история — это уже досье, его читают.</p>
         <div class="route-steps">
           <div class="route-step"><span class="n">1</span>Аудит on-chain цепочки и риск-скоринг адресов</div>
           <div class="route-step"><span class="n">2</span>Привязка к KYC-вершинам (биржа, OTC, торг. платформа)</div>
@@ -1785,15 +1785,15 @@ footer.f{
         <div class="route-foot">
           <div class="route-cell">
             <div class="l">Срок</div>
-            <div class="v">4-10 нед</div>
+            <div class="v">4–10 нед</div>
           </div>
           <div class="route-cell">
             <div class="l">Сумма проекта</div>
-            <div class="v">$8K-$30K</div>
+            <div class="v">$8K–$30K</div>
           </div>
           <div class="route-cell">
             <div class="l">+ Off-ramp fee</div>
-            <div class="v muted">0.5-2% от суммы</div>
+            <div class="v muted">0.5–2% от суммы</div>
           </div>
           <div class="route-cell">
             <div class="l">Подходит, если</div>
@@ -1808,10 +1808,10 @@ footer.f{
 
       <article class="route">
         <div class="route-head">
-          <span class="id">М-04, Актив РФ → ЕС/Турция/ОАЭ</span>
-          <h3>Продал квартиру в РФ - купил жильё за границей</h3>
+          <span class="id">М-04 · Актив РФ → ЕС/Турция/ОАЭ</span>
+          <h3>Продал квартиру в РФ — купил жильё за границей</h3>
         </div>
-        <p class="route-pain">Самый частый кейс 2026: продал квартиру в Москве за 18&nbsp;млн&nbsp;₽, хочешь купить апартаменты в&nbsp;Аланьи / Дубае / Лимассоле. <strong>Между этими двумя точками - банк, который не принимает деньги без SoF</strong> на сумму. Продавец ждёт. Сделка горит. Без подготовленной папки - дисконт и потеря 8-15%.</p>
+        <p class="route-pain">Самый частый кейс 2026: продал квартиру в Москве за 18&nbsp;млн&nbsp;₽, хочешь купить апартаменты в&nbsp;Аланьи / Дубае / Лимассоле. <strong>Между этими двумя точками — банк, который не принимает деньги без SoF</strong> на сумму. Продавец ждёт. Сделка горит. Без подготовленной папки — дисконт и потеря 8–15%.</p>
         <div class="route-steps">
           <div class="route-step"><span class="n">1</span>Подготовка SoF под продажу РФ-актива (ДКП, история владения, налог)</div>
           <div class="route-step"><span class="n">2</span>Открытие счёта в целевой стране (карточка / private)</div>
@@ -1822,11 +1822,11 @@ footer.f{
         <div class="route-foot">
           <div class="route-cell">
             <div class="l">Срок</div>
-            <div class="v">4-8 мес</div>
+            <div class="v">4–8 мес</div>
           </div>
           <div class="route-cell">
             <div class="l">Сумма проекта</div>
-            <div class="v">$15K-$50K</div>
+            <div class="v">$15K–$50K</div>
           </div>
           <div class="route-cell">
             <div class="l">Гос. сборы</div>
@@ -1834,7 +1834,7 @@ footer.f{
           </div>
           <div class="route-cell">
             <div class="l">Подходит, если</div>
-            <div class="v muted">сделка $80K-$2M</div>
+            <div class="v muted">сделка $80K–$2M</div>
           </div>
         </div>
         <div class="route-cta">
@@ -1847,14 +1847,14 @@ footer.f{
     <div class="routes-note">
       <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
       <div>
-        Цены индикативные, фиксируются после первой встречи. На третий маршрут ставится потолок чека: если стоимость нашей работы выходит больше 6% от размера капитала - мы отказываем сами. Проект должен иметь смысл для вас.
+        Цены индикативные, фиксируются после первой встречи. На третий маршрут ставится потолок чека: если стоимость нашей работы выходит больше 6% от размера капитала — мы отказываем сами. Проект должен иметь смысл для вас.
       </div>
     </div>
 
     <div class="vip-bar">
       <div class="vip-bar-text">
-        <span class="vip-flag">Private Office, от&nbsp;$1&nbsp;000&nbsp;000</span>
-        <h3>Если капитал от $1М - у нас есть закрытый контур</h3>
+        <span class="vip-flag">Private Office · от&nbsp;$1&nbsp;000&nbsp;000</span>
+        <h3>Если капитал от $1М — у нас есть закрытый контур</h3>
         <p>Для частных клиентов с активами от $1 000 000 работает отдельный fiduciary-формат: SG-фонд → недвижимость → выход на ваши счета в EU / UK / Швейцарии чистыми деньгами. Diagnostic audit от $250K капитала, Full Mandate от $1M, Strategic Partnership от $10M.</p>
       </div>
       <a href="private.html" class="btn btn-dark btn-lg">Перейти в Private Office <span class="arr">→</span></a>
@@ -1862,13 +1862,13 @@ footer.f{
   </div>
 </section>
 
-<!-- VISUAL BAND 2 - bank approval letter mockup (the antithesis) -->
+<!-- VISUAL BAND 2 — bank approval letter mockup (the antithesis) -->
 <section class="band-letter band-letter--approved" aria-hidden="true">
   <div class="band-letter-grid reverse">
     <div class="band-message">
       <span class="kicker kicker-green">Результат</span>
       <h3>Тот же AML-робот. Тот же compliance-офицер.<br/>Та&nbsp;же политика регулирования.<br/><strong>Просто другая папка на входе.</strong></h3>
-      <p class="band-sub">Это не магия и не лоббизм. Это инженерия документа: правильная цепочка SoF/SoW, корректный substance, верифицируемая on-chain история, согласованный с банком формат подачи. Через 6-10 недель - onboarding, а не очередное «отказано».</p>
+      <p class="band-sub">Это не магия и не лоббизм. Это инженерия документа: правильная цепочка SoF/SoW, корректный substance, верифицируемая on-chain история, согласованный с банком формат подачи. Через 6–10 недель — onboarding, а не очередное «отказано».</p>
     </div>
     <article class="bank-letter bank-letter--approved">
       <div class="bank-letter-head">
@@ -1876,7 +1876,7 @@ footer.f{
           <svg viewBox="0 0 24 24"><path d="M2 12h20M12 2v20M5 7l14 10M19 7L5 17"/></svg>
           <span>BANK FRICK &amp; CO. AG</span>
         </div>
-        <div class="bank-letter-meta">Private Banking, Balzers, FL</div>
+        <div class="bank-letter-meta">Private Banking · Balzers, FL</div>
       </div>
       <div class="bank-letter-body">
         <div class="subject">Re: Application №&nbsp;PB-9024 / Private Banking Relationship</div>
@@ -1887,23 +1887,23 @@ footer.f{
           Заявка <strong>ОДОБРЕНА</strong>
         </div>
         <p>Ваш Relationship Manager свяжется с Вами в течение трёх рабочих дней для согласования onboarding-сессии и подписания документов открытия счёта. Welcome to Bank Frick.</p>
-        <p class="signature">С уважением,<br/>Private Banking Department<br/>BANK FRICK &amp; CO. AG, Liechtenstein</p>
+        <p class="signature">С уважением,<br/>Private Banking Department<br/>BANK FRICK &amp; CO. AG · Liechtenstein</p>
       </div>
     </article>
   </div>
 </section>
 
-<!-- SOURCEREADY, OUR OWN AML-SYSTEM -->
+<!-- SOURCEREADY · OUR OWN AML-SYSTEM -->
 <section class="s alt" id="scoring">
   <div class="container">
     <div class="sr-block">
       <div class="sr-text">
         <span class="kicker" style="color:#93c5fd">Наш собственный продукт · AML-система</span>
         <div class="sr-product-name">SourceReady<sup>™</sup></div>
-        <h3>Система, через которую мы пропускаем каждый кейс - до того, как его увидит банк.</h3>
-        <p class="sr-lead">Зарубежный банк проверит у вас <strong>четыре вещи</strong>: как устроена сделка, как двигались деньги, откуда они изначально, и связана ли вся история по датам. Если в одной из четырёх зашумит - отказ. Без объяснений.</p>
-        <p class="sr-lead">SourceReady показывает нам это <strong>заранее</strong>. Мы видим слабые места и дорабатываем папку - пока в системе не загорится зелёный по всем четырём. Только потом идём в банк.</p>
-        <p class="sr-lead">Это не «искусственный интеллект». Это инженерия документа - то, что делает разницу между <strong>«вам отказано»</strong> и <strong>«добро пожаловать»</strong>. Никто другой в индустрии так не работает.</p>
+        <h3>Система, через которую мы пропускаем каждый кейс — до того, как его увидит банк.</h3>
+        <p class="sr-lead">Зарубежный банк проверит у вас <strong>четыре вещи</strong>: как устроена сделка, как двигались деньги, откуда они изначально, и связана ли вся история по датам. Если в одной из четырёх зашумит — отказ. Без объяснений.</p>
+        <p class="sr-lead">SourceReady показывает нам это <strong>заранее</strong>. Мы видим слабые места и дорабатываем папку — пока в системе не загорится зелёный по всем четырём. Только потом идём в банк.</p>
+        <p class="sr-lead">Это не «искусственный интеллект». Это инженерия документа — то, что делает разницу между <strong>«вам отказано»</strong> и <strong>«добро пожаловать»</strong>. Никто другой в индустрии так не работает.</p>
         <div class="sr-dims">
           <div class="sr-dim"><span class="sr-dim-key">Структура</span><span class="sr-dim-val">Сделка, стороны, путь</span></div>
           <div class="sr-dim"><span class="sr-dim-key">Платёжный след</span><span class="sr-dim-val">Как двигались деньги</span></div>
@@ -1916,34 +1916,34 @@ footer.f{
 
       <div class="sr-card" aria-hidden="true">
         <div class="sr-card-head">
-          <div class="sr-case-id">КЕЙС, SR-0421, Трансграничная сделка</div>
-          <div class="sr-case-stage">Рабочий файл, до подачи</div>
+          <div class="sr-case-id">КЕЙС · SR-0421 · Трансграничная сделка</div>
+          <div class="sr-case-stage">Рабочий файл · до подачи</div>
         </div>
         <div class="sr-row">
           <div class="sr-row-label">
             <span class="sr-row-name">Структура</span>
-            <span class="sr-row-meta">Сделка, 2 стороны, 1 посредник</span>
+            <span class="sr-row-meta">Сделка · 2 стороны · 1 посредник</span>
           </div>
           <span class="sr-tag sr-ok">ЧИСТО</span>
         </div>
         <div class="sr-row">
           <div class="sr-row-label">
             <span class="sr-row-name">Платёжный след</span>
-            <span class="sr-row-meta">II квартал 2023, выписка приложена</span>
+            <span class="sr-row-meta">II квартал 2023 · выписка приложена</span>
           </div>
           <span class="sr-tag sr-ok">ЧИСТО</span>
         </div>
         <div class="sr-row sr-row-active">
           <div class="sr-row-label">
             <span class="sr-row-name">Происхождение</span>
-            <span class="sr-row-meta">Нарратив есть, документов мало</span>
+            <span class="sr-row-meta">Нарратив есть · документов мало</span>
           </div>
           <span class="sr-tag sr-weak">СЛАБО</span>
         </div>
         <div class="sr-row sr-row-active">
           <div class="sr-row-label">
             <span class="sr-row-name">Хронология</span>
-            <span class="sr-row-meta">Разрыв 2020-2021, 18 месяцев</span>
+            <span class="sr-row-meta">Разрыв 2020–2021 · 18 месяцев</span>
           </div>
           <span class="sr-tag sr-warn">ВНИМАНИЕ</span>
         </div>
@@ -1967,7 +1967,7 @@ footer.f{
             <span class="sr-result-label">Готовность</span>
             <strong class="sr-result-score"><span class="counter" data-to="88">0</span> / 100</strong>
           </div>
-          <span class="sr-tag sr-ready">ГОТОВО, К&nbsp;ПОДАЧЕ</span>
+          <span class="sr-tag sr-ready">ГОТОВО · К&nbsp;ПОДАЧЕ</span>
         </div>
       </div>
     </div>
@@ -1979,28 +1979,28 @@ footer.f{
   <div class="container">
     <div class="s-head">
       <span class="kicker muted">Границы</span>
-      <h2>Кому мы не помогаем - и почему это важно знать сразу</h2>
+      <h2>Кому мы не помогаем — и почему это важно знать сразу</h2>
       <p>Это не дисклеймер юристов. Это сигнал доверия: банки видят, с кем мы работали, и это переносится на ваш кейс. Мы охраняем эту репутацию жёстко.</p>
     </div>
     <div class="bound-grid">
       <div class="bound no">
         <h3>Не работаем с</h3>
         <ul>
-          <li><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span><strong>PEP и членами их семей.</strong> Политически значимые лица, чиновники, депутаты, силовики и их близкие - отдельная индустрия, не наша.</span></li>
-          <li><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span><strong>Санкционными лицами и компаниями.</strong> Если фамилия или компания в OFAC / EU / UK / OFSI - это не к нам.</span></li>
-          <li><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span><strong>Теми, кто в международном розыске.</strong> Interpol Red Notice, активные уголовные дела за рубежом - нет.</span></li>
-          <li><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span><strong>«Мутными» источниками.</strong> Mixer, Tornado, грязная on-chain история, обналичка - мы не отбеливаем. Мы строим белое заново или отказываемся.</span></li>
-          <li><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span><strong>Транзитными юрисдикциями без substance.</strong> ОАЭ как чисто-транзитная точка, оффшор-номиналы - это серые сигналы, которые сегодня закрывают банки.</span></li>
+          <li><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span><strong>PEP и членами их семей.</strong> Политически значимые лица, чиновники, депутаты, силовики и их близкие — отдельная индустрия, не наша.</span></li>
+          <li><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span><strong>Санкционными лицами и компаниями.</strong> Если фамилия или компания в OFAC / EU / UK / OFSI — это не к нам.</span></li>
+          <li><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span><strong>Теми, кто в международном розыске.</strong> Interpol Red Notice, активные уголовные дела за рубежом — нет.</span></li>
+          <li><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span><strong>«Мутными» источниками.</strong> Mixer, Tornado, грязная on-chain история, обналичка — мы не отбеливаем. Мы строим белое заново или отказываемся.</span></li>
+          <li><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span><strong>Транзитными юрисдикциями без substance.</strong> ОАЭ как чисто-транзитная точка, оффшор-номиналы — это серые сигналы, которые сегодня закрывают банки.</span></li>
         </ul>
       </div>
       <div class="bound yes">
         <h3>Работаем с</h3>
         <ul>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Активными нормальными людьми.</strong> Предприниматели, IT, специалисты, врачи, фрилансеры - у которых есть реальный источник.</span></li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Активными нормальными людьми.</strong> Предприниматели, IT, специалисты, врачи, фрилансеры — у которых есть реальный источник.</span></li>
           <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Теми, кто хочет продолжать жить и работать.</strong> Релокация, семья, новый бизнес-контур, спокойная инвестиционная база.</span></li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Капиталом $50K-$5M.</strong> Не олигархи, не private banking $20M+. Активные люди, которым нужно решить задачу качественно.</span></li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Капиталом $50K–$5M.</strong> Не олигархи, не private banking $20M+. Активные люди, которым нужно решить задачу качественно.</span></li>
           <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Крипто-холдерами с прозрачной историей.</strong> Майнинг, ранний BTC, торговая прибыль с регулируемых площадок, salary в крипто.</span></li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Бизнесами с реальной выручкой.</strong> Где есть substance, контрагенты, клиенты - а не просто холдинг для красоты.</span></li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Бизнесами с реальной выручкой.</strong> Где есть substance, контрагенты, клиенты — а не просто холдинг для красоты.</span></li>
         </ul>
       </div>
     </div>
@@ -2013,15 +2013,15 @@ footer.f{
     <div class="contact">
       <div class="contact-inner">
         <span class="kicker" style="color:#93c5fd">Первый шаг</span>
-        <h2>30 минут под NDA. Не консультация - карта рисков по вашему кейсу.</h2>
-        <p>Расскажите ситуацию - мы покажем, какой маршрут она запрашивает, какие риски у вас сейчас есть, и сколько займёт. Если не подходим - скажем сразу и порекомендуем тех, кто подходит.</p>
+        <h2>30 минут под NDA. Не консультация — карта рисков по вашему кейсу.</h2>
+        <p>Расскажите ситуацию — мы покажем, какой маршрут она запрашивает, какие риски у вас сейчас есть, и сколько займёт. Если не подходим — скажем сразу и порекомендуем тех, кто подходит.</p>
         <div class="contact-channels">
           <a href="https://t.me/charter_capital" class="btn btn-primary btn-lg" target="_blank" rel="noopener">Telegram <span class="arr">→</span></a>
           <a href="mailto:hello@ccapital.pro" class="btn btn-secondary btn-lg" style="background:rgba(255,255,255,.06);color:#fff;border-color:rgba(255,255,255,.18)">hello@ccapital.pro</a>
           <button type="button" class="btn btn-ghost btn-lg" id="openLoginModal2">Защищённый канал</button>
         </div>
         <div class="contact-note">
-          Канал шифрован. <strong>Не пишите в обычной почте</strong> номера счетов, паспорта и адреса кошельков - пришлём защищённую форму после первого ответа.
+          Канал шифрован. <strong>Не пишите в обычной почте</strong> номера счетов, паспорта и адреса кошельков — пришлём защищённую форму после первого ответа.
         </div>
       </div>
     </div>
@@ -2036,15 +2036,15 @@ footer.f{
     <div class="f-grid">
       <div class="f-brand">
         <div class="logo">Charter Capital</div>
-        <p>Когда все двери закрываются - Charter открывает мир для вас и вашего капитала. Без искусственных границ. Часть задачи делают наши партнёры - счета, компании, ВНЖ, гражданство, off-ramp. Часть мы сами - SoF/SoW досье, AML-пакеты, юридическое структурирование, сопровождение онбординга.</p>
+        <p>Когда все двери закрываются — Charter открывает мир для вас и вашего капитала. Без искусственных границ. Часть задачи делают наши партнёры — счета, компании, ВНЖ, гражданство, off-ramp. Часть мы сами — SoF/SoW досье, AML-пакеты, юридическое структурирование, сопровождение онбординга.</p>
       </div>
       <div class="f-col">
         <h5>Контуры</h5>
         <ul>
-          <li><a href="homeland.html">Подготовка к&nbsp;исходу, ещё в&nbsp;РФ</a></li>
-          <li><a href="freedom-route.html">Маршрут в&nbsp;свободный мир, СНГ</a></li>
-          <li><a href="private.html">Private Office, от&nbsp;$1&nbsp;000&nbsp;000</a></li>
-          <li><a href="fund.html">Charter Asia Fund, от&nbsp;$25&nbsp;000</a></li>
+          <li><a href="homeland.html">Подготовка к&nbsp;исходу · ещё в&nbsp;РФ</a></li>
+          <li><a href="freedom-route.html">Маршрут в&nbsp;свободный мир · СНГ</a></li>
+          <li><a href="private.html">Private Office · от&nbsp;$1&nbsp;000&nbsp;000</a></li>
+          <li><a href="fund.html">Charter Asia Fund · от&nbsp;$25&nbsp;000</a></li>
         </ul>
       </div>
       <div class="f-col">
@@ -2066,10 +2066,10 @@ footer.f{
       </div>
     </div>
     <div class="f-disclaimer">
-      Charter Capital выступает (i) производителем собственных продуктов - досье SoF/SoW, AML-пакеты, юр. структурирование, сопровождение онбординга и (ii) концирж-агентом для услуг лицензированных партнёров - банков, EMI, корпоративных провайдеров, юристов по ВНЖ и CBI-программам. Услуги партнёров оказываются партнёрами и регулируются их юрисдикциями. Charter Capital не предоставляет инвестиционных, налоговых и юридических советов в смысле локального законодательства любой страны. Любая информация на сайте носит индикативный характер и не является публичной офертой.
+      Charter Capital выступает (i) производителем собственных продуктов — досье SoF/SoW, AML-пакеты, юр. структурирование, сопровождение онбординга и (ii) концирж-агентом для услуг лицензированных партнёров — банков, EMI, корпоративных провайдеров, юристов по ВНЖ и CBI-программам. Услуги партнёров оказываются партнёрами и регулируются их юрисдикциями. Charter Capital не предоставляет инвестиционных, налоговых и юридических советов в смысле локального законодательства любой страны. Любая информация на сайте носит индикативный характер и не является публичной офертой.
     </div>
     <div class="f-bottom">
-      <span>© 2026 Charter Capital - Когда двери закрываются, мы открываем мир</span>
+      <span>© 2026 Charter Capital — Когда двери закрываются, мы открываем мир</span>
       <span>Обновлено: апрель 2026</span>
     </div>
   </div>
@@ -2129,7 +2129,7 @@ document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeLogin
   window.addEventListener('scroll',tick,{passive:true}); tick();
 })();
 
-// Subtle motion, tilt-on-hover, magnetic CTAs, counter-up
+// Subtle motion · tilt-on-hover, magnetic CTAs, counter-up
 (function(){
   var noHover = window.matchMedia && window.matchMedia('(hover:none)').matches;
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
