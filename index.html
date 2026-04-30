@@ -301,7 +301,20 @@ p{color:var(--body);font-weight:400;line-height:1.7}
   backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
   box-shadow:0 4px 22px rgba(0,0,0,.38);
 }
-.hero-flag .dot{width:6px;height:6px;border-radius:50%;background:#ef4444;animation:pulse 2s ease infinite}
+.hero-flag .dot{
+  position:relative;width:6px;height:6px;border-radius:50%;background:#ef4444;
+  animation:pulseDot 2s ease infinite;
+}
+.hero-flag .dot::after{
+  content:'';position:absolute;left:50%;top:50%;
+  width:6px;height:6px;border-radius:50%;
+  border:1px solid #ef4444;
+  transform:translate(-50%,-50%) scale(1);
+  animation:pulseHalo 2.4s ease infinite;
+  pointer-events:none;
+}
+@keyframes pulseDot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.55;transform:scale(.85)}}
+@keyframes pulseHalo{0%{transform:translate(-50%,-50%) scale(.6);opacity:.7}100%{transform:translate(-50%,-50%) scale(3.2);opacity:0}}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 .hero h1{
   color:#fff;
@@ -533,7 +546,31 @@ section.s.dark p{color:rgba(255,255,255,.72)}
   transition:background .15s ease;
   position:relative;
 }
-.trigger:hover{background:var(--bg-soft)}
+.trigger:hover{
+  background:var(--bg-soft);
+  box-shadow:0 24px 56px rgba(15,23,42,.08),0 0 0 1px rgba(160,129,86,.15);
+}
+.trigger,.route{
+  transform-style:preserve-3d;
+  transition:transform .45s cubic-bezier(.2,.7,.3,1),box-shadow .3s ease,background .25s ease,border-color .25s ease;
+  will-change:transform;
+}
+.trigger.is-tilting,.route.is-tilting{
+  transition:transform .08s linear,box-shadow .3s ease;
+}
+.route:hover{
+  box-shadow:0 24px 56px rgba(15,23,42,.10),0 0 0 1px rgba(160,129,86,.18);
+}
+.btn-magnetic{transition:transform .45s cubic-bezier(.2,.7,.3,1),background .18s ease,border-color .18s ease,box-shadow .18s ease}
+.btn-magnetic.is-magnetizing{transition:transform .08s linear,background .18s ease}
+@media (hover:none){
+  .trigger,.route,.btn-magnetic{transform:none !important;transition:background .25s ease,box-shadow .25s ease,border-color .25s ease !important}
+}
+.counter{font-variant-numeric:tabular-nums}
+@media (prefers-reduced-motion:reduce){
+  .hero-flag .dot,.hero-flag .dot::after{animation:none}
+  .trigger,.route,.btn-magnetic{transform:none !important}
+}
 .trigger .num{font-size:11px;font-weight:700;color:var(--red);letter-spacing:.18em}
 .trigger h3{font-size:1.18rem;font-weight:500;line-height:1.2;letter-spacing:-.02em}
 .trigger p{font-size:14px;line-height:1.65;color:var(--body)}
@@ -1318,8 +1355,8 @@ footer.f{
       Для&nbsp;Вас, Вашего капитала и&nbsp;Бизнеса. Не обходим комплаенс — строим биографию, которую он&nbsp;принимает.
     </p>
     <div class="hero-actions">
-      <a href="#routes" class="btn btn-primary btn-lg">Подобрать маршрут <span class="arr">→</span></a>
-      <a href="#scoring" class="btn btn-ghost btn-lg">Скоринг готовности · 60&nbsp;сек</a>
+      <a href="#routes" class="btn btn-primary btn-lg btn-magnetic">Подобрать маршрут <span class="arr">→</span></a>
+      <a href="#scoring" class="btn btn-ghost btn-lg btn-magnetic">Скоринг готовности · 60&nbsp;сек</a>
     </div>
     <div class="hero-other">
       <span class="hero-other-label">Не ваш случай?</span>
@@ -1873,7 +1910,7 @@ footer.f{
           <div class="sr-dim"><span class="sr-dim-key">Происхождение</span><span class="sr-dim-val">Откуда капитал изначально</span></div>
           <div class="sr-dim"><span class="sr-dim-key">Хронология</span><span class="sr-dim-val">Связность по датам</span></div>
         </div>
-        <a href="#contact" class="btn btn-primary btn-lg">Запросить разбор кейса <span class="arr">→</span></a>
+        <a href="#contact" class="btn btn-primary btn-lg btn-magnetic">Запросить разбор кейса <span class="arr">→</span></a>
         <p class="sr-foot">Четыре измерения, а не одна общая оценка. Сжато. Под контролем советника.</p>
       </div>
 
@@ -1928,7 +1965,7 @@ footer.f{
         <div class="sr-result">
           <div class="sr-result-l">
             <span class="sr-result-label">Готовность</span>
-            <strong class="sr-result-score">88 / 100</strong>
+            <strong class="sr-result-score"><span class="counter" data-to="88">0</span> / 100</strong>
           </div>
           <span class="sr-tag sr-ready">ГОТОВО · К&nbsp;ПОДАЧЕ</span>
         </div>
@@ -2090,6 +2127,89 @@ document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeLogin
     else bar.classList.remove('solid');
   }
   window.addEventListener('scroll',tick,{passive:true}); tick();
+})();
+
+// Subtle motion · tilt-on-hover, magnetic CTAs, counter-up
+(function(){
+  var noHover = window.matchMedia && window.matchMedia('(hover:none)').matches;
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if(reduced) return;
+
+  // ── Tilt ─────────────────────────────────────────────
+  if(!noHover){
+    function tilt(els, max){
+      els.forEach(function(el){
+        var raf=null;
+        el.addEventListener('mousemove', function(e){
+          var r=el.getBoundingClientRect();
+          var x=(e.clientX-r.left)/r.width;
+          var y=(e.clientY-r.top)/r.height;
+          var rotY=(x-.5)*max*2;
+          var rotX=(.5-y)*max*2;
+          if(raf) cancelAnimationFrame(raf);
+          raf=requestAnimationFrame(function(){
+            el.classList.add('is-tilting');
+            el.style.transform='perspective(1100px) rotateX('+rotX.toFixed(2)+'deg) rotateY('+rotY.toFixed(2)+'deg)';
+          });
+        });
+        el.addEventListener('mouseleave', function(){
+          if(raf) cancelAnimationFrame(raf);
+          el.classList.remove('is-tilting');
+          el.style.transform='';
+        });
+      });
+    }
+    tilt(document.querySelectorAll('.trigger'), 3);
+    tilt(document.querySelectorAll('.route'), 2.5);
+  }
+
+  // ── Magnetic CTA ─────────────────────────────────────
+  if(!noHover){
+    document.querySelectorAll('.btn-magnetic').forEach(function(el){
+      var raf=null;
+      el.addEventListener('mousemove', function(e){
+        var r=el.getBoundingClientRect();
+        var x=(e.clientX-r.left-r.width/2)*0.18;
+        var y=(e.clientY-r.top-r.height/2)*0.22;
+        if(raf) cancelAnimationFrame(raf);
+        raf=requestAnimationFrame(function(){
+          el.classList.add('is-magnetizing');
+          el.style.transform='translate('+x.toFixed(2)+'px,'+y.toFixed(2)+'px)';
+        });
+      });
+      el.addEventListener('mouseleave', function(){
+        if(raf) cancelAnimationFrame(raf);
+        el.classList.remove('is-magnetizing');
+        el.style.transform='';
+      });
+    });
+  }
+
+  // ── Counter-up on viewport-enter ─────────────────────
+  if(!('IntersectionObserver' in window)) return;
+  var counters=document.querySelectorAll('.counter');
+  if(!counters.length) return;
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(!en.isIntersecting) return;
+      var el=en.target;
+      var to=parseFloat(el.dataset.to||el.textContent)||0;
+      var from=parseFloat(el.dataset.from||'0');
+      var dur=parseInt(el.dataset.dur||'1100',10);
+      var start=null;
+      function step(t){
+        if(!start) start=t;
+        var p=Math.min(1,(t-start)/dur);
+        var eased=1-Math.pow(1-p,3);
+        var val=from+(to-from)*eased;
+        el.textContent=Math.round(val).toLocaleString('ru-RU');
+        if(p<1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+      io.unobserve(el);
+    });
+  },{threshold:.4});
+  counters.forEach(function(c){ io.observe(c); });
 })();
 
 // Topbar dropdowns (Все продукты / Где вы сейчас)
