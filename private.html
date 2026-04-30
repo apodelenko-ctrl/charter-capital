@@ -216,6 +216,19 @@ button{font-family:inherit}
 
 main{padding-top:64px;background:var(--paper)}
 
+/* ─── Subtle motion (pilot) ────────────────────────────── */
+.tilt{transform-style:preserve-3d;transition:transform .45s cubic-bezier(.2,.7,.3,1),box-shadow .3s ease,background .25s ease,border-color .25s ease;will-change:transform}
+.tilt.is-tilting{transition:transform .08s linear,box-shadow .3s ease}
+.btn-magnetic{transition:transform .45s cubic-bezier(.2,.7,.3,1),background .18s ease,border-color .18s ease,box-shadow .18s ease}
+.btn-magnetic.is-magnetizing{transition:transform .08s linear,background .18s ease}
+@media (hover:none){.tilt,.btn-magnetic{transform:none !important;transition:background .25s ease,box-shadow .25s ease,border-color .25s ease !important}}
+.counter{font-variant-numeric:tabular-nums}
+@media (prefers-reduced-motion:reduce){.tilt,.btn-magnetic{transform:none !important}}
+/* pulse halo upgrade for hero-flag .dot */
+.hero-flag .dot{position:relative}
+.hero-flag .dot::after{content:'';position:absolute;left:50%;top:50%;width:6px;height:6px;border-radius:50%;border:1px solid var(--gold);transform:translate(-50%,-50%) scale(1);animation:pulseHalo 2.4s ease infinite;pointer-events:none}
+@keyframes pulseHalo{0%{transform:translate(-50%,-50%) scale(.6);opacity:.7}100%{transform:translate(-50%,-50%) scale(3.2);opacity:0}}
+
 /* ─── DECK ──────────────────────────────────────────────── */
 .deck{
   max-width:1280px;margin:0 auto;
@@ -857,7 +870,7 @@ footer.f{
     <p class="hero-second">Когда сумма исключает короткие пути, маршрут — единственный продукт.</p>
     <p class="lead">Мы проводим капитал через структурированные инвестиции в Сингапурский фонд, формируем реальную экономическую активность и подтверждённую документальную историю — и через выход из инвестиционного раунда возвращаем средства на ваши целевые счета в ЕС, Британии и Швейцарии уже <strong>чистыми деньгами с проверяемой банковской биографией</strong>. Для частных клиентов с активами от&nbsp;$1&nbsp;000&nbsp;000.</p>
     <div class="hero-actions">
-      <a href="#engagement" class="btn btn-gold btn-lg">Запросить мандат<span class="arr">→</span></a>
+      <a href="#engagement" class="btn btn-gold btn-lg btn-magnetic">Запросить мандат<span class="arr">→</span></a>
       <a href="index.html" class="btn btn-outline-dark btn-lg">Капитал ниже $1М — основной агрегатор</a>
     </div>
   </div>
@@ -1121,7 +1134,7 @@ footer.f{
       <div class="tier">
         <span class="tier-flag">T1 · Аудит</span>
         <h3>Диагностический аудит</h3>
-        <div class="price">от&nbsp;$250&nbsp;000<small>размер вашего капитала</small></div>
+        <div class="price">от&nbsp;$<span class="counter" data-to="250000" data-dur="1300">0</span><small>размер вашего капитала</small></div>
         <span class="term">3–4 недели · стоимость $50&nbsp;000 — $100&nbsp;000</span>
         <ul>
           <li>Полный аудит происхождения капитала</li>
@@ -1135,7 +1148,7 @@ footer.f{
       <div class="tier featured">
         <span class="tier-flag">T2 · Полный мандат · основной</span>
         <h3>Полная реализация маршрута</h3>
-        <div class="price">от&nbsp;$1&nbsp;000&nbsp;000<small>размер вашего капитала</small></div>
+        <div class="price">от&nbsp;$<span class="counter" data-to="1000000" data-dur="1500">0</span><small>размер вашего капитала</small></div>
         <span class="term">12–18 месяцев · стоимость $100&nbsp;000 — $4&nbsp;000&nbsp;000</span>
         <ul>
           <li>Аудит из T1 + полная реализация маршрута</li>
@@ -1151,7 +1164,7 @@ footer.f{
       <div class="tier">
         <span class="tier-flag">T3 · Стратегическое партнёрство</span>
         <h3>Семейный офис на базе Charter Capital</h3>
-        <div class="price">от&nbsp;$10&nbsp;000&nbsp;000<small>размер вашего капитала</small></div>
+        <div class="price">от&nbsp;$<span class="counter" data-to="10000000" data-dur="1700">0</span><small>размер вашего капитала</small></div>
         <span class="term">36+ месяцев · retainer + success fee, индивидуально</span>
         <ul>
           <li>Семейный офис на базе Charter Capital</li>
@@ -1205,7 +1218,7 @@ footer.f{
     <h2>30 минут под NDA — закрытая встреча, не консультация</h2>
     <p>Расскажите ситуацию — мы покажем, какой формат вовлечения её закрывает, какой бюджет и горизонт, каких рисков мы видим больше всего. Если ваш кейс не наш — скажем сразу и порекомендуем тех, кто подойдёт. Мы работаем с ограниченным числом мандатов одновременно.</p>
       <div class="contact-channels">
-        <a href="https://t.me/charter_capital" class="btn btn-gold btn-lg" target="_blank" rel="noopener">Telegram <span class="arr">→</span></a>
+        <a href="https://t.me/charter_capital" class="btn btn-gold btn-lg btn-magnetic" target="_blank" rel="noopener">Telegram <span class="arr">→</span></a>
         <a href="mailto:private@ccapital.pro" class="btn btn-outline-dark btn-lg">private@ccapital.pro</a>
         <button type="button" class="btn btn-outline-dark btn-lg" id="openLoginModal2">Защищённый канал</button>
       </div>
@@ -1274,6 +1287,78 @@ footer.f{
 document.addEventListener('DOMContentLoaded', function () {
   requestAnimationFrame(function () { document.body.classList.add('page-ready'); });
 });
+
+// Subtle motion · tilt-on-hover, magnetic CTAs, counter-up
+(function(){
+  var noHover=window.matchMedia&&window.matchMedia('(hover:none)').matches;
+  var reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if(reduced) return;
+  function tilt(els,max){
+    if(noHover) return;
+    els.forEach(function(el){
+      el.classList.add('tilt');
+      var raf=null;
+      el.addEventListener('mousemove',function(e){
+        var r=el.getBoundingClientRect();
+        var x=(e.clientX-r.left)/r.width, y=(e.clientY-r.top)/r.height;
+        var rotY=(x-.5)*max*2, rotX=(.5-y)*max*2;
+        if(raf) cancelAnimationFrame(raf);
+        raf=requestAnimationFrame(function(){
+          el.classList.add('is-tilting');
+          el.style.transform='perspective(1100px) rotateX('+rotX.toFixed(2)+'deg) rotateY('+rotY.toFixed(2)+'deg)';
+        });
+      });
+      el.addEventListener('mouseleave',function(){
+        if(raf) cancelAnimationFrame(raf);
+        el.classList.remove('is-tilting'); el.style.transform='';
+      });
+    });
+  }
+  tilt(document.querySelectorAll('.hub'),2.5);
+  tilt(document.querySelectorAll('.tier'),2);
+  if(!noHover){
+    document.querySelectorAll('.btn-magnetic').forEach(function(el){
+      var raf=null;
+      el.addEventListener('mousemove',function(e){
+        var r=el.getBoundingClientRect();
+        var x=(e.clientX-r.left-r.width/2)*0.18, y=(e.clientY-r.top-r.height/2)*0.22;
+        if(raf) cancelAnimationFrame(raf);
+        raf=requestAnimationFrame(function(){
+          el.classList.add('is-magnetizing');
+          el.style.transform='translate('+x.toFixed(2)+'px,'+y.toFixed(2)+'px)';
+        });
+      });
+      el.addEventListener('mouseleave',function(){
+        if(raf) cancelAnimationFrame(raf);
+        el.classList.remove('is-magnetizing'); el.style.transform='';
+      });
+    });
+  }
+  if(!('IntersectionObserver' in window)) return;
+  var counters=document.querySelectorAll('.counter');
+  if(!counters.length) return;
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(!en.isIntersecting) return;
+      var el=en.target;
+      var to=parseFloat(el.dataset.to||el.textContent)||0;
+      var from=parseFloat(el.dataset.from||'0');
+      var dur=parseInt(el.dataset.dur||'1100',10);
+      var prefix=el.dataset.prefix||'', suffix=el.dataset.suffix||'';
+      var start=null;
+      function step(t){
+        if(!start) start=t;
+        var p=Math.min(1,(t-start)/dur), eased=1-Math.pow(1-p,3);
+        var val=from+(to-from)*eased;
+        el.textContent=prefix+Math.round(val).toLocaleString('ru-RU')+suffix;
+        if(p<1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+      io.unobserve(el);
+    });
+  },{threshold:.4});
+  counters.forEach(function(c){ io.observe(c); });
+})();
 
 // Topbar dropdowns (Все продукты / Где вы сейчас)
 (function(){

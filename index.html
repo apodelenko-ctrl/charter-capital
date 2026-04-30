@@ -2196,13 +2196,15 @@ document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeLogin
       var to=parseFloat(el.dataset.to||el.textContent)||0;
       var from=parseFloat(el.dataset.from||'0');
       var dur=parseInt(el.dataset.dur||'1100',10);
+      var prefix=el.dataset.prefix||'';
+      var suffix=el.dataset.suffix||'';
       var start=null;
       function step(t){
         if(!start) start=t;
         var p=Math.min(1,(t-start)/dur);
         var eased=1-Math.pow(1-p,3);
         var val=from+(to-from)*eased;
-        el.textContent=Math.round(val).toLocaleString('ru-RU');
+        el.textContent=prefix+Math.round(val).toLocaleString('ru-RU')+suffix;
         if(p<1) requestAnimationFrame(step);
       }
       requestAnimationFrame(step);

@@ -254,6 +254,18 @@ p{color:var(--body);font-weight:400;line-height:1.7}
   .nav-dd-menu{left:auto;right:-12px}
 }
 
+/* ─── Subtle motion (pilot) ────────────────────────────── */
+.tilt{transform-style:preserve-3d;transition:transform .45s cubic-bezier(.2,.7,.3,1),box-shadow .3s ease,background .25s ease,border-color .25s ease;will-change:transform}
+.tilt.is-tilting{transition:transform .08s linear,box-shadow .3s ease}
+.btn-magnetic{transition:transform .45s cubic-bezier(.2,.7,.3,1),background .18s ease,border-color .18s ease,box-shadow .18s ease}
+.btn-magnetic.is-magnetizing{transition:transform .08s linear,background .18s ease}
+@media (hover:none){.tilt,.btn-magnetic{transform:none !important;transition:background .25s ease,box-shadow .25s ease,border-color .25s ease !important}}
+.counter{font-variant-numeric:tabular-nums}
+@media (prefers-reduced-motion:reduce){.tilt,.btn-magnetic{transform:none !important}}
+.hero-flag .dot{position:relative}
+.hero-flag .dot::after{content:'';position:absolute;left:50%;top:50%;width:6px;height:6px;border-radius:50%;border:1px solid currentColor;transform:translate(-50%,-50%) scale(1);animation:pulseHalo 2.4s ease infinite;pointer-events:none;opacity:.6}
+@keyframes pulseHalo{0%{transform:translate(-50%,-50%) scale(.6);opacity:.7}100%{transform:translate(-50%,-50%) scale(3.2);opacity:0}}
+
 /* ─── HERO ──────────────────────────────────────────────── */
 .hero{
   position:relative;min-height:100vh;
@@ -828,8 +840,8 @@ footer.f{
       Когда вы стоите на границе с пакетом «как-нибудь» — деньги, документы и капитал уже не работают. Charter Capital готовит вас к&nbsp;выходу пока окно открыто: сбережения, документы под репатриацию, юридическая чистка, легальная крипта, удалённая подача на ВНЖ.
     </p>
     <div class="hero-actions">
-      <a href="#cash" class="btn btn-primary btn-lg">Начать с проверки <span class="arr">↓</span></a>
-      <a href="#contact" class="btn btn-ghost btn-lg">Связаться сейчас</a>
+      <a href="#cash" class="btn btn-primary btn-lg btn-magnetic">Начать с проверки <span class="arr">↓</span></a>
+      <a href="#contact" class="btn btn-ghost btn-lg btn-magnetic">Связаться сейчас</a>
     </div>
     <div class="hero-meta">
       <div class="hero-meta-item">
@@ -837,11 +849,11 @@ footer.f{
         <div class="l">Месяца до готового пакета</div>
       </div>
       <div class="hero-meta-item">
-        <div class="v">5</div>
+        <div class="v"><span class="counter" data-to="5" data-dur="900">0</span></div>
         <div class="l">Блоков подготовки до выезда</div>
       </div>
       <div class="hero-meta-item">
-        <div class="v">100%</div>
+        <div class="v"><span class="counter" data-to="100" data-dur="1200" data-suffix="%">0</span></div>
         <div class="l">В рамках регулирования</div>
       </div>
       <div class="hero-meta-item">
@@ -1260,6 +1272,78 @@ document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeLogin
     else bar.classList.remove('solid');
   }
   window.addEventListener('scroll',tick,{passive:true}); tick();
+})();
+
+// Subtle motion · tilt-on-hover, magnetic CTAs, counter-up
+(function(){
+  var noHover=window.matchMedia&&window.matchMedia('(hover:none)').matches;
+  var reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if(reduced) return;
+  function tilt(els,max){
+    if(noHover) return;
+    els.forEach(function(el){
+      el.classList.add('tilt');
+      var raf=null;
+      el.addEventListener('mousemove',function(e){
+        var r=el.getBoundingClientRect();
+        var x=(e.clientX-r.left)/r.width, y=(e.clientY-r.top)/r.height;
+        var rotY=(x-.5)*max*2, rotX=(.5-y)*max*2;
+        if(raf) cancelAnimationFrame(raf);
+        raf=requestAnimationFrame(function(){
+          el.classList.add('is-tilting');
+          el.style.transform='perspective(1100px) rotateX('+rotX.toFixed(2)+'deg) rotateY('+rotY.toFixed(2)+'deg)';
+        });
+      });
+      el.addEventListener('mouseleave',function(){
+        if(raf) cancelAnimationFrame(raf);
+        el.classList.remove('is-tilting'); el.style.transform='';
+      });
+    });
+  }
+  tilt(document.querySelectorAll('.legend-item'),2.5);
+  tilt(document.querySelectorAll('.more-card'),2);
+  if(!noHover){
+    document.querySelectorAll('.btn-magnetic').forEach(function(el){
+      var raf=null;
+      el.addEventListener('mousemove',function(e){
+        var r=el.getBoundingClientRect();
+        var x=(e.clientX-r.left-r.width/2)*0.18, y=(e.clientY-r.top-r.height/2)*0.22;
+        if(raf) cancelAnimationFrame(raf);
+        raf=requestAnimationFrame(function(){
+          el.classList.add('is-magnetizing');
+          el.style.transform='translate('+x.toFixed(2)+'px,'+y.toFixed(2)+'px)';
+        });
+      });
+      el.addEventListener('mouseleave',function(){
+        if(raf) cancelAnimationFrame(raf);
+        el.classList.remove('is-magnetizing'); el.style.transform='';
+      });
+    });
+  }
+  if(!('IntersectionObserver' in window)) return;
+  var counters=document.querySelectorAll('.counter');
+  if(!counters.length) return;
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(!en.isIntersecting) return;
+      var el=en.target;
+      var to=parseFloat(el.dataset.to||el.textContent)||0;
+      var from=parseFloat(el.dataset.from||'0');
+      var dur=parseInt(el.dataset.dur||'1100',10);
+      var prefix=el.dataset.prefix||'', suffix=el.dataset.suffix||'';
+      var start=null;
+      function step(t){
+        if(!start) start=t;
+        var p=Math.min(1,(t-start)/dur), eased=1-Math.pow(1-p,3);
+        var val=from+(to-from)*eased;
+        el.textContent=prefix+Math.round(val).toLocaleString('ru-RU')+suffix;
+        if(p<1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+      io.unobserve(el);
+    });
+  },{threshold:.4});
+  counters.forEach(function(c){ io.observe(c); });
 })();
 
 // Topbar dropdowns (Все продукты / Где вы сейчас)
