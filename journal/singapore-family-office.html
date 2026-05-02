@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://ccapital.pro/assets/journal/singapore-family-office-hero.webp"/>
 <meta property="og:image:width" content="1536"/>
 <meta property="og:image:height" content="1024"/>
-<meta property="og:image:alt" content="Family Office Architecture — Singapore Hub"/>
+<meta property="og:image:alt" content="Marina Bay, Singapore — вид из private office"/>
 <meta property="og:locale" content="ru_RU"/>
 <meta property="article:published_time" content="2026-05-02T10:00:00+08:00"/>
 <meta property="article:author" content="Charter Capital"/>
@@ -53,9 +53,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link rel="preload" as="image" href="../assets/journal/singapore-family-office-hero.webp" fetchpriority="high" media="(min-width: 769px)"/>
 <link rel="preload" as="image" href="../assets/journal/singapore-family-office-hero-800w.webp" fetchpriority="high" media="(max-width: 768px)"/>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&display=swap"/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&display=swap" media="print" onload="this.media='all'"/>
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&display=swap"/></noscript>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" media="print" onload="this.media='all'"/>
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"/></noscript>
 
 <style>
 :root{
@@ -69,7 +69,7 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
-  font-family:'Inter',-apple-system,sans-serif;
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
   background:#fff;color:var(--ink);
   font-size:16px;line-height:1.6;font-weight:400;
   -webkit-font-smoothing:antialiased;
@@ -77,9 +77,8 @@ body{
 a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
 button{font-family:inherit;cursor:pointer}
-.container{max-width:1240px;margin:0 auto;padding:0 32px}
-.container-narrow{max-width:760px;margin:0 auto;padding:0 32px}
 
+/* ─── ANNOUNCE ────────────────────────────────────────── */
 #announce{
   position:fixed;top:0;left:0;right:0;z-index:120;
   background:linear-gradient(90deg,#0a0e1a 0%,#11192c 60%,#0a0e1a 100%);
@@ -114,6 +113,7 @@ button{font-family:inherit;cursor:pointer}
 .announce-close:hover{color:#fff;background:rgba(255,255,255,.06)}
 @media(max-width:640px){.announce-tag{display:none}.announce-inner{padding:9px 16px;gap:10px;font-size:12px}}
 
+/* ─── TOPBAR ───────────────────────────────────────────── */
 #topbar{
   position:fixed;top:38px;left:0;right:0;z-index:100;
   background:rgba(255,255,255,.92);
@@ -148,31 +148,43 @@ body.announce-closed #topbar{top:0}
 .topbar-cta:hover{background:#000}
 @media(max-width:980px){.topbar-nav{display:none}.topbar-brand .tag{display:none}}
 
-.article{padding:140px 0 100px;background:#fff}
+/* ─── ARTICLE LAYOUT ──────────────────────────────────── */
+.article{padding:130px 0 100px;background:#fff}
+
+/* «Рамка» статьи: внешний контейнер до 1080px, текст — внутри до 780px */
+.article-frame{max-width:1080px;margin:0 auto;padding:0 32px}
+.article-text{max-width:780px;margin-left:0}
+@media(max-width:900px){.article-frame{padding:0 24px}.article-text{max-width:100%}}
+
 .breadcrumb{
   display:flex;align-items:center;gap:8px;flex-wrap:wrap;
   font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--muted);margin-bottom:22px;
+  color:var(--muted);margin-bottom:28px;font-weight:500;
 }
 .breadcrumb a{color:var(--ink-2);transition:color .15s ease}
 .breadcrumb a:hover{color:var(--blue)}
 .breadcrumb .sep{color:var(--mute-soft)}
 
-.article-head{margin-bottom:34px}
+.article-head{margin-bottom:38px}
 .article-eyebrow{
   display:inline-block;font-size:11px;font-weight:600;letter-spacing:.22em;
-  text-transform:uppercase;color:var(--blue);margin-bottom:18px;
-  border-bottom:1px solid currentColor;padding-bottom:4px;
+  text-transform:uppercase;color:var(--blue);margin-bottom:22px;
+}
+.article-eyebrow::before{
+  content:"";display:inline-block;width:24px;height:1px;background:currentColor;
+  vertical-align:middle;margin-right:10px;
 }
 .article-head h1{
-  font-family:'Source Serif 4',Georgia,serif;
-  font-size:clamp(2rem,4.6vw,3.4rem);
-  font-weight:600;letter-spacing:-.02em;line-height:1.06;
-  color:var(--ink);margin-bottom:22px;
+  font-family:inherit;
+  font-size:clamp(2rem,4.4vw,3.2rem);
+  font-weight:300;letter-spacing:-.035em;line-height:1.08;
+  color:var(--ink);margin-bottom:26px;
 }
+.article-head h1 strong{font-weight:600}
 .article-meta{
   display:flex;align-items:center;flex-wrap:wrap;gap:14px;
-  font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
+  padding-top:20px;border-top:1px solid var(--line);
+  font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
   color:var(--muted);
 }
 .article-meta .dot{width:3px;height:3px;border-radius:50%;background:var(--mute-soft)}
@@ -180,46 +192,67 @@ body.announce-closed #topbar{top:0}
 .article-meta .cat{color:var(--blue)}
 
 .hero-img{
-  margin:36px 0 48px;border-radius:8px;overflow:hidden;
+  margin:42px 0 16px;border-radius:6px;overflow:hidden;
   background:#0a0e1a;aspect-ratio:3/2;
 }
 .hero-img img{width:100%;height:100%;object-fit:cover;display:block}
-.hero-caption{
-  font-size:13px;color:var(--muted);font-style:italic;line-height:1.5;
-  margin-top:12px;padding-left:14px;border-left:2px solid var(--gold);
+.img-caption{
+  font-size:12.5px;color:var(--muted);line-height:1.55;
+  padding:14px 0 0;font-weight:400;
+  border-top:1px solid var(--line);
+  margin-bottom:48px;
+  display:flex;gap:14px;align-items:flex-start;
 }
+.img-caption::before{
+  content:"";flex-shrink:0;width:24px;height:1px;background:var(--gold);margin-top:9px;
+}
+.img-caption strong{color:var(--ink-2);font-weight:600}
 
+/* Лид-абзац: акцентный, не сериф, а Inter с лёгким весом и крупнее */
 .lede-paragraph{
-  font-family:'Source Serif 4',Georgia,serif;
-  font-size:1.25rem;line-height:1.55;font-weight:400;
-  color:var(--ink-2);letter-spacing:-.005em;
-  margin-bottom:36px;
+  font-size:1.4rem;line-height:1.5;font-weight:300;
+  color:var(--ink);letter-spacing:-.015em;
+  margin-bottom:48px;
 }
 .lede-paragraph strong{font-weight:600;color:var(--ink)}
+@media(max-width:640px){.lede-paragraph{font-size:1.2rem}}
 
 .body p{
   font-size:1.0625rem;line-height:1.75;color:var(--body);
   margin-bottom:1.4em;font-weight:400;
 }
 .body p strong{color:var(--ink);font-weight:600}
+
+/* H2 с большой золотой цифрой по левому краю на широких экранах */
 .body h2{
-  font-family:'Source Serif 4',Georgia,serif;
-  font-size:clamp(1.5rem,3vw,2rem);
-  font-weight:600;letter-spacing:-.015em;line-height:1.15;
+  position:relative;
+  font-family:inherit;
+  font-size:clamp(1.5rem,2.8vw,1.9rem);
+  font-weight:500;letter-spacing:-.02em;line-height:1.2;
   color:var(--ink);
-  margin:60px 0 22px;
-  padding-top:30px;border-top:1px solid var(--line);
+  margin:64px 0 24px;
+  padding-top:28px;border-top:1px solid var(--ink);
 }
+.body h2 .h2-num{
+  position:absolute;left:-100px;top:30px;
+  font-size:3.4rem;font-weight:200;letter-spacing:-.04em;line-height:1;
+  color:var(--gold);opacity:.7;
+  font-variant-numeric:tabular-nums;
+}
+@media(max-width:1100px){.body h2 .h2-num{position:static;display:block;font-size:2.2rem;margin-bottom:8px;opacity:.85}}
+
 .body h3{
-  font-family:'Source Serif 4',Georgia,serif;
-  font-size:1.4rem;font-weight:600;letter-spacing:-.005em;line-height:1.25;
-  color:var(--ink);margin:38px 0 14px;
+  display:flex;align-items:baseline;gap:14px;
+  font-family:inherit;
+  font-size:1.3rem;font-weight:600;letter-spacing:-.015em;line-height:1.3;
+  color:var(--ink);margin:42px 0 14px;
 }
 .body h3 .num{
-  display:inline-block;font-family:ui-monospace,monospace;
-  font-size:.8em;color:var(--gold-deep);font-weight:500;
-  margin-right:10px;letter-spacing:.05em;
+  font-size:.85em;font-weight:300;color:var(--gold-deep);
+  letter-spacing:.06em;font-variant-numeric:tabular-nums;
+  flex-shrink:0;border-bottom:1px solid var(--gold);padding-bottom:1px;
 }
+
 .body ul{margin:0 0 1.4em 0;padding:0;list-style:none}
 .body ul li{
   position:relative;padding-left:22px;margin-bottom:.5em;
@@ -231,65 +264,91 @@ body.announce-closed #topbar{top:0}
 }
 .body ul li strong{color:var(--ink);font-weight:600}
 
-.body .pillars-intro{margin-bottom:28px}
+.pillars-intro{
+  font-size:1.0625rem;line-height:1.6;
+  margin:38px 0 8px;color:var(--ink);
+  font-weight:500;letter-spacing:-.005em;
+}
 
+/* Проблема/Последствия — двухколоночная врезка, шире текста */
 .problem-block{
+  display:grid;grid-template-columns:1fr 1fr;gap:0;
+  margin:36px 0 32px;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;
   background:var(--bg-soft);
-  border-left:3px solid var(--gold);border-radius:0 6px 6px 0;
-  padding:18px 22px;margin:24px 0 28px;
 }
+.problem-block > div{padding:22px 26px}
+.problem-block > div + div{border-left:1px solid var(--line)}
 .problem-block dt{
-  font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--gold-deep);margin-bottom:6px;
+  font-size:10.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold-deep);margin-bottom:10px;
+  display:flex;align-items:center;gap:10px;
 }
-.problem-block dd{
-  font-size:1rem;line-height:1.65;color:var(--ink-2);font-weight:400;
-}
-.problem-block dd + dt{margin-top:14px}
+.problem-block dt::before{content:"";width:18px;height:1px;background:var(--gold)}
+.problem-block dd{font-size:.98rem;line-height:1.65;color:var(--ink-2);font-weight:400}
+@media(max-width:640px){.problem-block{grid-template-columns:1fr}.problem-block > div + div{border-left:none;border-top:1px solid var(--line)}}
 
+/* Pull quote — большая цитата, выезжающая шире текста */
+.pull-quote{
+  margin:56px -100px;
+  padding:28px 0 28px 38px;
+  border-left:3px solid var(--gold);
+  font-size:1.4rem;line-height:1.45;font-weight:300;
+  color:var(--ink);letter-spacing:-.015em;
+}
+.pull-quote strong{font-weight:600}
+.pull-quote cite{
+  display:block;margin-top:14px;
+  font-size:11.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted);font-style:normal;
+}
+@media(max-width:1100px){.pull-quote{margin:48px 0;font-size:1.25rem}}
+
+/* Inline-инфографика — выезжает на полную ширину рамки */
 .inline-img{
-  margin:48px -40px;
-  border-radius:8px;overflow:hidden;background:#0a0e1a;
+  margin:56px -100px 16px;
+  border-radius:6px;overflow:hidden;background:#0a0e1a;
 }
-@media(max-width:820px){.inline-img{margin:36px -16px;border-radius:4px}}
 .inline-img img{width:100%;height:auto;display:block}
+@media(max-width:1100px){.inline-img{margin:48px 0 16px}}
+@media(max-width:640px){.inline-img{margin:36px -16px 8px;border-radius:0}}
 
+/* Резюме Charter Capital — тёмный полноширинный блок */
 .summary-box{
-  margin-top:64px;padding:38px 40px;
+  margin:72px -100px 0;
+  padding:48px 56px;
   background:linear-gradient(180deg,#0a0e1a 0%,#0e1424 100%);
   color:#e2e8f0;border-radius:10px;
   border:1px solid rgba(232,212,168,.18);
   box-shadow:0 30px 80px -40px rgba(10,14,26,.4);
 }
 .summary-box .label{
-  font-family:ui-monospace,monospace;
   font-size:10.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
-  color:#e8d4a8;margin-bottom:14px;
-  display:inline-flex;align-items:center;gap:10px;
+  color:#e8d4a8;margin-bottom:18px;
+  display:flex;align-items:center;gap:12px;
 }
-.summary-box .label::before{
-  content:"";width:24px;height:1px;background:#e8d4a8;
-}
+.summary-box .label::before{content:"";width:24px;height:1px;background:#e8d4a8}
 .summary-box h3{
-  font-family:'Source Serif 4',Georgia,serif;
-  font-size:1.5rem;font-weight:500;letter-spacing:-.01em;line-height:1.3;
-  color:#fff;margin:0 0 18px;padding:0;border:none;
+  font-family:inherit;
+  font-size:1.6rem;font-weight:400;letter-spacing:-.025em;line-height:1.25;
+  color:#fff;margin:0 0 22px;padding:0;border:none;display:block;
 }
 .summary-box p{
   color:#cbd5e1;font-size:1.025rem;line-height:1.7;margin-bottom:.9em;font-weight:400;
 }
 .summary-box p strong{color:#fff;font-weight:600}
 .summary-box p:last-child{margin-bottom:0}
-@media(max-width:640px){.summary-box{padding:28px 24px}}
+@media(max-width:1100px){.summary-box{margin:56px 0 0}}
+@media(max-width:640px){.summary-box{padding:32px 26px}.summary-box h3{font-size:1.35rem}}
 
 .cta-row{
-  display:flex;flex-wrap:wrap;gap:14px;justify-content:center;
-  margin:64px 0 0;padding-top:48px;border-top:1px solid var(--line);
+  display:flex;flex-wrap:wrap;gap:14px;justify-content:flex-start;align-items:center;
+  margin:56px 0 0;padding-top:40px;border-top:1px solid var(--line);
 }
 .cta-btn{
   display:inline-flex;align-items:center;gap:8px;
-  font-size:13px;font-weight:600;letter-spacing:.06em;
-  padding:14px 28px;border-radius:6px;transition:all .15s ease;
+  font-size:13px;font-weight:600;letter-spacing:.04em;
+  padding:14px 26px;border-radius:6px;transition:all .15s ease;
   border:1px solid var(--ink);
 }
 .cta-btn.primary{background:var(--ink);color:#fff}
@@ -305,7 +364,9 @@ body.announce-closed #topbar{top:0}
 .bottom-nav a{color:var(--ink);font-weight:500;display:inline-flex;align-items:center;gap:8px}
 .bottom-nav a:hover{color:var(--blue)}
 
+/* ─── FOOTER ──────────────────────────────────────────── */
 .footer{background:#0a0e1a;color:#94a3b8;padding:64px 0 36px;margin-top:80px}
+.footer .container{max-width:1240px;margin:0 auto;padding:0 32px}
 .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px;margin-bottom:40px}
 @media(max-width:780px){.footer-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:520px){.footer-grid{grid-template-columns:1fr}}
@@ -367,10 +428,7 @@ body.announce-closed #topbar{top:0}
       "dateModified": "2026-05-02T10:00:00+08:00",
       "author": {"@id": "https://ccapital.pro/#organization"},
       "publisher": {"@id": "https://ccapital.pro/#organization"},
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://ccapital.pro/journal/singapore-family-office.html"
-      },
+      "mainEntityOfPage": {"@type": "WebPage", "@id": "https://ccapital.pro/journal/singapore-family-office.html"},
       "isPartOf": {"@id": "https://ccapital.pro/#website"},
       "inLanguage": "ru-RU",
       "articleSection": "Аналитика",
@@ -437,7 +495,7 @@ body.announce-closed #topbar{top:0}
 </header>
 
 <article class="article">
-  <div class="container-narrow">
+  <div class="article-frame">
 
     <nav class="breadcrumb" aria-label="Хлебные крошки">
       <a href="/">Charter Capital</a>
@@ -447,9 +505,9 @@ body.announce-closed #topbar{top:0}
       <span>Эволюция Family Office</span>
     </nav>
 
-    <header class="article-head">
-      <span class="article-eyebrow">Аналитика</span>
-      <h1>Эволюция Family Office: Почему Сингапур стал новым стандартом для управления частным капиталом</h1>
+    <header class="article-head article-text">
+      <span class="article-eyebrow">Аналитика · Family Office</span>
+      <h1>Эволюция Family Office: почему <strong>Сингапур</strong> стал новым стандартом для управления частным капиталом</h1>
       <div class="article-meta">
         <span class="author">Charter Capital</span>
         <span class="dot"></span>
@@ -465,91 +523,104 @@ body.announce-closed #topbar{top:0}
       <img
         src="../assets/journal/singapore-family-office-hero.webp"
         srcset="../assets/journal/singapore-family-office-hero-800w.webp 800w, ../assets/journal/singapore-family-office-hero.webp 1536w"
-        sizes="(max-width: 768px) 100vw, 760px"
-        alt="Family Office Architecture — Singapore Hub: VCC, MAS и Private Bank на фоне Marina Bay"
+        sizes="(max-width: 768px) 100vw, 1080px"
+        alt="Marina Bay, Singapore — вид из private office в час золотого часа"
         width="1536" height="1024"
         fetchpriority="high"
       />
     </figure>
-    <p class="hero-caption">
-      Архитектура Сингапура: высокотехнологичный макет семейного офиса на базе VCC в переговорной с видом на Marina Bay.
+    <p class="img-caption article-text">
+      <span><strong>Сингапур.</strong> Marina Bay в часы closing — вид из переговорной семейного офиса. Пейзаж, который банки Lombard Odier и Pictet считывают как «институциональный стандарт».</span>
     </p>
 
-    <p class="lede-paragraph">
-      В мире управления крупным частным капиталом (HNWI) наступил момент <strong>«великого переселения»</strong>.
-      Структуры, которые десятилетиями считались эталоном — трасты на Каймановых островах или фонды
-      в Лихтенштейне — стремительно теряют свою эффективность.
-    </p>
+    <div class="article-text">
 
-    <div class="body">
-      <p>
-        Сегодня вопрос не в том, где «дешевле» зарегистрировать компанию, а в том,
-        <strong>какая структура выдержит комплаенс-аудит</strong> топ-тиер банков
-        (Julius Baer, Lombard Odier, Pictet) и обеспечит реальную манёвренность активов.
+      <p class="lede-paragraph">
+        В мире управления крупным частным капиталом (HNWI) наступил момент <strong>«великого переселения»</strong>.
+        Структуры, которые десятилетиями считались эталоном — трасты на Каймановых островах или фонды
+        в Лихтенштейне — стремительно теряют эффективность.
       </p>
 
-      <h2>Токсичность «тихих гаваней»</h2>
+      <div class="body">
 
-      <p>
-        Почему классические офшоры больше не работают? Для любого крупного банка юрисдикция
-        Каймановых островов сегодня — это <strong>«красный флаг»</strong>.
-      </p>
+        <p>
+          Сегодня вопрос не в том, где «дешевле» зарегистрировать компанию, а в том,
+          <strong>какая структура выдержит комплаенс-аудит</strong> топ-тиер банков
+          (Julius Baer, Lombard Odier, Pictet) и обеспечит реальную манёвренность активов.
+        </p>
 
-      <dl class="problem-block">
-        <dt>Проблема</dt>
-        <dd>Вы можете сэкономить на регистрации Cayman SPC, но застрять на 6–9 месяцев на этапе онбординга в банке.</dd>
-        <dt>Последствия</dt>
-        <dd>Упущенные инвестиционные возможности и бесконечные запросы со стороны AML-офицеров, требующих доказать «сабстенс» (реальное присутствие) там, где его исторически не было.</dd>
-      </dl>
+        <h2><span class="h2-num">01</span>Токсичность «тихих гаваней»</h2>
 
-      <h2>Сингапур: переход от офшора к «мидшору»</h2>
+        <p>
+          Почему классические офшоры больше не работают? Для любого крупного банка юрисдикция
+          Каймановых островов сегодня — это <strong>«красный флаг»</strong>.
+        </p>
 
-      <p>
-        Сингапур предложил миру решение, которое объединяет налоговую оптимизацию офшора и
-        <strong>репутационную чистоту финансового хаба уровня Лондона</strong>. Создание семейного офиса
-        на базе управляющей компании с лицензией CMS (Capital Markets Services) — это сигнал рынку
-        и банкам о том, что ваш капитал управляется по институциональным стандартам.
-      </p>
+        <dl class="problem-block">
+          <div>
+            <dt>Проблема</dt>
+            <dd>Вы можете сэкономить на регистрации Cayman SPC, но застрять на 6–9 месяцев на этапе онбординга в банке.</dd>
+          </div>
+          <div>
+            <dt>Последствия</dt>
+            <dd>Упущенные инвестиционные возможности и бесконечные запросы AML-офицеров — «докажите сабстенс там, где его исторически не было».</dd>
+          </div>
+        </dl>
 
-      <figure class="inline-img">
-        <img
-          src="../assets/journal/vcc-structure-anatomy.webp"
-          srcset="../assets/journal/vcc-structure-anatomy-800w.webp 800w, ../assets/journal/vcc-structure-anatomy.webp 1536w"
-          sizes="(max-width: 820px) 100vw, 840px"
-          alt="Анатомия Umbrella VCC: единая правовая структура с тремя сегрегированными субфондами под управлением MAS-лицензированного CMS-менеджера"
-          width="1536" height="1024"
-          loading="lazy"
-        />
-      </figure>
-      <p class="hero-caption">
-        Анатомия VCC: 3D-инфографика, показывающая структуру «Зонтичной VCC» с сегрегированными субфондами
-        под управлением лицензированной Управляющей компании MAS.
-      </p>
+        <h2><span class="h2-num">02</span>Сингапур: переход от офшора к «мидшору»</h2>
 
-      <p class="pillars-intro"><strong>Три столпа сингапурской архитектуры:</strong></p>
+        <p>
+          Сингапур предложил миру решение, которое объединяет налоговую оптимизацию офшора и
+          <strong>репутационную чистоту финансового хаба уровня Лондона</strong>. Создание семейного офиса
+          на базе управляющей компании с лицензией CMS (Capital Markets Services) — это сигнал рынку
+          и банкам о том, что ваш капитал управляется по институциональным стандартам.
+        </p>
 
-      <h3><span class="num">01</span>Технология VCC (Variable Capital Company)</h3>
-      <p>
-        Введённая в 2020 году, структура <strong>VCC</strong> стала «швейцарским ножом» для семейного капитала.
-        Она позволяет создавать зонтичные фонды, где активы разных направлений или членов семьи
-        <strong>юридически сегрегированы</strong> (изолированы) друг от друга. Это даёт гибкость в управлении
-        и абсолютную конфиденциальность — реестр акционеров VCC не является публичным.
-      </p>
+        <blockquote class="pull-quote">
+          «Сингапур — это не про уход от налогов. Это про <strong>легальную эффективность</strong>,
+          которую видит и принимает private banking уровня Lombard Odier».
+          <cite>— редакция Charter Capital</cite>
+        </blockquote>
 
-      <h3><span class="num">02</span>Налоговые льготы Section 13O и 13U</h3>
-      <p>
-        Сингапур — это не про «уход от налогов», а про <strong>легальную эффективность</strong>. При соблюдении
-        минимальных требований по объёму активов (AUM) и локальным расходам, семейный офис получает
-        освобождение от налогов (0%) на доходы от большинства видов инвестиций.
-      </p>
+        <figure class="inline-img">
+          <img
+            src="../assets/journal/vcc-structure-anatomy.webp"
+            srcset="../assets/journal/vcc-structure-anatomy-800w.webp 800w, ../assets/journal/vcc-structure-anatomy.webp 1536w"
+            sizes="(max-width: 1100px) 100vw, 1080px"
+            alt="Umbrella VCC: единая правовая структура с тремя сегрегированными субфондами под управлением MAS-лицензированного менеджера"
+            width="1536" height="1024"
+            loading="lazy"
+          />
+        </figure>
+        <p class="img-caption">
+          <span><strong>Umbrella VCC.</strong> Одна правовая оболочка, три юридически изолированных субфонда. Внизу — MAS-лицензированный CMS-менеджер.</span>
+        </p>
 
-      <h3><span class="num">03</span>Прямой канал к Private Banking</h3>
-      <p>
-        Когда ваш капитал упакован в структуру, регулируемую <strong>MAS (Monetary Authority of Singapore)</strong>,
-        вы перестаёте быть «клиентом из зоны риска». Для партнёров уровня Lombard Odier или EFG такая
-        архитектура понятна и прозрачна. Это открывает доступ к закрытым пулам инвестиционных идей и
-        private equity сделкам, которые недоступны обычным частным лицам.
-      </p>
+        <p class="pillars-intro">Три столпа сингапурской архитектуры:</p>
+
+        <h3><span class="num">01</span>Технология VCC (Variable Capital Company)</h3>
+        <p>
+          Введённая в 2020 году, структура <strong>VCC</strong> стала «швейцарским ножом» для семейного капитала.
+          Она позволяет создавать зонтичные фонды, где активы разных направлений или членов семьи
+          <strong>юридически сегрегированы</strong> друг от друга. Это даёт гибкость в управлении
+          и абсолютную конфиденциальность — реестр акционеров VCC не является публичным.
+        </p>
+
+        <h3><span class="num">02</span>Налоговые льготы Section 13O и 13U</h3>
+        <p>
+          Сингапур — это не про «уход от налогов», а про <strong>легальную эффективность</strong>. При соблюдении
+          минимальных требований по объёму активов (AUM) и локальным расходам, семейный офис получает
+          освобождение от налогов (0%) на доходы от большинства видов инвестиций.
+        </p>
+
+        <h3><span class="num">03</span>Прямой канал к Private Banking</h3>
+        <p>
+          Когда ваш капитал упакован в структуру, регулируемую <strong>MAS (Monetary Authority of Singapore)</strong>,
+          вы перестаёте быть «клиентом из зоны риска». Для партнёров уровня Lombard Odier или EFG такая
+          архитектура понятна и прозрачна. Это открывает доступ к закрытым пулам инвестиционных идей и
+          private equity сделкам, которые недоступны обычным частным лицам.
+        </p>
+      </div>
     </div>
 
     <aside class="summary-box" aria-label="Резюме Charter Capital">
@@ -567,15 +638,17 @@ body.announce-closed #topbar{top:0}
       </p>
     </aside>
 
-    <div class="cta-row">
-      <a class="cta-btn primary" href="/private.html">Private Office Charter Capital →</a>
-      <a class="cta-btn ghost" href="/#contact">Запросить разбор юрисдикции</a>
-    </div>
+    <div class="article-text">
+      <div class="cta-row">
+        <a class="cta-btn primary" href="/private.html">Private Office Charter Capital →</a>
+        <a class="cta-btn ghost" href="/#contact">Запросить разбор юрисдикции</a>
+      </div>
 
-    <nav class="bottom-nav" aria-label="Навигация по дайджесту">
-      <a href="/journal.html">← Все материалы Дайджеста</a>
-      <a href="/private.html">Private Office →</a>
-    </nav>
+      <nav class="bottom-nav" aria-label="Навигация по дайджесту">
+        <a href="/journal.html">← Все материалы Дайджеста</a>
+        <a href="/private.html">Private Office →</a>
+      </nav>
+    </div>
 
   </div>
 </article>
