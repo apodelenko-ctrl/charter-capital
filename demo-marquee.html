@@ -90,12 +90,16 @@ button{font-family:inherit;cursor:pointer}
   padding:160px 32px 100px;color:#fff;
 }
 .hero-inner{max-width:1240px;margin:0 auto;width:100%}
+.hero-row{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:24px;margin-bottom:24px;flex-wrap:wrap;
+}
 .hero-flag{
   display:inline-flex;align-items:center;gap:10px;
   background:rgba(16,10,12,.88);border:1px solid rgba(220,38,38,.48);
   padding:7px 16px;border-radius:999px;
   font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
-  color:#fca5a5;margin-bottom:24px;
+  color:#fca5a5;
 }
 .hero h1{
   color:#fff;max-width:18ch;
@@ -204,46 +208,43 @@ body.opt-b .hero{padding-bottom:140px}
 @media(prefers-reduced-motion:reduce){.digest-strip .track{animation:none}}
 
 /* ═══════════════════════════════════════════════════════ */
-/* ВАРИАНТ C — прозрачная плашка В HERO, на уровне       */
-/* красной плашки «2026 — окно сужается» слева            */
+/* ВАРИАНТ C — прозрачная плашка СПРАВА в одном ряду       */
+/* с красной плашкой слева. Текст бежит к бейджу справа.   */
 /* ═══════════════════════════════════════════════════════ */
 .digest-corner{
   display:none;
-  position:absolute;
-  /* top подобран так, чтобы низ плашки совпадал с низом красной плашки слева */
-  right:32px;top:160px;z-index:30;
-  background:transparent;border:none;border-radius:0;
-  padding:0;align-items:center;gap:14px;max-width:520px;
+  align-items:center;gap:14px;max-width:560px;flex:0 1 auto;min-width:0;
+  background:transparent;border:none;padding:0;
   text-decoration:none;
-  box-shadow:none;backdrop-filter:none;
 }
-.digest-corner .badge{
-  flex-shrink:0;display:inline-flex;align-items:center;
-  font-family:ui-monospace,monospace;font-size:10px;font-weight:600;
-  letter-spacing:.18em;text-transform:uppercase;color:#0a0e1a;background:#e8d4a8;
-  padding:6px 12px;border-radius:999px;
-  transition:background .2s ease;
-}
-.digest-corner:hover .badge{background:#fff}
 .digest-corner .marquee{
   flex:1;min-width:0;overflow:hidden;
   font-size:12.5px;color:rgba(255,255,255,.78);letter-spacing:.01em;
-  border-left:1px solid rgba(255,255,255,.22);padding-left:14px;
-  mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 32px),transparent 100%);
-  -webkit-mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 32px),transparent 100%);
+  /* затухание слева — текст «появляется» из-за края и течёт к бейджу справа */
+  mask-image:linear-gradient(90deg,transparent 0,#000 32px,#000 100%);
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 32px,#000 100%);
 }
-.digest-corner .track{display:inline-flex;gap:56px;white-space:nowrap;animation:slide 28s linear infinite}
+.digest-corner .track{
+  display:inline-flex;gap:56px;white-space:nowrap;
+  animation:slide 28s linear infinite;
+  animation-direction:reverse; /* текст движется вправо, к бейджу */
+}
 .digest-corner .track strong{color:#fff;font-weight:600}
 .digest-corner:hover .track{animation-play-state:paused}
 .digest-corner:hover .marquee{color:rgba(255,255,255,.95)}
-.digest-corner .arr{flex-shrink:0;color:#e8d4a8;font-size:14px;transition:transform .2s ease}
-.digest-corner:hover .arr{transform:translateX(3px)}
-body.opt-c .digest-corner{display:inline-flex}
-@media(max-width:980px){
-  body.opt-c .digest-corner{right:24px;top:140px;max-width:340px}
+.digest-corner .badge{
+  flex-shrink:0;display:inline-flex;align-items:center;gap:8px;
+  font-family:ui-monospace,monospace;font-size:10px;font-weight:600;
+  letter-spacing:.2em;text-transform:uppercase;color:#0a0e1a;background:#e8d4a8;
+  padding:7px 14px;border-radius:999px;
+  border:1px solid rgba(232,212,168,.4);
+  transition:background .2s ease,transform .2s ease;
 }
+.digest-corner .badge .arr{font-size:11px;line-height:1;transition:transform .2s ease}
+.digest-corner:hover .badge{background:#fff}
+.digest-corner:hover .badge .arr{transform:translateX(2px)}
+body.opt-c .digest-corner{display:inline-flex}
 @media(max-width:760px){
-  body.opt-c .digest-corner{right:18px;top:130px;gap:10px}
   body.opt-c .digest-corner .marquee{display:none}
 }
 
@@ -283,7 +284,21 @@ body.opt-c .digest-corner{display:inline-flex}
 
 <section class="hero">
   <div class="hero-inner">
-    <span class="hero-flag">2026 — окно сужается каждый месяц</span>
+    <div class="hero-row">
+      <span class="hero-flag">2026 — окно сужается каждый месяц</span>
+
+      <!-- ВАРИАНТ C: прозрачная плашка в одном ряду с красным флагом -->
+      <a class="digest-corner" href="journal/singapore-family-office.html" aria-label="Свежий материал Дайджеста">
+        <span class="marquee">
+          <span class="track">
+            <span><strong>Эволюция Family Office:</strong> почему Сингапур стал новым стандартом · 02·05·26</span>
+            <span><strong>Эволюция Family Office:</strong> почему Сингапур стал новым стандартом · 02·05·26</span>
+          </span>
+        </span>
+        <span class="badge">Дайджест <span class="arr">→</span></span>
+      </a>
+    </div>
+
     <h1>Когда двери закрываются — <strong>Charter Capital</strong> открывает мир без искусственных границ</h1>
   </div>
 
@@ -300,18 +315,6 @@ body.opt-c .digest-corner{display:inline-flex}
       <a class="arr" href="journal.html">Читать →</a>
     </div>
   </div>
-
-  <!-- ВАРИАНТ C: прозрачная плашка в hero, на уровне красного флага -->
-  <a class="digest-corner" href="journal/singapore-family-office.html" aria-label="Свежий материал Дайджеста">
-    <span class="badge">Дайджест</span>
-    <span class="marquee">
-      <span class="track">
-        <span><strong>Эволюция Family Office:</strong> почему Сингапур стал новым стандартом · 02·05·26</span>
-        <span><strong>Эволюция Family Office:</strong> почему Сингапур стал новым стандартом · 02·05·26</span>
-      </span>
-    </span>
-    <span class="arr">→</span>
-  </a>
 
 </section>
 
