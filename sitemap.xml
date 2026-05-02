@@ -86,18 +86,6 @@
   </url>
 
   <url>
-    <loc>https://ccapital.pro/team.html</loc>
-    <lastmod>2026-05-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://ccapital.pro/team.html"/>
-    <image:image>
-      <image:loc>https://ccapital.pro/assets/team/founder-podelenko.webp</image:loc>
-      <image:title>Артём Поделенко — основатель и CEO Charter Capital</image:title>
-    </image:image>
-  </url>
-
-  <url>
     <loc>https://ccapital.pro/property.html</loc>
     <lastmod>2026-04-28</lastmod>
     <changefreq>weekly</changefreq>
