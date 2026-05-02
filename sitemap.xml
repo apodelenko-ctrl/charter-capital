@@ -74,6 +74,18 @@
   </url>
 
   <url>
+    <loc>https://ccapital.pro/slovakia.html</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ccapital.pro/slovakia.html"/>
+    <image:image>
+      <image:loc>https://ccapital.pro/assets/slovakia/slovakia-hero-bratislava.webp</image:loc>
+      <image:title>Charter Capital · Slovakia — тихий вход в ЕС</image:title>
+    </image:image>
+  </url>
+
+  <url>
     <loc>https://ccapital.pro/property.html</loc>
     <lastmod>2026-04-28</lastmod>
     <changefreq>weekly</changefreq>
