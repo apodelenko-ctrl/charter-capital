@@ -106,24 +106,6 @@ h3{font-size:1.25rem;font-weight:500;letter-spacing:-.02em}
 }
 .kicker .pipe{color:rgba(94,73,20,.4)}
 
-/* ─── BUTTONS ─────────────────────────────────────────── */
-.btn{
-  display:inline-flex;align-items:center;gap:10px;
-  font-family:inherit;font-size:14px;font-weight:500;
-  padding:14px 26px;border-radius:var(--radius);
-  cursor:pointer;border:none;text-decoration:none;
-  transition:all .18s ease;white-space:nowrap;
-}
-.btn-dark{background:var(--ink);color:#fff}
-.btn-dark:hover{background:#000;transform:translateY(-1px);box-shadow:0 10px 24px rgba(10,14,26,.25)}
-.btn-gold{background:var(--gold);color:#fff}
-.btn-gold:hover{background:var(--gold-deep);transform:translateY(-1px);box-shadow:0 10px 24px rgba(168,134,47,.32)}
-.btn-ghost{background:transparent;color:var(--ink);border:1px solid rgba(10,14,26,.25)}
-.btn-ghost:hover{background:rgba(10,14,26,.04);border-color:rgba(10,14,26,.5)}
-.btn-lg{padding:16px 30px;font-size:15px}
-.btn .arr{transition:transform .18s ease}
-.btn:hover .arr{transform:translateX(3px)}
-
 /* ─── TOPBAR ─────────────────────────────────────────── */
 #topbar{position:fixed;top:0;left:0;right:0;z-index:100;background:transparent;border-bottom:1px solid transparent;transition:background .3s ease,border-color .3s ease,backdrop-filter .3s ease}
 #topbar.solid{background:rgba(245,240,230,.85);backdrop-filter:saturate(150%) blur(14px);-webkit-backdrop-filter:saturate(150%) blur(14px);border-bottom-color:rgba(94,73,20,.1)}
@@ -351,32 +333,10 @@ h3{font-size:1.25rem;font-weight:500;letter-spacing:-.02em}
   margin-bottom:16px;
 }
 .about-body p strong{color:#fff;font-weight:500}
-.about-cta{
-  margin-top:34px;display:flex;flex-wrap:wrap;gap:14px;
-}
-.about-cta .btn-gold{background:var(--gold-2);color:var(--ink)}
-.about-cta .btn-gold:hover{background:var(--gold);color:#fff}
-.about-cta .btn-ghost{color:#fff;border-color:rgba(255,255,255,.3)}
-.about-cta .btn-ghost:hover{background:rgba(255,255,255,.06);border-color:#fff}
 @media (max-width:880px){
   .about{padding:70px 24px}
   .about-body p{font-size:15.5px}
 }
-
-/* ─── COLOPHON / FINAL CTA ─────────────────────── */
-.colophon{
-  padding:80px 32px;background:var(--paper);
-  border-top:1px solid var(--line);text-align:center;
-}
-.colophon h3{
-  font-size:clamp(1.5rem,2.8vw,2rem);font-weight:300;
-  color:var(--ink);max-width:680px;margin:0 auto 20px;
-  letter-spacing:-.02em;line-height:1.3;
-}
-.colophon p{
-  color:var(--body);max-width:560px;margin:0 auto 28px;font-size:15.5px;
-}
-.colophon-cta{display:flex;justify-content:center;flex-wrap:wrap;gap:12px}
 
 /* ─── FOOTER ────────────────────────────────────── */
 .f{background:#06080f;color:#94a3b8;padding:60px 32px 24px;border-top:1px solid rgba(255,255,255,.06)}
@@ -530,22 +490,7 @@ h3{font-size:1.25rem;font-weight:500;letter-spacing:-.02em}
       <p>Его работа связана с&nbsp;международной архитектурой капитала, банковской объяснимостью сделок и&nbsp;созданием инфраструктуры для предпринимателей, которые живут и&nbsp;работают между несколькими странами, рынками и&nbsp;финансовыми системами.</p>
       <p>В&nbsp;Charter Capital он&nbsp;отвечает за&nbsp;стратегию и&nbsp;структуру решений: <strong>как выстроить маршрут капитала, как подготовить документы, как заранее увидеть слабые места и&nbsp;как сделать историю клиента понятной для банков и&nbsp;профессиональных контрагентов.</strong></p>
       <p>Как энтузиаст яхтинга и&nbsp;капитан, Артём хорошо понимает цену маршрута, дисциплины и&nbsp;точного расчёта. В&nbsp;бизнесе он&nbsp;следует тому&nbsp;же принципу: видеть риски заранее, держать курс и&nbsp;принимать решения до&nbsp;того, как шторм становится очевидным.</p>
-
-      <div class="about-cta">
-        <a href="index.html#contact" class="btn btn-gold btn-lg">Связаться лично с&nbsp;Артёмом <span class="arr">→</span></a>
-        <a href="https://t.me/charter_capital" target="_blank" rel="noopener" class="btn btn-ghost btn-lg">Telegram-канал</a>
-      </div>
     </div>
-  </div>
-</section>
-
-<!-- ─────── COLOPHON / CTA ─────── -->
-<section class="colophon">
-  <h3>Если письмо нашло отклик&nbsp;— значит, мы&nbsp;говорим на&nbsp;одном языке.</h3>
-  <p>Напишите. Не&nbsp;для пресейла, а&nbsp;для нормального разговора по&nbsp;вашей ситуации.</p>
-  <div class="colophon-cta">
-    <a href="index.html#contact" class="btn btn-dark btn-lg">Запросить разговор <span class="arr">→</span></a>
-    <a href="private.html" class="btn btn-ghost btn-lg">Private Office, от&nbsp;$1М</a>
   </div>
 </section>
 
