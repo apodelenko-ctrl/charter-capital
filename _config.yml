@@ -1,0 +1,4 @@
+# GitHub Pages (Jekyll): do not publish internal working documents.
+# Content under private_docs/ stays in git for maintainers only.
+exclude:
+  - private_docs

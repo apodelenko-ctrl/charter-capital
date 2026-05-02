@@ -4,7 +4,6 @@
 User-agent: *
 Allow: /
 Disallow: /team.html
-Disallow: /source_ready_checkpoint_v1.md
 Disallow: /INTEGRATION-PROPERTY.md
 
 # === Поисковые боты ===
