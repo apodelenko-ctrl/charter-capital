@@ -204,49 +204,47 @@ body.opt-b .hero{padding-bottom:140px}
 @media(prefers-reduced-motion:reduce){.digest-strip .track{animation:none}}
 
 /* ═══════════════════════════════════════════════════════ */
-/* ВАРИАНТ C — прозрачная плашка на уровне бренда слева */
+/* ВАРИАНТ C — прозрачная плашка В HERO, на уровне       */
+/* красной плашки «2026 — окно сужается» слева            */
 /* ═══════════════════════════════════════════════════════ */
-/* Совпадает с центром строки бренда в topbar (~28px от верха) */
 .digest-corner{
   display:none;
-  position:fixed;right:32px;top:28px;z-index:110;
+  position:absolute;
+  /* top подобран так, чтобы низ плашки совпадал с низом красной плашки слева */
+  right:32px;top:160px;z-index:30;
   background:transparent;border:none;border-radius:0;
-  padding:0;align-items:center;gap:14px;max-width:440px;
+  padding:0;align-items:center;gap:14px;max-width:520px;
   text-decoration:none;
   box-shadow:none;backdrop-filter:none;
 }
 .digest-corner .badge{
   flex-shrink:0;display:inline-flex;align-items:center;
-  font-family:ui-monospace,monospace;font-size:9.5px;font-weight:600;
-  letter-spacing:.2em;text-transform:uppercase;color:#0a0e1a;background:#e8d4a8;
-  padding:5px 10px;border-radius:4px;
-  transition:transform .2s ease,background .2s ease;
+  font-family:ui-monospace,monospace;font-size:10px;font-weight:600;
+  letter-spacing:.18em;text-transform:uppercase;color:#0a0e1a;background:#e8d4a8;
+  padding:6px 12px;border-radius:999px;
+  transition:background .2s ease;
 }
 .digest-corner:hover .badge{background:#fff}
 .digest-corner .marquee{
   flex:1;min-width:0;overflow:hidden;
-  font-size:12px;color:rgba(255,255,255,.78);letter-spacing:.01em;
-  border-left:1px solid rgba(255,255,255,.18);padding-left:14px;
-  mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 28px),transparent 100%);
-  -webkit-mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 28px),transparent 100%);
+  font-size:12.5px;color:rgba(255,255,255,.78);letter-spacing:.01em;
+  border-left:1px solid rgba(255,255,255,.22);padding-left:14px;
+  mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 32px),transparent 100%);
+  -webkit-mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 32px),transparent 100%);
 }
-.digest-corner .track{display:inline-flex;gap:48px;white-space:nowrap;animation:slide 26s linear infinite}
+.digest-corner .track{display:inline-flex;gap:56px;white-space:nowrap;animation:slide 28s linear infinite}
 .digest-corner .track strong{color:#fff;font-weight:600}
 .digest-corner:hover .track{animation-play-state:paused}
 .digest-corner:hover .marquee{color:rgba(255,255,255,.95)}
-.digest-corner .arr{flex-shrink:0;color:#e8d4a8;font-size:13px;transition:transform .2s ease}
-.digest-corner:hover .arr{transform:translateX(2px)}
+.digest-corner .arr{flex-shrink:0;color:#e8d4a8;font-size:14px;transition:transform .2s ease}
+.digest-corner:hover .arr{transform:translateX(3px)}
 body.opt-c .digest-corner{display:inline-flex}
-/* Чтобы плашка не лезла на nav/CTA в демо — на средних экранах прячем nav,
-   на реальном сайте плашку поставим перед CTA или в свой слот */
-body.opt-c #topbar .topbar-nav{margin-right:auto}
-body.opt-c #topbar .topbar-cta{display:none}
 @media(max-width:980px){
-  body.opt-c .digest-corner{right:24px;top:24px}
-  body.opt-c .digest-corner .marquee{display:none}
+  body.opt-c .digest-corner{right:24px;top:140px;max-width:340px}
 }
 @media(max-width:760px){
-  body.opt-c .digest-corner{right:18px;top:22px}
+  body.opt-c .digest-corner{right:18px;top:130px;gap:10px}
+  body.opt-c .digest-corner .marquee{display:none}
 }
 
 </style>
@@ -302,19 +300,20 @@ body.opt-c #topbar .topbar-cta{display:none}
       <a class="arr" href="journal.html">Читать →</a>
     </div>
   </div>
-</section>
 
-<!-- ВАРИАНТ C: уголок справа сверху -->
-<a class="digest-corner" href="journal/singapore-family-office.html" aria-label="Свежий материал Дайджеста">
-  <span class="badge">Дайджест</span>
-  <span class="marquee">
-    <span class="track">
-      <span><strong>Эволюция Family Office:</strong> Сингапур · 02·05</span>
-      <span><strong>Эволюция Family Office:</strong> Сингапур · 02·05</span>
+  <!-- ВАРИАНТ C: прозрачная плашка в hero, на уровне красного флага -->
+  <a class="digest-corner" href="journal/singapore-family-office.html" aria-label="Свежий материал Дайджеста">
+    <span class="badge">Дайджест</span>
+    <span class="marquee">
+      <span class="track">
+        <span><strong>Эволюция Family Office:</strong> почему Сингапур стал новым стандартом · 02·05·26</span>
+        <span><strong>Эволюция Family Office:</strong> почему Сингапур стал новым стандартом · 02·05·26</span>
+      </span>
     </span>
-  </span>
-  <span class="arr">→</span>
-</a>
+    <span class="arr">→</span>
+  </a>
+
+</section>
 
 <div class="demo-pick">
   <b>Выберите вариант</b>
