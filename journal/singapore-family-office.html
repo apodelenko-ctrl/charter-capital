@@ -192,21 +192,16 @@ body.announce-closed #topbar{top:0}
 .article-meta .cat{color:var(--blue)}
 
 .hero-img{
-  margin:42px 0 16px;border-radius:6px;overflow:hidden;
+  margin:42px 0 0;border-radius:6px;overflow:hidden;
   background:#0a0e1a;aspect-ratio:3/2;
 }
 .hero-img img{width:100%;height:100%;object-fit:cover;display:block}
-.img-caption{
-  font-size:12.5px;color:var(--muted);line-height:1.55;
-  padding:14px 0 0;font-weight:400;
-  border-top:1px solid var(--line);
-  margin-bottom:48px;
-  display:flex;gap:14px;align-items:flex-start;
+.img-credit{
+  font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--mute-soft);padding:10px 2px 0;
+  margin-bottom:48px;text-align:right;
 }
-.img-caption::before{
-  content:"";flex-shrink:0;width:24px;height:1px;background:var(--gold);margin-top:9px;
-}
-.img-caption strong{color:var(--ink-2);font-weight:600}
+.img-credit::before{content:"↑ ";color:var(--gold);margin-right:4px}
 
 /* Лид-абзац: акцентный, не сериф, а Inter с лёгким весом и крупнее */
 .lede-paragraph{
@@ -341,28 +336,81 @@ body.announce-closed #topbar{top:0}
 @media(max-width:1100px){.summary-box{margin:56px 0 0}}
 @media(max-width:640px){.summary-box{padding:32px 26px}.summary-box h3{font-size:1.35rem}}
 
-.cta-row{
-  display:flex;flex-wrap:wrap;gap:14px;justify-content:flex-start;align-items:center;
-  margin:56px 0 0;padding-top:40px;border-top:1px solid var(--line);
+/* Теги материала — после резюме */
+.tag-row{
+  display:flex;flex-wrap:wrap;gap:8px;
+  margin:56px 0 36px;
+  padding-bottom:28px;border-bottom:1px solid var(--line);
 }
-.cta-btn{
+.tag-row .label{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:10.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold-deep);align-self:center;margin-right:6px;
+}
+.tag-row .tag{
+  font-size:11.5px;font-weight:500;letter-spacing:.04em;
+  color:var(--ink-2);background:var(--bg-soft);
+  border:1px solid var(--line);
+  padding:6px 12px;border-radius:999px;
+  transition:background .15s ease,color .15s ease,border-color .15s ease;
+}
+.tag-row .tag:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+/* Карточка «Поговорить с командой» — фирменный стиль (private.html) */
+.next-step{
+  position:relative;
+  margin:0 0 8px;
+  padding:40px 44px 36px;
+  background:#fff;border:1px solid var(--line);border-radius:10px;
+  border-left:3px solid var(--gold);
+  box-shadow:0 18px 40px -28px rgba(15,23,42,.18);
+}
+.next-step .kicker{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:10.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--gold-deep);margin-bottom:14px;
+}
+.next-step .kicker::before{content:"";width:24px;height:1px;background:var(--gold)}
+.next-step h2{
+  font-family:inherit;
+  font-size:clamp(1.5rem,2.6vw,1.85rem);
+  font-weight:300;letter-spacing:-.025em;line-height:1.2;color:var(--ink);
+  margin:0 0 14px;padding:0;border:none;
+}
+.next-step h2 strong{font-weight:600}
+.next-step p{
+  font-size:1rem;line-height:1.65;color:var(--body);
+  max-width:60ch;margin-bottom:24px;
+}
+.next-step .channels{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px}
+.ch-btn{
   display:inline-flex;align-items:center;gap:8px;
-  font-size:13px;font-weight:600;letter-spacing:.04em;
-  padding:14px 26px;border-radius:6px;transition:all .15s ease;
-  border:1px solid var(--ink);
+  font-size:13px;font-weight:600;letter-spacing:.02em;
+  padding:13px 22px;border-radius:6px;transition:all .15s ease;
+  border:1px solid;
 }
-.cta-btn.primary{background:var(--ink);color:#fff}
-.cta-btn.primary:hover{background:#000}
-.cta-btn.ghost{background:transparent;color:var(--ink)}
-.cta-btn.ghost:hover{background:var(--bg-soft)}
+.ch-btn.gold{background:#a08156;color:#fff;border-color:#a08156}
+.ch-btn.gold:hover{background:#7a5f38;border-color:#7a5f38}
+.ch-btn.outline{background:transparent;color:var(--ink);border-color:var(--ink)}
+.ch-btn.outline:hover{background:var(--bg-soft)}
+.ch-btn .arr{transition:transform .15s ease}
+.ch-btn:hover .arr{transform:translateX(3px)}
+.next-step .note{
+  font-size:12px;color:var(--muted);line-height:1.6;
+  padding-top:18px;border-top:1px solid var(--line-soft);
+  max-width:60ch;
+}
+.next-step .note strong{color:var(--ink-2);font-weight:600}
+@media(max-width:640px){.next-step{padding:28px 24px}}
 
 .bottom-nav{
-  margin-top:48px;padding-top:32px;border-top:1px solid var(--line);
+  margin-top:36px;padding-top:24px;
   display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;
-  font-size:13px;color:var(--muted);
+  font-size:12.5px;color:var(--muted);letter-spacing:.04em;
 }
-.bottom-nav a{color:var(--ink);font-weight:500;display:inline-flex;align-items:center;gap:8px}
-.bottom-nav a:hover{color:var(--blue)}
+.bottom-nav a{color:var(--ink-2);font-weight:500;display:inline-flex;align-items:center;gap:6px;transition:color .15s ease}
+.bottom-nav a:hover{color:var(--gold-deep)}
 
 /* ─── FOOTER ──────────────────────────────────────────── */
 .footer{background:#0a0e1a;color:#94a3b8;padding:64px 0 36px;margin-top:80px}
@@ -529,9 +577,7 @@ body.announce-closed #topbar{top:0}
         fetchpriority="high"
       />
     </figure>
-    <p class="img-caption article-text">
-      <span><strong>Сингапур.</strong> Marina Bay в часы closing — вид из переговорной семейного офиса. Пейзаж, который банки Lombard Odier и Pictet считывают как «институциональный стандарт».</span>
-    </p>
+    <p class="img-credit">Сингапур · Marina Bay</p>
 
     <div class="article-text">
 
@@ -592,9 +638,7 @@ body.announce-closed #topbar{top:0}
             loading="lazy"
           />
         </figure>
-        <p class="img-caption">
-          <span><strong>Umbrella VCC.</strong> Одна правовая оболочка, три юридически изолированных субфонда. Внизу — MAS-лицензированный CMS-менеджер.</span>
-        </p>
+        <p class="img-credit">Структура Umbrella VCC</p>
 
         <p class="pillars-intro">Три столпа сингапурской архитектуры:</p>
 
@@ -639,15 +683,43 @@ body.announce-closed #topbar{top:0}
     </aside>
 
     <div class="article-text">
-      <div class="cta-row">
-        <a class="cta-btn primary" href="/private.html">Private Office Charter Capital →</a>
-        <a class="cta-btn ghost" href="/#contact">Запросить разбор юрисдикции</a>
+
+      <div class="tag-row" aria-label="Темы материала">
+        <span class="label">Темы</span>
+        <a class="tag" href="/journal.html">Family Office</a>
+        <a class="tag" href="/journal.html">Сингапур</a>
+        <a class="tag" href="/journal.html">VCC</a>
+        <a class="tag" href="/journal.html">Section 13O / 13U</a>
+        <a class="tag" href="/journal.html">Private Banking</a>
+        <a class="tag" href="/journal.html">MAS</a>
       </div>
+
+      <aside class="next-step" aria-label="Поговорить с командой">
+        <span class="kicker">Поговорить с командой</span>
+        <h2>30 минут под NDA — <strong>не консультация, разбор вашей архитектуры</strong></h2>
+        <p>
+          Мы покажем, как ваш кейс ложится в Сингапур: подходит ли VCC, проходите ли по
+          Section 13O или 13U, что банки Lombard Odier / Julius Baer / Pictet спросят первым,
+          в какие сроки реалистично собрать структуру и где цена ошибки в выборе юрисдикции
+          становится критической. Если кейс не наш — скажем сразу.
+        </p>
+        <div class="channels">
+          <a class="ch-btn gold" href="https://t.me/charter_capital" target="_blank" rel="noopener">Telegram <span class="arr">→</span></a>
+          <a class="ch-btn outline" href="mailto:private@ccapital.pro">private@ccapital.pro</a>
+          <a class="ch-btn outline" href="/private.html">Private Office <span class="arr">→</span></a>
+        </div>
+        <p class="note">
+          Канал шифрован end-to-end. <strong>Не пишите в обычной почте</strong> номера счетов,
+          паспорта, адреса кошельков и реквизиты сделок — мы пришлём защищённую форму
+          после первого ответа. Ограниченное число мандатов в месяц.
+        </p>
+      </aside>
 
       <nav class="bottom-nav" aria-label="Навигация по дайджесту">
         <a href="/journal.html">← Все материалы Дайджеста</a>
-        <a href="/private.html">Private Office →</a>
+        <span>02 мая 2026 · Charter Capital</span>
       </nav>
+
     </div>
 
   </div>
