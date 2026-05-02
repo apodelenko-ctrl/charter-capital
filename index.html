@@ -307,16 +307,29 @@ p{color:var(--body);font-weight:400;line-height:1.7}
 
 /* ─── HERO · DIGEST CORNER ─────────────────────────────── */
 /* Прозрачная плашка справа в одном ряду с .hero-flag.
-   Текст бежит к золотому бейджу справа. */
+   Текст бежит к золотому бейджу справа.
+   Цвета меняются через переменные: дефолт — светлый (тёмный hero),
+   модификатор .is-dark — тёмный текст (на светлых hero-фотках). */
 .hero-digest{
+  --digest-text:rgba(255,255,255,.85);
+  --digest-strong:#fff;
+  --digest-line:rgba(255,255,255,.28);
+  --digest-shadow:0 1px 2px rgba(0,0,0,.55), 0 0 8px rgba(0,0,0,.4);
   display:inline-flex;align-items:center;gap:14px;
   max-width:560px;flex:0 1 auto;min-width:0;
   background:transparent;border:none;padding:0;
   text-decoration:none;
 }
+.hero-digest.is-dark{
+  --digest-text:rgba(15,23,42,.85);
+  --digest-strong:#0a0e1a;
+  --digest-line:rgba(15,23,42,.28);
+  --digest-shadow:0 1px 1px rgba(255,255,255,.7), 0 0 14px rgba(255,255,255,.5);
+}
 .hero-digest .marquee{
   flex:1;min-width:0;overflow:hidden;
-  font-size:12.5px;color:rgba(255,255,255,.78);letter-spacing:.01em;
+  font-size:12.5px;color:var(--digest-text);letter-spacing:.01em;
+  text-shadow:var(--digest-shadow);
   mask-image:linear-gradient(90deg,transparent 0,#000 32px,#000 100%);
   -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 32px,#000 100%);
 }
@@ -325,25 +338,25 @@ p{color:var(--body);font-weight:400;line-height:1.7}
   animation:digestSlide 28s linear infinite;
   animation-direction:reverse;
 }
-.hero-digest .track strong{color:#fff;font-weight:600}
+.hero-digest .track strong{color:var(--digest-strong);font-weight:600}
 .hero-digest:hover .track,.hero-digest:focus-visible .track{animation-play-state:paused}
-.hero-digest:hover .marquee{color:rgba(255,255,255,.95)}
 .hero-digest .badge{
   flex-shrink:0;display:inline-flex;align-items:center;gap:8px;
   font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
   font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
   color:#0a0e1a;background:#e8d4a8;
   padding:7px 14px;border-radius:999px;
-  border:1px solid rgba(232,212,168,.4);
+  border:1px solid rgba(232,212,168,.55);
   transition:background .2s ease;
+  box-shadow:0 4px 18px rgba(0,0,0,.32);
 }
 .hero-digest .badge .arr{font-size:11px;line-height:1;transition:transform .2s ease}
 .hero-digest:hover .badge{background:#fff}
 .hero-digest:hover .badge .arr{transform:translateX(2px)}
 @keyframes digestSlide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@media(prefers-reduced-motion:reduce){.hero-digest .track{animation:none;padding-left:0}}
+@media(prefers-reduced-motion:reduce){.hero-digest .track{animation:none}}
 @media(max-width:768px){
-  .hero-digest{order:2;flex:1 0 auto;justify-content:flex-end}
+  .hero-digest{flex:1 0 auto;justify-content:flex-end}
   .hero-digest .marquee{display:none}
 }
 .hero-flag .dot{
@@ -1425,7 +1438,7 @@ footer.f{
         <span>2026 - окно сужается каждый месяц</span>
       </span>
 
-      <a class="hero-digest" href="journal/singapore-family-office.html" aria-label="Свежий материал в Дайджесте Charter Capital">
+      <a class="hero-digest is-dark" href="journal/singapore-family-office.html" aria-label="Свежий материал в Дайджесте Charter Capital">
         <span class="marquee" aria-hidden="true">
           <span class="track">
             <span><strong>Эволюция Family Office:</strong> почему Сингапур стал новым стандартом &middot; 02&middot;05&middot;26</span>

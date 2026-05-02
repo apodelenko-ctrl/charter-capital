@@ -286,7 +286,28 @@ p{color:var(--body);font-weight:400;line-height:1.7}
   pointer-events:none;
 }
 .hero-inner{position:relative;max-width:1240px;margin:0 auto;width:100%}
-.hero-flags{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:32px}
+.hero-flags{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:0}
+/* Дайджест-плашка в hero (адаптивный текст: дефолт — светлый, .is-dark — тёмный) */
+.hero-flags-row{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:32px}
+.hero-flags-row > .hero-flags{flex:0 0 auto}
+.hero-digest{
+  --digest-text:rgba(255,255,255,.85);--digest-strong:#fff;
+  --digest-shadow:0 1px 2px rgba(0,0,0,.55), 0 0 8px rgba(0,0,0,.4);
+  display:inline-flex;align-items:center;gap:14px;max-width:560px;flex:0 1 auto;min-width:0;
+  background:transparent;border:none;padding:0;text-decoration:none;
+}
+.hero-digest.is-dark{--digest-text:rgba(15,23,42,.78);--digest-strong:#0f172a;--digest-shadow:0 1px 2px rgba(255,255,255,.55), 0 0 12px rgba(255,255,255,.35)}
+.hero-digest .marquee{flex:1;min-width:0;overflow:hidden;font-size:12.5px;color:var(--digest-text);letter-spacing:.01em;text-shadow:var(--digest-shadow);mask-image:linear-gradient(90deg,transparent 0,#000 32px,#000 100%);-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 32px,#000 100%)}
+.hero-digest .track{display:inline-flex;gap:56px;white-space:nowrap;animation:digestSlide 28s linear infinite;animation-direction:reverse}
+.hero-digest .track strong{color:var(--digest-strong);font-weight:600}
+.hero-digest:hover .track,.hero-digest:focus-visible .track{animation-play-state:paused}
+.hero-digest .badge{flex-shrink:0;display:inline-flex;align-items:center;gap:8px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#0a0e1a;background:#e8d4a8;padding:7px 14px;border-radius:999px;border:1px solid rgba(232,212,168,.55);transition:background .2s ease;box-shadow:0 4px 18px rgba(0,0,0,.32)}
+.hero-digest .badge .arr{font-size:11px;line-height:1;transition:transform .2s ease}
+.hero-digest:hover .badge{background:#fff}
+.hero-digest:hover .badge .arr{transform:translateX(2px)}
+@keyframes digestSlide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.hero-digest .track{animation:none}}
+@media(max-width:768px){.hero-digest{flex:1 0 auto;justify-content:flex-end}.hero-digest .marquee{display:none}}
 .hero-flag{
   display:inline-flex;align-items:center;gap:10px;
   padding:7px 16px;border-radius:999px;
@@ -829,15 +850,26 @@ footer.f{
 <!-- HERO -->
 <section class="hero" id="hero">
   <div class="hero-inner">
-    <div class="hero-flags">
-      <span class="hero-flag red">
-        <span class="dot"></span>
-        <span>Окно ещё открыто - но скрипит</span>
-      </span>
-      <span class="hero-flag amber">
-        <span class="dot"></span>
-        <span>Подготовка к&nbsp;исходу, 2-4 месяца</span>
-      </span>
+    <div class="hero-flags-row">
+      <div class="hero-flags">
+        <span class="hero-flag red">
+          <span class="dot"></span>
+          <span>Окно ещё открыто - но скрипит</span>
+        </span>
+        <span class="hero-flag amber">
+          <span class="dot"></span>
+          <span>Подготовка к&nbsp;исходу, 2-4 месяца</span>
+        </span>
+      </div>
+      <a class="hero-digest" href="journal/singapore-family-office.html" aria-label="Свежий материал в Дайджесте Charter Capital">
+        <span class="marquee" aria-hidden="true">
+          <span class="track">
+            <span><strong>Эволюция Family Office:</strong> почему Сингапур стал новым стандартом &middot; 02&middot;05&middot;26</span>
+            <span><strong>Эволюция Family Office:</strong> почему Сингапур стал новым стандартом &middot; 02&middot;05&middot;26</span>
+          </span>
+        </span>
+        <span class="badge">Дайджест <span class="arr">→</span></span>
+      </a>
     </div>
     <h1>Если проблема ещё на родине - <strong>успейте собраться правильно</strong>.</h1>
     <p class="hero-sub">

@@ -267,6 +267,22 @@ p{color:var(--text-soft);font-weight:400;line-height:1.65;font-size:16px}
 }
 .hero-flag .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2.4s ease infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+/* Дайджест-плашка в hero (адаптивный текст) */
+.hero-flags-row{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:32px}
+.hero-flags-row > .hero-flag{margin-bottom:0;flex:0 0 auto}
+.hero-digest{--digest-text:rgba(255,255,255,.85);--digest-strong:#fff;--digest-shadow:0 1px 2px rgba(0,0,0,.55), 0 0 8px rgba(0,0,0,.4);display:inline-flex;align-items:center;gap:14px;max-width:560px;flex:0 1 auto;min-width:0;background:transparent;border:none;padding:0;text-decoration:none}
+.hero-digest.is-dark{--digest-text:rgba(15,23,42,.78);--digest-strong:#0f172a;--digest-shadow:0 1px 2px rgba(255,255,255,.55), 0 0 12px rgba(255,255,255,.35)}
+.hero-digest .marquee{flex:1;min-width:0;overflow:hidden;font-size:12.5px;color:var(--digest-text);letter-spacing:.01em;text-shadow:var(--digest-shadow);mask-image:linear-gradient(90deg,transparent 0,#000 32px,#000 100%);-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 32px,#000 100%)}
+.hero-digest .track{display:inline-flex;gap:56px;white-space:nowrap;animation:digestSlide 28s linear infinite;animation-direction:reverse}
+.hero-digest .track strong{color:var(--digest-strong);font-weight:600}
+.hero-digest:hover .track,.hero-digest:focus-visible .track{animation-play-state:paused}
+.hero-digest .badge{flex-shrink:0;display:inline-flex;align-items:center;gap:8px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#0a0e1a;background:#e8d4a8;padding:7px 14px;border-radius:999px;border:1px solid rgba(232,212,168,.55);transition:background .2s ease;box-shadow:0 4px 18px rgba(0,0,0,.32)}
+.hero-digest .badge .arr{font-size:11px;line-height:1;transition:transform .2s ease}
+.hero-digest:hover .badge{background:#fff}
+.hero-digest:hover .badge .arr{transform:translateX(2px)}
+@keyframes digestSlide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.hero-digest .track{animation:none}}
+@media(max-width:768px){.hero-digest{flex:1 0 auto;justify-content:flex-end}.hero-digest .marquee{display:none}}
 .cc-hero .title{color:#fff;max-width:24ch}
 @media(max-width:880px){
   .cc-hero{min-height:auto}
@@ -691,9 +707,20 @@ footer.f{
 <!-- ─── DECK 1, HERO (full-bleed background) ───────────── -->
 <section class="cc-hero cc-hero--fund">
   <div class="cc-hero-body">
-    <div class="hero-flag">
-      <span class="dot"></span>
-      <span>Charter Asia Fund, сингапурская инвестиционная программа</span>
+    <div class="hero-flags-row">
+      <div class="hero-flag">
+        <span class="dot"></span>
+        <span>Charter Asia Fund, сингапурская инвестиционная программа</span>
+      </div>
+      <a class="hero-digest is-dark" href="journal/singapore-family-office.html" aria-label="Свежий материал в Дайджесте Charter Capital">
+        <span class="marquee" aria-hidden="true">
+          <span class="track">
+            <span><strong>Эволюция Family Office:</strong> почему Сингапур стал новым стандартом &middot; 02&middot;05&middot;26</span>
+            <span><strong>Эволюция Family Office:</strong> почему Сингапур стал новым стандартом &middot; 02&middot;05&middot;26</span>
+          </span>
+        </span>
+        <span class="badge">Дайджест <span class="arr">→</span></span>
+      </a>
     </div>
     <h1 class="title">Реальный Пхукет - <strong>от $25&nbsp;000</strong>.</h1>
     <p class="hero-second">Доход и рост на основе данных, а не обещаний. Сингапурский приватный фонд Charter Capital для инвестирования в курортную недвижимость Азии.</p>
