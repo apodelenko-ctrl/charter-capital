@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="robots" content="noindex,nofollow"/>
+<title>Демо · Дайджест-пилюля + бегущая строка</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"/>
+<style>
+:root{
+  --bg-darker:#06080f;--ink:#0f172a;--gold:#a08156;--gold-soft:#e8d4a8;
+  --line:#e2e8f0;--muted:#64748b;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:'Inter',-apple-system,sans-serif;
+  color:#0f172a;background:#fff;font-size:16px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer}
+
+.demo-pick{
+  position:fixed;bottom:18px;right:18px;z-index:300;
+  background:#0a0e1a;color:#fff;
+  padding:14px 18px;border-radius:8px;
+  font-size:12.5px;line-height:1.6;
+  border:1px solid rgba(255,255,255,.1);
+  max-width:280px;box-shadow:0 12px 30px rgba(0,0,0,.3);
+}
+.demo-pick b{color:#e8d4a8}
+.demo-pick .nav{display:flex;gap:8px;margin-top:8px}
+.demo-pick .nav a{
+  padding:5px 10px;border-radius:5px;background:rgba(255,255,255,.08);
+  font-size:11px;letter-spacing:.06em;font-weight:500;
+}
+.demo-pick .nav a.is-active{background:#e8d4a8;color:#0a0e1a}
+
+.label{
+  position:fixed;top:14px;left:14px;z-index:300;
+  background:#fff;color:#0f172a;
+  padding:8px 14px;border-radius:6px;
+  font-family:ui-monospace,monospace;font-size:11px;
+  font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+  border:1px solid #e2e8f0;
+  box-shadow:0 4px 14px rgba(0,0,0,.08);
+}
+
+/* ─── TOPBAR (как на index.html) ────────────────────────── */
+#topbar{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(6,8,15,.55);
+  backdrop-filter:saturate(150%) blur(14px);
+  -webkit-backdrop-filter:saturate(150%) blur(14px);
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.topbar-inner{
+  max-width:1320px;margin:0 auto;padding:18px 32px;
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+}
+.topbar-brand{display:flex;align-items:baseline;gap:14px;color:#fff}
+.topbar-brand .name{font-size:14px;font-weight:600;letter-spacing:.18em;text-transform:uppercase}
+.topbar-brand .tag{
+  font-size:11px;font-weight:300;color:rgba(255,255,255,.55);
+  border-left:1px solid rgba(255,255,255,.2);padding-left:14px;letter-spacing:.04em;
+}
+.topbar-nav{display:flex;align-items:center;gap:6px}
+.topbar-nav a{
+  font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,.78);padding:8px 14px;border-radius:6px;
+}
+.topbar-nav a:hover{color:#fff;background:rgba(255,255,255,.06)}
+.topbar-cta{
+  font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4);
+  padding:10px 18px;border-radius:6px;
+}
+@media(max-width:980px){.topbar-nav{display:none}.topbar-brand .tag{display:none}}
+
+/* ─── HERO (как на index.html, но без pushing) ─────────── */
+.hero{
+  position:relative;min-height:100vh;
+  background:
+    linear-gradient(180deg, rgba(6,8,15,0) 0%, rgba(6,8,15,.30) 52%, rgba(6,8,15,.92) 100%),
+    url('assets/logic/15-passport-gate.webp') 25% 30% / cover no-repeat,
+    var(--bg-darker);
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:160px 32px 100px;color:#fff;
+}
+.hero-inner{max-width:1240px;margin:0 auto;width:100%}
+.hero-flag{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(16,10,12,.88);border:1px solid rgba(220,38,38,.48);
+  padding:7px 16px;border-radius:999px;
+  font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:#fca5a5;margin-bottom:24px;
+}
+.hero h1{
+  color:#fff;max-width:18ch;
+  font-size:clamp(2.2rem,5.2vw,4.4rem);font-weight:300;
+  letter-spacing:-.045em;line-height:1.04;margin-bottom:22px;
+  text-shadow:0 2px 24px rgba(0,0,0,.55);
+}
+.hero h1 strong{font-weight:600}
+
+/* ═══════════════════════════════════════════════════════ */
+/* ВАРИАНТ A — пилюля внутри topbar, на десктопе ─────── */
+/* ═══════════════════════════════════════════════════════ */
+body.opt-a #topbar .topbar-inner{gap:18px}
+body.opt-a #topbar .topbar-nav{gap:4px}
+body.opt-a #topbar .topbar-nav a{padding:8px 10px;font-size:11.5px}
+
+.digest-pill{
+  display:none;
+  align-items:center;gap:10px;flex:1;min-width:0;max-width:520px;
+  background:rgba(232,212,168,.06);
+  border:1px solid rgba(232,212,168,.22);border-radius:999px;
+  padding:6px 14px 6px 6px;
+  text-decoration:none;color:#e8d4a8;
+  transition:background .2s ease,border-color .2s ease;
+}
+.digest-pill:hover{background:rgba(232,212,168,.12);border-color:rgba(232,212,168,.45)}
+.digest-pill .badge{
+  flex-shrink:0;display:inline-flex;align-items:center;
+  font-family:ui-monospace,monospace;font-size:9.5px;font-weight:600;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:#0a0e1a;background:#e8d4a8;
+  padding:5px 10px;border-radius:999px;
+}
+.digest-pill .marquee{
+  flex:1;min-width:0;overflow:hidden;
+  font-size:12.5px;font-weight:400;color:rgba(255,255,255,.86);
+  letter-spacing:.01em;mask-image:linear-gradient(90deg,transparent 0,#000 12px,#000 calc(100% - 36px),transparent 100%);
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 12px,#000 calc(100% - 36px),transparent 100%);
+}
+.digest-pill .track{
+  display:inline-flex;gap:48px;white-space:nowrap;
+  animation:slide 28s linear infinite;
+  padding-left:10px;
+}
+.digest-pill .track strong{color:#fff;font-weight:600}
+.digest-pill:hover .track,.digest-pill:focus-visible .track{animation-play-state:paused}
+.digest-pill .arr{
+  flex-shrink:0;color:#e8d4a8;font-size:14px;line-height:1;
+  transition:transform .2s ease;margin-left:2px;
+}
+.digest-pill:hover .arr{transform:translateX(3px)}
+@keyframes slide{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+@media(prefers-reduced-motion:reduce){
+  .digest-pill .track{animation:none;padding-left:0}
+}
+@media(max-width:980px){
+  body.opt-a .topbar-brand .tag{display:none}
+}
+@media(max-width:760px){
+  body.opt-a .digest-pill .marquee{display:none}
+  body.opt-a .digest-pill{padding:4px 10px 4px 4px}
+}
+body.opt-a .digest-pill{display:inline-flex}
+
+/* ═══════════════════════════════════════════════════════ */
+/* ВАРИАНТ B — фикс. бар внизу hero (не пушит ничего)  */
+/* ═══════════════════════════════════════════════════════ */
+.digest-strip{
+  display:none;
+  position:absolute;left:0;right:0;bottom:0;z-index:30;
+  background:linear-gradient(180deg,transparent 0%,rgba(6,8,15,.7) 60%,rgba(6,8,15,.92) 100%);
+  padding:14px 0 18px;
+  pointer-events:none;
+}
+.digest-strip-inner{
+  max-width:1320px;margin:0 auto;padding:0 32px;
+  display:flex;align-items:center;gap:14px;pointer-events:auto;
+}
+.digest-strip .badge{
+  flex-shrink:0;display:inline-flex;align-items:center;gap:8px;
+  font-family:ui-monospace,monospace;font-size:9.5px;font-weight:600;
+  letter-spacing:.2em;text-transform:uppercase;color:#0a0e1a;background:#e8d4a8;
+  padding:6px 12px;border-radius:999px;
+}
+.digest-strip .badge::before{content:"";width:6px;height:6px;border-radius:50%;background:#0a0e1a;animation:pulse 1.8s ease infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.digest-strip .marquee{
+  flex:1;min-width:0;overflow:hidden;
+  font-size:13px;color:rgba(255,255,255,.86);letter-spacing:.01em;
+  mask-image:linear-gradient(90deg,transparent 0,#000 16px,#000 calc(100% - 60px),transparent 100%);
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 16px,#000 calc(100% - 60px),transparent 100%);
+}
+.digest-strip .track{display:inline-flex;gap:64px;white-space:nowrap;animation:slide 32s linear infinite}
+.digest-strip .track strong{color:#fff;font-weight:600}
+.digest-strip:hover .track{animation-play-state:paused}
+.digest-strip .arr{
+  flex-shrink:0;color:#e8d4a8;font-size:13px;font-weight:600;
+  letter-spacing:.06em;border-bottom:1px solid #e8d4a8;padding-bottom:1px;
+  text-transform:uppercase;
+}
+body.opt-b .digest-strip{display:block}
+body.opt-b .hero{padding-bottom:140px}
+@media(prefers-reduced-motion:reduce){.digest-strip .track{animation:none}}
+
+/* ═══════════════════════════════════════════════════════ */
+/* ВАРИАНТ C — компактный значок-уголок справа сверху  */
+/* ═══════════════════════════════════════════════════════ */
+.digest-corner{
+  display:none;
+  position:fixed;right:24px;top:88px;z-index:90;
+  background:rgba(10,14,26,.92);
+  border:1px solid rgba(232,212,168,.25);border-radius:10px;
+  padding:8px 14px 8px 8px;
+  align-items:center;gap:10px;max-width:380px;
+  text-decoration:none;
+  backdrop-filter:saturate(160%) blur(12px);
+  box-shadow:0 12px 30px rgba(0,0,0,.35);
+}
+.digest-corner .badge{
+  flex-shrink:0;display:inline-flex;align-items:center;
+  font-family:ui-monospace,monospace;font-size:9.5px;font-weight:600;
+  letter-spacing:.2em;text-transform:uppercase;color:#0a0e1a;background:#e8d4a8;
+  padding:5px 10px;border-radius:6px;
+}
+.digest-corner .marquee{
+  flex:1;min-width:0;overflow:hidden;
+  font-size:12px;color:rgba(255,255,255,.86);
+  mask-image:linear-gradient(90deg,transparent 0,#000 8px,#000 calc(100% - 24px),transparent 100%);
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 8px,#000 calc(100% - 24px),transparent 100%);
+}
+.digest-corner .track{display:inline-flex;gap:48px;white-space:nowrap;animation:slide 26s linear infinite}
+.digest-corner .track strong{color:#fff;font-weight:600}
+.digest-corner:hover .track{animation-play-state:paused}
+.digest-corner .arr{flex-shrink:0;color:#e8d4a8;font-size:13px}
+body.opt-c .digest-corner{display:inline-flex}
+@media(max-width:760px){
+  body.opt-c .digest-corner{right:12px;top:78px;padding:6px 10px 6px 6px;max-width:240px}
+  body.opt-c .digest-corner .marquee{display:none}
+}
+
+</style>
+</head>
+<body class="opt-a">
+
+<a class="label" href="#">Демо · Дайджест-пилюля</a>
+
+<header id="topbar">
+  <div class="topbar-inner">
+    <a href="/" class="topbar-brand">
+      <span class="name">Charter Capital</span>
+      <span class="tag">Когда двери закрываются — мы открываем мир</span>
+    </a>
+
+    <!-- ВАРИАНТ A: пилюля внутри topbar -->
+    <a class="digest-pill" href="journal/singapore-family-office.html" aria-label="Свежий материал в Дайджесте Charter Capital">
+      <span class="badge">Дайджест</span>
+      <span class="marquee">
+        <span class="track">
+          <span><strong>Эволюция Family Office:</strong> почему Сингапур стал новым стандартом для управления частным капиталом · 02·05·26</span>
+          <span><strong>Эволюция Family Office:</strong> почему Сингапур стал новым стандартом для управления частным капиталом · 02·05·26</span>
+        </span>
+      </span>
+      <span class="arr">→</span>
+    </a>
+
+    <nav class="topbar-nav">
+      <a href="#">Боль</a>
+      <a href="#">Маршруты</a>
+      <a href="#">Связаться</a>
+    </nav>
+    <button type="button" class="topbar-cta">Private Access</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <span class="hero-flag">2026 — окно сужается каждый месяц</span>
+    <h1>Когда двери закрываются — <strong>Charter Capital</strong> открывает мир без искусственных границ</h1>
+  </div>
+
+  <!-- ВАРИАНТ B: фикс. бар внизу hero -->
+  <div class="digest-strip" aria-hidden="false">
+    <div class="digest-strip-inner">
+      <span class="badge">Дайджест · LIVE</span>
+      <a class="marquee" href="journal/singapore-family-office.html" aria-label="Перейти к свежему материалу">
+        <span class="track">
+          <span><strong>Эволюция Family Office:</strong> почему Сингапур стал новым стандартом для управления частным капиталом · 02·05·26</span>
+          <span><strong>Эволюция Family Office:</strong> почему Сингапур стал новым стандартом для управления частным капиталом · 02·05·26</span>
+        </span>
+      </a>
+      <a class="arr" href="journal.html">Читать →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ВАРИАНТ C: уголок справа сверху -->
+<a class="digest-corner" href="journal/singapore-family-office.html" aria-label="Свежий материал Дайджеста">
+  <span class="badge">Дайджест</span>
+  <span class="marquee">
+    <span class="track">
+      <span><strong>Эволюция Family Office:</strong> Сингапур · 02·05</span>
+      <span><strong>Эволюция Family Office:</strong> Сингапур · 02·05</span>
+    </span>
+  </span>
+  <span class="arr">→</span>
+</a>
+
+<div class="demo-pick">
+  <b>Выберите вариант</b>
+  <div class="nav">
+    <a href="#" data-opt="a" class="is-active">A · в шапке</a>
+    <a href="#" data-opt="b">B · низ hero</a>
+    <a href="#" data-opt="c">C · уголок</a>
+  </div>
+  <div style="margin-top:10px;font-size:11.5px;line-height:1.5;color:#cbd5e1">
+    Все три не толкают hero вниз. Анимация останавливается при наведении. Уважает <code>prefers-reduced-motion</code>.
+  </div>
+</div>
+
+<script>
+(function(){
+  var picks = document.querySelectorAll('.demo-pick a[data-opt]');
+  var label = document.querySelector('.label');
+  picks.forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      var opt = a.getAttribute('data-opt');
+      document.body.className = 'opt-' + opt;
+      picks.forEach(function(x){x.classList.toggle('is-active', x===a)});
+      var titles = {a:'A · пилюля в topbar', b:'B · бар в нижней части hero', c:'C · уголок-плашка'};
+      label.textContent = 'Демо · ' + titles[opt];
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
