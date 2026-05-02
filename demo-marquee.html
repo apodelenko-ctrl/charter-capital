@@ -204,39 +204,49 @@ body.opt-b .hero{padding-bottom:140px}
 @media(prefers-reduced-motion:reduce){.digest-strip .track{animation:none}}
 
 /* ═══════════════════════════════════════════════════════ */
-/* ВАРИАНТ C — компактный значок-уголок справа сверху  */
+/* ВАРИАНТ C — прозрачная плашка на уровне бренда слева */
 /* ═══════════════════════════════════════════════════════ */
+/* Совпадает с центром строки бренда в topbar (~28px от верха) */
 .digest-corner{
   display:none;
-  position:fixed;right:24px;top:88px;z-index:90;
-  background:rgba(10,14,26,.92);
-  border:1px solid rgba(232,212,168,.25);border-radius:10px;
-  padding:8px 14px 8px 8px;
-  align-items:center;gap:10px;max-width:380px;
+  position:fixed;right:32px;top:28px;z-index:110;
+  background:transparent;border:none;border-radius:0;
+  padding:0;align-items:center;gap:14px;max-width:440px;
   text-decoration:none;
-  backdrop-filter:saturate(160%) blur(12px);
-  box-shadow:0 12px 30px rgba(0,0,0,.35);
+  box-shadow:none;backdrop-filter:none;
 }
 .digest-corner .badge{
   flex-shrink:0;display:inline-flex;align-items:center;
   font-family:ui-monospace,monospace;font-size:9.5px;font-weight:600;
   letter-spacing:.2em;text-transform:uppercase;color:#0a0e1a;background:#e8d4a8;
-  padding:5px 10px;border-radius:6px;
+  padding:5px 10px;border-radius:4px;
+  transition:transform .2s ease,background .2s ease;
 }
+.digest-corner:hover .badge{background:#fff}
 .digest-corner .marquee{
   flex:1;min-width:0;overflow:hidden;
-  font-size:12px;color:rgba(255,255,255,.86);
-  mask-image:linear-gradient(90deg,transparent 0,#000 8px,#000 calc(100% - 24px),transparent 100%);
-  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 8px,#000 calc(100% - 24px),transparent 100%);
+  font-size:12px;color:rgba(255,255,255,.78);letter-spacing:.01em;
+  border-left:1px solid rgba(255,255,255,.18);padding-left:14px;
+  mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 28px),transparent 100%);
+  -webkit-mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 28px),transparent 100%);
 }
 .digest-corner .track{display:inline-flex;gap:48px;white-space:nowrap;animation:slide 26s linear infinite}
 .digest-corner .track strong{color:#fff;font-weight:600}
 .digest-corner:hover .track{animation-play-state:paused}
-.digest-corner .arr{flex-shrink:0;color:#e8d4a8;font-size:13px}
+.digest-corner:hover .marquee{color:rgba(255,255,255,.95)}
+.digest-corner .arr{flex-shrink:0;color:#e8d4a8;font-size:13px;transition:transform .2s ease}
+.digest-corner:hover .arr{transform:translateX(2px)}
 body.opt-c .digest-corner{display:inline-flex}
-@media(max-width:760px){
-  body.opt-c .digest-corner{right:12px;top:78px;padding:6px 10px 6px 6px;max-width:240px}
+/* Чтобы плашка не лезла на nav/CTA в демо — на средних экранах прячем nav,
+   на реальном сайте плашку поставим перед CTA или в свой слот */
+body.opt-c #topbar .topbar-nav{margin-right:auto}
+body.opt-c #topbar .topbar-cta{display:none}
+@media(max-width:980px){
+  body.opt-c .digest-corner{right:24px;top:24px}
   body.opt-c .digest-corner .marquee{display:none}
+}
+@media(max-width:760px){
+  body.opt-c .digest-corner{right:18px;top:22px}
 }
 
 </style>
