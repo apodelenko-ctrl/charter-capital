@@ -1224,16 +1224,35 @@ footer.f{
     <button type="button" onclick="closeLoginModal()" aria-label="Закрыть" style="position:absolute;top:10px;right:10px;width:34px;height:34px;background:transparent;border:none;color:#94a3b8;font-size:20px;border-radius:8px;cursor:pointer">×</button>
     <h3 id="loginModalTitle" style="color:#fff;font-size:1.05rem;font-weight:500;margin-bottom:8px;letter-spacing:-.01em">Private Access</h3>
     <p style="font-size:13px;color:rgba(255,255,255,.7);margin-bottom:26px">Защищённый партнёрский контур. Сессия шифруется end-to-end.</p>
-    <form onsubmit="event.preventDefault(); closeLoginModal();">
+    <style>
+      #loginModal .login-error{display:none;margin:14px 0 4px;font-size:12.5px;color:#fca5a5;line-height:1.5;background:rgba(220,38,38,.08);border:1px solid rgba(220,38,38,.28);padding:10px 12px;border-radius:6px}
+      #loginModal .login-error.is-visible{display:block;animation:hlErrShake .42s cubic-bezier(.36,.07,.19,.97)}
+      #loginModal .login-error strong{color:#fff;font-weight:500}
+      @keyframes hlErrShake{0%,100%{transform:translateX(0)}20%{transform:translateX(-4px)}40%{transform:translateX(4px)}60%{transform:translateX(-2px)}80%{transform:translateX(2px)}}
+      #loginModal .login-foot{margin-top:18px;padding-top:14px;border-top:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:12.5px;color:rgba(255,255,255,.55)}
+      #loginModal .login-foot a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:1px;transition:border-color .15s ease,color .15s ease}
+      #loginModal .login-foot a:hover{color:#cbd5e1;border-color:#cbd5e1}
+      #loginModal #loginSubmit.is-loading{pointer-events:none;background:#1a1a1a !important;color:rgba(255,255,255,.55) !important}
+      #loginModal #loginSubmit.is-loading::after{content:'';display:inline-block;margin-left:10px;width:12px;height:12px;border-radius:50%;border:1.5px solid rgba(255,255,255,.25);border-top-color:#fff;vertical-align:-2px;animation:hlSpin .8s linear infinite}
+      @keyframes hlSpin{to{transform:rotate(360deg)}}
+    </style>
+    <form id="loginForm" autocomplete="off" novalidate>
       <div style="margin-bottom:18px">
         <label for="partnerId" style="display:block;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.78);margin-bottom:8px">Partner ID</label>
-        <input type="text" id="partnerId" name="partnerId" autocomplete="username" style="width:100%;padding:10px 0 12px;background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,.34);color:#fff;font-family:inherit;font-size:14px;outline:none;transition:border-color .15s ease"/>
+        <input type="text" id="partnerId" name="partnerId" autocomplete="off" style="width:100%;padding:10px 0 12px;background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,.34);color:#fff;font-family:inherit;font-size:14px;outline:none;transition:border-color .15s ease"/>
       </div>
       <div style="margin-bottom:18px">
         <label for="accessToken" style="display:block;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.78);margin-bottom:8px">Access Token</label>
-        <input type="password" id="accessToken" name="accessToken" autocomplete="current-password" style="width:100%;padding:10px 0 12px;background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,.34);color:#fff;font-family:inherit;font-size:14px;outline:none;transition:border-color .15s ease"/>
+        <input type="password" id="accessToken" name="accessToken" autocomplete="off" style="width:100%;padding:10px 0 12px;background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,.34);color:#fff;font-family:inherit;font-size:14px;outline:none;transition:border-color .15s ease"/>
       </div>
-      <button type="submit" style="width:100%;margin-top:8px;padding:14px 20px;background:#000;color:#fff;border:none;border-radius:6px;cursor:pointer;font-family:inherit;font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;transition:background .15s ease">Authorize</button>
+      <div class="login-error" id="loginError" role="alert" aria-live="polite">
+        Неверный <strong>Partner ID</strong> или <strong>Access Token</strong>. Проверьте данные или зарегистрируйтесь.
+      </div>
+      <button type="submit" id="loginSubmit" style="width:100%;margin-top:8px;padding:14px 20px;background:#000;color:#fff;border:none;border-radius:6px;cursor:pointer;font-family:inherit;font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;transition:background .15s ease">Authorize</button>
+      <div class="login-foot">
+        <span>Нет доступа?</span>
+        <a href="https://ccapital.pro/#contact">Зарегистрироваться →</a>
+      </div>
     </form>
   </div>
 </div>
@@ -1263,6 +1282,33 @@ function closeLoginModal(){
   if(lm) lm.addEventListener('click',function(e){ if(e.target===lm) closeLoginModal(); });
 })();
 document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeLoginModal(); });
+
+// Login form: фейковый flow «попытка → ошибка → линк на регистрацию»
+(function(){
+  var form=document.getElementById('loginForm');
+  if(!form) return;
+  var btn=document.getElementById('loginSubmit');
+  var err=document.getElementById('loginError');
+  var origLabel=btn ? btn.textContent : 'Authorize';
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(!btn || btn.classList.contains('is-loading')) return;
+    err.classList.remove('is-visible');
+    btn.classList.add('is-loading');
+    btn.textContent='Authorizing';
+    setTimeout(function(){
+      btn.classList.remove('is-loading');
+      btn.textContent=origLabel;
+      err.classList.remove('is-visible');
+      void err.offsetWidth;
+      err.classList.add('is-visible');
+    },900);
+  });
+  ['partnerId','accessToken'].forEach(function(id){
+    var el=document.getElementById(id);
+    if(el) el.addEventListener('input',function(){ if(err) err.classList.remove('is-visible'); });
+  });
+})();
 
 // Topbar solid on scroll
 (function(){

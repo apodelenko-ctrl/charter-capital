@@ -680,6 +680,32 @@ footer.f{
   transition:background .15s ease;
 }
 .login-submit:hover{background:#111}
+.login-submit.is-loading{pointer-events:none;background:#1a1a1a;color:rgba(255,255,255,.55)}
+.login-submit.is-loading::after{
+  content:'';display:inline-block;margin-left:10px;
+  width:12px;height:12px;border-radius:50%;
+  border:1.5px solid rgba(255,255,255,.25);border-top-color:#fff;
+  vertical-align:-2px;animation:loginSpin .8s linear infinite;
+}
+@keyframes loginSpin{to{transform:rotate(360deg)}}
+.login-error{
+  display:none;margin:14px 0 4px;font-size:12.5px;color:#fca5a5;line-height:1.5;
+  background:rgba(220,38,38,.08);border:1px solid rgba(220,38,38,.28);
+  padding:10px 12px;border-radius:6px;
+}
+.login-error.is-visible{display:block;animation:errShake .42s cubic-bezier(.36,.07,.19,.97)}
+.login-error strong{color:#fff;font-weight:500}
+@keyframes errShake{0%,100%{transform:translateX(0)}20%{transform:translateX(-4px)}40%{transform:translateX(4px)}60%{transform:translateX(-2px)}80%{transform:translateX(2px)}}
+.login-foot{
+  margin-top:18px;padding-top:14px;border-top:1px solid rgba(255,255,255,.08);
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  font-size:12.5px;color:rgba(255,255,255,.55);
+}
+.login-foot a{
+  color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.4);
+  padding-bottom:1px;transition:border-color .15s ease,color .15s ease;
+}
+.login-foot a:hover{color:#cbd5e1;border-color:#cbd5e1}
 
 /* ─── Responsive ───────────────────────────────────────── */
 @media(max-width:1100px){
@@ -1269,16 +1295,23 @@ footer.f{
     <button type="button" class="login-close" onclick="closeLoginModal()" aria-label="Закрыть">×</button>
     <h3 id="loginModalTitle">Private Access</h3>
     <p class="sub">Защищённый партнёрский контур. Сессия шифруется end-to-end.</p>
-    <form onsubmit="event.preventDefault(); closeLoginModal();">
+    <form id="loginForm" autocomplete="off" novalidate>
       <div class="login-field">
         <label for="partnerId">Partner ID</label>
-        <input type="text" id="partnerId" name="partnerId" autocomplete="username"/>
+        <input type="text" id="partnerId" name="partnerId" autocomplete="off"/>
       </div>
       <div class="login-field">
         <label for="accessToken">Access Token</label>
-        <input type="password" id="accessToken" name="accessToken" autocomplete="current-password"/>
+        <input type="password" id="accessToken" name="accessToken" autocomplete="off"/>
       </div>
-      <button type="submit" class="login-submit">Authorize</button>
+      <div class="login-error" id="loginError" role="alert" aria-live="polite">
+        Неверный <strong>Partner ID</strong> или <strong>Access Token</strong>. Проверьте данные или зарегистрируйтесь.
+      </div>
+      <button type="submit" class="login-submit" id="loginSubmit">Authorize</button>
+      <div class="login-foot">
+        <span>Нет доступа?</span>
+        <a href="https://ccapital.pro/#contact">Зарегистрироваться →</a>
+      </div>
     </form>
   </div>
 </div>
@@ -1407,6 +1440,33 @@ function closeLoginModal(){
   if(lm) lm.addEventListener('click',function(e){ if(e.target===lm) closeLoginModal(); });
 })();
 document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeLoginModal(); });
+
+// Login form: фейковый flow «попытка → ошибка → линк на регистрацию»
+(function(){
+  var form=document.getElementById('loginForm');
+  if(!form) return;
+  var btn=document.getElementById('loginSubmit');
+  var err=document.getElementById('loginError');
+  var origLabel=btn ? btn.textContent : 'Authorize';
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(!btn || btn.classList.contains('is-loading')) return;
+    err.classList.remove('is-visible');
+    btn.classList.add('is-loading');
+    btn.textContent='Authorizing';
+    setTimeout(function(){
+      btn.classList.remove('is-loading');
+      btn.textContent=origLabel;
+      err.classList.remove('is-visible');
+      void err.offsetWidth;
+      err.classList.add('is-visible');
+    },900);
+  });
+  ['partnerId','accessToken'].forEach(function(id){
+    var el=document.getElementById(id);
+    if(el) el.addEventListener('input',function(){ if(err) err.classList.remove('is-visible'); });
+  });
+})();
 
 // Smooth fade transition between local html pages
 document.addEventListener('click',function(e){
