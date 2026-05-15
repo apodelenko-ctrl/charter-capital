@@ -213,13 +213,13 @@
   <!-- Дайджест Charter Capital -->
   <url>
     <loc>https://ccapital.pro/journal.html</loc>
-    <lastmod>2026-05-15</lastmod>
+    <lastmod>2026-05-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://ccapital.pro/journal.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ccapital.pro/journal.html"/>
     <image:image>
-      <image:loc>https://ccapital.pro/assets/journal/singapore-family-office-hero.webp</image:loc>
+      <image:loc>https://ccapital.pro/assets/journal/geneva-swiss-alps-winter-hero.webp</image:loc>
       <image:title>Дайджест Charter Capital — аналитика, объявления, кейсы</image:title>
     </image:image>
   </url>
@@ -251,6 +251,19 @@
     <image:image>
       <image:loc>https://ccapital.pro/assets/freedom-route/crypto-bankability.webp</image:loc>
       <image:title>AML на криптобирже — иллюзия безопасности после KYC</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://ccapital.pro/journal/offshore-loan-uk-look-through.html</loc>
+    <lastmod>2026-05-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ccapital.pro/journal/offshore-loan-uk-look-through.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ccapital.pro/journal/offshore-loan-uk-look-through.html"/>
+    <image:image>
+      <image:loc>https://ccapital.pro/assets/journal/geneva-swiss-alps-winter-hero.webp</image:loc>
+      <image:title>Look-Through: оффшорный Lombard и UK private banking</image:title>
     </image:image>
   </url>
 
