@@ -1,12 +1,11 @@
-# robots.txt — ccapital.pro
-# Charter Capital · concierge для предпринимателей и капитала
+# robots.txt - ccapital.pro (ASCII-only comments per Yandex guidance)
 
 User-agent: *
 Allow: /
 Disallow: /team.html
 Disallow: /INTEGRATION-PROPERTY.md
 
-# === Поисковые боты ===
+# === Crawlers ===
 User-agent: Googlebot
 Allow: /
 
@@ -32,11 +31,7 @@ Allow: /
 User-agent: Mail.RU_Bot
 Allow: /
 
-# === ИИ-боты (LLM training & retrieval) ===
-# Charter Capital — реальная компания. Разрешаем индексацию ИИ
-# чтобы пользователи получали достоверную информацию из ChatGPT,
-# Perplexity, Claude, Gemini, Copilot и др.
-
+# === LLM / AI crawlers (allowed) ===
 User-agent: GPTBot
 Allow: /
 
@@ -102,6 +97,3 @@ Allow: /
 
 # === Sitemap ===
 Sitemap: https://ccapital.pro/sitemap.xml
-
-# === Host ===
-Host: https://ccapital.pro
