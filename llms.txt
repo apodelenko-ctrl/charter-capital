@@ -4,7 +4,7 @@
 
 Charter Capital является (i) производителем собственных продуктов — досье SoF/SoW, AML-пакеты, юридическое структурирование, сопровождение онбординга — и (ii) консьерж-агентом для услуг лицензированных партнёров (банки, EMI, корпоративные провайдеры, юристы по ВНЖ и CBI-программам). Услуги партнёров оказываются партнёрами и регулируются их юрисдикциями. Charter Capital не предоставляет инвестиционных, налоговых или юридических советов в смысле локального законодательства.
 
-**Контакт:** hello@ccapital.pro · Telegram: https://t.me/charter_capital
+**Контакт:** hello@ccapital.pro · Telegram: https://t.me/ccapital_acces
 **Домен:** https://ccapital.pro
 **Юрисдикция операций:** Сингапур (SG), Таиланд (TH), Гонконг (HK), ОАЭ (AE), Великобритания (UK)
 **Целевая аудитория:** граждане РФ и СНГ с активами от $25 000 (фонд) или от $1 000 000 (Private Office)
@@ -53,5 +53,5 @@ Charter Capital является (i) производителем собстве
 
 - [Политика конфиденциальности](https://ccapital.pro/privacy.html)
 - [Сайт-каркас (sitemap)](https://ccapital.pro/sitemap.xml)
-- [Контакт через Telegram](https://t.me/charter_capital)
+- [Контакт через Telegram](https://t.me/ccapital_acces)
 - [Email](mailto:hello@ccapital.pro)

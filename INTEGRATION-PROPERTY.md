@@ -22,7 +22,7 @@
 **Все пути уже на ccapital.pro** — внутри файлов нет ссылок на wegc.fund, wet-agency, и т.д.
 **Дизайн** — единая система с homeland.html / index.html (Inter light, palette ink/cream/dark, gold #a08156 как accent именно для Property модуля).
 **Брендинг** — везде "CP Property · Charter Capital".
-**Контакт** — `property@ccapital.pro`, WhatsApp `+66 65 765 8782`, Telegram `@charter_capital`, форма Formspree (тот же endpoint что был на старой агентской странице).
+**Контакт** — `property@ccapital.pro`, WhatsApp `+66 65 765 8782`, Telegram `@ccapital_acces`, форма Formspree (тот же endpoint что был на старой агентской странице).
 
 ---
 

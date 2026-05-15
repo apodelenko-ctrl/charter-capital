@@ -6,7 +6,7 @@
 
   Site: https://ccapital.pro
   Contact: hello@ccapital.pro
-  Telegram: https://t.me/charter_capital
+  Telegram: https://t.me/ccapital_acces
 
 /* COMPANY */
 
