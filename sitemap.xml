@@ -213,7 +213,7 @@
   <!-- Дайджест Charter Capital -->
   <url>
     <loc>https://ccapital.pro/journal.html</loc>
-    <lastmod>2026-05-02</lastmod>
+    <lastmod>2026-05-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://ccapital.pro/journal.html"/>
@@ -238,6 +238,19 @@
     <image:image>
       <image:loc>https://ccapital.pro/assets/journal/vcc-structure-anatomy.webp</image:loc>
       <image:title>Анатомия Umbrella VCC — структура с сегрегированными субфондами</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://ccapital.pro/journal/crypto-exchange-aml-illusion.html</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ccapital.pro/journal/crypto-exchange-aml-illusion.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ccapital.pro/journal/crypto-exchange-aml-illusion.html"/>
+    <image:image>
+      <image:loc>https://ccapital.pro/assets/freedom-route/crypto-bankability.webp</image:loc>
+      <image:title>AML на криптобирже — иллюзия безопасности после KYC</image:title>
     </image:image>
   </url>
 
