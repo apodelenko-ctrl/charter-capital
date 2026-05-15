@@ -667,7 +667,7 @@ footer.f{
 }
 #loginModal.is-open{opacity:1;visibility:visible}
 .login-card{
-  position:relative;width:100%;max-width:400px;
+  position:relative;width:100%;max-width:430px;
   background:rgba(2,6,23,.92);border:1px solid rgba(255,255,255,.16);
   border-radius:12px;padding:36px 32px 32px;
   box-shadow:0 25px 50px rgba(0,0,0,.55);
@@ -722,6 +722,44 @@ footer.f{
   padding-bottom:1px;transition:border-color .15s ease,color .15s ease;
 }
 .login-foot a:hover{color:#cbd5e1;border-color:#cbd5e1}
+.login-panel.is-hidden{display:none!important}
+.login-btn-link{
+  background:none;border:none;padding:0;font:inherit;cursor:pointer;
+  color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.4);
+  padding-bottom:1px;transition:border-color .15s ease,color .15s ease;
+}
+.login-btn-link:hover{color:#cbd5e1;border-color:#cbd5e1}
+.login-back{
+  background:none;border:none;cursor:pointer;color:rgba(255,255,255,.65);
+  font:inherit;font-size:12.5px;text-decoration:underline;padding:0;
+}
+.login-back:hover{color:#fff}
+.login-register-msg{
+  display:none;margin:12px 0 0;font-size:12.5px;color:#fca5a5;line-height:1.45;
+  background:rgba(220,38,38,.08);border:1px solid rgba(220,38,38,.28);
+  padding:10px 12px;border-radius:6px;
+}
+.login-register-msg.is-visible{display:block}
+.login-register-msg a{color:#fecaca;text-decoration:underline}
+.login-thanks{text-align:center;padding:8px 0 4px}
+.login-thanks.is-hidden{display:none!important}
+.login-thanks p{color:#fff;font-size:1rem;line-height:1.5;margin:0 0 10px}
+.login-thanks .sub{margin-bottom:22px!important;color:rgba(255,255,255,.68)!important}
+.login-check{
+  display:flex;align-items:flex-start;gap:10px;margin:16px 0 6px;
+  font-size:12px;color:rgba(255,255,255,.62);line-height:1.45;
+}
+.login-check input{margin-top:3px;width:auto;flex-shrink:0;accent-color:#93c5fd}
+.login-check a{color:#93c5fd;border-bottom:1px solid rgba(147,197,253,.4);text-decoration:none}
+.login-check a:hover{border-color:#93c5fd}
+.login-honeypot{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none}
+.login-field select{
+  width:100%;padding:10px 0 12px;background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,.34);
+  color:#fff;font-family:inherit;font-size:14px;outline:none;cursor:pointer;transition:border-color .15s ease;border-radius:0;
+}
+.login-field select:focus{border-bottom-color:#fff}
+.login-field select option{background:#020617;color:#e2e8f0}
+#registerPanel form{max-height:min(62vh,440px);overflow-y:auto;padding-right:8px;margin-right:-4px;-webkit-overflow-scrolling:touch}
 
 /* ─── Responsive ───────────────────────────────────────── */
 @media(max-width:1100px){
@@ -1325,26 +1363,83 @@ footer.f{
 <div id="loginModal" role="dialog" aria-modal="true" aria-labelledby="loginModalTitle" aria-hidden="true">
   <div class="login-card" role="document" onclick="event.stopPropagation()">
     <button type="button" class="login-close" onclick="closeLoginModal()" aria-label="Закрыть">×</button>
-    <h3 id="loginModalTitle">Private Access</h3>
-    <p class="sub">Защищённый партнёрский контур. Сессия шифруется end-to-end.</p>
-    <form id="loginForm" autocomplete="off" novalidate>
-      <div class="login-field">
-        <label for="partnerId">Partner ID</label>
-        <input type="text" id="partnerId" name="partnerId" autocomplete="off"/>
-      </div>
-      <div class="login-field">
-        <label for="accessToken">Access Token</label>
-        <input type="password" id="accessToken" name="accessToken" autocomplete="off"/>
-      </div>
-      <div class="login-error" id="loginError" role="alert" aria-live="polite">
-        Неверный <strong>Partner ID</strong> или <strong>Access Token</strong>. Проверьте данные или зарегистрируйтесь.
-      </div>
-      <button type="submit" class="login-submit" id="loginSubmit">Authorize</button>
+    <div class="login-panel" id="loginPanel">
+      <h3 id="loginModalTitle">Private Access</h3>
+      <p class="sub">Защищённый партнёрский контур. Сессия шифруется end-to-end.</p>
+      <form id="loginForm" autocomplete="off" novalidate>
+        <div class="login-field">
+          <label for="partnerId">Partner ID</label>
+          <input type="text" id="partnerId" name="partnerId" autocomplete="off"/>
+        </div>
+        <div class="login-field">
+          <label for="accessToken">Access Token</label>
+          <input type="password" id="accessToken" name="accessToken" autocomplete="off"/>
+        </div>
+        <div class="login-error" id="loginError" role="alert" aria-live="polite">
+          Неверный <strong>Partner ID</strong> или <strong>Access Token</strong>. Проверьте данные или зарегистрируйтесь.
+        </div>
+        <button type="submit" class="login-submit" id="loginSubmit">Authorize</button>
+      </form>
       <div class="login-foot">
         <span>Нет доступа?</span>
-        <a href="https://ccapital.pro/#contact">Зарегистрироваться →</a>
+        <button type="button" class="login-btn-link" id="showPartnerRegister">Зарегистрироваться →</button>
       </div>
-    </form>
+    </div>
+    <div class="login-panel is-hidden" id="registerPanel">
+      <h3 id="registerModalTitle">Заявка на доступ</h3>
+      <p class="sub">Оставьте контакты — ответим в выбранном канале.</p>
+      <div id="registerFormWrap">
+        <form id="partnerRegisterForm" action="https://formspree.io/f/xrbyywrr" method="POST" novalidate>
+          <input type="hidden" name="_subject" value="Private Access · заявка на партнёрский контур"/>
+          <input type="hidden" name="form_source" value="partner_access_modal"/>
+          <input type="text" name="_gotcha" class="login-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true"/>
+          <div class="login-field">
+            <label for="paEmail">Email *</label>
+            <input type="email" id="paEmail" name="email" required autocomplete="email" placeholder="name@company.com"/>
+          </div>
+          <div class="login-field">
+            <label for="paName">ФИО *</label>
+            <input type="text" id="paName" name="full_name" required autocomplete="name"/>
+          </div>
+          <div class="login-field">
+            <label for="paCompany">Компания</label>
+            <input type="text" id="paCompany" name="company" autocomplete="organization"/>
+          </div>
+          <div class="login-field">
+            <label for="paPhone">Телефон</label>
+            <input type="tel" id="paPhone" name="phone" autocomplete="tel" placeholder="+ код страны"/>
+          </div>
+          <div class="login-field">
+            <label for="paTelegram">Telegram</label>
+            <input type="text" id="paTelegram" name="telegram" placeholder="@username или ссылка" autocomplete="off"/>
+          </div>
+          <div class="login-field">
+            <label for="paChannel">Предпочтительный канал связи *</label>
+            <select id="paChannel" name="contact_channel" required>
+              <option value="" disabled selected>Выберите канал</option>
+              <option value="Email">Email</option>
+              <option value="Telegram">Telegram</option>
+              <option value="Телефон">Телефон</option>
+              <option value="WhatsApp">WhatsApp</option>
+            </select>
+          </div>
+          <label class="login-check">
+            <input type="checkbox" name="privacy_agree" value="yes" required/>
+            <span>Согласен с <a href="/privacy.html" target="_blank" rel="noopener">политикой конфиденциальности</a>.</span>
+          </label>
+          <div class="login-register-msg" id="registerNetError" role="alert"></div>
+          <button type="submit" class="login-submit" id="registerSubmit">Отправить заявку</button>
+          <div class="login-foot">
+            <button type="button" class="login-back" id="backToLogin">← Ко входу</button>
+          </div>
+        </form>
+      </div>
+      <div class="login-thanks is-hidden" id="registerThanks">
+        <p><strong>Спасибо.</strong> Ваша заявка отправлена.</p>
+        <p class="sub">Мы свяжемся с вами в ближайшее время.</p>
+        <button type="button" class="login-submit" id="closeAfterThanks">Закрыть</button>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -1456,6 +1551,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function openLoginModal(){
   var m=document.getElementById('loginModal'); if(!m) return;
+  if(typeof resetPartnerAccessModal==='function') resetPartnerAccessModal();
   m.classList.add('is-open'); m.setAttribute('aria-hidden','false');
   document.body.style.overflow='hidden';
 }
@@ -1463,6 +1559,7 @@ function closeLoginModal(){
   var m=document.getElementById('loginModal'); if(!m) return;
   m.classList.remove('is-open'); m.setAttribute('aria-hidden','true');
   document.body.style.overflow='';
+  if(typeof resetPartnerAccessModal==='function') resetPartnerAccessModal();
 }
 (function(){
   ['openLoginModal','openLoginModal2'].forEach(function(id){
@@ -1497,6 +1594,73 @@ document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeLogin
   ['partnerId','accessToken'].forEach(function(id){
     var el=document.getElementById(id);
     if(el) el.addEventListener('input',function(){ if(err) err.classList.remove('is-visible'); });
+  });
+})();
+
+(function(){
+  var lp=document.getElementById('loginPanel');
+  var rp=document.getElementById('registerPanel');
+  var fw=document.getElementById('registerFormWrap');
+  var th=document.getElementById('registerThanks');
+  var regBtn=document.getElementById('showPartnerRegister');
+  var back=document.getElementById('backToLogin');
+  var closeThanks=document.getElementById('closeAfterThanks');
+  var regForm=document.getElementById('partnerRegisterForm');
+  var regSub=document.getElementById('registerSubmit');
+  var regErr=document.getElementById('registerNetError');
+  var origRegLabel=regSub ? regSub.textContent : '';
+
+  function resetPartnerAccessModal(){
+    if(lp) lp.classList.remove('is-hidden');
+    if(rp) rp.classList.add('is-hidden');
+    if(fw) fw.classList.remove('is-hidden');
+    if(th) th.classList.add('is-hidden');
+    if(regForm) regForm.reset();
+    if(regErr){ regErr.classList.remove('is-visible'); regErr.textContent=''; }
+    if(regSub){ regSub.classList.remove('is-loading'); regSub.textContent=origRegLabel; regSub.disabled=false; }
+  }
+  window.resetPartnerAccessModal=resetPartnerAccessModal;
+
+  function showRegisterPanel(){
+    if(lp) lp.classList.add('is-hidden');
+    if(rp) rp.classList.remove('is-hidden');
+    if(regErr){ regErr.classList.remove('is-visible'); regErr.textContent=''; }
+  }
+  if(regBtn) regBtn.addEventListener('click', function(e){ e.preventDefault(); showRegisterPanel(); });
+  if(back) back.addEventListener('click', function(){ resetPartnerAccessModal(); });
+  if(closeThanks) closeThanks.addEventListener('click', function(){ closeLoginModal(); });
+
+  if(!regForm || !regSub) return;
+  regForm.addEventListener('submit', async function(e){
+    e.preventDefault();
+    if(regSub.classList.contains('is-loading')) return;
+    var em=document.getElementById('paEmail');
+    var fn=document.getElementById('paName');
+    if(!em || !fn) return;
+    if(regErr) regErr.classList.remove('is-visible');
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.value.trim())){
+      if(regErr){ regErr.textContent='Введите корректный email.'; regErr.classList.add('is-visible'); }
+      return;
+    }
+    regSub.classList.add('is-loading');
+    regSub.textContent='Отправка…';
+    try{
+      var fd=new FormData(regForm);
+      fd.set('page_url', location.href);
+      var res=await fetch(regForm.action, { method:'POST', body:fd, headers:{ 'Accept':'application/json' } });
+      if(!res.ok) throw new Error('fail');
+      regForm.reset();
+      if(fw) fw.classList.add('is-hidden');
+      if(th) th.classList.remove('is-hidden');
+    }catch(err2){
+      if(regErr){
+        regErr.innerHTML='Не удалось отправить. Напишите на <a href="mailto:private@ccapital.pro">private@ccapital.pro</a> или <a href="mailto:hello@ccapital.pro">hello@ccapital.pro</a>.';
+        regErr.classList.add('is-visible');
+      }
+    }finally{
+      regSub.classList.remove('is-loading');
+      regSub.textContent=origRegLabel;
+    }
   });
 })();
 
