@@ -373,6 +373,40 @@ button{font-family:inherit;cursor:pointer}
   .inline-cta .inline-cta-tg{justify-content:center}
 }
 
+/* Финбокс «Для финдира и главбуха» — компактная учётная выжимка */
+.finbox{
+  margin:36px 0 8px;padding:28px 32px;
+  background:linear-gradient(180deg,#f0fdf4 0%,#ecfdf5 100%);
+  border:1px solid #a7f3d0;border-radius:10px;
+  border-left:4px solid #047857;
+}
+.finbox .finbox-label{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:10.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+  color:#047857;margin-bottom:14px;
+}
+.finbox h3{
+  display:block;margin:0 0 14px;
+  font-size:1.2rem;font-weight:600;letter-spacing:-.01em;line-height:1.3;
+  color:#064e3b;
+}
+.finbox p{
+  font-size:15px;line-height:1.65;color:#065f46;margin:0 0 12px;
+}
+.finbox p:last-of-type{margin-bottom:16px}
+.finbox strong{color:#064e3b;font-weight:600}
+.finbox .finbox-link{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:13.5px;font-weight:600;color:#047857;
+  border-bottom:1px solid rgba(4,120,87,.35);padding-bottom:2px;
+  transition:color .15s ease,border-color .15s ease;
+}
+.finbox .finbox-link:hover{color:#064e3b;border-color:#064e3b}
+.finbox .finbox-link .arr{transition:transform .15s ease}
+.finbox .finbox-link:hover .arr{transform:translateX(3px)}
+@media(max-width:640px){.finbox{padding:22px 20px}.finbox h3{font-size:1.1rem}}
+
 .next-step{
   position:relative;
   margin:0 0 8px;
@@ -722,6 +756,26 @@ button{font-family:inherit;cursor:pointer}
             </a>
           </div>
         </div>
+
+        <aside class="finbox" aria-label="Бухгалтерия и валютный контроль">
+          <span class="finbox-label">
+            <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/></svg>
+            Для финдира и&nbsp;главбуха
+          </span>
+          <h3>Как это ложится на&nbsp;ваш бухгалтерский учёт</h3>
+          <p>
+            Вы&nbsp;заключаете контракт с&nbsp;нашим финансовым агентом — <strong>нерезидентом&nbsp;РФ</strong>,
+            но&nbsp;оплачиваете в&nbsp;рублях на&nbsp;его <strong>рублёвый расчётный счёт в&nbsp;российском банке</strong>.
+            Расчёты в&nbsp;рублях с&nbsp;контрагентами инфраструктуры&nbsp;СНГ проходят банковский валютный контроль
+            в&nbsp;штатном, предсказуемом режиме — без рисков, характерных для трансграничных SWIFT-переводов.
+          </p>
+          <p>
+            Операция <strong>не&nbsp;облагается НДС</strong>. По&nbsp;итогам сделки бухгалтерия получает полный пакет
+            закрывающих документов: инвойсы, акты и&nbsp;отчёты агента-нерезидента — расходы легально принимаются
+            к&nbsp;учёту и&nbsp;не&nbsp;вызывают вопросов при налоговых проверках.
+          </p>
+          <a href="/pay.html#usdc" class="finbox-link">Полный разбор: договорная база, ВК, НДС, документы <span class="arr">→</span></a>
+        </aside>
 
         <h2><span class="h2-num">05</span>Кому это подходит, а кому нет</h2>
 

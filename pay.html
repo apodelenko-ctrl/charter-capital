@@ -1121,6 +1121,56 @@ section.s.deep{background:#080b16}
 .usdc-tab.is-active{background:rgba(34,197,94,.14);color:#86efac}
 .usdc-tab.bad.is-active{background:rgba(239,68,68,.14);color:#fca5a5}
 
+/* Legal & accounting block — для финдира и главбуха */
+.usdc-legal{
+  display:grid;grid-template-columns:1fr 1fr;gap:14px;
+  margin:0 0 18px;
+}
+.usdc-legal-card{
+  position:relative;display:flex;flex-direction:column;gap:10px;
+  padding:26px 26px 24px;border-radius:var(--radius-lg);
+  background:linear-gradient(180deg,rgba(8,11,22,.85) 0%,rgba(10,14,26,.95) 100%);
+  border:1px solid rgba(255,255,255,.08);
+  transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;
+}
+.usdc-legal-card:hover{
+  transform:translateY(-2px);
+  border-color:rgba(34,197,94,.32);
+  box-shadow:0 18px 40px rgba(34,197,94,.08);
+}
+.usdc-legal-card .lc-head{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+}
+.usdc-legal-card .lc-num{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--green-soft);font-weight:600;
+}
+.usdc-legal-card .lc-ic{
+  width:36px;height:36px;border-radius:9px;
+  background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.22);
+  display:grid;place-items:center;color:#86efac;flex-shrink:0;
+}
+.usdc-legal-card .lc-ic svg{width:18px;height:18px}
+.usdc-legal-card h4{
+  font-size:15px;font-weight:600;color:#fff;letter-spacing:-.005em;line-height:1.35;
+  margin-top:4px;
+}
+.usdc-legal-card p{
+  font-size:13.5px;line-height:1.6;color:var(--ink-mute);font-weight:400;
+}
+.usdc-legal-card p strong{color:#e2e8f0;font-weight:500}
+.usdc-legal-note{
+  display:flex;align-items:flex-start;gap:12px;
+  margin:0 0 72px;padding:16px 20px;
+  border-radius:10px;
+  background:rgba(255,255,255,.02);
+  border:1px solid rgba(255,255,255,.06);
+  border-left:3px solid rgba(34,197,94,.35);
+  font-size:12.5px;line-height:1.55;color:var(--ink-mute);
+}
+.usdc-legal-note svg{flex:0 0 14px;margin-top:3px;color:var(--green-soft)}
+.usdc-legal-note strong{color:var(--ink-soft);font-weight:500}
+
 /* Form */
 .usdc-cta{
   display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:center;
@@ -1211,6 +1261,7 @@ section.s.deep{background:#080b16}
   .usdc-facts li:nth-child(3),
   .usdc-facts li:nth-child(4){padding-top:18px;border-top:1px solid rgba(34,197,94,.18)}
   .usdc-facts li:nth-child(3){border-left:0;padding-left:0}
+  .usdc-legal{grid-template-columns:1fr 1fr;gap:12px}
   .usdc-cta{grid-template-columns:1fr;gap:32px;padding:36px 28px}
 }
 @media(max-width:640px){
@@ -1218,6 +1269,8 @@ section.s.deep{background:#080b16}
   .usdc-facts{grid-template-columns:1fr;gap:12px;margin-top:0}
   .usdc-facts li{padding:14px 0 0;border-left:0;border-top:1px solid rgba(34,197,94,.18)}
   .usdc-facts li:first-child{padding-top:0;border-top:0}
+  .usdc-legal{grid-template-columns:1fr;gap:12px}
+  .usdc-legal-card{padding:22px 20px}
   .usdc-compare{grid-template-columns:1fr;gap:12px}
   .usdc-compare.has-tabs .usdc-tabs{display:flex}
   .usdc-compare.has-tabs .usdc-case{display:none}
@@ -2231,6 +2284,56 @@ footer.f{
         <div class="outcome">Итог · сделка закрыта в&nbsp;срок · риски управляемые</div>
       </article>
     </div>
+
+    <!-- Г. Юридическая обвязка и бухгалтерия — для финдира и главбуха -->
+    <div class="s-head" style="margin-bottom:28px">
+      <span class="kicker mute">Для финдира и&nbsp;главбуха</span>
+      <h2 style="font-size:clamp(1.45rem,2.4vw,1.95rem)">Как расчёты <strong style="color:var(--green-soft);font-weight:500">отражаются в&nbsp;вашем бухгалтерском учёте</strong></h2>
+      <p>Для корпоративного сектора легальность и&nbsp;прозрачность расчётов внутри&nbsp;РФ так&nbsp;же важна, как и&nbsp;санкционная чистота USDC на&nbsp;стороне получателя. Сделка структурируется так, чтобы минимизировать нагрузку на&nbsp;бухгалтерию и&nbsp;штатно пройти валютный контроль.</p>
+    </div>
+
+    <div class="usdc-legal" role="list" aria-label="Юридическая и бухгалтерская обвязка">
+      <article class="usdc-legal-card" role="listitem">
+        <div class="lc-head">
+          <span class="lc-num">01 · Договор</span>
+          <span class="lc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/></svg></span>
+        </div>
+        <h4>Договорная база</h4>
+        <p>Вы&nbsp;заключаете контракт с&nbsp;нашим финансовым агентом — <strong>нерезидентом&nbsp;РФ</strong>. Оплата производится в&nbsp;рублях на&nbsp;<strong>рублёвый расчётный счёт нерезидента</strong>, открытый в&nbsp;российском банке.</p>
+      </article>
+
+      <article class="usdc-legal-card" role="listitem">
+        <div class="lc-head">
+          <span class="lc-num">02 · Валютный контроль</span>
+          <span class="lc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4z"/><path d="M9 12l2 2 4-4"/></svg></span>
+        </div>
+        <h4>В&nbsp;штатном режиме</h4>
+        <p>Хотя перевод нерезиденту формально является валютной операцией, расчёты в&nbsp;рублях с&nbsp;контрагентами из&nbsp;инфраструктуры&nbsp;СНГ проходят банковский контроль <strong>предсказуемо</strong>. Это исключает риск внезапной блокировки или зависания средств, характерный для трансграничных SWIFT-переводов.</p>
+      </article>
+
+      <article class="usdc-legal-card" role="listitem">
+        <div class="lc-head">
+          <span class="lc-num">03 · Налогообложение</span>
+          <span class="lc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg></span>
+        </div>
+        <h4>НДС не&nbsp;возникает</h4>
+        <p>Данные операции <strong>не&nbsp;облагаются НДС</strong>. Вы&nbsp;не&nbsp;несёте скрытых налоговых издержек — вся отправленная сумма направляется на&nbsp;обеспечение вашей сделки с&nbsp;зарубежным поставщиком.</p>
+      </article>
+
+      <article class="usdc-legal-card" role="listitem">
+        <div class="lc-head">
+          <span class="lc-num">04 · Документы</span>
+          <span class="lc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></span>
+        </div>
+        <h4>Закрывающие документы</h4>
+        <p>По&nbsp;итогам транзакции бухгалтерия получает полный пакет: <strong>инвойсы, акты и&nbsp;отчёты агента-нерезидента</strong>. Расходы легально принимаются к&nbsp;учёту и&nbsp;не&nbsp;вызывают вопросов при налоговых проверках.</p>
+      </article>
+    </div>
+
+    <p class="usdc-legal-note">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <span><strong>Точный налоговый режим</strong> и&nbsp;формулировки в&nbsp;контракте уточняются под вашу структуру (ОСНО / УСН, импорт товаров vs&nbsp;услуг, агентский&nbsp;vs комиссионный договор) — до&nbsp;подписания договора с&nbsp;агентом. По&nbsp;запросу пришлём шаблон контракта и&nbsp;комментарий бухгалтерской команды.</span>
+    </p>
 
     <!-- C. CTA Form -->
     <div class="usdc-cta" id="usdc-cta">
