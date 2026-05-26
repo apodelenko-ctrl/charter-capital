@@ -1303,6 +1303,48 @@ section.s.deep{background:#080b16}
 .usdc-legal-note svg{flex:0 0 14px;margin-top:3px;color:var(--green-soft)}
 .usdc-legal-note strong{color:var(--ink-soft);font-weight:500}
 
+/* Trust / safety of funds */
+.usdc-trust{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px;margin:0 0 56px;
+}
+.usdc-trust .card{
+  position:relative;display:flex;gap:18px;
+  padding:24px 26px;border-radius:14px;
+  background:linear-gradient(180deg,rgba(34,197,94,.04) 0%,rgba(34,197,94,.015) 100%);
+  border:1px solid rgba(34,197,94,.18);
+}
+.usdc-trust .card .ic{
+  flex:0 0 40px;width:40px;height:40px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(34,197,94,.10);border:1px solid rgba(34,197,94,.25);
+  color:var(--green-soft);
+}
+.usdc-trust .card .ic svg{width:20px;height:20px;stroke-width:1.7}
+.usdc-trust .card h4{
+  margin:0 0 6px;font-size:15.5px;font-weight:600;
+  color:var(--ink);letter-spacing:-.01em;
+}
+.usdc-trust .card p{
+  margin:0;font-size:13.5px;line-height:1.55;color:var(--ink-mute);
+}
+.usdc-trust .card strong{color:var(--ink-soft);font-weight:500}
+.usdc-trust-note{
+  display:flex;align-items:flex-start;gap:12px;
+  margin:0 0 56px;padding:14px 18px;
+  border-radius:10px;
+  background:rgba(160,129,86,.04);
+  border:1px solid rgba(160,129,86,.18);
+  border-left:3px solid rgba(160,129,86,.45);
+  font-size:12.5px;line-height:1.55;color:var(--ink-mute);
+}
+.usdc-trust-note svg{flex:0 0 14px;margin-top:3px;color:#c9a96e}
+.usdc-trust-note strong{color:var(--ink-soft);font-weight:500}
+@media (max-width:760px){
+  .usdc-trust{grid-template-columns:1fr;gap:14px;margin-bottom:40px}
+  .usdc-trust .card{padding:20px 18px;gap:14px}
+}
+
 /* Form */
 .usdc-cta{
   display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:center;
@@ -1629,6 +1671,7 @@ footer.f{
         {"@type":"Question","name":"Как работает Pay Lite?","acceptedAnswer":{"@type":"Answer","text":"Для инвойсов до $50k. Загружаете инвойс, указываете вашу компанию-плательщика и получателя, мы возвращаем условия. После исполнения - подтверждение и закрывающие документы."}},
         {"@type":"Question","name":"Что нужно для старта?","acceptedAnswer":{"@type":"Answer","text":"Реквизиты вашей компании-плательщика, контактное лицо, реквизиты получателя, инвойс или контракт, понятное назначение платежа. Без этого работу не начинаем."}},
         {"@type":"Question","name":"Сколько стоит расчёт через чистый USDC?","acceptedAnswer":{"@type":"Answer","text":"Стоимость складывается из двух компонент: 1) Курс агента на день сделки - эффективный курс конверсии ₽→USDC, в него зашит спред регулируемой инфраструктуры и стоимость выкупа чистого USDC у зарубежных брокеров, фиксируется в момент исполнения; 2) Сервисная комиссия Charter Capital по шкале от объёма: $10K-50K = 6%, $50K-250K = 4,5%, $250K-1M = 3%, $1M+ = 2% и ниже (индивидуально). Минимальный объём - $10 000. Финальные параметры фиксируются договором после оценки маршрута и страны получателя; индикативный расчёт - в калькуляторе на pay.html."}},
+        {"@type":"Question","name":"Какие гарантии, что деньги не зависнут у агента?","acceptedAnswer":{"@type":"Answer","text":"Четыре линии защиты: (1) Прямой договор - вы подписываете обязывающий документ с платёжным агентом напрямую, не с Charter Capital; шаблон присылаем заранее для проверки юристом и службой безопасности. (2) Российский банк - рублёвый счёт нерезидента открыт в РФ, под надзором ЦБ РФ; подсудность Россия; деньги физически не уходят за рубеж до момента выкупа USDC. (3) Поэтапное подтверждение - каждый шаг (получение рублей → выкуп USDC → отправка) документируется отдельно, по запросу - on-chain доказательства; менеджер на связи в Telegram. (4) Для контрактов от $250k - оплата траншами: пилотный платёж 5-10% от объёма, затем основная сумма по факту успеха пилота. По NDA раскрываем реквизиты агента, лицензии, объём операций и банковские реквизиты до подписания."}},
         {"@type":"Question","name":"Чистый USDC - что с бухгалтерией, валютным контролем и НДС?","acceptedAnswer":{"@type":"Answer","text":"Сделка структурируется как обычная B2B-операция с нерезидентом: вы заключаете контракт с нашим финансовым агентом - нерезидентом РФ - и платите ему в рублях на рублёвый счёт, открытый в российском банке. Рублёвые расчёты с контрагентами инфраструктуры СНГ проходят валютный контроль в штатном режиме, без рисков заморозки, характерных для трансграничных SWIFT. Операция не облагается НДС (применимая правовая база - ст. 148 / 149 НК РФ в зависимости от структуры сделки, уточняется под клиента). Бухгалтерия получает полный пакет закрывающих документов: инвойсы, акты и отчёты агента-нерезидента; расходы легально принимаются к учёту."}}
       ]
     }
@@ -2351,7 +2394,7 @@ footer.f{
         <span class="ic-wrap" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18M7 15h2"/></svg></span>
         <span class="num">Шаг 1</span>
         <h4>Перевод рублей внутри&nbsp;РФ</h4>
-        <p>Вы&nbsp;переводите средства на&nbsp;счёт нашего доверенного платёжного агента в&nbsp;российском банке - по&nbsp;стандартному платёжному поручению.</p>
+        <p>Вы&nbsp;подписываете <strong>прямой договор</strong> с&nbsp;нашим проверенным платёжным агентом и&nbsp;переводите средства на&nbsp;его рублёвый счёт <strong>в&nbsp;российском банке</strong> — стандартным платёжным поручением. Контрагент — у&nbsp;вас на&nbsp;руках, подсудность — РФ.</p>
       </article>
       <article class="usdc-step" role="listitem">
         <span class="ic-wrap" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span>
@@ -2546,6 +2589,60 @@ footer.f{
       <span><strong>Точный налоговый режим</strong> и&nbsp;формулировки в&nbsp;контракте уточняются под вашу структуру (ОСНО / УСН, импорт товаров vs&nbsp;услуг, агентский&nbsp;vs комиссионный договор) — до&nbsp;подписания договора с&nbsp;агентом. Применимая правовая база — <strong>ст.&nbsp;148 и&nbsp;149 НК&nbsp;РФ</strong> в&nbsp;зависимости от&nbsp;структуры сделки; по&nbsp;запросу пришлём шаблон контракта и&nbsp;письменный комментарий бухгалтерской команды со&nbsp;ссылками на&nbsp;применяемые нормы и&nbsp;разъяснения Минфина.</span>
     </p>
 
+    <!-- B+. Trust / Safety of Funds — снимает страх "деньги пропадут на счёте агента" -->
+    <div class="s-head" id="usdc-trust" style="margin-top:24px;scroll-margin-top:96px">
+      <span class="kicker"><span class="num">[09b]</span>Безопасность средств</span>
+      <h2>Где гарантии, что <strong style="color:var(--gold-warm);font-weight:500">деньги не&nbsp;зависнут</strong> у&nbsp;агента?</h2>
+      <p>Главный вопрос финдира перед первым платежом. Отвечаем по&nbsp;пунктам — без размытого «мы&nbsp;серьёзная компания».</p>
+    </div>
+
+    <div class="usdc-trust">
+      <article class="card">
+        <span class="ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>
+        </span>
+        <div>
+          <h4>Прямой договор с&nbsp;агентом — на&nbsp;вашей стороне</h4>
+          <p>Вы&nbsp;подписываете договор не&nbsp;с&nbsp;Charter&nbsp;Capital, а&nbsp;<strong>напрямую с&nbsp;платёжным агентом</strong>. У&nbsp;вас на&nbsp;руках обязывающий документ с&nbsp;прямым контрагентом, по&nbsp;которому он&nbsp;несёт ответственность за&nbsp;исполнение перед вами. Шаблон присылаем заранее.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M16 3l-4 4-4-4"/><line x1="3" y1="11" x2="21" y2="11"/></svg>
+        </span>
+        <div>
+          <h4>Деньги — в&nbsp;российском банке, под надзором ЦБ&nbsp;РФ</h4>
+          <p>Рублёвый счёт нерезидента открыт в&nbsp;<strong>российском банке</strong>. Подсудность&nbsp;— РФ, любые спорные ситуации решаются в&nbsp;юрисдикции, понятной вашему юристу. Деньги не&nbsp;уходят за&nbsp;рубеж до&nbsp;момента, когда USDC будет фактически выкуплен у&nbsp;брокера.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </span>
+        <div>
+          <h4>Поэтапное подтверждение — без «чёрного ящика»</h4>
+          <p>Каждый этап документируется отдельно: <strong>1)&nbsp;получение рублей агентом</strong>, <strong>2)&nbsp;выкуп чистого USDC</strong>, <strong>3)&nbsp;отправка на&nbsp;кошелёк вашего контрагента</strong>. Статус&nbsp;— в&nbsp;реальном времени, ответственный менеджер на&nbsp;связи в&nbsp;Telegram. По&nbsp;запросу&nbsp;— подтверждения on-chain.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </span>
+        <div>
+          <h4>Charter&nbsp;Capital — поручитель маршрута</h4>
+          <p>Мы&nbsp;<strong>выбираем агента, проверяем его лицензии и&nbsp;историю операций</strong>, держим оперативный контроль на&nbsp;каждом этапе. По&nbsp;NDA раскрываем реквизиты агента, регистрационные документы, объём проведённых сделок и&nbsp;банковские реквизиты&nbsp;— ваш юрист и&nbsp;служба безопасности проверяют контрагента до&nbsp;подписания.</p>
+        </div>
+      </article>
+    </div>
+
+    <p class="usdc-trust-note">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <span>Для контрактов <strong>от&nbsp;$250&nbsp;000</strong> структурируем платёж <strong>траншами</strong>: пилотный платёж 5–10% от&nbsp;объёма, далее&nbsp;— основная сумма по&nbsp;факту успеха пилота. Это стандартная практика для первых сделок с&nbsp;новым контрагентом и&nbsp;дополнительно снимает риск «всё или ничего».</span>
+    </p>
+
     <!-- C. CTA Form -->
     <div class="usdc-cta" id="usdc-cta">
       <div class="cta-copy">
@@ -2738,6 +2835,16 @@ footer.f{
             <li><strong>$1&nbsp;000&nbsp;000 и&nbsp;выше</strong> — 2,0% и&nbsp;ниже (индивидуально)</li>
           </ul>
           <p>Минимальный объём для разбора — $10&nbsp;000. Индикативный расчёт под ваш контракт — в&nbsp;<a href="#usdc-calc">калькуляторе на&nbsp;этой&nbsp;же странице</a>. Финальные параметры всегда фиксируются договором после оценки маршрута и&nbsp;страны получателя.</p>
+        </div>
+      </details>
+      <details class="faq">
+        <summary>Какие гарантии, что деньги не&nbsp;зависнут у&nbsp;агента?</summary>
+        <div class="answer">
+          <p><strong>Договор у&nbsp;вас в&nbsp;руках, не&nbsp;в&nbsp;Telegram.</strong> Вы&nbsp;подписываете прямой договор с&nbsp;платёжным агентом — это юридически обязывающий документ с&nbsp;вашим прямым контрагентом, не&nbsp;с&nbsp;Charter&nbsp;Capital. Шаблон присылаем заранее, юрист и&nbsp;служба безопасности проверяют до&nbsp;подписания.</p>
+          <p><strong>Деньги — в&nbsp;российском банке.</strong> Рублёвый счёт нерезидента открыт в&nbsp;РФ, под надзором ЦБ&nbsp;РФ. Подсудность — Россия. Деньги физически не&nbsp;уходят за&nbsp;рубеж до&nbsp;момента, когда чистый USDC будет фактически выкуплен и&nbsp;готов к&nbsp;отправке вашему контрагенту.</p>
+          <p><strong>Поэтапное подтверждение.</strong> Каждый шаг (получение рублей агентом → выкуп USDC → отправка) фиксируется отдельным документом. Менеджер на&nbsp;связи в&nbsp;Telegram, по&nbsp;запросу — on-chain доказательства транзакции.</p>
+          <p><strong>Для крупных контрактов — траншами.</strong> Сделки от&nbsp;$250k структурируем по&nbsp;этапам: пилотный платёж 5–10% от&nbsp;объёма, затем основная сумма по&nbsp;факту успеха. Стандартная практика для первого взаимодействия.</p>
+          <p>Подробности — в&nbsp;<a href="#usdc-trust">блоке «Безопасность средств»</a>.</p>
         </div>
       </details>
       <details class="faq">
