@@ -97,3 +97,4 @@ Allow: /
 
 # === Sitemap ===
 Sitemap: https://ccapital.pro/sitemap.xml
+<!-- redeploy trigger: 2026-05-26T11:54:04Z -->
