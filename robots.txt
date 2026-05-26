@@ -4,6 +4,10 @@ User-agent: *
 Allow: /
 Disallow: /team.html
 Disallow: /INTEGRATION-PROPERTY.md
+Disallow: /ads/
+Disallow: /usdc-china.html
+Disallow: /usdc-b2b.html
+Disallow: /no-swift.html
 
 # === Crawlers ===
 User-agent: Googlebot

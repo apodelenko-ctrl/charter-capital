@@ -3235,7 +3235,13 @@ document.addEventListener('DOMContentLoaded', function () {
       var res=await fetch(form.action,{method:'POST',body:fd,headers:{'Accept':'application/json'}});
       if(!res.ok) throw new Error('fail');
       form.reset();
-      try{ if(typeof ym==='function'){ ym(108969822,'reachGoal','b2b_usdc_form'); } }catch(_){}
+      try{
+        if(typeof ym==='function'){
+          ym(108969822,'reachGoal','b2b_usdc_form');
+          var src = new URLSearchParams(location.search).get('utm_source');
+          if(src){ ym(108969822,'reachGoal','b2b_usdc_form_'+src.toLowerCase()); }
+        }
+      }catch(_){}
       form.innerHTML='<div class="form-thanks"><h4>Спасибо. Ваша заявка отправлена.</h4><p>Ответим в течение дня на указанный контакт.</p></div>';
     }catch(err){
       show('Не удалось отправить. Напишите на hello@ccapital.pro или в Telegram @ccapital_acces.','err');
