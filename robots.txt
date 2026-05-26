@@ -97,9 +97,6 @@ Allow: /
 
 # === Sitemap ===
 Sitemap: https://ccapital.pro/sitemap.xml
-<!-- redeploy trigger: 2026-05-26T11:54:04Z -->
-<!-- redeploy attempt 2: 2026-05-26T12:13:33Z -->
-<!-- redeploy attempt 3 after actions perms fix: 2026-05-26T12:19:28Z -->
-<!-- redeploy attempt 4 after env branch policy fix: 2026-05-26T12:24:32Z -->
-<!-- classic redeploy: 2026-05-26T12:38:58Z -->
-<!-- final trigger: 2026-05-26T12:45:27Z -->
+
+# === Host (Yandex hint) ===
+Host: https://ccapital.pro
