@@ -1038,7 +1038,9 @@ section.s.deep{background:#080b16}
 .usdc-case{
   position:relative;padding:36px 32px;border-radius:var(--radius-lg);
   border:1px solid rgba(255,255,255,.08);overflow:hidden;
+  display:block;
 }
+.usdc-case[hidden]{display:block}
 .usdc-case .case-tag{
   display:inline-flex;align-items:center;gap:8px;
   font-family:var(--mono);font-size:10.5px;font-weight:600;
@@ -1187,6 +1189,7 @@ section.s.deep{background:#080b16}
   .usdc-compare.has-tabs .usdc-tabs{display:flex}
   .usdc-compare.has-tabs .usdc-case{display:none}
   .usdc-compare.has-tabs .usdc-case.is-active{display:block}
+  .usdc-compare.has-tabs .usdc-case[hidden]{display:none}
   .usdc-form .row-2{grid-template-columns:1fr}
   .usdc-cta{padding:30px 22px}
   .usdc-case{padding:28px 22px}
@@ -2166,7 +2169,7 @@ footer.f{
         <div class="outcome">Итог · сделка сорвана</div>
       </article>
 
-      <article class="usdc-case good" data-case="good" role="tabpanel" hidden>
+      <article class="usdc-case good" data-case="good" role="tabpanel">
         <span class="case-tag"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5L20 7"/></svg> Сценарий&nbsp;2 · С Charter Capital</span>
         <h4>«Рубли в&nbsp;РФ → чистый USDC → китайский поставщик»</h4>
         <p><strong>«ООО Бобруйские меха»</strong> отправляет рубли внутри&nbsp;РФ на&nbsp;счёт нашего доверенного агента. Мы&nbsp;задействуем закрытую международную инфраструктуру и&nbsp;<strong>выкупаем чистый американский USDC</strong> у&nbsp;лицензированных зарубежных брокеров.</p>
