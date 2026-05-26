@@ -5,7 +5,7 @@
 
   <url>
     <loc>https://ccapital.pro/</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-05-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://ccapital.pro/"/>
@@ -62,14 +62,14 @@
 
   <url>
     <loc>https://ccapital.pro/pay.html</loc>
-    <lastmod>2026-04-29</lastmod>
+    <lastmod>2026-05-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://ccapital.pro/pay.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ccapital.pro/pay.html"/>
     <image:image>
-      <image:loc>https://ccapital.pro/assets/logic/14-open-arch.webp</image:loc>
-      <image:title>CCAPITAL Pay — ВЭД-платежи с AML-бронёй</image:title>
+      <image:loc>https://ccapital.pro/assets/pay/hero-corridor.webp</image:loc>
+      <image:title>Charter Capital · Pay — ВЭД-платежи и чистый USDC для B2B</image:title>
     </image:image>
   </url>
 
@@ -213,14 +213,27 @@
   <!-- Дайджест Charter Capital -->
   <url>
     <loc>https://ccapital.pro/journal.html</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-05-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://ccapital.pro/journal.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ccapital.pro/journal.html"/>
     <image:image>
-      <image:loc>https://ccapital.pro/assets/journal/geneva-swiss-alps-winter-hero.webp</image:loc>
+      <image:loc>https://ccapital.pro/assets/pay/hero-corridor.webp</image:loc>
       <image:title>Дайджест Charter Capital — аналитика, объявления, кейсы</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://ccapital.pro/journal/b2b-crypto-settlements-clean-usdc.html</loc>
+    <lastmod>2026-05-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ccapital.pro/journal/b2b-crypto-settlements-clean-usdc.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ccapital.pro/journal/b2b-crypto-settlements-clean-usdc.html"/>
+    <image:image>
+      <image:loc>https://ccapital.pro/assets/pay/hero-corridor.webp</image:loc>
+      <image:title>B2B-расчёты чистым USDC — Charter Capital</image:title>
     </image:image>
   </url>
 

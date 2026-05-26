@@ -12,9 +12,9 @@
 <meta name="theme-color" content="#fbfaf6" media="(prefers-color-scheme: light)"/>
 <meta name="format-detection" content="telephone=no"/>
 <meta name="referrer" content="strict-origin-when-cross-origin"/>
-<title>Charter Capital · Pay - ВЭД-платежи с защитой</title>
-<meta name="description" content="ВЭД-платежи через сеть платёжных агентов: Pay Lite до $50k, Pay Pro для сложных задач. Защита платежа, проверка получателя, санкционная чистота и досье операции."/>
-<meta name="keywords" content="ВЭД-платежи, оплата иностранного инвойса, платёжный агент, защита платежа, AML, санкции, досье операции, Charter Capital Pay, Charter Capital"/>
+<title>Charter Capital · Pay - ВЭД-платежи с защитой и чистый USDC для B2B</title>
+<meta name="description" content="ВЭД-платежи через сеть платёжных агентов: Pay Lite до $50k, Pay Pro для сложных задач, покупка «чистого» американского USDC для расчётов с иностранными поставщиками. Защита платежа, проверка получателя, санкционная чистота и досье операции."/>
+<meta name="keywords" content="ВЭД-платежи, оплата иностранного инвойса, платёжный агент, защита платежа, чистый USDC для ВЭД, B2B крипто-расчёты, оплата поставщикам в Китае, покупка криптовалюты для юрлиц, AML, санкции, досье операции, Charter Capital Pay, Charter Capital"/>
 <meta name="author" content="Charter Capital"/>
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1"/>
 <meta name="yandex" content="index,follow"/>
@@ -931,6 +931,267 @@ section.s.deep{background:#080b16}
 }
 .intake-note{font-family:var(--mono);font-size:11px;color:var(--ink-faint);letter-spacing:.04em;max-width:46ch;line-height:1.5}
 
+/* ─── USDC, B2B clean settlements ──────────────────────── */
+.usdc{
+  background:
+    radial-gradient(circle at 15% 18%,rgba(34,197,94,.08) 0%,transparent 55%),
+    radial-gradient(circle at 85% 80%,rgba(59,130,246,.1) 0%,transparent 55%),
+    linear-gradient(180deg,#080b16 0%,#0a0e1a 50%,#080b16 100%);
+  border-top:1px solid rgba(34,197,94,.12);
+}
+.usdc .s-head h2 strong{color:var(--green-soft);font-weight:500}
+.usdc-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:10px;font-weight:600;
+  letter-spacing:.22em;text-transform:uppercase;
+  color:#0a0e1a;background:#86efac;
+  padding:5px 10px;border-radius:999px;margin-right:10px;
+}
+.usdc-intro{
+  display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:start;
+  margin-bottom:64px;
+}
+.usdc-intro .p-text h3{
+  font-size:1.45rem;font-weight:500;letter-spacing:-.015em;
+  color:#fff;margin-bottom:18px;line-height:1.3;
+}
+.usdc-intro .p-text h3 strong{color:var(--green-soft);font-weight:600}
+.usdc-intro .p-text p{
+  font-size:15.5px;line-height:1.72;color:var(--ink-soft);
+  margin-bottom:14px;
+}
+.usdc-intro .p-text p strong{color:#fff;font-weight:500}
+.usdc-side{
+  display:grid;gap:14px;padding:28px 26px;
+  background:rgba(8,11,22,.7);
+  border:1px solid rgba(34,197,94,.2);
+  border-radius:var(--radius-lg);
+  backdrop-filter:blur(8px);
+}
+.usdc-side .h{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--green-soft);
+  display:flex;align-items:center;gap:10px;margin-bottom:4px;
+}
+.usdc-side .h::before{content:"";width:18px;height:1px;background:var(--green-soft)}
+.usdc-side .row{
+  display:flex;align-items:flex-start;gap:12px;
+  font-size:14px;line-height:1.55;color:var(--ink-soft);
+  padding:12px 0;border-top:1px solid rgba(255,255,255,.06);
+}
+.usdc-side .row:nth-of-type(2){border-top:none;padding-top:0}
+.usdc-side .row .ic{
+  flex-shrink:0;width:28px;height:28px;border-radius:6px;
+  background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.3);
+  color:#86efac;display:grid;place-items:center;
+}
+.usdc-side .row .ic svg{width:14px;height:14px}
+.usdc-side .row strong{color:#fff;font-weight:500;display:block;margin-bottom:2px}
+.usdc-side .row span{color:var(--ink-mute);font-size:12.5px;letter-spacing:.02em}
+
+/* 4-step process */
+.usdc-flow{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
+  position:relative;margin:0 0 72px;
+}
+.usdc-step{
+  position:relative;display:flex;flex-direction:column;gap:14px;
+  padding:26px 22px;border-radius:var(--radius-lg);
+  background:linear-gradient(180deg,rgba(8,11,22,.85) 0%,rgba(10,14,26,.95) 100%);
+  border:1px solid rgba(255,255,255,.08);
+  transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;
+}
+.usdc-step:hover{
+  transform:translateY(-3px);
+  border-color:rgba(34,197,94,.4);
+  box-shadow:0 22px 50px rgba(34,197,94,.1);
+}
+.usdc-step .num{
+  font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--green-soft);font-weight:600;
+}
+.usdc-step .ic-wrap{
+  width:42px;height:42px;border-radius:10px;
+  background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);
+  display:grid;place-items:center;color:#86efac;
+}
+.usdc-step .ic-wrap svg{width:20px;height:20px}
+.usdc-step h4{
+  font-size:15px;font-weight:600;color:#fff;letter-spacing:-.005em;line-height:1.35;
+}
+.usdc-step p{
+  font-size:13.5px;line-height:1.55;color:var(--ink-mute);font-weight:400;
+}
+.usdc-step::after{
+  content:"";position:absolute;right:-12px;top:50%;
+  width:14px;height:14px;border-top:1px solid rgba(34,197,94,.55);
+  border-right:1px solid rgba(34,197,94,.55);
+  transform:translateY(-50%) rotate(45deg);z-index:2;
+}
+.usdc-step:last-child::after{display:none}
+
+/* Compare: dangerous vs safe */
+.usdc-compare{
+  display:grid;grid-template-columns:1fr 1fr;gap:18px;
+  margin-bottom:72px;
+}
+.usdc-case{
+  position:relative;padding:36px 32px;border-radius:var(--radius-lg);
+  border:1px solid rgba(255,255,255,.08);overflow:hidden;
+}
+.usdc-case .case-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:10.5px;font-weight:600;
+  letter-spacing:.2em;text-transform:uppercase;
+  padding:6px 12px;border-radius:999px;margin-bottom:18px;
+}
+.usdc-case h4{
+  font-size:1.15rem;font-weight:500;letter-spacing:-.015em;line-height:1.3;
+  color:#fff;margin-bottom:18px;
+}
+.usdc-case p{
+  font-size:14.5px;line-height:1.65;color:var(--ink-soft);margin-bottom:14px;
+}
+.usdc-case p strong{color:#fff;font-weight:500}
+.usdc-case .outcome{
+  display:flex;align-items:center;gap:10px;margin-top:22px;padding-top:18px;
+  border-top:1px solid rgba(255,255,255,.08);
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;
+  text-transform:uppercase;font-weight:600;
+}
+.usdc-case.bad{
+  background:linear-gradient(180deg,rgba(239,68,68,.06) 0%,rgba(10,14,26,.95) 100%);
+  border-color:rgba(239,68,68,.25);
+}
+.usdc-case.bad .case-tag{color:#fca5a5;background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.3)}
+.usdc-case.bad .outcome{color:#fca5a5}
+.usdc-case.bad .outcome::before{
+  content:"";width:10px;height:10px;border-radius:50%;background:#ef4444;
+  box-shadow:0 0 0 4px rgba(239,68,68,.18);
+}
+.usdc-case.good{
+  background:linear-gradient(180deg,rgba(34,197,94,.06) 0%,rgba(10,14,26,.95) 100%);
+  border-color:rgba(34,197,94,.32);
+  box-shadow:0 0 0 1px rgba(34,197,94,.15),0 22px 50px rgba(34,197,94,.06);
+}
+.usdc-case.good .case-tag{color:#86efac;background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.35)}
+.usdc-case.good .outcome{color:#86efac}
+.usdc-case.good .outcome::before{
+  content:"";width:10px;height:10px;border-radius:50%;background:#22c55e;
+  box-shadow:0 0 0 4px rgba(34,197,94,.18);
+}
+.usdc-tabs{
+  display:none;gap:8px;margin-bottom:18px;
+  padding:4px;background:rgba(8,11,22,.6);border:1px solid rgba(255,255,255,.08);
+  border-radius:10px;
+}
+.usdc-tab{
+  flex:1;padding:11px 12px;font-family:var(--mono);font-size:11px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;
+  background:transparent;border:none;color:var(--ink-mute);cursor:pointer;
+  border-radius:7px;transition:all .2s ease;
+}
+.usdc-tab.is-active{background:rgba(34,197,94,.14);color:#86efac}
+.usdc-tab.bad.is-active{background:rgba(239,68,68,.14);color:#fca5a5}
+
+/* Form */
+.usdc-cta{
+  display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:center;
+  padding:48px 44px;border-radius:var(--radius-xl);
+  background:
+    radial-gradient(circle at 100% 0%,rgba(34,197,94,.12) 0%,transparent 55%),
+    linear-gradient(180deg,#0c1120 0%,#0a0e1a 100%);
+  border:1px solid rgba(34,197,94,.22);
+  box-shadow:0 30px 80px rgba(0,0,0,.4);
+}
+.usdc-cta .cta-copy h3{
+  font-size:clamp(1.4rem,2.4vw,1.85rem);font-weight:400;letter-spacing:-.02em;
+  color:#fff;line-height:1.25;margin-bottom:14px;
+}
+.usdc-cta .cta-copy h3 strong{color:var(--green-soft);font-weight:600}
+.usdc-cta .cta-copy p{
+  font-size:14.5px;line-height:1.65;color:var(--ink-soft);
+}
+.usdc-cta .cta-copy ul{list-style:none;margin-top:18px;display:grid;gap:8px}
+.usdc-cta .cta-copy ul li{
+  font-size:13px;color:var(--ink-mute);display:flex;align-items:flex-start;gap:10px;
+  line-height:1.5;
+}
+.usdc-cta .cta-copy ul li::before{
+  content:"";flex-shrink:0;margin-top:6px;width:5px;height:5px;border-radius:50%;
+  background:#22c55e;
+}
+.usdc-form{display:grid;gap:14px}
+.usdc-form .row-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.usdc-form label{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink-mute);font-weight:600;
+  display:block;margin-bottom:6px;
+}
+.usdc-form input{
+  width:100%;padding:13px 14px;
+  background:rgba(6,8,15,.65);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:8px;font-family:inherit;font-size:14px;color:#fff;
+  outline:none;transition:border-color .15s ease,background .15s ease;
+}
+.usdc-form input::placeholder{color:var(--ink-faint)}
+.usdc-form input:focus{border-color:rgba(34,197,94,.55);background:rgba(6,8,15,.9)}
+.usdc-form .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none}
+.usdc-form button{
+  width:100%;padding:15px 22px;border-radius:8px;border:none;cursor:pointer;
+  font-family:inherit;font-size:13px;font-weight:600;letter-spacing:.06em;
+  text-transform:uppercase;color:#0a0e1a;
+  background:linear-gradient(180deg,#86efac 0%,#22c55e 100%);
+  transition:transform .15s ease,box-shadow .15s ease,filter .15s ease;
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+}
+.usdc-form button:hover{transform:translateY(-1px);box-shadow:0 12px 28px rgba(34,197,94,.34)}
+.usdc-form button.is-loading{pointer-events:none;filter:saturate(.6) opacity(.85)}
+.usdc-form button.is-loading::after{
+  content:"";width:14px;height:14px;border-radius:50%;
+  border:2px solid rgba(10,14,26,.3);border-top-color:#0a0e1a;
+  animation:loginSpin .8s linear infinite;
+}
+.usdc-form .form-msg{
+  display:none;padding:12px 14px;border-radius:8px;
+  font-size:13px;line-height:1.5;
+}
+.usdc-form .form-msg.is-visible{display:block}
+.usdc-form .form-msg.ok{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.32);color:#86efac}
+.usdc-form .form-msg.err{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.28);color:#fca5a5}
+.usdc-form .form-note{
+  font-size:11.5px;color:var(--ink-faint);line-height:1.5;text-align:center;
+  margin-top:2px;
+}
+.usdc-form .form-note a{color:var(--green-soft);border-bottom:1px solid rgba(134,239,172,.4)}
+.usdc-form .form-thanks{
+  text-align:center;padding:8px 0;
+}
+.usdc-form .form-thanks h4{
+  color:#fff;font-size:1.1rem;font-weight:500;margin-bottom:10px;
+}
+.usdc-form .form-thanks p{
+  font-size:14px;color:var(--ink-soft);line-height:1.55;
+}
+
+@media(max-width:980px){
+  .usdc-intro{grid-template-columns:1fr;gap:32px}
+  .usdc-flow{grid-template-columns:1fr 1fr;gap:14px}
+  .usdc-step::after{display:none}
+  .usdc-cta{grid-template-columns:1fr;gap:32px;padding:36px 28px}
+}
+@media(max-width:640px){
+  .usdc-flow{grid-template-columns:1fr;gap:12px}
+  .usdc-compare{grid-template-columns:1fr;gap:12px}
+  .usdc-compare.has-tabs .usdc-tabs{display:flex}
+  .usdc-compare.has-tabs .usdc-case{display:none}
+  .usdc-compare.has-tabs .usdc-case.is-active{display:block}
+  .usdc-form .row-2{grid-template-columns:1fr}
+  .usdc-cta{padding:30px 22px}
+  .usdc-case{padding:28px 22px}
+}
+
 /* ─── FINAL CTA ───────────────────────────────────────── */
 .final{
   background:
@@ -1127,7 +1388,8 @@ footer.f{
           {"@type":"Offer","itemOffered":{"@type":"Service","name":"Pay Lite - ВЭД-платежи до $50k"}},
           {"@type":"Offer","itemOffered":{"@type":"Service","name":"Pay Pro - сложные платежные решения"}},
           {"@type":"Offer","itemOffered":{"@type":"Service","name":"Transaction File - досье операции"}},
-          {"@type":"Offer","itemOffered":{"@type":"Service","name":"Receiving Bank Lens - подготовка платежа к приёму"}}
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"Receiving Bank Lens - подготовка платежа к приёму"}},
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"Clean USDC for B2B - чистый американский USDC для расчётов с иностранными поставщиками"}}
         ]
       }
     },
@@ -1213,6 +1475,7 @@ footer.f{
       <span class="nav-sep" aria-hidden="true"></span>
       <a href="#aml" class="is-blue">Защита платежа</a>
       <a href="#mtn">Маршрут</a>
+      <a href="#usdc">Чистый USDC</a>
       <a href="#ops">Как идёт работа</a>
       <a href="#tfile">Документы</a>
       <a href="#faq">Вопросы</a>
@@ -1810,6 +2073,147 @@ footer.f{
   </div>
 </section>
 
+<!-- ───────────── B2B CRYPTO SETTLEMENTS · CLEAN USDC ───────────── -->
+<section class="s usdc" id="usdc">
+  <div class="container">
+    <div class="s-head">
+      <span class="kicker green"><span class="usdc-badge">Новое</span>B2B крипто-расчёты · без санкционных рисков</span>
+      <h2>Чистая ликвидность для ВЭД: <strong>американский USDC</strong>, который банк&nbsp;Китая, ОАЭ или ЕС <strong>принимает без вопросов</strong>.</h2>
+      <p>С&nbsp;легализацией криптовалют в&nbsp;РФ бизнес получает официальный инструмент для трансграничных расчётов. Но&nbsp;токены, купленные через российские банки или локальные площадки, оставляют&nbsp;<strong>«географический след»</strong>. Контрагенты в&nbsp;Китае, ОАЭ и&nbsp;ЕС всё чаще отказываются принимать такие средства - из-за страха вторичных санкций и&nbsp;комплаенс-блокировок. Charter&nbsp;Capital закрывает именно этот разрыв.</p>
+    </div>
+
+    <!-- A. Проблема и Решение -->
+    <div class="usdc-intro">
+      <div class="p-text">
+        <h3>Не&nbsp;любой USDC одинаково «принимается». <strong>Важна биография токена</strong>.</h3>
+        <p>Один и&nbsp;тот&nbsp;же тикер на&nbsp;кошельке выглядит одинаково - но&nbsp;для комплаенс-офицера зарубежного банка <strong>история адресов решает всё</strong>. Если цепочка ведёт к&nbsp;российским биржам, P2P-агрегаторам или подсанкционным VASP, платёж уходит в&nbsp;ручную проверку или просто блокируется.</p>
+        <p>Мы&nbsp;даём доступ к&nbsp;<strong>«чистому» американскому USDC</strong>, который выкуплен у&nbsp;лицензированных зарубежных брокеров и&nbsp;не&nbsp;имеет связей с&nbsp;санкционными юрисдикциями. Ваш партнёр получает токен, который проходит проверку Tier-1 банков без эскалации.</p>
+        <p>Это не&nbsp;«серая схема» и&nbsp;не&nbsp;обход регулирования. Это <strong>чистый трансграничный расчёт</strong> с&nbsp;документально подтверждённым происхождением средств на&nbsp;каждом шаге.</p>
+      </div>
+      <aside class="usdc-side" aria-label="Что вы получаете">
+        <div class="h">Что вы получаете</div>
+        <div class="row">
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4z"/></svg></span>
+          <span><strong>Санкционная чистота</strong><span>токен без российского следа в&nbsp;on-chain истории</span></span>
+        </div>
+        <div class="row">
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/></svg></span>
+          <span><strong>Признание у&nbsp;иностранных банков</strong><span>проходит комплаенс в&nbsp;CN, AE, EU без эскалации</span></span>
+        </div>
+        <div class="row">
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h18"/></svg></span>
+          <span><strong>Прозрачное досье</strong><span>подтверждения от&nbsp;лицензированных брокеров под ваш контракт</span></span>
+        </div>
+        <div class="row">
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M3 12h6M15 12h6M12 3v6M12 15v6"/></svg></span>
+          <span><strong>Скорость B2B-расчёта</strong><span>рубль→USDC внутри одного оперативного окна</span></span>
+        </div>
+      </aside>
+    </div>
+
+    <!-- B. Как это работает: 4 шага -->
+    <div class="s-head" style="margin-bottom:28px">
+      <span class="kicker mute">Как это работает</span>
+      <h2 style="font-size:clamp(1.45rem,2.4vw,1.95rem)">Четыре шага. <strong style="color:var(--green-soft);font-weight:500">Один защищённый коридор.</strong></h2>
+    </div>
+
+    <div class="usdc-flow" role="list" aria-label="Шаги покупки чистого USDC">
+      <article class="usdc-step" role="listitem">
+        <span class="ic-wrap" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18M7 15h2"/></svg></span>
+        <span class="num">Шаг 1</span>
+        <h4>Перевод рублей внутри&nbsp;РФ</h4>
+        <p>Вы&nbsp;переводите средства на&nbsp;счёт нашего доверенного платёжного агента в&nbsp;российском банке - по&nbsp;стандартному платёжному поручению.</p>
+      </article>
+      <article class="usdc-step" role="listitem">
+        <span class="ic-wrap" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span>
+        <span class="num">Шаг 2</span>
+        <h4>Закрытая международная инфраструктура</h4>
+        <p>Задействуем сеть доверенных платёжных агентов и&nbsp;закрытый международный контур для конвертации средств. Конкретные звенья не&nbsp;раскрываются - это часть защиты ваших расчётов.</p>
+      </article>
+      <article class="usdc-step" role="listitem">
+        <span class="ic-wrap" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4z"/><path d="M9 12l2 2 4-4"/></svg></span>
+        <span class="num">Шаг 3</span>
+        <h4>Выкуп «белого» USDC</h4>
+        <p>Получаем американский USDC у&nbsp;лицензированных зарубежных брокеров. История адресов чистая, без российского следа и&nbsp;санкционных привязок.</p>
+      </article>
+      <article class="usdc-step" role="listitem">
+        <span class="ic-wrap" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h13M14 6l6 6-6 6"/></svg></span>
+        <span class="num">Шаг 4</span>
+        <h4>Передача стейблкоина</h4>
+        <p>Получаете первоклассный USDC для безопасной отправки партнёру. Параллельно собираем досье операции для&nbsp;вашего бухгалтера и&nbsp;банка получателя.</p>
+      </article>
+    </div>
+
+    <!-- В. Кейс: Опасный vs Безопасный -->
+    <div class="s-head" style="margin-bottom:28px">
+      <span class="kicker mute">Как это работает на&nbsp;практике</span>
+      <h2 style="font-size:clamp(1.45rem,2.4vw,1.95rem)">Оплата оборудования в&nbsp;Китае: <strong style="color:var(--green-soft);font-weight:500">сравнение двух сценариев</strong></h2>
+      <p>Один и&nbsp;тот&nbsp;же контракт, один и&nbsp;тот&nbsp;же поставщик. Разница - в&nbsp;качестве USDC, который доходит до&nbsp;его кошелька.</p>
+    </div>
+
+    <div class="usdc-compare has-tabs" id="usdc-compare">
+      <div class="usdc-tabs" role="tablist" aria-label="Сценарии оплаты">
+        <button class="usdc-tab bad is-active" type="button" role="tab" aria-selected="true" data-case="bad">Опасный путь</button>
+        <button class="usdc-tab" type="button" role="tab" aria-selected="false" data-case="good">С Charter Capital</button>
+      </div>
+
+      <article class="usdc-case bad is-active" data-case="bad" role="tabpanel">
+        <span class="case-tag"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="13"/><circle cx="12" cy="16.5" r="1" fill="currentColor"/></svg> Сценарий&nbsp;1 · Опасный</span>
+        <h4>«Купили крипту на&nbsp;российской бирже - отправили поставщику»</h4>
+        <p>Российская компания <strong>«ООО Бобруйские меха»</strong> закупает производственное оборудование в&nbsp;Китае. Покупает USDC на&nbsp;локальной площадке и&nbsp;отправляет на&nbsp;кошелёк поставщика.</p>
+        <p>Китайский банк, обслуживающий поставщика, видит в&nbsp;on-chain истории <strong>«российский след»</strong> и&nbsp;связи с&nbsp;подсанкционными адресами. Кошелёк блокируется, средства зависают, банк требует расширенное due&nbsp;diligence.</p>
+        <p>Поставщик отказывается от&nbsp;сделки. <strong>Оборудование не&nbsp;отгружено</strong>, контракт сорван, аванс возвращается с&nbsp;задержкой в&nbsp;3–6 месяцев или не&nbsp;возвращается вовсе.</p>
+        <div class="outcome">Итог · сделка сорвана</div>
+      </article>
+
+      <article class="usdc-case good" data-case="good" role="tabpanel" hidden>
+        <span class="case-tag"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5L20 7"/></svg> Сценарий&nbsp;2 · С Charter Capital</span>
+        <h4>«Рубли в&nbsp;РФ → чистый USDC → китайский поставщик»</h4>
+        <p><strong>«ООО Бобруйские меха»</strong> отправляет рубли внутри&nbsp;РФ на&nbsp;счёт нашего доверенного агента. Мы&nbsp;задействуем закрытую международную инфраструктуру и&nbsp;<strong>выкупаем чистый американский USDC</strong> у&nbsp;лицензированных зарубежных брокеров.</p>
+        <p>Китайский поставщик получает <strong>безупречные цифровые доллары</strong>. Его банк проводит платёж без эскалации - on-chain история чистая, к&nbsp;санкционным юрисдикциям токен отношения не&nbsp;имеет.</p>
+        <p>Параллельно вы&nbsp;получаете досье операции: подтверждения от&nbsp;брокеров, маршрут средств, бухгалтерские документы. <strong>Оборудование отправлено в&nbsp;срок</strong>, контракт исполнен.</p>
+        <div class="outcome">Итог · сделка закрыта · риски&nbsp;= 0</div>
+      </article>
+    </div>
+
+    <!-- C. CTA Form -->
+    <div class="usdc-cta">
+      <div class="cta-copy">
+        <h3>Рассчитать <strong>безопасный маршрут</strong> для вашего контракта</h3>
+        <p>Опишите задачу - в&nbsp;течение дня вернёмся с&nbsp;индикативной комиссией, сроком, требованиями к&nbsp;документам и&nbsp;вариантами оформления досье под банк получателя.</p>
+        <ul>
+          <li>Бесплатный разбор кейса, без обязательств</li>
+          <li>Конфиденциальность и&nbsp;NDA до&nbsp;первого вопроса</li>
+          <li>Ограничения: реальные коммерческие задачи бизнеса</li>
+        </ul>
+      </div>
+
+      <form id="usdc-form" class="usdc-form" action="https://formspree.io/f/xrbyywrr" method="POST" novalidate>
+        <input type="hidden" name="_subject" value="Pay · Чистый USDC для B2B - заявка"/>
+        <input type="hidden" name="form_source" value="pay_usdc_b2b"/>
+        <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true"/>
+        <div>
+          <label for="usdc-name">Имя</label>
+          <input id="usdc-name" name="name" type="text" placeholder="Имя или название компании" required autocomplete="name"/>
+        </div>
+        <div class="row-2">
+          <div>
+            <label for="usdc-contact">Телефон или Telegram</label>
+            <input id="usdc-contact" name="contact" type="text" placeholder="+ код страны / @handle" required/>
+          </div>
+          <div>
+            <label for="usdc-country">Страна поставщика</label>
+            <input id="usdc-country" name="supplier_country" type="text" placeholder="CN, AE, DE, TR…" required/>
+          </div>
+        </div>
+        <div class="form-msg" id="usdc-msg" role="alert" aria-live="polite"></div>
+        <button type="submit" id="usdc-submit">Рассчитать безопасный маршрут <span class="arr">→</span></button>
+        <p class="form-note">Отправляя заявку, вы&nbsp;соглашаетесь с&nbsp;<a href="/privacy.html" target="_blank" rel="noopener">политикой конфиденциальности</a>. Никаких массовых рассылок.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
 <!-- ───────────── ECOSYSTEM ───────────── -->
 <section class="s eco" id="eco">
   <div class="container">
@@ -2139,6 +2543,7 @@ footer.f{
           <li><a href="#switch">Pay&nbsp;Lite&nbsp;/ Pay&nbsp;Pro</a></li>
           <li><a href="#aml">Защита платежа</a></li>
           <li><a href="#mtn">Маршрут</a></li>
+          <li><a href="#usdc">Чистый&nbsp;USDC для&nbsp;ВЭД</a></li>
           <li><a href="#ops">Оперативный центр</a></li>
           <li><a href="#tfile">Досье операции</a></li>
           <li><a href="#faq">Вопросы</a></li>
@@ -2286,6 +2691,73 @@ document.addEventListener('DOMContentLoaded', function () {
       window.location.href=mailto;
       setTimeout(function(){ window.open(TG,'_blank','noopener'); },800);
     });
+  });
+})();
+
+// USDC compare: mobile tabs switch
+(function(){
+  var wrap=document.getElementById('usdc-compare');
+  if(!wrap) return;
+  var tabs=wrap.querySelectorAll('.usdc-tab');
+  var cases=wrap.querySelectorAll('.usdc-case');
+  tabs.forEach(function(tab){
+    tab.addEventListener('click',function(){
+      var name=tab.dataset.case;
+      tabs.forEach(function(t){
+        var on=t.dataset.case===name;
+        t.classList.toggle('is-active',on);
+        t.setAttribute('aria-selected',on?'true':'false');
+      });
+      cases.forEach(function(c){
+        var on=c.dataset.case===name;
+        c.classList.toggle('is-active',on);
+        if(on) c.removeAttribute('hidden'); else c.setAttribute('hidden','');
+      });
+    });
+  });
+})();
+
+// USDC B2B intake form (Formspree + Yandex.Metrika goal)
+(function(){
+  var form=document.getElementById('usdc-form');
+  if(!form) return;
+  var btn=document.getElementById('usdc-submit');
+  var msg=document.getElementById('usdc-msg');
+  var origLabel=btn ? btn.innerHTML : '';
+  function show(text,kind){
+    if(!msg) return;
+    msg.textContent=text;
+    msg.classList.remove('ok','err');
+    msg.classList.add(kind==='ok'?'ok':'err','is-visible');
+  }
+  function clearMsg(){ if(msg){ msg.classList.remove('is-visible','ok','err'); msg.textContent=''; } }
+  form.addEventListener('submit',async function(e){
+    e.preventDefault();
+    if(!btn || btn.classList.contains('is-loading')) return;
+    clearMsg();
+    var nm=document.getElementById('usdc-name');
+    var ct=document.getElementById('usdc-contact');
+    var co=document.getElementById('usdc-country');
+    if(!nm || !ct || !co) return;
+    if(!nm.value.trim() || !ct.value.trim() || !co.value.trim()){
+      show('Заполните имя, контакт и страну поставщика.','err');
+      return;
+    }
+    btn.classList.add('is-loading');
+    btn.innerHTML='Отправляем';
+    try{
+      var fd=new FormData(form);
+      fd.set('page_url', location.href);
+      var res=await fetch(form.action,{method:'POST',body:fd,headers:{'Accept':'application/json'}});
+      if(!res.ok) throw new Error('fail');
+      form.reset();
+      try{ if(typeof ym==='function'){ ym(108969822,'reachGoal','b2b_usdc_form'); } }catch(_){}
+      form.innerHTML='<div class="form-thanks"><h4>Спасибо. Ваша заявка отправлена.</h4><p>Ответим в течение дня на указанный контакт.</p></div>';
+    }catch(err){
+      show('Не удалось отправить. Напишите на hello@ccapital.pro или в Telegram @ccapital_acces.','err');
+      btn.classList.remove('is-loading');
+      btn.innerHTML=origLabel;
+    }
   });
 })();
 
