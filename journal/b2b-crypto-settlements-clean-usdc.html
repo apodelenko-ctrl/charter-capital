@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+тперь зай<!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8"/>
@@ -32,7 +32,7 @@
 <meta property="og:type" content="article"/>
 <meta property="og:site_name" content="Charter Capital"/>
 <meta property="og:title" content="Как платить иностранным поставщикам криптой и не попасть под блокировку"/>
-<meta property="og:description" content="Чистый американский USDC для B2B-расчётов: как не оставить «географический след» в on-chain истории и без вопросов закрывать оплату партнёрам в Китае, ОАЭ и ЕС."/>
+<meta property="og:description" content="Чистый американский USDC для B2B-расчётов: как не оставить «географический след» в on-chain истории и закрывать оплату партнёрам в Китае, ОАЭ и ЕС без расширенной комплаенс-проверки."/>
 <meta property="og:url" content="https://ccapital.pro/journal/b2b-crypto-settlements-clean-usdc.html"/>
 <meta property="og:image" content="https://ccapital.pro/assets/pay/hero-corridor.webp"/>
 <meta property="og:image:width" content="1800"/>
@@ -231,7 +231,7 @@ button{font-family:inherit;cursor:pointer}
   font-weight:500;letter-spacing:-.005em;
 }
 
-/* Кейс-врезка «Бобруйские меха» */
+/* Кейс-врезка ООО «Импортёр» */
 .case-box{
   margin:42px -100px 32px;
   padding:32px 36px;
@@ -356,7 +356,22 @@ button{font-family:inherit;cursor:pointer}
 .inline-cta .inline-cta-btn:hover{background:#ecfdf5;transform:translateY(-1px)}
 .inline-cta .inline-cta-btn .arr{transition:transform .15s ease}
 .inline-cta .inline-cta-btn:hover .arr{transform:translateX(3px)}
-@media(max-width:640px){.inline-cta{padding:24px;flex-direction:column;align-items:flex-start}.inline-cta .inline-cta-btn{width:100%;justify-content:center}}
+.inline-cta .inline-cta-actions{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.inline-cta .inline-cta-tg{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12.5px;font-weight:500;letter-spacing:.02em;
+  color:#a7f3d0;text-decoration:none;
+  border-bottom:1px dashed rgba(167,243,208,.4);
+  padding-bottom:1px;transition:color .15s ease,border-color .15s ease;
+}
+.inline-cta .inline-cta-tg:hover{color:#ecfdf5;border-color:rgba(236,253,245,.7)}
+.inline-cta .inline-cta-tg svg{flex:0 0 14px;width:14px;height:14px}
+@media(max-width:640px){
+  .inline-cta{padding:24px;flex-direction:column;align-items:flex-start}
+  .inline-cta .inline-cta-actions{align-items:stretch;width:100%}
+  .inline-cta .inline-cta-btn{width:100%;justify-content:center}
+  .inline-cta .inline-cta-tg{justify-content:center}
+}
 
 .next-step{
   position:relative;
@@ -562,7 +577,7 @@ button{font-family:inherit;cursor:pointer}
         src="../assets/pay/hero-corridor.webp"
         srcset="../assets/pay/hero-corridor-800w.webp 800w, ../assets/pay/hero-corridor.webp 1800w"
         sizes="(max-width: 768px) 100vw, 1080px"
-        alt="Защищённый коридор B2B-платежа: чистый USDC, который проходит комплаенс банка получателя без вопросов"
+        alt="Защищённый коридор B2B-платежа: чистый USDC, который проходит комплаенс банка получателя без расширенной проверки"
         width="1800"
         height="1200"
         fetchpriority="high"
@@ -654,10 +669,10 @@ button{font-family:inherit;cursor:pointer}
         <p class="pillars-intro">Четыре шага закрытого коридора:</p>
 
         <ul>
-          <li><strong>Шаг 1. Перевод рублей внутри&nbsp;РФ.</strong> Вы&nbsp;переводите средства на&nbsp;счёт нашего доверенного платёжного агента — обычным платёжным поручением, по&nbsp;договору поставки услуг.</li>
-          <li><strong>Шаг 2. Закрытая международная инфраструктура.</strong> Мы&nbsp;задействуем сеть доверенных платёжных агентов и&nbsp;закрытый международный контур для конвертации. Конкретные звенья не&nbsp;раскрываются — это часть защиты ваших расчётов.</li>
-          <li><strong>Шаг 3. Выкуп «белого» USDC.</strong> Получаем американский USDC у&nbsp;лицензированных зарубежных брокеров. Биография токена прозрачна и&nbsp;не&nbsp;связана с&nbsp;санкционными юрисдикциями.</li>
-          <li><strong>Шаг 4. Передача стейблкоина.</strong> Поставщик получает безупречные цифровые доллары. Параллельно мы&nbsp;собираем для вас досье операции для бухгалтерии и&nbsp;банка получателя.</li>
+          <li><strong>Шаг 1. Перевод рублей внутри&nbsp;РФ.</strong> Вы&nbsp;переводите средства на&nbsp;счёт нашего платёжного агента — обычным платёжным поручением, по&nbsp;договору поставки услуг.</li>
+          <li><strong>Шаг 2. Регулируемый международный контур.</strong> Мы&nbsp;задействуем сеть платёжных агентов и&nbsp;регулируемый международный контур для конвертации. Архитектура маршрута раскрывается под&nbsp;NDA до&nbsp;подписания договора — вы&nbsp;точно понимаете, через какие юрисдикции и&nbsp;каких контрагентов идут ваши деньги.</li>
+          <li><strong>Шаг 3. Выкуп «белого» USDC.</strong> Получаем американский USDC у&nbsp;регулируемых зарубежных брокеров. История адресов прозрачна и&nbsp;не&nbsp;связана с&nbsp;санкционными юрисдикциями.</li>
+          <li><strong>Шаг 4. Передача стейблкоина.</strong> Поставщик получает USDC с&nbsp;чистой on-chain историей. Параллельно мы&nbsp;собираем для вас досье операции для бухгалтерии и&nbsp;банка получателя.</li>
         </ul>
 
         <p>
@@ -668,11 +683,12 @@ button{font-family:inherit;cursor:pointer}
 
         <div class="case-box">
           <span class="case-label">Кейс · оплата оборудования в Китае</span>
-          <h3>Как это работает на практике: «Бобруйские меха» закупают станки в Шэньчжэне</h3>
+          <h3>Как это работает на практике: ООО «Импортёр» закупает станки в Шэньчжэне на $120&nbsp;000</h3>
 
           <p>
-            Российская компания <strong>«ООО Бобруйские меха»</strong> закупает производственное оборудование
-            у&nbsp;китайского поставщика. Один и&nbsp;тот&nbsp;же контракт, одна сумма — два сценария оплаты.
+            Российская компания <strong>ООО&nbsp;«Импортёр»</strong> закупает производственное оборудование
+            у&nbsp;китайского поставщика на&nbsp;сумму <strong>$120&nbsp;000</strong>. Один и&nbsp;тот&nbsp;же контракт,
+            одна сумма — два сценария оплаты.
           </p>
 
           <div class="case-row">
@@ -680,15 +696,15 @@ button{font-family:inherit;cursor:pointer}
               <span class="tag bad">Сценарий 1 · Опасный</span>
               <h4>Купили крипту на российской бирже и&nbsp;отправили поставщику</h4>
               <p>Компания покупает USDC на&nbsp;локальной площадке и&nbsp;отправляет на&nbsp;кошелёк поставщика. Китайский банк видит в&nbsp;on-chain цепочке российский след и&nbsp;связи с&nbsp;подсанкционными адресами.</p>
-              <p>Кошелёк поставщика блокируется. Расчётный счёт уходит в&nbsp;ручную проверку. Поставщик отказывается от&nbsp;сделки, чтобы не&nbsp;потерять отношения с&nbsp;банком.</p>
-              <div class="outcome bad">Итог · сделка сорвана</div>
+              <p>Кошелёк поставщика уходит в&nbsp;hold, расчётный счёт — в&nbsp;ручную проверку. Поставщик отказывается от&nbsp;сделки, чтобы не&nbsp;потерять отношения с&nbsp;банком.</p>
+              <div class="outcome bad">Итог · сделка сорвана, $120K заморожены</div>
             </div>
             <div>
               <span class="tag good">Сценарий 2 · С Charter Capital</span>
               <h4>Рубли в&nbsp;РФ → чистый USDC → поставщик</h4>
-              <p>«Бобруйские меха» переводят рубли на&nbsp;счёт нашего агента. Мы&nbsp;через закрытую инфраструктуру выкупаем чистый американский USDC у&nbsp;лицензированных зарубежных брокеров.</p>
-              <p>Китайский поставщик получает безупречные цифровые доллары. Его банк проводит платёж без эскалации. Параллельно клиент получает досье операции под бухгалтерию.</p>
-              <div class="outcome good">Итог · оборудование отгружено в&nbsp;срок · риски = 0</div>
+              <p>ООО&nbsp;«Импортёр» переводит рубли на&nbsp;счёт нашего агента под контракт на&nbsp;$120&nbsp;000. Мы&nbsp;через регулируемый международный контур выкупаем чистый американский USDC у&nbsp;регулируемых зарубежных брокеров.</p>
+              <p>Китайский поставщик получает USDC с&nbsp;чистой on-chain историей. Его банк проводит платёж без эскалации. Параллельно клиент получает досье операции под бухгалтерию.</p>
+              <div class="outcome good">Итог · оборудование отгружено в&nbsp;срок · риски управляемые и&nbsp;задокументированы</div>
             </div>
           </div>
         </div>
@@ -698,7 +714,13 @@ button{font-family:inherit;cursor:pointer}
             <h4>Похожий контракт? Разберём ваш кейс под NDA.</h4>
             <p>Опишите задачу — в&nbsp;течение дня вернёмся с&nbsp;индикативной комиссией, сроками и&nbsp;документами под банк получателя.</p>
           </div>
-          <a href="/pay.html#usdc" class="inline-cta-btn">Проконсультироваться со специалистом <span class="arr">→</span></a>
+          <div class="inline-cta-actions">
+            <a href="/pay.html#usdc-form" class="inline-cta-btn">Рассчитать безопасный маршрут <span class="arr">→</span></a>
+            <a href="https://t.me/ccapital_acces" target="_blank" rel="noopener" class="inline-cta-tg">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.24 3.64 11.95c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71l-4.12-3.04-1.98 1.93c-.23.23-.42.42-.86.42z"/></svg>
+              Прислать инвойс в&nbsp;Telegram — это самый быстрый канал
+            </a>
+          </div>
         </div>
 
         <h2><span class="h2-num">05</span>Кому это подходит, а кому нет</h2>
@@ -739,7 +761,7 @@ button{font-family:inherit;cursor:pointer}
         это <strong>два разных актива</strong>: с&nbsp;разной on-chain историей и&nbsp;разным риском вторичных санкций.
       </p>
       <p>
-        Charter&nbsp;Capital строит закрытый коридор «рубль → чистый USDC → партнёр» с&nbsp;документальным следом
+        Charter&nbsp;Capital строит регулируемый коридор «рубль → чистый USDC → партнёр» с&nbsp;документальным следом
         на&nbsp;каждом шаге. Это позволяет бизнесу закрывать ВЭД-контракты в&nbsp;Китае, ОАЭ и&nbsp;ЕС
         <strong>без блокировок кошельков и&nbsp;срыва поставок</strong>.
       </p>
@@ -766,7 +788,7 @@ button{font-family:inherit;cursor:pointer}
           подготовить со&nbsp;своей стороны. Если кейс не&nbsp;наш — скажем сразу.
         </p>
         <div class="channels">
-          <a class="ch-btn green" href="/pay.html#usdc">Рассчитать безопасный маршрут <span class="arr">→</span></a>
+          <a class="ch-btn green" href="/pay.html#usdc-form">Рассчитать безопасный маршрут <span class="arr">→</span></a>
           <a class="ch-btn outline" href="https://t.me/ccapital_acces" target="_blank" rel="noopener">Telegram <span class="arr">→</span></a>
           <a class="ch-btn outline" href="mailto:hello@ccapital.pro?subject=Charter%20Capital%20Pay%20%E2%80%94%20%D1%87%D0%B8%D1%81%D1%82%D1%8B%D0%B9%20USDC">hello@ccapital.pro</a>
         </div>
