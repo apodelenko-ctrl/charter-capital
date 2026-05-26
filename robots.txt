@@ -99,3 +99,4 @@ Allow: /
 Sitemap: https://ccapital.pro/sitemap.xml
 <!-- redeploy trigger: 2026-05-26T11:54:04Z -->
 <!-- redeploy attempt 2: 2026-05-26T12:13:33Z -->
+<!-- redeploy attempt 3 after actions perms fix: 2026-05-26T12:19:28Z -->
