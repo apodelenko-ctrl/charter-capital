@@ -1627,6 +1627,7 @@ footer.f{
         {"@type":"Question","name":"Что такое защита платежа?","acceptedAnswer":{"@type":"Answer","text":"Встроенная дисциплина: проверка основания, документов, получателя, маршрута и соответствия суммы и назначения. Заранее закрываем слабые места операции до отправки денег."}},
         {"@type":"Question","name":"Как работает Pay Lite?","acceptedAnswer":{"@type":"Answer","text":"Для инвойсов до $50k. Загружаете инвойс, указываете вашу компанию-плательщика и получателя, мы возвращаем условия. После исполнения - подтверждение и закрывающие документы."}},
         {"@type":"Question","name":"Что нужно для старта?","acceptedAnswer":{"@type":"Answer","text":"Реквизиты вашей компании-плательщика, контактное лицо, реквизиты получателя, инвойс или контракт, понятное назначение платежа. Без этого работу не начинаем."}},
+        {"@type":"Question","name":"Сколько стоит расчёт через чистый USDC?","acceptedAnswer":{"@type":"Answer","text":"Стоимость складывается из двух компонент: 1) Курс агента на день сделки - эффективный курс конверсии ₽→USDC, в него зашит спред регулируемой инфраструктуры и стоимость выкупа чистого USDC у зарубежных брокеров, фиксируется в момент исполнения; 2) Сервисная комиссия Charter Capital по шкале от объёма: $10K-50K = 6%, $50K-250K = 4,5%, $250K-1M = 3%, $1M+ = 2% и ниже (индивидуально). Минимальный объём - $10 000. Финальные параметры фиксируются договором после оценки маршрута и страны получателя; индикативный расчёт - в калькуляторе на pay.html."}},
         {"@type":"Question","name":"Чистый USDC - что с бухгалтерией, валютным контролем и НДС?","acceptedAnswer":{"@type":"Answer","text":"Сделка структурируется как обычная B2B-операция с нерезидентом: вы заключаете контракт с нашим финансовым агентом - нерезидентом РФ - и платите ему в рублях на рублёвый счёт, открытый в российском банке. Рублёвые расчёты с контрагентами инфраструктуры СНГ проходят валютный контроль в штатном режиме, без рисков заморозки, характерных для трансграничных SWIFT. Операция не облагается НДС (применимая правовая база - ст. 148 / 149 НК РФ в зависимости от структуры сделки, уточняется под клиента). Бухгалтерия получает полный пакет закрывающих документов: инвойсы, акты и отчёты агента-нерезидента; расходы легально принимаются к учёту."}}
       ]
     }
@@ -2382,8 +2383,8 @@ footer.f{
         <span class="f-lab">минимальный объём операции</span>
       </li>
       <li>
-        <span class="f-num">от&nbsp;1,5%</span>
-        <span class="f-lab">индикативная комиссия — <a href="#usdc-calc" class="f-lab-link">посчитать под мой контракт →</a></span>
+        <span class="f-num">от&nbsp;2%</span>
+        <span class="f-lab">сервисная комиссия на&nbsp;крупных объёмах — <a href="#usdc-calc" class="f-lab-link">посчитать под мой контракт →</a></span>
       </li>
       <li>
         <span class="f-num">FATF / Tier-1</span>
@@ -2417,12 +2418,12 @@ footer.f{
         </div>
 
         <div class="calc-field">
-          <label for="calc-rate">Курс USD/RUB</label>
+          <label for="calc-rate">Курс агента на&nbsp;день сделки</label>
           <div class="input-wrap input-wrap-sm">
             <input id="calc-rate" type="text" inputmode="decimal" autocomplete="off" value="90" aria-describedby="calc-rate-hint"/>
             <span class="input-suffix">₽</span>
           </div>
-          <p class="calc-hint" id="calc-rate-hint">Индикативный курс — фиксируется в&nbsp;день расчёта (ЦБ&nbsp;РФ + спред)</p>
+          <p class="calc-hint" id="calc-rate-hint">Эффективный курс конверсии&nbsp;₽→USDC у&nbsp;нашего агента. Включает спред регулируемой инфраструктуры; фиксируется в&nbsp;момент исполнения операции.</p>
         </div>
       </div>
 
@@ -2442,8 +2443,8 @@ footer.f{
         </div>
 
         <div class="calc-row">
-          <span class="lab">Комиссия <span class="lab-sub" id="out-comm-pct">1,7%</span></span>
-          <span class="val plus" id="out-comm">+ 183 600 ₽</span>
+          <span class="lab">Сервисная комиссия Charter&nbsp;Capital <span class="lab-sub" id="out-comm-pct">4,5%</span></span>
+          <span class="val plus" id="out-comm">+ 486 000 ₽</span>
         </div>
 
         <div class="calc-row">
@@ -2453,7 +2454,7 @@ footer.f{
 
         <div class="calc-row total">
           <span class="lab">Итого с&nbsp;вашей стороны</span>
-          <span class="val" id="out-total">10 983 600 ₽</span>
+          <span class="val" id="out-total">11 286 000 ₽</span>
         </div>
 
         <p class="calc-note">Расчёт справочный. Не&nbsp;публичная оферта. Финальные цифры фиксируются договором. Минимальный объём — $10&nbsp;000.</p>
@@ -2721,6 +2722,21 @@ footer.f{
         <summary>Можно&nbsp;ли без инвойса?</summary>
         <div class="answer">
           <p>Без инвойса или контракта - нет. Платёж без основания не&nbsp;собрать как операцию, понятную для AML-проверок. Если у&nbsp;вас инвойс на&nbsp;стадии согласования - можно начать разбор параллельно.</p>
+        </div>
+      </details>
+      <details class="faq">
+        <summary>Сколько стоит расчёт через чистый&nbsp;USDC?</summary>
+        <div class="answer">
+          <p>Стоимость складывается из&nbsp;двух честных компонент:</p>
+          <p><strong>1. Курс агента на&nbsp;день сделки</strong> — эффективный курс конверсии&nbsp;₽→USDC у&nbsp;нашего агента. В&nbsp;него уже зашит спред регулируемой инфраструктуры и&nbsp;стоимость выкупа чистого USDC у&nbsp;зарубежных брокеров. Курс фиксируется в&nbsp;момент исполнения операции; ориентир и&nbsp;историю расхождения с&nbsp;ЦБ можем показать в&nbsp;разговоре.</p>
+          <p><strong>2. Сервисная комиссия Charter&nbsp;Capital</strong> — за&nbsp;маршрут, досье под банк получателя, юридическую обвязку и&nbsp;сопровождение. Шкала от&nbsp;объёма контракта:</p>
+          <ul style="margin:8px 0 14px 0;padding-left:22px;line-height:1.7">
+            <li><strong>$10&nbsp;000 – $50&nbsp;000</strong> — 6,0%</li>
+            <li><strong>$50&nbsp;000 – $250&nbsp;000</strong> — 4,5%</li>
+            <li><strong>$250&nbsp;000 – $1&nbsp;000&nbsp;000</strong> — 3,0%</li>
+            <li><strong>$1&nbsp;000&nbsp;000 и&nbsp;выше</strong> — 2,0% и&nbsp;ниже (индивидуально)</li>
+          </ul>
+          <p>Минимальный объём для разбора — $10&nbsp;000. Индикативный расчёт под ваш контракт — в&nbsp;<a href="#usdc-calc">калькуляторе на&nbsp;этой&nbsp;же странице</a>. Финальные параметры всегда фиксируются договором после оценки маршрута и&nbsp;страны получателя.</p>
         </div>
       </details>
       <details class="faq">
@@ -3117,10 +3133,10 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   function getTier(amount){
     if(amount<10000) return null;
-    if(amount<50000)   return {pct:2.0, term:'1–2 рабочих дня'};
-    if(amount<250000)  return {pct:1.7, term:'2–3 рабочих дня'};
-    if(amount<1000000) return {pct:1.5, term:'3–4 рабочих дня'};
-    return {pct:1.3, term:'3–5 рабочих дней · индивидуально'};
+    if(amount<50000)   return {pct:6.0, term:'1–2 рабочих дня'};
+    if(amount<250000)  return {pct:4.5, term:'2–3 рабочих дня'};
+    if(amount<1000000) return {pct:3.0, term:'3–4 рабочих дня'};
+    return {pct:2.0, term:'3–5 рабочих дней · индивидуально'};
   }
   function recalc(){
     var amount=parseAmount(usd.value);
