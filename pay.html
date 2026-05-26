@@ -931,6 +931,11 @@ section.s.deep{background:#080b16}
   gap:16px;flex-wrap:wrap;margin-top:8px;
 }
 .intake-note{font-family:var(--mono);font-size:11px;color:var(--ink-faint);letter-spacing:.04em;max-width:46ch;line-height:1.5}
+.intake-msg{display:none;width:100%;flex-basis:100%;font-family:var(--mono);font-size:12px;line-height:1.5;letter-spacing:.02em;padding:10px 12px;border-radius:6px;margin:4px 0 0}
+.intake-msg.is-visible{display:block}
+.intake-msg.ok{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.32);color:#86efac}
+.intake-msg.err{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.28);color:#fca5a5}
+.intake-msg a{color:inherit;border-bottom:1px solid rgba(255,255,255,.35)}
 
 /* ─── USDC, B2B clean settlements ──────────────────────── */
 .usdc{
@@ -2878,7 +2883,10 @@ footer.f{
       </div>
 
       <!-- LITE FORM -->
-      <form class="intake-form is-active" id="form-lite" data-flow="lite" novalidate>
+      <form class="intake-form is-active" id="form-lite" data-flow="lite" action="https://formspree.io/f/xrbyywrr" method="POST" novalidate>
+        <input type="hidden" name="_subject" value="Pay Lite · заявка с pay.html"/>
+        <input type="hidden" name="form_source" value="pay_lite_intake"/>
+        <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true"/>
         <div class="field"><label for="l-co">Ваша компания (плательщик)</label><input id="l-co" name="company" placeholder="OOO «Trading»" required/></div>
         <div class="field"><label for="l-ju">Страна регистрации</label><input id="l-ju" name="jurisdiction" placeholder="RU / KZ / AM / AE …" required/></div>
         <div class="field"><label for="l-id">ИНН / регистрационный номер</label><input id="l-id" name="reg_id" placeholder="ИНН или registry number" required/></div>
@@ -2922,12 +2930,16 @@ footer.f{
 
         <div class="intake-foot">
           <p class="intake-note">Отправляя заявку, вы&nbsp;соглашаетесь, что мы&nbsp;вернёмся в&nbsp;течение рабочего дня и&nbsp;что итоговые условия - маршрут, комиссия, сроки и&nbsp;набор документов - согласуются индивидуально.</p>
+          <div class="intake-msg" data-msg="lite" role="status" aria-live="polite"></div>
           <button type="submit" class="btn btn-primary btn-lg">Отправить, Pay&nbsp;Lite <span class="arr">→</span></button>
         </div>
       </form>
 
       <!-- PRO FORM -->
-      <form class="intake-form" id="form-pro" data-flow="pro" novalidate>
+      <form class="intake-form" id="form-pro" data-flow="pro" action="https://formspree.io/f/xrbyywrr" method="POST" novalidate>
+        <input type="hidden" name="_subject" value="Pay Pro · разбор задачи с pay.html"/>
+        <input type="hidden" name="form_source" value="pay_pro_intake"/>
+        <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true"/>
         <div class="field full"><label for="p-task">Описание задачи</label><textarea id="p-task" name="task" placeholder="Кратко: что нужно сделать, какие ограничения, сроки, контекст." required></textarea></div>
         <div class="field"><label for="p-am">Сумма</label><input id="p-am" name="amount" inputmode="decimal" placeholder="120 000" required/></div>
         <div class="field">
@@ -2985,6 +2997,7 @@ footer.f{
 
         <div class="intake-foot">
           <p class="intake-note">Pay&nbsp;Pro начинается с&nbsp;разбора задачи: до&nbsp;запуска мы&nbsp;оценим маршрут и&nbsp;банк получателя, подготовим сценарий ответов на&nbsp;возможные вопросы.</p>
+          <div class="intake-msg" data-msg="pro" role="status" aria-live="polite"></div>
           <button type="submit" class="btn btn-gold btn-lg">Отправить, Pro, разбор <span class="arr">→</span></button>
         </div>
       </form>
@@ -3157,7 +3170,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var goLite=document.getElementById('goLite'); if(goLite) goLite.addEventListener('click',function(){ activate('lite'); });
 })();
 
-// Intake submit handoff (no backend yet) - собираем mailto + сохраняем в localStorage
+// Intake submit: Formspree primary + Telegram handoff + mailto fallback
 (function(){
   var TG='https://t.me/ccapital_acces';
   var EMAIL='hello@ccapital.pro';
@@ -3168,27 +3181,56 @@ document.addEventListener('DOMContentLoaded', function () {
   function payload(form){
     var fd=new FormData(form); var lines=[]; var obj={};
     fd.forEach(function(v,k){
-      if(k==='file' && v && v.name){ lines.push(k+': '+v.name+' (передам в Telegram)'); obj[k]=v.name; return; }
-      if(typeof v==='string'){ lines.push(k+': '+v); obj[k]=v; }
+      if(k==='file' && v && v.name){ lines.push(k+': '+v.name+' (файл нужно прислать в Telegram)'); obj[k]=v.name; return; }
+      if(typeof v==='string' && k.charAt(0)!=='_' && k!=='form_source'){ lines.push(k+': '+v); obj[k]=v; }
     });
     return {text:lines.join('\n'),obj:obj};
   }
+  function showMsg(form,kind,text){
+    var box=form.querySelector('.intake-msg'); if(!box) return;
+    box.classList.remove('ok','err');
+    box.classList.add(kind==='ok'?'ok':'err','is-visible');
+    box.innerHTML=text;
+  }
   document.querySelectorAll('.intake-form').forEach(function(form){
-    form.addEventListener('submit',function(e){
+    form.addEventListener('submit',async function(e){
       e.preventDefault();
       var flow=form.dataset.flow||'lite';
       var id=caseId(flow==='pro'?'PR':'PL');
       var p=payload(form);
       try{ localStorage.setItem('ccapital_pay_'+id, JSON.stringify({id:id,flow:flow,data:p.obj,ts:Date.now()})); }catch(_){}
-      var subject='[Charter Capital · Pay · '+(flow==='pro'?'Pro · разбор':'Lite · заявка')+'] '+id;
-      var body='CASE '+id+'\nFlow: '+(flow==='pro'?'Pay Pro':'Pay Lite')+'\n\n'+p.text+'\n\n- отправлено с pay.html';
-      var mailto='mailto:'+EMAIL+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
-      // быстрый ack
-      var btn=form.querySelector('button[type=submit]');
-      if(btn){ var orig=btn.innerHTML; btn.innerHTML='Отправляем, '+id; btn.disabled=true; setTimeout(function(){ btn.innerHTML=orig; btn.disabled=false; },2400); }
-      // открываем mail-клиент + предлагаем Telegram
-      window.location.href=mailto;
-      setTimeout(function(){ window.open(TG,'_blank','noopener'); },800);
+      var btn=form.querySelector('button[type=submit]'); var orig=btn?btn.innerHTML:'';
+      if(btn){ btn.innerHTML='Отправляем, '+id; btn.disabled=true; }
+      // Primary delivery: Formspree
+      var ok=false;
+      try{
+        var fd=new FormData(form);
+        fd.set('case_id', id);
+        fd.set('flow', flow==='pro'?'Pay Pro':'Pay Lite');
+        fd.set('page_url', location.href);
+        var res=await fetch(form.action,{method:'POST',body:fd,headers:{'Accept':'application/json'}});
+        ok=res.ok;
+      }catch(_){ ok=false; }
+      // Yandex.Metrika goal
+      try{
+        if(ok && typeof ym==='function'){
+          ym(108969822,'reachGoal', flow==='pro'?'pay_pro_form':'pay_lite_form');
+        }
+      }catch(_){}
+      if(ok){
+        showMsg(form,'ok','<strong>Заявка отправлена.</strong> CASE '+id+'. Ответим в течение рабочего дня. Если нужно срочно или хотите прикрепить инвойс — <a href="'+TG+'" target="_blank" rel="noopener">напишите в Telegram</a>.');
+        form.reset();
+        setTimeout(function(){ window.open(TG,'_blank','noopener'); },1200);
+      }else{
+        // Fallback: mailto + Telegram
+        var subject='[Charter Capital · Pay · '+(flow==='pro'?'Pro · разбор':'Lite · заявка')+'] '+id;
+        var body='CASE '+id+'\nFlow: '+(flow==='pro'?'Pay Pro':'Pay Lite')+'\n\n'+p.text+'\n\n- отправлено с pay.html';
+        var mailto='mailto:'+EMAIL+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+        showMsg(form,'err','Сервер не ответил. Открыл черновик письма и Telegram — отправьте удобным способом. CASE '+id+'.');
+        window.location.href=mailto;
+        setTimeout(function(){ window.open(TG,'_blank','noopener'); },800);
+      }
+      if(btn){ setTimeout(function(){ btn.innerHTML=orig; btn.disabled=false; },2400); }
     });
   });
 })();
