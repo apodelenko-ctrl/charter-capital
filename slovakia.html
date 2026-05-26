@@ -831,7 +831,11 @@ section.s.paper .kicker{color:#8a6a1d}
   </div>
   <div class="map-grid">
     <div class="map-card">
-      <svg class="map-svg" viewBox="0 0 1000 500" role="img" aria-label="Карта Словакии с городами и соседними странами">
+      <svg class="map-svg" viewBox="0 0 1000 500" role="img" aria-label="Карта Словакии: реальные границы и крупные города">
+        <!--
+          Геометрия: lon 16.83°→x=50, 22.57°→x=950 (×156.8/градус)
+          lat 49.61°→y=50, 47.73°→y=450 (×212.8/градус). Север сверху.
+        -->
         <defs>
           <linearGradient id="cgrad" x1="0" x2="1" y1="0" y2="1">
             <stop offset="0" stop-color="#c8a85b" stop-opacity=".18"/>
@@ -840,63 +844,103 @@ section.s.paper .kicker{color:#8a6a1d}
         </defs>
         <!-- neighbours backdrop -->
         <rect class="nbr" x="0" y="0" width="1000" height="500" rx="0"/>
-        <!-- neighbour labels -->
-        <text class="nbr-label" x="500" y="35" text-anchor="middle">Polska · север</text>
-        <text class="nbr-label" x="970" y="250" text-anchor="end">Україна</text>
-        <text class="nbr-label" x="500" y="475" text-anchor="middle">Magyarország · юг</text>
-        <text class="nbr-label" x="80" y="430" text-anchor="start">Österreich</text>
-        <text class="nbr-label" x="80" y="120" text-anchor="start">Česko</text>
-        <!-- Slovakia stylised path -->
-        <path class="country" d="M 130 360 Q 175 350 220 345 L 270 340 Q 315 330 360 320 L 410 305 Q 460 290 510 285 L 560 282 Q 610 275 660 268 L 720 258 Q 780 250 840 240 L 900 220 L 905 245 Q 880 275 850 295 L 800 320 Q 750 335 700 345 L 640 355 Q 580 365 520 372 L 460 378 Q 400 384 340 388 L 280 392 Q 220 388 170 380 Z"/>
-        <!-- AT-SK gold border (Schengen exit highlight) -->
-        <path class="border-eu" d="M 80 380 L 130 360 L 145 358 L 165 360 L 180 365"/>
-        <!-- Danube simplified -->
-        <path class="danube" d="M 80 405 Q 130 390 175 385 L 220 380 Q 270 388 310 395"/>
-        <!-- Cities -->
-        <!-- Bratislava (west, on Danube) -->
+
+        <!-- neighbour labels (по реальным сторонам) -->
+        <text class="nbr-label" x="500" y="40" text-anchor="middle">Polska · север</text>
+        <text class="nbr-label" x="965" y="105" text-anchor="end">Україна · восток</text>
+        <text class="nbr-label" x="500" y="478" text-anchor="middle">Magyarország · юг</text>
+        <text class="nbr-label" x="60" y="430" text-anchor="start">Österreich</text>
+        <text class="nbr-label" x="60" y="180" text-anchor="start">Česko · северо-запад</text>
+
+        <!-- Slovakia реальные границы (упрощённый GeoJSON-контур) -->
+        <path class="country" fill="url(#cgrad)" d="
+          M 75 355
+          L 92 365
+          L 145 405
+          L 200 435
+          L 254 444
+          L 310 442
+          L 347 437
+          L 420 430
+          L 520 408
+          L 620 388
+          L 720 362
+          L 790 335
+          L 850 298
+          L 892 268
+          L 920 235
+          L 945 200
+          L 940 165
+          L 905 145
+          L 850 152
+          L 770 145
+          L 700 128
+          L 640 105
+          L 567 92
+          L 520 75
+          L 467 68
+          L 410 70
+          L 365 78
+          L 304 110
+          L 240 165
+          L 175 195
+          L 111 210
+          L 75 245
+          L 65 290
+          Z
+        "/>
+
+        <!-- AT-SK граница на западе (Schengen) — золотая подсветка -->
+        <path class="border-eu" d="M 65 290 L 75 355 L 92 365"/>
+
+        <!-- Дунай: Bratislava → Komárno → Štúrovo (юго-восток) -->
+        <path class="danube" d="M 45 350 Q 70 360 92 365 L 145 405 Q 200 435 254 444 Q 300 444 347 437"/>
+
+        <!-- Cities (реальные координаты, lon/lat) -->
+        <!-- Bratislava 17.10,48.15 — юго-запад, на Дунае, столица -->
         <g class="city">
-          <circle class="ring pulse" cx="155" cy="378" r="8"/>
-          <circle class="core" cx="155" cy="378" r="5"/>
-          <text class="city-label" x="155" y="412" text-anchor="middle">Bratislava</text>
-          <text class="city-sub" x="155" y="427" text-anchor="middle">столица · 1.5 ч до Wien</text>
+          <circle class="ring pulse" cx="92" cy="361" r="9"/>
+          <circle class="core" cx="92" cy="361" r="5"/>
+          <text class="city-label" x="92" y="392" text-anchor="middle">Bratislava</text>
+          <text class="city-sub" x="92" y="408" text-anchor="middle">столица · 1.5 ч до Wien</text>
         </g>
-        <!-- Trnava -->
+        <!-- Trnava 17.59,48.38 -->
         <g class="city">
-          <circle class="ring" cx="230" cy="362" r="6"/>
-          <circle class="core" cx="230" cy="362" r="3"/>
-          <text class="city-label" x="230" y="350" text-anchor="middle">Trnava</text>
+          <circle class="ring" cx="169" cy="312" r="6"/>
+          <circle class="core" cx="169" cy="312" r="3"/>
+          <text class="city-label" x="169" y="300" text-anchor="middle">Trnava</text>
         </g>
-        <!-- Nitra -->
+        <!-- Nitra 18.08,48.31 -->
         <g class="city">
-          <circle class="ring" cx="300" cy="370" r="6"/>
-          <circle class="core" cx="300" cy="370" r="3"/>
-          <text class="city-label" x="300" y="358" text-anchor="middle">Nitra</text>
+          <circle class="ring" cx="246" cy="327" r="6"/>
+          <circle class="core" cx="246" cy="327" r="3"/>
+          <text class="city-label" x="246" y="345" text-anchor="middle">Nitra</text>
         </g>
-        <!-- Žilina -->
+        <!-- Žilina 18.74,49.22 — север, промышленность -->
         <g class="city">
-          <circle class="ring pulse" cx="450" cy="312" r="8"/>
-          <circle class="core" cx="450" cy="312" r="5"/>
-          <text class="city-label" x="450" y="298" text-anchor="middle">Žilina</text>
-          <text class="city-sub" x="450" y="285" text-anchor="middle">север · промышленность</text>
+          <circle class="ring pulse" cx="350" cy="133" r="9"/>
+          <circle class="core" cx="350" cy="133" r="5"/>
+          <text class="city-label" x="350" y="121" text-anchor="middle">Žilina</text>
+          <text class="city-sub" x="350" y="107" text-anchor="middle">север · промышленность</text>
         </g>
-        <!-- Banská Bystrica -->
+        <!-- Banská Bystrica 19.15,48.74 — центр страны -->
         <g class="city">
-          <circle class="ring" cx="555" cy="338" r="6"/>
-          <circle class="core" cx="555" cy="338" r="3"/>
-          <text class="city-label" x="555" y="360" text-anchor="middle">B. Bystrica</text>
+          <circle class="ring" cx="414" cy="235" r="6"/>
+          <circle class="core" cx="414" cy="235" r="3"/>
+          <text class="city-label" x="414" y="223" text-anchor="middle">B. Bystrica</text>
         </g>
-        <!-- Prešov -->
+        <!-- Prešov 21.24,49.00 — северо-восток -->
         <g class="city">
-          <circle class="ring" cx="780" cy="290" r="6"/>
-          <circle class="core" cx="780" cy="290" r="3"/>
-          <text class="city-label" x="780" y="278" text-anchor="middle">Prešov</text>
+          <circle class="ring" cx="742" cy="180" r="6"/>
+          <circle class="core" cx="742" cy="180" r="3"/>
+          <text class="city-label" x="742" y="168" text-anchor="middle">Prešov</text>
         </g>
-        <!-- Košice -->
+        <!-- Košice 21.26,48.72 — восток, IT-хаб -->
         <g class="city">
-          <circle class="ring pulse" cx="830" cy="310" r="8"/>
-          <circle class="core" cx="830" cy="310" r="5"/>
-          <text class="city-label" x="830" y="345" text-anchor="middle">Košice</text>
-          <text class="city-sub" x="830" y="360" text-anchor="middle">восток · IT-хаб · дешевле</text>
+          <circle class="ring pulse" cx="745" cy="239" r="9"/>
+          <circle class="core" cx="745" cy="239" r="5"/>
+          <text class="city-label" x="745" y="270" text-anchor="middle">Košice</text>
+          <text class="city-sub" x="745" y="285" text-anchor="middle">восток · IT-хаб · дешевле</text>
         </g>
       </svg>
     </div>
