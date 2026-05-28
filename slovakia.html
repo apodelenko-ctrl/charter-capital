@@ -1179,7 +1179,10 @@ section.s.paper .kicker{color:#8a6a1d}
       <button type="button" class="intake-tab" data-tab="job" role="tab" aria-selected="false">Через работу</button>
       <button type="button" class="intake-tab" data-tab="roots" role="tab" aria-selected="false">По корням</button>
     </div>
-    <form id="intakeForm" autocomplete="off" novalidate>
+    <form id="intakeForm" action="https://formspree.io/f/xrbyywrr" method="POST" autocomplete="off" novalidate>
+      <input type="hidden" name="_subject" value="Slovakia · заявка на ВНЖ / ПМЖ / паспорт"/>
+      <input type="hidden" name="form_source" value="slovakia_intake"/>
+      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none"/>
       <div class="in-grid">
         <div class="in-row"><label for="f-name">Имя</label><input id="f-name" name="name" type="text" required/></div>
         <div class="in-row"><label for="f-tg">Telegram или e-mail</label><input id="f-tg" name="contact" type="text" placeholder="@username или mail@" required/></div>

@@ -34,7 +34,8 @@
     'pay_pro_intake':       { icon: '🎯', title: 'Pay Pro' },
     'partner_access_modal': { icon: '🔐', title: 'Private Access' },
     'property_ru':          { icon: '🏠', title: 'Property · RU' },
-    'property_en':          { icon: '🏠', title: 'Property · EN' }
+    'property_en':          { icon: '🏠', title: 'Property · EN' },
+    'slovakia_intake':      { icon: '🇸🇰', title: 'Slovakia · ВНЖ/ПМЖ/паспорт' }
   };
 
   /* Технические имена полей → читаемые лейблы (по реальной схеме форм сайта) */
