@@ -164,18 +164,33 @@
   }
 
   function sendTelegram(text) {
-    var body = JSON.stringify({
-      chat_id: TG_CHAT_ID,
-      text: text,
-      parse_mode: 'HTML',
-      disable_web_page_preview: true
-    });
+    /* Используем URLSearchParams (application/x-www-form-urlencoded) — это CORS
+       simple request: нет preflight (~200ms экономии), нет конфликта с Safari
+       WebKit keepalive-багом. Telegram Bot API принимает оба формата (JSON и
+       form-urlencoded), результат идентичен. */
+    var params = new URLSearchParams();
+    params.append('chat_id', String(TG_CHAT_ID));
+    params.append('text', text);
+    params.append('parse_mode', 'HTML');
+    params.append('disable_web_page_preview', 'true');
     try {
       return fetch(TG_API, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: body,
-        keepalive: true
+        body: params
+      }).then(function (r) {
+        if (!r.ok) {
+          /* Сохраняем ошибку в sessionStorage для дебага (не блокируя UI) */
+          try {
+            r.text().then(function (t) {
+              sessionStorage.setItem('tg_forms_last_error', JSON.stringify({
+                status: r.status,
+                body: (t || '').slice(0, 500),
+                at: new Date().toISOString()
+              }));
+            });
+          } catch (_) { /* no-op */ }
+        }
+        return r;
       });
     } catch (_) {
       return Promise.resolve();
