@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:yandex="http://news.yandex.ru">
+  <channel>
+    <title>Дайджест Charter Capital</title>
+    <link>https://ccapital.pro/journal.html</link>
+    <description>Аналитика международного private banking, ВЭД и геополитики капитала. Гонконг · Сингапур · ОАЭ · Швейцария · UK · Россия.</description>
+    <language>ru</language>
+    <copyright>© Charter Capital, 2026</copyright>
+    <lastBuildDate>Thu, 28 May 2026 10:37:46 +0000</lastBuildDate>
+    <pubDate>Thu, 28 May 2026 10:37:46 +0000</pubDate>
+    <ttl>360</ttl>
+    <generator>Charter Capital · ccapital.pro</generator>
+    <atom:link href="https://ccapital.pro/journal/feed.xml" rel="self" type="application/rss+xml" />
+    <image>
+      <url>https://ccapital.pro/assets/logic/18-private-office-sg.webp</url>
+      <title>Дайджест Charter Capital</title>
+      <link>https://ccapital.pro/journal.html</link>
+    </image>
+    <item>
+      <title>Гонконг вместо Швейцарии: новая география капитала</title>
+      <link>https://ccapital.pro/journal/hongkong-replaces-switzerland-2026.html</link>
+      <guid isPermaLink="true">https://ccapital.pro/journal/hongkong-replaces-switzerland-2026.html</guid>
+      <pubDate>Tue, 28 May 2026 09:00:00 +0700</pubDate>
+      <description>По данным BCG, в 2025 Гонконг привлёк $2,9 трлн и обошёл Швейцарию. Конец эпохи безусловного нейтралитета и новая архитектура легитимности для крупного капитала.</description>
+      <enclosure url="https://ccapital.pro/assets/journal/hongkong-vs-switzerland-hero.webp" type="image/webp" />
+      <category>Charter Capital · Дайджест</category>
+    </item>
+    <item>
+      <title>Санкции UK против HTX, EXMO, Bitpapa: удар по P2P</title>
+      <link>https://ccapital.pro/journal/uk-sanctions-crypto-p2p-2026.html</link>
+      <guid isPermaLink="true">https://ccapital.pro/journal/uk-sanctions-crypto-p2p-2026.html</guid>
+      <pubDate>Tue, 26 May 2026 18:00:00 +0700</pubDate>
+      <description>26 мая 2026 Британия внесла в чёрный список HTX, EXMO, Bitpapa, банки в Кыргызстане и Грузии — оборот $1,5 млрд. Что это значит для P2P и вывода капитала.</description>
+      <enclosure url="https://ccapital.pro/assets/journal/uk-sanctions-bobby-bigben-hero.webp" type="image/webp" />
+      <category>Charter Capital · Дайджест</category>
+    </item>
+    <item>
+      <title>Чистый USDC для B2B-платежей в Китай, ОАЭ, ЕС</title>
+      <link>https://ccapital.pro/journal/b2b-crypto-settlements-clean-usdc.html</link>
+      <guid isPermaLink="true">https://ccapital.pro/journal/b2b-crypto-settlements-clean-usdc.html</guid>
+      <pubDate>Tue, 26 May 2026 12:00:00 +0700</pubDate>
+      <description>Чистый американский USDC для B2B-расчётов в Китае, ОАЭ и ЕС: как обойти «географический след», избежать блокировок кошельков и закрывать ВЭД-контракты без вторичных санкций.</description>
+      <enclosure url="https://ccapital.pro/assets/pay/hero-corridor.webp" type="image/webp" />
+      <category>Charter Capital · Дайджест</category>
+    </item>
+    <item>
+      <title>Кредит из Доминики и UK-банк: ловушка простых схем</title>
+      <link>https://ccapital.pro/journal/offshore-loan-uk-look-through.html</link>
+      <guid isPermaLink="true">https://ccapital.pro/journal/offshore-loan-uk-look-through.html</guid>
+      <pubDate>Tue, 16 May 2026 10:00:00 +0700</pubDate>
+      <description>Почему оффшорный Lombard под крипту не обходит Look-Through в London Private Banking: JMLSG, AMLD, loan-back typology и институциональный путь через AMC.</description>
+      <enclosure url="https://ccapital.pro/assets/journal/geneva-swiss-alps-winter-hero.webp" type="image/webp" />
+      <category>Charter Capital · Дайджест</category>
+    </item>
+    <item>
+      <title>Family Office в Сингапуре: новый стандарт</title>
+      <link>https://ccapital.pro/journal/singapore-family-office.html</link>
+      <guid isPermaLink="true">https://ccapital.pro/journal/singapore-family-office.html</guid>
+      <pubDate>Tue, 08 May 2026 10:00:00 +0700</pubDate>
+      <description>Классические офшоры теряют эффективность. Сингапур (VCC, налоговые льготы Section 13O/13U, MAS) стал стандартом для управления крупным частным капиталом.</description>
+      <enclosure url="https://ccapital.pro/assets/journal/singapore-family-office-hero.webp" type="image/webp" />
+      <category>Charter Capital · Дайджест</category>
+    </item>
+    <item>
+      <title>AML на криптобирже: иллюзия безопасности</title>
+      <link>https://ccapital.pro/journal/crypto-exchange-aml-illusion.html</link>
+      <guid isPermaLink="true">https://ccapital.pro/journal/crypto-exchange-aml-illusion.html</guid>
+      <pubDate>Tue, 30 Apr 2026 10:00:00 +0700</pubDate>
+      <description>Почему пройденный KYC и Source of Wealth не страхуют от внезапной блокировки на розничной криптобирже: кейс, Defensive AML и институциональная альтернатива.</description>
+      <enclosure url="https://ccapital.pro/assets/freedom-route/crypto-bankability.webp" type="image/webp" />
+      <category>Charter Capital · Дайджест</category>
+    </item>
+  </channel>
+</rss>

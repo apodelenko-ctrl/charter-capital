@@ -306,4 +306,11 @@
     </image:image>
   </url>
 
+  <url>
+    <loc>https://ccapital.pro/journal/feed.xml</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
 </urlset>

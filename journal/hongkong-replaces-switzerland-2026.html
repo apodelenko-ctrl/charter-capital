@@ -27,6 +27,7 @@
 <meta name="yandex" content="index,follow"/>
 
 <link rel="canonical" href="https://ccapital.pro/journal/hongkong-replaces-switzerland-2026.html"/>
+<link rel="alternate" type="application/rss+xml" title="Дайджест Charter Capital" href="https://ccapital.pro/journal/feed.xml"/>
 <link rel="alternate" hreflang="ru" href="https://ccapital.pro/journal/hongkong-replaces-switzerland-2026.html"/>
 <link rel="alternate" hreflang="x-default" href="https://ccapital.pro/journal/hongkong-replaces-switzerland-2026.html"/>
 
@@ -535,6 +536,80 @@ button{font-family:inherit;cursor:pointer}
   display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;
   font-size:12px;color:#64748b;
 }
+
+/* More-reads: блок «Ещё по теме» — единый для всех статей */
+.more-reads{
+  margin: 60px 0 40px;
+  padding: 36px 0 0;
+  border-top: 1px solid rgba(15,42,30,.10);
+}
+.more-reads__head{
+  display:flex; align-items:baseline; gap:14px; flex-wrap:wrap;
+  margin-bottom: 26px;
+}
+.more-reads__head h2{
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(24px, 2.6vw, 32px);
+  font-weight: 500;
+  letter-spacing: -.01em;
+  margin: 0;
+  color: #0f2a1e;
+}
+.more-reads__head .mr-kicker{
+  font-family: 'Inter', sans-serif;
+  font-size: 11px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: .14em;
+  color: #6b7a72;
+}
+.more-reads__grid{
+  display:grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+}
+.more-reads__card{
+  display:flex; flex-direction:column; gap:10px;
+  padding: 20px 22px 22px;
+  background: #faf8f4;
+  border: 1px solid rgba(15,42,30,.08);
+  border-radius: 14px;
+  text-decoration: none;
+  color: #0f2a1e;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  min-height: 160px;
+}
+.more-reads__card:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px -10px rgba(15,42,30,.18);
+  border-color: rgba(15,42,30,.18);
+}
+.more-reads__card .mr-meta{
+  display:flex; justify-content:space-between; align-items:center;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px; font-weight: 500;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: #6b7a72;
+}
+.more-reads__card .mr-meta .mr-cat{ color:#1e5a3a; }
+.more-reads__card .mr-title{
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 19px; line-height: 1.25; font-weight: 500;
+  letter-spacing: -.005em;
+  color: #0f2a1e;
+}
+.more-reads__card .mr-excerpt{
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px; line-height: 1.55; color: #46554d;
+  margin-top: 4px;
+}
+.more-reads__card .mr-arrow{
+  margin-top:auto;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px; font-weight: 500;
+  color: #1e5a3a; letter-spacing: .04em;
+}
+@media (max-width: 880px){
+  .more-reads__grid{ grid-template-columns: 1fr; gap: 12px; }
+  .more-reads__card{ min-height: 0; }
+}
+
 </style>
 
 <script type="application/ld+json">
@@ -881,6 +956,34 @@ button{font-family:inherit;cursor:pointer}
           паспорта, адреса кошельков и реквизиты сделок — мы пришлём защищённую форму после первого ответа.
           Ограниченное число мандатов в месяц.
         </p>
+      </aside>
+
+
+      <aside class="more-reads" aria-label="Ещё по теме">
+        <div class="more-reads__head">
+          <h2>Ещё по теме</h2>
+          <span class="mr-kicker">Из Дайджеста Charter Capital</span>
+        </div>
+        <div class="more-reads__grid">
+        <a class="more-reads__card" href="/journal/singapore-family-office.html">
+          <div class="mr-meta"><span class="mr-cat">Family Office</span><span>08·05</span></div>
+          <div class="mr-title">Family Office в Сингапуре: новый стандарт</div>
+          <div class="mr-excerpt">VCC, Section 13O/13U, MAS — почему классические офшоры теряют, а Сингапур выигрывает.</div>
+          <div class="mr-arrow">Читать →</div>
+        </a>
+        <a class="more-reads__card" href="/journal/offshore-loan-uk-look-through.html">
+          <div class="mr-meta"><span class="mr-cat">AML · Look-Through</span><span>16·05</span></div>
+          <div class="mr-title">Кредит из Доминики и UK-банк: ловушка простых схем</div>
+          <div class="mr-excerpt">Почему оффшорный Lombard под крипту не проходит Look-Through в London Private Banking.</div>
+          <div class="mr-arrow">Читать →</div>
+        </a>
+        <a class="more-reads__card" href="/journal/b2b-crypto-settlements-clean-usdc.html">
+          <div class="mr-meta"><span class="mr-cat">B2B · ВЭД</span><span>26·05</span></div>
+          <div class="mr-title">Чистый USDC для B2B-платежей в Китай, ОАЭ и ЕС</div>
+          <div class="mr-excerpt">Как обойти «географический след» и закрывать ВЭД-контракты без блокировок и санкций.</div>
+          <div class="mr-arrow">Читать →</div>
+        </a>
+        </div>
       </aside>
 
       <nav class="bottom-nav" aria-label="Навигация по дайджесту">
