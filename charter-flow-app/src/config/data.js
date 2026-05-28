@@ -150,19 +150,21 @@ export const principles = [
 export const documents = [
   {
     id: 6,
-    title: 'Акт передачи залога',
+    title: 'Акт приёма-передачи имущества в залог',
     subtitle: 'Приложение №6',
-    description: 'Фиксация передачи USDT в качестве обеспечения по договору',
+    description:
+      'Передача USDT в обеспечение исполнения обязательств по договору (ст. 339, 339.1 ГК РФ)',
     file: '/docs/prilozhenie-6-akt-zaloga.pdf',
-    fileSize: '420 КБ',
+    fileSize: '211 КБ',
   },
   {
     id: 7,
-    title: 'Акт взыскания',
+    title: 'Акт обращения взыскания на предмет залога',
     subtitle: 'Приложение №7',
-    description: 'Подтверждение передачи USDT заказчику через инструмент залога',
+    description:
+      'Внесудебное обращение взыскания, оставление за собой (ст. 349, 350.1 ГК РФ)',
     file: '/docs/prilozhenie-7-akt-vzyskaniya.pdf',
-    fileSize: '380 КБ',
+    fileSize: '201 КБ',
   },
 ];
 

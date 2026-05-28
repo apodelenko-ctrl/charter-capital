@@ -1,0 +1,173 @@
+/* ============================================================================
+   Charter Flow · Стили для PDF-актов (Приложения №6, №7)
+   Соответствует требованиям делового документооборота РФ:
+     - формат А4
+     - шрифт с засечками (Times New Roman) — стандарт для официальных
+       документов, ГОСТ Р 7.0.97-2016
+     - 12pt основной текст
+     - поля 20 мм слева/справа, 20 мм сверху/снизу (ГОСТ)
+   ========================================================================== */
+
+@page {
+  size: A4;
+  margin: 20mm 20mm 25mm 25mm; /* верх/право/низ/лево по ГОСТ Р 7.0.97-2016 */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 12pt;
+  line-height: 1.4;
+  color: #000;
+  background: #fff;
+}
+
+.doc-title {
+  text-align: center;
+  font-size: 14pt;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin: 0 0 4pt 0;
+}
+
+.doc-subtitle {
+  text-align: center;
+  font-size: 11pt;
+  margin: 0 0 18pt 0;
+}
+
+.doc-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11pt;
+  margin: 12pt 0 18pt 0;
+}
+
+.doc-meta .left,
+.doc-meta .right {
+  white-space: nowrap;
+}
+
+.preamble {
+  text-align: justify;
+  text-indent: 1.25cm;
+  margin: 0 0 12pt 0;
+}
+
+.section-heading {
+  font-weight: bold;
+  font-size: 12pt;
+  margin: 14pt 0 6pt 0;
+  text-align: left;
+}
+
+.numbered-list {
+  margin: 0 0 12pt 0;
+  padding-left: 0;
+  list-style-position: outside;
+}
+
+.numbered-list > li {
+  margin-bottom: 4pt;
+  text-align: justify;
+}
+
+.parties-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 6pt 0 14pt 0;
+  font-size: 11pt;
+}
+
+.parties-table td {
+  vertical-align: top;
+  padding: 4pt 6pt;
+  border: 1pt solid #000;
+  width: 50%;
+}
+
+.parties-table .heading {
+  font-weight: bold;
+  background: #f0f0f0;
+  text-align: center;
+}
+
+.parties-table .role {
+  font-style: italic;
+  color: #333;
+  font-size: 10pt;
+}
+
+.asset-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 6pt 0 14pt 0;
+  font-size: 11pt;
+}
+
+.asset-table td {
+  vertical-align: top;
+  padding: 4pt 6pt;
+  border: 1pt solid #000;
+}
+
+.asset-table .label {
+  width: 38%;
+  font-weight: bold;
+  background: #f7f7f7;
+}
+
+.signatures {
+  display: flex;
+  justify-content: space-between;
+  gap: 30pt;
+  margin: 24pt 0 0 0;
+  page-break-inside: avoid;
+}
+
+.signatures .col {
+  width: 48%;
+  font-size: 11pt;
+}
+
+.signatures .role {
+  font-weight: bold;
+  margin-bottom: 30pt;
+}
+
+.signatures .sig-line {
+  border-top: 1pt solid #000;
+  padding-top: 3pt;
+  font-size: 10pt;
+}
+
+.legal-ref {
+  font-style: italic;
+  font-size: 10pt;
+  color: #444;
+  margin: 14pt 0 0 0;
+  padding-top: 8pt;
+  border-top: 1pt solid #ccc;
+}
+
+.tx-hash {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 10pt;
+  word-break: break-all;
+}
+
+p {
+  text-align: justify;
+  margin: 0 0 8pt 0;
+}
+
+.indent {
+  text-indent: 1.25cm;
+}
