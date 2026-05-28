@@ -8,96 +8,156 @@ Disallow: /ads/
 Disallow: /usdc-china.html
 Disallow: /usdc-b2b.html
 Disallow: /no-swift.html
+Disallow: /charter-flow/
+Disallow: /charter-flow-app/
 
 # === Crawlers ===
 User-agent: Googlebot
 Allow: /
+Disallow: /charter-flow/
+Disallow: /charter-flow-app/
 
 User-agent: Yandex
 Allow: /
+Disallow: /charter-flow/
+Disallow: /charter-flow-app/
 Clean-param: utm_source&utm_medium&utm_campaign&utm_term&utm_content&yclid&gclid
 
 User-agent: YandexBot
 Allow: /
+Disallow: /charter-flow/
+Disallow: /charter-flow-app/
 
 User-agent: YandexImages
 Allow: /
+Disallow: /charter-flow/
+Disallow: /charter-flow-app/
 
 User-agent: YandexMobileBot
 Allow: /
+Disallow: /charter-flow/
+Disallow: /charter-flow-app/
 
 User-agent: Bingbot
 Allow: /
+Disallow: /charter-flow/
+Disallow: /charter-flow-app/
 
 User-agent: DuckDuckBot
 Allow: /
+Disallow: /charter-flow/
+Disallow: /charter-flow-app/
 
 User-agent: Mail.RU_Bot
 Allow: /
+Disallow: /charter-flow/
+Disallow: /charter-flow-app/
 
-# === LLM / AI crawlers (allowed) ===
+# === LLM / AI crawlers (allowed for main site, blocked for dashboard) ===
 User-agent: GPTBot
 Allow: /
+Disallow: /charter-flow/
+Disallow: /charter-flow-app/
 
 User-agent: OAI-SearchBot
 Allow: /
+Disallow: /charter-flow/
+Disallow: /charter-flow-app/
 
 User-agent: ChatGPT-User
 Allow: /
+Disallow: /charter-flow/
+Disallow: /charter-flow-app/
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /charter-flow/
+Disallow: /charter-flow-app/
 
 User-agent: Perplexity-User
 Allow: /
+Disallow: /charter-flow/
+Disallow: /charter-flow-app/
 
 User-agent: ClaudeBot
 Allow: /
+Disallow: /charter-flow/
+Disallow: /charter-flow-app/
 
 User-agent: Claude-Web
 Allow: /
+Disallow: /charter-flow/
+Disallow: /charter-flow-app/
 
 User-agent: anthropic-ai
 Allow: /
+Disallow: /charter-flow/
+Disallow: /charter-flow-app/
 
 User-agent: Google-Extended
 Allow: /
+Disallow: /charter-flow/
+Disallow: /charter-flow-app/
 
 User-agent: GoogleOther
 Allow: /
+Disallow: /charter-flow/
+Disallow: /charter-flow-app/
 
 User-agent: CCBot
 Allow: /
+Disallow: /charter-flow/
+Disallow: /charter-flow-app/
 
 User-agent: Applebot
 Allow: /
+Disallow: /charter-flow/
+Disallow: /charter-flow-app/
 
 User-agent: Applebot-Extended
 Allow: /
+Disallow: /charter-flow/
+Disallow: /charter-flow-app/
 
 User-agent: Bytespider
 Allow: /
+Disallow: /charter-flow/
+Disallow: /charter-flow-app/
 
 User-agent: Amazonbot
 Allow: /
+Disallow: /charter-flow/
+Disallow: /charter-flow-app/
 
 User-agent: Meta-ExternalAgent
 Allow: /
+Disallow: /charter-flow/
+Disallow: /charter-flow-app/
 
 User-agent: FacebookBot
 Allow: /
+Disallow: /charter-flow/
+Disallow: /charter-flow-app/
 
 User-agent: Twitterbot
 Allow: /
+Disallow: /charter-flow/
+Disallow: /charter-flow-app/
 
 User-agent: cohere-ai
 Allow: /
+Disallow: /charter-flow/
+Disallow: /charter-flow-app/
 
 User-agent: DiffBot
 Allow: /
+Disallow: /charter-flow/
+Disallow: /charter-flow-app/
 
 User-agent: YouBot
 Allow: /
+Disallow: /charter-flow/
+Disallow: /charter-flow-app/
 
 # === Sitemap ===
 Sitemap: https://ccapital.pro/sitemap.xml
