@@ -9,7 +9,7 @@ import { Download, FileText } from 'lucide-react';
 export default function DownloadButton({ document, delay = 0 }) {
   return (
     <motion.a
-      href={document.file}
+      href={`${import.meta.env.BASE_URL}${document.file}`}
       download
       initial={{ opacity: 0, y: 8 }}
       whileInView={{ opacity: 1, y: 0 }}

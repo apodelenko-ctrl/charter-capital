@@ -154,7 +154,7 @@ export const documents = [
     subtitle: 'Приложение №6',
     description:
       'Передача USDT в обеспечение исполнения обязательств по договору (ст. 339, 339.1 ГК РФ)',
-    file: '/docs/prilozhenie-6-akt-zaloga.pdf',
+    file: 'docs/prilozhenie-6-akt-zaloga.pdf',
     fileSize: '211 КБ',
   },
   {
@@ -163,7 +163,7 @@ export const documents = [
     subtitle: 'Приложение №7',
     description:
       'Внесудебное обращение взыскания, оставление за собой (ст. 349, 350.1 ГК РФ)',
-    file: '/docs/prilozhenie-7-akt-vzyskaniya.pdf',
+    file: 'docs/prilozhenie-7-akt-vzyskaniya.pdf',
     fileSize: '201 КБ',
   },
 ];
