@@ -34,7 +34,7 @@ import {
 export default function App() {
   return (
     <div className="min-h-screen w-full">
-      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-6 sm:gap-10 sm:px-6 sm:py-10 md:gap-12 md:py-14">
+      <div className="mx-auto flex max-w-6xl flex-col gap-5 px-4 py-5 sm:gap-6 sm:px-6 sm:py-7 md:gap-7 md:py-8">
         <StatusHeader deal={deal} issuer={issuer} recipient={recipient} />
 
         <HeroBlock hero={hero} />

@@ -11,7 +11,7 @@ export default function Card({ children, className = '', delay = 0 }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-80px' }}
       transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
-      className={`doc-card p-6 sm:p-8 md:p-10 ${className}`}
+      className={`doc-card p-5 sm:p-6 md:p-8 ${className}`}
     >
       {children}
     </motion.section>

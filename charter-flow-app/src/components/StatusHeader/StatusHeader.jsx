@@ -15,7 +15,7 @@ export default function StatusHeader({ deal, issuer, recipient }) {
       initial={{ opacity: 0, y: -8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
-      className="flex flex-col gap-6 pb-6 sm:pb-8"
+      className="flex flex-col gap-5 pb-2"
     >
       <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between sm:gap-8">
         {/* Логотип + эмитент */}
