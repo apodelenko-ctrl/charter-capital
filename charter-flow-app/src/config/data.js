@@ -11,6 +11,7 @@
    1. Основные данные сделки и адресат
    -------------------------------------------------------------------------- */
 export const deal = {
+  contractLabel: 'Договор займа',
   contractNumber: 'USDT-RUR/VDT-KMK-1/21042026',
   contractDate: '21.04.2026',
   currency: 'USDT / RUB',

@@ -5,6 +5,7 @@ import {
   ArrowRightLeft,
   ShieldCheck,
   CheckCircle2,
+  FileSignature,
   Info,
   Clock,
   Zap,
@@ -17,6 +18,7 @@ const ICONS = {
   ArrowRightLeft,
   ShieldCheck,
   CheckCircle2,
+  FileSignature,
 };
 
 /**

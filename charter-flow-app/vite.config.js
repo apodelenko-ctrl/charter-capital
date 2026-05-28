@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import { resolve } from 'path';
 
 // Конфигурация Vite.
 //
@@ -7,15 +8,21 @@ import react from '@vitejs/plugin-react';
 // файлы кладутся в /charter-flow/ репозитория (рядом со статикой
 // ccapital.pro), откуда их подхватывает GitHub Pages при деплое.
 //
-// base: '/charter-flow/' соответствует публичному URL на ccapital.pro.
-// Для standalone-хостинга можно установить base: '/'.
+// Двухстраничный билд (multi-page application):
+//   - index.html  → /charter-flow/           (презентация для источника МРГ)
+//   - client.html → /charter-flow/client.html (презентация для заказчика)
 export default defineConfig({
   plugins: [react()],
   base: '/charter-flow/',
   build: {
-    // Кладём сборку на уровень выше — в репо-рут /charter-flow/
     outDir: '../charter-flow',
     emptyOutDir: true,
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'index.html'),
+        client: resolve(__dirname, 'client.html'),
+      },
+    },
   },
   server: {
     port: 5173,

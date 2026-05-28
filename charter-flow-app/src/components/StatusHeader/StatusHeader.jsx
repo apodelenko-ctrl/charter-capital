@@ -55,7 +55,7 @@ export default function StatusHeader({ deal, issuer, recipient }) {
       <div className="flex flex-col gap-2 border-t border-rule pt-5 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-baseline gap-3">
           <span className="text-[10px] font-semibold uppercase tracking-institutional text-ink-400">
-            Договор займа
+            {deal.contractLabel ?? 'Договор займа'}
           </span>
           <span className="font-mono text-[12px] text-ink-700 sm:text-[13px]">
             № {deal.contractNumber}
@@ -69,14 +69,16 @@ export default function StatusHeader({ deal, issuer, recipient }) {
             {deal.contractDate}
           </span>
         </div>
-        <div className="flex items-baseline gap-3">
-          <span className="text-[10px] font-semibold uppercase tracking-institutional text-ink-400">
-            Валюты
-          </span>
-          <span className="font-mono text-[12px] text-ink-700 sm:text-[13px]">
-            {deal.currency}
-          </span>
-        </div>
+        {deal.currency && (
+          <div className="flex items-baseline gap-3">
+            <span className="text-[10px] font-semibold uppercase tracking-institutional text-ink-400">
+              Валюты
+            </span>
+            <span className="font-mono text-[12px] text-ink-700 sm:text-[13px]">
+              {deal.currency}
+            </span>
+          </div>
+        )}
       </div>
     </motion.header>
   );

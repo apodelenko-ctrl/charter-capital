@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion';
-import { Eye, Scale, Lock, FileCheck2 } from 'lucide-react';
+import { Eye, Scale, Lock, FileCheck2, Zap } from 'lucide-react';
 import Card from '../ui/Card';
 import SectionTitle from '../ui/SectionTitle';
 
 // Маппинг иконок lucide-react по iconName из data.js
-const ICONS = { Eye, Scale, Lock, FileCheck2 };
+const ICONS = { Eye, Scale, Lock, FileCheck2, Zap };
 
 /**
  * Блок «Принципы» — четыре принципа, которые обеспечивает структура сделки.
