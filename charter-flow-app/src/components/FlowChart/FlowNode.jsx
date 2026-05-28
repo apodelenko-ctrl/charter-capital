@@ -7,6 +7,7 @@ import {
   CheckCircle2,
   Info,
   Clock,
+  Zap,
 } from 'lucide-react';
 import NodeTooltip from './NodeTooltip';
 
@@ -101,6 +102,21 @@ export default function FlowNode({ node, index }) {
             </li>
           ))}
         </ul>
+      )}
+
+      {/* Highlight-callout — ключевое условие/SLA (опционально) */}
+      {node.highlight && (
+        <div className="mt-4 rounded-md border border-gold-600/30 bg-gold-500/[0.06] p-3">
+          <div className="flex items-center gap-1.5">
+            <Zap size={12} strokeWidth={2.2} className="text-gold-700" />
+            <span className="text-[10px] font-semibold uppercase tracking-institutional text-gold-700">
+              {node.highlight.label}
+            </span>
+          </div>
+          <p className="mt-1.5 text-[12.5px] leading-snug text-ink-700">
+            {node.highlight.text}
+          </p>
+        </div>
       )}
     </motion.article>
   );

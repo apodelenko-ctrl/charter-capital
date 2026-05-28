@@ -60,6 +60,11 @@ export const flowNodes = [
       'Контроль источника происхождения средств (KYC/AML)',
     ],
     timeline: 'T+0',
+    // Особое условие — same-day settlement при отправке до cut-off
+    highlight: {
+      label: 'Same-day settlement',
+      text: 'При поступлении средств до 12:00 МСК все четыре стадии маршрута завершаются в течение одного рабочего дня.',
+    },
   },
   {
     id: 'settlement',
