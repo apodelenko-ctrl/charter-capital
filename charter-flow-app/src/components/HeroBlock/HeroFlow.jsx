@@ -16,34 +16,14 @@ import { useReducedMotion } from '../../hooks/useReducedMotion';
 export default function HeroFlow() {
   const reduced = useReducedMotion();
 
-  // Конфигурация треков: высота на странице + параметры частиц
+  // Конфигурация треков: одна горизонтальная дорожка на уровне ~62%
+  // высоты hero — проходит ниже заголовка, не пересекая буквы.
   const tracks = [
-    {
-      y: '14%',
-      particles: [
-        { delay: 0.0, duration: 6.5 },
-        { delay: 3.4, duration: 6.5 },
-      ],
-    },
-    {
-      y: '38%',
-      particles: [
-        { delay: 1.2, duration: 7.5 },
-        { delay: 4.9, duration: 7.5 },
-      ],
-    },
     {
       y: '62%',
       particles: [
-        { delay: 0.6, duration: 6.0 },
-        { delay: 3.8, duration: 6.0 },
-      ],
-    },
-    {
-      y: '86%',
-      particles: [
-        { delay: 2.0, duration: 7.0 },
-        { delay: 5.6, duration: 7.0 },
+        { delay: 0.0, duration: 6.5 },
+        { delay: 3.3, duration: 6.5 },
       ],
     },
   ];
