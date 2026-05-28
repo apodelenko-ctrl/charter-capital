@@ -18,7 +18,7 @@ export default function LinksBlock({ links }) {
         lead="Документ — часть более широкого корпоративного контекста. Полезные ссылки для углублённого знакомства с компанией и практикой."
       />
 
-      <div className="grid gap-4 sm:gap-5 md:grid-cols-3">
+      <div className="grid gap-4 sm:gap-5 md:grid-cols-2">
         {links.map((link, idx) => {
           const Icon = ICONS[link.iconName] ?? Building2;
           return (

@@ -170,14 +170,6 @@ export const documents = [
    -------------------------------------------------------------------------- */
 export const externalLinks = [
   {
-    id: 'main',
-    title: 'Charter Capital',
-    subtitle: 'Главный сайт',
-    description: 'О компании, наших проектах и команде',
-    href: 'https://ccapital.pro/',
-    iconName: 'Building2',
-  },
-  {
     id: 'journal',
     title: 'Журнал',
     subtitle: 'Аналитика и практика',
