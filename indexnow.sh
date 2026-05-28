@@ -27,10 +27,10 @@ else
   C_GRN=""; C_BLU=""; C_YEL=""; C_RED=""; C_RST=""
 fi
 
-say(){ printf '%s▸ %s%s\n' "$C_BLU" "$*" "$C_RST"; }
-ok(){  printf '%s✓ %s%s\n' "$C_GRN" "$*" "$C_RST"; }
-warn(){printf '%s! %s%s\n' "$C_YEL" "$*" "$C_RST"; }
-err(){ printf '%s✗ %s%s\n' "$C_RED" "$*" "$C_RST" >&2; }
+say()  { printf '%s▸ %s%s\n' "$C_BLU" "$*" "$C_RST"; }
+ok()   { printf '%s✓ %s%s\n' "$C_GRN" "$*" "$C_RST"; }
+warn() { printf '%s! %s%s\n' "$C_YEL" "$*" "$C_RST"; }
+err()  { printf '%s✗ %s%s\n' "$C_RED" "$*" "$C_RST" >&2; }
 
 # --- собираем список URL ---
 URLS=()
