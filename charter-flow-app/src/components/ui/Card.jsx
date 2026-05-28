@@ -1,18 +1,19 @@
 import { motion } from 'framer-motion';
 
 /**
- * Универсальная премиум-карточка с тёмным фоном и тонкой обводкой.
- * Используется для оборачивания крупных секций дашборда.
+ * Институциональная карточка-«бумага» — белый фон, тонкая обводка, мягкая тень.
+ * Используется для оборачивания крупных секций презентации.
  */
 export default function Card({ children, className = '', delay = 0 }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      animate={{ opacity: 1, y: 0 }}
+    <motion.section
+      initial={{ opacity: 0, y: 12 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-80px' }}
       transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
-      className={`terminal-card p-5 sm:p-6 md:p-8 ${className}`}
+      className={`doc-card p-6 sm:p-8 md:p-10 ${className}`}
     >
       {children}
-    </motion.div>
+    </motion.section>
   );
 }

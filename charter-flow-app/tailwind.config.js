@@ -3,69 +3,71 @@ export default {
   content: ['./index.html', './src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
-      // Премиум палитра банковского терминала
       colors: {
-        // Чёрные тона — фон «бездны»
-        abyss: {
-          DEFAULT: '#050505',
-          900: '#070707',
-          800: '#0c0c0c',
-          700: '#121212',
-          600: '#181818',
-          500: '#202020',
+        // Институциональная светлая палитра в духе финансовых документов
+        // премиального уровня (JP Morgan, Goldman Sachs, McKinsey).
+        paper: {
+          DEFAULT: '#FAFAF6', // основной фон страницы — тёплый кремовый
+          50: '#FFFFFF',
+          100: '#FBFAF5',
+          200: '#F5F3EB',
+          300: '#EDEAE0',
         },
-        // Золотой акцент — институциональный премиум
+        ink: {
+          DEFAULT: '#0B0B0B',
+          900: '#0B0B0B', // чёрная типографика — авторитет
+          800: '#1A1A1A',
+          700: '#2B2B2B',
+          600: '#5C5C5C', // вторичный текст
+          500: '#7A7A7A',
+          400: '#9C9C9C', // подписи, мета
+          300: '#BDBDBD',
+        },
+        // Сдержанное золото — институциональный акцент
         gold: {
-          DEFAULT: '#D4AF37',
-          400: '#E5C76B',
-          500: '#D4AF37',
-          600: '#B8932E',
-          700: '#8C6F22',
+          DEFAULT: '#9C7C2A',
+          400: '#C9A961',
+          500: '#A8862C',
+          600: '#9C7C2A',
+          700: '#7E6420',
+          800: '#5C4818',
+        },
+        // Границы и разделители (тёплый серый)
+        rule: {
+          DEFAULT: '#E5E2DA',
+          light: '#EFECE4',
+          strong: '#D4D0C5',
         },
         // Семантические цвета статусов
         status: {
-          active: '#D4AF37',
-          processing: '#7DB9DE',
-          completed: '#4CAF7D',
-          warning: '#E5A04C',
+          active: '#9C7C2A',
+          processing: '#3D6A8F',
+          completed: '#3F7D52',
+          warning: '#A4682B',
         },
       },
       fontFamily: {
-        // Urbanist — основной (заголовки и крупный текст)
-        // Inter — fallback и таблицы / технические данные
         sans: [
-          'Urbanist',
           'Inter',
+          'Urbanist',
           'ui-sans-serif',
           'system-ui',
           '-apple-system',
           'sans-serif',
         ],
-        mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
+        serif: ['"GT Sectra"', 'Georgia', '"Times New Roman"', 'serif'],
+        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
       boxShadow: {
-        gold: '0 0 24px rgba(212, 175, 55, 0.18)',
-        'gold-strong': '0 0 36px rgba(212, 175, 55, 0.35)',
-        card: '0 8px 32px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.04)',
+        // Тонкие тени для глубины — институциональная сдержанность
+        soft: '0 1px 2px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.04)',
+        card: '0 1px 2px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(11, 11, 11, 0.06)',
+        'card-hover':
+          '0 2px 6px rgba(0, 0, 0, 0.05), 0 12px 32px rgba(11, 11, 11, 0.10)',
+        gold: '0 0 0 1px rgba(156, 124, 42, 0.18)',
       },
-      backgroundImage: {
-        'gold-gradient': 'linear-gradient(135deg, #E5C76B 0%, #D4AF37 50%, #8C6F22 100%)',
-        'card-gradient':
-          'linear-gradient(180deg, rgba(18,18,18,0.95) 0%, rgba(8,8,8,0.95) 100%)',
-      },
-      animation: {
-        'pulse-gold': 'pulse-gold 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        shimmer: 'shimmer 2.4s linear infinite',
-      },
-      keyframes: {
-        'pulse-gold': {
-          '0%, 100%': { opacity: '1', boxShadow: '0 0 0 0 rgba(212,175,55,0.6)' },
-          '50%': { opacity: '0.8', boxShadow: '0 0 0 8px rgba(212,175,55,0)' },
-        },
-        shimmer: {
-          '0%': { backgroundPosition: '-200% 0' },
-          '100%': { backgroundPosition: '200% 0' },
-        },
+      letterSpacing: {
+        institutional: '0.22em',
       },
     },
   },

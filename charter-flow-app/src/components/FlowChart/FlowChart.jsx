@@ -1,41 +1,41 @@
 import { Fragment } from 'react';
-import { Activity } from 'lucide-react';
 import Card from '../ui/Card';
 import SectionTitle from '../ui/SectionTitle';
 import FlowNode from './FlowNode';
 import FlowStream from './FlowStream';
 
 /**
- * Блок «Финансовый поток» — цепочка из 4 узлов с анимированными потоками.
+ * Блок «Финансовый поток» — четыре стадии движения капитала
+ * с расширенными подписями.
  *
  * Адаптивность:
- *   - md+:    горизонтальная цепочка
- *   - mobile: вертикальная цепочка (стрелки вниз)
+ *   - lg+:    четыре узла в строку со стрелками
+ *   - mobile: вертикальный список со стрелками вниз
  */
 export default function FlowChart({ nodes }) {
   return (
-    <Card delay={0.1}>
+    <Card delay={0.05}>
       <SectionTitle
+        eyebrow="Раздел 01 · Архитектура расчётов"
         title="Финансовый поток"
-        subtitle="Визуализация движения капитала"
-        icon={Activity}
+        lead="Маршрут средств от источника фондирования до финального зачисления состоит из четырёх стадий. Каждая стадия документирована, сопровождается первичными документами и фиксируется в банковской и/или брокерской системе."
       />
 
-      {/* Горизонтальный вариант (md и шире) */}
-      <div className="hidden items-center md:flex">
+      {/* Горизонтальный вариант (lg и шире) */}
+      <div className="hidden items-stretch lg:flex">
         {nodes.map((node, idx) => (
           <Fragment key={node.id}>
-            <FlowNode node={node} index={idx} isLast={idx === nodes.length - 1} />
+            <FlowNode node={node} index={idx} />
             {idx < nodes.length - 1 && <FlowStream orientation="horizontal" />}
           </Fragment>
         ))}
       </div>
 
-      {/* Вертикальный вариант (mobile) */}
-      <div className="flex flex-col items-center md:hidden">
+      {/* Вертикальный вариант (mobile / tablet) */}
+      <div className="flex flex-col items-stretch lg:hidden">
         {nodes.map((node, idx) => (
           <Fragment key={node.id}>
-            <FlowNode node={node} index={idx} isLast={idx === nodes.length - 1} />
+            <FlowNode node={node} index={idx} />
             {idx < nodes.length - 1 && <FlowStream orientation="vertical" />}
           </Fragment>
         ))}

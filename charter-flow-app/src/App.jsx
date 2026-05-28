@@ -1,68 +1,72 @@
-import { motion } from 'framer-motion';
 import StatusHeader from './components/StatusHeader/StatusHeader';
+import HeroBlock from './components/HeroBlock/HeroBlock';
 import FlowChart from './components/FlowChart/FlowChart';
-import TrancheTable from './components/TrancheTable/TrancheTable';
+import PrinciplesBlock from './components/PrinciplesBlock/PrinciplesBlock';
 import DocumentSection from './components/DocumentSection/DocumentSection';
-import { deal, flowNodes, tranches, documents, parties } from './config/data';
+import LinksBlock from './components/LinksBlock/LinksBlock';
+import DisclaimerBlock from './components/DisclaimerBlock/DisclaimerBlock';
+import {
+  deal,
+  recipient,
+  issuer,
+  hero,
+  flowNodes,
+  principles,
+  documents,
+  externalLinks,
+  disclaimer,
+} from './config/data';
 
 /**
- * Корневой компонент дашборда Charter Flow.
- * Композиция четырёх секций:
- *   1. StatusHeader
- *   2. FlowChart
- *   3. TrancheTable
- *   4. DocumentSection
+ * Корневой компонент презентации Charter Flow.
  *
- * Все данные тянутся из config/data.js.
+ * Структура (как у деловой презентации JP Morgan):
+ *   1. StatusHeader  — фирменный бланк: эмитент, адресат, реквизиты договора
+ *   2. HeroBlock     — заголовок и executive summary
+ *   3. FlowChart     — Раздел 01: четыре стадии движения капитала
+ *   4. Principles    — Раздел 02: что обеспечивает структура
+ *   5. Documents     — Раздел 03: первичные документы (PDF)
+ *   6. Links         — Раздел 04: дополнительные материалы
+ *   7. Disclaimer    — NDA / условия использования материала
+ *
+ * Все тексты — в config/data.js.
  */
 export default function App() {
   return (
     <div className="min-h-screen w-full">
-      {/* Внешний контейнер с safe-padding */}
-      <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-6 sm:gap-8 sm:px-6 sm:py-8 md:py-10">
-        {/* 1. Шапка со статусом */}
-        <StatusHeader deal={deal} />
+      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-6 sm:gap-10 sm:px-6 sm:py-10 md:gap-12 md:py-14">
+        <StatusHeader deal={deal} issuer={issuer} recipient={recipient} />
 
-        {/* 2. Финансовый поток */}
+        <HeroBlock hero={hero} />
+
         <FlowChart nodes={flowNodes} />
 
-        {/* 3. Таблица траншей */}
-        <TrancheTable tranches={tranches} />
+        <PrinciplesBlock principles={principles} />
 
-        {/* 4. Документация */}
         <DocumentSection documents={documents} />
 
-        {/* Футер: стороны сделки и подпись */}
-        <Footer parties={parties} />
+        <LinksBlock links={externalLinks} />
+
+        <DisclaimerBlock disclaimer={disclaimer} />
+
+        <PageFooter issuer={issuer} />
       </div>
     </div>
   );
 }
 
 /**
- * Подвал — информация о сторонах и копирайт.
+ * Тонкий подвал страницы — пейджинг номер документа и копирайт.
  */
-function Footer({ parties }) {
+function PageFooter({ issuer }) {
   return (
-    <motion.footer
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.6, delay: 0.5 }}
-      className="mt-2 flex flex-col gap-4 border-t border-white/5 pt-6 text-[11px] text-white/40 sm:flex-row sm:items-center sm:justify-between"
-    >
-      <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-        <span className="uppercase tracking-[0.18em]">Стороны:</span>
-        <span className="text-white/60">{parties.funder.short}</span>
-        <span className="text-white/20">→</span>
-        <span className="text-white/60">{parties.bank.short}</span>
-        <span className="text-white/20">→</span>
-        <span className="text-white/60">{parties.broker.short}</span>
-        <span className="text-white/20">→</span>
-        <span className="text-white/60">{parties.client.short}</span>
-      </div>
-      <div className="font-mono uppercase tracking-[0.18em]">
-        © {new Date().getFullYear()} Charter Flow · Институциональный терминал
-      </div>
-    </motion.footer>
+    <footer className="flex flex-col items-center justify-between gap-2 border-t border-rule pt-6 text-[11px] text-ink-400 sm:flex-row">
+      <span className="font-mono uppercase tracking-institutional">
+        Charter Flow · v1.0
+      </span>
+      <span className="font-mono uppercase tracking-institutional">
+        © {new Date().getFullYear()} {issuer.name}
+      </span>
+    </footer>
   );
 }

@@ -1,86 +1,61 @@
 import { motion } from 'framer-motion';
+import { ChevronRight, ChevronDown } from 'lucide-react';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
 
 /**
- * Анимированный «поток» между узлами цепочки.
+ * Стрелка-разделитель между узлами потока (институциональный, сдержанный стиль).
  *
- *  - На широких экранах: горизонтальная линия с тремя бегущими частицами слева направо.
- *  - На мобильных:        вертикальная линия с частицами сверху вниз.
+ *   - На широких экранах: горизонтальная пунктирная линия + золотой шеврон вправо.
+ *   - На мобильных:        вертикальная пунктирная линия + золотой шеврон вниз.
  *
- * Уважает prefers-reduced-motion: при включённой настройке частицы статичны.
- *
- * Реализация — SVG с <animateMotion> для надёжности (не зависит от перерасчётов layout).
- * Но мы используем CSS-transitions через framer-motion вариант с translateX/Y по линии,
- * это даёт точный контроль и плавность.
+ * Анимация лёгкая, без бегущих частиц — это серьёзный документ, а не дашборд.
+ * Уважает prefers-reduced-motion.
  */
 export default function FlowStream({ orientation = 'horizontal' }) {
   const reduced = useReducedMotion();
   const isHorizontal = orientation === 'horizontal';
+  const Chevron = isHorizontal ? ChevronRight : ChevronDown;
 
   return (
     <div
       className={
         isHorizontal
-          ? 'relative flex h-px flex-1 items-center'
-          : 'relative my-2 h-12 w-px self-center'
+          ? 'relative mt-12 flex flex-shrink-0 items-center self-start px-1'
+          : 'relative my-3 flex flex-shrink-0 flex-col items-center self-center'
       }
       aria-hidden
     >
-      {/* Базовая линия (статичная) */}
+      {/* Пунктирная линия */}
       <div
         className={
           isHorizontal
-            ? 'h-px w-full bg-gradient-to-r from-transparent via-gold/40 to-transparent'
-            : 'h-full w-px bg-gradient-to-b from-transparent via-gold/40 to-transparent'
+            ? 'h-px w-10 border-t border-dashed border-gold-600/40'
+            : 'h-8 w-px border-l border-dashed border-gold-600/40'
         }
       />
 
-      {/* Бегущая золотая «волна» — лёгкое свечение поверх линии */}
-      {!reduced && (
-        <motion.div
-          className={
-            isHorizontal
-              ? 'absolute inset-y-[-2px] left-0 w-1/3 bg-gradient-to-r from-transparent via-gold/70 to-transparent blur-[1px]'
-              : 'absolute inset-x-[-2px] top-0 h-1/3 bg-gradient-to-b from-transparent via-gold/70 to-transparent blur-[1px]'
-          }
-          animate={
-            isHorizontal
-              ? { x: ['-30%', '120%'] }
-              : { y: ['-30%', '120%'] }
-          }
-          transition={{
-            duration: 2.6,
-            ease: 'linear',
-            repeat: Infinity,
-          }}
-        />
-      )}
-
-      {/* Дискретные частицы */}
-      {!reduced &&
-        [0, 1, 2].map((i) => (
-          <motion.span
-            key={i}
-            className="absolute h-1.5 w-1.5 rounded-full bg-gold shadow-[0_0_6px_rgba(212,175,55,0.9)]"
-            style={
-              isHorizontal
-                ? { top: '50%', translateY: '-50%' }
-                : { left: '50%', translateX: '-50%' }
-            }
-            animate={
-              isHorizontal
-                ? { left: ['-2%', '102%'], opacity: [0, 1, 1, 0] }
-                : { top: ['-2%', '102%'], opacity: [0, 1, 1, 0] }
-            }
-            transition={{
-              duration: 2.4,
-              ease: 'linear',
-              repeat: Infinity,
-              delay: i * 0.8,
-              times: [0, 0.1, 0.9, 1],
-            }}
-          />
-        ))}
+      {/* Шеврон с лёгкой пульсацией */}
+      <motion.span
+        className={
+          isHorizontal
+            ? 'absolute -right-1.5 top-1/2 -translate-y-1/2'
+            : 'absolute -bottom-1.5 left-1/2 -translate-x-1/2'
+        }
+        animate={
+          reduced
+            ? {}
+            : isHorizontal
+              ? { x: [0, 3, 0] }
+              : { y: [0, 3, 0] }
+        }
+        transition={{
+          duration: 2.4,
+          ease: 'easeInOut',
+          repeat: Infinity,
+        }}
+      >
+        <Chevron size={16} strokeWidth={2} className="text-gold-600" />
+      </motion.span>
     </div>
   );
 }

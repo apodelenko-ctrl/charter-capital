@@ -1,4 +1,4 @@
-/* Дизайн-токены (CSS-переменные) — должны идти ПЕРЕД @tailwind */
+/* Дизайн-токены — должны идти ПЕРЕД @tailwind */
 @import './styles/tokens.css';
 
 /* Подключение Tailwind */
@@ -7,53 +7,60 @@
 @tailwind utilities;
 
 /* ----------------------------------------------------------------------------
-   Глобальные стили
+   Глобальные стили (Institutional Light)
    -------------------------------------------------------------------------- */
 @layer base {
   html {
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    color-scheme: light;
   }
 
   body {
-    background-color: var(--color-abyss);
-    color: #f5f5f5;
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    /* Тонкая «бумажная» текстура — едва заметные тёплые градиенты */
     background-image:
       radial-gradient(
-        ellipse 80% 50% at 50% -10%,
-        rgba(212, 175, 55, 0.06) 0%,
-        transparent 60%
+        ellipse 70% 35% at 50% 0%,
+        rgba(156, 124, 42, 0.04) 0%,
+        transparent 70%
       ),
       radial-gradient(
-        ellipse 60% 40% at 80% 100%,
-        rgba(125, 185, 222, 0.04) 0%,
-        transparent 60%
+        ellipse 50% 30% at 100% 100%,
+        rgba(11, 11, 11, 0.025) 0%,
+        transparent 70%
       );
     background-attachment: fixed;
   }
 
-  /* Тонкая золотая обводка для focus-индикаторов (a11y) */
   :focus-visible {
     outline: 2px solid var(--color-gold);
     outline-offset: 3px;
     border-radius: 4px;
   }
 
-  /* Кастомный scrollbar — тёмный, ненавязчивый */
+  /* Тонкий scrollbar для светлой темы */
   ::-webkit-scrollbar {
     width: 10px;
     height: 10px;
   }
   ::-webkit-scrollbar-track {
-    background: var(--color-abyss);
+    background: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background: var(--color-abyss-500);
+    background: var(--color-rule-strong);
     border-radius: 999px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--color-gold-dark);
+    background: var(--color-gold);
+  }
+
+  /* Выделение текста — золотое */
+  ::selection {
+    background-color: rgba(156, 124, 42, 0.22);
+    color: var(--color-ink);
   }
 }
 
@@ -61,28 +68,32 @@
    Утилиты-компоненты
    -------------------------------------------------------------------------- */
 @layer components {
-  /* Премиальная карточка терминала */
-  .terminal-card {
-    @apply relative rounded-2xl border border-white/5 bg-card-gradient shadow-card;
-    backdrop-filter: blur(6px);
+  /* Премиальная карточка — белая бумага с тонкой обводкой и мягкой тенью */
+  .doc-card {
+    @apply relative rounded-xl border border-rule bg-white shadow-card;
   }
 
-  /* Золотая текстовая надпись (для логотипа и акцентов) */
-  .text-gold-gradient {
-    background: linear-gradient(135deg, #e5c76b 0%, #d4af37 50%, #8c6f22 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-  /* Hairline — тонкая золотая линия-разделитель */
-  .gold-hairline {
+  /* Тонкая золотая линия-разделитель */
+  .gold-rule {
     height: 1px;
     background: linear-gradient(
       90deg,
-      transparent 0%,
-      rgba(212, 175, 55, 0.5) 50%,
+      var(--color-gold) 0%,
+      var(--color-gold) 56px,
+      transparent 56px,
       transparent 100%
     );
+  }
+
+  /* Институциональная «шапка» секции — мини-капс с золотой меткой */
+  .section-eyebrow {
+    @apply text-[10px] font-semibold uppercase tracking-institutional text-gold-600;
+  }
+
+  /* Серьёзная типография для заголовков */
+  .display-serif {
+    font-family: var(--font-serif);
+    font-feature-settings: 'lnum' 1, 'ss01' 1;
+    letter-spacing: -0.01em;
   }
 }

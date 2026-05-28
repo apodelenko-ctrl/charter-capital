@@ -1,37 +1,46 @@
 /* ============================================================================
-   Charter Flow · Design Tokens
-   Премиум-палитра в стиле банковского терминала (Dark Mode).
-   Все значения дублируются в tailwind.config.js, но здесь служат CSS-fallback
-   и используются в чистом CSS (например, для SVG-градиентов и анимаций).
+   Charter Flow · Design Tokens (Institutional Light)
+   Палитра в духе финансовых документов JP Morgan / Goldman Sachs:
+   тёплый кремовый фон, чёрная типографика, сдержанное золото.
    ========================================================================== */
 
 :root {
-  /* Базовые цвета */
-  --color-abyss: #050505;
-  --color-abyss-700: #121212;
-  --color-abyss-600: #181818;
-  --color-abyss-500: #202020;
-
-  /* Золото */
-  --color-gold: #d4af37;
-  --color-gold-light: #e5c76b;
-  --color-gold-dark: #8c6f22;
-
-  /* Статусы */
-  --color-status-active: #d4af37;
-  --color-status-processing: #7db9de;
-  --color-status-completed: #4caf7d;
+  /* Фон */
+  --color-paper: #fafaf6;
+  --color-paper-card: #ffffff;
+  --color-paper-elevated: #fbfaf5;
+  --color-paper-soft: #f5f3eb;
 
   /* Типографика */
-  --font-sans: 'Urbanist', 'Inter', system-ui, -apple-system, sans-serif;
+  --color-ink: #0b0b0b;
+  --color-ink-strong: #0b0b0b;
+  --color-ink-muted: #5c5c5c;
+  --color-ink-subtle: #9c9c9c;
+
+  /* Акцент */
+  --color-gold: #9c7c2a;
+  --color-gold-light: #c9a961;
+  --color-gold-dark: #5c4818;
+
+  /* Линии и разделители */
+  --color-rule: #e5e2da;
+  --color-rule-strong: #d4d0c5;
+
+  /* Статусы */
+  --color-status-active: #9c7c2a;
+  --color-status-processing: #3d6a8f;
+  --color-status-completed: #3f7d52;
+
+  /* Шрифты */
+  --font-sans: 'Inter', 'Urbanist', system-ui, -apple-system, sans-serif;
+  --font-serif: 'GT Sectra', Georgia, 'Times New Roman', serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 
   /* Тени */
-  --shadow-gold: 0 0 24px rgba(212, 175, 55, 0.18);
-  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.6),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.04),
+    0 8px 24px rgba(11, 11, 11, 0.06);
 
   /* Геометрия */
-  --radius-card: 16px;
+  --radius-card: 12px;
   --radius-pill: 999px;
 }

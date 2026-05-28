@@ -1,28 +1,23 @@
 /**
- * Заголовок секции с золотой подчёркивающей чертой.
- * Размер шрифта согласован между всеми блоками дашборда.
+ * Заголовок секции в институциональном стиле:
+ *   - тонкая «брови»-надпись над заголовком (eyebrow)
+ *   - сам заголовок крупно, серьёзная типографика
+ *   - короткий лид-параграф (опционально)
+ *   - тонкая золотая черта-разделитель
  */
-export default function SectionTitle({ title, subtitle, icon: Icon }) {
+export default function SectionTitle({ eyebrow, title, lead }) {
   return (
-    <div className="mb-6 sm:mb-8">
-      <div className="flex items-center gap-3">
-        {Icon && (
-          <span className="grid h-9 w-9 place-items-center rounded-lg border border-gold/30 bg-gold/5 text-gold">
-            <Icon size={18} strokeWidth={1.75} />
-          </span>
-        )}
-        <div>
-          <h2 className="font-sans text-xl font-semibold tracking-tight text-white sm:text-2xl">
-            {title}
-          </h2>
-          {subtitle && (
-            <p className="mt-0.5 text-xs uppercase tracking-[0.18em] text-white/40 sm:text-[11px]">
-              {subtitle}
-            </p>
-          )}
-        </div>
-      </div>
-      <div className="gold-hairline mt-4" />
-    </div>
+    <header className="mb-8 sm:mb-10">
+      {eyebrow && <div className="section-eyebrow mb-3">{eyebrow}</div>}
+      <h2 className="font-sans text-2xl font-semibold tracking-tight text-ink sm:text-[28px] md:text-[32px]">
+        {title}
+      </h2>
+      {lead && (
+        <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-ink-600">
+          {lead}
+        </p>
+      )}
+      <div className="gold-rule mt-6" />
+    </header>
   );
 }
