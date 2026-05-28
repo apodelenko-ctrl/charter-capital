@@ -61,7 +61,7 @@ function Footer({ parties }) {
         <span className="text-white/60">{parties.client.short}</span>
       </div>
       <div className="font-mono uppercase tracking-[0.18em]">
-        © {new Date().getFullYear()} Charter Flow · Institutional Terminal
+        © {new Date().getFullYear()} Charter Flow · Институциональный терминал
       </div>
     </motion.footer>
   );

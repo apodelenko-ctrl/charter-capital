@@ -159,7 +159,7 @@ export function TrancheRowMobile({ tranche, index }) {
       {tranche.txHash && (
         <div className="mt-2 flex items-baseline justify-between">
           <span className="text-[11px] uppercase tracking-wider text-white/40">
-            TX-Hash
+            Хеш транзакции
           </span>
           <span className="font-mono text-xs text-white/60">{tranche.txHash}</span>
         </div>

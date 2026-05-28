@@ -13,7 +13,7 @@ export default function StatusHeader({ deal }) {
         <Logo />
         <div className="flex flex-col">
           <span className="text-[11px] uppercase tracking-[0.22em] text-white/40">
-            Institutional Deal Monitor
+            Институциональный мониторинг сделки
           </span>
           <h1 className="font-sans text-xl font-bold tracking-tight text-white sm:text-[22px]">
             Charter <span className="text-gold-gradient">Flow</span>

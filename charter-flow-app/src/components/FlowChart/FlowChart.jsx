@@ -17,7 +17,7 @@ export default function FlowChart({ nodes }) {
     <Card delay={0.1}>
       <SectionTitle
         title="Финансовый поток"
-        subtitle="Capital flow visualization"
+        subtitle="Визуализация движения капитала"
         icon={Activity}
       />
 

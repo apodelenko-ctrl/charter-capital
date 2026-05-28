@@ -41,22 +41,22 @@ export const deal = {
 export const parties = {
   funder: {
     name: 'ООО «Газпром межрегионгаз»',
-    short: 'Gazprom MRG',
+    short: 'Газпром МРГ',
     role: 'Источник фондирования',
   },
   bank: {
-    name: 'Bank X',
-    short: 'Bank X',
+    name: 'Банк X',
+    short: 'Банк X',
     role: 'Расчётный банк',
   },
   broker: {
     name: 'Брокерский счёт',
-    short: 'Broker',
-    role: 'Internal Settlement',
+    short: 'Брокер',
+    role: 'Внутренний расчёт',
   },
   client: {
     name: 'Заказчик',
-    short: 'Client',
+    short: 'Заказчик',
     role: 'Получатель средств',
   },
 };
@@ -69,29 +69,29 @@ export const flowNodes = [
   {
     id: 'funding',
     iconName: 'Banknote',
-    title: 'Funding',
-    subtitle: 'Gazprom MRG → Bank X',
+    title: 'Финансирование',
+    subtitle: 'Газпром МРГ → Банк X',
     description: 'Поступление рублёвого фондирования от источника',
   },
   {
     id: 'settlement',
     iconName: 'ArrowRightLeft',
-    title: 'Internal Settlement',
+    title: 'Внутренний расчёт',
     subtitle: 'Брокерский счёт',
     description: 'Внутренний расчёт по курсу',
-    tooltip: 'Курс MOEX + 3 RUB', // ← Tooltip при наведении
+    tooltip: 'Курс Мосбиржи + 3 ₽', // ← Tooltip при наведении
   },
   {
     id: 'collateral',
     iconName: 'ShieldCheck',
-    title: 'Digital Collateral',
-    subtitle: 'USDT + TX-Hash',
-    description: 'Цифровой залог зафиксирован on-chain',
+    title: 'Цифровой залог',
+    subtitle: 'USDT + хеш транзакции',
+    description: 'Цифровой залог зафиксирован в блокчейне',
   },
   {
     id: 'final',
     iconName: 'CheckCircle2',
-    title: 'Final Settlement',
+    title: 'Финальный расчёт',
     subtitle: 'Рубли на счёт заказчика',
     description: 'Финальное зачисление средств',
     status: 'Завершено',

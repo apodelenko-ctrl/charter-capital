@@ -1,10 +1,10 @@
+/* Дизайн-токены (CSS-переменные) — должны идти ПЕРЕД @tailwind */
+@import './styles/tokens.css';
+
 /* Подключение Tailwind */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Дизайн-токены (CSS-переменные) */
-@import './styles/tokens.css';
 
 /* ----------------------------------------------------------------------------
    Глобальные стили
