@@ -1,0 +1,37 @@
+/* ============================================================================
+   Charter Flow · Design Tokens
+   Премиум-палитра в стиле банковского терминала (Dark Mode).
+   Все значения дублируются в tailwind.config.js, но здесь служат CSS-fallback
+   и используются в чистом CSS (например, для SVG-градиентов и анимаций).
+   ========================================================================== */
+
+:root {
+  /* Базовые цвета */
+  --color-abyss: #050505;
+  --color-abyss-700: #121212;
+  --color-abyss-600: #181818;
+  --color-abyss-500: #202020;
+
+  /* Золото */
+  --color-gold: #d4af37;
+  --color-gold-light: #e5c76b;
+  --color-gold-dark: #8c6f22;
+
+  /* Статусы */
+  --color-status-active: #d4af37;
+  --color-status-processing: #7db9de;
+  --color-status-completed: #4caf7d;
+
+  /* Типографика */
+  --font-sans: 'Urbanist', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* Тени */
+  --shadow-gold: 0 0 24px rgba(212, 175, 55, 0.18);
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+
+  /* Геометрия */
+  --radius-card: 16px;
+  --radius-pill: 999px;
+}

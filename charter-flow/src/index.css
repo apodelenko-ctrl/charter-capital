@@ -1,0 +1,88 @@
+/* Подключение Tailwind */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Дизайн-токены (CSS-переменные) */
+@import './styles/tokens.css';
+
+/* ----------------------------------------------------------------------------
+   Глобальные стили
+   -------------------------------------------------------------------------- */
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--color-abyss);
+    color: #f5f5f5;
+    background-image:
+      radial-gradient(
+        ellipse 80% 50% at 50% -10%,
+        rgba(212, 175, 55, 0.06) 0%,
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse 60% 40% at 80% 100%,
+        rgba(125, 185, 222, 0.04) 0%,
+        transparent 60%
+      );
+    background-attachment: fixed;
+  }
+
+  /* Тонкая золотая обводка для focus-индикаторов (a11y) */
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* Кастомный scrollbar — тёмный, ненавязчивый */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-abyss);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-abyss-500);
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-gold-dark);
+  }
+}
+
+/* ----------------------------------------------------------------------------
+   Утилиты-компоненты
+   -------------------------------------------------------------------------- */
+@layer components {
+  /* Премиальная карточка терминала */
+  .terminal-card {
+    @apply relative rounded-2xl border border-white/5 bg-card-gradient shadow-card;
+    backdrop-filter: blur(6px);
+  }
+
+  /* Золотая текстовая надпись (для логотипа и акцентов) */
+  .text-gold-gradient {
+    background: linear-gradient(135deg, #e5c76b 0%, #d4af37 50%, #8c6f22 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Hairline — тонкая золотая линия-разделитель */
+  .gold-hairline {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(212, 175, 55, 0.5) 50%,
+      transparent 100%
+    );
+  }
+}
