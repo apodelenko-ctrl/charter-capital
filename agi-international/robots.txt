@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /agi-international/
+
+Sitemap: https://ccapital.pro/agi-international/sitemap.xml
