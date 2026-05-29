@@ -469,6 +469,15 @@
         rgba(244, 241, 235, 1)    100%
       );
     }
+    .section-bg-overlay.light {
+      background: linear-gradient(90deg,
+        rgba(248, 249, 251, 1)    0%,
+        rgba(248, 249, 251, 0.97) 25%,
+        rgba(248, 249, 251, 0.85) 45%,
+        rgba(248, 249, 251, 0.10) 70%,
+        rgba(248, 249, 251, 0)    100%
+      );
+    }
     .section-bg .container {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -479,9 +488,13 @@
       grid-column: 2;
       color: var(--text-on-light);
     }
+    /* Reverse: image on right, text on left (mirror of default) */
+    .section-bg.reverse .section-bg-img { background-position: center right; }
+    .section-bg.reverse .section-bg-content { grid-column: 1; }
     @media (max-width: 880px) {
       .section-bg { padding: 56px 0; }
       .section-bg-img { background-position: 30% center; }
+      .section-bg.reverse .section-bg-img { background-position: 70% center; }
       .section-bg-overlay.cream {
         background: linear-gradient(180deg,
           rgba(244, 241, 235, 0.55) 0%,
@@ -489,8 +502,16 @@
           rgba(244, 241, 235, 0.98) 100%
         );
       }
+      .section-bg-overlay.light {
+        background: linear-gradient(180deg,
+          rgba(248, 249, 251, 0.55) 0%,
+          rgba(248, 249, 251, 0.92) 35%,
+          rgba(248, 249, 251, 0.98) 100%
+        );
+      }
       .section-bg .container { grid-template-columns: 1fr; }
-      .section-bg-content { grid-column: 1; }
+      .section-bg-content,
+      .section-bg.reverse .section-bg-content { grid-column: 1; }
     }
 
     /* ========== MAP SECTION ========== */
@@ -1170,53 +1191,50 @@
     </div>
   </section>
 
-  <!-- ========== QUALITY ========== -->
-  <section class="section section-light" id="quality">
+  <!-- ========== QUALITY (full-bleed reverse: inspector right, text left) ========== -->
+  <section class="section section-bg reverse" id="quality" aria-label="Quality Control">
+    <div class="section-bg-img" style="background-image: url('assets/agi-quality-inspector.jpg?v=2');"></div>
+    <div class="section-bg-overlay light"></div>
     <div class="container">
-      <div class="split reveal">
-        <div>
-          <span class="section-eyebrow">Quality Control</span>
-          <h2 style="margin-top: 18px;">Inspected.<br>Documented.<br>Traceable.</h2>
-          <p class="section-lead" style="margin-top:18px;">
-            Quality is the only thing that protects our customers from the cost of a rejected container. We audit our suppliers, we inspect our shipments, and we document everything — because in food trade, the burden of proof is on the seller.
-          </p>
+      <div class="section-bg-content reveal">
+        <span class="section-eyebrow">Quality Control</span>
+        <h2 style="margin-top: 18px;">Inspected.<br>Documented.<br>Traceable.</h2>
+        <p class="section-lead" style="margin-top:18px;">
+          Quality is the only thing that protects our customers from the cost of a rejected container. We audit our suppliers, we inspect our shipments, and we document everything — because in food trade, the burden of proof is on the seller.
+        </p>
 
-          <ul class="feature-list">
-            <li>
-              <span class="feature-icon">✓</span>
-              <div class="feature-text">
-                <strong>HACCP-compliant facilities</strong>
-                <p>Every supplier we work with operates under a validated HACCP plan and is regularly audited — by us or by third-party certification bodies.</p>
-              </div>
-            </li>
-            <li>
-              <span class="feature-icon">✓</span>
-              <div class="feature-text">
-                <strong>Lot-level traceability</strong>
-                <p>Every carton in every shipment is traceable back to the production lot, the processing facility and the date — within minutes, not days.</p>
-              </div>
-            </li>
-            <li>
-              <span class="feature-icon">✓</span>
-              <div class="feature-text">
-                <strong>Regulatory compliance</strong>
-                <p>CFIA, USDA, EU, GCC, MENA, and Asia-Pacific health authority requirements. Halal (HFSAA, IFANCA, ISA), kosher (OU, COR), and organic certifications available on request.</p>
-              </div>
-            </li>
-            <li>
-              <span class="feature-icon">✓</span>
-              <div class="feature-text">
-                <strong>Field-level QA</strong>
-                <p>Our quality team visits suppliers and customers throughout the year. We see the production lines and the receiving docks ourselves — not just on paper.</p>
-              </div>
-            </li>
-          </ul>
-        </div>
-
-        <div class="split-image">
-          <img src="assets/agi-quality-inspector.jpg" alt="AGI International quality inspector examining fresh beef in a processing facility" loading="lazy" />
-        </div>
+        <ul class="feature-list">
+          <li>
+            <span class="feature-icon">✓</span>
+            <div class="feature-text">
+              <strong>HACCP-compliant facilities</strong>
+              <p>Every supplier we work with operates under a validated HACCP plan and is regularly audited — by us or by third-party certification bodies.</p>
+            </div>
+          </li>
+          <li>
+            <span class="feature-icon">✓</span>
+            <div class="feature-text">
+              <strong>Lot-level traceability</strong>
+              <p>Every carton in every shipment is traceable back to the production lot, the processing facility and the date — within minutes, not days.</p>
+            </div>
+          </li>
+          <li>
+            <span class="feature-icon">✓</span>
+            <div class="feature-text">
+              <strong>Regulatory compliance</strong>
+              <p>CFIA, USDA, EU, GCC, MENA, and Asia-Pacific health authority requirements. Halal (HFSAA, IFANCA, ISA), kosher (OU, COR), and organic certifications available on request.</p>
+            </div>
+          </li>
+          <li>
+            <span class="feature-icon">✓</span>
+            <div class="feature-text">
+              <strong>Field-level QA</strong>
+              <p>Our quality team visits suppliers and customers throughout the year. We see the production lines and the receiving docks ourselves — not just on paper.</p>
+            </div>
+          </li>
+        </ul>
       </div>
+      <div></div>
     </div>
   </section>
 
