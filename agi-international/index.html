@@ -269,7 +269,7 @@
       position: absolute;
       top: 0; left: 0; right: 0;
       height: 140%;
-      background-image: url('assets/agi-hero-port-montreal.jpg');
+      background-image: url('assets/agi-hero-port-montreal.jpg?v=g');
       background-size: cover; background-position: center right;
       z-index: -2;
       will-change: transform;
@@ -439,6 +439,58 @@
     }
     @media (prefers-reduced-motion: reduce) {
       .marquee-track { animation: none; }
+    }
+
+    /* ========== SECTION WITH FULL-BLEED BACKGROUND IMAGE ========== */
+    .section-bg {
+      position: relative;
+      padding: clamp(96px, 12vw, 160px) 0;
+      overflow: hidden;
+      isolation: isolate;
+      min-height: 560px;
+      display: flex; align-items: center;
+    }
+    .section-bg-img {
+      position: absolute; inset: 0;
+      background-size: cover;
+      background-position: center left;
+      z-index: -2;
+    }
+    .section-bg-overlay {
+      position: absolute; inset: 0;
+      z-index: -1;
+    }
+    .section-bg-overlay.cream {
+      background: linear-gradient(90deg,
+        rgba(244, 241, 235, 0)    0%,
+        rgba(244, 241, 235, 0.05) 30%,
+        rgba(244, 241, 235, 0.85) 55%,
+        rgba(244, 241, 235, 0.97) 75%,
+        rgba(244, 241, 235, 1)    100%
+      );
+    }
+    .section-bg .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 6vw, 80px);
+      width: 100%;
+    }
+    .section-bg-content {
+      grid-column: 2;
+      color: var(--text-on-light);
+    }
+    @media (max-width: 880px) {
+      .section-bg { padding: 56px 0; }
+      .section-bg-img { background-position: 30% center; }
+      .section-bg-overlay.cream {
+        background: linear-gradient(180deg,
+          rgba(244, 241, 235, 0.55) 0%,
+          rgba(244, 241, 235, 0.92) 35%,
+          rgba(244, 241, 235, 0.98) 100%
+        );
+      }
+      .section-bg .container { grid-template-columns: 1fr; }
+      .section-bg-content { grid-column: 1; }
     }
 
     /* ========== MAP SECTION ========== */
@@ -1071,52 +1123,49 @@
     </div>
   </section>
 
-  <!-- ========== LOGISTICS ========== -->
-  <section class="section section-cream" id="logistics">
+  <!-- ========== LOGISTICS (full-bleed hero-style with truck bg) ========== -->
+  <section class="section section-bg" id="logistics" aria-label="Logistics">
+    <div class="section-bg-img" style="background-image: url('assets/agi-logistics-truck.jpg?v=2');"></div>
+    <div class="section-bg-overlay cream"></div>
     <div class="container">
-      <div class="split reveal">
-        <div class="split-image">
-          <img src="assets/agi-logistics-truck.jpg" alt="Refrigerated long-haul truck on a Canadian highway" loading="lazy" />
-        </div>
+      <div></div>
+      <div class="section-bg-content reveal">
+        <span class="section-eyebrow">Logistics</span>
+        <h2 style="margin-top: 18px;">Cold chain.<br>Uninterrupted.</h2>
+        <p class="section-lead" style="margin-top:18px;">
+          Frozen and perishable freight is unforgiving. One temperature breach in transit and the entire shipment loses commercial value. Our logistics team manages temperature, time and documentation with the same precision as the buyers we serve.
+        </p>
 
-        <div>
-          <span class="section-eyebrow">Logistics</span>
-          <h2 style="margin-top: 18px;">Cold chain.<br>Uninterrupted.</h2>
-          <p class="section-lead" style="margin-top:18px;">
-            Frozen and perishable freight is unforgiving. One temperature breach in transit and the entire shipment loses commercial value. Our logistics team manages temperature, time and documentation with the same precision as the buyers we serve.
-          </p>
-
-          <ul class="feature-list">
-            <li>
-              <span class="feature-icon">❄</span>
-              <div class="feature-text">
-                <strong>Temperature-controlled, end-to-end</strong>
-                <p>−18 °C for frozen, 0–4 °C for chilled, monitored from origin loading bay to final delivery. Compliant with ISO 23412 and HACCP cold-chain standards.</p>
-              </div>
-            </li>
-            <li>
-              <span class="feature-icon">⚓</span>
-              <div class="feature-text">
-                <strong>Multimodal routing</strong>
-                <p>Sea, air, rail and road — combined to match the freshness window, volume and cost target of each shipment. Hundreds of reefer containers moved annually.</p>
-              </div>
-            </li>
-            <li>
-              <span class="feature-icon">📋</span>
-              <div class="feature-text">
-                <strong>Documentation &amp; customs</strong>
-                <p>Country-of-destination health certificates, certificates of origin, halal &amp; kosher attestations, and pre-cleared customs documentation prepared by our compliance desk.</p>
-              </div>
-            </li>
-            <li>
-              <span class="feature-icon">📡</span>
-              <div class="feature-text">
-                <strong>Real-time visibility</strong>
-                <p>Container-level GPS tracking and temperature telemetry. Proactive ETA management — you hear about a delay from us before you hear it from the port.</p>
-              </div>
-            </li>
-          </ul>
-        </div>
+        <ul class="feature-list">
+          <li>
+            <span class="feature-icon">❄</span>
+            <div class="feature-text">
+              <strong>Temperature-controlled, end-to-end</strong>
+              <p>−18 °C for frozen, 0–4 °C for chilled, monitored from origin loading bay to final delivery. Compliant with ISO 23412 and HACCP cold-chain standards.</p>
+            </div>
+          </li>
+          <li>
+            <span class="feature-icon">⚓</span>
+            <div class="feature-text">
+              <strong>Multimodal routing</strong>
+              <p>Sea, air, rail and road — combined to match the freshness window, volume and cost target of each shipment. Hundreds of reefer containers moved annually.</p>
+            </div>
+          </li>
+          <li>
+            <span class="feature-icon">📋</span>
+            <div class="feature-text">
+              <strong>Documentation &amp; customs</strong>
+              <p>Country-of-destination health certificates, certificates of origin, halal &amp; kosher attestations, and pre-cleared customs documentation prepared by our compliance desk.</p>
+            </div>
+          </li>
+          <li>
+            <span class="feature-icon">📡</span>
+            <div class="feature-text">
+              <strong>Real-time visibility</strong>
+              <p>Container-level GPS tracking and temperature telemetry. Proactive ETA management — you hear about a delay from us before you hear it from the port.</p>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
   </section>
