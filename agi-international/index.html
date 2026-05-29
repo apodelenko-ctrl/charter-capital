@@ -189,15 +189,37 @@
       display: flex; align-items: center; gap: 36px;
       list-style: none; margin: 0; padding: 0;
     }
-    .nav-links a {
+    .nav-links a:not(.nav-cta) {
+      position: relative;
       font-size: 13px; font-weight: 600;
       letter-spacing: 1.2px;
       text-transform: uppercase;
       color: var(--text-on-dark-soft);
+      padding: 4px 0;
+      transition: color .2s ease;
     }
-    .nav-links a:hover { color: var(--text-on-dark); }
+    .nav-links a:not(.nav-cta)::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0;
+      bottom: -2px;
+      height: 2px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform .3s cubic-bezier(.2, .7, .2, 1);
+    }
+    .nav-links a:not(.nav-cta):hover,
+    .nav-links a:not(.nav-cta).is-active {
+      color: var(--text-on-dark);
+    }
+    .nav-links a:not(.nav-cta):hover::after,
+    .nav-links a:not(.nav-cta).is-active::after {
+      transform: scaleX(1);
+    }
 
     .nav-cta {
+      position: relative;
       display: inline-flex; align-items: center; gap: 8px;
       padding: 10px 22px;
       background: var(--accent);
@@ -206,9 +228,41 @@
       letter-spacing: 1.2px;
       text-transform: uppercase;
       border-radius: var(--radius);
+      overflow: hidden;
       transition: background .15s linear;
     }
+    .nav-cta::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -150%;
+      width: 60%; height: 100%;
+      background: linear-gradient(
+        110deg,
+        transparent 20%,
+        rgba(255, 255, 255, 0.35) 50%,
+        transparent 80%
+      );
+      transition: left .6s ease;
+      pointer-events: none;
+    }
     .nav-cta:hover { background: var(--accent-hover); }
+    .nav-cta:hover::before { left: 150%; }
+
+    /* Scroll progress bar */
+    .scroll-progress {
+      position: absolute;
+      left: 0; bottom: 0;
+      height: 2px;
+      background: var(--accent);
+      width: 0%;
+      transform-origin: left center;
+      transition: width .1s linear;
+      box-shadow: 0 0 8px rgba(220, 38, 38, 0.5);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .scroll-progress { display: none; }
+      .nav-cta::before { display: none; }
+    }
 
     .nav-toggle {
       display: none;
@@ -933,6 +987,7 @@
         <span></span><span></span><span></span>
       </button>
     </div>
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
   </header>
 
   <!-- ========== HERO ========== -->
@@ -1497,14 +1552,17 @@
   <script>
     var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // ===== Topbar shadow + hero parallax on scroll (single rAF handler)
+    // ===== Topbar shadow + hero parallax + scroll-progress (single rAF handler)
     (function () {
       var topbar = document.getElementById('topbar');
       var heroBg = document.querySelector('.hero-bg');
+      var progress = document.getElementById('scrollProgress');
       var ticking = false;
 
       function update() {
         var y = window.scrollY;
+        var docH = document.documentElement.scrollHeight - window.innerHeight;
+
         if (y > 8) topbar.classList.add('scrolled');
         else topbar.classList.remove('scrolled');
 
@@ -1512,6 +1570,12 @@
           // gentle parallax — background moves at 35% of scroll speed
           heroBg.style.transform = 'translate3d(0,' + (y * 0.35) + 'px,0)';
         }
+
+        if (progress && docH > 0) {
+          var pct = Math.max(0, Math.min(100, (y / docH) * 100));
+          progress.style.width = pct + '%';
+        }
+
         ticking = false;
       }
       function onScroll() {
@@ -1522,6 +1586,40 @@
       }
       update();
       window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll, { passive: true });
+    })();
+
+    // ===== Scroll spy — highlight nav link of current section
+    (function () {
+      if (!('IntersectionObserver' in window)) return;
+      var sections = document.querySelectorAll('section[id], div[id="top"]');
+      var navMap = {};
+      document.querySelectorAll('.nav-links a:not(.nav-cta)').forEach(function (link) {
+        var href = link.getAttribute('href') || '';
+        if (href.charAt(0) === '#' && href.length > 1) {
+          navMap[href.slice(1)] = link;
+        }
+      });
+
+      var visible = new Map();
+      var spy = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) visible.set(e.target.id, e.intersectionRatio);
+          else visible.delete(e.target.id);
+        });
+        // pick the section with highest intersection ratio that has a nav link
+        var bestId = null, bestRatio = 0;
+        visible.forEach(function (ratio, id) {
+          if (navMap[id] && ratio > bestRatio) { bestRatio = ratio; bestId = id; }
+        });
+        Object.keys(navMap).forEach(function (id) {
+          navMap[id].classList.toggle('is-active', id === bestId);
+        });
+      }, {
+        rootMargin: '-80px 0px -50% 0px',
+        threshold: [0, 0.25, 0.5, 0.75, 1]
+      });
+      sections.forEach(function (s) { spy.observe(s); });
     })();
 
     // ===== Scroll reveal (IntersectionObserver)
