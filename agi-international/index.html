@@ -49,9 +49,16 @@
     "foundingDate": "1998",
     "address": {
       "@type": "PostalAddress",
-      "addressLocality": "Montreal",
+      "streetAddress": "6434 Trans-Canada Highway",
+      "addressLocality": "St-Laurent",
       "addressRegion": "Quebec",
+      "postalCode": "H4T 1X4",
       "addressCountry": "CA"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 45.458892,
+      "longitude": -73.826140
     },
     "contactPoint": [{
       "@type": "ContactPoint",
@@ -259,10 +266,13 @@
       isolation: isolate;
     }
     .hero-bg {
-      position: absolute; inset: 0;
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 140%;
       background-image: url('assets/agi-hero-port-montreal.jpg');
       background-size: cover; background-position: center right;
       z-index: -2;
+      will-change: transform;
     }
     .hero-overlay {
       position: absolute; inset: 0;
@@ -385,6 +395,72 @@
     }
     @media (max-width: 720px) {
       .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+    }
+
+    /* ========== MARQUEE (certifications & standards strip) ========== */
+    .marquee {
+      background: var(--bg-primary);
+      border-bottom: 1px solid var(--border-dark);
+      overflow: hidden;
+      padding: 22px 0;
+      mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+      -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+    }
+    .marquee-track {
+      display: flex;
+      gap: 56px;
+      align-items: center;
+      width: max-content;
+      animation: marquee-scroll 38s linear infinite;
+      will-change: transform;
+    }
+    .marquee:hover .marquee-track { animation-play-state: paused; }
+    .marquee-item {
+      display: inline-flex; align-items: center; gap: 14px;
+      font-family: var(--font-display);
+      font-size: 18px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-on-dark-soft);
+      white-space: nowrap;
+    }
+    .marquee-item::after {
+      content: '';
+      display: inline-block;
+      width: 6px; height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      margin-left: 56px;
+    }
+    .marquee-item:last-child::after { display: none; }
+    @keyframes marquee-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .marquee-track { animation: none; }
+    }
+
+    /* ========== MAP SECTION ========== */
+    .map-section {
+      background: var(--bg-primary);
+      border-top: 1px solid var(--border-dark);
+    }
+    .map-section iframe { width: 100%; }
+
+    /* ========== SCROLL REVEAL ========== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1);
+      will-change: opacity, transform;
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
     }
 
     /* ========== SECTION HEADERS ========== */
@@ -827,15 +903,39 @@
     </div>
   </section>
 
+  <!-- ========== MARQUEE: Certifications & Standards ========== -->
+  <section class="marquee" aria-label="Certifications and compliance standards">
+    <div class="marquee-track" aria-hidden="true">
+      <!-- Set 1 -->
+      <span class="marquee-item">HACCP Compliant</span>
+      <span class="marquee-item">CFIA Approved</span>
+      <span class="marquee-item">USDA Export Ready</span>
+      <span class="marquee-item">ISO 23412 Cold Chain</span>
+      <span class="marquee-item">Halal Certified</span>
+      <span class="marquee-item">Kosher Available</span>
+      <span class="marquee-item">EU Health Certified</span>
+      <span class="marquee-item">GCC Compliant</span>
+      <!-- Set 2 (duplicate for seamless loop) -->
+      <span class="marquee-item">HACCP Compliant</span>
+      <span class="marquee-item">CFIA Approved</span>
+      <span class="marquee-item">USDA Export Ready</span>
+      <span class="marquee-item">ISO 23412 Cold Chain</span>
+      <span class="marquee-item">Halal Certified</span>
+      <span class="marquee-item">Kosher Available</span>
+      <span class="marquee-item">EU Health Certified</span>
+      <span class="marquee-item">GCC Compliant</span>
+    </div>
+  </section>
+
   <!-- ========== ABOUT ========== -->
   <section class="section section-light" id="about">
     <div class="container">
-      <div class="section-head left">
+      <div class="section-head left reveal">
         <span class="section-eyebrow">About AGI International</span>
         <h2>A Trusted Bridge<br>Between Producers<br>and Markets.</h2>
       </div>
 
-      <div class="split">
+      <div class="split reveal">
         <div>
           <p class="section-lead">
             Founded in Montreal in 1998, AGI International Inc. has spent more than two decades connecting the world's best producers with the buyers who need them — restaurants, distributors, processors and retail chains across four continents.
@@ -879,7 +979,7 @@
   <!-- ========== PRODUCTS ========== -->
   <section class="section section-dark" id="products">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head reveal">
         <span class="section-eyebrow">Product Categories</span>
         <h2>Six categories.<br>One supplier.</h2>
         <p class="section-lead" style="margin-top:18px;">
@@ -887,7 +987,7 @@
         </p>
       </div>
 
-      <div class="products-grid">
+      <div class="products-grid reveal">
 
         <article class="product-card">
           <div class="product-image"><img src="assets/agi-product-pork.jpg" alt="Premium pork cuts" loading="lazy" /></div>
@@ -897,7 +997,7 @@
               Full carcass, primals and value-added cuts from EU- and North American-certified processors. Halal options available.
             </p>
             <ul class="product-tags">
-              <li>Loins · Backs</li><li>Ribs</li><li>Shoulders</li><li>Hams</li><li>Belly</li><li>Offal</li><li>Fats &amp; Skins</li>
+              <li>Loins · Backs</li><li>Ribs</li><li>Shoulders</li><li>Hams</li><li>Belly</li><li>Sundries</li><li>Offal</li><li>Fats &amp; Skins</li>
             </ul>
           </div>
         </article>
@@ -936,7 +1036,7 @@
               Wild-caught and farm-raised fish, shellfish and fishmeal — sourced from the North Atlantic, Pacific, Latin America, Africa and Southeast Asia.
             </p>
             <ul class="product-tags">
-              <li>Pelagic</li><li>White fish</li><li>Farmed</li><li>Shellfish</li><li>Cephalopods</li><li>Fishmeal</li>
+              <li>Pelagic</li><li>White fish</li><li>Aquaculture</li><li>Crustaceans</li><li>Shellfish</li><li>Cephalopods</li><li>Fishmeal</li>
             </ul>
           </div>
         </article>
@@ -962,7 +1062,7 @@
               Fresh vegetables, salads, fruit and specialty produce — sourced locally where possible, globally where required.
             </p>
             <ul class="product-tags">
-              <li>Vegetables</li><li>Salads</li><li>Exotic fruit</li><li>Mushrooms</li><li>Fresh herbs</li>
+              <li>Vegetables</li><li>Salads</li><li>Fruit</li><li>Exotic fruit</li><li>Mixed leaves</li><li>Wild mushrooms</li><li>Fresh herbs</li>
             </ul>
           </div>
         </article>
@@ -974,7 +1074,7 @@
   <!-- ========== LOGISTICS ========== -->
   <section class="section section-cream" id="logistics">
     <div class="container">
-      <div class="split">
+      <div class="split reveal">
         <div class="split-image">
           <img src="assets/agi-logistics-truck.jpg" alt="Refrigerated long-haul truck on a Canadian highway" loading="lazy" />
         </div>
@@ -1024,7 +1124,7 @@
   <!-- ========== QUALITY ========== -->
   <section class="section section-light" id="quality">
     <div class="container">
-      <div class="split">
+      <div class="split reveal">
         <div>
           <span class="section-eyebrow">Quality Control</span>
           <h2 style="margin-top: 18px;">Inspected.<br>Documented.<br>Traceable.</h2>
@@ -1074,7 +1174,7 @@
   <!-- ========== COVERAGE ========== -->
   <section class="section section-dark" id="coverage">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head reveal">
         <span class="section-eyebrow">Coverage</span>
         <h2>Four continents.<br>One operational standard.</h2>
         <p class="section-lead" style="margin-top:18px;">
@@ -1082,7 +1182,7 @@
         </p>
       </div>
 
-      <div class="coverage-grid">
+      <div class="coverage-grid reveal">
 
         <div class="region-card">
           <div class="region-head">
@@ -1142,7 +1242,7 @@
   <!-- ========== CONTACT ========== -->
   <section class="section section-dark" id="contact" style="padding-top: 0;">
     <div class="container">
-      <div class="section-head left" style="margin-bottom: 48px; max-width: none;">
+      <div class="section-head left reveal" style="margin-bottom: 48px; max-width: none;">
         <span class="section-eyebrow">Get In Touch</span>
         <h2>Let's build your<br>next shipment.</h2>
         <p class="section-lead" style="margin-top:18px; max-width: 640px;">
@@ -1150,7 +1250,7 @@
         </p>
       </div>
 
-      <div class="contact-grid">
+      <div class="contact-grid reveal">
 
         <div class="contact-info">
           <div class="contact-block">
@@ -1176,8 +1276,14 @@
 
           <div class="contact-block">
             <div class="contact-label">Headquarters</div>
-            <div class="contact-value">Montreal, Quebec</div>
-            <div class="contact-sub">Canada</div>
+            <div class="contact-value" style="font-size: 18px; line-height: 1.4;">
+              6434 Trans-Canada Highway<br>
+              St-Laurent, QC, H4T 1X4<br>
+              Canada
+            </div>
+            <div class="contact-sub" style="margin-top: 12px;">
+              <a href="https://maps.google.com/?q=6434+Trans-Canada+Highway+St-Laurent+QC+H4T1X4" target="_blank" rel="noopener" style="color: var(--accent);">Open in Google Maps →</a>
+            </div>
           </div>
         </div>
 
@@ -1253,6 +1359,18 @@
     </div>
   </section>
 
+  <!-- ========== MAP (full-bleed under contact) ========== -->
+  <section class="map-section" aria-label="Headquarters location on map">
+    <iframe
+      title="AGI International Inc. — 6434 Trans-Canada Highway, St-Laurent, QC, Canada"
+      src="https://www.google.com/maps?q=6434+Trans-Canada+Highway,+Saint-Laurent,+QC+H4T+1X4,+Canada&hl=en&z=14&output=embed"
+      width="100%" height="420"
+      style="border:0; display:block; filter: grayscale(0.15) contrast(0.95);"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      allowfullscreen></iframe>
+  </section>
+
   <!-- ========== FOOTER ========== -->
   <footer class="footer">
     <div class="container">
@@ -1310,15 +1428,51 @@
   </footer>
 
   <script>
-    // ===== Topbar shadow on scroll
+    var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // ===== Topbar shadow + hero parallax on scroll (single rAF handler)
     (function () {
       var topbar = document.getElementById('topbar');
-      var onScroll = function () {
-        if (window.scrollY > 8) topbar.classList.add('scrolled');
+      var heroBg = document.querySelector('.hero-bg');
+      var ticking = false;
+
+      function update() {
+        var y = window.scrollY;
+        if (y > 8) topbar.classList.add('scrolled');
         else topbar.classList.remove('scrolled');
-      };
-      onScroll();
+
+        if (heroBg && !prefersReducedMotion && y < window.innerHeight) {
+          // gentle parallax — background moves at 35% of scroll speed
+          heroBg.style.transform = 'translate3d(0,' + (y * 0.35) + 'px,0)';
+        }
+        ticking = false;
+      }
+      function onScroll() {
+        if (!ticking) {
+          window.requestAnimationFrame(update);
+          ticking = true;
+        }
+      }
+      update();
       window.addEventListener('scroll', onScroll, { passive: true });
+    })();
+
+    // ===== Scroll reveal (IntersectionObserver)
+    (function () {
+      if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+        document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('is-visible'); });
+        return;
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            e.target.classList.add('is-visible');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+      document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
     })();
 
     // ===== Mobile nav toggle
