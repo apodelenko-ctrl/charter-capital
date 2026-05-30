@@ -29,6 +29,15 @@
   </url>
 
   <url>
+    <loc>https://ccapital.pro/diagnostic.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ccapital.pro/diagnostic.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ccapital.pro/diagnostic.html"/>
+  </url>
+
+  <url>
     <loc>https://ccapital.pro/private.html</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>

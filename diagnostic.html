@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/>
+<link rel="icon" href="/favicon.ico" sizes="any"/>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="color-scheme" content="light"/>
+<meta name="theme-color" content="#ffffff"/>
+<meta name="format-detection" content="telephone=no"/>
+<meta name="referrer" content="strict-origin-when-cross-origin"/>
+<title>Карта маршрута за 3 вопроса · Charter Capital</title>
+<meta name="description" content="Ответьте на 3 вопроса — получите образец вашего маршрута: релокация, бизнес-контур, крипта в банк или покупка недвижимости за рубежом. Не продажа, а честная карта рисков и шагов."/>
+<meta name="keywords" content="релокация, ВНЖ, банк за границей, крипта в фиат, source of funds, ВЭД, Charter Capital, маршрут в свободный мир"/>
+<meta name="author" content="Charter Capital"/>
+<meta name="robots" content="index,follow,max-snippet:-1"/>
+<link rel="canonical" href="https://ccapital.pro/diagnostic.html"/>
+
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Charter Capital"/>
+<meta property="og:title" content="Карта вашего маршрута за 3 вопроса"/>
+<meta property="og:description" content="Не продажа — честная карта: где вы сейчас, что можно делать, а что лучше не трогать без подготовки."/>
+<meta property="og:url" content="https://ccapital.pro/diagnostic.html"/>
+<meta property="og:locale" content="ru_RU"/>
+
+<link rel="dns-prefetch" href="https://mc.yandex.ru"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" media="print" onload="this.media='all'"/>
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"/></noscript>
+
+<style>
+:root{
+  --bg:#fff;--bg-soft:#f8fafc;--ink:#0f172a;--ink-2:#1e293b;
+  --body:#334155;--muted:#64748b;--mute-soft:#94a3b8;
+  --line:#e2e8f0;--line-soft:#f1f5f9;
+  --blue:#1d4ed8;--blue-soft:#eff6ff;
+  --gold:#a08156;--gold-soft:#f6efe1;--gold-deep:#7a5f38;
+  --ok:#1e5a3a;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  background:#fff;color:var(--ink);font-size:16px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+
+/* topbar */
+#topbar{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.92);
+  backdrop-filter:saturate(150%) blur(14px);-webkit-backdrop-filter:saturate(150%) blur(14px);
+  border-bottom:1px solid var(--line)}
+.topbar-inner{max-width:1080px;margin:0 auto;padding:16px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.topbar-brand{display:flex;align-items:baseline;gap:12px;color:var(--ink)}
+.topbar-brand .name{font-size:13px;font-weight:600;letter-spacing:.18em;text-transform:uppercase}
+.topbar-brand .tag{font-size:11px;font-weight:300;color:var(--muted);border-left:1px solid var(--line);padding-left:12px}
+.topbar-cta{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  border:1px solid var(--ink);padding:9px 16px;border-radius:6px;transition:all .15s ease}
+.topbar-cta:hover{background:var(--ink);color:#fff}
+@media(max-width:680px){.topbar-brand .tag{display:none}}
+
+/* shell */
+.wrap{max-width:760px;margin:0 auto;padding:120px 28px 90px}
+.eyebrow{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--blue);margin-bottom:18px}
+.eyebrow::before{content:"";display:inline-block;width:24px;height:1px;background:currentColor;vertical-align:middle;margin-right:10px}
+h1.title{font-size:clamp(1.9rem,4vw,2.7rem);font-weight:300;letter-spacing:-.035em;line-height:1.1;margin-bottom:16px}
+h1.title strong{font-weight:600}
+.sub{font-size:1.05rem;color:var(--body);line-height:1.6;max-width:54ch;margin-bottom:40px}
+.sub strong{color:var(--ink);font-weight:600}
+
+/* progress */
+.progress{display:flex;align-items:center;gap:10px;margin-bottom:30px}
+.progress .bar{flex:1;height:4px;border-radius:99px;background:var(--line);overflow:hidden}
+.progress .bar i{display:block;height:100%;width:33%;background:var(--gold);border-radius:99px;transition:width .35s cubic-bezier(.2,.7,.2,1)}
+.progress .step{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;font-weight:600;letter-spacing:.1em;color:var(--muted);white-space:nowrap}
+
+/* question */
+.q-card{border:1px solid var(--line);border-radius:14px;padding:30px 30px 26px;background:#fff;box-shadow:0 18px 50px -34px rgba(15,23,42,.25)}
+.q-kicker{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:12px}
+.q-title{font-size:1.45rem;font-weight:500;letter-spacing:-.02em;line-height:1.25;margin-bottom:22px;color:var(--ink)}
+.opts{display:flex;flex-direction:column;gap:11px}
+.opt{display:flex;align-items:flex-start;gap:14px;width:100%;text-align:left;
+  border:1px solid var(--line);border-radius:10px;padding:16px 18px;background:#fff;transition:border-color .15s ease,background .15s ease,box-shadow .15s ease}
+.opt:hover{border-color:var(--gold);background:var(--gold-soft)}
+.opt .ic{flex-shrink:0;width:30px;height:30px;border-radius:8px;background:var(--bg-soft);border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;font-size:15px}
+.opt .txt{display:flex;flex-direction:column;gap:3px}
+.opt .lab{font-size:1rem;font-weight:600;color:var(--ink);letter-spacing:-.01em}
+.opt .desc{font-size:.85rem;color:var(--muted);line-height:1.45}
+.opt .arr{margin-left:auto;align-self:center;color:var(--mute-soft);transition:transform .15s ease,color .15s ease}
+.opt:hover .arr{transform:translateX(3px);color:var(--gold-deep)}
+
+.back-btn{margin-top:20px;font-size:13px;font-weight:500;color:var(--muted);display:inline-flex;align-items:center;gap:7px;transition:color .15s ease}
+.back-btn:hover{color:var(--ink)}
+.back-btn[hidden]{display:none}
+
+/* result */
+.result{display:none}
+.result.show{display:block;animation:fade .4s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.res-eyebrow{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ok);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.res-eyebrow::before{content:"";width:24px;height:1px;background:var(--ok)}
+.res-title{font-size:clamp(1.5rem,3vw,2.05rem);font-weight:300;letter-spacing:-.03em;line-height:1.15;margin-bottom:14px;color:var(--ink)}
+.res-title strong{font-weight:600}
+.res-diag{font-size:1.05rem;color:var(--body);line-height:1.6;margin-bottom:18px}
+.res-note{font-size:.95rem;color:var(--ink-2);background:var(--blue-soft);border:1px solid #dbe7fe;border-radius:10px;padding:14px 16px;margin-bottom:28px;line-height:1.55}
+
+.res-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:30px}
+.res-meta .m{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:var(--bg-soft)}
+.res-meta .m .k{font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:6px}
+.res-meta .m .v{font-size:.95rem;font-weight:600;color:var(--ink);line-height:1.3}
+@media(max-width:560px){.res-meta{grid-template-columns:1fr}}
+
+.res-sec-h{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-deep);margin:0 0 14px;display:flex;align-items:center;gap:10px}
+.res-sec-h::before{content:"";width:18px;height:1px;background:var(--gold)}
+.steps{counter-reset:s;list-style:none;margin-bottom:30px}
+.steps li{position:relative;counter-increment:s;padding:0 0 16px 44px;font-size:1rem;color:var(--body);line-height:1.55}
+.steps li::before{content:counter(s,decimal-leading-zero);position:absolute;left:0;top:-1px;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;font-weight:600;color:var(--gold-deep);
+  width:30px;height:24px;display:flex;align-items:center;justify-content:flex-start;border-bottom:1px solid var(--gold)}
+.steps li strong{color:var(--ink);font-weight:600}
+.docs{list-style:none;margin-bottom:30px;display:flex;flex-wrap:wrap;gap:8px}
+.docs li{font-size:12.5px;font-weight:500;color:var(--ink-2);background:var(--bg-soft);border:1px solid var(--line);padding:7px 13px;border-radius:999px}
+
+/* CTA */
+.cta-box{border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:12px;padding:28px 28px 24px;background:#fff;box-shadow:0 18px 40px -30px rgba(15,23,42,.2);margin-bottom:22px}
+.cta-box h3{font-size:1.3rem;font-weight:400;letter-spacing:-.02em;line-height:1.25;margin-bottom:10px;color:var(--ink)}
+.cta-box h3 strong{font-weight:600}
+.cta-box p{font-size:.95rem;color:var(--body);line-height:1.55;margin-bottom:18px;max-width:56ch}
+.channels{display:flex;flex-wrap:wrap;gap:10px}
+.ch-btn{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;padding:13px 22px;border-radius:6px;border:1px solid;transition:all .15s ease}
+.ch-btn.gold{background:var(--gold);color:#fff;border-color:var(--gold)}
+.ch-btn.gold:hover{background:var(--gold-deep);border-color:var(--gold-deep)}
+.ch-btn.outline{background:transparent;color:var(--ink);border-color:var(--ink)}
+.ch-btn.outline:hover{background:var(--bg-soft)}
+.ch-btn .arr{transition:transform .15s ease}
+.ch-btn:hover .arr{transform:translateX(3px)}
+
+.disclaimer{font-size:12px;color:var(--muted);line-height:1.6;border-top:1px solid var(--line-soft);padding-top:18px;margin-bottom:24px}
+.disclaimer strong{color:var(--ink-2);font-weight:600}
+.restart{font-size:13px;font-weight:500;color:var(--muted);display:inline-flex;align-items:center;gap:7px;transition:color .15s ease}
+.restart:hover{color:var(--ink)}
+
+/* footer */
+.foot{border-top:1px solid var(--line);padding:30px 28px;text-align:center;color:var(--muted);font-size:12.5px}
+.foot a{color:var(--ink-2);font-weight:500}
+</style>
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=108969822', 'ym');
+    ym(108969822, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/108969822" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+</head>
+<body>
+
+<header id="topbar">
+  <div class="topbar-inner">
+    <a href="/" class="topbar-brand">
+      <span class="name">Charter Capital</span>
+      <span class="tag">Маршрут в свободный мир</span>
+    </a>
+    <a href="/freedom-route.html" class="topbar-cta">← К витрине</a>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- INTRO + QUESTIONS -->
+  <section id="quiz">
+    <span class="eyebrow">Карта маршрута · 3 вопроса</span>
+    <h1 class="title">За 60 секунд — <strong>образец вашего маршрута</strong></h1>
+    <p class="sub">
+      Это не продажа и не форма захвата. Ответьте на три вопроса — и увидите, как читается
+      ваша ситуация: какой маршрут она запрашивает, что можно делать, а что лучше
+      <strong>не трогать без подготовки</strong>. Точный план собираем уже на разборе под NDA.
+    </p>
+
+    <div class="progress" aria-hidden="true">
+      <div class="bar"><i id="bar"></i></div>
+      <span class="step" id="stepLabel">Шаг 1 / 3</span>
+    </div>
+
+    <div class="q-card">
+      <div class="q-kicker" id="qKicker">Вопрос 1</div>
+      <div class="q-title" id="qTitle">Что для вас сейчас главное?</div>
+      <div class="opts" id="opts"></div>
+    </div>
+
+    <button class="back-btn" id="backBtn" hidden>← Назад</button>
+  </section>
+
+  <!-- RESULT -->
+  <section id="result" class="result" aria-live="polite">
+    <div class="res-eyebrow">Ваш маршрут · образец</div>
+    <h2 class="res-title" id="rTitle"></h2>
+    <p class="res-diag" id="rDiag"></p>
+    <div class="res-note" id="rStatusNote"></div>
+
+    <div class="res-meta">
+      <div class="m"><div class="k">Срок</div><div class="v" id="rTime"></div></div>
+      <div class="m"><div class="k">Индикативно</div><div class="v" id="rPrice"></div></div>
+      <div class="m"><div class="k">Подходит, если</div><div class="v" id="rFits"></div></div>
+    </div>
+
+    <div class="res-sec-h">Шаги маршрута</div>
+    <ol class="steps" id="rSteps"></ol>
+
+    <div class="res-sec-h">Что приготовить</div>
+    <ul class="docs" id="rDocs"></ul>
+
+    <div class="cta-box">
+      <h3>Дальше — <strong>30 минут под NDA</strong></h3>
+      <p>
+        На разборе соберём точный персональный план под ваш кейс: документы, реалистичные сроки,
+        индикативную комиссию и ближайшие 90 дней. Если кейс не наш — скажем сразу.
+        Мы не работаем с подсанкционными лицами, «мутными» источниками и попытками обойти комплаенс.
+      </p>
+      <div class="channels">
+        <a class="ch-btn gold" id="ctaTg" href="https://t.me/ccapital_acces" target="_blank" rel="noopener">Разобрать в Telegram <span class="arr">→</span></a>
+        <a class="ch-btn outline" href="mailto:hello@ccapital.pro">hello@ccapital.pro</a>
+      </div>
+    </div>
+
+    <p class="disclaimer">
+      <strong>Это образец, а не оферта.</strong> Маршрут, сроки и комиссия индикативны и зависят
+      от деталей кейса и страны получателя; точные параметры фиксируются после разбора.
+      Charter Capital соединяет проверенных партнёров (юристы, банки, регулируемые off-ramp)
+      в один маршрут — мы строим прозрачную биографию капитала, а не обходим контроль.
+    </p>
+
+    <button class="restart" id="restartBtn">↺ Пройти заново</button>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <a href="/">ccapital.pro</a> · <a href="/freedom-route.html">Маршрут в свободный мир</a> · <a href="/journal.html">Дайджест</a><br/>
+  © Charter Capital, 2026 · hello@ccapital.pro
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var ym_id = 108969822;
+  function goal(name, params){ try{ if(window.ym) ym(ym_id,'reachGoal',name,params||{});}catch(e){} }
+
+  // ---- Question model ----
+  var QUESTIONS = [
+    {
+      kicker:"Вопрос 1", key:"goal",
+      title:"Что для вас сейчас главное?",
+      options:[
+        {v:"relocate", ic:"🧭", lab:"Переехать с семьёй",     desc:"ВНЖ, банк, школа, статус — без панических переездов"},
+        {v:"business", ic:"🏢", lab:"Перевести бизнес / ВЭД",  desc:"Второй контур, расчёты с поставщиками без 5–9% посредников"},
+        {v:"crypto",   ic:"₿",  lab:"Завести крипту в банк",    desc:"On-chain история, AML-папка, регулируемый выход в фиат"},
+        {v:"asset",    ic:"🏠", lab:"Актив в РФ → жильё за рубежом", desc:"Продал/продаю — нужна биография денег под банк"},
+        {v:"reserve",  ic:"🛡️", lab:"Резерв вне старой системы", desc:"Подушка и ликвидность на долгий срок, спокойно"}
+      ]
+    },
+    {
+      kicker:"Вопрос 2", key:"where",
+      title:"Где вы сейчас?",
+      options:[
+        {v:"in_rf",  ic:"📍", lab:"Ещё в России",   desc:"Готовим шаги до выезда, чтобы не наследить"},
+        {v:"abroad", ic:"✈️", lab:"Уже за границей", desc:"Фокус на онбординге в банк под ваш статус"},
+        {v:"both",   ic:"🌗", lab:"На две страны",   desc:"Семья/активы здесь и там — синхронизируем"}
+      ]
+    },
+    {
+      kicker:"Вопрос 3", key:"size",
+      title:"Объём капитала в работе?",
+      options:[
+        {v:"s",  ic:"•",   lab:"До $50K",        desc:"Точечная задача"},
+        {v:"m",  ic:"••",  lab:"$50K – $500K",   desc:"Типовой проект-маршрут"},
+        {v:"l",  ic:"•••", lab:"$500K – $2M",    desc:"Сложный маршрут, потолок чека"},
+        {v:"xl", ic:"◆",   lab:"$2M+",           desc:"Закрытый контур Private Office"}
+      ]
+    }
+  ];
+
+  // ---- Routes ----
+  var ROUTES = {
+    relocate:{
+      title:"Релокация под ключ: <strong>ВНЖ + банк + биография капитала</strong>",
+      diag:"Вам нужен не отдельный ВНЖ, а связанный маршрут: страна, статус, счёт, документы и налоговая логика — собранные так, чтобы шаги не ломали друг друга.",
+      steps:[
+        "<strong>ВНЖ</strong> под выбранный паспорт (Черногория / Сербия / ОАЭ / Таиланд)",
+        "<strong>SoF / SoW досье</strong> под целевой банк — биография капитала",
+        "Открытие счёта (локальный банк или EMI) под ваш профиль",
+        "Сопровождение онбординга и <strong>EDD-интервью</strong>",
+        "Налоговая регистрация в новой юрисдикции"
+      ],
+      docs:["Паспорт + история статуса","Подтверждение дохода","Налоговые декларации","Цепочка владения активами"],
+      time:"4–8 мес", fits:"есть «белый» источник"
+    },
+    business:{
+      title:"Перевозка бизнеса: <strong>HK / SG / UAE / CY + расчётный контур</strong>",
+      diag:"Цель — отвязать операционку от российского периметра без перерыва выручки: компания, substance, счёт и перенос контрагентов на новый контур.",
+      steps:[
+        "Регистрация компании — выбор юрисдикции по типу бизнеса",
+        "<strong>Substance-package</strong>: директор, адрес, бухгалтерия",
+        "Расчётный счёт (банк или EMI)",
+        "Перенос контрактов и поставщиков на новый контур",
+        "Налоговое планирование без агрессии"
+      ],
+      docs:["Описание бизнеса и оборота","Контракты с контрагентами","Структура владения","Подтверждение прибыли"],
+      time:"6–10 нед", fits:"оборот от $200K/год"
+    },
+    crypto:{
+      title:"Крипта → банк: <strong>on-chain аудит + регулируемый off-ramp</strong>",
+      diag:"On-chain история — это уже досье, банк читает её за секунды. Мы строим проверяемую биографию и заводим средства через регулируемый контур — без P2P и серых обменников.",
+      steps:[
+        "<strong>Аудит on-chain цепочки</strong> и риск-скоринг адресов",
+        "Привязка к <strong>KYC-вершинам</strong> (биржа, OTC, платформа)",
+        "AML-папка под целевой банк (Bank Frick, Sygnum, Klarpay)",
+        "Off-ramp через регулируемого партнёра (VASP / MiCA)",
+        "Сопровождение зачисления и follow-up EDD"
+      ],
+      docs:["Адреса кошельков / выгрузка истории","Точки покупки (биржа/OTC)","Подтверждение источника","KYC-документы"],
+      time:"4–10 нед", fits:"история без Tornado / mixers"
+    },
+    asset:{
+      title:"Актив в РФ → жильё за рубежом: <strong>SoF под объём сделки</strong>",
+      diag:"Между продажей актива в РФ и покупкой за рубежом стоит банк, который не примет деньги без SoF на сумму. Без подготовленной папки — дисконт и потеря 8–15%.",
+      steps:[
+        "Подготовка <strong>SoF</strong> под продажу РФ-актива (ДКП, история владения, налог)",
+        "Открытие счёта в целевой стране (карточный / private)",
+        "Проводка средств через регулируемого партнёра",
+        "SoF под целевой банк под объём сделки",
+        "Сопровождение покупки и регистрации права собственности"
+      ],
+      docs:["ДКП / история владения","Налог с продажи","Оценка актива","Цель покупки за рубежом"],
+      time:"4–8 мес", fits:"сделка $80K–$2M"
+    },
+    reserve:{
+      title:"Резервный контур: <strong>ликвидность вне старой системы</strong>",
+      diag:"Спокойный план: резервный счёт и подушка вне старого периметра, с документами, которые не придётся собирать в панике. Без спешки, на долгий срок.",
+      steps:[
+        "Карта рисков текущей конфигурации капитала",
+        "Подбор юрисдикции и банка/EMI под резерв",
+        "<strong>SoF-папка</strong> под выбранный банк",
+        "Открытие счёта и базовая инвестиционная логика",
+        "План пополнения и ликвидности"
+      ],
+      docs:["Подтверждение дохода/сбережений","Налоговый статус","История капитала"],
+      time:"3–6 нед", fits:"нужен запас прочности"
+    }
+  };
+
+  var WHERE_NOTE = {
+    in_rf:"Вы ещё в России — начинаем с подготовки <strong>до выезда</strong>, чтобы не оставить лишний след и не закрыть себе двери заранее.",
+    abroad:"Вы уже за границей — фокус на <strong>онбординге в банк под ваш статус</strong> и на досье, которое снимает вопросы комплаенса заранее.",
+    both:"Семья и активы <strong>на две страны</strong> — синхронизируем шаги здесь и там, чтобы они поддерживали друг друга, а не ломали."
+  };
+
+  var PRICE = {
+    s:"от 6% на небольших чеках",
+    m:"$8K–$50K за проект-маршрут",
+    l:"проект + потолок 6% от капитала",
+    xl:"Private Office · fiduciary-формат"
+  };
+
+  // ---- State + render ----
+  var state = {goal:null, where:null, size:null};
+  var idx = 0;
+
+  var elOpts = document.getElementById('opts');
+  var elQTitle = document.getElementById('qTitle');
+  var elQKicker = document.getElementById('qKicker');
+  var elBar = document.getElementById('bar');
+  var elStepLabel = document.getElementById('stepLabel');
+  var elBack = document.getElementById('backBtn');
+  var elQuiz = document.getElementById('quiz');
+  var elResult = document.getElementById('result');
+
+  function renderQuestion(){
+    var q = QUESTIONS[idx];
+    elQKicker.textContent = q.kicker;
+    elQTitle.textContent = q.title;
+    elBar.style.width = ((idx)/QUESTIONS.length*100 + 8) + '%';
+    elStepLabel.textContent = 'Шаг ' + (idx+1) + ' / ' + QUESTIONS.length;
+    elBack.hidden = (idx === 0);
+    elOpts.innerHTML = '';
+    q.options.forEach(function(o){
+      var b = document.createElement('button');
+      b.className = 'opt';
+      b.setAttribute('type','button');
+      b.innerHTML =
+        '<span class="ic">'+o.ic+'</span>'+
+        '<span class="txt"><span class="lab">'+o.lab+'</span><span class="desc">'+o.desc+'</span></span>'+
+        '<span class="arr">→</span>';
+      b.addEventListener('click', function(){ choose(q.key, o.v); });
+      elOpts.appendChild(b);
+    });
+  }
+
+  function choose(key, val){
+    state[key] = val;
+    goal('diag_answer', {step: idx+1, key: key, value: val});
+    if(idx < QUESTIONS.length - 1){
+      idx++;
+      renderQuestion();
+      window.scrollTo({top:0, behavior:'smooth'});
+    } else {
+      showResult();
+    }
+  }
+
+  document.getElementById('backBtn').addEventListener('click', function(){
+    if(idx>0){ idx--; renderQuestion(); window.scrollTo({top:0,behavior:'smooth'}); }
+  });
+
+  document.getElementById('restartBtn').addEventListener('click', function(){
+    state = {goal:null, where:null, size:null}; idx = 0;
+    elResult.classList.remove('show');
+    elQuiz.style.display = '';
+    renderQuestion();
+    window.scrollTo({top:0,behavior:'smooth'});
+    goal('diag_restart');
+  });
+
+  function showResult(){
+    var r = ROUTES[state.goal] || ROUTES.reserve;
+    document.getElementById('rTitle').innerHTML = r.title;
+    document.getElementById('rDiag').textContent = r.diag;
+    document.getElementById('rStatusNote').innerHTML = WHERE_NOTE[state.where] || '';
+    document.getElementById('rTime').textContent = r.time;
+    document.getElementById('rPrice').textContent = PRICE[state.size] || PRICE.m;
+    document.getElementById('rFits').textContent = r.fits;
+
+    var stepsEl = document.getElementById('rSteps'); stepsEl.innerHTML = '';
+    r.steps.forEach(function(s){ var li=document.createElement('li'); li.innerHTML=s; stepsEl.appendChild(li); });
+
+    var docsEl = document.getElementById('rDocs'); docsEl.innerHTML = '';
+    r.docs.forEach(function(d){ var li=document.createElement('li'); li.textContent=d; docsEl.appendChild(li); });
+
+    // Private Office upsell for xl
+    var tg = document.getElementById('ctaTg');
+    if(state.size === 'xl'){
+      tg.setAttribute('href','/private.html');
+      tg.removeAttribute('target');
+      tg.innerHTML = 'Перейти в Private Office <span class="arr">→</span>';
+    }
+
+    elQuiz.style.display = 'none';
+    elResult.classList.add('show');
+    window.scrollTo({top:0,behavior:'smooth'});
+    goal('diag_complete', {route: state.goal, where: state.where, size: state.size});
+  }
+
+  document.getElementById('ctaTg').addEventListener('click', function(){ goal('diag_cta_telegram', {route: state.goal}); });
+
+  renderQuestion();
+})();
+</script>
+
+</body>
+</html>
