@@ -9,8 +9,8 @@
     <description>Аналитика международного private banking, ВЭД и геополитики капитала. Гонконг · Сингапур · ОАЭ · Швейцария · UK · Россия.</description>
     <language>ru</language>
     <copyright>© Charter Capital, 2026</copyright>
-    <lastBuildDate>Thu, 28 May 2026 10:37:46 +0000</lastBuildDate>
-    <pubDate>Thu, 28 May 2026 10:37:46 +0000</pubDate>
+    <lastBuildDate>Sat, 30 May 2026 04:00:00 +0000</lastBuildDate>
+    <pubDate>Sat, 30 May 2026 04:00:00 +0000</pubDate>
     <ttl>360</ttl>
     <generator>Charter Capital · ccapital.pro</generator>
     <atom:link href="https://ccapital.pro/journal/feed.xml" rel="self" type="application/rss+xml" />
@@ -19,6 +19,15 @@
       <title>Дайджест Charter Capital</title>
       <link>https://ccapital.pro/journal.html</link>
     </image>
+    <item>
+      <title>География денег: почему чистый капитал честного человека стал «токсичным»</title>
+      <link>https://ccapital.pro/journal/geographic-footprint-clean-capital.html</link>
+      <guid isPermaLink="true">https://ccapital.pro/journal/geographic-footprint-clean-capital.html</guid>
+      <pubDate>Sat, 30 May 2026 10:00:00 +0700</pubDate>
+      <description>Легальный доход, чистая история, человек не под санкциями — а счёт всё равно закрыт. Что такое «географический след», почему де-рискинг бьёт по непричастным и как вернуть капиталу биографию, которую принимает банк: доказывать, а не прятать.</description>
+      <enclosure url="https://ccapital.pro/assets/journal/geographic-footprint-hero.webp" type="image/webp" />
+      <category>Charter Capital · Дайджест</category>
+    </item>
     <item>
       <title>Гонконг вместо Швейцарии: новая география капитала</title>
       <link>https://ccapital.pro/journal/hongkong-replaces-switzerland-2026.html</link>
