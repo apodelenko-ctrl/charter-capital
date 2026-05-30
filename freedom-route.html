@@ -294,8 +294,8 @@ p{color:var(--on-dark-soft);font-weight:400;line-height:1.7}
 
 /* ─── HERO ──────────────────────────────────────────────── */
 .hero{
-  position:relative;min-height:100vh;
-  padding:140px 32px 100px;
+  position:relative;min-height:88vh;max-height:960px;
+  padding:120px 32px 72px;
   overflow:hidden;
   display:flex;align-items:center;
   background:#06080f;
@@ -383,21 +383,10 @@ p{color:var(--on-dark-soft);font-weight:400;line-height:1.7}
 .hero-stack span:not(:last-child)::after{
   content:', ';position:absolute;right:0;color:var(--gold-warm);font-weight:600;
 }
-.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:14px}
-.hero-cta-sub{
-  margin:-4px 0 26px;
+.hero-actions{
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  margin-bottom:26px;
 }
-.hero-secondary-link{
-  display:inline-flex;align-items:center;gap:6px;
-  font-size:13px;font-weight:500;letter-spacing:.04em;
-  color:rgba(255,255,255,.68);text-decoration:none;
-  border-bottom:1px solid rgba(232,212,168,.38);
-  padding-bottom:3px;
-  transition:color .18s ease,border-color .18s ease;
-}
-.hero-secondary-link:hover{color:var(--gold-warm);border-color:var(--gold-warm)}
-.hero-secondary-link .arr{transition:transform .18s ease}
-.hero-secondary-link:hover .arr{transform:translateX(3px)}
 .hero-trust{
   display:flex;align-items:flex-start;gap:10px;
   font-size:12.5px;color:rgba(255,255,255,.6);
@@ -472,6 +461,7 @@ p{color:var(--on-dark-soft);font-weight:400;line-height:1.7}
 .assembly-hub{
   background:linear-gradient(180deg,#06080f 0%,#0c111e 55%,#06080f 100%);
   border-bottom:1px solid var(--line-dark);
+  padding-top:80px;
 }
 .s-head-center{margin-left:auto;margin-right:auto;text-align:center;max-width:920px}
 .s-head-center .kicker{margin-bottom:18px}
@@ -480,7 +470,7 @@ p{color:var(--on-dark-soft);font-weight:400;line-height:1.7}
 .assembly-compare{
   display:grid;grid-template-columns:1fr 80px 1fr;
   gap:32px;align-items:stretch;
-  margin-bottom:96px;
+  margin-bottom:72px;
 }
 .assembly-fragments,.assembly-unified{
   padding:38px 36px;
@@ -627,11 +617,27 @@ p{color:var(--on-dark-soft);font-weight:400;line-height:1.7}
 .ah-anchor-cta:hover .arr{transform:translateX(4px)}
 
 /* ─── SECTION wrapper ───────────────────────────────────── */
-section.s{padding:130px 0;position:relative}
-section.s.tight{padding:100px 0}
+section.s{padding:96px 0;position:relative}
+section.s.tight{padding:72px 0}
+/* Соседние смысловые блоки — без «чёрной дыры» между секциями */
+#idea{padding-bottom:64px}
+#cases{
+  padding-top:64px;
+  border-top:1px solid rgba(160,129,86,.1);
+}
+#route{
+  padding-top:72px;
+  border-top:1px solid rgba(160,129,86,.14);
+}
+#route .freedom-key{margin-top:0;margin-bottom:44px;max-width:none}
 section.s.alt{
   background:linear-gradient(180deg,#0a0e1a 0%,#0f1422 50%,#0a0e1a 100%);
   border-top:1px solid var(--line-dark);
+  border-bottom:1px solid var(--line-dark);
+}
+section.s.result-panel{
+  background:linear-gradient(180deg,#06080f 0%,rgba(160,129,86,.07) 50%,#06080f 100%);
+  border-top:1px solid rgba(160,129,86,.2);
   border-bottom:1px solid var(--line-dark);
 }
 section.s.cream{background:var(--paper);color:var(--ink)}
@@ -639,7 +645,7 @@ section.s.cream h1,section.s.cream h2,section.s.cream h3,section.s.cream h4{colo
 section.s.cream p{color:var(--text-soft)}
 section.s.cream .kicker{color:var(--gold)}
 
-.s-head{margin-bottom:64px;max-width:780px}
+.s-head{margin-bottom:52px;max-width:780px}
 .s-head .kicker{margin-bottom:20px}
 .s-head h2{margin-bottom:18px}
 .s-head p{font-size:17px;color:var(--on-dark-mute);font-weight:400;line-height:1.65}
@@ -673,7 +679,7 @@ section.s.cream .kicker{color:var(--gold)}
 .dream-reality{
   display:grid;grid-template-columns:1fr 64px 1fr;
   gap:20px;align-items:stretch;
-  margin:48px 0 56px;
+  margin:40px 0 48px;
 }
 .dr-col{
   padding:36px 32px;
@@ -736,7 +742,7 @@ section.s.cream .kicker{color:var(--gold)}
 
 .freedom-glimpses{
   display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
-  margin-top:64px;
+  margin-top:48px;
 }
 .glimpse{
   position:relative;
@@ -771,14 +777,14 @@ section.s.cream .kicker{color:var(--gold)}
 }
 
 .freedom-key{
-  margin-top:56px;padding:28px 32px;
-  background:rgba(160,129,86,.04);
-  border:1px solid rgba(160,129,86,.22);
+  margin-top:48px;padding:26px 30px;
+  background:rgba(160,129,86,.06);
+  border:1px solid rgba(160,129,86,.24);
   border-left:3px solid var(--gold);
   border-radius:var(--radius);
   font-size:17px;line-height:1.55;
-  color:rgba(255,255,255,.85);font-weight:300;letter-spacing:-.005em;
-  max-width:74ch;
+  color:rgba(255,255,255,.88);font-weight:300;letter-spacing:-.005em;
+  max-width:none;
 }
 .freedom-key strong{color:var(--gold-soft);font-weight:500}
 
@@ -1587,6 +1593,7 @@ section.s.cream .kicker{color:var(--gold)}
   width:22px;flex-shrink:0;
   font-feature-settings:'tnum';
 }
+.result-cta{margin-top:24px}
 
 .result-card{
   background:linear-gradient(160deg,rgba(255,255,255,.04) 0%,rgba(255,255,255,.01) 100%);
@@ -1739,6 +1746,27 @@ footer.f{
 }
 .f-bottom span{font-size:12px;color:#64748b}
 
+/* FAQ */
+.faq-section{padding-top:72px;padding-bottom:72px;border-top:1px solid rgba(160,129,86,.14)}
+.faq-section .s-head{margin-bottom:32px}
+.faq-list{display:flex;flex-direction:column;gap:10px;max-width:820px}
+.faq-item{
+  border:1px solid var(--line-dark);border-radius:var(--radius);
+  background:rgba(255,255,255,.02);
+}
+.faq-item[open]{border-color:rgba(160,129,86,.34);background:rgba(160,129,86,.05)}
+.faq-q{
+  padding:18px 22px;font-size:15px;font-weight:500;color:#fff;
+  cursor:pointer;list-style:none;
+  display:flex;justify-content:space-between;align-items:flex-start;gap:16px;
+}
+.faq-q::-webkit-details-marker{display:none}
+.faq-q::after{content:'+';font-size:18px;color:var(--gold-warm);flex-shrink:0;line-height:1.2}
+.faq-item[open] .faq-q::after{content:'×'}
+.faq-a{padding:0 22px 18px;font-size:14.5px;line-height:1.65;color:rgba(255,255,255,.72)}
+.faq-a a{color:var(--gold-warm);text-decoration:underline;text-underline-offset:2px}
+.faq-a a:hover{color:#fff}
+
 /* ─── Sticky CTA (mobile) ─────────────────────────────── */
 .sticky-cta{
   display:none;position:fixed;bottom:18px;left:18px;right:18px;z-index:90;
@@ -1795,9 +1823,11 @@ footer.f{
   .topbar-brand .tag{display:none}
   .topbar-nav{display:none}
   .topbar-link{display:none}
-  section.s{padding:88px 0}
-  section.s.tight{padding:64px 0}
-  .hero{padding:120px 22px 80px;min-height:88vh}
+  section.s{padding:72px 0}
+  section.s.tight{padding:56px 0}
+  #idea{padding-bottom:56px}
+  #route{padding-top:56px}
+  .hero{padding:110px 22px 64px;min-height:auto;max-height:none}
   .hero-bg img{object-position:88% center}
   .hero-bg::after{
     background:
@@ -1805,9 +1835,8 @@ footer.f{
       linear-gradient(92deg,rgba(6,8,15,.82) 0%,rgba(6,8,15,.4) 45%,rgba(6,8,15,.12) 100%);
   }
   .container,.container-wide,.container-sm,.container-narrow{padding:0 22px}
+  .hero-actions{justify-content:center}
   .hero-actions .btn{width:100%;justify-content:center}
-  .hero-cta-sub{text-align:center;margin-bottom:22px}
-  .hero-secondary-link{padding-bottom:4px}
   .hero-quote-strip{padding:18px 0 22px}
   .then-now{grid-template-columns:1fr;gap:20px}
   .escape-vs{grid-template-columns:1fr;gap:14px}
@@ -1926,6 +1955,60 @@ footer.f{
         {"@type": "ListItem", "position": 1, "name": "Charter Capital", "item": "https://ccapital.pro/"},
         {"@type": "ListItem", "position": 2, "name": "Маршрут в свободный мир", "item": "https://ccapital.pro/freedom-route.html"}
       ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://ccapital.pro/freedom-route.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Кто такой Charter Capital и для кого «маршрут в свободный мир»?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Charter Capital — архитектор международного маршрута для предпринимателей из СНГ. Мы собираем семью, капитал, банк, компанию и документы в одну связную систему. Работаем с легальными источниками; не обходим санкции и не работаем с подсанкционными лицами."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Что такое «географический след» капитала?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Географический след — совокупность маркеров происхождения актива: страна покупки, P2P-история, биржа (Bybit, HTX, EXMO), банковские переводы. Compliance-системы (Chainalysis, банки) оценивают риск по этому следу, даже если деньги легальны."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Чем Charter Capital отличается от «обхода санкций»?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Мы не «очищаем» след и не скрываем происхождение. Мы строим прозрачную биографию капитала (SoF/SoW) и легальный маршрут: резидентность, документы, регулируемый off-ramp, банковский онбординг через лицензированных партнёров."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Как начать: диагностика или разбор под NDA?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Сначала — бесплатная диагностика за 3 вопроса на ccapital.pro/diagnostic.html: образец маршрута, шаги, документы, индикативные сроки. Затем — 30 минут под NDA в Telegram для точного плана."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Сколько стоит маршрут Charter Capital?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Индикативно: типовой проект-маршрут $8K–$50K, сложный кейс $50K–$150K+. Точная вилка — после разбора под NDA. Private Office (капитал от $1M) — отдельная архитектура."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Помогаете ли с криптой после блокировки на Bybit или HTX?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Да, если источник легален и клиент не под санкциями. Маршрут: AML-анализ цепочки, SoF-досье, регулируемый off-ramp, подготовка к банку. Не используем P2P и «серые» обменники."
+          }
+        }
+      ]
     }
   ]
 }
@@ -1997,6 +2080,7 @@ footer.f{
         </div>
       </div>
       <span class="nav-sep" aria-hidden="true"></span>
+      <a href="#idea">Идея</a>
       <a href="#cases">Ситуации</a>
       <a href="#route">Маршрут</a>
       <a href="#private" class="is-gold">Private Office</a>
@@ -2027,11 +2111,11 @@ footer.f{
         <span class="dot"></span>
         <span>Маршрут&nbsp;для&nbsp;предпринимателей&nbsp;из&nbsp;СНГ</span>
       </span>
-      <a class="hero-digest is-dark" href="journal/singapore-family-office.html" aria-label="Свежий материал в Дайджесте Charter Capital">
+      <a class="hero-digest is-dark" href="journal/uk-sanctions-crypto-p2p-2026.html" aria-label="Свежий материал в Дайджесте Charter Capital">
         <span class="marquee" aria-hidden="true">
           <span class="track">
-            <span><strong>Эволюция Family Office:</strong> почему Сингапур стал новым стандартом &middot; 02&middot;05&middot;26</span>
-            <span><strong>Эволюция Family Office:</strong> почему Сингапур стал новым стандартом &middot; 02&middot;05&middot;26</span>
+            <span><strong>UK ударила по HTX, EXMO, Bitpapa:</strong> что это значит для P2P и вывода капитала &middot; 26&middot;05&middot;26</span>
+            <span><strong>UK ударила по HTX, EXMO, Bitpapa:</strong> что это значит для P2P и вывода капитала &middot; 26&middot;05&middot;26</span>
           </span>
         </span>
         <span class="badge">Дайджест <span class="arr">→</span></span>
@@ -2058,10 +2142,8 @@ footer.f{
       </div>
       <div class="hero-actions">
         <a href="#contact" class="btn btn-gold btn-lg btn-magnetic">Разобрать мой маршрут <span class="arr">→</span></a>
+        <a href="/diagnostic.html" class="btn btn-ghost btn-lg">За 60 секунд — карта маршрута <span class="arr">→</span></a>
       </div>
-      <p class="hero-cta-sub">
-        <a href="/diagnostic.html" class="hero-secondary-link">За 60 секунд — карта вашего маршрута <span class="arr">→</span></a>
-      </p>
       <div class="hero-trust">
         <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-12V5l-8-3-8 3v5c0 8 8 12 8 12z"/></svg>
         <span>Первый разговор - не&nbsp;продажа. Это карта рисков: где вы&nbsp;сейчас, что можно делать, а&nbsp;что лучше не&nbsp;трогать без подготовки.</span>
@@ -2080,7 +2162,7 @@ footer.f{
 </div>
 
 <!-- ─── PAIN TICKER ──────────────────────────────────────── -->
-<div class="ticker-strip" aria-hidden="true">
+<div class="ticker-strip" role="region" aria-label="Типичные запросы предпринимателей">
   <div class="ticker-track">
     <span class="ticker-item"><span class="dot"></span>Банк не&nbsp;открывает счёт</span>
     <span class="ticker-item"><span class="dot"></span>Платёж завис</span>
@@ -2208,93 +2290,6 @@ footer.f{
 </section>
 
 <!-- ─────────────────────────────────────────────────────────
-     SECTION, SCENARIOS (раньше ниже - поднято после сборки)
-     ───────────────────────────────────────────────────────── -->
-<section class="s" id="cases">
-  <div class="container">
-    <div class="s-head">
-      <span class="kicker">Ситуации</span>
-      <h2>С&nbsp;чем приходят предприниматели.</h2>
-      <p>Шесть типичных запросов 2026&nbsp;года. <strong>Если хотя&nbsp;бы один совпадает</strong> - это наш разговор.</p>
-    </div>
-
-    <div class="scenarios">
-      <article class="scenario">
-        <div class="scenario-img">
-          <img src="assets/freedom-route/family-relocation.webp" loading="lazy" alt="Семейный маршрут - школа, документы, переезд"/>
-          <span class="scenario-num">01, Семья</span>
-        </div>
-        <div class="scenario-body">
-          <h4>Хочу вывезти семью, но&nbsp;не&nbsp;понимаю, с&nbsp;чего начать</h4>
-          <p>Нужен не&nbsp;просто ВНЖ. Нужен маршрут: страна, школа, счёт, документы, капитал, налоговая логика.</p>
-          <a href="#contact" class="scenario-cta"><span>Построить семейный маршрут</span><span class="arr">→</span></a>
-        </div>
-      </article>
-
-      <article class="scenario">
-        <div class="scenario-img">
-          <img src="assets/freedom-route/business-holding.webp" loading="lazy" alt="Бизнес и международный холдинг"/>
-          <span class="scenario-num">02, Бизнес</span>
-        </div>
-        <div class="scenario-body">
-          <h4>Бизнес в&nbsp;СНГ работает. Прибыль хочу в&nbsp;свободном мире</h4>
-          <p>Нужен второй контур: компания, договоры, счёт, объяснение экономического смысла, документы по&nbsp;прибыли.</p>
-          <a href="#contact" class="scenario-cta"><span>Собрать бизнес-контур</span><span class="arr">→</span></a>
-        </div>
-      </article>
-
-      <article class="scenario">
-        <div class="scenario-img">
-          <img src="assets/freedom-route/crypto-bankability.webp" loading="lazy" alt="Крипта и регулируемый банковский крипто-выход"/>
-          <span class="scenario-num">03, Крипта</span>
-        </div>
-        <div class="scenario-body">
-          <h4>Крипта есть. Банк её не&nbsp;принимает</h4>
-          <p>Нужна история: откуда монеты, где точки идентификации, какие биржи, какие транзакции, какой регулируемый крипто-выход.</p>
-          <a href="#contact" class="scenario-cta"><span>Проверить крипто-историю</span><span class="arr">→</span></a>
-        </div>
-      </article>
-
-      <article class="scenario">
-        <div class="scenario-img">
-          <img src="assets/freedom-route/real-estate-route.webp" loading="lazy" alt="Покупка недвижимости за границей и подготовка документов"/>
-          <span class="scenario-num">04, Актив</span>
-        </div>
-        <div class="scenario-body">
-          <h4>Продал актив дома. Хочу купить недвижимость за&nbsp;границей</h4>
-          <p>Нужна цепочка: актив&nbsp;→&nbsp;продажа&nbsp;→&nbsp;налоговая история&nbsp;→&nbsp;банк&nbsp;→&nbsp;покупка&nbsp;→&nbsp;дальнейшее использование.</p>
-          <a href="#contact" class="scenario-cta"><span>Подготовить покупку</span><span class="arr">→</span></a>
-        </div>
-      </article>
-
-      <article class="scenario">
-        <div class="scenario-img">
-          <img src="assets/freedom-route/international-holding.webp" loading="lazy" alt="Международный холдинг - Лондон, Сингапур, Гонконг, Дубай"/>
-          <span class="scenario-num">05, Холдинг</span>
-        </div>
-        <div class="scenario-body">
-          <h4>Хочу холдинг - Британия, Сингапур, Гонконг или ОАЭ</h4>
-          <p>Нужна структура, которая выглядит не&nbsp;как пустая коробка, а&nbsp;как понятный международный бизнес-контур.</p>
-          <a href="#contact" class="scenario-cta"><span>Спроектировать холдинг</span><span class="arr">→</span></a>
-        </div>
-      </article>
-
-      <article class="scenario">
-        <div class="scenario-img">
-          <img src="assets/freedom-route/one-country-risk.webp" loading="lazy" alt="Резервный план и независимость от одной страны"/>
-          <span class="scenario-num">06, Резерв</span>
-        </div>
-        <div class="scenario-body">
-          <h4>Я&nbsp;устал зависеть от&nbsp;одной страны</h4>
-          <p>Нужна финансовая подушка, резервный счёт, понятный план. И&nbsp;документы, которые не&nbsp;придётся собирать в&nbsp;панике.</p>
-          <a href="#contact" class="scenario-cta"><span>Создать резервный план</span><span class="arr">→</span></a>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ─────────────────────────────────────────────────────────
      SECTION, IDEA - вы хотите свободу
      ───────────────────────────────────────────────────────── -->
 <section class="s" id="idea">
@@ -2359,10 +2354,92 @@ footer.f{
         </figcaption>
       </figure>
     </div>
+  </div>
+</section>
 
-    <div class="freedom-key">
-      Свободный мир устроен иначе. Он&nbsp;не&nbsp;принимает капитал «на&nbsp;слово».<br/>
-      Он&nbsp;хочет видеть <strong>документы, историю, происхождение средств и&nbsp;понятный маршрут</strong>.
+<!-- ─────────────────────────────────────────────────────────
+     SECTION, SCENARIOS (раньше ниже - поднято после сборки)
+     ───────────────────────────────────────────────────────── -->
+<section class="s" id="cases">
+  <div class="container">
+    <div class="s-head">
+      <span class="kicker">Ситуации</span>
+      <h2>С&nbsp;чем приходят предприниматели.</h2>
+      <p>Шесть типичных запросов 2026&nbsp;года. <strong>Если хотя&nbsp;бы один совпадает</strong> - это наш разговор.</p>
+    </div>
+
+    <div class="scenarios">
+      <article class="scenario">
+        <div class="scenario-img">
+          <img src="assets/freedom-route/family-relocation.webp" loading="lazy" alt="Семейный маршрут - школа, документы, переезд"/>
+          <span class="scenario-num">01, Семья</span>
+        </div>
+        <div class="scenario-body">
+          <h4>Хочу вывезти семью, но&nbsp;не&nbsp;понимаю, с&nbsp;чего начать</h4>
+          <p>Нужен не&nbsp;просто ВНЖ. Нужен маршрут: страна, школа, счёт, документы, капитал, налоговая логика.</p>
+          <a href="#contact" class="scenario-cta"><span>Построить семейный маршрут</span><span class="arr">→</span></a>
+        </div>
+      </article>
+
+      <article class="scenario">
+        <div class="scenario-img">
+          <img src="assets/freedom-route/business-holding.webp" loading="lazy" alt="Бизнес и международный холдинг"/>
+          <span class="scenario-num">02, Бизнес</span>
+        </div>
+        <div class="scenario-body">
+          <h4>Бизнес в&nbsp;СНГ работает. Прибыль хочу в&nbsp;свободном мире</h4>
+          <p>Нужен второй контур: компания, договоры, счёт, объяснение экономического смысла, документы по&nbsp;прибыли.</p>
+          <a href="#contact" class="scenario-cta"><span>Собрать бизнес-контур</span><span class="arr">→</span></a>
+        </div>
+      </article>
+
+      <article class="scenario">
+        <div class="scenario-img">
+          <img src="assets/freedom-route/crypto-bankability.webp" loading="lazy" alt="Крипта и регулируемый банковский крипто-выход"/>
+          <span class="scenario-num">03, Крипта</span>
+        </div>
+        <div class="scenario-body">
+          <h4>Крипта есть. Банк её не&nbsp;принимает</h4>
+          <p>Нужна история: откуда монеты, где точки идентификации, какие биржи, какие транзакции, какой регулируемый крипто-выход.</p>
+          <a href="/diagnostic.html" class="scenario-cta"><span>Карта маршрута за 60 сек</span><span class="arr">→</span></a>
+        </div>
+      </article>
+
+      <article class="scenario">
+        <div class="scenario-img">
+          <img src="assets/freedom-route/real-estate-route.webp" loading="lazy" alt="Покупка недвижимости за границей и подготовка документов"/>
+          <span class="scenario-num">04, Актив</span>
+        </div>
+        <div class="scenario-body">
+          <h4>Продал актив дома. Хочу купить недвижимость за&nbsp;границей</h4>
+          <p>Нужна цепочка: актив&nbsp;→&nbsp;продажа&nbsp;→&nbsp;налоговая история&nbsp;→&nbsp;банк&nbsp;→&nbsp;покупка&nbsp;→&nbsp;дальнейшее использование.</p>
+          <a href="#contact" class="scenario-cta"><span>Подготовить покупку</span><span class="arr">→</span></a>
+        </div>
+      </article>
+
+      <article class="scenario">
+        <div class="scenario-img">
+          <img src="assets/freedom-route/international-holding.webp" loading="lazy" alt="Международный холдинг - Лондон, Сингапур, Гонконг, Дубай"/>
+          <span class="scenario-num">05, Холдинг</span>
+        </div>
+        <div class="scenario-body">
+          <h4>Хочу холдинг - Британия, Сингапур, Гонконг или ОАЭ</h4>
+          <p>Нужна структура, которая выглядит не&nbsp;как пустая коробка, а&nbsp;как понятный международный бизнес-контур.</p>
+          <a href="#contact" class="scenario-cta"><span>Спроектировать холдинг</span><span class="arr">→</span></a>
+        </div>
+      </article>
+
+      <article class="scenario">
+        <div class="scenario-img">
+          <img src="assets/freedom-route/one-country-risk.webp" loading="lazy" alt="Резервный план и независимость от одной страны"/>
+          <span class="scenario-num">06, Резерв</span>
+        </div>
+        <div class="scenario-body">
+          <h4>Я&nbsp;устал зависеть от&nbsp;одной страны</h4>
+          <p>Нужна финансовая подушка, резервный счёт, понятный план. И&nbsp;документы, которые не&nbsp;придётся собирать в&nbsp;панике.</p>
+          <a href="#contact" class="scenario-cta"><span>Создать резервный план</span><span class="arr">→</span></a>
+        </div>
+      </article>
     </div>
   </div>
 </section>
@@ -2378,6 +2455,10 @@ footer.f{
      ───────────────────────────────────────────────────────── -->
 <section class="s" id="route">
   <div class="container">
+    <div class="freedom-key">
+      Свободный мир устроен иначе. Он&nbsp;не&nbsp;принимает капитал «на&nbsp;слово».<br/>
+      Он&nbsp;хочет видеть <strong>документы, историю, происхождение средств и&nbsp;понятный маршрут</strong>.
+    </div>
     <div class="s-head">
       <span class="kicker">Маршрут</span>
       <h2>Мы строим новый маршрут.</h2>
@@ -2457,7 +2538,7 @@ footer.f{
 <!-- ─────────────────────────────────────────────────────────
      SECTION 5, STRUCTURE - Свобода требует структуры
      ───────────────────────────────────────────────────────── -->
-<section class="s alt">
+<section class="s alt" id="structure">
   <div class="container">
     <div class="s-head">
       <span class="kicker">Структура</span>
@@ -2641,7 +2722,7 @@ footer.f{
 <!-- ─────────────────────────────────────────────────────────
      SECTION 9, RESULT - Карта новой жизни (dashboard)
      ───────────────────────────────────────────────────────── -->
-<section class="s alt">
+<section class="s result-panel" id="result">
   <div class="container">
     <div class="result-grid">
       <div class="result-text">
@@ -2652,6 +2733,7 @@ footer.f{
           <li><span class="n">01</span><span>Видите, где вы&nbsp;сейчас и&nbsp;что ещё можно открыть.</span></li>
           <li><span class="n">02</span><span>Знаете, какие документы собрать без сюрпризов.</span></li>
         </ul>
+        <p class="result-cta"><a href="/diagnostic.html" class="btn btn-outline btn-lg">За 60 секунд — образец маршрута <span class="arr">→</span></a></p>
     </div>
 
       <div class="result-card" aria-hidden="true">
@@ -2707,6 +2789,44 @@ footer.f{
 </section>
 
 <!-- ─────────────────────────────────────────────────────────
+     FAQ
+     ───────────────────────────────────────────────────────── -->
+<section class="s faq-section" id="faq">
+  <div class="container">
+    <div class="s-head">
+      <span class="kicker">FAQ</span>
+      <h2>Частые вопросы о&nbsp;маршруте</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary class="faq-q">Кто такой Charter Capital и&nbsp;для кого «маршрут в&nbsp;свободный мир»?</summary>
+        <div class="faq-a">Charter Capital — архитектор международного маршрута для предпринимателей из&nbsp;СНГ. Мы собираем семью, капитал, банк, компанию и&nbsp;документы в&nbsp;одну связную систему. Работаем только с&nbsp;легальными источниками; не&nbsp;обходим санкции и&nbsp;не&nbsp;работаем с&nbsp;подсанкционными лицами.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Что такое «географический след» капитала?</summary>
+        <div class="faq-a">Географический след — маркеры происхождения актива: страна покупки, P2P-история, биржа (Bybit, HTX, EXMO), банковские переводы. Compliance-системы оценивают риск по&nbsp;этому следу, даже если деньги легальны. Подробнее — в&nbsp;<a href="/journal/geographic-footprint-clean-capital.html">статье «География денег»</a>.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Чем вы&nbsp;отличаетесь от&nbsp;«обхода санкций»?</summary>
+        <div class="faq-a">Мы не&nbsp;«очищаем» след и&nbsp;не&nbsp;скрываем происхождение. Мы строим прозрачную <strong>биографию капитала</strong> (SoF/SoW) и&nbsp;легальный маршрут: резидентность, документы, регулируемый off-ramp, банковский онбординг через лицензированных партнёров.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Как начать: диагностика или разбор под NDA?</summary>
+        <div class="faq-a">Сначала — бесплатная диагностика: <a href="/diagnostic.html">3&nbsp;вопроса за 60&nbsp;секунд</a> → образец маршрута, шаги, документы, индикативные сроки. Затем — 30&nbsp;минут под NDA в&nbsp;<a href="https://t.me/ccapital_acces" target="_blank" rel="noopener">Telegram</a> для точного плана.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Сколько стоит маршрут?</summary>
+        <div class="faq-a">Индикативно: типовой проект-маршрут $8K–$50K, сложный кейс $50K–$150K+. Точная вилка — после разбора под NDA. <a href="/private.html">Private Office</a> (капитал от&nbsp;$1M) — отдельная архитектура.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Помогаете ли с&nbsp;криптой после блокировки на&nbsp;Bybit или HTX?</summary>
+        <div class="faq-a">Да, если источник легален и&nbsp;клиент не&nbsp;под санкциями. Маршрут: AML-анализ цепочки, SoF-досье, регулируемый off-ramp, подготовка к&nbsp;банку. Контекст UK-санкций — в&nbsp;<a href="/journal/uk-sanctions-crypto-p2p-2026.html">статье про HTX и&nbsp;P2P</a>.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────────────────────
      SECTION 10, FINAL CTA
      ───────────────────────────────────────────────────────── -->
 <section class="s tight" id="contact">
@@ -2736,6 +2856,7 @@ footer.f{
           <a href="https://t.me/ccapital_acces" class="btn btn-light btn-lg btn-magnetic" target="_blank" rel="noopener">
             Разобрать мой маршрут <span class="arr">→</span>
           </a>
+          <a href="/diagnostic.html" class="btn btn-ghost btn-lg">60 сек — карта маршрута</a>
           <a href="mailto:hello@ccapital.pro" class="btn btn-ghost btn-lg">hello@ccapital.pro</a>
         </div>
 
@@ -2774,9 +2895,12 @@ footer.f{
           <li><a href="team.html">Письмо основателя</a></li>
           <li><a href="#idea">Идея</a></li>
           <li><a href="#freedom">Свобода</a></li>
-          <li><a href="#route">Маршрут</a></li>
           <li><a href="#cases">Ситуации</a></li>
+          <li><a href="#route">Маршрут</a></li>
+          <li><a href="#structure">Структура</a></li>
+          <li><a href="#faq">FAQ</a></li>
           <li><a href="#private">Private Office</a></li>
+          <li><a href="/diagnostic.html">Диагностика · 60 сек</a></li>
           <li><a href="#contact">Контакт</a></li>
         </ul>
       </div>

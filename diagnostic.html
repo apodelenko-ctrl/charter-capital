@@ -24,6 +24,68 @@
 <meta property="og:url" content="https://ccapital.pro/diagnostic.html"/>
 <meta property="og:locale" content="ru_RU"/>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Route Diagnostic · Charter Capital",
+      "url": "https://ccapital.pro/diagnostic.html",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+      "provider": {"@type": "Organization", "name": "Charter Capital", "url": "https://ccapital.pro/"}
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Что даёт диагностика маршрута за 3 вопроса?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Вы получаете образец маршрута: тип сценария (релокация, бизнес, крипта в банк, актив, резерв), шаги, список документов, индикативные сроки и вилку стоимости. Это не оферта и не юридическая консультация."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Нужна ли регистрация для диагностики?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Нет. Ответы не сохраняются на сервере. Для точного плана нужен разбор 30 минут под NDA в Telegram."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Чем диагностика отличается от разбора под NDA?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Диагностика — быстрый образец по типовому маршруту. Разбор под NDA — персональный план с учётом стран, сумм, документов и рисков конкретного кейса."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "С кем Charter Capital не работает?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Не работаем с подсанкционными лицами, неоднозначными источниками средств и запросами на обход комплаенс или «очистку» криптовалютного следа."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Какие маршруты показывает диагностика?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Переезд с семьёй, бизнес/ВЭД-контур, крипта в банк (off-ramp), актив в РФ → недвижимость за рубежом, резервный план вне старой системы."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
 <link rel="dns-prefetch" href="https://mc.yandex.ru"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -144,6 +206,24 @@ h1.title strong{font-weight:600}
 .restart{font-size:13px;font-weight:500;color:var(--muted);display:inline-flex;align-items:center;gap:7px;transition:color .15s ease}
 .restart:hover{color:var(--ink)}
 
+/* FAQ */
+.faq{margin-top:52px;padding-top:40px;border-top:1px solid var(--line)}
+.faq h2{font-size:1.35rem;font-weight:500;letter-spacing:-.02em;margin-bottom:8px;color:var(--ink)}
+.faq-lead{font-size:.95rem;color:var(--muted);margin-bottom:22px;max-width:56ch;line-height:1.55}
+.faq-list{display:flex;flex-direction:column;gap:8px}
+.faq-item{border:1px solid var(--line);border-radius:10px;background:#fff}
+.faq-item[open]{border-color:rgba(160,129,86,.45);background:var(--gold-soft)}
+.faq-q{
+  padding:16px 18px;font-size:14.5px;font-weight:600;color:var(--ink);
+  cursor:pointer;list-style:none;
+  display:flex;justify-content:space-between;align-items:flex-start;gap:12px;
+}
+.faq-q::-webkit-details-marker{display:none}
+.faq-q::after{content:'+';font-size:16px;color:var(--gold-deep);flex-shrink:0}
+.faq-item[open] .faq-q::after{content:'×'}
+.faq-a{padding:0 18px 16px;font-size:14px;line-height:1.6;color:var(--body)}
+.faq-a a{color:var(--blue);font-weight:500}
+
 /* footer */
 .foot{border-top:1px solid var(--line);padding:30px 28px;text-align:center;color:var(--muted);font-size:12.5px}
 .foot a{color:var(--ink-2);font-weight:500}
@@ -240,6 +320,33 @@ h1.title strong{font-weight:600}
     </p>
 
     <button class="restart" id="restartBtn">↺ Пройти заново</button>
+  </section>
+
+  <section class="faq" id="faq">
+    <h2>Частые вопросы</h2>
+    <p class="faq-lead">Короткие ответы для тех, кто впервые на&nbsp;Charter Capital. Подробнее — на&nbsp;<a href="/freedom-route.html">витрине маршрута</a>.</p>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary class="faq-q">Что даёт диагностика за&nbsp;3&nbsp;вопроса?</summary>
+        <div class="faq-a">Образец маршрута: тип сценария, шаги, документы, индикативные сроки и&nbsp;вилка стоимости. Это не&nbsp;оферта и&nbsp;не&nbsp;юридическая консультация.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Нужна ли регистрация? Сохраняются ли ответы?</summary>
+        <div class="faq-a">Регистрация не&nbsp;нужна. Ответы не&nbsp;сохраняются на&nbsp;сервере. Для точного плана — разбор 30&nbsp;минут под NDA.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Чем это отличается от&nbsp;разбора под NDA?</summary>
+        <div class="faq-a">Диагностика — быстрый типовой образец. Разбор под NDA — персональный план: страны, суммы, риски, ближайшие 90&nbsp;дней.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">С&nbsp;кем вы&nbsp;не&nbsp;работаете?</summary>
+        <div class="faq-a">Не&nbsp;работаем с&nbsp;подсанкционными лицами, «мутными» источниками и&nbsp;запросами на&nbsp;обход комплаенс или «очистку» крипто-следа.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Какие маршруты бывают?</summary>
+        <div class="faq-a">Переезд с&nbsp;семьёй, бизнес/ВЭД, крипта в&nbsp;банк, актив → недвижимость за&nbsp;рубежом, резерв вне старой системы.</div>
+      </details>
+    </div>
   </section>
 
 </main>

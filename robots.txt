@@ -4,6 +4,7 @@ User-agent: *
 Allow: /
 Disallow: /team.html
 Disallow: /INTEGRATION-PROPERTY.md
+Disallow: /drafts/
 Disallow: /ads/
 Disallow: /usdc-china.html
 Disallow: /usdc-b2b.html
@@ -161,6 +162,9 @@ Disallow: /charter-flow-app/
 
 # === Sitemap ===
 Sitemap: https://ccapital.pro/sitemap.xml
+
+# === LLM context (llms.txt convention) ===
+# https://ccapital.pro/llms.txt
 
 # === Host (Yandex hint) ===
 Host: https://ccapital.pro
