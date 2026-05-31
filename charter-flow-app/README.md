@@ -1,7 +1,7 @@
 # Charter Flow
 
 Институциональный клиентский дашборд для мониторинга сделок по договору займа
-`USDT-RUR/VDT-KMK-1/21042026`. Стек: **React (Vite) + Tailwind CSS + Framer Motion + lucide-react**.
+`XX-XX`. Стек: **React (Vite) + Tailwind CSS + Framer Motion + lucide-react**.
 
 Стиль — «банковский терминал» в Dark Mode, акцент — золото (`#D4AF37`).
 
