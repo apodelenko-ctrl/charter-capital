@@ -247,7 +247,7 @@ main{padding-top:64px;background:var(--paper)}
 .deck.dark > .blk,.deck.cream > .blk,.deck.contact > .blk{
   max-width:1280px;margin-left:auto;margin-right:auto;
 }
-.deck.dark{background:#020202;color:#fff}
+.deck.dark{background:#0a0e1a;color:#fff}
 .deck.dark h1,.deck.dark h2,.deck.dark h3,.deck.dark h4{color:#fff}
 .deck.dark p{color:var(--text-on-dark-soft)}
 .deck.cream{background:var(--paper-2)}
@@ -292,7 +292,7 @@ p{color:var(--text-soft);font-weight:400;line-height:1.65;font-size:16px}
 /* ─── HERO (full-bleed background) ─────────────────────── */
 .cc-hero{
   position:relative;min-height:min(96vh,860px);
-  background-color:#020202;background-size:cover;background-position:center;background-repeat:no-repeat;
+  background-color:#0a0e1a;background-size:cover;background-position:center;background-repeat:no-repeat;
   display:flex;align-items:center;
   isolation:isolate;overflow:hidden;
 }
@@ -387,7 +387,7 @@ p{color:var(--text-soft);font-weight:400;line-height:1.65;font-size:16px}
 .split{display:grid;grid-template-columns:46% 1fr}
 .split.reverse{grid-template-columns:1fr 46%}
 .split img{width:100%;height:100%;object-fit:cover;display:block}
-.split.reverse > img{order:2}
+.split.reverse > img,.split.reverse > picture{order:2}
 .panel{padding:88px 72px}
 .panel p{font-size:clamp(1rem,1.18vw,1.22rem);line-height:1.65;margin-bottom:18px}
 .panel p:last-child{margin-bottom:0}
@@ -538,7 +538,7 @@ p{color:var(--text-soft);font-weight:400;line-height:1.65;font-size:16px}
 /* ─── HUB ───────────────────────────────────────────────── */
 .hubs{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:36px}
 .hub{
-  background:#0e0e0e;border:1px solid #1f2937;
+  background:#0d1322;border:1px solid #1f2937;
   padding:28px 26px;border-radius:8px;
 }
 .hub .flag{font-size:11px;font-weight:600;letter-spacing:.16em;color:var(--gold-soft);text-transform:uppercase;margin-bottom:12px}
@@ -552,7 +552,7 @@ p{color:var(--text-soft);font-weight:400;line-height:1.65;font-size:16px}
 .hub.hub-fund{
   border:1px solid rgba(160,129,86,.5);
   box-shadow:0 0 0 4px rgba(160,129,86,.08);
-  background:#0e0e0e;
+  background:#0d1322;
 }
 .hub-link{
   display:inline-flex;align-items:center;gap:8px;
@@ -628,7 +628,7 @@ p{color:var(--text-soft);font-weight:400;line-height:1.65;font-size:16px}
 
 /* ─── CONTACT ───────────────────────────────────────────── */
 .deck.contact{
-  background:#020202;color:#fff;text-align:center;
+  background:#0a0e1a;color:#fff;text-align:center;
 }
 .deck.contact .blk{padding:96px 32px}
 .deck.contact h2{color:#fff;font-size:clamp(2rem,3.5vw,3rem);font-weight:300;margin-bottom:18px;letter-spacing:-.03em}
@@ -769,8 +769,8 @@ footer.f{
 /* ─── Responsive ───────────────────────────────────────── */
 @media(max-width:1100px){
   .blk,.panel,.hero-body{padding:56px 32px}
-  .split{grid-template-columns:1fr}
-  .split.reverse > img{order:0}
+  .split,.split.reverse{grid-template-columns:1fr}
+  .split.reverse > img,.split.reverse > picture{order:0}
   .deck.dark .grid-3,.steps,.hubs,.tiers{grid-template-columns:1fr}
   .deck.dark .grid-4{grid-template-columns:1fr 1fr}
   .timeline{grid-template-columns:1fr;gap:0}
@@ -792,6 +792,27 @@ footer.f{
   .hero-meta{gap:24px}
   .hero-meta-item .v{font-size:1.25rem}
   .deck.dark .grid-4{grid-template-columns:1fr}
+}
+/* ─── SCROLL REVEAL + SECTION SEAMS ────────────────────── */
+.deck > .blk{position:relative;z-index:1}
+.deck.split{position:relative;z-index:1}
+.deck.seam-top,.deck.seam-bottom{position:relative}
+.deck.dark.seam-top::before,.deck.contact.seam-top::before{
+  content:'';position:absolute;left:0;right:0;top:0;height:80px;z-index:0;pointer-events:none;
+  background:linear-gradient(180deg,#f3f0e8 0%,rgba(243,240,232,0) 100%);
+}
+.deck.dark.seam-bottom::after{
+  content:'';position:absolute;left:0;right:0;bottom:0;height:80px;z-index:0;pointer-events:none;
+  background:linear-gradient(0deg,#fbfaf6 0%,rgba(251,250,246,0) 100%);
+}
+@media (prefers-reduced-motion:no-preference){
+  .rv{opacity:0;transform:translateY(26px);
+      transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1);
+      will-change:opacity,transform}
+  .rv.rv-in{opacity:1;transform:none}
+  .rv-img{overflow:hidden}
+  .rv-img img{transform:scale(1.06);transition:transform 1.2s cubic-bezier(.22,1,.36,1)}
+  .rv-img.rv-in img{transform:scale(1)}
 }
 </style>
 
@@ -994,7 +1015,7 @@ footer.f{
 </section>
 
 <!-- ─── DECK 3, ТОКСИЧНЫЕ МАРШРУТЫ (dark) ───────────────── -->
-<section class="deck dark">
+<section class="deck dark seam-top">
   <div class="blk">
     <span class="kicker">Что больше не работает</span>
     <h2 class="title">Токсичные маршруты прошлого десятилетия</h2>
@@ -1025,7 +1046,7 @@ footer.f{
 </section>
 
 <!-- ─── DECK 4, КАРТА ДВИЖЕНИЯ КАПИТАЛА (dark, geo-flow) ── -->
-<section class="deck dark" id="path-map">
+<section class="deck dark seam-bottom" id="path-map">
   <div class="blk">
     <span class="kicker">Карта движения капитала</span>
     <h2 class="title">Россия → Сингапур → Пхукет → Гонконг / ЕС / Британия</h2>
@@ -1143,8 +1164,12 @@ footer.f{
 </section>
 
 <!-- ─── DECK 6, РЕАЛЬНЫЙ АКТИВ (split) ──────────────────── -->
-<section class="deck split">
-  <img src="assets/logic/10-villa-color.png" alt="Реальный актив как фундамент капитала"/>
+<section class="deck split reverse">
+  <picture>
+    <source media="(max-width: 768px)" srcset="assets/logic/10-real-asset-substance-800w.webp" type="image/webp"/>
+    <source srcset="assets/logic/10-real-asset-substance.webp" type="image/webp"/>
+    <img src="assets/logic/10-real-asset-substance.webp" alt="Реальный актив как фундамент капитала — макет виллы, архитектурный чертёж, латунный ключ и документ с печатью на тёмном столе" loading="lazy"/>
+  </picture>
   <div class="panel">
     <span class="kicker">Substance - реальная экономика</span>
     <h2 class="title">Реальный актив - единственная защита от вопроса «откуда».</h2>
@@ -1174,7 +1199,7 @@ footer.f{
 </section>
 
 <!-- ─── DECK 8, ХАБЫ (dark) ─────────────────────────────── -->
-<section class="deck dark" id="hubs">
+<section class="deck dark seam-top seam-bottom" id="hubs">
   <div class="blk">
     <span class="kicker">География</span>
     <h2 class="title">Где работает капитал - пять опорных точек на карте Азии и Европы</h2>
@@ -1323,7 +1348,7 @@ footer.f{
 </section>
 
 <!-- ─── DECK 11, CONTACT ────────────────────────────────── -->
-<section class="deck contact" id="contact">
+<section class="deck contact seam-top" id="contact">
   <div class="blk">
     <span class="kicker">Первый шаг</span>
     <h2>30 минут под NDA - закрытая встреча, не консультация</h2>
@@ -1534,6 +1559,34 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   },{threshold:.4});
   counters.forEach(function(c){ io.observe(c); });
+})();
+
+// Scroll reveal — мягкое появление секций и карточек при скролле
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce || !('IntersectionObserver' in window)) return;
+  var sel = '.split .panel, .split picture, .deck > .blk .kicker, .deck > .blk > .title, '
+          + '.deck > .blk > .lead, .toxic-card, .path-stage, .cal-phase, .hub, .tier, '
+          + '.before-after > div, .bound-grid > div, .deck.contact h2, .deck.contact p, '
+          + '.deck.contact .contact-channels';
+  var els = Array.prototype.slice.call(document.querySelectorAll(sel));
+  if(!els.length) return;
+  els.forEach(function(el){
+    el.classList.add('rv');
+    if(el.tagName === 'PICTURE') el.classList.add('rv-img');
+    // лёгкий стаггер внутри одной группы-родителя
+    var sibs = el.parentNode ? el.parentNode.children : [el];
+    var idx = Array.prototype.indexOf.call(sibs, el);
+    el.style.transitionDelay = Math.min(idx, 6) * 70 + 'ms';
+  });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(!en.isIntersecting) return;
+      en.target.classList.add('rv-in');
+      io.unobserve(en.target);
+    });
+  }, {threshold:.16, rootMargin:'0px 0px -8% 0px'});
+  els.forEach(function(el){ io.observe(el); });
 })();
 
 // Topbar dropdowns (Все продукты / Где вы сейчас)
