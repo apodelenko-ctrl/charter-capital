@@ -9,8 +9,8 @@
     <description>Аналитика международного private banking, ВЭД и геополитики капитала. Гонконг · Сингапур · ОАЭ · Швейцария · UK · Россия.</description>
     <language>ru</language>
     <copyright>© Charter Capital, 2026</copyright>
-    <lastBuildDate>Sun, 31 May 2026 04:00:00 +0000</lastBuildDate>
-    <pubDate>Sun, 31 May 2026 04:00:00 +0000</pubDate>
+    <lastBuildDate>Tue, 02 Jun 2026 04:00:00 +0000</lastBuildDate>
+    <pubDate>Tue, 02 Jun 2026 04:00:00 +0000</pubDate>
     <ttl>360</ttl>
     <generator>Charter Capital · ccapital.pro</generator>
     <atom:link href="https://ccapital.pro/journal/feed.xml" rel="self" type="application/rss+xml" />
@@ -19,6 +19,15 @@
       <title>Дайджест Charter Capital</title>
       <link>https://ccapital.pro/journal.html</link>
     </image>
+    <item>
+      <title>Валютный контроль 2026: почему это год штрафов — и как пройти самоаудит ВЭД</title>
+      <link>https://ccapital.pro/journal/valyutnyy-kontrol-2026-gayd.html</link>
+      <guid isPermaLink="true">https://ccapital.pro/journal/valyutnyy-kontrol-2026-gayd.html</guid>
+      <pubDate>Tue, 02 Jun 2026 10:00:00 +0700</pubDate>
+      <description>В 2026 ФНС квалифицирует любое расхождение между ВЭД-контрактом и платежом как незаконную валютную операцию по ст. 15.25 КоАП — штраф 20–40%. Пять чек-листов самоаудита: форма контракта и ЭП, платёжные агенты, порог 10 млн ₽ и УНК, зарубежные счета и ЭСП, закрывающие документы и дедлайны.</description>
+      <enclosure url="https://ccapital.pro/assets/journal/valyutnyy-kontrol-2026-hero.webp" type="image/webp" />
+      <category>Charter Capital · Дайджест</category>
+    </item>
     <item>
       <title>Глобальный комплаенс-2026: закрытие транзитных маршрутов через ОАЭ</title>
       <link>https://ccapital.pro/journal/hongkong-banks-uae-transit-compliance-2026.html</link>
