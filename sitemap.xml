@@ -70,6 +70,15 @@
   </url>
 
   <url>
+    <loc>https://ccapital.pro/bank-account.html</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ccapital.pro/bank-account.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ccapital.pro/bank-account.html"/>
+  </url>
+
+  <url>
     <loc>https://ccapital.pro/pay.html</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>weekly</changefreq>
