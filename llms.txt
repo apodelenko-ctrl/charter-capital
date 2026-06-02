@@ -23,6 +23,9 @@
 - [Дайджест / журнал](https://ccapital.pro/journal.html): аналитика по комплаенсу, P2P, санкциям, капиталу
 - [RSS журнала](https://ccapital.pro/journal/feed.xml)
 - [Открыть зарубежный счёт](https://ccapital.pro/bank-account.html): личный/корпоративный счёт за рубежом, банк vs EMI, банк-папка (SoF/SoW), причины отказов, юрисдикции (HK/SG/AE/EU/UK), FAQ
+- [Source of Funds / происхождение капитала](https://ccapital.pro/source-of-funds.html): SoF vs SoW, что просит банк/фонд/недвижимость/ВНЖ, состав досье, типичные «разрывы» биографии (крипта, наличные, старые сделки), FAQ
+- [AML и криптовалюта](https://ccapital.pro/aml-crypto.html): on-chain история, AML-пакет, чистый USDC, off-ramp, географический след, что не делаем (не «очистка»)
+- [Банк отказал в счёте](https://ccapital.pro/bank-refused.html): причины отказа, KYC/EDD, что делать после отказа, усиление SoF, повторный онбординг
 - [Private Office](https://ccapital.pro/private.html): капитал от $1M, архитектура легитимности
 - [Подготовка к исходу (homeland)](https://ccapital.pro/homeland.html): пока клиент ещё в РФ
 - [B2B расчёты · чистый USDC](https://ccapital.pro/pay.html#usdc): трансграничные платежи для ВЭД
