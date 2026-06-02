@@ -45,6 +45,7 @@
 
 ## Журнал — опубликованные статьи (authoritative content)
 
+- [Легализация криптовалюты в России 2026](https://ccapital.pro/journal/legalizaciya-kripty-rf-2026.html) — закон № 1194918-8, с 1 июля 2026 покупка через лицензированных посредников; лимит ЦБ банкам 1% капитала и риск-вес 1250% («риск блокировки»); неквалы — 300 000 ₽/год; почему легальная в РФ крипта ≠ «чистая» для зарубежного банка (Source of Funds, географический след)
 - [Валютный контроль 2026: год штрафов и самоаудит ВЭД](https://ccapital.pro/journal/valyutnyy-kontrol-2026-gayd.html) — гайд, чек-листы, штрафы, ОДДС (эксперт: адвокат Оксана Курочкина)
 - [Гонконг закрывает транзит через ОАЭ: комплаенс-2026](https://ccapital.pro/journal/hongkong-banks-uae-transit-compliance-2026.html) — Statrys стоп-лист, де-рискинг, демонтаж схемы «РФ — Дубай — Гонконг»
 - [География денег: почему чистый капитал стал «токсичным»](https://ccapital.pro/journal/geographic-footprint-clean-capital.html) — geographic footprint, P2P, доказать vs спрятать

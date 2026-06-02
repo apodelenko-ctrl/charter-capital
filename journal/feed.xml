@@ -9,8 +9,8 @@
     <description>Аналитика международного private banking, ВЭД и геополитики капитала. Гонконг · Сингапур · ОАЭ · Швейцария · UK · Россия.</description>
     <language>ru</language>
     <copyright>© Charter Capital, 2026</copyright>
-    <lastBuildDate>Tue, 02 Jun 2026 04:00:00 +0000</lastBuildDate>
-    <pubDate>Tue, 02 Jun 2026 04:00:00 +0000</pubDate>
+    <lastBuildDate>Tue, 02 Jun 2026 05:00:00 +0000</lastBuildDate>
+    <pubDate>Tue, 02 Jun 2026 05:00:00 +0000</pubDate>
     <ttl>360</ttl>
     <generator>Charter Capital · ccapital.pro</generator>
     <atom:link href="https://ccapital.pro/journal/feed.xml" rel="self" type="application/rss+xml" />
@@ -19,6 +19,15 @@
       <title>Дайджест Charter Capital</title>
       <link>https://ccapital.pro/journal.html</link>
     </image>
+    <item>
+      <title>Россия легализует криптовалюту с 1 июля 2026 — почему для зарубежного банка она всё равно «токсична»</title>
+      <link>https://ccapital.pro/journal/legalizaciya-kripty-rf-2026.html</link>
+      <guid isPermaLink="true">https://ccapital.pro/journal/legalizaciya-kripty-rf-2026.html</guid>
+      <pubDate>Tue, 02 Jun 2026 12:00:00 +0700</pubDate>
+      <description>Госдума приняла в первом чтении закон «О цифровой валюте» (№ 1194918-8): с 1 июля 2026 резиденты смогут легально покупать криптовалюту через лицензированных посредников. Но ЦБ режет банкам лимит до 1% капитала и риск-вес 1250% из-за «риска блокировки» — и это сигнал о том, как российский след крипты читается за рубежом. Что это значит для Source of Funds и вывода капитала.</description>
+      <enclosure url="https://ccapital.pro/assets/freedom-route/crypto-bankability.webp" type="image/webp" />
+      <category>Charter Capital · Дайджест</category>
+    </item>
     <item>
       <title>Валютный контроль 2026: почему это год штрафов — и как пройти самоаудит ВЭД</title>
       <link>https://ccapital.pro/journal/valyutnyy-kontrol-2026-gayd.html</link>
