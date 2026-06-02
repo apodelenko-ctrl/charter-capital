@@ -157,7 +157,7 @@ button{font-family:inherit;cursor:pointer}
 
 /* JURISDICTIONS */
 .jx{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
-.jx-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;transition:border-color .15s ease,transform .15s ease}
+.jx-card{display:block;color:inherit;text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;transition:border-color .15s ease,transform .15s ease}
 .jx-card:hover{border-color:#bfdbfe;transform:translateY(-2px)}
 .jx-card .flag{font-size:1.5rem;line-height:1;margin-bottom:10px}
 .jx-card h3{font-size:1rem;font-weight:600;color:var(--ink);margin-bottom:5px}
@@ -474,9 +474,9 @@ button{font-family:inherit;cursor:pointer}
       <p>Рабочие направления зависят от&nbsp;задачи и&nbsp;подтверждаемости источника. Ниже&nbsp;— ориентиры; точный выбор фиксируется после диагностики.</p>
     </div>
     <div class="jx">
-      <div class="jx-card"><div class="flag">🇭🇰</div><h3>Гонконг</h3><p>Сильный частный банкинг, расчёты с&nbsp;Азией. Требует качественную банк-папку.</p></div>
-      <div class="jx-card"><div class="flag">🇸🇬</div><h3>Сингапур</h3><p>Капитал, инвестиции, family office. Строгий, но&nbsp;предсказуемый комплаенс.</p></div>
-      <div class="jx-card"><div class="flag">🇦🇪</div><h3>ОАЭ</h3><p>Бизнес и&nbsp;расчёты; в&nbsp;2026 ужесточили проверку транзита&nbsp;— нужен реальный сабстанс.</p></div>
+      <a href="/account-hong-kong.html" class="jx-card"><div class="flag">🇭🇰</div><h3>Гонконг</h3><p>Сильный частный банкинг, расчёты с&nbsp;Азией. Требует качественную банк-папку.</p></a>
+      <a href="/account-singapore.html" class="jx-card"><div class="flag">🇸🇬</div><h3>Сингапур</h3><p>Капитал, инвестиции, family office. Строгий, но&nbsp;предсказуемый комплаенс.</p></a>
+      <a href="/account-uae.html" class="jx-card"><div class="flag">🇦🇪</div><h3>ОАЭ</h3><p>Бизнес и&nbsp;расчёты; в&nbsp;2026 ужесточили проверку транзита&nbsp;— нужен реальный сабстанс.</p></a>
       <div class="jx-card"><div class="flag">🇪🇺</div><h3>ЕС</h3><p>Отдельные банки и&nbsp;EMI при&nbsp;связи с&nbsp;юрисдикцией (ВНЖ, бизнес, актив).</p></div>
       <div class="jx-card"><div class="flag">🇬🇧</div><h3>Великобритания</h3><p>Private banking при&nbsp;сильном источнике средств и&nbsp;прозрачной структуре.</p></div>
       <div class="jx-card"><div class="flag">🌍</div><h3>Подбор под кейс</h3><p>Финальная юрисдикция определяется задачей, резидентностью и&nbsp;документами.</p></div>
@@ -583,6 +583,9 @@ button{font-family:inherit;cursor:pointer}
         <h4>Услуги</h4>
         <ul>
           <li><a href="/bank-account.html">Зарубежный счёт</a></li>
+          <li><a href="/account-hong-kong.html">Счёт в Гонконге</a></li>
+          <li><a href="/account-singapore.html">Счёт в Сингапуре</a></li>
+          <li><a href="/account-uae.html">Счёт в ОАЭ</a></li>
           <li><a href="/source-of-funds.html">Source of Funds</a></li>
           <li><a href="/aml-crypto.html">AML и крипта</a></li>
           <li><a href="/bank-refused.html">Банк отказал</a></li>
