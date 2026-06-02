@@ -143,6 +143,15 @@ section.s.cream-2{background:var(--bg-cream-2)}
 .fcard h4{font-size:15.5px;color:var(--ink);line-height:1.3}
 .fcard p{font-size:13.5px;line-height:1.6;color:var(--body)}
 
+/* product showcase */
+.vcard{background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);padding:26px 24px;display:flex;flex-direction:column;gap:8px;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.vcard:hover{transform:translateY(-3px);box-shadow:0 16px 34px -12px rgba(15,23,42,.2);border-color:#cbd5e1}
+.vcard .vc-k{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
+.vcard h4{font-size:16px;color:var(--ink)}
+.vcard p{font-size:13.5px;color:var(--body);line-height:1.55;flex:1}
+.vcard .vc-go{font-size:13px;font-weight:600;color:var(--gold);margin-top:6px}
+.vcard:hover .vc-go{color:#8c6e44}
+
 /* what client gets — rows */
 .rows{border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;background:#fff}
 .row2{display:grid;grid-template-columns:.8fr 1.2fr;border-bottom:1px solid var(--line)}
@@ -269,6 +278,41 @@ footer.f{background:#06080f;color:#94a3b8;padding:60px 0 28px;border-top:1px sol
   .hero-actions .btn{width:100%;justify-content:center}
   .contact-wrap,.reward{padding:34px 22px}
 }
+
+/* PRINT / PDF — превращаем страницу в аккуратный одностраничник */
+@media print{
+  @page{margin:13mm 12mm}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body{opacity:1 !important;background:#fff !important;color:#0f172a !important;font-size:10.5pt}
+  #topbar,.hero-actions,.topbar-cta,.copy-btn,.cform,.cf-submit{display:none !important}
+  .hero{min-height:auto !important;background:#fff !important;color:#0f172a !important;padding:6px 0 14px !important;border-bottom:1px solid #e2e8f0}
+  .hero::before{display:none !important}
+  .hero h1,.hero h1 strong,.hero-meta-item .v{color:#0f172a !important}
+  .hero-sub,.hero-note,.hero-meta-item .l{color:#475569 !important}
+  .hero-flag{border:1px solid #cbd5e1 !important;color:#334155 !important;background:#fff !important}
+  .hero-meta{border-top-color:#e2e8f0 !important}
+  section.s{padding:14px 0 !important}
+  section.s.cream,section.s.cream-2{background:#fff !important}
+  .s-head{margin-bottom:18px}
+  .reward,.contact-wrap,.script{background:#fff !important;border:1px solid #e2e8f0 !important;color:#0f172a !important}
+  .reward::before,.contact-wrap::before{display:none !important}
+  .reward h2,.reward h2 strong,.contact-text h2,.contact-text h2 strong{color:#0f172a !important}
+  .reward>.inner>p,.reward-note,.contact-text p,.script p{color:#334155 !important}
+  .reward-card{background:#f8fafc !important;border:1px solid #e2e8f0 !important}
+  .reward-card .r,.script .lbl{color:#a08156 !important}
+  .reward-card p{color:#334155 !important}
+  .contact-channel{color:#0f172a !important;border-color:#e2e8f0 !important;background:#fff !important}
+  .contact-person{background:#faf7ef !important;border-color:#e7dcc2 !important}
+  .contact-person .cp-name{color:#0f172a !important}.contact-person .cp-role{color:#475569 !important}
+  .contact-grid{grid-template-columns:1fr !important}
+  details>*{display:block !important}
+  .faq-icon{display:none !important}
+  .faq-item,.fcard,.proc-step,.duo-card,.role-card,.row2,.check .row,.vcard,.ftab .r,.s-head{break-inside:avoid}
+  footer.f{background:#fff !important;color:#334155 !important;border-top:1px solid #e2e8f0;padding:18px 0 0 !important}
+  .f-col h5,.f-col-brand .logo{color:#0f172a !important}
+  .f-channels a,a{color:#0f172a !important}
+  .f-disclaimer{color:#475569 !important;background:#faf7ef !important;border-color:#e7dcc2 !important}
+}
 </style>
 </head>
 <body>
@@ -305,6 +349,7 @@ footer.f{background:#06080f;color:#94a3b8;padding:60px 0 28px;border-top:1px sol
     <div class="hero-actions">
       <a href="#contact" class="btn btn-primary btn-lg">Стать партнёром <span class="arr">→</span></a>
       <a href="#process" class="btn btn-ghost btn-lg">Как устроен процесс</a>
+      <a href="/assets/partners/charter-partners-offer.pdf" class="btn btn-ghost btn-lg" download>Скачать PDF ↓</a>
     </div>
     <p class="hero-note">Материал для первичного контакта и переговоров с профессиональными партнёрами. Не является публичной офертой, инвестиционной рекомендацией или обещанием открытия банковского счёта.</p>
     <div class="hero-meta">
@@ -391,8 +436,41 @@ footer.f{background:#06080f;color:#94a3b8;padding:60px 0 28px;border-top:1px sol
   </div>
 </section>
 
+<!-- ВИТРИНА ПРОДУКТОВ -->
+<section class="s" id="products">
+  <div class="container">
+    <div class="s-head"><span class="kicker blue">Витрина продуктов</span><h2>Это не «обещания на словах». Продукты уже работают.</h2><p>Можно открыть прямо при клиенте и показать живые страницы. За каждым направлением — реальный сайт, процесс и документы.</p></div>
+    <div class="grid-4">
+      <a class="vcard" href="/pay.html" target="_blank" rel="noopener">
+        <span class="vc-k">Платежи · ВЭД</span>
+        <h4>Charter Capital · Pay</h4>
+        <p>Оплата иностранных поставщиков и «чистый» USDC для B2B-расчётов.</p>
+        <span class="vc-go">Открыть →</span>
+      </a>
+      <a class="vcard" href="/private.html" target="_blank" rel="noopener">
+        <span class="vc-k">Капитал · от $1M</span>
+        <h4>Private Office</h4>
+        <p>Архитектура легитимности капитала и выход на счета EU / UK / Швейцарии.</p>
+        <span class="vc-go">Открыть →</span>
+      </a>
+      <a class="vcard" href="/fund.html" target="_blank" rel="noopener">
+        <span class="vc-k">Фонд · real-assets</span>
+        <h4>Charter Asia Fund</h4>
+        <p>Доступ к курортной недвижимости и частным real-asset мандатам через SG-структуру.</p>
+        <span class="vc-go">Открыть →</span>
+      </a>
+      <a class="vcard" href="/wet-solution.html" target="_blank" rel="noopener">
+        <span class="vc-k">Недвижимость</span>
+        <h4>Недвижимость Пхукета</h4>
+        <p>Подобранный каталог проектов, прямой контракт с застройщиком, 0% покупателю.</p>
+        <span class="vc-go">Открыть →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- ЧТО ПОЛУЧАЕТ ПАРТНЁР -->
-<section class="s" id="partner">
+<section class="s cream" id="partner">
   <div class="container">
     <div class="s-head"><span class="kicker">Что получает профессиональный партнёр</span><h2>Сильный продукт — без потери клиента и без риска для репутации.</h2></div>
     <div class="grid-4">
@@ -400,6 +478,19 @@ footer.f{background:#06080f;color:#94a3b8;padding:60px 0 28px;border-top:1px sol
       <div class="fcard"><span class="num">02</span><h4>Сохранение доверия</h4><p>Клиент остаётся в вашем поле. Вы даёте понятное решение с фильтром рисков, а не случайный контакт.</p></div>
       <div class="fcard"><span class="num">03</span><h4>Прозрачная партнёрская логика</h4><p>Роль и вознаграждение закрепляются заранее: кто привёл клиента, где начинается работа, когда возникает результат.</p></div>
       <div class="fcard"><span class="num">04</span><h4>Защита от токсичных кейсов</h4><p>Мы не берём всех подряд. Слабый источник средств или мутная история — кейс не запускается, и ваша репутация не страдает.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ЧТО НЕ ТРЕБУЕТСЯ ОТ ПАРТНЁРА -->
+<section class="s">
+  <div class="container">
+    <div class="s-head"><span class="kicker">Что НЕ требуется от партнёра</span><h2>Вам не нужно становиться экспертом по ВЭД.</h2><p>Самый частый барьер — «я в этом не разбираюсь». Не нужно. Вся тяжёлая часть — на нашей стороне.</p></div>
+    <div class="grid-4">
+      <div class="fcard"><span class="num">—</span><h4>Не нужно разбираться в ВЭД и комплаенсе</h4><p>Разбор задачи, документов, маршрута и рисков берём на себя. От вас — только сам клиент и контекст.</p></div>
+      <div class="fcard"><span class="num">—</span><h4>Не нужен «поток»</h4><p>Передавайте только подходящих — даже одного клиента. Никаких планов и квот.</p></div>
+      <div class="fcard"><span class="num">—</span><h4>Не нужно ничего продавать</h4><p>Достаточно вовремя порекомендовать и познакомить. Дальше говорим мы — а вы остаётесь доверенным лицом.</p></div>
+      <div class="fcard"><span class="num">—</span><h4>Не нужно вкладывать деньги</h4><p>Вход бесплатный, без абонплат и обязательств. Вознаграждение — только по факту результата.</p></div>
     </div>
   </div>
 </section>
@@ -452,7 +543,7 @@ footer.f{background:#06080f;color:#94a3b8;padding:60px 0 28px;border-top:1px sol
 </section>
 
 <!-- КАК ОБЪЯСНЯТЬ -->
-<section class="s cream">
+<section class="s">
   <div class="container">
     <div class="s-head"><span class="kicker">Как аккуратно объяснять клиенту</span><h2>Готовая формулировка — и слова, которых лучше избегать.</h2></div>
     <div class="role-card" style="margin-bottom:26px">
@@ -471,7 +562,7 @@ footer.f{background:#06080f;color:#94a3b8;padding:60px 0 28px;border-top:1px sol
 </section>
 
 <!-- СКРИПТ -->
-<section class="s">
+<section class="s cream">
   <div class="container container-sm">
     <div class="s-head center"><span class="kicker">Скрипт для первого сообщения</span><h2>Можно отправлять почти без правок.</h2></div>
     <div class="script">
