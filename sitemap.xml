@@ -179,14 +179,6 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://ccapital.pro/property.html"/>
   </url>
 
-  <url>
-    <loc>https://ccapital.pro/wet-solution.html</loc>
-    <lastmod>2026-04-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://ccapital.pro/wet-solution.html"/>
-  </url>
-
   <!-- Property project pages -->
   <url>
     <loc>https://ccapital.pro/projects/the-modeva.html</loc>
