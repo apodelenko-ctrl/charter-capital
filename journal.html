@@ -129,6 +129,51 @@ button{font-family:inherit;cursor:pointer}
   transition:background .15s ease,border-color .15s ease,color .15s ease;
 }
 .tag-pill:hover,.tag-pill.is-active{background:var(--ink);color:#fff;border-color:var(--ink)}
+.page-head .head-note{
+  margin-top:18px;max-width:72ch;font-size:13.5px;line-height:1.6;color:var(--muted);
+}
+.page-head .head-note strong{color:var(--ink-2);font-weight:600}
+
+/* Section label common */
+.sec-head{
+  display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:12px;
+  padding:36px 0 22px;border-bottom:1px solid var(--ink);margin-bottom:28px;
+}
+.sec-head h2{font-family:inherit;font-size:1.5rem;font-weight:500;color:var(--ink);letter-spacing:-.02em}
+.sec-head .sec-sub{font-size:12.5px;color:var(--muted);letter-spacing:.02em;max-width:46ch}
+
+/* ─── НОВОСТИ РЫНКА (компактная лента) ─────────────────── */
+.news{padding:8px 0 40px;background:#fff}
+.news-list{list-style:none;display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.news-item{
+  display:grid;grid-template-columns:64px 1fr auto;gap:20px;align-items:start;
+  padding:20px 4px;border-bottom:1px solid var(--line);
+  transition:background .15s ease;
+}
+.news-item:hover{background:var(--bg-soft)}
+.news-item .news-date{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:12px;font-weight:600;color:var(--mute-soft);letter-spacing:.04em;padding-top:3px;
+}
+.news-item .news-cat{
+  display:inline-block;font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--blue);margin-bottom:7px;
+}
+.news-item .news-title{font-size:1.02rem;font-weight:600;letter-spacing:-.012em;line-height:1.32;color:var(--ink);margin-bottom:6px}
+.news-item .news-title a:hover{color:var(--blue)}
+.news-item .news-note{font-size:13.5px;line-height:1.55;color:var(--body)}
+.news-item .news-note a{color:var(--ink-2);font-weight:600;border-bottom:1px solid var(--line);transition:color .15s ease,border-color .15s ease}
+.news-item .news-note a:hover{color:var(--blue);border-color:var(--blue)}
+.news-item .news-src{
+  font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--mute-soft);white-space:nowrap;padding-top:3px;transition:color .15s ease;
+}
+.news-item .news-src:hover{color:var(--ink)}
+@media(max-width:640px){
+  .news-item{grid-template-columns:1fr;gap:6px}
+  .news-item .news-date{order:-1;padding-top:0}
+  .news-item .news-src{padding-top:6px}
+}
 
 .featured{padding:48px 0;background:#fff}
 .featured-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
@@ -337,40 +382,40 @@ button{font-family:inherit;cursor:pointer}
       Аналитика, объявления и кейсы из практики международного маршрута: банковский онбординг,
       AML и происхождение средств, корпоративные структуры, недвижимость Азии, ВНЖ и CBI.
     </p>
-    <div class="meta-row">
-      <a class="tag-pill is-active" href="#">Все</a>
-      <a class="tag-pill" href="#">Аналитика</a>
-      <a class="tag-pill" href="#">Объявления</a>
-      <a class="tag-pill" href="#">Кейсы</a>
-      <a class="tag-pill" href="#">Банкинг</a>
-      <a class="tag-pill" href="#">AML / SoF</a>
-      <a class="tag-pill" href="#">Недвижимость</a>
+    <div class="meta-row" role="tablist" aria-label="Разделы дайджеста">
+      <a class="tag-pill is-active" href="#analytics">Аналитика</a>
+      <a class="tag-pill" href="#news">Новости рынка</a>
+      <a class="tag-pill" href="#cases">Кейсы</a>
     </div>
+    <p class="head-note">
+      <strong>Аналитика</strong> — глубокие разборы и кейсы из практики международного маршрута: это ядро дайджеста.
+      <strong>Новости рынка</strong> — коротко о важных событиях с нашим углом. Так проще найти именно то, что нужно.
+    </p>
   </div>
 </section>
 
-<section class="featured">
+<section class="featured" id="analytics">
   <div class="container">
     <div class="featured-grid">
-      <a class="featured-img" href="journal/hongkong-banks-uae-transit-compliance-2026.html">
-        <img src="assets/journal/hk-uae-compliance-hero.webp" alt="Экран MacBook с кабинетом Statrys и красным уведомлением об ограничении транзакций с ОАЭ, Израилем и Ближним Востоком"/>
-        <span class="featured-tag">Свежее · Комплаенс 2026</span>
+      <a class="featured-img" href="journal/ofac-sankcii-nobitex-kripta-2026.html">
+        <img src="assets/journal/nobitex-ofac-sanctions-hero.jpg" alt="Биткоин и стейблкоин USDT во льду с красным штампом BLOCKED, печать Минфина США и герб Ирана — санкции OFAC против иранских криптобирж"/>
+        <span class="featured-tag">Свежее · Санкции 2026</span>
       </a>
       <div>
         <div class="featured-meta">
-          <span class="cat">Регуляторика</span>
+          <span class="cat">Санкции / Крипта</span>
           <span class="dot"></span>
-          <span>31 мая 2026</span>
+          <span>3 июня 2026</span>
           <span class="dot"></span>
           <span>7 мин чтения</span>
         </div>
-        <h2><a href="journal/hongkong-banks-uae-transit-compliance-2026.html">Глобальный комплаенс-2026: закрытие транзитных маршрутов через ОАЭ</a></h2>
+        <h2><a href="journal/ofac-sankcii-nobitex-kripta-2026.html">OFAC занёс Nobitex и иранские криптобиржи в SDN: почему «спрятать капитал в крипте» больше не работает</a></h2>
         <p class="lede">
-          Гонконгская Statrys обновила FAQ: в стоп-лист вошли ОАЭ, Ближний Восток, Кипр, BVI, Турция и
-          страны СНГ. Почему связка «РФ — фризона Дубая — счёт в Гонконге» демонтируется и что приходит
-          на смену шаблонным схемам.
+          США внесли в чёрный список крупнейшие криптобиржи Ирана. За один день рассыпались три мифа:
+          что крипту нельзя заморозить, что биржа за рубежом защищает и что блокчейн анонимен.
+          Что это значит для движения частного капитала из СНГ.
         </p>
-        <a class="read" href="journal/hongkong-banks-uae-transit-compliance-2026.html">Читать материал →</a>
+        <a class="read" href="journal/ofac-sankcii-nobitex-kripta-2026.html">Читать материал →</a>
       </div>
     </div>
   </div>
@@ -379,11 +424,22 @@ button{font-family:inherit;cursor:pointer}
 <section class="feed" id="feed">
   <div class="container">
     <div class="feed-head">
-      <h3>Свежие материалы</h3>
-      <span class="count">10 материалов · 3 в разработке</span>
+      <h3>Аналитика и&nbsp;кейсы</h3>
+      <span class="count">Глубокие разборы — ядро дайджеста</span>
     </div>
 
     <div class="feed-grid">
+
+      <article class="card tpl">
+        <a class="card-img" href="journal/ofac-sankcii-nobitex-kripta-2026.html">
+          <img src="assets/journal/nobitex-ofac-sanctions-hero.jpg" alt="Биткоин и USDT во льду со штампом BLOCKED, печать Минфина США и герб Ирана — санкции OFAC против иранских криптобирж"/>
+          <span class="card-tag red">Свежее · Санкции 2026</span>
+        </a>
+        <div class="card-meta"><span class="cat">Санкции / Крипта</span><span class="dot"></span><span>3 июня 2026</span><span class="dot"></span><span>7 мин</span></div>
+        <h4><a href="journal/ofac-sankcii-nobitex-kripta-2026.html">OFAC занёс Nobitex и иранские криптобиржи в SDN: почему «спрятать капитал в крипте» больше не работает</a></h4>
+        <p class="lede">США внесли в чёрный список крупнейшие криптобиржи Ирана. Стейблкоины замораживают, биржи блокируют целиком, блокчейн прозрачен — «анонимного» капитала не существует. Что делать с выводом капитала из СНГ.</p>
+        <span class="read-mini">Читать материал <span class="arr">→</span></span>
+      </article>
 
       <article class="card tpl">
         <a class="card-img" href="journal/gotovyy-biznes-v-evrope-substance-2026.html">
@@ -506,7 +562,7 @@ button{font-family:inherit;cursor:pointer}
         <span class="read-mini">Читать материал <span class="arr">→</span></span>
       </article>
 
-      <article class="card tpl">
+      <article class="card tpl" id="cases">
         <a class="card-img" href="#">
           <img src="assets/logic/19-cash-prep.webp" alt="Кейс: семья из РФ в Сингапур"/>
           <span class="card-tag amber">Кейс</span>
@@ -541,9 +597,73 @@ button{font-family:inherit;cursor:pointer}
 
     </div>
 
-    <div class="feed-more">
-      <button class="btn-more" type="button" disabled style="opacity:.5;cursor:not-allowed">Скоро новые материалы</button>
+  </div>
+</section>
+
+<section class="news" id="news">
+  <div class="container">
+    <div class="sec-head">
+      <h2>Новости рынка</h2>
+      <span class="sec-sub">Коротко о важных событиях недели — с нашим углом. Глубокие разборы по этим темам — в «Аналитике» выше.</span>
     </div>
+
+    <ul class="news-list">
+
+      <li class="news-item">
+        <div class="news-date">03·06</div>
+        <div class="news-body">
+          <span class="news-cat">Санкции · Крипта</span>
+          <h4 class="news-title"><a href="journal/ofac-sankcii-nobitex-kripta-2026.html">OFAC занёс в SDN Nobitex и ещё три иранские криптобиржи</a></h4>
+          <p class="news-note">Крупнейшее действие США против криптоэкономики Ирана. Стейблкоины замораживают, биржи блокируют целиком — «крипта вне политики» оказалась мифом. <a href="journal/ofac-sankcii-nobitex-kripta-2026.html">Наш разбор для капитала из СНГ →</a></p>
+        </div>
+        <a class="news-src" href="https://t.me/BloombergTerminals/6335" target="_blank" rel="noopener">Bloomberg ↗</a>
+      </li>
+
+      <li class="news-item">
+        <div class="news-date">02·06</div>
+        <div class="news-body">
+          <span class="news-cat">Рынки · Азия</span>
+          <h4 class="news-title">Южная Корея обогнала Индию и стала 6-й фондовой биржей мира ($5 трлн)</h4>
+          <p class="news-note">Капитализация +86% за год на буме полупроводников и ИИ; Индия просела до $4,8 трлн. Капитал и легитимность смещаются в Азию — почему мы говорим про <a href="journal/hongkong-replaces-switzerland-2026.html">Гонконг вместо Швейцарии</a>.</p>
+        </div>
+        <a class="news-src" href="https://t.me/BloombergTerminals/6335" target="_blank" rel="noopener">Bloomberg ↗</a>
+      </li>
+
+      <li class="news-item">
+        <div class="news-date">02·06</div>
+        <div class="news-body">
+          <span class="news-cat">Рынки · США</span>
+          <h4 class="news-title">«Неохотное ралли»: S&amp;P 500 +20% за 9 недель, но аналитики всё скептичнее</h4>
+          <p class="news-note">Оценки завышены, концентрация в техсекторе экстремальна, рост обеспечили 10 компаний. Хороший момент пересобрать риск и подумать о диверсификации юрисдикций хранения капитала.</p>
+        </div>
+        <a class="news-src" href="https://t.me/BloombergTerminals/6335" target="_blank" rel="noopener">Bloomberg ↗</a>
+      </li>
+
+      <li class="news-item">
+        <div class="news-date">01·06</div>
+        <div class="news-body">
+          <span class="news-cat">Крипта · Инфраструктура</span>
+          <h4 class="news-title">Binance запускает торговлю акциями США и токенизацию (bStocks)</h4>
+          <p class="news-note">7000+ акций и ETF за крипту, токены акций на BNB-чейне. Граница между крипто- и традфином стирается — но требования к происхождению средств и комплаенсу при выводе в банк никуда не делись.</p>
+        </div>
+        <a class="news-src" href="https://t.me/BloombergTerminals/6335" target="_blank" rel="noopener">Bloomberg ↗</a>
+      </li>
+
+      <li class="news-item">
+        <div class="news-date">01·06</div>
+        <div class="news-body">
+          <span class="news-cat">Геополитика · Ставки</span>
+          <h4 class="news-title">Нефть +8% после паузы в переговорах Иран — США, ФРС дольше держит ставки</h4>
+          <p class="news-note">Геополитика снова двигает потоки капитала и доллар. В такие периоды банки усиливают проверку трансграничных платежей — заранее чистый <a href="source-of-funds.html">Source of Funds</a> экономит недели.</p>
+        </div>
+        <a class="news-src" href="https://t.me/BloombergTerminals/6335" target="_blank" rel="noopener">Bloomberg ↗</a>
+      </li>
+
+    </ul>
+
+    <p class="head-note" style="margin-top:22px">
+      Новости — это срез повестки. Решения и&nbsp;маршруты мы&nbsp;разбираем в&nbsp;<a href="#analytics" style="color:var(--blue);font-weight:600">Аналитике</a>.
+    </p>
   </div>
 </section>
 
@@ -641,11 +761,11 @@ button{font-family:inherit;cursor:pointer}
       <div>
         <h4>Дайджест</h4>
         <ul>
+          <li><a href="journal/ofac-sankcii-nobitex-kripta-2026.html"><span>OFAC против Nobitex и иранской крипты</span><span class="date">03·06</span></a></li>
+          <li><a href="journal/legalizaciya-kripty-rf-2026.html"><span>Легализация крипты в РФ</span><span class="date">02·06</span></a></li>
           <li><a href="journal/hongkong-banks-uae-transit-compliance-2026.html"><span>Комплаенс-2026: транзит через ОАЭ</span><span class="date">31·05</span></a></li>
           <li><a href="journal/geographic-footprint-clean-capital.html"><span>География денег: биография капитала</span><span class="date">30·05</span></a></li>
-          <li><a href="journal/hongkong-replaces-switzerland-2026.html"><span>Гонконг вместо Швейцарии</span><span class="date">28·05</span></a></li>
-          <li><a href="journal/uk-sanctions-crypto-p2p-2026.html"><span>Гайки закручиваются: санкции UK против P2P</span><span class="date">26·05</span></a></li>
-          <li><a href="journal/offshore-loan-uk-look-through.html"><span>Ловушка «простых схем»</span><span class="date">16·05</span></a></li>
+          <li><a href="journal/uk-sanctions-crypto-p2p-2026.html"><span>Санкции UK против P2P</span><span class="date">26·05</span></a></li>
           <li><a href="journal.html"><span>Все материалы →</span></a></li>
         </ul>
       </div>
@@ -657,6 +777,31 @@ button{font-family:inherit;cursor:pointer}
     </div>
   </div>
 </footer>
+
+<script>
+(function(){
+  var pills = Array.prototype.slice.call(document.querySelectorAll('.meta-row .tag-pill'));
+  if(!pills.length) return;
+  var map = pills.map(function(p){
+    var id = (p.getAttribute('href')||'').replace('#','');
+    return {pill:p, el: id ? document.getElementById(id) : null};
+  }).filter(function(x){return x.el;});
+  if(!map.length) return;
+  function setActive(pill){ pills.forEach(function(p){p.classList.toggle('is-active', p===pill);}); }
+  pills.forEach(function(p){ p.addEventListener('click', function(){ setActive(p); }); });
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          var m = map.find(function(x){return x.el===e.target;});
+          if(m) setActive(m.pill);
+        }
+      });
+    }, {rootMargin:'-45% 0px -50% 0px', threshold:0});
+    map.forEach(function(x){ io.observe(x.el); });
+  }
+})();
+</script>
 
 </body>
 </html>
