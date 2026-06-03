@@ -70,12 +70,12 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
 a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
 button{font-family:inherit;cursor:pointer}
-.container{max-width:1080px;margin:0 auto;padding:0 32px}
+.container{max-width:1240px;margin:0 auto;padding:0 32px}
 @media(max-width:640px){.container{padding:0 22px}}
 
 /* TOPBAR */
 #topbar{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:saturate(150%) blur(14px);-webkit-backdrop-filter:saturate(150%) blur(14px);border-bottom:1px solid var(--line)}
-.topbar-inner{max-width:1080px;margin:0 auto;padding:18px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.topbar-inner{max-width:1240px;margin:0 auto;padding:18px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px}
 .topbar-brand{display:flex;align-items:baseline;gap:14px;color:var(--ink)}
 .topbar-brand .name{font-size:14px;font-weight:600;letter-spacing:.18em;text-transform:uppercase}
 .topbar-brand .tag{font-size:11px;font-weight:300;color:var(--muted);border-left:1px solid var(--line);padding-left:14px;letter-spacing:.04em}
@@ -87,11 +87,11 @@ button{font-family:inherit;cursor:pointer}
 @media(max-width:980px){.topbar-nav{display:none}.topbar-brand .tag{display:none}}
 
 /* HERO */
-.hero{position:relative;background-color:#06080f;background-image:url('assets/business-eu-hero.jpg');background-size:cover;background-position:center right;background-repeat:no-repeat;color:#fff;padding:150px 0 84px;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,8,15,.97) 0%,rgba(6,8,15,.90) 32%,rgba(6,8,15,.62) 58%,rgba(6,8,15,.30) 100%),linear-gradient(180deg,rgba(6,8,15,.30) 0%,rgba(6,8,15,0) 28%,rgba(6,8,15,.42) 100%);pointer-events:none}
-.hero-inner{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:0 32px}
-@media(max-width:760px){.hero{background-position:68% center}.hero::before{background:linear-gradient(180deg,rgba(6,8,15,.88) 0%,rgba(6,8,15,.74) 42%,rgba(6,8,15,.90) 100%)}}
-.breadcrumb{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:26px;font-weight:500}
+.hero{position:relative;min-height:90vh;display:flex;background-color:#06080f;background-image:url('assets/business-eu-hero.jpg');background-size:cover;background-position:center 28%;background-repeat:no-repeat;color:#fff;padding:118px 0 96px;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,8,15,.80) 0%,rgba(6,8,15,.22) 17%,rgba(6,8,15,.05) 38%,rgba(6,8,15,.52) 72%,rgba(6,8,15,.95) 100%),linear-gradient(90deg,rgba(6,8,15,.42) 0%,rgba(6,8,15,.06) 52%,rgba(6,8,15,0) 100%);pointer-events:none}
+.hero-inner{position:relative;z-index:1;max-width:1240px;margin:0 auto;padding:0 32px;width:100%;display:flex;flex-direction:column;justify-content:space-between;gap:48px}
+@media(max-width:760px){.hero{min-height:auto;padding:104px 0 72px;background-position:64% center}.hero::before{background:linear-gradient(180deg,rgba(6,8,15,.86) 0%,rgba(6,8,15,.52) 32%,rgba(6,8,15,.72) 70%,rgba(6,8,15,.95) 100%)}.hero-inner{gap:30px}}
+.breadcrumb{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.62);margin-bottom:0;font-weight:500;text-shadow:0 1px 12px rgba(0,0,0,.5)}
 .breadcrumb a{color:rgba(255,255,255,.78);transition:color .15s ease}
 .breadcrumb a:hover{color:#fff}
 .hero-flag{display:inline-flex;align-items:center;gap:9px;padding:7px 15px;border-radius:999px;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;background:rgba(37,99,235,.16);border:1px solid rgba(37,99,235,.45);color:#93c5fd;margin-bottom:26px}
@@ -378,19 +378,21 @@ button{font-family:inherit;cursor:pointer}
       <span>/</span>
       <span>Готовый бизнес в Европе</span>
     </nav>
-    <span class="hero-flag"><span class="dot"></span>🇪🇺 Европа · реальный бизнес · 2026</span>
-    <h1>Купить готовый бизнес в&nbsp;Европе — <strong>с&nbsp;чистым входом капитала</strong></h1>
-    <p class="hero-sub">
-      «Золотые визы» и&nbsp;пассивные схемы закрываются&nbsp;— Европа больше не&nbsp;даёт вид на&nbsp;жительство
-      просто за&nbsp;вложенные деньги. Теперь нужно <strong>реальное дело</strong>: офис, сотрудники, живая работа
-      в&nbsp;стране. Готовый действующий бизнес даёт это с&nbsp;первого дня.
-      Но&nbsp;узкое место&nbsp;— не&nbsp;найти объект, а&nbsp;завести деньги так, чтобы их&nbsp;принял
-      западный банк. Это&nbsp;и&nbsp;есть наша работа&nbsp;—
-      <a href="/source-of-funds.html" style="color:#93c5fd;border-bottom:1px solid rgba(147,197,253,.4)">документально чистый Source&nbsp;of&nbsp;Funds</a>.
-    </p>
-    <div class="hero-actions">
-      <a href="#contact" class="btn btn-primary">Запросить разбор кейса <span class="arr">→</span></a>
-      <a href="/diagnostic.html" class="btn btn-ghost">Диагностика маршрута · 60 сек</a>
+    <div class="hero-content">
+      <span class="hero-flag"><span class="dot"></span>🇪🇺 Европа · реальный бизнес · 2026</span>
+      <h1>Купить готовый бизнес в&nbsp;Европе — <strong>с&nbsp;чистым входом капитала</strong></h1>
+      <p class="hero-sub">
+        «Золотые визы» и&nbsp;пассивные схемы закрываются&nbsp;— Европа больше не&nbsp;даёт вид на&nbsp;жительство
+        просто за&nbsp;вложенные деньги. Теперь нужно <strong>реальное дело</strong>: офис, сотрудники, живая работа
+        в&nbsp;стране. Готовый действующий бизнес даёт это с&nbsp;первого дня.
+        Но&nbsp;узкое место&nbsp;— не&nbsp;найти объект, а&nbsp;завести деньги так, чтобы их&nbsp;принял
+        западный банк. Это&nbsp;и&nbsp;есть наша работа&nbsp;—
+        <a href="/source-of-funds.html" style="color:#93c5fd;border-bottom:1px solid rgba(147,197,253,.4)">документально чистый Source&nbsp;of&nbsp;Funds</a>.
+      </p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">Запросить разбор кейса <span class="arr">→</span></a>
+        <a href="/diagnostic.html" class="btn btn-ghost">Диагностика маршрута · 60 сек</a>
+      </div>
     </div>
   </div>
 </section>
