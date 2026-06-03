@@ -32,18 +32,22 @@
 <meta property="og:title" content="Купить готовый бизнес в Европе — substance и чистый вход капитала"/>
 <meta property="og:description" content="Готовый действующий бизнес в ЕС как реальный substance, документально чистый Source of Funds и приём капитала из СНГ западным банком."/>
 <meta property="og:url" content="https://ccapital.pro/business-eu.html"/>
-<meta property="og:image" content="https://ccapital.pro/assets/journal/geneva-swiss-alps-winter-hero.webp"/>
+<meta property="og:image" content="https://ccapital.pro/assets/business-eu-hero.jpg"/>
+<meta property="og:image:width" content="1600"/>
+<meta property="og:image:height" content="1066"/>
+<meta property="og:image:alt" content="Состоятельный предприниматель в уличном кафе Лондона с газетой Charter Capital Digest на фоне витрины винного бутика"/>
 <meta property="og:locale" content="ru_RU"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Купить готовый бизнес в Европе — substance и чистый вход капитала"/>
 <meta name="twitter:description" content="Действующий бизнес в ЕС, Source of Funds под ключ и приём капитала из СНГ западным банком."/>
-<meta name="twitter:image" content="https://ccapital.pro/assets/journal/geneva-swiss-alps-winter-hero.webp"/>
+<meta name="twitter:image" content="https://ccapital.pro/assets/business-eu-hero.jpg"/>
 
 <link rel="dns-prefetch" href="https://mc.yandex.ru"/>
 <link rel="dns-prefetch" href="https://fonts.googleapis.com"/>
 <link rel="dns-prefetch" href="https://fonts.gstatic.com"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="preload" as="image" href="assets/business-eu-hero.jpg" fetchpriority="high"/>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" media="print" onload="this.media='all'"/>
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"/></noscript>
@@ -71,7 +75,7 @@ button{font-family:inherit;cursor:pointer}
 
 /* TOPBAR */
 #topbar{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:saturate(150%) blur(14px);-webkit-backdrop-filter:saturate(150%) blur(14px);border-bottom:1px solid var(--line)}
-.topbar-inner{max-width:1320px;margin:0 auto;padding:18px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.topbar-inner{max-width:1080px;margin:0 auto;padding:18px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px}
 .topbar-brand{display:flex;align-items:baseline;gap:14px;color:var(--ink)}
 .topbar-brand .name{font-size:14px;font-weight:600;letter-spacing:.18em;text-transform:uppercase}
 .topbar-brand .tag{font-size:11px;font-weight:300;color:var(--muted);border-left:1px solid var(--line);padding-left:14px;letter-spacing:.04em}
@@ -83,9 +87,10 @@ button{font-family:inherit;cursor:pointer}
 @media(max-width:980px){.topbar-nav{display:none}.topbar-brand .tag{display:none}}
 
 /* HERO */
-.hero{position:relative;background:linear-gradient(125deg,#06080f 0%,#0a1024 55%,#0c142b 100%);color:#fff;padding:150px 0 84px;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 18% 26%,rgba(37,99,235,.20) 0%,transparent 55%),radial-gradient(circle at 86% 70%,rgba(160,129,86,.12) 0%,transparent 55%);pointer-events:none}
-.hero-inner{position:relative;max-width:1080px;margin:0 auto;padding:0 32px}
+.hero{position:relative;background-color:#06080f;background-image:url('assets/business-eu-hero.jpg');background-size:cover;background-position:center right;background-repeat:no-repeat;color:#fff;padding:150px 0 84px;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,8,15,.97) 0%,rgba(6,8,15,.90) 32%,rgba(6,8,15,.62) 58%,rgba(6,8,15,.30) 100%),linear-gradient(180deg,rgba(6,8,15,.30) 0%,rgba(6,8,15,0) 28%,rgba(6,8,15,.42) 100%);pointer-events:none}
+.hero-inner{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:0 32px}
+@media(max-width:760px){.hero{background-position:68% center}.hero::before{background:linear-gradient(180deg,rgba(6,8,15,.88) 0%,rgba(6,8,15,.74) 42%,rgba(6,8,15,.90) 100%)}}
 .breadcrumb{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:26px;font-weight:500}
 .breadcrumb a{color:rgba(255,255,255,.78);transition:color .15s ease}
 .breadcrumb a:hover{color:#fff}
