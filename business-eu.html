@@ -218,6 +218,29 @@ button{font-family:inherit;cursor:pointer}
 .review-card .who .role{font-size:12.5px;color:var(--muted);margin-top:2px}
 @media(max-width:880px){.reviews{grid-template-columns:1fr}}
 
+/* CATALOG */
+.catalog{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}
+.obj-card{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:border-color .15s ease,transform .15s ease}
+.obj-card:hover{border-color:#bfdbfe;transform:translateY(-2px)}
+.obj-top{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid var(--line-soft);background:var(--bg-soft)}
+.obj-sector{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--gold)}
+.obj-flag{font-size:1.3rem;line-height:1}
+.obj-body{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1}
+.obj-body h3{font-size:1.02rem;font-weight:600;color:var(--ink);margin-bottom:3px}
+.obj-loc{font-size:12.5px;color:var(--muted);margin-bottom:15px}
+.obj-specs{list-style:none;margin:0 0 16px;padding:0;display:flex;flex-direction:column;gap:8px}
+.obj-specs li{display:flex;justify-content:space-between;gap:10px;font-size:13px;border-bottom:1px dashed var(--line-soft);padding-bottom:8px}
+.obj-specs li:last-child{border-bottom:0;padding-bottom:0}
+.obj-specs .k{color:var(--muted)}
+.obj-specs .v{color:var(--ink-2);font-weight:600;text-align:right}
+.obj-specs .v.price{color:var(--ink);font-size:14px}
+.obj-fit{margin-top:auto;display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:#15803d;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:100px;padding:6px 13px;align-self:flex-start}
+.catalog-note{margin-top:22px;font-size:13px;line-height:1.65;color:var(--muted);background:var(--bg-soft);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:var(--radius);padding:16px 20px}
+.catalog-cta{margin-top:24px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.btn-line{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn-line:hover{border-color:var(--ink-2);background:var(--bg-soft)}
+@media(max-width:880px){.catalog{grid-template-columns:1fr}}
+
 /* COMPLIANCE (EN) */
 .compliance{margin-top:8px;border:1px solid var(--line);border-left:4px solid var(--ink-2);border-radius:var(--radius);background:var(--bg-soft);padding:28px 30px}
 .compliance h3{font-size:1.05rem;font-weight:600;color:var(--ink);margin-bottom:12px;letter-spacing:.01em}
@@ -475,6 +498,122 @@ button{font-family:inherit;cursor:pointer}
   </div>
 </section>
 
+<section class="s" id="catalog">
+  <div class="container">
+    <div class="s-head">
+      <span class="kicker">Витрина объектов</span>
+      <h2>Как выглядят объекты с&nbsp;рынка — <strong>и под какой путь они подходят</strong></h2>
+      <p>Ниже&nbsp;— типовые объекты с&nbsp;европейских маркетплейсов готового бизнеса: чтобы вы понимали диапазоны цен, выручки и&nbsp;substance-параметры. Актуальную подборку под&nbsp;ваш бюджет и&nbsp;цель собираем индивидуально.</p>
+    </div>
+    <div class="catalog">
+
+      <article class="obj-card">
+        <div class="obj-top"><span class="obj-sector">HoReCa · Ресторан</span><span class="obj-flag">🇩🇪</span></div>
+        <div class="obj-body">
+          <h3>Действующий ресторан-бистро</h3>
+          <div class="obj-loc">Берлин, Германия · работает 8&nbsp;лет</div>
+          <ul class="obj-specs">
+            <li><span class="k">Цена</span><span class="v price">€285&nbsp;000</span></li>
+            <li><span class="k">Выручка / год</span><span class="v">≈ €620&nbsp;000</span></li>
+            <li><span class="k">Сотрудники</span><span class="v">9 человек</span></li>
+            <li><span class="k">Помещение</span><span class="v">долгосрочная аренда</span></li>
+          </ul>
+          <span class="obj-fit">✓ Готов под §21 (Германия)</span>
+        </div>
+      </article>
+
+      <article class="obj-card">
+        <div class="obj-top"><span class="obj-sector">HoReCa · Отель</span><span class="obj-flag">🇵🇹</span></div>
+        <div class="obj-body">
+          <h3>Бутик-отель, 12&nbsp;номеров</h3>
+          <div class="obj-loc">Алгарве, Португалия · загрузка 68%</div>
+          <ul class="obj-specs">
+            <li><span class="k">Цена</span><span class="v price">€1&nbsp;350&nbsp;000</span></li>
+            <li><span class="k">Выручка / год</span><span class="v">≈ €540&nbsp;000</span></li>
+            <li><span class="k">Сотрудники</span><span class="v">7 человек</span></li>
+            <li><span class="k">Актив</span><span class="v">здание в&nbsp;собственности</span></li>
+          </ul>
+          <span class="obj-fit">✓ Сильный substance + актив</span>
+        </div>
+      </article>
+
+      <article class="obj-card">
+        <div class="obj-top"><span class="obj-sector">Сервис · B2B</span><span class="obj-flag">🇩🇪</span></div>
+        <div class="obj-body">
+          <h3>Сервисная компания (клининг/FM)</h3>
+          <div class="obj-loc">Бавария, Германия · контракты B2B</div>
+          <ul class="obj-specs">
+            <li><span class="k">Цена</span><span class="v price">€460&nbsp;000</span></li>
+            <li><span class="k">Выручка / год</span><span class="v">≈ €1&nbsp;100&nbsp;000</span></li>
+            <li><span class="k">Сотрудники</span><span class="v">14 человек</span></li>
+            <li><span class="k">Прибыль</span><span class="v">≈ €170&nbsp;000</span></li>
+          </ul>
+          <span class="obj-fit">✓ Готов под §21 (Германия)</span>
+        </div>
+      </article>
+
+      <article class="obj-card">
+        <div class="obj-top"><span class="obj-sector">HoReCa · Кафе</span><span class="obj-flag">🇪🇸</span></div>
+        <div class="obj-body">
+          <h3>Кофейня, 2&nbsp;точки</h3>
+          <div class="obj-loc">Валенсия, Испания · стабильный поток</div>
+          <ul class="obj-specs">
+            <li><span class="k">Цена</span><span class="v price">€195&nbsp;000</span></li>
+            <li><span class="k">Выручка / год</span><span class="v">≈ €410&nbsp;000</span></li>
+            <li><span class="k">Сотрудники</span><span class="v">6 человек</span></li>
+            <li><span class="k">Формат</span><span class="v">2 арендованные точки</span></li>
+          </ul>
+          <span class="obj-fit">✓ Доступный вход + substance</span>
+        </div>
+      </article>
+
+      <article class="obj-card">
+        <div class="obj-top"><span class="obj-sector">Производство · Пекарня</span><span class="obj-flag">🇫🇷</span></div>
+        <div class="obj-body">
+          <h3>Пекарня-кондитерская</h3>
+          <div class="obj-loc">Лион, Франция · своя клиентская база</div>
+          <ul class="obj-specs">
+            <li><span class="k">Цена</span><span class="v price">€240&nbsp;000</span></li>
+            <li><span class="k">Выручка / год</span><span class="v">≈ €500&nbsp;000</span></li>
+            <li><span class="k">Сотрудники</span><span class="v">8 человек</span></li>
+            <li><span class="k">Помещение</span><span class="v">аренда + оборудование</span></li>
+          </ul>
+          <span class="obj-fit">✓ Под Talent Passport (Франция)</span>
+        </div>
+      </article>
+
+      <article class="obj-card">
+        <div class="obj-top"><span class="obj-sector">Digital · E-commerce</span><span class="obj-flag">🇪🇺</span></div>
+        <div class="obj-body">
+          <h3>Онлайн-бренд (DTC)</h3>
+          <div class="obj-loc">ЕС, релоцируемый · прозрачная отчётность</div>
+          <ul class="obj-specs">
+            <li><span class="k">Цена</span><span class="v price">€330&nbsp;000</span></li>
+            <li><span class="k">Выручка / год</span><span class="v">≈ €780&nbsp;000</span></li>
+            <li><span class="k">Команда</span><span class="v">4 человека</span></li>
+            <li><span class="k">Особенность</span><span class="v">мобильность актива</span></li>
+          </ul>
+          <span class="obj-fit">✓ Под мобильность + substance-историю</span>
+        </div>
+      </article>
+
+    </div>
+
+    <p class="catalog-note">
+      <strong>Важно:</strong> это&nbsp;обобщённые примеры типовых объектов с&nbsp;европейских маркетплейсов готового бизнеса
+      (для&nbsp;понимания диапазонов цен и&nbsp;параметров), а&nbsp;<strong>не&nbsp;конкретные текущие предложения и&nbsp;не&nbsp;оферта</strong>.
+      Актуальную подборку под&nbsp;ваш бюджет, страну и&nbsp;цель собираем индивидуально через партнёрские площадки; каждый объект
+      проходит предварительную проверку на&nbsp;substance и&nbsp;банкопригодность вашего капитала. Подбор объекта&nbsp;— рынок;
+      чтобы деньги приняли&nbsp;— это&nbsp;наша работа.
+    </p>
+
+    <div class="catalog-cta">
+      <a href="#contact" class="btn btn-primary">Запросить подборку под бюджет <span class="arr">→</span></a>
+      <a href="/diagnostic.html" class="btn btn-line">Диагностика маршрута · 60&nbsp;сек</a>
+    </div>
+  </div>
+</section>
+
 <section class="s">
   <div class="container">
     <div class="s-head">
@@ -582,7 +721,7 @@ button{font-family:inherit;cursor:pointer}
       </details>
       <details>
         <summary>Какой бюджет нужен?</summary>
-        <p>Зависит от&nbsp;страны и&nbsp;типа бизнеса. Небольшой действующий бизнес&nbsp;— обычно от&nbsp;€100&nbsp;000–300&nbsp;000; ресторан или&nbsp;мини-отель&nbsp;— выше. К&nbsp;цене объекта добавляются due&nbsp;diligence, юристы, налоги на&nbsp;сделку и&nbsp;оборотный капитал. Точный бюджет&nbsp;— после диагностики.</p>
+        <p>Зависит от&nbsp;страны и&nbsp;типа бизнеса. Небольшой действующий бизнес&nbsp;— обычно от&nbsp;€100&nbsp;000–300&nbsp;000; ресторан или&nbsp;мини-отель&nbsp;— выше. Диапазоны цен и&nbsp;параметров видно в&nbsp;<a href="#catalog">витрине объектов</a> выше. К&nbsp;цене объекта добавляются due&nbsp;diligence, юристы, налоги на&nbsp;сделку и&nbsp;оборотный капитал. Точный бюджет&nbsp;— после диагностики.</p>
       </details>
       <details>
         <summary>В какой стране ЕС проще получить ВНЖ через бизнес?</summary>
