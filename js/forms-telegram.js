@@ -8,24 +8,26 @@
  * Архитектура:
  *   - Перехватываем submit в capture-фазе (срабатывает ДО existing handlers)
  *   - Собираем FormData (значения полей ещё на месте)
- *   - Шлём в Telegram Bot API (sendMessage)
+ *   - Шлём ТЕКСТ заявки на Cloudflare Worker-прокси (он добавляет токен и
+ *     пересылает в Telegram). Токена в этом файле больше нет.
  *   - Existing handler продолжает работать как был (Formspree, success UI, etc)
  *
  * Telegram-бот: @ccapital_forms_bot
- * Канал доставки: личка @artpoland25 (chat_id 8085530280)
+ * Канал доставки: личка @artpoland25 (chat_id 8085530280) — задаётся в воркере
  *
- * Замечания по безопасности:
- *   Токен бота — публичный (виден в JS на статичном сайте). Это приемлемо для
- *   send-only бота: worst case — спамеры могут слать в наш чат. Решается:
- *     1. Заблокировать бота через @BotFather, выпустить нового
- *     2. (опционально) Переехать на Cloudflare Worker как proxy
+ * Безопасность:
+ *   Токен бота хранится ТОЛЬКО в секрете воркера (env.TG_TOKEN), не в этом JS.
+ *   Поэтому токен нельзя выскрести из исходников сайта и угнать/переименовать
+ *   бота. Деплой воркера: см. cloudflare-worker/README.md
  */
 (function () {
   if (!window.fetch || !window.FormData) return;
 
-  var TG_TOKEN   = '8843763461:AAEIgp6VBE3Y5jCm05NFo1JSrrLDw7ghY38';
-  var TG_CHAT_ID = 8085530280;
-  var TG_API     = 'https://api.telegram.org/bot' + TG_TOKEN + '/sendMessage';
+  /* URL задеплоенного воркера. После `wrangler deploy` вставьте сюда выданный
+     адрес вида https://ccapital-forms-proxy.<субдомен>.workers.dev
+     Пока стоит плейсхолдер — доставка в Telegram просто отключена (Formspree
+     работает в любом случае). */
+  var PROXY_URL = 'https://ccapital-forms-proxy.wegc.workers.dev';
 
   /* Маппинг form_source → иконка + читаемое имя */
   var SOURCE_META = {
@@ -165,17 +167,19 @@
   }
 
   function sendTelegram(text) {
-    /* Используем URLSearchParams (application/x-www-form-urlencoded) — это CORS
-       simple request: нет preflight (~200ms экономии), нет конфликта с Safari
-       WebKit keepalive-багом. Telegram Bot API принимает оба формата (JSON и
-       form-urlencoded), результат идентичен. */
+    /* Плейсхолдер не заменён — воркер ещё не подключён. Тихо выходим:
+       Formspree доставит заявку в любом случае. */
+    if (!PROXY_URL || PROXY_URL === 'REPLACE_WITH_WORKER_URL') {
+      return Promise.resolve();
+    }
+    /* Шлём только text. Токен и chat_id добавляет воркер на сервере.
+       URLSearchParams (application/x-www-form-urlencoded) — это CORS simple
+       request: нет preflight (~200ms экономии), нет конфликта с Safari WebKit
+       keepalive-багом. */
     var params = new URLSearchParams();
-    params.append('chat_id', String(TG_CHAT_ID));
     params.append('text', text);
-    params.append('parse_mode', 'HTML');
-    params.append('disable_web_page_preview', 'true');
     try {
-      return fetch(TG_API, {
+      return fetch(PROXY_URL, {
         method: 'POST',
         body: params
       }).then(function (r) {

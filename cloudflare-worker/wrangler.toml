@@ -1,0 +1,8 @@
+name = "ccapital-forms-proxy"
+main = "index.js"
+compatibility_date = "2026-06-03"
+
+# TG_CHAT_ID — не секрет, но держим как переменную окружения.
+# TG_TOKEN ставится отдельно как СЕКРЕТ:  wrangler secret put TG_TOKEN
+[vars]
+TG_CHAT_ID = "8085530280"
