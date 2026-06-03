@@ -40,6 +40,7 @@
 - [Счёт в Сингапуре](https://ccapital.pro/account-singapore.html): Pte Ltd (директор-резидент обязателен), family office, private banking, комплаенс MAS, связка с Charter Asia Fund, FAQ
 - [Счёт в ОАЭ](https://ccapital.pro/account-uae.html): Дубай, Free Zone (DMCC/IFZA/DIFC) и Mainland, substance, резидентский и non-resident счёт, FATF-комплаенс 2026, FAQ
 - [Source of Funds / происхождение капитала](https://ccapital.pro/source-of-funds.html): SoF vs SoW, что просит банк/фонд/недвижимость/ВНЖ, состав досье, типичные «разрывы» биографии, FAQ
+- [Готовый бизнес в Европе](https://ccapital.pro/business-eu.html): покупка действующего бизнеса в ЕС (ресторан/отель/кафе/сервис/онлайн) как substance под ВНЖ, документально чистый Source of Funds и приём капитала из СНГ западным банком/эскроу; «золотые визы» 2026 закрываются — нужен реальный substance; Германия §21, Франция Talent Passport; ВНЖ через лицензированных партнёров; CP = слой комплаенса, а не брокер
 - [AML и криптовалюта](https://ccapital.pro/aml-crypto.html): on-chain история, AML-пакет, чистый USDC, off-ramp, географический след, что НЕ делаем (не «очистка»)
 - [Банк отказал в счёте](https://ccapital.pro/bank-refused.html): причины отказа, KYC/EDD, что делать после отказа, усиление SoF, повторный онбординг
 
