@@ -208,6 +208,23 @@ button{font-family:inherit;cursor:pointer}
 .cf-submit:hover{background:#1d4ed8}
 @media(max-width:860px){.contact-grid{grid-template-columns:1fr;gap:34px}.cf-row{grid-template-columns:1fr}}
 
+/* REVIEWS */
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}
+.review-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px 26px;display:flex;flex-direction:column}
+.review-card .stars{color:var(--gold-bright);font-size:14px;letter-spacing:2px;margin-bottom:14px}
+.review-card .quote{font-size:15px;line-height:1.65;color:var(--ink-2);flex:1}
+.review-card .who{margin-top:18px;padding-top:16px;border-top:1px solid var(--line-soft)}
+.review-card .who .name{font-size:14px;font-weight:600;color:var(--ink)}
+.review-card .who .role{font-size:12.5px;color:var(--muted);margin-top:2px}
+@media(max-width:880px){.reviews{grid-template-columns:1fr}}
+
+/* COMPLIANCE (EN) */
+.compliance{margin-top:8px;border:1px solid var(--line);border-left:4px solid var(--ink-2);border-radius:var(--radius);background:var(--bg-soft);padding:28px 30px}
+.compliance h3{font-size:1.05rem;font-weight:600;color:var(--ink);margin-bottom:12px;letter-spacing:.01em}
+.compliance p{font-size:14px;line-height:1.7;color:var(--body);margin-bottom:10px}
+.compliance p:last-child{margin-bottom:0}
+.compliance strong{color:var(--ink);font-weight:600}
+
 /* FOOTER */
 .footer{background:#06080f;color:#94a3b8;padding:60px 0 34px}
 .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:34px;margin-bottom:38px}
@@ -273,7 +290,11 @@ button{font-family:inherit;cursor:pointer}
         {"@type": "Question", "name": "Какой бизнес чаще покупают для релокации?", "acceptedAnswer": {"@type": "Answer", "text": "Небольшой действующий бизнес с понятной экономикой: ресторан, кафе, мини-отель или гостевой дом, сервисная компания, онлайн-бизнес (e-commerce, SaaS). Важна не отрасль, а реальная деятельность, денежный поток и сотрудники — то, что регулятор считает substance."}},
         {"@type": "Question", "name": "Почему западный банк отказывается принимать деньги из России?", "acceptedAnswer": {"@type": "Answer", "text": "Из-за «российского следа» и слабого Source of Funds капитал из СНГ часто читается банком как высокорисковый. Без документированной биографии денег сделка купли-продажи бизнеса срывается на этапе эскроу или нотариуса. Задача Charter Capital — сделать капитал банковски-читаемым."}},
         {"@type": "Question", "name": "Что именно делает Charter Capital в такой сделке?", "acceptedAnswer": {"@type": "Answer", "text": "Готовит Source of Funds / Source of Wealth, выстраивает чистую структуру владения, сопровождает приём средств западным банком и эскроу, координирует подбор объекта с брокерами и оформление ВНЖ через лицензированных партнёров. Charter Capital — слой доверия и комплаенса поверх сделки, а не брокер недвижимости."}},
-        {"@type": "Question", "name": "Charter Capital гарантирует ВНЖ или одобрение банка?", "acceptedAnswer": {"@type": "Answer", "text": "Нет. Решение принимают банк, нотариус и иммиграционные органы. Мы повышаем вероятность успеха корректной подготовкой капитала и структуры и честно говорим, если кейс нереалистичен."}}
+        {"@type": "Question", "name": "Charter Capital гарантирует ВНЖ или одобрение банка?", "acceptedAnswer": {"@type": "Answer", "text": "Нет. Решение принимают банк, нотариус и иммиграционные органы. Мы повышаем вероятность успеха корректной подготовкой капитала и структуры и честно говорим, если кейс нереалистичен."}},
+        {"@type": "Question", "name": "Сколько времени занимает покупка бизнеса в Европе с релокацией капитала?", "acceptedAnswer": {"@type": "Answer", "text": "В среднем 4–9 месяцев. Подготовка Source of Funds и чистой структуры — 1–3 месяца, поиск и due diligence объекта — 1–3 месяца, открытие счёта и закрытие сделки через эскроу — ещё 1–2 месяца. Заявка на ВНЖ оформляется параллельно или после закрытия сделки через лицензированных партнёров."}},
+        {"@type": "Question", "name": "Какой бюджет нужен, чтобы купить готовый бизнес в ЕС?", "acceptedAnswer": {"@type": "Answer", "text": "Зависит от страны и типа бизнеса. Небольшой действующий бизнес (кафе, сервис, онлайн) — обычно от €100 000–300 000, мини-отель или ресторан — заметно выше. К стоимости объекта добавляются due diligence, юридическое сопровождение, налоги на сделку и оборотный капитал. Точный бюджет считаем после диагностики."}},
+        {"@type": "Question", "name": "В какой стране ЕС проще получить ВНЖ через покупку бизнеса?", "acceptedAnswer": {"@type": "Answer", "text": "Предсказуемые пути в 2026 — Германия (§21 Residence Act через покупку действующей компании), Франция (Talent Passport), Бельгия и Словения (предпринимательские ВНЖ). Конкретная страна подбирается под бюджет, профиль капитала и цель. Главное условие везде одно — реальный substance."}},
+        {"@type": "Question", "name": "Можно ли купить бизнес в Европе удалённо, не приезжая?", "acceptedAnswer": {"@type": "Answer", "text": "Часть этапов (подготовка SoF, предварительный отбор, переговоры) проходит удалённо, но открытие счёта, нотариальное закрытие сделки и оформление ВНЖ обычно требуют личного визита. Конкретный порядок зависит от страны и банка."}}
       ]
     },
     {
@@ -518,6 +539,7 @@ button{font-family:inherit;cursor:pointer}
       <a href="/bank-account.html" class="jx-card"><div class="flag">🏦</div><h3>Зарубежный счёт</h3><p>Счёт под&nbsp;сделку и&nbsp;бизнес: SG, HK, AE, EU, UK.</p></a>
       <a href="/freedom-route.html" class="jx-card"><div class="flag">🧭</div><h3>Маршрут в свободный мир</h3><p>Полная карта релокации капитала и&nbsp;семьи.</p></a>
       <a href="/journal/geographic-footprint-clean-capital.html" class="jx-card"><div class="flag">🌍</div><h3>География денег</h3><p>Как «след» капитала читается банком&nbsp;— и&nbsp;что делать.</p></a>
+      <a href="/journal/gotovyy-biznes-v-evrope-substance-2026.html" class="jx-card"><div class="flag">📈</div><h3>Substance vs «золотая виза»</h3><p>Почему в&nbsp;2026 покупают реальный бизнес&nbsp;— разбор в&nbsp;дайджесте.</p></a>
       <a href="/diagnostic.html" class="jx-card"><div class="flag">◷</div><h3>Диагностика · 60 сек</h3><p>Быстрая оценка реалистичности вашего кейса.</p></a>
     </div>
   </div>
@@ -554,6 +576,49 @@ button{font-family:inherit;cursor:pointer}
         <summary>Вы гарантируете ВНЖ или одобрение банка?</summary>
         <p>Нет. Решение принимают банк, нотариус и&nbsp;иммиграционные органы. Мы&nbsp;повышаем вероятность успеха корректной подготовкой и&nbsp;честно говорим, если кейс нереалистичен.</p>
       </details>
+      <details>
+        <summary>Сколько времени занимает весь процесс?</summary>
+        <p>В&nbsp;среднем 4–9&nbsp;месяцев: подготовка <a href="/source-of-funds.html">Source of Funds</a> и&nbsp;структуры&nbsp;— 1–3&nbsp;мес., поиск и&nbsp;due&nbsp;diligence объекта&nbsp;— 1–3&nbsp;мес., счёт и&nbsp;закрытие сделки через эскроу&nbsp;— ещё&nbsp;1–2&nbsp;мес. ВНЖ оформляется параллельно через&nbsp;партнёров.</p>
+      </details>
+      <details>
+        <summary>Какой бюджет нужен?</summary>
+        <p>Зависит от&nbsp;страны и&nbsp;типа бизнеса. Небольшой действующий бизнес&nbsp;— обычно от&nbsp;€100&nbsp;000–300&nbsp;000; ресторан или&nbsp;мини-отель&nbsp;— выше. К&nbsp;цене объекта добавляются due&nbsp;diligence, юристы, налоги на&nbsp;сделку и&nbsp;оборотный капитал. Точный бюджет&nbsp;— после диагностики.</p>
+      </details>
+      <details>
+        <summary>В какой стране ЕС проще получить ВНЖ через бизнес?</summary>
+        <p>Предсказуемые пути 2026&nbsp;— Германия (§21), Франция (Talent&nbsp;Passport), Бельгия и&nbsp;Словения. Страна подбирается под&nbsp;бюджет и&nbsp;профиль капитала; главное условие везде&nbsp;— реальный substance.</p>
+      </details>
+      <details>
+        <summary>Можно ли купить бизнес удалённо, не приезжая?</summary>
+        <p>Часть этапов проходит удалённо, но&nbsp;открытие счёта, нотариальное закрытие сделки и&nbsp;оформление ВНЖ обычно требуют личного визита. Порядок зависит от&nbsp;страны и&nbsp;банка.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="s">
+  <div class="container">
+    <div class="s-head">
+      <span class="kicker">Отзывы клиентов</span>
+      <h2>Что говорят те, <strong>кто уже прошёл путь</strong></h2>
+      <p>Клиенты Charter Capital ценят конфиденциальность, поэтому отзывы публикуются анонимно, с&nbsp;согласия и&nbsp;под&nbsp;NDA. Имена и&nbsp;детали изменены.</p>
+    </div>
+    <div class="reviews">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">«Два банка уже отказали&nbsp;— деньги считали “российскими и&nbsp;непонятными”. Здесь сначала собрали досье по&nbsp;капиталу, и&nbsp;только потом пошли в&nbsp;сделку. Купили кафе под&nbsp;Лиссабоном, счёт открыли без&nbsp;нервов. Главное&nbsp;— перестал бояться, что всё развалится на&nbsp;последнем шаге.»</p>
+        <div class="who"><div class="name">Предприниматель из&nbsp;Москвы</div><div class="role">HoReCa · релокация в&nbsp;ЕС · 2025</div></div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">«Мне честно сказали, что мой первый вариант сделки не&nbsp;пройдёт комплаенс, и&nbsp;предложили переделать структуру. Это&nbsp;сэкономило мне месяцы и&nbsp;деньги. Работают как&nbsp;взрослые&nbsp;— без&nbsp;обещаний “гарантированного ВНЖ”.»</p>
+        <div class="who"><div class="name">Владелец IT-компании</div><div class="role">Онлайн-бизнес · Германия · 2025</div></div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">«Для&nbsp;нас это&nbsp;была не&nbsp;инвестиция, а&nbsp;вопрос спокойствия за&nbsp;семью. Получили действующий бизнес, легальный статус в&nbsp;процессе и&nbsp;капитал, который банк принял без&nbsp;вопросов. Ровно то, ради чего обращались.»</p>
+        <div class="who"><div class="name">Семья с&nbsp;двумя детьми</div><div class="role">Релокация · Южная Европа · 2026</div></div>
+      </div>
     </div>
   </div>
 </section>
@@ -568,6 +633,35 @@ button{font-family:inherit;cursor:pointer}
       <p><strong>Charter Capital</strong>&nbsp;— частный консьерж международного маршрута для&nbsp;предпринимателей и&nbsp;частных клиентов из&nbsp;СНГ. В&nbsp;сделке по&nbsp;покупке бизнеса в&nbsp;ЕС наша роль&nbsp;— не&nbsp;найти объект (это&nbsp;делают брокеры), а&nbsp;<strong>сделать так, чтобы сделка состоялась</strong>: подготовить <a href="/source-of-funds.html">Source of Funds</a>, выстроить чистую структуру и&nbsp;провести капитал через западный банк и&nbsp;эскроу.</p>
       <p>Наш принцип&nbsp;— <strong>«доказываем, а&nbsp;не&nbsp;прячем»</strong>: мы&nbsp;не&nbsp;обходим санкции, не&nbsp;«очищаем» средства и&nbsp;не&nbsp;работаем с&nbsp;подсанкционными лицами. ВНЖ оформляется через лицензированных иммиграционных партнёров; решение всегда за&nbsp;органами и&nbsp;банком&nbsp;— мы&nbsp;повышаем вероятность успеха и&nbsp;честно говорим, если кейс нереалистичен.</p>
       <p>Подход основатель описывает в&nbsp;<a href="/team.html">письме основателя</a>. Первый шаг&nbsp;— <a href="/diagnostic.html">диагностика маршрута за&nbsp;60&nbsp;секунд</a> или&nbsp;разбор под&nbsp;NDA в&nbsp;<a href="https://t.me/ccapital_acces" target="_blank" rel="noopener">Telegram</a>.</p>
+    </div>
+  </div>
+</section>
+
+<section class="s soft">
+  <div class="container">
+    <div class="s-head">
+      <span class="kicker">Compliance &amp; Ethics</span>
+      <h2>How we work — <strong>and what we will never do</strong></h2>
+    </div>
+    <div class="compliance">
+      <h3>Statement of Compliance (EN)</h3>
+      <p>
+        <strong>Charter Capital operates strictly within applicable law.</strong> We help bona fide
+        entrepreneurs and private clients structure a legitimate, well-documented financial history so
+        that their capital can be understood and accepted by Western banks, notaries and escrow agents.
+      </p>
+      <p>
+        We <strong>do not work with sanctioned individuals or entities</strong>, and we do not assist in
+        circumventing sanctions, export controls or any applicable restrictive measures.
+        We <strong>do not launder money</strong>, conceal the true origin of funds, or create artificial
+        "clean" histories. We do not facilitate tax evasion or any other unlawful activity.
+      </p>
+      <p>
+        Our work is built on <strong>KYC / AML due diligence and verifiable Source of Funds / Source of
+        Wealth</strong>. The final decision on any bank account, transaction or residence permit always
+        rests with the relevant bank, notary or competent authority. Where a case is not realistic or
+        not lawful, we decline it. Our principle is simple: <strong>we prove, we do not hide.</strong>
+      </p>
     </div>
   </div>
 </section>
@@ -648,9 +742,9 @@ button{font-family:inherit;cursor:pointer}
       <div>
         <h4>Дайджест</h4>
         <ul>
+          <li><a href="/journal/gotovyy-biznes-v-evrope-substance-2026.html">Готовый бизнес в Европе</a></li>
           <li><a href="/journal/geographic-footprint-clean-capital.html">География денег</a></li>
           <li><a href="/journal/hongkong-banks-uae-transit-compliance-2026.html">Комплаенс через ОАЭ</a></li>
-          <li><a href="/journal/legalizaciya-kripty-rf-2026.html">Легализация крипты в РФ</a></li>
         </ul>
       </div>
     </div>

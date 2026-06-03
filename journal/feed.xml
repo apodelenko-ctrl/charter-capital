@@ -9,8 +9,8 @@
     <description>Аналитика международного private banking, ВЭД и геополитики капитала. Гонконг · Сингапур · ОАЭ · Швейцария · UK · Россия.</description>
     <language>ru</language>
     <copyright>© Charter Capital, 2026</copyright>
-    <lastBuildDate>Tue, 02 Jun 2026 05:00:00 +0000</lastBuildDate>
-    <pubDate>Tue, 02 Jun 2026 05:00:00 +0000</pubDate>
+    <lastBuildDate>Wed, 03 Jun 2026 05:00:00 +0000</lastBuildDate>
+    <pubDate>Wed, 03 Jun 2026 05:00:00 +0000</pubDate>
     <ttl>360</ttl>
     <generator>Charter Capital · ccapital.pro</generator>
     <atom:link href="https://ccapital.pro/journal/feed.xml" rel="self" type="application/rss+xml" />
@@ -19,6 +19,15 @@
       <title>Дайджест Charter Capital</title>
       <link>https://ccapital.pro/journal.html</link>
     </image>
+    <item>
+      <title>Готовый бизнес в Европе вместо «золотой визы»: почему в 2026 покупают substance — и при чём тут чистота капитала</title>
+      <link>https://ccapital.pro/journal/gotovyy-biznes-v-evrope-substance-2026.html</link>
+      <guid isPermaLink="true">https://ccapital.pro/journal/gotovyy-biznes-v-evrope-substance-2026.html</guid>
+      <pubDate>Wed, 03 Jun 2026 10:00:00 +0700</pubDate>
+      <description>«Золотые визы» в Европе фактически закрылись: ЕС требует substance — реальный бизнес с офисом, сотрудниками и живым управлением. Покупка готового действующего бизнеса даёт substance с первого дня, но узкое место не объект, а приём капитала из СНГ западным банком, нотариусом и эскроу. Почему работу надо начинать с капитала, а не с поиска ресторана.</description>
+      <enclosure url="https://ccapital.pro/assets/journal/geneva-swiss-alps-winter-hero.webp" type="image/webp" />
+      <category>Charter Capital · Дайджест</category>
+    </item>
     <item>
       <title>Россия легализует криптовалюту с 1 июля 2026 — почему для зарубежного банка она всё равно «токсична»</title>
       <link>https://ccapital.pro/journal/legalizaciya-kripty-rf-2026.html</link>
