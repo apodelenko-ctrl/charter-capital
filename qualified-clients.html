@@ -107,10 +107,16 @@ img{max-width:100%;display:block}
 .image-break{margin:44px auto 42px;border-radius:8px;overflow:hidden;background:#0a0e1a;border:1px solid rgba(15,23,42,.08);max-width:760px}
 .image-break img{width:100%;height:auto}.image-break figcaption{padding:12px 16px;background:#fff;color:var(--muted);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;text-align:right;border-top:1px solid var(--line)}
 @media(max-width:1100px){.image-break{margin:40px auto}}
-.signal-quote{margin:36px 0 48px;padding:34px 38px;background:linear-gradient(180deg,#0a0e1a 0%,#111827 100%);border:1px solid rgba(160,129,86,.32);border-radius:10px;color:#fff;box-shadow:0 28px 70px -44px rgba(6,8,15,.7)}
-.signal-quote .label{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#d9b271;margin-bottom:14px}
-.signal-quote blockquote{font-family:var(--display);font-size:clamp(1.85rem,3.6vw,2.85rem);line-height:1.12;font-weight:500;letter-spacing:-.01em;color:#fff}
-.signal-quote blockquote strong{font-weight:600}
+.signal-quote{position:relative;margin:44px 0 54px;padding:48px 54px 40px;background:radial-gradient(135% 150% at 0% 0%,#15223e 0%,#0a0e1a 58%);border:1px solid rgba(160,129,86,.34);border-radius:14px;color:#fff;overflow:hidden;box-shadow:0 42px 95px -52px rgba(6,8,15,.85)}
+.signal-quote::before{content:"\201C";position:absolute;top:6px;right:34px;font-family:var(--display);font-size:11rem;line-height:1;color:rgba(217,178,113,.16);pointer-events:none}
+.signal-quote::after{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,#e3c089,#a08156)}
+.signal-quote .label{position:relative;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:#d9b271;margin-bottom:20px;display:flex;align-items:center;gap:12px}
+.signal-quote .label::before{content:"";width:26px;height:1px;background:#d9b271}
+.signal-quote blockquote{position:relative;font-family:var(--display);font-size:clamp(2rem,4vw,3.1rem);line-height:1.08;font-weight:500;letter-spacing:-.01em;color:#f1ede4}
+.signal-quote blockquote strong{font-weight:600;color:#fff}
+.signal-quote blockquote .gold{color:#e3c089;font-style:italic}
+.signal-quote .attr{position:relative;margin-top:26px;padding-top:18px;border-top:1px solid rgba(255,255,255,.1);font-family:'Inter',sans-serif;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(241,237,228,.6);font-weight:500}
+@media(max-width:640px){.signal-quote{padding:34px 26px 30px}.signal-quote::before{font-size:7rem;right:14px}}
 .case-box{margin:42px -100px 32px;padding:32px 36px;background:linear-gradient(180deg,var(--bg-soft) 0%,#fff 100%);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:8px}
 .case-box .case-label{display:inline-flex;align-items:center;gap:10px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
 .case-box .case-label::before{content:"";width:24px;height:1px;background:var(--gold)}
@@ -245,7 +251,8 @@ img{max-width:100%;display:block}
 
       <aside class="signal-quote" aria-label="Главная мысль Charter Capital">
         <div class="label">Суть нашего предложения</div>
-        <blockquote>Мы не продаём юридические услуги. <strong>Мы продаём фундаментальную уверенность и спокойствие.</strong></blockquote>
+        <blockquote>Мы не продаём юридические услуги. <strong>Мы продаём <span class="gold">фундаментальную уверенность и спокойствие</span>.</strong></blockquote>
+        <div class="attr">Charter Capital · Private Office</div>
       </aside>
 
       <div class="body">
