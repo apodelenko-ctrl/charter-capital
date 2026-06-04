@@ -29,6 +29,7 @@
 - [Дайджест / журнал](https://ccapital.pro/journal.html): аналитика по комплаенсу, P2P, санкциям, капиталу
 - [RSS журнала](https://ccapital.pro/journal/feed.xml)
 - [Private Office](https://ccapital.pro/private.html): капитал от $1M, архитектура легитимности
+- [Обращение для квалифицированных клиентов](https://ccapital.pro/qualified-clients.html): центральный текст Charter Capital для владельцев крупного капитала из СНГ; почему капитал должен быть публично защищаемым, а не «спрятанным»; экзистенциальный риск заморозки активов, Source of Funds/Source of Wealth, стоимость дешёвых офшорных решений, недвижимость и реальный бизнес как понятные банку инструменты, наследование и границы compliance
 - [Charter Asia Fund](https://ccapital.pro/fund.html): сингапурская структура, недвижимость Пхукета и real assets
 - [Подготовка к исходу (homeland)](https://ccapital.pro/homeland.html): пока клиент ещё в РФ
 - [B2B расчёты · чистый USDC](https://ccapital.pro/pay.html#usdc): трансграничные платежи для ВЭД
