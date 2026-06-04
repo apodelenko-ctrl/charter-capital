@@ -143,6 +143,29 @@ img{max-width:100%;display:block}
 @media(max-width:1100px){.summary-box{margin:56px 0 0}}@media(max-width:640px){.summary-box{padding:32px 26px}.summary-box h3{font-size:1.35rem}}
 .next-step{position:relative;margin:56px 0 8px;padding:40px 44px 36px;background:#fff;border:1px solid var(--line);border-radius:10px;border-left:3px solid var(--gold);box-shadow:0 18px 40px -28px rgba(15,23,42,.18)}.next-step .kicker{display:inline-flex;align-items:center;gap:10px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}.next-step .kicker::before{content:"";width:24px;height:1px;background:var(--gold)}.next-step h2{font-family:var(--display);font-size:clamp(1.7rem,2.9vw,2.15rem);font-weight:500;letter-spacing:-.01em;line-height:1.16;color:var(--ink);margin:0 0 14px;padding:0;border:none}.next-step h2 strong{font-weight:700}.next-step p{font-size:1rem;line-height:1.65;color:var(--body);max-width:60ch;margin-bottom:24px}.next-step .channels{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px}.ch-btn{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;letter-spacing:.02em;padding:13px 22px;border-radius:6px;transition:all .15s ease;border:1px solid}.ch-btn.dark{background:var(--ink);color:#fff;border-color:var(--ink)}.ch-btn.dark:hover{background:#000;border-color:#000}.ch-btn.outline{background:transparent;color:var(--ink);border-color:var(--ink)}.ch-btn.outline:hover{background:var(--bg-soft)}.ch-btn .arr{transition:transform .15s ease}.ch-btn:hover .arr{transform:translateX(3px)}.next-step .note{font-size:12px;color:var(--muted);line-height:1.6;padding-top:18px;border-top:1px solid var(--line-soft);max-width:60ch}.next-step .note strong{color:var(--ink-2);font-weight:600}
 .bottom-nav{margin-top:36px;padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;font-size:12.5px;color:var(--muted);letter-spacing:.04em}.bottom-nav a{color:var(--ink-2);font-weight:500;display:inline-flex;align-items:center;gap:6px;transition:color .15s ease}.bottom-nav a:hover{color:var(--gold)}
+.faq{margin:0;border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:22px 44px 22px 0;position:relative;font-family:var(--display);font-size:1.35rem;font-weight:500;color:var(--ink);line-height:1.3;letter-spacing:-.01em}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:6px;top:16px;font-size:1.7rem;font-weight:300;color:var(--gold);transition:transform .2s ease}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding:0 40px 24px 0;font-size:1.0625rem;line-height:1.7;color:var(--body)}
+.faq details p strong{color:var(--ink);font-weight:600}
+.faq details p a{color:var(--blue);border-bottom:1px solid rgba(29,78,216,.3);transition:border-color .15s ease}
+.faq details p a:hover{border-color:var(--blue)}
+.more-reads{margin:64px 0 8px;padding:36px 0 0;border-top:1px solid rgba(15,23,42,.10)}
+.more-reads__head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:26px}
+.more-reads__head h2{font-family:var(--display);font-size:clamp(1.6rem,2.6vw,2rem);font-weight:500;letter-spacing:-.01em;margin:0;padding:0;border:none;color:var(--ink)}
+.more-reads__head .mr-kicker{font-family:'Inter',sans-serif;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.14em;color:var(--muted)}
+.more-reads__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.more-reads__card{display:flex;flex-direction:column;gap:10px;padding:22px 24px 24px;background:var(--bg-soft);border:1px solid rgba(15,23,42,.08);border-radius:14px;text-decoration:none;color:var(--ink);transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;min-height:168px}
+.more-reads__card:hover{transform:translateY(-2px);box-shadow:0 8px 24px -10px rgba(15,23,42,.18);border-color:rgba(15,23,42,.18)}
+.more-reads__card .mr-meta{display:flex;justify-content:space-between;align-items:center;font-family:'Inter',sans-serif;font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.more-reads__card .mr-meta .mr-cat{color:var(--gold)}
+.more-reads__card .mr-title{font-family:var(--display);font-size:1.3rem;line-height:1.22;font-weight:500;letter-spacing:-.005em;color:var(--ink)}
+.more-reads__card .mr-excerpt{font-family:'Inter',sans-serif;font-size:13.5px;line-height:1.55;color:var(--body);margin-top:2px}
+.more-reads__card .mr-arrow{margin-top:auto;font-family:'Inter',sans-serif;font-size:12px;font-weight:600;color:var(--gold);letter-spacing:.04em}
+@media(max-width:880px){.more-reads__grid{grid-template-columns:1fr;gap:12px}.more-reads__card{min-height:0}}
 .footer{background:#0a0e1a;color:#94a3b8;padding:64px 0 36px;margin-top:80px}.footer .container{max-width:1240px;margin:0 auto;padding:0 32px}.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px;margin-bottom:40px}@media(max-width:780px){.footer-grid{grid-template-columns:1fr 1fr}}@media(max-width:520px){.footer-grid{grid-template-columns:1fr}}.footer h4{color:#fff;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;margin-bottom:18px}.footer .brand-name{color:#fff;font-size:14px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;margin-bottom:10px}.footer .brand-tag{font-size:13px;color:#94a3b8;max-width:34ch}.footer ul{list-style:none}.footer ul li{margin-bottom:10px}.footer ul a{font-size:13px;color:#cbd5e1;display:flex;align-items:baseline;justify-content:space-between;gap:8px;transition:color .15s ease}.footer ul a:hover{color:#fff}.footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-size:12px;color:#64748b}
 </style>
 
@@ -180,7 +203,60 @@ img{max-width:100%;display:block}
       "isPartOf": {"@id": "https://ccapital.pro/#website"},
       "inLanguage": "ru-RU",
       "articleSection": "Private Office",
-      "keywords": "архитектура легитимности, крупный капитал, Source of Funds, Source of Wealth, AML, наследование капитала"
+      "keywords": "архитектура легитимности, крупный капитал, Source of Funds, Source of Wealth, AML, наследование капитала",
+      "about": [
+        {"@type": "Thing", "name": "Source of Funds"},
+        {"@type": "Thing", "name": "Source of Wealth"},
+        {"@type": "Thing", "name": "Anti-money laundering compliance"},
+        {"@type": "Thing", "name": "Wealth protection"},
+        {"@type": "Thing", "name": "Asset freezing risk"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://ccapital.pro/qualified-clients.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Чем «архитектура легитимности» отличается от отмывания или обнала?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Это противоположные вещи. Отмывание прячет происхождение денег, Charter Capital наоборот делает его прозрачным и проверяемым. Мы не скрываем бенефициаров, не дробим платежи и не «очищаем» сомнительный источник. Работаем только с капиталом, происхождение которого можно законно объяснить банку, нотариусу, суду и регулятору."}
+        },
+        {
+          "@type": "Question",
+          "name": "Что такое Source of Funds и Source of Wealth простыми словами?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Source of Funds — это происхождение конкретных денег в конкретной сделке. Source of Wealth — происхождение всего состояния в целом. Банковский комплаенс смотрит на оба. Charter Capital собирает доказательную базу по обоим направлениям в рамках услуги Source of Funds под ключ."}
+        },
+        {
+          "@type": "Question",
+          "name": "Почему западный банк может отказать даже легальному капиталу из СНГ?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Банк отказывает не потому, что деньги «грязные», а потому, что не может быстро и спокойно подтвердить их историю. Капитал из СНГ часто приходит без понятного банку набора документов, через юрисдикции и маршруты с повышенным риском. Поэтому даже чистый капитал может стать небанкуемым без выстроенной истории происхождения."}
+        },
+        {
+          "@type": "Question",
+          "name": "С какого размера капитала работает Charter Capital?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Формат Private Office рассчитан на крупный капитал, как правило от 1 000 000 долларов. Чем сложнее структура и выше сумма, тем выше цена ошибки и тем больше смысла в архитектуре легитимности."}
+        },
+        {
+          "@type": "Question",
+          "name": "Можно ли сделать быстро, под ключ за неделю?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Нет. Качественную историю капитала нельзя собрать за неделю — спешка оставляет следы, которые потом невозможно объяснить. Полгода или год подготовки часто дешевле, чем пять лет заморозки активов."}
+        },
+        {
+          "@type": "Question",
+          "name": "Какие инструменты используются — недвижимость, бизнес?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Только те, что понимает международный комплаенс: проверяемая недвижимость, реальный бизнес с управлением, прозрачная корпоративная структура, банковская и налоговая история. Например, готовый бизнес в Европе с реальным экономическим содержанием."}
+        },
+        {
+          "@type": "Question",
+          "name": "Вы гарантируете счёт, ВНЖ или победу в суде?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Нет. Решение всегда принимает банк, регулятор или суд. Charter Capital отвечает за качество архитектуры: чтобы история капитала была сильной, проверяемой и публично защищаемой. Это повышает шансы, но не заменяет решение третьей стороны."}
+        },
+        {
+          "@type": "Question",
+          "name": "Как обеспечивается конфиденциальность?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Первый разговор проходит 30 минут под NDA. Паспорта, номера счетов, адреса кошельков и реквизиты сделок не нужно присылать в обычной почте — защищённый канал и форму Charter Capital присылает после первого контакта."}
+        }
+      ]
     },
     {
       "@type": "BreadcrumbList",
@@ -322,7 +398,7 @@ img{max-width:100%;display:block}
           В сильном кейсе банк, аудитор, нотариус и суд видят не хаос из переводов, офшоров и устных объяснений, а цельную историю: где капитал заработан, как он прошёл через компании, почему структура имеет экономический смысл и какими документами подтверждён каждый ключевой шаг.
         </p>
         <ul>
-          <li><strong>Source of Funds / Source of Wealth.</strong> Происхождение конкретных средств и происхождение благосостояния в целом: договоры, выписки, налоги, корпоративная история, цепочка владения активом.</li>
+          <li><strong>Source of Funds / Source of Wealth.</strong> Происхождение конкретных средств и происхождение благосостояния в целом: договоры, выписки, налоги, корпоративная история, цепочка владения активом. Как мы это собираем — в услуге <a href="/source-of-funds.html">Source of Funds под ключ</a>.</li>
           <li><strong>Реальное экономическое содержание.</strong> Не пустая оболочка, а актив, бизнес, недвижимость, офис, управление или другая проверяемая причина существования структуры.</li>
           <li><strong>Банковский язык.</strong> Подача в формате, который понимает compliance: факты, хронология, подтверждения, ответы на ожидаемые EDD-вопросы.</li>
           <li><strong>Готовность к публичности.</strong> Кейс должен выдерживать не только анкету банка, но и спорный момент: адвокат, суд, наследование, продажа актива, налоговая проверка.</li>
@@ -352,7 +428,7 @@ img{max-width:100%;display:block}
           Часто вопрос начинается с цены. Но правильный вопрос другой: сколько стоит спокойствие семьи? Сколько стоит возможность легально передать капитал наследникам? Сколько стоит право не бояться публичного спора, если активы окажутся под атакой?
         </p>
         <p>
-          Попытка сэкономить 1–2% от объёма капитала может закончиться годами заморозки. Карибский офшор, случайный банк, быстрый крипто-маршрут или номинальная структура выглядят удобными только до первой проверки. После неё капитал может остаться «на острове» — формально существующим, но непригодным для цивилизованного мира.
+          Попытка сэкономить 1–2% от объёма капитала может закончиться годами заморозки. Карибский офшор, случайный банк, <a href="/journal/ofac-sankcii-nobitex-kripta-2026.html">быстрый крипто-маршрут</a> или номинальная структура выглядят удобными только до первой проверки. После неё капитал может остаться «на острове» — формально существующим, но непригодным для цивилизованного мира. Почему даже чистый капитал становится «токсичным» для банка, мы разбирали в материале <a href="/journal/geographic-footprint-clean-capital.html">«География денег»</a>.
         </p>
 
         <figure class="image-break">
@@ -365,7 +441,7 @@ img{max-width:100%;display:block}
           Мы не изобретаем серые схемы. В основе работы — инструменты, которые международный банковский комплаенс способен понять: твёрдая недвижимость, реальный бизнес, понятная корпоративная структура, проверяемая банковская история, налоговая и юридическая документация.
         </p>
         <p>
-          Например, капитал может входить в проверяемую недвижимость или в действующий бизнес с реальным управлением. Через управляемый период владения и корректный выход он получает экономическую историю, которую можно объяснить банку. Это не легенда, а последовательность реальных событий.
+          Например, капитал может входить в проверяемую недвижимость или в <a href="/business-eu.html">действующий бизнес в Европе</a> с реальным управлением. Через управляемый период владения и корректный выход он получает экономическую историю, которую можно объяснить банку. Это не легенда, а последовательность реальных событий.
         </p>
 
         <h2><span class="h2-num">07</span>Почему мы не продаём скорость</h2>
@@ -412,6 +488,44 @@ img{max-width:100%;display:block}
     </aside>
 
     <div class="article-text">
+      <div class="body">
+        <h2>Частые вопросы о&nbsp;защите крупного капитала</h2>
+      </div>
+      <div class="faq">
+        <details open>
+          <summary>Чем «архитектура легитимности» отличается от отмывания или обнала?</summary>
+          <p>Это противоположные вещи. Отмывание прячет происхождение денег, мы — наоборот, делаем его прозрачным и проверяемым. Мы не скрываем бенефициаров, не дробим платежи и не «очищаем» сомнительный источник. Работаем только с капиталом, происхождение которого можно законно объяснить банку, нотариусу, суду и регулятору.</p>
+        </details>
+        <details>
+          <summary>Что такое Source of Funds и Source of Wealth простыми словами?</summary>
+          <p>Source of Funds — это происхождение конкретных денег в конкретной сделке (откуда именно эта сумма). Source of Wealth — это происхождение всего вашего состояния в целом. Банковский комплаенс смотрит на оба. Как мы собираем доказательную базу — в услуге <a href="/source-of-funds.html">Source of Funds под ключ</a>.</p>
+        </details>
+        <details>
+          <summary>Почему западный банк может отказать даже легальному капиталу из СНГ?</summary>
+          <p>Банк отказывает не потому, что деньги «грязные», а потому, что не может быстро и спокойно подтвердить их историю. Капитал из СНГ часто приходит без понятного банку набора документов, через юрисдикции и маршруты с повышенным риском. Подробно механизм разобран в материале <a href="/journal/geographic-footprint-clean-capital.html">«География денег»</a>.</p>
+        </details>
+        <details>
+          <summary>С какого размера капитала вы работаете?</summary>
+          <p>Наш формат — Private Office для крупного капитала, как правило от $1&nbsp;000&nbsp;000. Чем сложнее структура и выше сумма, тем выше цена ошибки и тем больше смысла в архитектуре легитимности. Детали — на странице <a href="/private.html">Private Office</a>.</p>
+        </details>
+        <details>
+          <summary>Можно ли сделать быстро, «под ключ за неделю»?</summary>
+          <p>Нет. Качественную историю капитала нельзя собрать за неделю — спешка оставляет следы, которые потом невозможно объяснить. Полгода или год подготовки часто дешевле, чем пять лет заморозки. Мы строим полный цикл, а не имитацию транзита под легализацию.</p>
+        </details>
+        <details>
+          <summary>Какие инструменты вы используете — недвижимость, бизнес?</summary>
+          <p>Только те, что понимает международный комплаенс: проверяемая недвижимость, реальный бизнес с управлением, прозрачная корпоративная структура, банковская и налоговая история. Например — <a href="/business-eu.html">готовый бизнес в Европе</a> с реальным экономическим содержанием.</p>
+        </details>
+        <details>
+          <summary>Вы гарантируете счёт, ВНЖ или победу в суде?</summary>
+          <p>Нет, и любой, кто гарантирует, вводит в заблуждение. Решение всегда за банком, регулятором или судом. Мы отвечаем за качество архитектуры: чтобы ваша история капитала была сильной, проверяемой и публично защищаемой. Это резко повышает шансы — но не заменяет решение третьей стороны.</p>
+        </details>
+        <details>
+          <summary>Как обеспечивается конфиденциальность?</summary>
+          <p>Первый разговор — 30 минут под NDA. Не присылайте в обычной почте паспорта, номера счетов, адреса кошельков и реквизиты сделок: защищённый канал и форму мы пришлём после первого контакта.</p>
+        </details>
+      </div>
+
       <aside class="next-step" aria-label="Поговорить с командой">
         <span class="kicker">Private Office</span>
         <h2>30 минут под NDA — <strong>разберём, выдерживает ли ваша история капитала публичную проверку</strong></h2>
@@ -426,6 +540,33 @@ img{max-width:100%;display:block}
         <p class="note">
           Не присылайте в обычной почте паспорта, номера счетов, адреса кошельков и реквизиты сделок. Защищённый канал и форму пришлём после первого контакта.
         </p>
+      </aside>
+
+      <aside class="more-reads" aria-label="Ещё по теме">
+        <div class="more-reads__head">
+          <span class="mr-kicker">Charter Capital · Дайджест</span>
+          <h2>Ещё по теме</h2>
+        </div>
+        <div class="more-reads__grid">
+          <a class="more-reads__card" href="/source-of-funds.html">
+            <div class="mr-meta"><span class="mr-cat">Услуга</span><span>Private Office</span></div>
+            <div class="mr-title">Source of Funds под ключ</div>
+            <div class="mr-excerpt">Как собрать доказуемую историю происхождения средств для банка и регулятора.</div>
+            <div class="mr-arrow">Открыть →</div>
+          </a>
+          <a class="more-reads__card" href="/journal/geographic-footprint-clean-capital.html">
+            <div class="mr-meta"><span class="mr-cat">Аналитика</span><span>Дайджест</span></div>
+            <div class="mr-title">География денег</div>
+            <div class="mr-excerpt">Почему чистый капитал честного человека становится «токсичным» для банка.</div>
+            <div class="mr-arrow">Читать →</div>
+          </a>
+          <a class="more-reads__card" href="/business-eu.html">
+            <div class="mr-meta"><span class="mr-cat">Услуга</span><span>Hub</span></div>
+            <div class="mr-title">Готовый бизнес в Европе</div>
+            <div class="mr-excerpt">Реальное экономическое содержание как фундамент легитимности капитала.</div>
+            <div class="mr-arrow">Открыть →</div>
+          </a>
+        </div>
       </aside>
 
       <nav class="bottom-nav" aria-label="Навигация">
