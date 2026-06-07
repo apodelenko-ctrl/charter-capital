@@ -340,6 +340,27 @@ h3{font-size:1.25rem;font-weight:500;letter-spacing:-.02em}
 .f-bottom{margin-top:24px;padding-top:18px;border-top:1px solid rgba(255,255,255,.04);display:flex;justify-content:space-between;font-size:11px;color:#475569;letter-spacing:.06em}
 @media(max-width:900px){.f-grid{grid-template-columns:1fr 1fr;gap:24px}.f-bottom{flex-direction:column;gap:8px}}
 
+/* ─── TEAM ─────────────────────────────────────── */
+.team{padding:90px 32px;background:var(--paper);position:relative}
+.team-inner{max-width:1080px;margin:0 auto}
+.team-head{max-width:760px;margin:0 auto 40px}
+.team-head .kicker{color:var(--gold-deep);margin-bottom:18px}
+.team-head .kicker .pipe{color:rgba(94,73,20,.4)}
+.team-head h2{font-size:clamp(1.8rem,3.6vw,2.8rem);font-weight:300;letter-spacing:-.025em;color:var(--ink);margin-bottom:20px}
+.team-head h2 strong{font-weight:500;color:var(--gold-deep)}
+.team-head p{font-size:16.5px;line-height:1.78;color:var(--body);margin-bottom:14px}
+.team-head p strong{color:var(--ink);font-weight:600}
+.team-photo{position:relative;border-radius:var(--radius-lg);overflow:hidden;box-shadow:0 28px 60px rgba(10,14,26,.22),0 0 0 1px var(--paper-3);background:var(--paper-3);margin-bottom:18px}
+.team-photo img{width:100%;height:auto;display:block}
+.team-photo figcaption{position:absolute;left:16px;bottom:14px;z-index:2;background:rgba(10,14,26,.82);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#fff;padding:7px 12px;border-radius:7px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;border:1px solid rgba(255,255,255,.1)}
+.team-note{max-width:760px;margin:26px auto 0;padding:22px 26px;background:rgba(168,134,47,.08);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;font-size:15.5px;line-height:1.7;color:var(--ink-2)}
+.team-note strong{color:var(--ink);font-weight:600}
+.team-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:760px;margin:34px auto 0}
+.team-stat{padding:22px 20px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);text-align:center}
+.team-stat .n{font-size:1.9rem;font-weight:300;color:var(--gold-deep);letter-spacing:-.02em;line-height:1}
+.team-stat .l{margin-top:10px;font-size:12px;line-height:1.45;color:var(--muted);letter-spacing:.02em}
+@media (max-width:880px){.team{padding:70px 24px}.team-stats{grid-template-columns:1fr;gap:12px}.team-stat{display:flex;align-items:baseline;justify-content:flex-start;gap:14px;text-align:left}.team-stat .l{margin-top:0}}
+
 /* ─── REDUCED MOTION ──────────────────────────── */
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
@@ -380,6 +401,7 @@ h3{font-size:1.25rem;font-weight:500;letter-spacing:-.02em}
       <span class="nav-sep" aria-hidden="true"></span>
       <a href="#letter">Письмо</a>
       <a href="#about">Об основателе</a>
+      <a href="#team">Команда</a>
       <a href="index.html#contact">Связаться</a>
     </nav>
     <button type="button" class="tb-cta" id="openLoginModal" aria-haspopup="dialog" aria-controls="loginModal">Private Access</button>
@@ -466,6 +488,36 @@ h3{font-size:1.25rem;font-weight:500;letter-spacing:-.02em}
       <p>Его работа связана с&nbsp;банковской объяснимостью сделок и&nbsp;созданием инфраструктуры для предпринимателей, которые живут и&nbsp;работают между несколькими странами, рынками и&nbsp;финансовыми системами.</p>
       <p>В&nbsp;Charter Capital он&nbsp;отвечает за&nbsp;стратегию и&nbsp;структуру решений: <strong>как выстроить маршрут капитала, как подготовить документы, как заранее увидеть слабые места и&nbsp;как сделать историю клиента понятной для банков и&nbsp;профессиональных контрагентов.</strong></p>
       <p>Как энтузиаст яхтинга и&nbsp;капитан, он&nbsp;хорошо понимает цену маршрута, дисциплины и&nbsp;точного расчёта. В&nbsp;бизнесе следует тому&nbsp;же принципу: видеть риски заранее, держать курс и&nbsp;принимать решения до&nbsp;того, как шторм становится очевидным.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─────── TEAM ─────── -->
+<section class="team" id="team">
+  <div class="team-inner">
+    <div class="team-head">
+      <span class="kicker">Наша команда<span class="pipe">·</span>Charter Capital</span>
+      <h2>Костяк&nbsp;— это мы. Сила&nbsp;— в&nbsp;<strong>профессиональных партнёрах</strong>.</h2>
+      <p>Будем честны: Charter Capital&nbsp;— это не&nbsp;огромный штат в&nbsp;одном офисе. <strong>Основной костяк&nbsp;— небольшая команда, которая ведёт каждый кейс и&nbsp;отвечает за&nbsp;результат.</strong> А&nbsp;настоящая сила&nbsp;— в&nbsp;сети проверенных профессиональных партнёров и&nbsp;субподрядчиков, которых мы&nbsp;подключаем под конкретную задачу.</p>
+      <p>Под каждый проект собирается закрытая команда: банковские и&nbsp;корпоративные провайдеры, иммиграционные юристы и&nbsp;барристеры из&nbsp;Великобритании, налоговые консультанты, AML-специалисты, эксперты по&nbsp;конкретным юрисдикциям&nbsp;— от&nbsp;ОАЭ, Сингапура и&nbsp;Гонконга до&nbsp;ЕС и&nbsp;Швейцарии.</p>
+    </div>
+
+    <figure class="team-photo">
+      <picture>
+        <source media="(min-width:769px)" srcset="assets/team/team-lugano-group.webp"/>
+        <img src="assets/team/team-lugano-group-1024w.webp" alt="Команда и профессиональные партнёры Charter Capital на берегу озера Лугано, Швейцария" loading="lazy" width="1536" height="1024"/>
+      </picture>
+      <figcaption>Команда и партнёры · Lugano</figcaption>
+    </figure>
+
+    <div class="team-stats">
+      <div class="team-stat"><div class="n">20+</div><div class="l">лет международного опыта в&nbsp;основе подхода</div></div>
+      <div class="team-stat"><div class="n">6+</div><div class="l">ключевых юрисдикций: ОАЭ, Сингапур, Гонконг, UK, ЕС, Швейцария</div></div>
+      <div class="team-stat"><div class="n">1&nbsp;кейс</div><div class="l">— одна закрытая команда под задачу</div></div>
+    </div>
+
+    <div class="team-note">
+      Почему так честно? Потому что для крупного капитала важна не&nbsp;вывеска с&nbsp;сотней сотрудников, а&nbsp;<strong>кто конкретно ведёт ваш кейс и&nbsp;каких специалистов привлекает</strong>. Мы&nbsp;отвечаем за&nbsp;координацию и&nbsp;качество. Лицензируемые услуги&nbsp;— счета, компании, ВНЖ&nbsp;— оказывают наши партнёры в&nbsp;своих юрисдикциях.
     </div>
   </div>
 </section>
