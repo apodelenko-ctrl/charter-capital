@@ -2,7 +2,6 @@
 
 User-agent: *
 Allow: /
-Disallow: /team.html
 Disallow: /INTEGRATION-PROPERTY.md
 Disallow: /drafts/
 Disallow: /ads/
