@@ -3,3 +3,7 @@
 # Локальные служебные файлы — НЕ в продакшен
 _BACKUP-INFO.txt
 *.zip
+
+# Рабочие стратегические таблицы — не публиковать в веб-руте
+charter-capital-yandex-keywords.csv
+charter-capital-url-matrix.csv
