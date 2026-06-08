@@ -9,8 +9,8 @@
     <description>Аналитика международного private banking, ВЭД и геополитики капитала. Гонконг · Сингапур · ОАЭ · Швейцария · UK · Россия.</description>
     <language>ru</language>
     <copyright>© Charter Capital, 2026</copyright>
-    <lastBuildDate>Mon, 08 Jun 2026 05:00:00 +0000</lastBuildDate>
-    <pubDate>Mon, 08 Jun 2026 05:00:00 +0000</pubDate>
+    <lastBuildDate>Mon, 08 Jun 2026 11:00:00 +0000</lastBuildDate>
+    <pubDate>Mon, 08 Jun 2026 11:00:00 +0000</pubDate>
     <ttl>360</ttl>
     <generator>Charter Capital · ccapital.pro</generator>
     <atom:link href="https://ccapital.pro/journal/feed.xml" rel="self" type="application/rss+xml" />
@@ -19,6 +19,15 @@
       <title>Дайджест Charter Capital</title>
       <link>https://ccapital.pro/journal.html</link>
     </image>
+    <item>
+      <title>Опасная иллюзия нулевого налога: как на самом деле работает территориальная система Гонконга</title>
+      <link>https://ccapital.pro/journal/hongkong-territorial-tax-illusion-2026.html</link>
+      <guid isPermaLink="true">https://ccapital.pro/journal/hongkong-territorial-tax-illusion-2026.html</guid>
+      <pubDate>Mon, 08 Jun 2026 18:00:00 +0700</pubDate>
+      <description>Миф о «нулевом налоге» в Гонконге — самый дорогой в международном структурировании: он стоит бизнесу замороженных счетов и доначислений по ставке 16,5%. Территориальная система не освобождает автоматически — она перекладывает бремя доказательства на владельца: нужен offshore profits claim, реальная деятельность, substance и аудит. Под давлением ЕС с 2023 года действует режим FSIE (налог на иностранный пассивный доход), а CRS делает счета прозрачными. Отдельный привратник — банк: даже при нулевом налоге деньги без подтверждённого Source of Funds и Source of Wealth блокируются. Разбор от Charter Capital: как построить структуру, готовую к вопросам и налоговой, и банка.</description>
+      <enclosure url="https://ccapital.pro/assets/journal/hongkong-vs-switzerland-hero.webp" type="image/webp" />
+      <category>Charter Capital · Налоги и структуры</category>
+    </item>
     <item>
       <title>Диагностика капитала: измеримый индекс готовности к проверке — новый продукт Charter Capital</title>
       <link>https://ccapital.pro/journal/diagnostika-kapitala-2026.html</link>
