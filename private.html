@@ -642,7 +642,7 @@ footer.f{
   background:#000;color:var(--text-on-dark-mute);
   padding:48px 32px 32px;border-top:1px solid var(--line-darker);
 }
-.f-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:42px}
+.f-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:42px}
 .f-brand .name{font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#fff;margin-bottom:10px}
 .f-brand .tag{color:var(--gold);font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px}
 .f-brand p{font-size:12.5px;color:#94a3b8;line-height:1.6;max-width:42ch}
@@ -777,7 +777,7 @@ footer.f{
   .timeline-center{display:none}
   .bound-grid{grid-template-columns:1fr}
   .before-after{grid-template-columns:1fr}
-  .f-inner{grid-template-columns:1fr;gap:28px}
+  .f-inner{grid-template-columns:1fr 1fr;gap:28px}
   .topbar-nav{display:none}
 }
 @media(max-width:640px){
@@ -792,6 +792,7 @@ footer.f{
   .hero-meta{gap:24px}
   .hero-meta-item .v{font-size:1.25rem}
   .deck.dark .grid-4{grid-template-columns:1fr}
+  .f-inner{grid-template-columns:1fr}
 }
 /* ─── SCROLL REVEAL + SECTION SEAMS ────────────────────── */
 .deck > .blk{position:relative;z-index:1}
@@ -1025,9 +1026,12 @@ footer.f{
       <div style="max-width:64ch">
         <span class="kicker" style="margin-bottom:10px">Философия Charter Capital</span>
         <h3 style="font-size:clamp(1.35rem,2vw,1.8rem);font-weight:500;letter-spacing:-.025em;line-height:1.18;margin-bottom:10px">Сингапурский маршрут — лишь один из инструментов. За ним стоит общий принцип.</h3>
-        <p style="font-size:15.5px;line-height:1.6;color:var(--text-soft)">Зачем крупному капиталу из СНГ вообще нужна доказуемая биография, что такое архитектура легитимности и почему размер денег больше не защищает за пределами СНГ — в нашем обращении для квалифицированных клиентов.</p>
+        <p style="font-size:15.5px;line-height:1.6;color:var(--text-soft)">Зачем крупному капиталу из СНГ вообще нужна доказуемая биография, что такое архитектура легитимности и почему размер денег больше не защищает за пределами СНГ — в нашем обращении для квалифицированных клиентов. А измеримую точку отсчёта даёт <a href="capital-diagnostic.html" style="color:var(--gold);border-bottom:1px solid rgba(160,129,86,.4)">диагностика капитала</a> — индекс готовности 0–100 и карта рисков.</p>
       </div>
-      <a href="qualified-clients.html" class="btn btn-dark btn-lg btn-magnetic" style="flex:none">Читать обращение <span class="arr">→</span></a>
+      <div style="display:flex;flex-direction:column;gap:10px;flex:none">
+        <a href="qualified-clients.html" class="btn btn-dark btn-lg btn-magnetic">Читать обращение <span class="arr">→</span></a>
+        <a href="capital-diagnostic.html" class="btn btn-lg" style="border:1px solid var(--ink);text-align:center">Диагностика капитала</a>
+      </div>
     </div>
   </div>
 </section>
@@ -1412,6 +1416,7 @@ footer.f{
       <ul>
         <li><a href="team.html">Письмо основателя</a></li>
         <li><a href="qualified-clients.html">Обращение для квал. клиентов</a></li>
+        <li><a href="capital-diagnostic.html">Диагностика капитала, от $250&nbsp;000</a></li>
         <li><a href="homeland.html">Подготовка к исходу, ещё в РФ</a></li>
         <li><a href="freedom-route.html">Маршрут в свободный мир, СНГ</a></li>
         <li><a href="index.html">Основной агрегатор, от $50&nbsp;000</a></li>
@@ -1445,7 +1450,7 @@ footer.f{
   </div>
   <div class="f-bottom">
     <span>© 2026 Charter Capital · Private Office - Когда двери закрываются, мы открываем мир</span>
-    <span>Обновлено: апрель 2026</span>
+    <span>Обновлено: июнь 2026</span>
   </div>
 </footer>
 
