@@ -9,8 +9,8 @@
     <description>Аналитика международного private banking, ВЭД и геополитики капитала. Гонконг · Сингапур · ОАЭ · Швейцария · UK · Россия.</description>
     <language>ru</language>
     <copyright>© Charter Capital, 2026</copyright>
-    <lastBuildDate>Thu, 04 Jun 2026 05:00:00 +0000</lastBuildDate>
-    <pubDate>Thu, 04 Jun 2026 05:00:00 +0000</pubDate>
+    <lastBuildDate>Mon, 08 Jun 2026 05:00:00 +0000</lastBuildDate>
+    <pubDate>Mon, 08 Jun 2026 05:00:00 +0000</pubDate>
     <ttl>360</ttl>
     <generator>Charter Capital · ccapital.pro</generator>
     <atom:link href="https://ccapital.pro/journal/feed.xml" rel="self" type="application/rss+xml" />
@@ -19,6 +19,15 @@
       <title>Дайджест Charter Capital</title>
       <link>https://ccapital.pro/journal.html</link>
     </image>
+    <item>
+      <title>Диагностика капитала: измеримый индекс готовности к проверке — новый продукт Charter Capital</title>
+      <link>https://ccapital.pro/journal/diagnostika-kapitala-2026.html</link>
+      <guid isPermaLink="true">https://ccapital.pro/journal/diagnostika-kapitala-2026.html</guid>
+      <pubDate>Mon, 08 Jun 2026 10:00:00 +0700</pubDate>
+      <description>Charter Capital запускает «Диагностику капитала» — платный конфиденциальный отчёт о готовности капитала к проверке банком, регулятором и судом. В основе — карта капитала (граф связей бенефициара, компаний, счетов, активов, крипты и источников) и индекс готовности 0–100 по девяти измерениям: Source of Funds, Source of Wealth, UBO, substance, банковская история, география юрисдикций, крипто-экспозиция, санкции/PEP, полнота документов. В отчёте — красные флаги с формулировкой вопроса банка, дорожная карта устранения и вердикт по сценариям. Продукт рассчитан на капитал от $250 000 и засчитывается в полный мандат.</description>
+      <enclosure url="https://ccapital.pro/assets/og/capital-diagnostic-og.jpg" type="image/jpeg" />
+      <category>Charter Capital · Продукты</category>
+    </item>
     <item>
       <title>GPU H100/H200 из Азии для бизнеса из СНГ: облако и закупка железа с оплатой в USDT и CNY</title>
       <link>https://ccapital.pro/journal/gpu-oblako-azia-h100-h200-2026.html</link>
