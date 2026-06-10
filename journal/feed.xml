@@ -9,8 +9,8 @@
     <description>Аналитика международного private banking, ВЭД и геополитики капитала. Гонконг · Сингапур · ОАЭ · Швейцария · UK · Россия.</description>
     <language>ru</language>
     <copyright>© Charter Capital, 2026</copyright>
-    <lastBuildDate>Mon, 09 Jun 2026 12:00:00 +0000</lastBuildDate>
-    <pubDate>Mon, 09 Jun 2026 12:00:00 +0000</pubDate>
+    <lastBuildDate>Wed, 10 Jun 2026 12:00:00 +0000</lastBuildDate>
+    <pubDate>Wed, 10 Jun 2026 12:00:00 +0000</pubDate>
     <ttl>360</ttl>
     <generator>Charter Capital · ccapital.pro</generator>
     <atom:link href="https://ccapital.pro/journal/feed.xml" rel="self" type="application/rss+xml" />
@@ -19,6 +19,15 @@
       <title>Дайджест Charter Capital</title>
       <link>https://ccapital.pro/journal.html</link>
     </image>
+    <item>
+      <title>Минфин готовит лимиты на покупку крипты: 300 тыс. ₽ и только топ-5 криптовалют</title>
+      <link>https://ccapital.pro/journal/minfin-limity-kripty-300k-2026.html</link>
+      <guid isPermaLink="true">https://ccapital.pro/journal/minfin-limity-kripty-300k-2026.html</guid>
+      <pubDate>Wed, 10 Jun 2026 12:00:00 +0700</pubDate>
+      <description>Власти готовят дополнительные ограничения на покупку криптовалют: неквалифицированные инвесторы смогут вкладывать до 300 тыс. ₽ в год и только в топ-5 монет (BTC, ETH, USDT, BNB, USDC). USDT, USDC и BNB власти сами считают рискованными (риск заморозки и связь с Binance). Для «недружественных» монет рассматривают повышенные комиссии (0,5–2%, до 3% по долларовым стейблкоинам), годовые лимиты, тестирование, период охлаждения и ограничения на вывод. Законопроект планируют принять в июне. Разбор Charter Capital: что это значит для движения капитала.</description>
+      <enclosure url="https://ccapital.pro/assets/journal/minfin-kripta-limity-hero.jpg" type="image/jpeg" />
+      <category>Charter Capital · Новости рынка</category>
+    </item>
     <item>
       <title>21-й пакет санкций ЕС и криптобиржи: карта рисков и что делать сейчас</title>
       <link>https://ccapital.pro/journal/eu-sanctions-21-crypto-exchanges-2026.html</link>
