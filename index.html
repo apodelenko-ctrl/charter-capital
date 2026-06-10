@@ -307,6 +307,11 @@ p{color:var(--body);font-weight:400;line-height:1.7}
   display:flex;flex-direction:column;align-items:flex-end;gap:11px;
   min-width:0;max-width:560px;
 }
+/* На десктопе — убираем правый угол из потока, чтобы он не приподнимал
+   строку флагов и не опускал заголовок. */
+@media(min-width:769px){
+  .hero-corner{position:absolute;top:0;right:0;z-index:3;}
+}
 .hero-flag{
   display:inline-flex;align-items:center;gap:10px;
   background:rgba(16,10,12,.88);
