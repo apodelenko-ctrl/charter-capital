@@ -137,8 +137,9 @@
       .villa .price .pv { font-family: var(--font-serif); font-size: 1.35rem; font-weight: 600; }
 
       /* ── Table ── */
-      .tbl-wrap { overflow-x: auto; }
-      table { width: 100%; border-collapse: collapse; font-size: 0.84rem; min-width: 560px; }
+      .tbl-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      table { width: 100%; border-collapse: collapse; font-size: 0.84rem; min-width: 480px; }
+      .tbl-wrap.mini table { min-width: 0; }
       thead th { text-align: left; font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-subtle); font-weight: 500; padding: 0.7rem 0.9rem; border-bottom: 1px solid var(--rule-strong); }
       thead th:not(:first-child) { text-align: right; }
       tbody td { padding: 0.8rem 0.9rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
@@ -341,7 +342,7 @@
         <div class="two" style="margin-bottom: 1.4rem">
           <div class="block">
             <h3>Динамика ROI пула</h3>
-            <div class="tbl-wrap">
+            <div class="tbl-wrap mini">
               <table>
                 <thead><tr><th>Период</th><th>ROI пула</th></tr></thead>
                 <tbody>
@@ -355,7 +356,7 @@
           </div>
           <div class="block">
             <h3>Доход от аренды · годовой пакет</h3>
-            <div class="tbl-wrap">
+            <div class="tbl-wrap mini">
               <table>
                 <thead><tr><th>Сезон</th><th>Валовая аренда</th></tr></thead>
                 <tbody>
