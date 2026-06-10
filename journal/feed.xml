@@ -9,8 +9,8 @@
     <description>Аналитика международного private banking, ВЭД и геополитики капитала. Гонконг · Сингапур · ОАЭ · Швейцария · UK · Россия.</description>
     <language>ru</language>
     <copyright>© Charter Capital, 2026</copyright>
-    <lastBuildDate>Wed, 10 Jun 2026 16:00:00 +0000</lastBuildDate>
-    <pubDate>Wed, 10 Jun 2026 16:00:00 +0000</pubDate>
+    <lastBuildDate>Wed, 10 Jun 2026 18:00:00 +0000</lastBuildDate>
+    <pubDate>Wed, 10 Jun 2026 18:00:00 +0000</pubDate>
     <ttl>360</ttl>
     <generator>Charter Capital · ccapital.pro</generator>
     <atom:link href="https://ccapital.pro/journal/feed.xml" rel="self" type="application/rss+xml" />
@@ -19,6 +19,15 @@
       <title>Дайджест Charter Capital</title>
       <link>https://ccapital.pro/journal.html</link>
     </image>
+    <item>
+      <title>Госдума приняла в первом чтении налоговый режим для цифровых валют и освобождение криптообменников от НДС</title>
+      <link>https://ccapital.pro/journal/cifrovye-valyuty-nalogi-nds-2026.html</link>
+      <guid isPermaLink="true">https://ccapital.pro/journal/cifrovye-valyuty-nalogi-nds-2026.html</guid>
+      <pubDate>Wed, 10 Jun 2026 18:00:00 +0700</pubDate>
+      <description>Госдума одобрила в первом чтении законопроект о налоговом регулировании цифровых валют и цифровых прав — синхронизацию НК РФ с законом об их обороте. Тем же днём в первом чтении принято освобождение криптообменников от НДС. Разбор Charter Capital: 0% НДС касается операций обмена, а не отменяет налог на доход; складывается документируемая налоговая история (полезна для Source of Funds), но это внутренний контур и он не делает капитал «чистым» для зарубежного банка.</description>
+      <enclosure url="https://ccapital.pro/assets/journal/kripta-nalog-nds-hero.jpg" type="image/jpeg" />
+      <category>Charter Capital · Новости рынка</category>
+    </item>
     <item>
       <title>Депутатам и сенаторам запретят владеть недвижимостью за границей: что это значит для частного капитала</title>
       <link>https://ccapital.pro/journal/deputaty-zapret-zarubezhnaya-nedvizhimost-2026.html</link>
