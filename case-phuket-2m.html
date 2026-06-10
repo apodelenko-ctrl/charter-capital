@@ -1,0 +1,644 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#FAFAF6" />
+    <meta
+      name="description"
+      content="Charter Capital — конфиденциальная презентация кейса: законный маршрут инвестиции ~$2,6 млн в пул вилл Rainpalm (Пхукет), экономика сделки и репатриация дохода в ЕС."
+    />
+
+    <!-- Конфиденциальная презентация — запрет индексации. -->
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+    <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+    <meta name="yandex" content="noindex, nofollow, noarchive, nosnippet, noyaca" />
+    <meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet" />
+
+    <title>Charter Capital · Кейс $2M — Пхукет через сингапурский фонд</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Urbanist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --paper: #fafaf6;
+        --paper-card: #ffffff;
+        --paper-soft: #f5f3eb;
+        --paper-elevated: #fbfaf5;
+        --ink: #0b0b0b;
+        --ink-muted: #5c5c5c;
+        --ink-subtle: #9c9c9c;
+        --gold: #9c7c2a;
+        --gold-light: #c9a961;
+        --gold-dark: #5c4818;
+        --rule: #e5e2da;
+        --rule-strong: #d4d0c5;
+        --ok: #3f7d52;
+        --info: #3d6a8f;
+        --font-sans: 'Inter', 'Urbanist', system-ui, -apple-system, sans-serif;
+        --font-serif: Georgia, 'Times New Roman', serif;
+        --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+        --radius: 12px;
+        --shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(11, 11, 11, 0.06);
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+
+      html { scroll-behavior: smooth; }
+
+      body {
+        background: var(--paper);
+        color: var(--ink);
+        font-family: var(--font-sans);
+        font-weight: 400;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+
+      .wrap {
+        max-width: 72rem;
+        margin: 0 auto;
+        padding: 1.5rem 1rem 3rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.75rem;
+      }
+      @media (min-width: 640px) {
+        .wrap { padding: 2rem 1.5rem 4rem; gap: 2rem; }
+      }
+
+      .eyebrow {
+        font-family: var(--font-mono);
+        font-size: 0.66rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--gold);
+      }
+      .mono {
+        font-family: var(--font-mono);
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .card {
+        background: var(--paper-card);
+        border: 1px solid var(--rule);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 1.5rem;
+      }
+      @media (min-width: 640px) { .card { padding: 2rem; } }
+
+      /* ── Header ───────────────────────────────────────────── */
+      header.bank {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        border-bottom: 1px solid var(--rule);
+        padding-bottom: 1.5rem;
+      }
+      @media (min-width: 768px) {
+        header.bank { flex-direction: row; align-items: flex-start; justify-content: space-between; }
+      }
+      .brand { display: flex; align-items: center; gap: 0.7rem; }
+      .brand .seal {
+        width: 2.5rem; height: 2.5rem; border-radius: 8px;
+        border: 1px solid var(--gold-light);
+        display: flex; align-items: center; justify-content: center;
+        font-family: var(--font-serif); font-size: 1.25rem; color: var(--gold-dark);
+        background: linear-gradient(135deg, #fdfcf7, #f3eede);
+      }
+      .brand .name { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 600; }
+      .brand .domain { font-size: 0.72rem; color: var(--ink-subtle); }
+      .deal-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem 1.5rem; }
+      .deal-meta .k { font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-subtle); font-family: var(--font-mono); }
+      .deal-meta .v { font-size: 0.86rem; font-weight: 500; }
+      .status-pill {
+        display: inline-flex; align-items: center; gap: 0.4rem;
+        font-family: var(--font-mono); font-size: 0.64rem; letter-spacing: 0.14em; text-transform: uppercase;
+        color: var(--gold-dark); background: #f7f0dd; border: 1px solid var(--gold-light);
+        padding: 0.3rem 0.6rem; border-radius: 999px;
+      }
+      .status-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+
+      /* ── Hero ─────────────────────────────────────────────── */
+      .hero h1 {
+        font-family: var(--font-serif);
+        font-weight: 600;
+        font-size: 1.9rem;
+        line-height: 1.18;
+        letter-spacing: -0.01em;
+        margin: 0.8rem 0 0.5rem;
+      }
+      @media (min-width: 768px) { .hero h1 { font-size: 2.6rem; } }
+      .hero .sub { font-size: 1rem; color: var(--ink-muted); max-width: 46rem; }
+      .hero .summary { margin-top: 1.1rem; font-size: 0.95rem; color: var(--ink-muted); max-width: 50rem; }
+
+      /* premise callout */
+      .premise {
+        margin-top: 1.5rem;
+        border-left: 3px solid var(--gold);
+        background: var(--paper-soft);
+        border-radius: 0 var(--radius) var(--radius) 0;
+        padding: 1.1rem 1.3rem;
+      }
+      .premise .t { font-weight: 600; font-size: 0.9rem; margin-bottom: 0.4rem; }
+      .premise p { font-size: 0.88rem; color: var(--ink-muted); }
+      .premise strong { color: var(--ink); }
+
+      /* ── Section title ────────────────────────────────────── */
+      .sec-head { display: flex; align-items: baseline; gap: 0.8rem; margin-bottom: 1.2rem; }
+      .sec-head .num { font-family: var(--font-mono); font-size: 0.72rem; color: var(--gold); letter-spacing: 0.1em; }
+      .sec-head h2 { font-family: var(--font-serif); font-size: 1.4rem; font-weight: 600; }
+      .sec-head .lead { font-size: 0.85rem; color: var(--ink-subtle); }
+
+      /* ── Flow ─────────────────────────────────────────────── */
+      .flow { display: grid; gap: 1rem; grid-template-columns: 1fr; }
+      @media (min-width: 768px) { .flow { grid-template-columns: repeat(5, 1fr); } }
+      .node {
+        background: var(--paper-elevated);
+        border: 1px solid var(--rule);
+        border-radius: var(--radius);
+        padding: 1.1rem;
+        display: flex; flex-direction: column; gap: 0.55rem;
+        position: relative;
+      }
+      .node .step { font-family: var(--font-mono); font-size: 0.66rem; color: var(--gold); letter-spacing: 0.12em; }
+      .node .ico { font-size: 1.2rem; }
+      .node h3 { font-size: 0.95rem; font-weight: 600; }
+      .node .headline { font-size: 0.76rem; color: var(--gold-dark); font-weight: 500; }
+      .node p { font-size: 0.78rem; color: var(--ink-muted); }
+      .node .tl { margin-top: auto; font-family: var(--font-mono); font-size: 0.62rem; color: var(--ink-subtle); letter-spacing: 0.08em; }
+      .node ul { list-style: none; display: flex; flex-direction: column; gap: 0.25rem; }
+      .node li { font-size: 0.74rem; color: var(--ink-muted); padding-left: 0.9rem; position: relative; }
+      .node li::before { content: '–'; position: absolute; left: 0; color: var(--gold-light); }
+
+      /* ── Table ────────────────────────────────────────────── */
+      .tbl-wrap { overflow-x: auto; }
+      table { width: 100%; border-collapse: collapse; font-size: 0.84rem; min-width: 640px; }
+      thead th {
+        text-align: left; font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.1em;
+        text-transform: uppercase; color: var(--ink-subtle); font-weight: 500;
+        padding: 0.7rem 0.9rem; border-bottom: 1px solid var(--rule-strong);
+      }
+      tbody td { padding: 0.85rem 0.9rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+      tbody tr:last-child td { border-bottom: none; }
+      tbody td:first-child { font-weight: 600; white-space: nowrap; }
+      tbody td .doc { color: var(--ink-muted); }
+      .cards-table { display: none; }
+      @media (max-width: 767px) {
+        .tbl-wrap { display: none; }
+        .cards-table { display: flex; flex-direction: column; gap: 0.8rem; }
+        .ct { border: 1px solid var(--rule); border-radius: var(--radius); padding: 1rem; background: var(--paper-elevated); }
+        .ct .stage { font-weight: 600; margin-bottom: 0.5rem; }
+        .ct .row { font-size: 0.8rem; margin-top: 0.35rem; }
+        .ct .row .lbl { font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-subtle); display: block; }
+      }
+
+      /* ── Principles ───────────────────────────────────────── */
+      .grid4 { display: grid; gap: 1rem; grid-template-columns: 1fr; }
+      @media (min-width: 640px) { .grid4 { grid-template-columns: 1fr 1fr; } }
+      @media (min-width: 1024px) { .grid4 { grid-template-columns: repeat(4, 1fr); } }
+      .principle { background: var(--paper-elevated); border: 1px solid var(--rule); border-radius: var(--radius); padding: 1.2rem; }
+      .principle .ico { font-size: 1.3rem; margin-bottom: 0.6rem; }
+      .principle h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.4rem; }
+      .principle p { font-size: 0.8rem; color: var(--ink-muted); }
+
+      /* ── Math ─────────────────────────────────────────────── */
+      .math { display: grid; gap: 0.7rem; }
+      .math .line { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px dashed var(--rule); }
+      .math .line .l { font-size: 0.86rem; }
+      .math .line .l small { display: block; color: var(--ink-subtle); font-size: 0.72rem; }
+      .math .line .n { font-family: var(--font-mono); font-size: 0.95rem; white-space: nowrap; }
+      .math .n.pos { color: var(--ok); }
+      .math .n.neg { color: #a4503a; }
+      .math .total { border-top: 2px solid var(--ink); border-bottom: none; margin-top: 0.3rem; padding-top: 0.9rem; }
+      .math .total .l { font-weight: 700; font-size: 1rem; }
+      .math .total .n { font-weight: 700; font-size: 1.1rem; }
+      .indic { font-size: 0.72rem; color: var(--ink-subtle); margin-top: 0.9rem; font-style: italic; }
+
+      /* ── FAQ ──────────────────────────────────────────────── */
+      details { border: 1px solid var(--rule); border-radius: var(--radius); padding: 0.5rem 1.1rem; background: var(--paper-elevated); }
+      details + details { margin-top: 0.7rem; }
+      summary { cursor: pointer; font-weight: 600; font-size: 0.9rem; padding: 0.6rem 0; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+      summary::-webkit-details-marker { display: none; }
+      summary::after { content: '+'; color: var(--gold); font-size: 1.2rem; font-weight: 400; }
+      details[open] summary::after { content: '–'; }
+      details p { font-size: 0.84rem; color: var(--ink-muted); padding: 0 0 0.9rem; }
+
+      /* ── Links ────────────────────────────────────────────── */
+      .links { display: grid; gap: 0.8rem; grid-template-columns: 1fr; }
+      @media (min-width: 640px) { .links { grid-template-columns: 1fr 1fr; } }
+      .link-card { display: flex; flex-direction: column; gap: 0.2rem; border: 1px solid var(--rule); border-radius: var(--radius); padding: 1rem 1.1rem; text-decoration: none; color: inherit; transition: border-color 0.2s, transform 0.2s; background: var(--paper-card); }
+      .link-card:hover { border-color: var(--gold-light); transform: translateY(-2px); }
+      .link-card .t { font-weight: 600; font-size: 0.9rem; }
+      .link-card .s { font-size: 0.74rem; color: var(--gold-dark); }
+      .link-card .d { font-size: 0.78rem; color: var(--ink-muted); }
+
+      /* ── Disclaimer / footer ─────────────────────────────── */
+      .disclaimer { background: var(--paper-soft); }
+      .disclaimer p { font-size: 0.78rem; color: var(--ink-muted); }
+      .disclaimer p + p { margin-top: 0.7rem; }
+      .sign { margin-top: 1rem; font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em; color: var(--ink-subtle); }
+      footer.page { display: flex; flex-direction: column; gap: 0.5rem; align-items: center; justify-content: space-between; border-top: 1px solid var(--rule); padding-top: 1.5rem; }
+      @media (min-width: 640px) { footer.page { flex-direction: row; } }
+      footer.page span { font-family: var(--font-mono); font-size: 0.64rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-subtle); }
+
+      .cta { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--ink); color: var(--paper); text-decoration: none; font-size: 0.84rem; font-weight: 600; padding: 0.7rem 1.3rem; border-radius: 999px; transition: background 0.2s; }
+      .cta:hover { background: var(--gold-dark); }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrap">
+      <!-- ── Header ─────────────────────────────────────────── -->
+      <header class="bank">
+        <div>
+          <div class="brand">
+            <div class="seal">C</div>
+            <div>
+              <div class="name">Charter Capital</div>
+              <div class="domain">ccapital.pro · структуратор сделки</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="deal-meta">
+            <div><div class="k">Документ</div><div class="v">Инвестиционный кейс</div></div>
+            <div><div class="k">Референс</div><div class="v">CC-RE-PHK-XX</div></div>
+            <div><div class="k">Адресат</div><div class="v">Квалифицированный частный клиент</div></div>
+            <div><div class="k">Объём</div><div class="v">฿92,66 млн · ~$2,6 млн</div></div>
+          </div>
+          <div style="margin-top: 0.8rem">
+            <span class="status-pill"><span class="dot"></span> Конфиденциально · презентация кейса</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- ── Hero ───────────────────────────────────────────── -->
+      <section class="hero">
+        <div class="eyebrow">Конфиденциальная презентация</div>
+        <h1>Инвестиция&nbsp;~$2,6&nbsp;млн в&nbsp;курортную недвижимость Пхукета</h1>
+        <p class="sub">
+          Законный трансграничный маршрут под конкретный актив — пул из&nbsp;трёх вилл
+          <strong>Rainpalm&nbsp;Villas</strong> (Банг&nbsp;Тао): реальный объект, реальная аренда,
+          полная налоговая отчётность в&nbsp;каждой юрисдикции — и&nbsp;доход, который банк&nbsp;ЕС
+          принимает без&nbsp;вопросов.
+        </p>
+        <p class="summary">
+          Документ показывает пять стадий движения капитала — от&nbsp;подтверждённого источника средств до
+          репатриации дохода на&nbsp;счета клиента в&nbsp;ЕС. На&nbsp;каждом переходе деньги сопровождает документ:
+          ни&nbsp;одного «слепого» участка, который комплаенс-офицер не&nbsp;сможет прочитать.
+        </p>
+        <div style="margin-top: 1.2rem">
+          <a class="cta" href="/case-phuket-rainpalm.html">Открыть карточку проекта Rainpalm — конкретика, виллы, доходность →</a>
+        </div>
+
+        <div class="premise">
+          <div class="t">Стартовое допущение — обязательное условие кейса</div>
+          <p>
+            Работа начинается только после того, как клиент предоставил <strong>полный, проверяемый
+            пакет документов о законном происхождении и принадлежности капитала</strong>
+            (Source&nbsp;of&nbsp;Funds&nbsp;/&nbsp;Source&nbsp;of&nbsp;Wealth: декларации, договоры,
+            выписки, подтверждение уплаты налогов). Charter&nbsp;Capital не легализует средства
+            неизвестного происхождения. Мы <strong>структурируем и сопровождаем</strong> инвестицию
+            законного капитала так, чтобы каждый шаг был задокументирован и задекларирован. Если
+            источник не подтверждён — кейс не берётся.
+          </p>
+        </div>
+      </section>
+
+      <!-- ── 01 Flow ────────────────────────────────────────── -->
+      <section class="card">
+        <div class="sec-head">
+          <span class="num">01</span>
+          <h2>Карта пути капитала</h2>
+        </div>
+        <div class="flow">
+          <div class="node">
+            <div class="step">01 · T+0</div>
+            <div class="ico">🗂️</div>
+            <h3>Источник и подтверждение</h3>
+            <div class="headline">SoF / SoW досье</div>
+            <p>Верификация законного происхождения капитала до начала движения средств.</p>
+            <ul>
+              <li>Декларации, договоры, выписки</li>
+              <li>Подтверждение уплаты налогов</li>
+              <li>AML-готовность (SourceReady)</li>
+            </ul>
+            <div class="tl">T+0</div>
+          </div>
+          <div class="node">
+            <div class="step">02</div>
+            <div class="ico">🏦</div>
+            <h3>Перевод с декларированием</h3>
+            <div class="headline">РФ → зарубежный счёт клиента</div>
+            <p>Перевод через банковский контур в рамках валютного законодательства.</p>
+            <ul>
+              <li>Платёжные документы</li>
+              <li>Уведомление ФНС о зарубежном счёте</li>
+              <li>Счёт под контролем клиента</li>
+            </ul>
+            <div class="tl">T+1 ÷ T+10</div>
+          </div>
+          <div class="node">
+            <div class="step">03</div>
+            <div class="ico">🇸🇬</div>
+            <h3>Подписка в фонд</h3>
+            <div class="headline">Регулируемый фонд (MAS), Сингапур</div>
+            <p>Инвестиционный контракт; доля закреплена за клиентом, KYC фонда пройден.</p>
+            <ul>
+              <li>Subscription agreement</li>
+              <li>Регуляторная защита инвестора</li>
+              <li>Доля = актив клиента</li>
+            </ul>
+            <div class="tl">T+10 ÷ T+30</div>
+          </div>
+          <div class="node">
+            <div class="step">04</div>
+            <div class="ico">🏝️</div>
+            <h3>Актив и аренда</h3>
+            <div class="headline">Rainpalm · пул из 3 вилл · лизхолд 30×3</div>
+            <p>Приобретение пула законным инструментом по портфельной цене; реальная курортная аренда.</p>
+            <ul>
+              <li>Право собственности зарегистрировано</li>
+              <li>Договор управления и аренды (~9% net)</li>
+              <li>Налоговая регистрация в Таиланде</li>
+            </ul>
+            <div class="tl">горизонт 3–5 лет</div>
+          </div>
+          <div class="node">
+            <div class="step">05</div>
+            <div class="ico">✅</div>
+            <h3>Выход и репатриация</h3>
+            <div class="headline">Доход → счета клиента в ЕС</div>
+            <p>Продажа по рынку, уплата налога, документированная репатриация дохода.</p>
+            <ul>
+              <li>Договор продажи + расчёт налога</li>
+              <li>Банковский пакет на репатриацию</li>
+              <li>Объяснимый источник для банка ЕС</li>
+            </ul>
+            <div class="tl">по реализации</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── 02 Table ───────────────────────────────────────── -->
+      <section class="card">
+        <div class="sec-head">
+          <span class="num">02</span>
+          <h2>Безопасность и стоимость</h2>
+          <span class="lead">ставки индикативны · фиксируются на first call</span>
+        </div>
+        <div class="tbl-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Этап</th>
+                <th>Юридическая защита — документ контроля клиента</th>
+                <th>Стоимость / за что платит клиент</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Подготовка SoF-досье</td>
+                <td class="doc">Верифицированный пакет источника капитала (Charter / SourceReady)</td>
+                <td>Fee за досье — чтобы банк принял историю без доп. вопросов</td>
+              </tr>
+              <tr>
+                <td>Открытие зарубежного счёта</td>
+                <td class="doc">Договор банковского обслуживания на имя клиента; счёт контролирует клиент</td>
+                <td>Сопровождение онбординга + EDD-интервью</td>
+              </tr>
+              <tr>
+                <td>Перевод и валютная операция</td>
+                <td class="doc">Платёжные документы, уведомление ФНС о зарубежном счёте</td>
+                <td>Структурирование и комплаенс-сопровождение перевода</td>
+              </tr>
+              <tr>
+                <td>Подписка в фонд</td>
+                <td class="doc">Инвестиционный контракт / subscription agreement; доля закреплена за клиентом</td>
+                <td>Fund setup / subscription fee</td>
+              </tr>
+              <tr>
+                <td>Приобретение объекта</td>
+                <td class="doc">Договор купли-продажи + право собственности (Chanote / лизхолд)</td>
+                <td>Юр. сопровождение сделки; нотариус и гос. сборы — отдельно</td>
+              </tr>
+              <tr>
+                <td>Операционная фаза (аренда)</td>
+                <td class="doc">Договор управления, арендные договоры, налоговая регистрация в Таиланде</td>
+                <td>Property / asset management fee</td>
+              </tr>
+              <tr>
+                <td>Выход и репатриация</td>
+                <td class="doc">Договор продажи, подтверждение уплаты налога, банковский пакет</td>
+                <td>Fee за сопровождение выхода и репатриации</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="cards-table">
+          <div class="ct"><div class="stage">Подготовка SoF-досье</div><div class="row"><span class="lbl">Документ</span>Верифицированный пакет источника капитала</div><div class="row"><span class="lbl">Стоимость</span>Fee за досье — приём истории банком</div></div>
+          <div class="ct"><div class="stage">Открытие зарубежного счёта</div><div class="row"><span class="lbl">Документ</span>Договор обслуживания на имя клиента</div><div class="row"><span class="lbl">Стоимость</span>Онбординг + EDD-интервью</div></div>
+          <div class="ct"><div class="stage">Перевод и валютная операция</div><div class="row"><span class="lbl">Документ</span>Платёжные документы, уведомление ФНС</div><div class="row"><span class="lbl">Стоимость</span>Комплаенс-сопровождение перевода</div></div>
+          <div class="ct"><div class="stage">Подписка в фонд</div><div class="row"><span class="lbl">Документ</span>Subscription agreement; доля за клиентом</div><div class="row"><span class="lbl">Стоимость</span>Fund setup / subscription fee</div></div>
+          <div class="ct"><div class="stage">Приобретение объекта</div><div class="row"><span class="lbl">Документ</span>ДКП + право собственности (Chanote / лизхолд)</div><div class="row"><span class="lbl">Стоимость</span>Юр. сопровождение; сборы отдельно</div></div>
+          <div class="ct"><div class="stage">Операционная фаза</div><div class="row"><span class="lbl">Документ</span>Договор управления и аренды, налоговая регистрация</div><div class="row"><span class="lbl">Стоимость</span>Asset management fee</div></div>
+          <div class="ct"><div class="stage">Выход и репатриация</div><div class="row"><span class="lbl">Документ</span>Договор продажи, налог, банковский пакет</div><div class="row"><span class="lbl">Стоимость</span>Сопровождение выхода и репатриации</div></div>
+        </div>
+      </section>
+
+      <!-- ── 03 Control / ownership ─────────────────────────── -->
+      <section class="card">
+        <div class="sec-head">
+          <span class="num">03</span>
+          <h2>Контроль и собственность</h2>
+        </div>
+        <p style="font-size: 0.9rem; color: var(--ink-muted); max-width: 52rem; margin-bottom: 1.2rem">
+          По мере движения капитала меняется юридический инструмент — но контроль клиента не
+          прерывается. На каждой ступени есть документ, подтверждающий, что актив принадлежит клиенту.
+        </p>
+        <div class="grid4">
+          <div class="principle">
+            <div class="ico">📄</div>
+            <h3>Инвестиционный контракт</h3>
+            <p>Доля в фонде закреплена за клиентом; права инвестора защищены регулированием MAS (Сингапур).</p>
+          </div>
+          <div class="principle">
+            <div class="ico">🏝️</div>
+            <h3>Право владения активом</h3>
+            <p>Законное владение в Таиланде: freehold-кондоминиум в пределах 49% иностранной квоты (титул Chanote) либо зарегистрированный лизхолд до 30 лет на виллу/землю.</p>
+          </div>
+          <div class="principle">
+            <div class="ico">⛔</div>
+            <h3>Без номинальных схем</h3>
+            <p>Прямо отказываемся от номинальных тайских акционеров для обхода запрета на владение землёй — это незаконно и разрушает «банкуемость» актива.</p>
+          </div>
+          <div class="principle">
+            <div class="ico">🔁</div>
+            <h3>Реализация актива</h3>
+            <p>Продажа по рынку: договор, уплата налога, документированная репатриация дохода на счета клиента.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── 04 Economics for client ─────────────────────────── -->
+      <section class="card">
+        <div class="sec-head">
+          <span class="num">04</span>
+          <h2>Экономика сделки для клиента</h2>
+          <span class="lead">пул Rainpalm · цифры по данным застройщика</span>
+        </div>
+
+        <p style="font-size: 0.9rem; color: var(--ink-muted); max-width: 54rem; margin-bottom: 1.2rem">
+          Наша работа не&nbsp;бесплатна — за&nbsp;сопровождение сделки Charter&nbsp;Capital берёт комиссию
+          <strong>10%</strong>. Но&nbsp;сделка построена так, что эта комиссия почти полностью покрывается
+          портфельным дисконтом, который мы&nbsp;получаем для&nbsp;вас. После всех издержек ваши
+          <strong>чистые затраты на&nbsp;вход ≈ 0,5%</strong> от&nbsp;капитала — против типичных 5–8%
+          переплаты и&nbsp;комиссий при&nbsp;розничной покупке «с&nbsp;улицы».
+        </p>
+
+        <div class="math">
+          <div class="line">
+            <div class="l">Розничная цена пула из&nbsp;3 вилл<small>цена, которую платит обычный покупатель</small></div>
+            <div class="n">฿102 954 482</div>
+          </div>
+          <div class="line">
+            <div class="l">Дисконт, который мы получаем для вас (−10%)<small>портфельная сделка, цена входа ฿92 659 034</small></div>
+            <div class="n pos">+ ฿10 295 448</div>
+          </div>
+          <div class="line">
+            <div class="l">Комиссия Charter Capital за услугу (10%)<small>структурирование, SoF, перевод, сопровождение сделки</small></div>
+            <div class="n neg">− ฿9 265 903</div>
+          </div>
+          <div class="line">
+            <div class="l">Транзакционные издержки<small>переуступка ฿0,30 млн · common/sinking/счётчики ฿0,88 млн · юр./FX/буфер</small></div>
+            <div class="n neg">− ฿1 544 000</div>
+          </div>
+          <div class="line total">
+            <div class="l">Чистые затраты клиента сверх стоимости актива<small>≈ 0,5% капитала</small></div>
+            <div class="n">≈ ฿0,51 млн</div>
+          </div>
+        </div>
+
+        <div class="premise" style="margin-top: 1.4rem">
+          <div class="t">Потенциал по данным застройщика — сверх вашего входа в ≈0,5%</div>
+          <p>
+            Короткий выход (переуступка по&nbsp;цене застройщика, IV&nbsp;кв.&nbsp;2026) или удержание:
+            <strong>аренда ~9% net в&nbsp;год</strong>, доходность от&nbsp;продажи и&nbsp;совокупный
+            <strong>ROI пула 142% за&nbsp;10&nbsp;лет</strong>. Уже на&nbsp;коротком горизонте апсайд
+            многократно перекрывает 0,5% затрат на&nbsp;вход. Полная разбивка — в&nbsp;<a href="/case-phuket-rainpalm.html" style="color: var(--gold-dark); font-weight: 600">карточке проекта</a>.
+          </p>
+        </div>
+
+        <p class="indic">
+          Мы&nbsp;не&nbsp;обещаем доходность. Цифры — по&nbsp;данным застройщика и&nbsp;структуре сделки, носят
+          индикативный характер; налоги, ставки и&nbsp;сроки зависят от&nbsp;юрисдикций и&nbsp;фиксируются
+          в&nbsp;персональном расчёте после индивидуальной проверки. Итоговая сумма на&nbsp;счёте клиента
+          в&nbsp;ЕС полностью объяснима документами.
+        </p>
+      </section>
+
+      <!-- ── 05 FAQ ─────────────────────────────────────────── -->
+      <section class="card">
+        <div class="sec-head">
+          <span class="num">05</span>
+          <h2>Вопросы compliance</h2>
+        </div>
+        <details open>
+          <summary>Почему это легально?</summary>
+          <p>Капитал законного происхождения (подтверждён на входе) перемещается через банковский контур с декларированием, инвестируется в реальный актив и облагается налогом в каждой юрисдикции.</p>
+        </details>
+        <details>
+          <summary>Как банк ЕС видит эти деньги?</summary>
+          <p>Как доход от задокументированной инвестиции: цепочка SoF → перевод → доля в фонде → актив → аренда → продажа → налоги. Каждое звено подтверждено документом.</p>
+        </details>
+        <details>
+          <summary>Где гарантия, что объект «не уйдёт»?</summary>
+          <p>Право собственности (Chanote / лизхолд) оформлено на структуру клиента и регистрируется в Земельном департаменте Таиланда; доля в фонде закреплена subscription-контрактом.</p>
+        </details>
+        <details>
+          <summary>Что если источник средств подтвердить нельзя?</summary>
+          <p>Тогда мы не беремся. Это условие, а не опция. Санкционные лица, PEP и непрозрачные источники — вне работы.</p>
+        </details>
+      </section>
+
+      <!-- ── 06 Links ───────────────────────────────────────── -->
+      <section>
+        <div class="sec-head">
+          <span class="num">06</span>
+          <h2>Связанные материалы</h2>
+        </div>
+        <div class="links">
+          <a class="link-card" href="/case-phuket-rainpalm.html">
+            <span class="t">Карточка проекта Rainpalm</span>
+            <span class="s">Конкретика о проекте</span>
+            <span class="d">Застройщик, локация, виллы, доходность и условия собственности</span>
+          </a>
+          <a class="link-card" href="https://ccapital.pro/source-of-funds.html" target="_blank" rel="noopener">
+            <span class="t">Source of Funds</span>
+            <span class="s">Архитектура легитимности</span>
+            <span class="d">Как готовится досье источника капитала под банк</span>
+          </a>
+          <a class="link-card" href="https://ccapital.pro/property.html" target="_blank" rel="noopener">
+            <span class="t">Зарубежная недвижимость</span>
+            <span class="s">Трансграничные сделки</span>
+            <span class="d">Сопровождение покупки и репатриации дохода</span>
+          </a>
+          <a class="link-card" href="https://ccapital.pro/private.html" target="_blank" rel="noopener">
+            <span class="t">Private Office</span>
+            <span class="s">Капитал от $1M</span>
+            <span class="d">Закрытый fiduciary-формат структурирования</span>
+          </a>
+          <a class="link-card" href="https://ccapital.pro/journal.html" target="_blank" rel="noopener">
+            <span class="t">Журнал</span>
+            <span class="s">Аналитика и практика</span>
+            <span class="d">Публикации по структурированию и комплаенсу</span>
+          </a>
+        </div>
+        <div style="margin-top: 1.5rem">
+          <a class="cta" href="https://t.me/ccapital_acces" target="_blank" rel="noopener">Запросить разбор кейса под NDA →</a>
+        </div>
+      </section>
+
+      <!-- ── Disclaimer ─────────────────────────────────────── -->
+      <section class="card disclaimer">
+        <div class="eyebrow">Конфиденциально</div>
+        <h2 style="font-family: var(--font-serif); font-size: 1.2rem; font-weight: 600; margin: 0.6rem 0 0.9rem">
+          Условия использования материала
+        </h2>
+        <p>
+          Документ носит исключительно информационный характер и <strong>не является публичной офертой,
+          рекламой финансовых услуг, индивидуальной инвестиционной, налоговой или юридической
+          рекомендацией</strong> и предложением заключить договор в значении статьи 437 Гражданского
+          кодекса Российской Федерации.
+        </p>
+        <p>
+          Конкретные инструменты, ставки, налоги и сроки зависят от юрисдикций (РФ, Сингапур, Таиланд,
+          ЕС) и фиксируются только после индивидуальной проверки. Charter Capital работает
+          исключительно с капиталом подтверждённого законного происхождения; санкционные лица, PEP и
+          непрозрачные источники — вне работы.
+        </p>
+        <p>
+          Материал предназначен только адресату, указанному в шапке. Получение документа подразумевает
+          согласие с режимом конфиденциальности и обязательством не передавать его третьим лицам без
+          письменного согласия Charter Capital.
+        </p>
+        <div class="sign">© Charter Capital, 2026 · ccapital.pro</div>
+      </section>
+
+      <footer class="page">
+        <span>Charter Capital · Кейс RE-PHK</span>
+        <span>© 2026 Charter Capital</span>
+      </footer>
+    </div>
+  </body>
+</html>

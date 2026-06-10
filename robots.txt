@@ -11,6 +11,8 @@ Disallow: /no-swift.html
 Disallow: /charter-flow/
 Disallow: /charter-flow-app/
 Disallow: /partner-brief.html
+Disallow: /case-phuket-2m.html
+Disallow: /case-phuket-rainpalm.html
 
 # === Crawlers ===
 User-agent: Googlebot
@@ -18,12 +20,16 @@ Allow: /
 Disallow: /charter-flow/
 Disallow: /charter-flow-app/
 Disallow: /partner-brief.html
+Disallow: /case-phuket-2m.html
+Disallow: /case-phuket-rainpalm.html
 
 User-agent: Yandex
 Allow: /
 Disallow: /charter-flow/
 Disallow: /charter-flow-app/
 Disallow: /partner-brief.html
+Disallow: /case-phuket-2m.html
+Disallow: /case-phuket-rainpalm.html
 Clean-param: utm_source&utm_medium&utm_campaign&utm_term&utm_content&yclid&gclid
 
 User-agent: YandexBot
@@ -31,36 +37,48 @@ Allow: /
 Disallow: /charter-flow/
 Disallow: /charter-flow-app/
 Disallow: /partner-brief.html
+Disallow: /case-phuket-2m.html
+Disallow: /case-phuket-rainpalm.html
 
 User-agent: YandexImages
 Allow: /
 Disallow: /charter-flow/
 Disallow: /charter-flow-app/
 Disallow: /partner-brief.html
+Disallow: /case-phuket-2m.html
+Disallow: /case-phuket-rainpalm.html
 
 User-agent: YandexMobileBot
 Allow: /
 Disallow: /charter-flow/
 Disallow: /charter-flow-app/
 Disallow: /partner-brief.html
+Disallow: /case-phuket-2m.html
+Disallow: /case-phuket-rainpalm.html
 
 User-agent: Bingbot
 Allow: /
 Disallow: /charter-flow/
 Disallow: /charter-flow-app/
 Disallow: /partner-brief.html
+Disallow: /case-phuket-2m.html
+Disallow: /case-phuket-rainpalm.html
 
 User-agent: DuckDuckBot
 Allow: /
 Disallow: /charter-flow/
 Disallow: /charter-flow-app/
 Disallow: /partner-brief.html
+Disallow: /case-phuket-2m.html
+Disallow: /case-phuket-rainpalm.html
 
 User-agent: Mail.RU_Bot
 Allow: /
 Disallow: /charter-flow/
 Disallow: /charter-flow-app/
 Disallow: /partner-brief.html
+Disallow: /case-phuket-2m.html
+Disallow: /case-phuket-rainpalm.html
 
 # === LLM / AI crawlers (allowed for main site, blocked for dashboard) ===
 User-agent: GPTBot
@@ -68,126 +86,168 @@ Allow: /
 Disallow: /charter-flow/
 Disallow: /charter-flow-app/
 Disallow: /partner-brief.html
+Disallow: /case-phuket-2m.html
+Disallow: /case-phuket-rainpalm.html
 
 User-agent: OAI-SearchBot
 Allow: /
 Disallow: /charter-flow/
 Disallow: /charter-flow-app/
 Disallow: /partner-brief.html
+Disallow: /case-phuket-2m.html
+Disallow: /case-phuket-rainpalm.html
 
 User-agent: ChatGPT-User
 Allow: /
 Disallow: /charter-flow/
 Disallow: /charter-flow-app/
 Disallow: /partner-brief.html
+Disallow: /case-phuket-2m.html
+Disallow: /case-phuket-rainpalm.html
 
 User-agent: PerplexityBot
 Allow: /
 Disallow: /charter-flow/
 Disallow: /charter-flow-app/
 Disallow: /partner-brief.html
+Disallow: /case-phuket-2m.html
+Disallow: /case-phuket-rainpalm.html
 
 User-agent: Perplexity-User
 Allow: /
 Disallow: /charter-flow/
 Disallow: /charter-flow-app/
 Disallow: /partner-brief.html
+Disallow: /case-phuket-2m.html
+Disallow: /case-phuket-rainpalm.html
 
 User-agent: ClaudeBot
 Allow: /
 Disallow: /charter-flow/
 Disallow: /charter-flow-app/
 Disallow: /partner-brief.html
+Disallow: /case-phuket-2m.html
+Disallow: /case-phuket-rainpalm.html
 
 User-agent: Claude-Web
 Allow: /
 Disallow: /charter-flow/
 Disallow: /charter-flow-app/
 Disallow: /partner-brief.html
+Disallow: /case-phuket-2m.html
+Disallow: /case-phuket-rainpalm.html
 
 User-agent: anthropic-ai
 Allow: /
 Disallow: /charter-flow/
 Disallow: /charter-flow-app/
 Disallow: /partner-brief.html
+Disallow: /case-phuket-2m.html
+Disallow: /case-phuket-rainpalm.html
 
 User-agent: Google-Extended
 Allow: /
 Disallow: /charter-flow/
 Disallow: /charter-flow-app/
 Disallow: /partner-brief.html
+Disallow: /case-phuket-2m.html
+Disallow: /case-phuket-rainpalm.html
 
 User-agent: GoogleOther
 Allow: /
 Disallow: /charter-flow/
 Disallow: /charter-flow-app/
 Disallow: /partner-brief.html
+Disallow: /case-phuket-2m.html
+Disallow: /case-phuket-rainpalm.html
 
 User-agent: CCBot
 Allow: /
 Disallow: /charter-flow/
 Disallow: /charter-flow-app/
 Disallow: /partner-brief.html
+Disallow: /case-phuket-2m.html
+Disallow: /case-phuket-rainpalm.html
 
 User-agent: Applebot
 Allow: /
 Disallow: /charter-flow/
 Disallow: /charter-flow-app/
 Disallow: /partner-brief.html
+Disallow: /case-phuket-2m.html
+Disallow: /case-phuket-rainpalm.html
 
 User-agent: Applebot-Extended
 Allow: /
 Disallow: /charter-flow/
 Disallow: /charter-flow-app/
 Disallow: /partner-brief.html
+Disallow: /case-phuket-2m.html
+Disallow: /case-phuket-rainpalm.html
 
 User-agent: Bytespider
 Allow: /
 Disallow: /charter-flow/
 Disallow: /charter-flow-app/
 Disallow: /partner-brief.html
+Disallow: /case-phuket-2m.html
+Disallow: /case-phuket-rainpalm.html
 
 User-agent: Amazonbot
 Allow: /
 Disallow: /charter-flow/
 Disallow: /charter-flow-app/
 Disallow: /partner-brief.html
+Disallow: /case-phuket-2m.html
+Disallow: /case-phuket-rainpalm.html
 
 User-agent: Meta-ExternalAgent
 Allow: /
 Disallow: /charter-flow/
 Disallow: /charter-flow-app/
 Disallow: /partner-brief.html
+Disallow: /case-phuket-2m.html
+Disallow: /case-phuket-rainpalm.html
 
 User-agent: FacebookBot
 Allow: /
 Disallow: /charter-flow/
 Disallow: /charter-flow-app/
 Disallow: /partner-brief.html
+Disallow: /case-phuket-2m.html
+Disallow: /case-phuket-rainpalm.html
 
 User-agent: Twitterbot
 Allow: /
 Disallow: /charter-flow/
 Disallow: /charter-flow-app/
 Disallow: /partner-brief.html
+Disallow: /case-phuket-2m.html
+Disallow: /case-phuket-rainpalm.html
 
 User-agent: cohere-ai
 Allow: /
 Disallow: /charter-flow/
 Disallow: /charter-flow-app/
 Disallow: /partner-brief.html
+Disallow: /case-phuket-2m.html
+Disallow: /case-phuket-rainpalm.html
 
 User-agent: DiffBot
 Allow: /
 Disallow: /charter-flow/
 Disallow: /charter-flow-app/
 Disallow: /partner-brief.html
+Disallow: /case-phuket-2m.html
+Disallow: /case-phuket-rainpalm.html
 
 User-agent: YouBot
 Allow: /
 Disallow: /charter-flow/
 Disallow: /charter-flow-app/
 Disallow: /partner-brief.html
+Disallow: /case-phuket-2m.html
+Disallow: /case-phuket-rainpalm.html
 
 # === Sitemap ===
 Sitemap: https://ccapital.pro/sitemap.xml

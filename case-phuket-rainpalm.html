@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#FAFAF6" />
+    <meta
+      name="description"
+      content="Rainpalm Villas, Банг Тао, Пхукет — частное приобретение пула из трёх вилл с бассейном через Charter Capital. Конкретика проекта: застройщик, локация, виллы, доходность."
+    />
+
+    <!-- Конфиденциальная презентация проекта — полный запрет индексации. -->
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+    <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+    <meta name="yandex" content="noindex, nofollow, noarchive, nosnippet, noyaca" />
+    <meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet" />
+
+    <title>Charter Capital · Rainpalm Villas — Банг Тао, Пхукет</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Urbanist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --paper: #fafaf6;
+        --paper-card: #ffffff;
+        --paper-soft: #f5f3eb;
+        --paper-elevated: #fbfaf5;
+        --ink: #0b0b0b;
+        --ink-muted: #5c5c5c;
+        --ink-subtle: #9c9c9c;
+        --gold: #9c7c2a;
+        --gold-light: #c9a961;
+        --gold-dark: #5c4818;
+        --rule: #e5e2da;
+        --rule-strong: #d4d0c5;
+        --ok: #3f7d52;
+        --info: #3d6a8f;
+        --font-sans: 'Inter', 'Urbanist', system-ui, -apple-system, sans-serif;
+        --font-serif: Georgia, 'Times New Roman', serif;
+        --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+        --radius: 12px;
+        --shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(11, 11, 11, 0.06);
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html { scroll-behavior: smooth; }
+      body {
+        background: var(--paper);
+        color: var(--ink);
+        font-family: var(--font-sans);
+        font-weight: 400;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+
+      .wrap { max-width: 72rem; margin: 0 auto; padding: 1.5rem 1rem 3rem; display: flex; flex-direction: column; gap: 1.75rem; }
+      @media (min-width: 640px) { .wrap { padding: 2rem 1.5rem 4rem; gap: 2rem; } }
+
+      .eyebrow { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); }
+      .mono { font-family: var(--font-mono); letter-spacing: 0.14em; text-transform: uppercase; }
+
+      .card { background: var(--paper-card); border: 1px solid var(--rule); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; }
+      @media (min-width: 640px) { .card { padding: 2rem; } }
+
+      /* ── Header ── */
+      header.bank { display: flex; flex-direction: column; gap: 1rem; border-bottom: 1px solid var(--rule); padding-bottom: 1.5rem; }
+      @media (min-width: 768px) { header.bank { flex-direction: row; align-items: flex-start; justify-content: space-between; } }
+      .brand { display: flex; align-items: center; gap: 0.7rem; }
+      .brand .seal { width: 2.5rem; height: 2.5rem; border-radius: 8px; border: 1px solid var(--gold-light); display: flex; align-items: center; justify-content: center; font-family: var(--font-serif); font-size: 1.25rem; color: var(--gold-dark); background: linear-gradient(135deg, #fdfcf7, #f3eede); }
+      .brand .name { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 600; }
+      .brand .domain { font-size: 0.72rem; color: var(--ink-subtle); }
+      .deal-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem 1.5rem; }
+      .deal-meta .k { font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-subtle); font-family: var(--font-mono); }
+      .deal-meta .v { font-size: 0.86rem; font-weight: 500; }
+      .status-pill { display: inline-flex; align-items: center; gap: 0.4rem; font-family: var(--font-mono); font-size: 0.64rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-dark); background: #f7f0dd; border: 1px solid var(--gold-light); padding: 0.3rem 0.6rem; border-radius: 999px; }
+      .status-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+
+      /* ── Hero image ── */
+      .hero-figure { position: relative; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+      .hero-figure img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
+      .hero-figure .cap { position: absolute; left: 0; right: 0; bottom: 0; padding: 1.4rem 1.3rem 1.1rem; background: linear-gradient(to top, rgba(8, 8, 8, 0.78), rgba(8, 8, 8, 0)); color: #fff; }
+      .hero-figure .cap .loc { font-family: var(--font-mono); font-size: 0.64rem; letter-spacing: 0.16em; text-transform: uppercase; color: #e8d9b0; }
+      .hero-figure .cap h1 { font-family: var(--font-serif); font-weight: 600; font-size: 1.7rem; line-height: 1.12; margin-top: 0.35rem; }
+      @media (min-width: 768px) { .hero-figure .cap h1 { font-size: 2.4rem; } .hero-figure .cap { padding: 2rem 2rem 1.6rem; } }
+
+      .hero-lead { font-size: 1rem; color: var(--ink-muted); max-width: 50rem; }
+
+      /* ── Stat strip ── */
+      .stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: var(--radius); overflow: hidden; }
+      @media (min-width: 768px) { .stats { grid-template-columns: repeat(4, 1fr); } }
+      .stats .s { background: var(--paper-card); padding: 1.2rem 1.1rem; }
+      .stats .s .v { font-family: var(--font-serif); font-size: 1.6rem; font-weight: 600; color: var(--ink); }
+      .stats .s .v small { font-size: 0.9rem; color: var(--gold-dark); }
+      .stats .s .k { font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-subtle); font-family: var(--font-mono); margin-top: 0.3rem; }
+
+      /* ── Section title ── */
+      .sec-head { display: flex; align-items: baseline; gap: 0.8rem; margin-bottom: 1.2rem; flex-wrap: wrap; }
+      .sec-head .num { font-family: var(--font-mono); font-size: 0.72rem; color: var(--gold); letter-spacing: 0.1em; }
+      .sec-head h2 { font-family: var(--font-serif); font-size: 1.4rem; font-weight: 600; }
+      .sec-head .lead { font-size: 0.85rem; color: var(--ink-subtle); }
+
+      /* ── Two-column ── */
+      .two { display: grid; gap: 1.2rem; grid-template-columns: 1fr; }
+      @media (min-width: 768px) { .two { grid-template-columns: 1fr 1fr; } }
+      .block h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
+      .block p { font-size: 0.86rem; color: var(--ink-muted); }
+      .block ul { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; margin-top: 0.6rem; }
+      .block li { font-size: 0.84rem; color: var(--ink-muted); padding-left: 1rem; position: relative; }
+      .block li::before { content: '–'; position: absolute; left: 0; color: var(--gold-light); }
+      .block li strong { color: var(--ink); font-weight: 600; }
+
+      /* ── Walk chips ── */
+      .chips { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.4rem; }
+      .chip { display: inline-flex; align-items: baseline; gap: 0.4rem; border: 1px solid var(--rule); border-radius: 999px; padding: 0.4rem 0.8rem; background: var(--paper-elevated); font-size: 0.78rem; color: var(--ink-muted); }
+      .chip b { font-family: var(--font-mono); font-size: 0.72rem; color: var(--gold-dark); }
+
+      /* ── Villa cards ── */
+      .villas { display: grid; gap: 1rem; grid-template-columns: 1fr; }
+      @media (min-width: 768px) { .villas { grid-template-columns: repeat(3, 1fr); } }
+      .villa { border: 1px solid var(--rule); border-radius: var(--radius); padding: 1.3rem; background: var(--paper-elevated); display: flex; flex-direction: column; gap: 0.55rem; }
+      .villa .tag { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+      .villa h3 { font-family: var(--font-serif); font-size: 1.25rem; font-weight: 600; }
+      .villa .kind { font-size: 0.78rem; color: var(--ink-subtle); }
+      .villa .spec { display: flex; flex-direction: column; gap: 0.3rem; margin-top: 0.5rem; }
+      .villa .spec .r { display: flex; justify-content: space-between; font-size: 0.8rem; border-bottom: 1px dashed var(--rule); padding-bottom: 0.3rem; }
+      .villa .spec .r .lbl { color: var(--ink-subtle); }
+      .villa .spec .r .val { font-family: var(--font-mono); font-size: 0.78rem; }
+      .villa .price { margin-top: auto; padding-top: 0.7rem; }
+      .villa .price .pk { font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-subtle); font-family: var(--font-mono); }
+      .villa .price .pv { font-family: var(--font-serif); font-size: 1.35rem; font-weight: 600; }
+
+      /* ── Table ── */
+      .tbl-wrap { overflow-x: auto; }
+      table { width: 100%; border-collapse: collapse; font-size: 0.84rem; min-width: 560px; }
+      thead th { text-align: left; font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-subtle); font-weight: 500; padding: 0.7rem 0.9rem; border-bottom: 1px solid var(--rule-strong); }
+      thead th:not(:first-child) { text-align: right; }
+      tbody td { padding: 0.8rem 0.9rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+      tbody td:not(:first-child) { text-align: right; font-family: var(--font-mono); font-size: 0.8rem; }
+      tbody tr:last-child td { border-bottom: none; }
+      tbody td:first-child { font-weight: 600; }
+      tbody tr.hl td { background: var(--paper-soft); }
+
+      /* ── Principles ── */
+      .grid4 { display: grid; gap: 1rem; grid-template-columns: 1fr; }
+      @media (min-width: 640px) { .grid4 { grid-template-columns: 1fr 1fr; } }
+      @media (min-width: 1024px) { .grid4 { grid-template-columns: repeat(5, 1fr); } }
+      .principle { background: var(--paper-elevated); border: 1px solid var(--rule); border-radius: var(--radius); padding: 1.1rem; }
+      .principle .ico { font-size: 1.2rem; margin-bottom: 0.5rem; }
+      .principle h3 { font-size: 0.88rem; font-weight: 600; margin-bottom: 0.35rem; }
+      .principle p { font-size: 0.78rem; color: var(--ink-muted); }
+
+      /* ── Links / CTA ── */
+      .cta { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--ink); color: var(--paper); text-decoration: none; font-size: 0.84rem; font-weight: 600; padding: 0.7rem 1.3rem; border-radius: 999px; transition: background 0.2s; }
+      .cta:hover { background: var(--gold-dark); }
+      .cta.ghost { background: transparent; color: var(--ink); border: 1px solid var(--rule-strong); }
+      .cta.ghost:hover { border-color: var(--gold-light); background: var(--paper-elevated); }
+      .cta-row { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+
+      .backlink { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.8rem; color: var(--gold-dark); text-decoration: none; font-weight: 600; }
+      .backlink:hover { color: var(--ink); }
+
+      /* ── Disclaimer / footer ── */
+      .disclaimer { background: var(--paper-soft); }
+      .disclaimer p { font-size: 0.78rem; color: var(--ink-muted); }
+      .disclaimer p + p { margin-top: 0.7rem; }
+      .sign { margin-top: 1rem; font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em; color: var(--ink-subtle); }
+      footer.page { display: flex; flex-direction: column; gap: 0.5rem; align-items: center; justify-content: space-between; border-top: 1px solid var(--rule); padding-top: 1.5rem; }
+      @media (min-width: 640px) { footer.page { flex-direction: row; } }
+      footer.page span { font-family: var(--font-mono); font-size: 0.64rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-subtle); }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrap">
+      <!-- ── Header ── -->
+      <header class="bank">
+        <div>
+          <div class="brand">
+            <div class="seal">C</div>
+            <div>
+              <div class="name">Charter Capital</div>
+              <div class="domain">ccapital.pro · частный партнёр по приобретению</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="deal-meta">
+            <div><div class="k">Документ</div><div class="v">Карточка проекта</div></div>
+            <div><div class="k">Референс</div><div class="v">CC-RE-PHK-RAINPALM</div></div>
+            <div><div class="k">Локация</div><div class="v">Банг Тао · Пхукет</div></div>
+            <div><div class="k">Сдача</div><div class="v">III кв. 2026</div></div>
+          </div>
+          <div style="margin-top: 0.8rem">
+            <span class="status-pill"><span class="dot"></span> Конфиденциально · карточка проекта</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- ── Hero ── -->
+      <section>
+        <a class="backlink" href="/case-phuket-2m.html">← Вернуться к кейсу: маршрут капитала ~$2,6&nbsp;млн</a>
+        <figure class="hero-figure" style="margin-top: 0.9rem">
+          <img
+            src="assets/property/rainpalm-phuket-hero.jpg"
+            srcset="assets/property/rainpalm-phuket-hero-800w.jpg 800w, assets/property/rainpalm-phuket-hero.jpg 1536w"
+            sizes="(max-width: 768px) 100vw, 1080px"
+            alt="Современная вилла с бассейном на закате — проект Rainpalm Villas, Банг Тао, Пхукет"
+            width="1536" height="1024" fetchpriority="high"
+          />
+          <figcaption class="cap">
+            <div class="loc">Банг Тао · Пхукет · Таиланд</div>
+            <h1>Rainpalm Villas</h1>
+          </figcaption>
+        </figure>
+        <p class="hero-lead" style="margin-top: 1.1rem">
+          Частное приобретение пула из&nbsp;трёх роскошных вилл с&nbsp;бассейном на&nbsp;самом востребованном
+          западном побережье Пхукета. Совместное предприятие международного капитала и&nbsp;местного застройщика
+          с&nbsp;десятилетиями практики. Charter&nbsp;Capital сопровождает сделку как частный партнёр клиента:
+          вход по&nbsp;портфельной цене, законная структура собственности и&nbsp;полный пакет документов.
+        </p>
+      </section>
+
+      <!-- ── Stat strip ── -->
+      <section class="stats">
+        <div class="s"><div class="v">3</div><div class="k">виллы в пуле · 3+4+4 спальни</div></div>
+        <div class="s"><div class="v">฿92,66<small> млн</small></div><div class="k">вход по портфельной цене (−10%)</div></div>
+        <div class="s"><div class="v">142<small>%</small></div><div class="k">ROI пула за 10 лет</div></div>
+        <div class="s"><div class="v">~9<small>%</small></div><div class="k">средняя чистая аренда / год</div></div>
+      </section>
+
+      <!-- ── 01 Developer ── -->
+      <section class="card">
+        <div class="sec-head"><span class="num">01</span><h2>Профиль застройщика</h2></div>
+        <div class="two">
+          <div class="block">
+            <h3>Международный капитал</h3>
+            <p>Hong&nbsp;Kong&nbsp;Deer&nbsp;Run&nbsp;Limited — девелопер с&nbsp;портфелем реализованных проектов в&nbsp;Азии.</p>
+            <ul>
+              <li>R&amp;F Princess Cove — <strong>Малайзия</strong></li>
+              <li>Star Palace — <strong>Камбоджа</strong></li>
+              <li>La Vida Residences Makati — <strong>Филиппины</strong></li>
+            </ul>
+          </div>
+          <div class="block">
+            <h3>Местное наследие и доверие</h3>
+            <p>Семья Риттисирикул — репутация и&nbsp;инфраструктура на&nbsp;Пхукете.</p>
+            <ul>
+              <li>Г-н Кулласак Риттисирикул — <strong>экс-президент Ротари-клуба Пхукета</strong></li>
+              <li>Десятилетия юридической и&nbsp;строительной практики на&nbsp;острове</li>
+              <li>Давние общественные и&nbsp;благотворительные начинания</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── 02 Location ── -->
+      <section class="card">
+        <div class="sec-head"><span class="num">02</span><h2>Расположение и инфраструктура</h2><span class="lead">Сои Банг Тао 12 · западное побережье</span></div>
+        <p style="font-size: 0.9rem; color: var(--ink-muted); max-width: 52rem">
+          Rainpalm&nbsp;Villas стоит в&nbsp;окружении интегрированного курорта Laguna&nbsp;Phuket. В&nbsp;нескольких минутах —
+          вся премиальная экосистема острова: гольф, международная школа, аквапарк, рестораны и&nbsp;пляжные клубы.
+        </p>
+        <div class="chips">
+          <span class="chip"><b>3 мин</b> Laguna Phuket</span>
+          <span class="chip"><b>7 мин</b> Гольф-клуб Banyan Tree</span>
+          <span class="chip"><b>11 мин</b> Международная школа UWC</span>
+          <span class="chip"><b>15 мин</b> Аквапарк Blue Tree</span>
+          <span class="chip"><b>38 мин</b> Porto de Phuket</span>
+        </div>
+        <p style="font-size: 0.82rem; color: var(--ink-subtle); margin-top: 0.9rem">
+          Окружающая экосистема: международные рестораны и&nbsp;пляжные клубы западного побережья — самого
+          ликвидного для&nbsp;аренды сегмента острова.
+        </p>
+      </section>
+
+      <!-- ── 03 Villas ── -->
+      <section class="card">
+        <div class="sec-head"><span class="num">03</span><h2>Состав пула · три виллы</h2><span class="lead">21 вилла в проекте · 3–4 спальни · сдача III кв. 2026</span></div>
+        <div class="villas">
+          <div class="villa">
+            <div class="tag">Вилла C1 · Тип C</div>
+            <h3>Компактная роскошь</h3>
+            <div class="kind">3 спальни · 4 санузла · 2 уровня</div>
+            <div class="spec">
+              <div class="r"><span class="lbl">Дом</span><span class="val">244,45 м²</span></div>
+              <div class="r"><span class="lbl">Участок</span><span class="val">320,25 м²</span></div>
+              <div class="r"><span class="lbl">Бассейн</span><span class="val">28,54 м²</span></div>
+              <div class="r"><span class="lbl">Мебель в пакете</span><span class="val">฿1,90 млн</span></div>
+            </div>
+            <div class="price"><div class="pk">Цена виллы</div><div class="pv">฿27 230 068</div></div>
+          </div>
+          <div class="villa">
+            <div class="tag">Вилла A5 · Тип A</div>
+            <h3>The Family Estate</h3>
+            <div class="kind">4 спальни · 5 санузлов · 2 уровня</div>
+            <div class="spec">
+              <div class="r"><span class="lbl">Дом</span><span class="val">347,81 м²</span></div>
+              <div class="r"><span class="lbl">Участок</span><span class="val">349,77 м²</span></div>
+              <div class="r"><span class="lbl">Бассейн</span><span class="val">33,51 м²</span></div>
+              <div class="r"><span class="lbl">Мебель в пакете</span><span class="val">฿2,20 млн</span></div>
+            </div>
+            <div class="price"><div class="pk">Цена виллы</div><div class="pv">฿33 186 548</div></div>
+          </div>
+          <div class="villa">
+            <div class="tag">Вилла A7 · Тип A</div>
+            <h3>The Premium Plot</h3>
+            <div class="kind">4 спальни · 5 санузлов · 2 уровня</div>
+            <div class="spec">
+              <div class="r"><span class="lbl">Дом</span><span class="val">419,37 м²</span></div>
+              <div class="r"><span class="lbl">Участок</span><span class="val">349,77 м²</span></div>
+              <div class="r"><span class="lbl">Бассейн</span><span class="val">33,51 м²</span></div>
+              <div class="r"><span class="lbl">Мебель в пакете</span><span class="val">฿2,20 млн</span></div>
+            </div>
+            <div class="price"><div class="pk">Цена виллы</div><div class="pv">฿36 237 866</div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── 04 Strategy ── -->
+      <section class="card">
+        <div class="sec-head"><span class="num">04</span><h2>Почему пул из трёх вилл, а не одна</h2></div>
+        <div class="grid4" style="grid-template-columns: repeat(2, 1fr)">
+          <div class="principle"><div class="ico">🏷️</div><h3>Скидка на пул −10%</h3><p>Портфельная покупка трёх вилл даёт цену ниже розницы: ฿92,66&nbsp;млн против ฿102,95&nbsp;млн.</p></div>
+          <div class="principle"><div class="ico">🗓️</div><h3>0% рассрочка · 3 года</h3><p>Беспроцентный график платежей от&nbsp;застройщика на&nbsp;период строительства и&nbsp;ввода.</p></div>
+          <div class="principle"><div class="ico">🧩</div><h3>Диверсификация 3+4+4</h3><p>Разный метраж и&nbsp;тип вилл — гибкий выход: можно продавать или сдавать по&nbsp;отдельности.</p></div>
+          <div class="principle"><div class="ico">📈</div><h3>ROI 142% за 10 лет</h3><p>Совокупная доходность пула — рост стоимости актива плюс аренда трёх сезонов.</p></div>
+        </div>
+      </section>
+
+      <!-- ── 05 Yield ── -->
+      <section class="card">
+        <div class="sec-head"><span class="num">05</span><h2>Анализ доходности</h2><span class="lead">на инвестированные ฿92,66 млн</span></div>
+
+        <div class="two" style="margin-bottom: 1.4rem">
+          <div class="block">
+            <h3>Динамика ROI пула</h3>
+            <div class="tbl-wrap">
+              <table>
+                <thead><tr><th>Период</th><th>ROI пула</th></tr></thead>
+                <tbody>
+                  <tr><td>Ввод в эксплуатацию</td><td>19%</td></tr>
+                  <tr><td>2 года</td><td>41%</td></tr>
+                  <tr><td>5 лет</td><td>77%</td></tr>
+                  <tr class="hl"><td>10 лет</td><td>142%</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="block">
+            <h3>Доход от аренды · годовой пакет</h3>
+            <div class="tbl-wrap">
+              <table>
+                <thead><tr><th>Сезон</th><th>Валовая аренда</th></tr></thead>
+                <tbody>
+                  <tr><td>Низкий · 210 дней</td><td>฿1,73 млн</td></tr>
+                  <tr><td>Высокий · 125 дней</td><td>฿1,80 млн</td></tr>
+                  <tr><td>Пиковый · 30 дней</td><td>฿0,68 млн</td></tr>
+                  <tr class="hl"><td>Итого валовая</td><td>฿4,21 млн</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p style="margin-top: 0.6rem">Средняя чистая доходность от&nbsp;аренды после управленческих расходов: <strong>8,3% → 9,0%</strong> (в&nbsp;среднем 9% за&nbsp;10&nbsp;лет).</p>
+          </div>
+        </div>
+
+        <h3 style="font-size: 0.95rem; font-weight: 600; margin-bottom: 0.7rem">Матрица рентабельности — период владения после ввода</h3>
+        <div class="tbl-wrap">
+          <table>
+            <thead>
+              <tr><th>Показатель</th><th>Ввод</th><th>2 года</th><th>5 лет</th><th>10 лет</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Доходность от продажи</td><td>19%</td><td>25%</td><td>34%</td><td>52%</td></tr>
+              <tr><td>Аренда (накопительная)</td><td>—</td><td>16,6%</td><td>42,7%</td><td>89,7%</td></tr>
+              <tr><td>Аренда (среднегодовая)</td><td>8,3%</td><td>8,5%</td><td>—</td><td>9,0%</td></tr>
+              <tr class="hl"><td>ROI пула (продажа + аренда)</td><td>19%</td><td>41%</td><td>77%</td><td>142%</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 style="font-size: 0.95rem; font-weight: 600; margin: 1.4rem 0 0.7rem">База приобретения</h3>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Условия</th><th>Стоимость</th><th>За м²</th></tr></thead>
+            <tbody>
+              <tr><td>Розничные условия</td><td>฿102 954 482</td><td>฿100 956</td></tr>
+              <tr class="hl"><td>Инвестиционный пул · 3 виллы (−10%)</td><td>฿92 659 034</td><td>฿90 861</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ── 06 Theses ── -->
+      <section class="card">
+        <div class="sec-head"><span class="num">06</span><h2>Пять драйверов актива</h2><span class="lead">окупаемость ~6 лет</span></div>
+        <div class="grid4">
+          <div class="principle"><div class="ico">📊</div><h3>Рост стоимости</h3><p>+10% на&nbsp;старте, далее ~+3% в&nbsp;год.</p></div>
+          <div class="principle"><div class="ico">🏖️</div><h3>Доход от аренды</h3><p>~96% совокупной арендной доходности за&nbsp;10&nbsp;лет.</p></div>
+          <div class="principle"><div class="ico">🔧</div><h3>Низкий OPEX</h3><p>~30% от&nbsp;аренды — управляющей компании.</p></div>
+          <div class="principle"><div class="ico">🧾</div><h3>Умеренный налог</h3><p>Налоговое бремя около&nbsp;1,1%.</p></div>
+          <div class="principle"><div class="ico">📉</div><h3>Низкая инфляция</h3><p>~1% — стабильная макросреда Таиланда.</p></div>
+        </div>
+      </section>
+
+      <!-- ── 07 Terms / ownership ── -->
+      <section class="card">
+        <div class="sec-head"><span class="num">07</span><h2>Условия и структура собственности</h2></div>
+        <div class="two">
+          <div class="block">
+            <h3>Внутренняя отделка и передача — включено в цену</h3>
+            <ul>
+              <li>Частный бассейн и&nbsp;ландшафтный сад</li>
+              <li>Комплект мебели, встроенная кухня, гардеробные, сантехника ванных</li>
+              <li>Полная система кондиционирования</li>
+              <li>Круглосуточная охрана и&nbsp;обслуживание общих зон</li>
+            </ul>
+          </div>
+          <div class="block">
+            <h3>Структура собственности</h3>
+            <ul>
+              <li>Вилла — в&nbsp;<strong>полной собственности</strong></li>
+              <li>Земля — через тайскую компанию с&nbsp;ограниченной ответственностью</li>
+              <li>Долгосрочная аренда <strong>30 × 3 года</strong> доступна для&nbsp;иностранцев</li>
+              <li>Расходы на&nbsp;передачу права делятся <strong>50/50</strong> покупатель/продавец</li>
+              <li>Резервный фонд 500&nbsp;฿/м² · общие расходы 25&nbsp;฿/м²</li>
+            </ul>
+          </div>
+        </div>
+        <p style="font-size: 0.8rem; color: var(--ink-subtle); margin-top: 1rem">
+          Charter&nbsp;Capital оформляет владение законным инструментом без&nbsp;номинальных тайских акционеров —
+          именно такая структура сохраняет «банкуемость» актива при&nbsp;последующей репатриации дохода.
+        </p>
+      </section>
+
+      <!-- ── 08 CTA ── -->
+      <section class="card" style="background: var(--paper-soft)">
+        <div class="eyebrow">Следующий шаг</div>
+        <h2 style="font-family: var(--font-serif); font-size: 1.3rem; font-weight: 600; margin: 0.6rem 0 0.7rem">
+          Забронировать инвестиционный пул
+        </h2>
+        <p style="font-size: 0.9rem; color: var(--ink-muted); max-width: 50rem; margin-bottom: 1.1rem">
+          Charter&nbsp;Capital — ваш частный партнёр по&nbsp;приобретению: вход по&nbsp;портфельной цене,
+          законная структура, полный пакет документов и&nbsp;экономика сделки, при&nbsp;которой ваши чистые
+          затраты на&nbsp;сопровождение ≈&nbsp;0,5%. Разбор маршрута капитала — в&nbsp;кейсе.
+        </p>
+        <div class="cta-row">
+          <a class="cta" href="https://t.me/ccapital_acces" target="_blank" rel="noopener">Запросить разбор под NDA →</a>
+          <a class="cta ghost" href="/case-phuket-2m.html">Маршрут капитала и экономика сделки →</a>
+        </div>
+      </section>
+
+      <!-- ── Disclaimer ── -->
+      <section class="card disclaimer">
+        <div class="eyebrow">Конфиденциально</div>
+        <h2 style="font-family: var(--font-serif); font-size: 1.2rem; font-weight: 600; margin: 0.6rem 0 0.9rem">
+          Условия использования материала
+        </h2>
+        <p>
+          Документ носит исключительно информационный характер и&nbsp;<strong>не является публичной офертой,
+          рекламой финансовых услуг, индивидуальной инвестиционной, налоговой или&nbsp;юридической
+          рекомендацией</strong> и&nbsp;предложением заключить договор в&nbsp;значении статьи&nbsp;437 Гражданского
+          кодекса Российской Федерации.
+        </p>
+        <p>
+          Все цифры доходности, цены, метражи и&nbsp;сроки приведены по&nbsp;данным застройщика, носят
+          индикативный характер и&nbsp;могут измениться. Прошлые и&nbsp;прогнозные показатели не&nbsp;гарантируют
+          будущий результат. Конкретные условия, налоги и&nbsp;структура собственности фиксируются только после
+          индивидуальной проверки. Charter&nbsp;Capital работает исключительно с&nbsp;капиталом подтверждённого
+          законного происхождения; санкционные лица, PEP и&nbsp;непрозрачные источники — вне&nbsp;работы.
+        </p>
+        <p>
+          Материал предназначен только адресату. Получение документа подразумевает согласие с&nbsp;режимом
+          конфиденциальности и&nbsp;обязательством не&nbsp;передавать его третьим лицам без&nbsp;письменного
+          согласия Charter&nbsp;Capital.
+        </p>
+        <div class="sign">© Charter Capital, 2026 · ccapital.pro</div>
+      </section>
+
+      <footer class="page">
+        <span>Charter Capital · Rainpalm Bang Tao</span>
+        <span>© 2026 Charter Capital</span>
+      </footer>
+    </div>
+  </body>
+</html>
