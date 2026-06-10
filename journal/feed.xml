@@ -9,8 +9,8 @@
     <description>Аналитика международного private banking, ВЭД и геополитики капитала. Гонконг · Сингапур · ОАЭ · Швейцария · UK · Россия.</description>
     <language>ru</language>
     <copyright>© Charter Capital, 2026</copyright>
-    <lastBuildDate>Wed, 10 Jun 2026 12:00:00 +0000</lastBuildDate>
-    <pubDate>Wed, 10 Jun 2026 12:00:00 +0000</pubDate>
+    <lastBuildDate>Wed, 10 Jun 2026 16:00:00 +0000</lastBuildDate>
+    <pubDate>Wed, 10 Jun 2026 16:00:00 +0000</pubDate>
     <ttl>360</ttl>
     <generator>Charter Capital · ccapital.pro</generator>
     <atom:link href="https://ccapital.pro/journal/feed.xml" rel="self" type="application/rss+xml" />
@@ -19,6 +19,15 @@
       <title>Дайджест Charter Capital</title>
       <link>https://ccapital.pro/journal.html</link>
     </image>
+    <item>
+      <title>Депутатам и сенаторам запретят владеть недвижимостью за границей: что это значит для частного капитала</title>
+      <link>https://ccapital.pro/journal/deputaty-zapret-zarubezhnaya-nedvizhimost-2026.html</link>
+      <guid isPermaLink="true">https://ccapital.pro/journal/deputaty-zapret-zarubezhnaya-nedvizhimost-2026.html</guid>
+      <pubDate>Wed, 10 Jun 2026 16:00:00 +0700</pubDate>
+      <description>В Госдуму внесли законопроект о запрете депутатам и сенаторам (а также их супругам и детям) владеть недвижимостью за границей. Разбор Charter Capital: почему запреты для элиты — флюгер для всех остальных, и как защищает не сам актив, а структура владения, чистый Source of Funds, корректное резидентство и план выхода.</description>
+      <enclosure url="https://ccapital.pro/assets/journal/deputaty-zarubezh-nedvizhimost-hero.jpg" type="image/jpeg" />
+      <category>Charter Capital · Новости рынка</category>
+    </item>
     <item>
       <title>Минфин готовит лимиты на покупку крипты: 300 тыс. ₽ и только топ-5 криптовалют</title>
       <link>https://ccapital.pro/journal/minfin-limity-kripty-300k-2026.html</link>
