@@ -300,7 +300,12 @@ p{color:var(--body);font-weight:400;line-height:1.7}
 .hero-inner{position:relative;max-width:1240px;margin:0 auto;width:100%}
 .hero-flags{
   display:flex;flex-wrap:wrap;gap:14px;margin-bottom:32px;
-  align-items:center;justify-content:space-between;
+  align-items:flex-start;justify-content:space-between;
+}
+/* Правый угол шапки: дайджест сверху, крючок-оффер под ним */
+.hero-corner{
+  display:flex;flex-direction:column;align-items:flex-end;gap:11px;
+  min-width:0;max-width:560px;
 }
 .hero-flag{
   display:inline-flex;align-items:center;gap:10px;
@@ -313,34 +318,33 @@ p{color:var(--body);font-weight:400;line-height:1.7}
   box-shadow:0 4px 22px rgba(0,0,0,.38);
 }
 
-/* Акцентная ссылка-крючок в ряду флагов — парная к красной плашке, в золоте */
-.hero-cta-pill{
-  display:inline-flex;align-items:center;gap:10px;
-  background:rgba(14,11,7,.9);
-  border:1px solid rgba(232,212,168,.5);
-  padding:7px 16px;border-radius:999px;
-  font-size:11.5px;line-height:1.25;letter-spacing:.02em;
-  color:rgba(255,255,255,.8);text-decoration:none;white-space:nowrap;
+/* Крючок-оффер под дайджестом — карточка-лейбл с золотым акцентом справа */
+.hero-offer{
+  display:flex;flex-direction:column;align-items:flex-end;gap:4px;
+  text-align:right;text-decoration:none;max-width:100%;
+  padding:9px 15px;border-radius:11px;
+  background:rgba(14,11,7,.82);
+  border:1px solid rgba(232,212,168,.4);
+  border-right:3px solid #e8d4a8;
   backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-  box-shadow:0 4px 22px rgba(0,0,0,.38);
-  transition:border-color .2s ease,background .2s ease;
+  box-shadow:0 6px 24px rgba(0,0,0,.4);
+  transition:border-color .2s ease,background .2s ease,transform .2s ease;
 }
-.hero-cta-pill::before{
-  content:"";flex-shrink:0;width:6px;height:6px;border-radius:50%;
-  background:#e8d4a8;box-shadow:0 0 10px rgba(232,212,168,.85);
+.hero-offer__main{
+  color:#e8d4a8;font-weight:700;font-size:13px;letter-spacing:.005em;line-height:1.25;
 }
-.hero-cta-pill strong{color:#e8d4a8;font-weight:700;letter-spacing:.01em}
-.hero-cta-pill .sep{color:rgba(232,212,168,.42)}
-.hero-cta-pill .lbl{color:rgba(255,255,255,.62);font-weight:500}
-.hero-cta-pill .arr{
-  flex-shrink:0;color:#e8d4a8;font-size:13px;font-weight:700;line-height:1;
-  transition:transform .2s ease;
+.hero-offer__sub{
+  display:inline-flex;align-items:center;gap:7px;
+  font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(255,255,255,.6);
 }
-.hero-cta-pill:hover{border-color:rgba(232,212,168,.95);background:rgba(30,22,10,.92)}
-.hero-cta-pill:hover .arr{transform:translateX(3px)}
-@media(max-width:600px){
-  .hero-cta-pill{white-space:normal}
-  .hero-cta-pill .sep,.hero-cta-pill .lbl{display:none}
+.hero-offer__sub .arr{color:#e8d4a8;font-size:12px;font-weight:700;line-height:1;transition:transform .2s ease}
+.hero-offer:hover{border-color:rgba(232,212,168,.95);background:rgba(30,22,10,.9);transform:translateY(-1px)}
+.hero-offer:hover .arr{transform:translateX(3px)}
+@media(max-width:768px){
+  .hero-corner{align-items:stretch;width:100%;max-width:none}
+  .hero-offer{align-items:flex-start;text-align:left;
+    border-right:1px solid rgba(232,212,168,.4);border-left:3px solid #e8d4a8}
 }
 
 /* ─── HERO · DIGEST CORNER ─────────────────────────────── */
@@ -1537,22 +1541,22 @@ footer.f{
         <span>2026 - окно сужается каждый месяц</span>
       </span>
 
-      <a class="hero-digest is-dark" href="journal/singapore-family-office.html" aria-label="Свежий материал в Дайджесте Charter Capital">
-        <span class="marquee" aria-hidden="true">
-          <span class="track">
-            <span><strong>Эволюция Family Office:</strong> почему Сингапур стал новым стандартом &middot; 02&middot;05&middot;26</span>
-            <span><strong>Эволюция Family Office:</strong> почему Сингапур стал новым стандартом &middot; 02&middot;05&middot;26</span>
+      <div class="hero-corner">
+        <a class="hero-digest is-dark" href="journal/singapore-family-office.html" aria-label="Свежий материал в Дайджесте Charter Capital">
+          <span class="marquee" aria-hidden="true">
+            <span class="track">
+              <span><strong>Эволюция Family Office:</strong> почему Сингапур стал новым стандартом &middot; 02&middot;05&middot;26</span>
+              <span><strong>Эволюция Family Office:</strong> почему Сингапур стал новым стандартом &middot; 02&middot;05&middot;26</span>
+            </span>
           </span>
-        </span>
-        <span class="badge">Дайджест <span class="arr">→</span></span>
-      </a>
+          <span class="badge">Дайджест <span class="arr">→</span></span>
+        </a>
 
-      <a class="hero-cta-pill" href="qualified-clients.html" aria-label="Обращение Charter Capital для квалифицированных клиентов — почему для западного банка деньги из РФ «мусор» и как строить легитимность">
-        <strong>Для&nbsp;западного банка деньги из&nbsp;РФ — «мусор»</strong>
-        <span class="sep">&middot;</span>
-        <span class="lbl">обращение к&nbsp;клиентам от&nbsp;$1М</span>
-        <span class="arr">→</span>
-      </a>
+        <a class="hero-offer" href="qualified-clients.html" aria-label="Обращение Charter Capital для квалифицированных клиентов — почему для западного банка деньги из РФ «мусор» и как строить легитимность">
+          <span class="hero-offer__main">Для&nbsp;западного банка деньги из&nbsp;РФ — «мусор»</span>
+          <span class="hero-offer__sub">обращение к&nbsp;клиентам от&nbsp;$1М <span class="arr">→</span></span>
+        </a>
+      </div>
     </div>
     <h1>Когда двери закрываются -<br/><strong>Charter&nbsp;Capital открывает мир</strong> без искусственных границ.</h1>
     <p class="hero-sub">
