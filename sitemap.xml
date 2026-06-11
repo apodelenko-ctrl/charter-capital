@@ -172,10 +172,88 @@
   </url>
 
   <url>
-    <loc>https://ccapital.pro/slovakia.html</loc>
-    <lastmod>2026-05-02</lastmod>
+    <loc>https://ccapital.pro/residence.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ccapital.pro/residence.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ccapital.pro/residence.html"/>
+    <image:image>
+      <image:loc>https://ccapital.pro/assets/residence/hub-hero.jpg</image:loc>
+      <image:title>Charter Capital · ВНЖ и налоговое резидентство в Европе</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://ccapital.pro/residence/spain.html</loc>
+    <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ccapital.pro/residence/spain.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ccapital.pro/residence/spain.html"/>
+    <image:image>
+      <image:loc>https://ccapital.pro/assets/residence/spain-hero.jpg</image:loc>
+      <image:title>ВНЖ Испании — Digital Nomad · Charter Capital</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://ccapital.pro/residence/malta.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ccapital.pro/residence/malta.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ccapital.pro/residence/malta.html"/>
+    <image:image>
+      <image:loc>https://ccapital.pro/assets/residence/malta-hero.jpg</image:loc>
+      <image:title>Налоговое резидентство Мальты — GRP 15% · Charter Capital</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://ccapital.pro/residence/portugal.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ccapital.pro/residence/portugal.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ccapital.pro/residence/portugal.html"/>
+    <image:image>
+      <image:loc>https://ccapital.pro/assets/residence/portugal-hero.jpg</image:loc>
+      <image:title>ВНЖ Португалии через науку — паспорт ЕС · Charter Capital</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://ccapital.pro/residence/france.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ccapital.pro/residence/france.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ccapital.pro/residence/france.html"/>
+    <image:image>
+      <image:loc>https://ccapital.pro/assets/residence/france-hero.jpg</image:loc>
+      <image:title>ВНЖ Франции — Talent / French Tech · Charter Capital</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://ccapital.pro/residence/monaco.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ccapital.pro/residence/monaco.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ccapital.pro/residence/monaco.html"/>
+    <image:image>
+      <image:loc>https://ccapital.pro/assets/residence/monaco-hero.jpg</image:loc>
+      <image:title>Резидентство Монако — 0% налог · Charter Capital</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://ccapital.pro/slovakia.html</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://ccapital.pro/slovakia.html"/>
     <image:image>
       <image:loc>https://ccapital.pro/assets/slovakia/slovakia-hero-bratislava.webp</image:loc>
