@@ -7,3 +7,7 @@ _BACKUP-INFO.txt
 # Рабочие стратегические таблицы — не публиковать в веб-руте
 charter-capital-yandex-keywords.csv
 charter-capital-url-matrix.csv
+
+# Исходник AI-чата (воркер Cloudflare) — НЕ публиковать на сайте.
+# Содержит системный промпт (kb.js), конфиг и тесты. Деплоится отдельно через wrangler.
+ai-chat/
