@@ -1,7 +1,7 @@
 /*!
  * Charter Capital — живой AI-чат (виджет).
  * Самодостаточный: инжектит свой CSS + DOM. Подключать на все страницы:
- *   <script src="/chat-widget.js?v=20260613" defer></script>
+ *   <script src="/chat-widget.js?v=20260617" defer></script>
  * При каждом изменении файла поднимай ?v=ГГГГММДД, иначе правка не доедет из-за кэша.
  *
  * Конфиг (необязательно) перед подключением скрипта:
@@ -304,6 +304,40 @@
     var timer = setTimeout(function () {
       controller.abort();
     }, REQUEST_TIMEOUT);
+    function bumpTimeout() {
+      clearTimeout(timer);
+      timer = setTimeout(function () {
+        controller.abort();
+      }, REQUEST_TIMEOUT);
+    }
+
+    var bubble = null;
+    var acc = "";
+    function ensureBubble() {
+      if (bubble) return;
+      hideTyping();
+      var row = document.createElement("div");
+      row.className = "ccw-row bot";
+      bubble = document.createElement("div");
+      bubble.className = "ccw-bubble";
+      row.appendChild(bubble);
+      body.appendChild(row);
+      scrollDown();
+    }
+    function handleEvent(ev) {
+      if (ev.delta) {
+        ensureBubble();
+        acc += ev.delta;
+        bubble.textContent = acc;
+        scrollDown();
+      }
+      if (ev.done) {
+        ensureBubble();
+        if (ev.full != null) acc = ev.full;
+        bubble.innerHTML = linkify(acc);
+        scrollDown();
+      }
+    }
 
     fetch(API_URL, {
       method: "POST",
@@ -312,17 +346,48 @@
       signal: controller.signal,
     })
       .then(function (r) {
-        return r.json();
-      })
-      .then(function (data) {
-        clearTimeout(timer);
-        hideTyping();
-        addBubble((data && data.reply) || T.error, "bot");
+        var ct = (r.headers.get("content-type") || "").toLowerCase();
+        // Фолбэк: если стрим недоступен — старый путь через JSON.
+        if (!r.body || !r.body.getReader || ct.indexOf("text/event-stream") === -1) {
+          return r.json().then(function (data) {
+            clearTimeout(timer);
+            hideTyping();
+            addBubble((data && data.reply) || T.error, "bot");
+          });
+        }
+        var reader = r.body.getReader();
+        var dec = new TextDecoder();
+        var buf = "";
+        function pump() {
+          return reader.read().then(function (res) {
+            if (res.done) {
+              clearTimeout(timer);
+              if (!bubble) {
+                hideTyping();
+                addBubble(T.error, "bot");
+              }
+              return;
+            }
+            bumpTimeout();
+            buf += dec.decode(res.value, { stream: true });
+            var parts = buf.split("\n\n");
+            buf = parts.pop();
+            for (var i = 0; i < parts.length; i++) {
+              var line = parts[i].replace(/^data:\s?/, "").trim();
+              if (!line) continue;
+              try {
+                handleEvent(JSON.parse(line));
+              } catch (e) {}
+            }
+            return pump();
+          });
+        }
+        return pump();
       })
       .catch(function () {
         clearTimeout(timer);
         hideTyping();
-        addBubble(T.error, "bot");
+        if (!bubble) addBubble(T.error, "bot");
       })
       .then(function () {
         busy = false;
