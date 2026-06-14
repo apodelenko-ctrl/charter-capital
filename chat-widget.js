@@ -38,6 +38,8 @@
       open: "Задать вопрос",
       error:
         "Не получилось отправить. Попробуйте ещё раз или напишите в Telegram: https://t.me/ccapital_acces",
+      disclaimer:
+        "Это AI-консультант Charter Capital — мы идём в ногу со временем, и наш ИИ ответит на многие ваши вопросы. Чувствительную информацию передавайте только после подписания NDA и по закрытым каналам.",
     },
     en: {
       title: "Charter Capital",
@@ -51,6 +53,8 @@
       open: "Ask a question",
       error:
         "Couldn't send. Please try again or reach us on Telegram: https://t.me/ccapital_acces",
+      disclaimer:
+        "This is Charter Capital's AI assistant — it can answer many of your questions. Please share sensitive information only after signing an NDA and via secure channels.",
     },
   };
   var T = I18N[LANG] || I18N.ru;
@@ -144,6 +148,9 @@
     ".ccw-send{flex:0 0 auto;width:38px;height:38px;border-radius:10px;border:0;background:#a08156;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center}" +
     ".ccw-send:hover{background:#8a6f49}.ccw-send:disabled{opacity:.45;cursor:default}" +
     ".ccw-send svg{width:18px;height:18px}" +
+    ".ccw-note{align-self:center;max-width:94%;margin:2px 0 4px;padding:9px 13px;font-size:11.5px;line-height:1.5;text-align:center;" +
+    "color:#cbb992;background:rgba(160,129,86,.10);border:1px solid rgba(160,129,86,.28);border-radius:11px}" +
+    ".ccw-note a{color:#e3c089}" +
     ".ccw-hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}" +
     "@media (max-width:520px){" +
     ".ccw-panel{right:0;left:0;bottom:0;top:0;width:100%;max-width:100%;height:auto;max-height:none;border-radius:0;" +
@@ -229,6 +236,14 @@
     scrollDown();
   }
 
+  function addNote(text) {
+    var d = document.createElement("div");
+    d.className = "ccw-note";
+    d.innerHTML = linkify(text);
+    body.appendChild(d);
+    scrollDown();
+  }
+
   function showTyping() {
     hideTyping();
     typingEl = document.createElement("div");
@@ -253,6 +268,7 @@
     if (!greeted) {
       greeted = true;
       addBubble(T.greeting, "bot");
+      addNote(T.disclaimer);
     }
     setTimeout(function () {
       ta.focus();
