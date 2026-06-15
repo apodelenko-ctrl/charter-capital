@@ -9,8 +9,8 @@
     <description>Аналитика международного private banking, ВЭД и геополитики капитала. Гонконг · Сингапур · ОАЭ · Швейцария · UK · Россия.</description>
     <language>ru</language>
     <copyright>© Charter Capital, 2026</copyright>
-    <lastBuildDate>Mon, 15 Jun 2026 18:00:00 +0700</lastBuildDate>
-    <pubDate>Mon, 15 Jun 2026 18:00:00 +0700</pubDate>
+    <lastBuildDate>Mon, 15 Jun 2026 20:00:00 +0700</lastBuildDate>
+    <pubDate>Mon, 15 Jun 2026 20:00:00 +0700</pubDate>
     <ttl>360</ttl>
     <generator>Charter Capital · ccapital.pro</generator>
     <atom:link href="https://ccapital.pro/journal/feed.xml" rel="self" type="application/rss+xml" />
@@ -19,6 +19,15 @@
       <title>Дайджест Charter Capital</title>
       <link>https://ccapital.pro/journal.html</link>
     </image>
+    <item>
+      <title>Caixa Geral de Depósitos закрывает счета россиян с 14 августа 2026 — что делать</title>
+      <link>https://ccapital.pro/journal/caixa-portugal-zakrytie-schetov-2026.html</link>
+      <guid isPermaLink="true">https://ccapital.pro/journal/caixa-portugal-zakrytie-schetov-2026.html</guid>
+      <pubDate>Mon, 15 Jun 2026 20:00:00 +0700</pubDate>
+      <description>Крупнейший государственный банк Португалии Caixa Geral de Depósitos (CGD) с 9 июня рассылает клиентам уведомления о принудительном закрытии счетов с 14 августа 2026 года. Под удар попадают в основном клиенты без ВНЖ и не обновившие свои данные, но в отдельных случаях и часть резидентов. Разбор Charter Capital: почему ВНЖ не гарантирует сохранение счёта, что делать с деньгами до отключения доступа и зачем заранее открыть запасной счёт в другой юрисдикции.</description>
+      <enclosure url="https://ccapital.pro/assets/journal/caixa-portugal-closure-hero.jpg" type="image/jpeg" />
+      <category>Charter Capital · Регуляторика</category>
+    </item>
     <item>
       <title>Санкции ЕС 15 июня 2026: три удара — флот, пропаганда, дело Навального</title>
       <link>https://ccapital.pro/journal/eu-sanctions-15-june-2026.html</link>
