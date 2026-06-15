@@ -45,7 +45,7 @@ SITE = "https://ccapital.pro"
 #           материал попадает в ЧЕРНОВИКИ канала (ручная модерация и публикация).
 #   False → маркер не добавляется: материал публикуется автоматически.
 # Источник: https://dzen.ru/help/ru/website/rss-modify.html
-DRAFT_MODE = True
+DRAFT_MODE = False
 DRAFT_CATEGORY = "native-draft"
 
 # Блоки, которые надо полностью выкинуть из тела (CTA, виджеты, навигация, формы).
