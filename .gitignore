@@ -8,6 +8,9 @@ _BACKUP-INFO.txt
 charter-capital-yandex-keywords.csv
 charter-capital-url-matrix.csv
 
+# Материалы рекламных кампаний (ключи, объявления, заливочные файлы) — только локально
+ads/
+
 # Исходник AI-чата (воркер Cloudflare) — НЕ публиковать на сайте.
 # Содержит системный промпт (kb.js), конфиг и тесты. Деплоится отдельно через wrangler.
 ai-chat/
