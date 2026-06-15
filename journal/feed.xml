@@ -9,8 +9,8 @@
     <description>Аналитика международного private banking, ВЭД и геополитики капитала. Гонконг · Сингапур · ОАЭ · Швейцария · UK · Россия.</description>
     <language>ru</language>
     <copyright>© Charter Capital, 2026</copyright>
-    <lastBuildDate>Wed, 10 Jun 2026 18:00:00 +0000</lastBuildDate>
-    <pubDate>Wed, 10 Jun 2026 18:00:00 +0000</pubDate>
+    <lastBuildDate>Mon, 15 Jun 2026 18:00:00 +0700</lastBuildDate>
+    <pubDate>Mon, 15 Jun 2026 18:00:00 +0700</pubDate>
     <ttl>360</ttl>
     <generator>Charter Capital · ccapital.pro</generator>
     <atom:link href="https://ccapital.pro/journal/feed.xml" rel="self" type="application/rss+xml" />
@@ -19,6 +19,24 @@
       <title>Дайджест Charter Capital</title>
       <link>https://ccapital.pro/journal.html</link>
     </image>
+    <item>
+      <title>Санкции ЕС 15 июня 2026: три удара — флот, пропаганда, дело Навального</title>
+      <link>https://ccapital.pro/journal/eu-sanctions-15-june-2026.html</link>
+      <guid isPermaLink="true">https://ccapital.pro/journal/eu-sanctions-15-june-2026.html</guid>
+      <pubDate>Mon, 15 Jun 2026 18:00:00 +0700</pubDate>
+      <description>Совет ЕС 15 июня принял сразу три решения. Первое — по теневому нефтефлоту: под санкции попали 9 человек и 45 компаний, включая техменеджеров и операторов из ОАЭ, Турции и Гонконга, трейдинговую сеть 2Rivers и впервые публичную компанию из КНР — Xinxiang Richful. Второе — по пропаганде: ограничения против Президентского фонда культурных инициатив (ПФКИ) и связанных блогеров. Третье — по делу Навального с фигурантами вроде NtechLab. Разбор Charter Capital: почему под угрозой именно транзитные юрисдикции и зачем держателям капитала чистый Source of Funds.</description>
+      <enclosure url="https://ccapital.pro/assets/journal/eu-sanctions-fleet-hero.jpg" type="image/jpeg" />
+      <category>Charter Capital · Регуляторика</category>
+    </item>
+    <item>
+      <title>Обмен криптовалюты в России: что изменилось во втором чтении (2026)</title>
+      <link>https://ccapital.pro/journal/obmen-kripty-rf-vtoroe-chtenie-2026.html</link>
+      <guid isPermaLink="true">https://ccapital.pro/journal/obmen-kripty-rf-vtoroe-chtenie-2026.html</guid>
+      <pubDate>Mon, 15 Jun 2026 16:00:00 +0700</pubDate>
+      <description>Во втором чтении законопроект о цифровых валютах заметно смягчили: легализован P2P-обмен, установлен порог 3,5 млн ₽ для обменников, разрешён майнинг физлицами и прямые сделки с нерезидентами — в обмен на задержку операций до 48 часов и обмен данными с Росфинмониторингом и ЦБ. Всего 7 ключевых изменений. Разбор Charter Capital: внутренняя легальность ≠ банкуемость капитала за рубежом — почему документированная история внутри РФ не делает деньги «чистыми» для иностранного банка.</description>
+      <enclosure url="https://ccapital.pro/assets/journal/kripta-vtoroe-chtenie-hero.jpg" type="image/jpeg" />
+      <category>Charter Capital · Регуляторика</category>
+    </item>
     <item>
       <title>Госдума приняла в первом чтении налоговый режим для цифровых валют и освобождение криптообменников от НДС</title>
       <link>https://ccapital.pro/journal/cifrovye-valyuty-nalogi-nds-2026.html</link>
