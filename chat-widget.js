@@ -1,7 +1,7 @@
 /*!
  * Charter Capital — живой AI-чат (виджет).
  * Самодостаточный: инжектит свой CSS + DOM. Подключать на все страницы:
- *   <script src="/chat-widget.js?v=20260617" defer></script>
+ *   <script src="/chat-widget.js?v=20260618" defer></script>
  * При каждом изменении файла поднимай ?v=ГГГГММДД, иначе правка не доедет из-за кэша.
  *
  * Конфиг (необязательно) перед подключением скрипта:
@@ -58,6 +58,22 @@
     },
   };
   var T = I18N[LANG] || I18N.ru;
+
+  // ── Яндекс.Метрика: цели для Директа ──────────────────────
+  // ai_chat_opened   — открыли чат (верх воронки)
+  // ai_chat_message  — отправили первое сообщение (вовлечение)
+  // ai_lead_qualified — Артур передал тёплого лида (целевая конверсия для оплаты в Директе)
+  var YM_ID = window.CHARTER_YM_ID || 108969822;
+  function goal(name, params) {
+    try {
+      if (typeof window.ym === "function") {
+        window.ym(YM_ID, "reachGoal", name, params || undefined);
+      }
+    } catch (e) {}
+  }
+  var openedTracked = false;
+  var firstMsgTracked = false;
+  var qualifiedTracked = false;
 
   // ── сессия ────────────────────────────────────────────────
   function uid() {
@@ -270,6 +286,10 @@
       addBubble(T.greeting, "bot");
       addNote(T.disclaimer);
     }
+    if (!openedTracked) {
+      openedTracked = true;
+      goal("ai_chat_opened");
+    }
     setTimeout(function () {
       ta.focus();
     }, 50);
@@ -292,6 +312,10 @@
     addBubble(text, "user");
     ta.value = "";
     autoGrow();
+    if (!firstMsgTracked) {
+      firstMsgTracked = true;
+      goal("ai_chat_message");
+    }
     sendMessage(text);
   }
 
@@ -336,6 +360,10 @@
         if (ev.full != null) acc = ev.full;
         bubble.innerHTML = linkify(acc);
         scrollDown();
+        if (ev.handoff && !qualifiedTracked) {
+          qualifiedTracked = true;
+          goal("ai_lead_qualified");
+        }
       }
     }
 
@@ -353,6 +381,10 @@
             clearTimeout(timer);
             hideTyping();
             addBubble((data && data.reply) || T.error, "bot");
+            if (data && data.handoff && !qualifiedTracked) {
+              qualifiedTracked = true;
+              goal("ai_lead_qualified");
+            }
           });
         }
         var reader = r.body.getReader();
