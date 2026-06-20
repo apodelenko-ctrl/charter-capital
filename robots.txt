@@ -30,7 +30,7 @@ Disallow: /charter-flow-app/
 Disallow: /partner-brief.html
 Disallow: /case-phuket-2m.html
 Disallow: /case-phuket-rainpalm.html
-Clean-param: utm_source&utm_medium&utm_campaign&utm_term&utm_content&yclid&gclid
+Clean-param: utm_source&utm_medium&utm_campaign&utm_term&utm_content&yclid&gclid&etext
 
 User-agent: YandexBot
 Allow: /
