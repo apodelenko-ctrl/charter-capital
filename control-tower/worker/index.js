@@ -331,12 +331,13 @@ async function handleApi(request, env, path, method) {
       const h = await unitHealth(env, u);
       units.push({ ...u, health: h, ...trafficLight(h.status) });
     }
-    const green = units.filter((u) => u.status === "green").length;
-    const red = units.filter((u) => u.status === "red").length;
+    const green = units.filter((u) => u.color === "green").length;
+    const red = units.filter((u) => u.color === "red").length;
+    const gray = units.filter((u) => u.color === "gray").length;
     return json({
       site: live,
       deploy,
-      summary: { total: units.length, green, yellow: units.length - green - red, red },
+      summary: { total: units.length, green, yellow: units.length - green - red - gray, red, gray },
       blocks: BLOCKS,
       units,
     });
