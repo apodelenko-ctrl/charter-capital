@@ -16,6 +16,16 @@ id = "4e4f9b53778b4cd8bc8973137b06b30c"
 [vars]
 GITHUB_REPO = "apodelenko-ctrl/charter-capital"
 
+# Service bindings: прямой вызов соседних воркеров (fetch на *.workers.dev
+# из воркера не резолвится, поэтому health-пробы идут через binding).
+[[services]]
+binding = "FORMS"
+service = "ccapital-forms-proxy"
+
+[[services]]
+binding = "CHAT"
+service = "charter-chat"
+
 # Секреты (wrangler secret put):
 #   DASHBOARD_SECRET   — пароль дашборда (Basic auth)
 #   GITHUB_TOKEN       — PAT repo scope (actions + contents read)

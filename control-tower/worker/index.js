@@ -98,9 +98,10 @@ async function ghFileText(env, filePath) {
   return atob(data.content.replace(/\n/g, ""));
 }
 
-async function fetchJsonSafe(url, opts = {}) {
+async function fetchJsonSafe(url, opts = {}, fetcher = null) {
   try {
-    const r = await fetch(url, { ...opts, signal: AbortSignal.timeout(12000) });
+    const doFetch = fetcher ? fetcher.fetch.bind(fetcher) : fetch;
+    const r = await doFetch(url, { ...opts, signal: AbortSignal.timeout(12000) });
     const ct = r.headers.get("content-type") || "";
     if (ct.includes("json")) return { ok: r.ok, status: r.status, data: await r.json() };
     return { ok: r.ok, status: r.status, data: await r.text() };
@@ -160,8 +161,8 @@ async function probeDzenFeed() {
   };
 }
 
-async function probeFormsProxy() {
-  const r = await fetchJsonSafe(FORMS_HEALTH);
+async function probeFormsProxy(env) {
+  const r = await fetchJsonSafe(FORMS_HEALTH, {}, env.FORMS);
   const ok = r.ok && (r.data?.ok || r.data === "OK" || String(r.data).includes("OK"));
   return {
     status: ok ? "green" : "red",
@@ -172,11 +173,11 @@ async function probeFormsProxy() {
 }
 
 async function probeCharterChat(env) {
-  const r = await fetchJsonSafe(CHAT_HEALTH);
+  const r = await fetchJsonSafe(CHAT_HEALTH, {}, env.CHAT);
   const ok = r.ok && r.data?.ok;
   let stats = {};
   if (env.ADMIN_KEY) {
-    const s = await fetchJsonSafe(`${CHAT_STATS}?key=${encodeURIComponent(env.ADMIN_KEY)}`);
+    const s = await fetchJsonSafe(`${CHAT_STATS}?key=${encodeURIComponent(env.ADMIN_KEY)}`, {}, env.CHAT);
     if (s.ok && s.data) stats = s.data;
   }
   return {
@@ -240,7 +241,7 @@ async function unitHealth(env, unit) {
     case "github_actions": return probeDeploy(env);
     case "indexnow": return probeIndexNowKey(env);
     case "dzen_feed": return probeDzenFeed();
-    case "forms_proxy": return probeFormsProxy();
+    case "forms_proxy": return probeFormsProxy(env);
     case "charter_chat": return probeCharterChat(env);
     case "charter_flow_live": return probeCharterFlowLive();
     case "direct_csv": return probeDirectCsv(env);
@@ -364,8 +365,8 @@ async function handleApi(request, env, path, method) {
   if (path === "/api/leads" && method === "GET") {
     const chat = await probeCharterChat(env);
     let leads = [];
-    if (env.ADMIN_KEY && env.GITHUB_TOKEN) {
-      const stats = await fetchJsonSafe(`${CHAT_STATS}?key=${encodeURIComponent(env.ADMIN_KEY)}`);
+    if (env.ADMIN_KEY) {
+      const stats = await fetchJsonSafe(`${CHAT_STATS}?key=${encodeURIComponent(env.ADMIN_KEY)}`, {}, env.CHAT);
       if (stats.data?.recent) leads = stats.data.recent;
     }
     return json({ chat, leads });
