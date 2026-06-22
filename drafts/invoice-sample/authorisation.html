@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Third-Party Payment Authorisation</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    color: #1a1a1a;
+    font-size: 12.5px;
+    line-height: 1.65;
+  }
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    padding: 24mm 22mm;
+    position: relative;
+  }
+  header {
+    border-bottom: 3px solid #0b3d2e;
+    padding-bottom: 12px;
+    margin-bottom: 26px;
+  }
+  header h1 {
+    font-size: 19px;
+    color: #0b3d2e;
+    margin: 0 0 4px 0;
+    letter-spacing: 0.5px;
+  }
+  header p { margin: 0; font-size: 11px; color: #666; }
+  .docmeta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: #444;
+    margin-bottom: 22px;
+  }
+  h2 {
+    font-size: 13px;
+    color: #0b3d2e;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 22px 0 8px 0;
+  }
+  p { margin: 0 0 12px 0; }
+  .blank { display: inline-block; min-width: 220px; border-bottom: 1px solid #555; }
+  .blank.sm { min-width: 120px; }
+  .blank.lg { min-width: 340px; }
+  .party {
+    background: #f4f7f5;
+    border-left: 4px solid #0b3d2e;
+    padding: 12px 16px;
+    margin-bottom: 18px;
+    font-size: 12px;
+  }
+  .party strong { color: #0b3d2e; }
+  ol { margin: 0 0 14px 0; padding-left: 20px; }
+  ol li { margin-bottom: 9px; }
+  .sign-block {
+    margin-top: 46px;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+  }
+  .sign-block .col { width: 48%; }
+  .sign-line {
+    border-top: 1px solid #333;
+    padding-top: 6px;
+    margin-top: 42px;
+    font-size: 11px;
+    color: #444;
+  }
+  footer {
+    position: absolute;
+    bottom: 16mm;
+    left: 22mm;
+    right: 22mm;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+    font-size: 9.5px;
+    color: #999;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <h1>Third-Party Payment Authorisation</h1>
+      <p>Authorisation to settle a supplier invoice on behalf of the undersigned</p>
+    </header>
+
+    <div class="docmeta">
+      <span>Ref.: AUTH-2026-____</span>
+      <span>Place: ____________________</span>
+      <span>Date: ____ / ____ / 2026</span>
+    </div>
+
+    <h2>1. The Principal (payer of record / client)</h2>
+    <div class="party">
+      <p style="margin:0;"><strong>Ms Viktoriia Lykhachova</strong></p>
+      <p style="margin:4px 0 0 0;">
+        Passport No.: <span class="blank sm"></span>&nbsp;&nbsp;
+        Date of birth: <span class="blank sm"></span><br>
+        Issued by / date: <span class="blank lg"></span><br>
+        Residency / residence permit (country &amp; No.): <span class="blank lg"></span><br>
+        Second document (if any): <span class="blank lg"></span><br>
+        Residential address: <span class="blank lg"></span><br>
+        Email / phone: <span class="blank lg"></span>
+      </p>
+    </div>
+
+    <h2>2. The Authorised Payer (acting on my instruction)</h2>
+    <div class="party">
+      <p style="margin:0;"><strong>WEST EAST TRADE GROUP PTE. LTD.</strong></p>
+      <p style="margin:4px 0 0 0;">
+        UEN: 202505772C &nbsp;·&nbsp; Jurisdiction: Republic of Singapore<br>
+        Registered office: 7 Temasek Boulevard, #12-07, Suntec Tower One, Singapore 038987<br>
+        Represented by its Director: Artem Podelenko
+      </p>
+    </div>
+
+    <h2>3. Authorisation</h2>
+    <p>I, the undersigned <strong>Viktoriia Lykhachova</strong>, hereby irrevocably
+       instruct and authorise <strong>WEST EAST TRADE GROUP PTE. LTD.</strong>
+       (the "Authorised Payer") to make the following payment on my behalf and for
+       my account:</p>
+
+    <ol>
+      <li><strong>Beneficiary:</strong> Safe Asset Consulting Company Limited,
+          Reg. No. 0835569005938, Phuket, Thailand.</li>
+      <li><strong>Amount:</strong> THB 16,300.00 (sixteen thousand three hundred
+          Thai Baht), being the legal / escrow service fee per the firm's invoice
+          No. <span class="blank sm"></span> dated <span class="blank sm"></span>.</li>
+      <li><strong>Purpose:</strong> settlement of legal fees in connection with my
+          purchase and freehold registration of condominium unit 555/187,
+          The Title V, Phuket, Thailand.</li>
+      <li><strong>Bank details (beneficiary):</strong> The Siam Commercial Bank PCL,
+          SWIFT SICOTHBK, account 885-415531-4.</li>
+    </ol>
+
+    <p>I confirm that: (a) this payment is made <strong>for my benefit and on my
+       instruction</strong>; (b) the funds settle <strong>my own obligation</strong>
+       to the beneficiary; (c) any sum paid by the Authorised Payer is to be
+       <strong>reimbursed by me</strong> under separate arrangement; and (d) I am the
+       beneficial owner of the condominium being purchased.</p>
+
+    <p>This authorisation may be presented to any bank or financial institution as
+       evidence of my consent to the above third-party payment.</p>
+
+    <div class="sign-block">
+      <div class="col">
+        <div class="sign-line">
+          Viktoriia Lykhachova (Principal)<br>
+          Signature &amp; date
+        </div>
+      </div>
+      <div class="col">
+        <div class="sign-line">
+          For WEST EAST TRADE GROUP PTE. LTD.<br>
+          Artem Podelenko, Director — acknowledged
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      Third-Party Payment Authorisation · for banking / compliance purposes ·
+      page 1 of 1
+    </footer>
+  </div>
+</body>
+</html>

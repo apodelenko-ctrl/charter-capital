@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Invoice (SAMPLE)</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    color: #1a1a1a;
+    font-size: 12px;
+    position: relative;
+  }
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    padding: 22mm 20mm;
+    position: relative;
+    overflow: hidden;
+  }
+  /* Big diagonal SAMPLE watermark */
+  .watermark {
+    position: fixed;
+    top: 0; left: 0;
+    width: 210mm;
+    height: 297mm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 9999;
+  }
+  .watermark span {
+    transform: rotate(-35deg);
+    font-size: 120px;
+    font-weight: 800;
+    letter-spacing: 10px;
+    color: rgba(200, 0, 0, 0.12);
+    border: 6px solid rgba(200, 0, 0, 0.12);
+    padding: 20px 50px;
+    border-radius: 12px;
+    white-space: nowrap;
+  }
+  .ribbon {
+    background: #c00;
+    color: #fff;
+    text-align: center;
+    font-weight: 800;
+    letter-spacing: 4px;
+    padding: 8px;
+    font-size: 14px;
+    margin: -22mm -20mm 18px -20mm;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 3px solid #0b3d2e;
+    padding-bottom: 14px;
+    margin-bottom: 22px;
+  }
+  .firm h1 {
+    font-size: 18px;
+    margin: 0 0 4px 0;
+    color: #0b3d2e;
+  }
+  .firm p { margin: 1px 0; font-size: 11px; color: #444; }
+  .doc-title {
+    text-align: right;
+  }
+  .doc-title h2 {
+    font-size: 30px;
+    margin: 0;
+    letter-spacing: 4px;
+    color: #0b3d2e;
+  }
+  .doc-title p { margin: 4px 0 0 0; font-size: 11px; color: #444; }
+  .meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 22px;
+  }
+  .meta .box { width: 48%; }
+  .meta h3 {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #888;
+    margin: 0 0 6px 0;
+  }
+  .meta p { margin: 1px 0; font-size: 12px; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 18px;
+  }
+  thead th {
+    background: #0b3d2e;
+    color: #fff;
+    text-align: left;
+    padding: 10px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  tbody td {
+    padding: 12px 10px;
+    border-bottom: 1px solid #ddd;
+    vertical-align: top;
+  }
+  .right { text-align: right; }
+  .totals {
+    width: 45%;
+    margin-left: auto;
+    margin-bottom: 24px;
+  }
+  .totals tr td {
+    padding: 6px 10px;
+    border: none;
+  }
+  .totals .grand td {
+    border-top: 2px solid #0b3d2e;
+    font-size: 16px;
+    font-weight: 800;
+    color: #0b3d2e;
+  }
+  .note {
+    background: #f4f7f5;
+    border-left: 4px solid #0b3d2e;
+    padding: 12px 14px;
+    font-size: 11px;
+    margin-bottom: 22px;
+  }
+  .note strong { color: #0b3d2e; }
+  .pay h3 {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #888;
+    margin: 0 0 6px 0;
+  }
+  .pay p { margin: 1px 0; font-size: 12px; }
+  footer {
+    margin-top: 30px;
+    border-top: 1px solid #ddd;
+    padding-top: 12px;
+    font-size: 10px;
+    color: #888;
+    display: flex;
+    justify-content: space-between;
+  }
+  .sign {
+    margin-top: 40px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .sign .line {
+    width: 220px;
+    border-top: 1px solid #333;
+    padding-top: 6px;
+    text-align: center;
+    font-size: 11px;
+    color: #444;
+  }
+</style>
+</head>
+<body>
+  <div class="watermark"><span>ПРИМЕР · SAMPLE</span></div>
+  <div class="page">
+    <div class="ribbon">ПРИМЕР / SAMPLE — TEMPLATE FOR THE LAW FIRM TO ISSUE ON ITS OWN LETTERHEAD</div>
+
+    <header>
+      <div class="firm">
+        <h1>Safe Asset Consulting Company Limited</h1>
+        <p>49/797 Moo 3, Ratsada, Mueang Phuket, Phuket 83000, Thailand</p>
+        <p>Company Registration / Tax ID No.: 0835569005938</p>
+        <p>Email: ____________ &nbsp;·&nbsp; Tel: ____________</p>
+      </div>
+      <div class="doc-title">
+        <h2>INVOICE</h2>
+        <p>Invoice No.: <strong>SAC-2026-____</strong></p>
+        <p>Date: ____ / ____ / 2026</p>
+        <p>Due date: ____ / ____ / 2026</p>
+      </div>
+    </header>
+
+    <div class="meta">
+      <div class="box">
+        <h3>Bill to (Client)</h3>
+        <p><strong>Viktoriia Lykhachova</strong></p>
+        <p>Passport No.: ____________</p>
+        <p>Address: ____________</p>
+        <p>Email: ____________</p>
+      </div>
+      <div class="box">
+        <h3>Matter</h3>
+        <p>Purchase of condominium unit <strong>555/187</strong>,</p>
+        <p>The Title V, Phuket, Thailand (freehold)</p>
+        <p>Reference: ____________</p>
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="width:6%;">#</th>
+          <th>Description</th>
+          <th class="right" style="width:14%;">Qty</th>
+          <th class="right" style="width:20%;">Amount (USD)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Legal / conveyancing &amp; escrow service fee in connection with
+              the purchase and freehold registration of condominium unit
+              555/187, The Title V, Phuket, on behalf of the client.</td>
+          <td class="right">1</td>
+          <td class="right">500.00</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>&nbsp;</td>
+          <td class="right">&nbsp;</td>
+          <td class="right">&nbsp;</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="totals">
+      <tr><td>Subtotal</td><td class="right">USD 500.00</td></tr>
+      <tr><td>VAT / Tax (if any)</td><td class="right">USD 0.00</td></tr>
+      <tr class="grand"><td>Total due</td><td class="right">USD 500.00</td></tr>
+    </table>
+
+    <div class="note">
+      <strong>Third-party payment notice:</strong> Payment of this invoice may be
+      made on behalf of the client by
+      <strong>WEST EAST TRADE GROUP PTE. LTD.</strong> (UEN 202505772C,
+      7 Temasek Boulevard, #12-07, Suntec Tower One, Singapore 038987),
+      acting under the client's instruction. Settlement by this third party
+      fully discharges the client's obligation under this invoice.
+    </div>
+
+    <div class="pay">
+      <h3>Payment details</h3>
+      <p>Beneficiary: Safe Asset Consulting Company Limited</p>
+      <p>Bank: The Siam Commercial Bank PCL (SCB) &nbsp;·&nbsp; SWIFT/BIC: SICOTHBK</p>
+      <p>Branch: 0885 – Lotus's Phuket</p>
+      <p>Account No.: 885-415531-4 &nbsp;·&nbsp; Account type: Savings &nbsp;·&nbsp; Currency: THB</p>
+      <p>Bank address: 9 Ratchadapisek Road, Jatujak, Bangkok 10900, Thailand</p>
+    </div>
+
+    <div class="sign">
+      <div class="line">Authorised signature &amp; company seal</div>
+    </div>
+
+    <footer>
+      <span>Safe Asset Consulting Company Limited · Reg. No. 0835569005938</span>
+      <span>This is a SAMPLE layout — not a valid invoice until issued by the firm.</span>
+    </footer>
+  </div>
+</body>
+</html>

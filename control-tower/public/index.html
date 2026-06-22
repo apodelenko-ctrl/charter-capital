@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Charter Capital · Control Tower</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div id="gate" class="gate">
+    <div class="gate-card">
+      <div class="logo">Charter Capital</div>
+      <div class="logo-sub">Control Tower · внутренний доступ</div>
+      <input id="secret" type="password" placeholder="DASHBOARD_SECRET" autocomplete="current-password">
+      <button id="enter-btn" type="button">Войти</button>
+      <p class="hint">Секрет задаётся в Cloudflare Worker. Для локального dev можно оставить пустым.</p>
+    </div>
+  </div>
+
+  <div id="app" hidden>
+    <header class="topbar">
+      <div>
+        <div class="brand">Charter Capital · Control Tower</div>
+        <div class="subtitle" id="subtitle">Мониторинг автоматизаций ccapital.pro</div>
+      </div>
+      <div class="top-actions">
+        <a class="link-gold" href="https://ccapital.pro/" target="_blank" rel="noopener">ccapital.pro ↗</a>
+        <button class="btn ghost" id="refresh" type="button">↻</button>
+      </div>
+    </header>
+
+    <nav class="tabs" id="tabs">
+      <button class="tab active" data-panel="overview">Светофор</button>
+      <button class="tab" data-panel="publish">Публикация</button>
+      <button class="tab" data-panel="leads">Лиды</button>
+      <button class="tab" data-panel="traffic">Трафик</button>
+      <button class="tab" data-panel="content">Контент</button>
+      <button class="tab" data-panel="dzen">Дзен</button>
+      <button class="tab" data-panel="logs">Логи</button>
+    </nav>
+
+    <main id="panel"></main>
+  </div>
+
+  <div id="toast" class="toast" hidden></div>
+  <script src="/app.js"></script>
+</body>
+</html>

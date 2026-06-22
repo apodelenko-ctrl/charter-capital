@@ -1,0 +1,56 @@
+name: Control Tower Actions
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: "Действие"
+        required: true
+        type: choice
+        options:
+          - deploy
+          - rebuild_dzen_feed
+          - regenerate_direct
+          - indexnow_default
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy (mirror main → gh-pages)
+        if: inputs.action == 'deploy'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git push origin HEAD:gh-pages --force
+
+      - name: Rebuild Dzen feed
+        if: inputs.action == 'rebuild_dzen_feed'
+        run: |
+          pip install beautifulsoup4 lxml
+          python3 scripts/build_dzen_feed.py
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add journal/feed.xml
+          git diff --cached --quiet || git commit -m "chore: rebuild dzen feed [control-tower]"
+          git push origin HEAD:main
+          git push origin HEAD:gh-pages --force
+
+      - name: Regenerate Direct CSV
+        if: inputs.action == 'regenerate_direct'
+        run: |
+          python3 direct-import/build_import.py
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add direct-import/*.csv
+          git diff --cached --quiet || git commit -m "chore: regenerate direct CSV [control-tower]"
+          git push origin HEAD:main
+
+      - name: IndexNow default set
+        if: inputs.action == 'indexnow_default'
+        run: ./indexnow.sh

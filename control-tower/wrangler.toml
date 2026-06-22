@@ -1,0 +1,23 @@
+name = "ccapital-control-tower"
+main = "worker/index.js"
+compatibility_date = "2026-06-01"
+
+# Статика дашборда
+[assets]
+directory = "public"
+binding = "ASSETS"
+
+# KV: лог событий + ручные метрики трафика
+# wrangler kv namespace create TOWER_KV
+[[kv_namespaces]]
+binding = "TOWER_KV"
+id = "REPLACE_WITH_KV_ID"
+
+[vars]
+GITHUB_REPO = "apodelenko-ctrl/charter-capital"
+
+# Секреты (wrangler secret put):
+#   DASHBOARD_SECRET   — пароль дашборда (Basic auth)
+#   GITHUB_TOKEN       — PAT repo scope (actions + contents read)
+#   INDEXNOW_KEY       — ключ IndexNow (тот же, что в indexnow.sh)
+#   ADMIN_KEY          — ключ /admin charter-chat (для stats)

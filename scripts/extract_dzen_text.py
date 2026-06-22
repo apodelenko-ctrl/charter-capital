@@ -115,6 +115,7 @@ def process(path):
 def main():
     root = "/Users/ktel25/Documents/charter-capital/journal"
     slugs = [
+        "mica-perehodnyy-period-2026",
         "caixa-portugal-zakrytie-schetov-2026",
         "eu-sanctions-15-june-2026",
         "hongkong-banks-uae-transit-compliance-2026",
