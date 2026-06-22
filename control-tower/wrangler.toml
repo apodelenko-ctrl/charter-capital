@@ -11,7 +11,7 @@ binding = "ASSETS"
 # wrangler kv namespace create TOWER_KV
 [[kv_namespaces]]
 binding = "TOWER_KV"
-id = "REPLACE_WITH_KV_ID"
+id = "4e4f9b53778b4cd8bc8973137b06b30c"
 
 [vars]
 GITHUB_REPO = "apodelenko-ctrl/charter-capital"
