@@ -1,0 +1,33 @@
+---
+description: How the ccapital.pro site actually deploys (GitHub Pages via gh-pages mirror)
+alwaysApply: true
+---
+
+# Deploy: pushing to `main` does NOT publish the site
+
+GitHub Pages serves **from the `gh-pages` branch**, not `main`.
+Deploy is a manual mirror `main → gh-pages` (workflow `.github/workflows/control-tower-actions.yml`,
+`workflow_dispatch` → action `deploy`, which does `git push origin HEAD:gh-pages --force`).
+
+So a commit on `main` alone will 404 on the live site. To publish:
+
+```bash
+# 1) commit + push main as usual
+git push origin main
+
+# 2) DEPLOY — mirror main into gh-pages (fast-forward if gh-pages is an ancestor)
+git fetch origin gh-pages main -q
+git merge-base --is-ancestor origin/gh-pages origin/main && echo "ff-safe"
+git push origin main:gh-pages   # matches the control-tower "deploy" action
+```
+
+## Verify it went live
+- Pages CDN (Fastly) rebuilds ~1–2 min after `gh-pages` updates.
+- Check freshness via `journal.html` `last-modified` header, not just the new URL.
+- **Negative cache gotcha**: a URL hit while still 404 gets negative-cached on the
+  CDN; use a cache-bust query (`?v=$(date +%s)`) to confirm the file is really live,
+  then the plain URL clears shortly after.
+
+## After deploy
+- Ping IndexNow (Yandex/Bing) for changed URLs: `./indexnow.sh <url> ...`
+  (or `./indexnow.sh --recent` for URLs in the last commit).
