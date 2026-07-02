@@ -1,0 +1,33 @@
+---
+description: How Charter Capital publishes to Dzen (RSS auto-import only — do NOT publish manually)
+alwaysApply: true
+---
+
+# Dzen: RSS auto-import is ON — do NOT publish manually
+
+The Dzen channel "Artem Dyachenko · Charter Capital"
+(Studio editor id: `6a18826b19b0122c2924f370`) has an **RSS auto-import**
+connected to `https://ccapital.pro/journal/feed.xml`.
+
+Dzen pulls every new `<item>` from the feed automatically, with full
+`content:encoded` body and the `<enclosure>` image as the cover. So once an
+article is in `feed.xml` and deployed, **it will appear on Dzen on its own.**
+
+## The duplicate trap (happened 2026-07-02)
+Manually publishing an article that is ALSO in the feed creates **two copies**
+on the channel (one manual, one RSS). We had 5 such duplicate pairs and cleaned
+them up by keeping the RSS copy and deleting the manual one.
+
+## Rule going forward
+- **Do NOT manually publish journal articles to Dzen.** Just deploy the site
+  (see `deploy.mdc`); the RSS import handles Dzen.
+- Manual Dzen drafts under `drafts/dzen-*.md` are legacy — do not upload them
+  unless the user explicitly asks.
+- RSS copies are canonical: they carry the exact `feed.xml` title + hero cover.
+- **Telegram is separate** — no auto-import there, so Telegram announcements
+  are still posted manually as usual.
+
+## If duplicates reappear
+Audit via Dzen Studio publications list; same-title pairs are dupes. Keep the
+RSS copy (title matches `feed.xml` verbatim), delete the other. Deletion in
+Dzen is irreversible — confirm with the user first.

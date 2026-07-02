@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/>
+<title>Charter Capital — прайс для партнёра (конфиденциально)</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { margin: 0; padding: 0; }
+  :root{
+    --dark:#0a0e1a; --darker:#06080f; --ink:#0f172a; --body:#334155; --muted:#64748b;
+    --line:#e2e8f0; --line-soft:#eef2f7; --cream:#fbfaf6;
+    --gold:#a8854e; --gold-bright:#c9a86a; --gold-soft:#e8d4a8;
+    --blue:#2563eb; --green:#0f7a5a;
+  }
+  body{
+    font-family:"Helvetica Neue","Inter",-apple-system,Arial,sans-serif;
+    color:var(--ink); font-size:11px; line-height:1.55; -webkit-font-smoothing:antialiased;
+  }
+  .page{ width:210mm; min-height:297mm; padding:0 0 18mm; position:relative; }
+  .page + .page{ page-break-before:always; }
+
+  /* ── HEADER ── */
+  .masthead{ background:var(--darker); color:#fff; padding:20mm 16mm 12mm; position:relative; overflow:hidden; }
+  .masthead::after{ content:""; position:absolute; left:0; right:0; bottom:0; height:3px;
+    background:linear-gradient(90deg,var(--gold) 0%,var(--gold-bright) 45%,transparent 100%); }
+  .mh-top{ display:flex; justify-content:space-between; align-items:flex-start; }
+  .brand .nm{ font-size:16px; font-weight:800; letter-spacing:.22em; text-transform:uppercase; }
+  .brand .tag{ margin-top:6px; font-size:9px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--gold-soft); }
+  .conf{ text-align:right; font-size:8.5px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--gold-soft); line-height:1.7; }
+  .mh-title{ margin-top:24px; }
+  .mh-title h1{ font-size:25px; font-weight:300; letter-spacing:-.02em; line-height:1.15; color:#fff; }
+  .mh-title h1 b{ font-weight:700; }
+  .mh-title p{ margin-top:10px; max-width:74ch; font-size:11px; color:rgba(255,255,255,.72); }
+
+  .body-wrap{ padding:10mm 16mm 0; }
+
+  /* ── MODEL CALLOUT ── */
+  .model{ background:var(--cream); border:1px solid var(--line); border-left:3px solid var(--gold); border-radius:8px; padding:14px 16px; margin-bottom:16px; }
+  .model h2{ font-size:12px; font-weight:800; letter-spacing:.02em; color:var(--ink); margin-bottom:6px; }
+  .model p{ font-size:10.5px; color:var(--body); }
+  .model b{ color:var(--gold); }
+
+  /* ── DIRECTION BLOCKS ── */
+  .dir{ border:1px solid var(--line); border-radius:8px; margin-bottom:11px; overflow:hidden; page-break-inside:avoid; }
+  .dir-head{ display:flex; align-items:center; gap:11px; padding:10px 14px; background:#0e1426; color:#fff; }
+  .dir-head .no{ flex:none; width:24px; height:24px; border-radius:6px; background:linear-gradient(135deg,var(--gold-bright),var(--gold)); color:#0a0e1a; font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center; }
+  .dir-head .ti{ font-size:12.5px; font-weight:700; letter-spacing:-.01em; }
+  .dir-head .src{ margin-left:auto; font-size:8px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:3px 8px; border-radius:999px; }
+  .src.anchor{ background:rgba(15,122,90,.22); color:#6ee7b7; border:1px solid rgba(110,231,183,.35); }
+  .src.prop{ background:rgba(201,168,106,.16); color:var(--gold-soft); border:1px solid rgba(201,168,106,.35); }
+  .dir-body{ padding:11px 14px 13px; }
+  .dir-body .what{ font-size:10.5px; color:var(--body); margin-bottom:10px; }
+  .price-grid{ display:flex; gap:10px; }
+  .pcell{ flex:1; background:var(--line-soft); border-radius:6px; padding:9px 11px; }
+  .pcell.partner{ background:#f3f7ff; border:1px solid #dbe7ff; }
+  .pcell .lab{ font-size:8px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-bottom:4px; }
+  .pcell.partner .lab{ color:var(--blue); }
+  .pcell .val{ font-size:11px; color:var(--ink); font-weight:600; line-height:1.45; }
+  .pcell .val .big{ font-size:14px; font-weight:800; color:var(--gold); }
+  .pcell.partner .val .big{ color:var(--blue); }
+
+  /* ── SCRIPT LINE ── */
+  .script{ background:linear-gradient(135deg,#0e1a30,var(--darker)); color:#fff; border-radius:8px; padding:15px 18px; margin:4px 0 14px; }
+  .script .l{ font-size:8.5px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--gold-soft); margin-bottom:7px; }
+  .script p{ font-size:11px; line-height:1.55; color:rgba(255,255,255,.9); }
+  .script p b{ color:var(--gold-soft); }
+
+  /* ── NOTES / FOOTER ── */
+  .notes{ font-size:9px; color:var(--muted); line-height:1.6; border-top:1px solid var(--line); padding-top:11px; }
+  .notes b{ color:var(--ink); }
+  .foot{ margin-top:14px; display:flex; justify-content:space-between; align-items:center; font-size:8.5px; color:var(--muted); border-top:1px solid var(--line); padding-top:9px; }
+  .foot .c{ color:var(--gold); font-weight:700; letter-spacing:.06em; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="masthead">
+    <div class="mh-top">
+      <div class="brand">
+        <div class="nm">Charter Capital</div>
+        <div class="tag">Архитектура легитимности капитала</div>
+      </div>
+      <div class="conf">Конфиденциально<br/>Прайс для партнёра<br/>25 июня 2026</div>
+    </div>
+    <div class="mh-title">
+      <h1>Партнёрский прайс <b>по направлениям</b></h1>
+      <p>Индикативные цены для клиента и вознаграждение партнёра по каждому направлению Charter Capital. Документ для согласования экономики сотрудничества; не является публичной офертой. Финальная смета — после короткого разбора кейса под NDA.</p>
+    </div>
+  </div>
+
+  <div class="body-wrap">
+
+    <div class="model">
+      <h2>Модель партнёрства</h2>
+      <p>Партнёр приводит и представляет клиента — сделку ведёт Charter Capital, держа партнёра в курсе. Базовый принцип вознаграждения: <b>до 50% от комиссии Charter Capital</b> по приведённой сделке. На real-asset и платёжных направлениях это ориентировочно <b>1,5–5% от объёма сделки</b>; на резидентстве и досье — <b>20–40% от нашего сервисного гонорара</b>. Точный процент фиксируется заранее в партнёрском соглашении.</p>
+    </div>
+
+    <!-- 1 -->
+    <div class="dir">
+      <div class="dir-head"><span class="no">1</span><span class="ti">Легализация капитала СНГ — SoF / SoW + AML</span><span class="src prop">предложение</span></div>
+      <div class="dir-body">
+        <div class="what">«Начинка» любой сделки: документально доказываем происхождение средств и благосостояния так, чтобы выдержать проверку западного комплаенса (Source of Funds / Source of Wealth, AML для крипты, зарубежные счета).</div>
+        <div class="price-grid">
+          <div class="pcell"><div class="lab">Цена клиенту</div><div class="val">Базовое досье (1 чистый источник): <span class="big">€4 000–8 000</span>.<br/>Комплексное (несколько источников / крипта / спорная биография): <b>€10 000–25 000</b> либо <b>1–3%</b> от легализуемого капитала на крупных объёмах. В Private Office — входит в общий чек 4–10%.</div></div>
+          <div class="pcell partner"><div class="lab">Банку-партнёру</div><div class="val"><span class="big">30–50%</span><br/>от комиссии Charter Capital</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="dir">
+      <div class="dir-head"><span class="no">2</span><span class="ti">Легализация криптоактива — анализ + продажа USDC</span><span class="src prop">предложение</span></div>
+      <div class="dir-body">
+        <div class="what">Анализ состояния и статуса криптоактива, AML-досье, и предложение по продаже/обмену USDC из западной юрисдикции — чистый off-ramp без миксеров и P2P-схем.</div>
+        <div class="price-grid">
+          <div class="pcell"><div class="lab">Цена клиенту</div><div class="val">AML-анализ + досье (фикс): <span class="big">€2 500–5 000</span>.<br/>Off-ramp / продажа: <b>2–4%</b> от суммы (чистый USDC).</div></div>
+          <div class="pcell partner"><div class="lab">Банку-партнёру</div><div class="val"><span class="big">30–50%</span><br/>от комиссии (≈ 1–2 п.п. от суммы)</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="dir">
+      <div class="dir-head"><span class="no">3</span><span class="ti">Недвижимость Пхукет — Asia Fund / прямая покупка</span><span class="src anchor">уже в прайсе</span></div>
+      <div class="dir-body">
+        <div class="what">Инвестиция через Charter Asia Fund (сингапурская структура) или прямая покупка отобранной курортной недвижимости Пхукета по прямым контрактам с застройщиками. Due diligence, leasehold/freehold, прозрачная документация.</div>
+        <div class="price-grid">
+          <div class="pcell"><div class="lab">Цена клиенту</div><div class="val">Вход Asia Fund — от <span class="big">$25k</span>. Комиссия Charter Capital — <b>10%</b> от сделки. Прямая покупка: клиенту 0% сверху (платит застройщик).</div></div>
+          <div class="pcell partner"><div class="lab">Банку-партнёру</div><div class="val"><span class="big">5%</span><br/>от сделки (половина комиссии)</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="dir">
+      <div class="dir-head"><span class="no">4</span><span class="ti">ВНЖ / резидентство в Европе</span><span class="src prop">предложение</span></div>
+      <div class="dir-body">
+        <div class="what">Сервисный гонорар Charter Capital за сопровождение программы (без gov-сборов и гонораров местных адвокатов — это pass-through). Испания (для граждан РФ/Беларуси), Мальта, Португалия, Монако, Словакия.</div>
+        <div class="price-grid">
+          <div class="pcell"><div class="lab">Сервис-гонорар клиенту</div><div class="val">Словакия: <b>€2 500–5 800 / этап</b> · Испания (РФ/Беларусь): <b>€6 000–12 000</b> · Мальта (ВНЖ + налог. резидентство + сертификат): <b>€15 000–35 000</b> · Португалия (через инвестиции): <b>€15 000–25 000</b> + сумма инвестиции · Монако (премиум): от <b>€30 000</b> + банковский депозит €500k+.</div></div>
+          <div class="pcell partner"><div class="lab">Банку-партнёру</div><div class="val"><span class="big">20–40%</span><br/>от сервис-гонорара</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="foot">
+      <span class="c">Charter Capital · ccapital.pro</span>
+      <span>Конфиденциально · только для партнёра · стр. 1 / 2</span>
+    </div>
+
+  </div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <div class="body-wrap" style="padding-top:16mm;">
+
+    <!-- 5 -->
+    <div class="dir">
+      <div class="dir-head"><span class="no">5</span><span class="ti">GPU H100 / H200 — облако и поставка</span><span class="src prop">предложение</span></div>
+      <div class="dir-body">
+        <div class="what">Аренда GPU-облака из Азии (Гонконг) и build-to-order поставка серверов для бизнеса из СНГ. Оплата в USDT/CNY с прохождением ВЭД и экспортного контроля.</div>
+        <div class="price-grid">
+          <div class="pcell"><div class="lab">Цена клиенту</div><div class="val">Аренда облака: наценка <span class="big">12–20%</span> над себестоимостью (или фикс $/GPU-час).<br/>Поставка железа: маржа <b>8–15%</b> от контракта + ВЭД-проводка <b>3–5%</b>.</div></div>
+          <div class="pcell partner"><div class="lab">Банку-партнёру</div><div class="val"><span class="big">20–30%</span><br/>от маржи Charter Capital</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="dir">
+      <div class="dir-head"><span class="no">6</span><span class="ti">Продажа криптовалюты за нерезидентский рубль</span><span class="src anchor">уже в прайсе</span></div>
+      <div class="dir-body">
+        <div class="what">Оплата на нерезидента в России или Беларуси — продажа криптовалюты за нерезидентский рубль с сопровождением.</div>
+        <div class="price-grid">
+          <div class="pcell"><div class="lab">Цена клиенту</div><div class="val"><span class="big">3%</span><br/>от суммы операции</div></div>
+          <div class="pcell partner"><div class="lab">Банку-партнёру</div><div class="val">до <span class="big">1%</span><br/>(≈ треть комиссии)</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="dir">
+      <div class="dir-head"><span class="no">7</span><span class="ti">Платежи по ВЭД для импортеров — чистый USDC</span><span class="src prop">предложение</span></div>
+      <div class="dir-body">
+        <div class="what">Расчёты по внешнеторговым контрактам в чистом USDC под банк получателя: Китай, ОАЭ, ЕС. Без вторичных санкций и блокировок кошельков, с AML-досье под платёж.</div>
+        <div class="price-grid">
+          <div class="pcell"><div class="lab">Цена клиенту</div><div class="val"><span class="big">3–6%</span> от суммы платежа в зависимости от коридора (Китай / ОАЭ / ЕС) и объёма. Минимальная сделка — от ~$50k.</div></div>
+          <div class="pcell partner"><div class="lab">Банку-партнёру</div><div class="val"><span class="big">20–40%</span><br/>от комиссии (≈ 1–2 п.п.)</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8 -->
+    <div class="dir">
+      <div class="dir-head"><span class="no">8</span><span class="ti">Готовый бизнес за рубежом</span><span class="src prop">предложение</span></div>
+      <div class="dir-body">
+        <div class="what">Подбор и сопровождение покупки действующего бизнеса за рубежом для тех, кто готов полностью релоцироваться — реальная выручка и основание для ВНЖ (substance).</div>
+        <div class="price-grid">
+          <div class="pcell"><div class="lab">Цена клиенту</div><div class="val">Брокеридж / advisory: <span class="big">5–10%</span> от стоимости сделки, минимум <b>€15 000–25 000</b> ретейнер.</div></div>
+          <div class="pcell partner"><div class="lab">Банку-партнёру</div><div class="val"><span class="big">30–50%</span><br/>от комиссии Charter Capital</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BONUS: Private Office anchor -->
+    <div class="dir">
+      <div class="dir-head"><span class="no">★</span><span class="ti">Private Office — флагман, капитал от $1M</span><span class="src anchor">уже в прайсе</span></div>
+      <div class="dir-body">
+        <div class="what">Персональная архитектура легитимности и репатриации под крупный капитал: объединяет SoF/SoW, счета, активы и расчёты в одну сделку — самый доходный формат для партнёра.</div>
+        <div class="price-grid">
+          <div class="pcell"><div class="lab">Цена клиенту</div><div class="val"><span class="big">4–10%</span><br/>от размера капитала</div></div>
+          <div class="pcell partner"><div class="lab">Банку-партнёру</div><div class="val">до <span class="big">50%</span><br/>от комиссии Charter Capital</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="script">
+      <div class="l">Как сформулировать клиенту / в банке</div>
+      <p>«Charter Capital делится с партнёром <b>до 50% своей комиссии</b> по приведённой сделке: на real-asset и платёжных направлениях это <b>1,5–5% от объёма сделки</b>, на резидентстве и досье — <b>20–40% от сервисного гонорара</b>. Финальная смета — после короткого разбора кейса под NDA.»</p>
+    </div>
+
+    <div class="notes">
+      <b>Легенда:</b> «уже в прайсе» — цены опубликованы на сайте / зафиксированы ранее; «предложение» — индикативные рыночные ставки к согласованию. &nbsp;•&nbsp; Все суммы — без gov-сборов, гонораров местных адвокатов, нотариусов и страховок (pass-through по факту). &nbsp;•&nbsp; Цифры индикативны при честных документах, понятной налоговой биографии и стандартной географии источников; сложные кейсы оцениваются отдельно. &nbsp;•&nbsp; Документ конфиденциальный, не является публичной офертой; финальные условия фиксируются договором и под NDA.
+    </div>
+
+    <div class="foot">
+      <span class="c">Charter Capital · ccapital.pro · @me4814</span>
+      <span>Конфиденциально · только для партнёра · стр. 2 / 2</span>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
