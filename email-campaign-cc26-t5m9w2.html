@@ -55,10 +55,16 @@
   .step h4{ font-size:14.5px; font-weight:700; margin:6px 0 5px; }
   .step p{ font-size:13px; color:var(--body); }
 
-  .letter-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:22px; margin-bottom:14px; align-items:start; }
-  .letter-card{ background:#fff; border:1px solid var(--line); border-radius:12px; overflow:hidden; }
-  .letter-card img{ display:block; width:100%; height:auto; }
-  .letter-card .tx{ padding:16px 20px 18px; }
+  .letter-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:22px; margin-bottom:14px; align-items:stretch; }
+  .letter-card{ background:#fff; border:1px solid var(--line); border-radius:12px; overflow:hidden; display:flex; flex-direction:column; }
+  .letter-card .pic{ position:relative; display:block; }
+  .letter-card .pic img{ display:block; width:100%; height:320px; object-fit:cover; object-position:top center; }
+  .letter-card .pic.fade::after{ content:""; position:absolute; left:0; right:0; bottom:0; height:70px;
+    background:linear-gradient(to bottom, rgba(255,255,255,0), #fff); }
+  .letter-card .pic .zoom{ position:absolute; right:12px; bottom:12px; z-index:1; font-size:12px; font-weight:700;
+    text-decoration:none; color:#0a0e1a; background:linear-gradient(135deg,var(--gold-bright),var(--gold));
+    border-radius:999px; padding:7px 14px; }
+  .letter-card .tx{ padding:16px 20px 18px; flex:1; }
   .letter-card h3{ margin:0 0 6px; font-size:16px; }
   .letter-card p{ font-size:13.5px; color:var(--body); }
 
@@ -138,14 +144,19 @@
     <p class="lead">Сегмент A (ВЭД) получает строгое текстовое письмо — как обычная деловая переписка, надёжно проходит корпоративные фильтры. Сегмент B (частные) — письмо с визуальным хуком: главный тезис нашего позиционирования вынесен в заголовок и первую строку.</p>
     <div class="letter-grid">
       <div class="letter-card">
-        <img src="/assets/email/letter-b-preview.jpg" alt="Превью письма для частного сегмента" loading="lazy"/>
+        <div class="pic fade">
+          <img src="/assets/email/letter-b-preview.jpg" alt="Превью письма для частного сегмента" loading="lazy"/>
+          <a class="zoom" href="/assets/email/letter-b-preview.jpg" target="_blank" rel="noopener">Письмо целиком →</a>
+        </div>
         <div class="tx">
           <h3>Письмо B · частные владельцы капитала</h3>
           <p>Тема: <b>«Деньги из РФ для западного банка — мусор? Не обязательно»</b>. Заголовок-хук продублирован текстом — виден даже при отключённых картинках. Далее — услуги, три точки входа, дисклеймер.</p>
         </div>
       </div>
       <div class="letter-card">
-        <img src="/assets/home/ql-villa-band-800w.jpg" alt="Владелец капитала на вилле, к которому входит спецгруппа — визит, которого никто не ждал" loading="lazy"/>
+        <div class="pic">
+          <img src="/assets/home/ql-villa-band-800w.jpg" alt="Владелец капитала на вилле, к которому входит спецгруппа — визит, которого никто не ждал" loading="lazy"/>
+        </div>
         <div class="tx">
           <h3>Иллюстрация-хук</h3>
           <p>Кадр с нашей страницы обращения к квалифицированным клиентам: счета, виллы и яхты не защищают сами себя. Визуал бьёт в тот же тезис, что и заголовок: капитал без документальной «биографии» — уязвим.</p>
