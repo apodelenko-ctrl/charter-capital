@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="robots" content="noindex, nofollow, noarchive"/>
+<title>Email-кампания по клиентской базе · Charter Capital · для партнёров</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Cormorant+Garamond:wght@400;500;600&display=swap"/>
+<style>
+  :root{
+    --darker:#06080f; --dark:#0a0e1a; --ink:#0f172a; --body:#334155; --muted:#64748b;
+    --line:#e2e8f0; --cream:#fbfaf6;
+    --gold:#a8854e; --gold-bright:#c9a86a; --gold-soft:#e8d4a8;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  body{ font-family:"Inter",-apple-system,Arial,sans-serif; background:var(--cream); color:var(--ink);
+    font-size:15px; line-height:1.6; -webkit-font-smoothing:antialiased; }
+  a{ color:var(--gold); }
+  .wrap{ max-width:1000px; margin:0 auto; padding:0 22px; }
+
+  .mast{ background:
+      radial-gradient(120% 160% at 85% -20%, rgba(201,168,106,.14) 0%, transparent 55%),
+      linear-gradient(160deg,#0e1a30 0%,var(--dark) 45%,var(--darker) 100%);
+    color:#fff; padding:52px 0 40px; border-bottom:3px solid var(--gold); }
+  .brand{ font-size:15px; font-weight:800; letter-spacing:.26em; text-transform:uppercase; }
+  .brand span{ color:var(--gold-bright); }
+  .conf{ float:right; text-align:right; font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--gold-soft); line-height:1.7; }
+  .mast h1{ margin-top:28px; font-family:"Cormorant Garamond",Georgia,serif; font-size:42px; font-weight:500; line-height:1.12; }
+  .mast h1 em{ font-style:italic; color:var(--gold-soft); }
+  .mast p{ margin-top:14px; max-width:72ch; color:rgba(255,255,255,.75); font-size:15px; }
+  .chips{ margin-top:26px; display:flex; flex-wrap:wrap; gap:10px; }
+  .chips a{ font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; text-decoration:none;
+    color:var(--gold-soft); border:1px solid rgba(201,168,106,.4); border-radius:999px; padding:7px 16px; }
+  .chips a:hover{ background:rgba(201,168,106,.12); }
+
+  section{ padding:46px 0 8px; }
+  .sec-t{ display:flex; align-items:center; gap:12px; font-size:13px; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); margin-bottom:22px; }
+  .sec-t::after{ content:""; flex:1; height:1px; background:var(--line); }
+  h2{ font-size:26px; font-weight:700; letter-spacing:-.01em; margin-bottom:8px; }
+  h3{ font-size:17px; font-weight:700; margin:20px 0 8px; }
+  .lead{ color:var(--body); max-width:76ch; margin-bottom:22px; }
+
+  table{ width:100%; border-collapse:collapse; background:#fff; border:1px solid var(--line); border-radius:10px; overflow:hidden; margin-bottom:14px; }
+  th{ background:#0e1426; color:#fff; text-align:left; font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:12px 16px; }
+  td{ padding:11px 16px; border-top:1px solid var(--line); font-size:14px; color:var(--body); vertical-align:top; }
+  td b{ color:var(--ink); }
+  tr.total td{ background:#fbf7ef; font-weight:800; color:var(--ink); font-size:15px; }
+  .note{ font-size:12.5px; color:var(--muted); margin:6px 0 18px; }
+
+  .steps{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; margin:18px 0 8px; }
+  .step{ background:#fff; border:1px solid var(--line); border-radius:12px; padding:18px 20px; }
+  .step .num{ font-family:"Cormorant Garamond",Georgia,serif; font-size:30px; color:var(--gold-bright); font-weight:600; }
+  .step h4{ font-size:14.5px; font-weight:700; margin:6px 0 5px; }
+  .step p{ font-size:13px; color:var(--body); }
+
+  .letter-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:22px; margin-bottom:14px; align-items:start; }
+  .letter-card{ background:#fff; border:1px solid var(--line); border-radius:12px; overflow:hidden; }
+  .letter-card img{ display:block; width:100%; height:auto; }
+  .letter-card .tx{ padding:16px 20px 18px; }
+  .letter-card h3{ margin:0 0 6px; font-size:16px; }
+  .letter-card p{ font-size:13.5px; color:var(--body); }
+
+  .stat-updated{ display:inline-block; background:#fbf7ef; border:1px solid #ead9b8; color:#8a6d3b;
+    font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; border-radius:999px; padding:6px 16px; margin-bottom:16px; }
+
+  .contact-band{ margin-top:24px; background:linear-gradient(160deg,#0e1a30 0%,var(--dark) 60%,var(--darker) 100%);
+    border-radius:14px; color:#fff; padding:32px 34px; }
+  .contact-band h2{ color:#fff; }
+  .contact-band p{ color:rgba(255,255,255,.72); font-size:14px; max-width:62ch; }
+  .contact-list{ margin-top:20px; display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; }
+  .contact-item{ border:1px solid rgba(201,168,106,.35); border-radius:10px; padding:14px 18px; }
+  .contact-item .who{ font-size:11.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--gold-soft); }
+  .contact-item a{ display:block; margin-top:4px; color:#fff; text-decoration:none; font-size:15.5px; font-weight:600; }
+  .contact-item a:hover{ color:var(--gold-bright); }
+  .contact-item .sub{ font-size:12px; color:rgba(255,255,255,.55); margin-top:2px; }
+
+  .foot{ margin:50px 0 0; border-top:1px solid var(--line); padding:18px 0 42px; font-size:12px; color:var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="mast">
+  <div class="wrap">
+    <div class="conf">Для партнёров<br/>Не для распространения<br/>Обновлено: 4 июля 2026</div>
+    <div class="brand">Charter <span>Capital</span></div>
+    <h1>Email-кампания по клиентской базе: <em>как устроена и что показывает</em></h1>
+    <p>Прямая рассылка по собственной накопленной базе контактов — 1 166 адресов, два сегмента. Ниже: механика отправки, тексты писем, антиспам-дисциплина и живая статистика (отправлено / откликнулось). Страница скрытая: не индексируется и не связана ссылками с сайтом.</p>
+    <div class="chips">
+      <a href="#how">Как устроено</a>
+      <a href="#letters">Письма</a>
+      <a href="#stats">Статистика</a>
+      <a href="#contacts">Контакты</a>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- ═══ КАК УСТРОЕНО ═══ -->
+  <section id="how">
+    <div class="sec-t">01 · Как устроена рассылка</div>
+    <h2>Собственная база, два сегмента, личный формат</h2>
+    <p class="lead">Это не «спам-пушка» по купленной базе. Рассылаем по собственным накопленным контактам, от корпоративного адреса <b>hello@ccapital.pro</b>, персональными письмами (обращение по имени, ответ приходит живому человеку). База вычищена: без дублей, без системных адресов, банки выведены в отдельную партнёрскую линию.</p>
+
+    <table>
+      <tr><th>Сегмент</th><th>Объём</th><th>О чём письмо</th><th>Темп</th></tr>
+      <tr>
+        <td><b>A · ВЭД</b><br/>логистика, таможня, производители</td>
+        <td>204 адреса</td>
+        <td>Платежи за импорт, когда SWIFT не проходит: USDC-маршрут из регулируемого контура, платёжное досье, консультация по ВЭД</td>
+        <td>15–30 писем/день</td>
+      </tr>
+      <tr>
+        <td><b>B · Частные владельцы капитала</b></td>
+        <td>962 адреса</td>
+        <td>Хук «Деньги из РФ для западного банка — мусор? Не обязательно»: досье происхождения средств, ВНЖ (Мальта, ОАЭ, Азия), готовый бизнес в ЕС, недвижимость</td>
+        <td>30–50 писем/день</td>
+      </tr>
+    </table>
+    <p class="note">Каждое письмо ведёт на три точки входа: Telegram-дайджест <a href="https://t.me/ccapital26" target="_blank" rel="noopener">t.me/ccapital26</a>, бесплатную онлайн-диагностику капитала и прямой ответ на письмо (разбор ситуации под NDA).</p>
+
+    <h3>Антиспам-дисциплина — почему письма доходят</h3>
+    <div class="steps">
+      <div class="step"><span class="num">01</span><h4>Аутентификация домена</h4><p>SPF и DKIM у ccapital.pro настроены и проверены — почтовые сервисы видят легитимного отправителя.</p></div>
+      <div class="step"><span class="num">02</span><h4>Прогрев и темп</h4><p>Старт с 15–30 писем в день, дальше до 50. Никаких массовых залпов: вся база уходит примерно за 3 недели.</p></div>
+      <div class="step"><span class="num">03</span><h4>Живые интервалы</h4><p>Пауза 45–90 секунд между письмами, журнал отправки без повторов — профиль обычной деловой переписки.</p></div>
+      <div class="step"><span class="num">04</span><h4>Отписка в один ответ</h4><p>«Отписаться» в каждом письме; адрес немедленно попадает в стоп-лист и больше не участвует ни в одной волне.</p></div>
+    </div>
+    <p class="note">Работаем только с получателями из собственной базы. Юридическая гигиена: дисклеймер о том, что не работаем с лицами под санкциями и только с капиталом подтверждённого законного происхождения — в каждом письме.</p>
+  </section>
+
+  <!-- ═══ ПИСЬМА ═══ -->
+  <section id="letters">
+    <div class="sec-t">02 · Как выглядят письма</div>
+    <h2>Текст для бизнеса, хук — для частных</h2>
+    <p class="lead">Сегмент A (ВЭД) получает строгое текстовое письмо — как обычная деловая переписка, надёжно проходит корпоративные фильтры. Сегмент B (частные) — письмо с визуальным хуком: главный тезис нашего позиционирования вынесен в заголовок и первую строку.</p>
+    <div class="letter-grid">
+      <div class="letter-card">
+        <img src="/assets/email/letter-b-preview.jpg" alt="Превью письма для частного сегмента" loading="lazy"/>
+        <div class="tx">
+          <h3>Письмо B · частные владельцы капитала</h3>
+          <p>Тема: <b>«Деньги из РФ для западного банка — мусор? Не обязательно»</b>. Заголовок-хук продублирован текстом — виден даже при отключённых картинках. Далее — услуги, три точки входа, дисклеймер.</p>
+        </div>
+      </div>
+      <div class="letter-card">
+        <img src="/assets/email/hook-money.jpg" alt="Иллюстрация: капитал без биографии у закрытой двери банка" loading="lazy"/>
+        <div class="tx">
+          <h3>Иллюстрация-хук</h3>
+          <p>Капитал с пустой «биркой» у закрытой двери западного банка — метафора ключевого тезиса: банк спрашивает не «сколько у вас денег», а «откуда они и чьи». Наша работа — собрать эту биографию.</p>
+        </div>
+      </div>
+    </div>
+    <p class="note">Письмо A (ВЭД) — plain-text: «Платежи за импорт, когда SWIFT не проходит — легальный маршрут». Полный текст предоставим по запросу.</p>
+  </section>
+
+  <!-- ═══ СТАТИСТИКА ═══ -->
+  <section id="stats">
+    <div class="sec-t">03 · Статистика кампании</div>
+    <h2>Отправлено / откликнулось</h2>
+    <span class="stat-updated">Обновлено: 4 июля 2026 · кампания готова к старту</span>
+    <table>
+      <tr><th>Сегмент</th><th>База</th><th>Отправлено</th><th>Ответов</th><th>Отписок</th><th>Подписки на дайджест*</th></tr>
+      <tr><td><b>A · ВЭД</b></td><td>204</td><td>0</td><td>0</td><td>0</td><td>—</td></tr>
+      <tr><td><b>B · Частные</b></td><td>962</td><td>0</td><td>0</td><td>0</td><td>—</td></tr>
+      <tr class="total"><td>Итого</td><td>1 166</td><td>0</td><td>0</td><td>0</td><td>—</td></tr>
+    </table>
+    <p class="note">*Прирост подписчиков t.me/ccapital26 за период рассылки — косвенный, но показательный отклик. Таблица обновляется вручную после каждой волны отправки; переходы по ссылкам дополнительно считаются через UTM-метки в Яндекс.Метрике. Главный KPI — живые ответы на письмо: каждый ответ = разбор ситуации и потенциальная сделка.</p>
+
+    <h3>Что считаем откликом</h3>
+    <table>
+      <tr><th>Сигнал</th><th>Что это значит</th></tr>
+      <tr><td><b>Ответ на письмо</b></td><td>Горячий лид — уходит в личную работу (созвон, NDA-разбор 30 минут)</td></tr>
+      <tr><td><b>Заявка через диагностику</b></td><td>Тёплый лид — человек сам описал ситуацию, связываемся в течение дня</td></tr>
+      <tr><td><b>Подписка на дайджест</b></td><td>Долгий контакт — прогревается контентом до готовности</td></tr>
+      <tr><td><b>Переход по UTM</b></td><td>Интерес к конкретной услуге — видно, какая тема цепляет сегмент</td></tr>
+    </table>
+  </section>
+
+  <!-- ═══ КОНТАКТЫ ═══ -->
+  <section id="contacts">
+    <div class="sec-t">04 · Контакты</div>
+    <div class="contact-band">
+      <h2>Вопросы по кампании и передача клиентов</h2>
+      <p>Если у вас есть вопрос по рассылке, вы хотите добавить свою аудиторию в следующую волну или передать клиента под конкретную задачу — пишите напрямую.</p>
+      <div class="contact-list">
+        <div class="contact-item">
+          <span class="who">WhatsApp · Максим</span>
+          <a href="https://wa.me/66657658782" target="_blank" rel="noopener">+66 65 765 87 82</a>
+          <span class="sub">Быстрая связь, любые вопросы</span>
+        </div>
+        <div class="contact-item">
+          <span class="who">Telegram · Charter Capital</span>
+          <a href="https://t.me/ccapital_acces" target="_blank" rel="noopener">@ccapital_acces</a>
+          <span class="sub">Корпоративный канал связи</span>
+        </div>
+        <div class="contact-item">
+          <span class="who">Телефон (Россия) · Михаил Парфеев</span>
+          <a href="tel:+79108313834">+7 910 831-38-34</a>
+          <span class="sub">Управляющий партнёр · партнёрская сеть</span>
+        </div>
+        <div class="contact-item">
+          <span class="who">Email</span>
+          <a href="mailto:hello@ccapital.pro">hello@ccapital.pro</a>
+          <span class="sub">Адрес-отправитель кампании</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="foot">
+    Charter Capital · <a href="https://ccapital.pro">ccapital.pro</a> · Telegram-дайджест: <a href="https://t.me/ccapital26" target="_blank" rel="noopener">t.me/ccapital26</a><br/>
+    Страница предназначена для партнёров, не индексируется поисковыми системами и не содержит персональных данных получателей. Материал не является публичной офертой.
+  </div>
+
+</div>
+
+</body>
+</html>
