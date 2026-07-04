@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/>
+<title>Charter Capital — журнальная полоса A4 (inflight)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Cormorant+Garamond:wght@400;500&display=swap"/>
+<style>
+  /* Полоса A4 + вылеты 3 мм со всех сторон → полный формат 216×303 мм.
+     Безопасная зона текста — 14 мм от обрезного края. */
+  @page { size: 216mm 303mm; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root{
+    --darker:#06080f; --dark:#0a0e1a; --ink:#0f172a; --body:#334155; --muted:#64748b;
+    --line:#e2e8f0; --cream:#fbfaf6;
+    --gold:#a8854e; --gold-bright:#c9a86a; --gold-soft:#e8d4a8;
+  }
+  html,body{ width:216mm; height:303mm; }
+  body{
+    font-family:"Inter","Helvetica Neue",-apple-system,Arial,sans-serif;
+    color:var(--ink); -webkit-font-smoothing:antialiased;
+    background:var(--cream);
+  }
+  .sheet{ width:216mm; height:303mm; position:relative; display:flex; flex-direction:column; overflow:hidden; }
+
+  /* ── МАСТХЕД ── */
+  .masthead{
+    background:
+      radial-gradient(120% 160% at 85% -20%, rgba(201,168,106,.14) 0%, transparent 55%),
+      linear-gradient(160deg,#0e1a30 0%,var(--dark) 45%,var(--darker) 100%);
+    color:#fff; padding:16mm 17mm 10mm; position:relative;
+  }
+  .masthead::after{ content:""; position:absolute; left:0; right:0; bottom:0; height:1mm;
+    background:linear-gradient(90deg,var(--gold) 0%,var(--gold-bright) 45%,transparent 100%); }
+  .mh-top{ display:flex; justify-content:space-between; align-items:baseline; }
+  .brand{ font-size:15px; font-weight:800; letter-spacing:.24em; text-transform:uppercase; }
+  .brand .amp{ color:var(--gold-bright); }
+  .mh-kicker{ font-size:8.5px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-soft); }
+  .mh-title{ margin-top:10mm; max-width:158mm; }
+  .mh-title h1{
+    font-family:"Cormorant Garamond",Georgia,serif;
+    font-size:37px; font-weight:400; line-height:1.1; letter-spacing:.01em; color:#fff;
+  }
+  .mh-title h1 em{ font-style:italic; color:var(--gold-soft); }
+  .mh-sub{ margin-top:5mm; max-width:158mm; font-size:11.5px; font-weight:300; line-height:1.6; color:rgba(255,255,255,.78); }
+  .mh-sub b{ font-weight:600; color:#fff; }
+  .mh-rule{ margin-top:5.5mm; display:flex; align-items:center; gap:10px;
+    font-size:9px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--gold-soft); }
+  .mh-rule::before{ content:""; width:34px; height:1px; background:var(--gold-bright); }
+
+  /* ── КАРТОЧКИ ── */
+  .cards{ flex:1; min-height:0; padding:8mm 17mm 0; display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr; gap:5mm; }
+  .card{
+    background:#fff; border:1px solid var(--line); border-radius:10px;
+    padding:6.5mm 7mm 6mm; position:relative; display:flex; flex-direction:column;
+    box-shadow:0 1px 0 rgba(15,23,42,.03);
+  }
+  .card::before{ content:""; position:absolute; top:0; left:7mm; right:auto; width:14mm; height:2.5px;
+    background:linear-gradient(90deg,var(--gold-bright),var(--gold)); border-radius:0 0 3px 3px; }
+  .card .no{
+    font-family:"Cormorant Garamond",Georgia,serif; font-size:14px; color:var(--gold);
+    letter-spacing:.06em; margin-bottom:2.5mm;
+  }
+  .card h2{ font-size:14.5px; font-weight:700; letter-spacing:-.01em; line-height:1.25; margin-bottom:2.4mm; }
+  .card p{ font-size:10.3px; line-height:1.58; color:var(--body); }
+  .card p b{ color:var(--ink); font-weight:600; }
+  .card .tags{ margin-top:auto; padding-top:3.5mm; display:flex; flex-wrap:wrap; gap:4px 5px; }
+  .card .tags span{
+    font-size:8px; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--gold); border:1px solid rgba(168,133,78,.35); border-radius:999px; padding:2.5px 8px;
+  }
+
+  /* карточка-QR (тёмная) */
+  .card.qr{
+    background:linear-gradient(155deg,#0e1a30,var(--darker)); border-color:transparent; color:#fff;
+    flex-direction:row; align-items:center; gap:6mm;
+  }
+  .card.qr::before{ left:7mm; }
+  .qr-txt{ flex:1; min-width:0; display:flex; flex-direction:column; align-self:stretch; }
+  .card.qr .no{ color:var(--gold-bright); }
+  .card.qr h2{ color:#fff; }
+  .card.qr p{ color:rgba(255,255,255,.78); }
+  .qr-handle{ margin-top:auto; padding-top:3.5mm; font-size:10px; font-weight:700; letter-spacing:.06em; color:var(--gold-soft); white-space:nowrap; }
+  .qr-box{ flex:none; background:#fff; border-radius:8px; padding:3mm; }
+  .qr-box img{ display:block; width:26mm; height:26mm; }
+
+  /* ── ФУТЕР ── */
+  .foot{ flex:none; padding:6mm 17mm 12mm; }
+  .foot-cta{
+    display:flex; justify-content:space-between; align-items:center; gap:8mm;
+    border-top:1px solid var(--line); padding-top:4.5mm;
+  }
+  .foot-cta .lead{ font-size:11.5px; font-weight:600; color:var(--ink); line-height:1.5; max-width:100mm; }
+  .foot-cta .lead i{ font-style:normal; color:var(--gold); }
+  .contacts{ text-align:right; font-size:10.5px; line-height:1.8; color:var(--body); white-space:nowrap; }
+  .contacts b{ font-weight:700; color:var(--ink); }
+  .disclaimer{ margin-top:3.5mm; font-size:7.2px; line-height:1.5; color:var(--muted); }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="masthead">
+    <div class="mh-top">
+      <div class="brand">Charter <span class="amp">Capital</span></div>
+      <div class="mh-kicker">Архитектура капитала · Private Advisory</div>
+    </div>
+    <div class="mh-title">
+      <h1>Когда двери закрываются,<br/>мы открываем <em>мир</em></h1>
+    </div>
+    <p class="mh-sub">Для тех, кто живёт и ведёт дела в нескольких странах. Мы приводим капитал в форму, которую понимает западный банк: <b>подтверждённое происхождение, прозрачная структура, верная юрисдикция</b>. Без обещаний «обойти» — только решения, которые выдерживают проверку.</p>
+    <div class="mh-rule">Работаем только с капиталом подтверждённого законного происхождения</div>
+  </div>
+
+  <div class="cards">
+
+    <div class="card">
+      <div class="no">I</div>
+      <h2>Архитектура капитала</h2>
+      <p>Досье <b>Source of Funds / Source of Wealth</b>, читаемая структура владения, реальный substance. Капитал получает «биографию» — и перестаёт бояться вопросов банков, брокеров и регуляторов.</p>
+      <div class="tags"><span>SoF / SoW</span><span>Структура</span><span>Substance</span><span>Счета</span></div>
+    </div>
+
+    <div class="card">
+      <div class="no">II</div>
+      <h2>Резидентство и ВНЖ. Просто</h2>
+      <p>Понятные маршруты второй резиденции для семьи: <b>Мальта, ОАЭ, Юго-Восточная Азия</b> и другие программы. Подбираем страну под задачи — налоги, мобильность, образование детей — и ведём до карты резидента.</p>
+      <div class="tags"><span>Мальта</span><span>ОАЭ</span><span>Азия</span><span>Семья</span></div>
+    </div>
+
+    <div class="card">
+      <div class="no">III</div>
+      <h2>Готовый бизнес за рубежом</h2>
+      <p>Покупка <b>действующего бизнеса</b> в Европе и Азии: отель, торговля, сервис. Проверка, структурирование сделки, передача управления. Реальный актив с денежным потоком — и основание для резидентства.</p>
+      <div class="tags"><span>Европа</span><span>Азия</span><span>Due diligence</span><span>Cash-flow</span></div>
+    </div>
+
+    <div class="card qr">
+      <div class="qr-txt">
+        <div class="no">IV</div>
+        <h2>Дайджест для держателей капитала</h2>
+        <p>Санкции, банки, комплаенс, юрисдикции — коротко о том, что меняется, и что с этим делать. Каждую неделю в Telegram.</p>
+        <div class="qr-handle">t.me/ccapital26 →</div>
+      </div>
+      <div class="qr-box"><img src="qr-ccapital26.svg" alt="QR: Telegram-канал Charter Capital"/></div>
+    </div>
+
+  </div>
+
+  <div class="foot">
+    <div class="foot-cta">
+      <div class="lead">Первый шаг — разбор вашей ситуации под NDA. <i>30 минут, без обязательств.</i></div>
+      <div class="contacts">
+        Telegram · <b>@ccapital_acces</b><br/>
+        <b>ccapital.pro</b> · hello@ccapital.pro
+      </div>
+    </div>
+    <div class="disclaimer">Charter Capital выступает производителем собственных продуктов (досье SoF/SoW, структурирование, сопровождение онбординга) и координационным агентом для услуг лицензированных партнёров — банков, EMI, корпоративных провайдеров, юристов по программам резидентства. Услуги партнёров оказываются партнёрами и регулируются их юрисдикциями. Charter Capital не работает с лицами под санкциями и не оказывает услуг по обходу ограничений. Информация носит индикативный характер и не является публичной офертой.</div>
+  </div>
+
+</div>
+</body>
+</html>

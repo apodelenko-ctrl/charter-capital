@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/>
+<title>Charter Capital — журнальный разворот 2/1 (inflight)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Cormorant+Garamond:wght@400;500;600&display=swap"/>
+<style>
+  /* Разворот 2/1: 420×297 мм + вылеты 3 мм → 426×303 мм.
+     Корешок по центру (213 мм) — критичный текст не ближе 8 мм к сгибу.
+     Безопасная зона от обрезных краёв — 14 мм. */
+  @page { size: 426mm 303mm; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root{
+    --darker:#06080f; --dark:#0a0e1a; --ink:#0f172a; --body:#334155; --muted:#64748b;
+    --line:#e2e8f0; --cream:#fbfaf6;
+    --gold:#a8854e; --gold-bright:#c9a86a; --gold-soft:#e8d4a8;
+  }
+  html,body{ width:426mm; height:303mm; }
+  body{
+    font-family:"Inter","Helvetica Neue",-apple-system,Arial,sans-serif;
+    color:var(--ink); -webkit-font-smoothing:antialiased; background:var(--cream);
+  }
+  .spread{ width:426mm; height:303mm; display:flex; position:relative; overflow:hidden; }
+  .pg{ width:213mm; height:303mm; position:relative; display:flex; flex-direction:column; overflow:hidden; }
+
+  h1,h2,h3{ letter-spacing:-.01em; }
+  .serif{ font-family:"Cormorant Garamond",Georgia,serif; }
+
+  /* ═══ ЛЕВАЯ ПОЛОСА — МАНИФЕСТ ═══ */
+  .pg.left{ background:var(--cream); }
+
+  .mast{
+    position:relative; flex:none; height:64mm; overflow:hidden;
+    background:var(--darker); color:#fff;
+  }
+  .mast img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 70%; opacity:.92; }
+  .mast .shade{ position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(6,8,15,.62) 0%, rgba(6,8,15,.25) 40%, rgba(6,8,15,.86) 100%); }
+  .mast::after{ content:""; position:absolute; left:0; right:0; bottom:0; height:1mm;
+    background:linear-gradient(90deg,var(--gold) 0%,var(--gold-bright) 50%,transparent 100%); }
+  .mast .top{ position:absolute; top:11mm; left:16mm; right:12mm; display:flex; justify-content:space-between; align-items:baseline; }
+  .brand{ font-size:14px; font-weight:800; letter-spacing:.26em; text-transform:uppercase; }
+  .brand span{ color:var(--gold-bright); }
+  .kicker{ font-size:8px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-soft); }
+  .mast .ttl{ position:absolute; left:16mm; right:12mm; bottom:8mm; }
+  .mast .ttl h1{ font-family:"Cormorant Garamond",Georgia,serif; font-size:31px; font-weight:500; line-height:1.12; color:#fff; }
+  .mast .ttl h1 em{ font-style:italic; color:var(--gold-soft); }
+  .mast .ttl .sub{ margin-top:2.5mm; font-size:10px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--gold-soft); }
+
+  .lbody{ flex:1; padding:9mm 12mm 0 16mm; display:flex; flex-direction:column; }
+  .lead{ font-size:11.3px; line-height:1.66; color:var(--body); }
+  .lead b{ color:var(--ink); font-weight:700; }
+  .lead + .lead{ margin-top:3.4mm; }
+
+  .pull{
+    margin:5.5mm 0; padding:4.5mm 6mm; border-left:3px solid var(--gold);
+    background:#fff; border-radius:0 8px 8px 0;
+  }
+  .pull p{ font-family:"Cormorant Garamond",Georgia,serif; font-size:17.5px; line-height:1.35; color:var(--ink); font-style:italic; }
+  .pull p b{ color:var(--gold); font-style:normal; }
+
+  .sec-t{ font-size:9px; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); margin-bottom:3mm; display:flex; align-items:center; gap:6px; }
+  .sec-t::after{ content:""; flex:1; height:1px; background:var(--line); }
+
+  .pillars{ display:grid; grid-template-columns:1fr 1fr; gap:3mm 5mm; margin-bottom:5.5mm; }
+  .pillar{ font-size:9.8px; line-height:1.5; color:var(--body); }
+  .pillar b{ display:block; font-size:10.3px; color:var(--ink); font-weight:700; margin-bottom:.8mm; }
+
+  .paths{ display:flex; gap:4mm; margin-bottom:5mm; }
+  .path{ flex:1; border-radius:8px; padding:4.5mm 5mm; font-size:9.4px; line-height:1.52; }
+  .path .h{ font-size:9px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; margin-bottom:1.8mm; }
+  .path .res{ margin-top:2mm; font-size:9px; font-weight:700; }
+  .path.a{ background:#f4f0ea; border:1px solid #e6ddd0; color:var(--body); }
+  .path.a .h{ color:#9a6b45; }
+  .path.a .res{ color:#9a3324; }
+  .path.b{ background:linear-gradient(150deg,#0e1a30,var(--darker)); color:rgba(255,255,255,.82); }
+  .path.b .h{ color:var(--gold-soft); }
+  .path.b .res{ color:var(--gold-bright); }
+
+  .cost{
+    margin-top:auto; margin-bottom:9mm; padding:4mm 5.5mm; background:#fff; border:1px solid var(--line); border-radius:8px;
+    font-size:10px; line-height:1.55; color:var(--body); display:flex; gap:5mm; align-items:center;
+  }
+  .cost .num{ flex:none; font-family:"Cormorant Garamond",Georgia,serif; font-size:26px; color:var(--gold); font-weight:600; line-height:1.05; text-align:center; }
+  .cost .num small{ display:block; font-family:"Inter"; font-size:7px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-top:1mm; }
+  .cost b{ color:var(--ink); }
+
+  /* ═══ ПРАВАЯ ПОЛОСА — МАРШРУТЫ ═══ */
+  .pg.right{ background:var(--cream); border-left:1px solid rgba(15,23,42,.05); }
+  .rhead{ flex:none; padding:14mm 16mm 0 14mm; }
+  .rhead h2{ font-family:"Cormorant Garamond",Georgia,serif; font-size:24px; font-weight:600; color:var(--ink); line-height:1.15; }
+  .rhead h2 em{ font-style:italic; color:var(--gold); }
+  .rhead p{ margin-top:2.5mm; font-size:10.5px; line-height:1.6; color:var(--body); max-width:170mm; }
+
+  .routes{ flex:1; min-height:0; padding:6mm 16mm 0 14mm; display:flex; flex-direction:column; gap:4mm; }
+  .route{
+    background:#fff; border:1px solid var(--line); border-radius:9px; overflow:hidden;
+    display:flex; align-items:stretch; flex:1;
+  }
+  .route .pic{ flex:none; width:34mm; position:relative; background:var(--dark); }
+  .route .pic img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .route .tx{ flex:1; padding:4mm 6mm 3.5mm; display:flex; flex-direction:column; justify-content:center; }
+  .route .no{ font-size:8px; font-weight:800; letter-spacing:.16em; text-transform:uppercase; color:var(--gold); margin-bottom:1.4mm; }
+  .route h3{ font-size:13px; font-weight:700; margin-bottom:1.6mm; }
+  .route p{ font-size:9.7px; line-height:1.55; color:var(--body); }
+  .route p b{ color:var(--ink); font-weight:600; }
+
+  .po{
+    flex:none; margin:4.5mm 16mm 0 14mm; border-radius:9px; padding:4.5mm 6mm;
+    background:linear-gradient(150deg,#0e1a30,var(--darker)); color:#fff;
+    display:flex; align-items:center; gap:7mm; position:relative;
+  }
+  .po::before{ content:""; position:absolute; top:0; left:6mm; width:15mm; height:2.5px;
+    background:linear-gradient(90deg,var(--gold-bright),var(--gold)); border-radius:0 0 3px 3px; }
+  .po .t{ flex:1; }
+  .po .lab{ font-size:7.5px; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color:var(--gold-soft); margin-bottom:1.5mm; }
+  .po h3{ font-size:13px; font-weight:700; margin-bottom:1.5mm; }
+  .po p{ font-size:9.4px; line-height:1.5; color:rgba(255,255,255,.78); }
+  .po p b{ color:#fff; font-weight:600; }
+  .qr-box{ flex:none; background:#fff; border-radius:6px; padding:2.4mm; }
+  .qr-box img{ display:block; width:21mm; height:21mm; }
+  .po .cta{ flex:none; text-align:right; border-left:1px solid rgba(255,255,255,.14); padding-left:6mm; align-self:stretch; display:flex; flex-direction:column; justify-content:center; }
+  .po .cta .l1{ font-size:8.4px; color:rgba(255,255,255,.62); margin-bottom:1.2mm; }
+  .po .cta .l2{ font-size:10.5px; font-weight:700; line-height:1.7; white-space:nowrap; }
+  .po .cta .l2 span{ color:var(--gold-bright); }
+
+  .rfoot{ flex:none; padding:3.5mm 16mm 9mm 14mm; }
+  .disclaimer{ font-size:6.8px; line-height:1.45; color:var(--muted); }
+</style>
+</head>
+<body>
+<div class="spread">
+
+  <!-- ЛЕВАЯ ПОЛОСА -->
+  <div class="pg left">
+    <div class="mast">
+      <img src="hero.png" alt=""/>
+      <div class="shade"></div>
+      <div class="top">
+        <div class="brand">Charter <span>Capital</span></div>
+        <div class="kicker">Private Office · Обращение к квалифицированным клиентам</div>
+      </div>
+      <div class="ttl">
+        <h1>Спокойная сила: капитал,<br/>который не боится <em>вопросов</em></h1>
+        <div class="sub">Архитектура легитимности крупного капитала</div>
+      </div>
+    </div>
+
+    <div class="lbody">
+      <p class="lead">Это обращение — не про «спрятать деньги». Оно про крупный капитал из СНГ, который должен войти в банковскую и правовую систему <b>ЕС, Великобритании, Швейцарии, Сингапура, Гонконга и ОАЭ</b> — и выдержать вопросы банков, судов, нотариусов и наследников. Для западного банка деньги без понятной биографии не существуют, какими бы честными они ни были.</p>
+      <p class="lead">Главный риск сегодня — не комиссия банка и не налоговая ставка. Главный риск — оказаться владельцем денег, происхождение которых невозможно спокойно объяснить за пределами СНГ. Пока всё хорошо, проблема кажется теоретической. В кризисный момент она становится центральной: счета блокируются, активы замораживаются «до выяснения» — и суд смотрит только на то, что вы можете показать <b>прямо сейчас</b>.</p>
+
+      <div class="pull">
+        <p>Размер капитала не спасает. Спасает только то, <b>можно ли его объяснить.</b> Доказательства собирают заранее — в спокойное время, а не когда счёт уже арестован.</p>
+      </div>
+
+      <div class="sec-t">Что мы строим</div>
+      <div class="pillars">
+        <div class="pillar"><b>Source of Funds / Source of Wealth</b>Откуда конкретные деньги и всё состояние: договоры, выписки, налоги, цепочка владения.</div>
+        <div class="pillar"><b>Реальное экономическое содержание</b>Не пустая оболочка, а актив, бизнес, управление — проверяемая причина существования структуры.</div>
+        <div class="pillar"><b>Банковский язык</b>Подача в формате комплаенса: факты, хронология, готовые ответы на углублённую проверку.</div>
+        <div class="pillar"><b>Готовность к публичности</b>Кейс выдерживает не только анкету банка, но и суд, наследование, продажу актива.</div>
+      </div>
+
+      <div class="sec-t">Два подхода к одному капиталу</div>
+      <div class="paths">
+        <div class="path a">
+          <div class="h">Путь А · «сделать дешевле»</div>
+          Оффшор, посредники, быстрые решения. Меньше вопросов на входе — непригодность для банка, нотариуса и суда на выходе.
+          <div class="res">Итог: деньги формально ваши, практически — заблокированы</div>
+        </div>
+        <div class="path b">
+          <div class="h">Путь Б · архитектура легитимности</div>
+          Актив, бизнес, банк, документы. Структуру можно показать профессиональной среде: происхождение, смысл, путь платежей.
+          <div class="res">Итог: дороже на входе — капитал остаётся защищаемым</div>
+        </div>
+      </div>
+
+      <div class="cost">
+        <div class="num">−$200 000<small>«экономия» на схеме</small></div>
+        <div>Реальная цена дешёвого решения: сэкономить $200 000 — и <b>потерять доступ к $20 000 000 на пять лет</b>. Полгода подготовки всегда дешевле пяти лет заморозки. Поэтому мы не продаём скорость — мы строим то, что выдерживает проверку.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ПРАВАЯ ПОЛОСА -->
+  <div class="pg right">
+    <div class="rhead">
+      <h2>Маршруты входа: <em>только инструменты, которые понимает комплаенс</em></h2>
+      <p>Мы не изобретаем серые схемы. В основе — твёрдая недвижимость, реальный бизнес, понятная корпоративная структура и проверяемая банковская история. Капитал получает экономическую биографию из реальных событий.</p>
+    </div>
+
+    <div class="routes">
+      <div class="route">
+        <div class="pic"><img src="card-architecture.png" alt=""/></div>
+        <div class="tx">
+          <div class="no">Маршрут I · Фундамент</div>
+          <h3>Архитектура капитала — досье Source of Funds</h3>
+          <p>Документированная история происхождения средств и состояния, читаемая структура владения, реальный substance. Капитал получает «биографию» — и перестаёт бояться вопросов банков, брокеров и регуляторов. <b>С этого начинается любой маршрут.</b></p>
+        </div>
+      </div>
+
+      <div class="route">
+        <div class="pic"><img src="card-business.png" alt=""/></div>
+        <div class="tx">
+          <div class="no">Маршрут II · Инвестиции</div>
+          <h3>Действующий бизнес и инвестиции в Европе и Азии</h3>
+          <p>Покупка <b>работающего бизнеса</b> — отель, торговля, сервис — с проверкой, структурированием сделки и передачей управления. Реальный актив с денежным потоком: экономическое содержание, доход и основание для резидентства одновременно.</p>
+        </div>
+      </div>
+
+      <div class="route">
+        <div class="pic"><img src="card-residency.png" alt=""/></div>
+        <div class="tx">
+          <div class="no">Маршрут III · Резидентство</div>
+          <h3>ВНЖ и вторая резиденция для семьи. Просто</h3>
+          <p>Понятные маршруты: <b>Мальта, ОАЭ, Юго-Восточная Азия</b>. Подбираем юрисдикцию под задачи — налоги, мобильность, образование детей, преемственность — и ведём до карты резидента.</p>
+        </div>
+      </div>
+
+      <div class="route">
+        <div class="pic"><img src="card-phuket.png" alt=""/></div>
+        <div class="tx">
+          <div class="no">Маршрут IV · Твёрдые активы</div>
+          <h3>Недвижимость: Пхукет, Европа, Залив</h3>
+          <p>Проверяемая недвижимость под единым мандатом: прямые контракты, юридическая проверка, полное исполнение от брифа до передачи. <b>Запасной аэродром, доходность</b> — и понятный банку актив в истории капитала.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="po">
+      <div class="qr-box"><img src="qr-ccapital26.svg" alt="QR: Telegram Charter Capital"/></div>
+      <div class="t">
+        <div class="lab">Private Office · для капитала от $1 000 000</div>
+        <h3>30 минут под NDA: выдержит ли ваша история капитала публичную проверку</h3>
+        <p>Происхождение средств, структура владения, банки, активы, наследование, слабые места. Под каждый проект — закрытая команда. Если кейс не наш или связан с санкционными ограничениями — <b>скажем сразу.</b></p>
+      </div>
+      <div class="cta">
+        <div class="l1">Наведите камеру — Telegram-дайджест</div>
+        <div class="l2">Telegram · <span>@ccapital_acces</span><br/>ccapital.pro · hello@ccapital.pro</div>
+      </div>
+    </div>
+
+    <div class="rfoot">
+      <div class="disclaimer">Charter Capital выступает производителем собственных продуктов (досье SoF/SoW, структурирование, сопровождение онбординга) и координационным агентом для услуг лицензированных партнёров — банков, EMI, корпоративных провайдеров, юристов по программам резидентства. Услуги партнёров оказываются партнёрами и регулируются их юрисдикциями. Charter Capital не работает с лицами под санкциями, не оказывает услуг по обходу ограничений и не гарантирует решений банков, регуляторов или судов. Работаем только с капиталом подтверждённого законного происхождения. Информация носит индикативный характер и не является публичной офертой.</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="robots" content="noindex, nofollow, noarchive"/>
+<title>Медиакит рекламной кампании · Charter Capital · конфиденциально</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Cormorant+Garamond:wght@400;500;600&display=swap"/>
+<style>
+  :root{
+    --darker:#06080f; --dark:#0a0e1a; --ink:#0f172a; --body:#334155; --muted:#64748b;
+    --line:#e2e8f0; --cream:#fbfaf6;
+    --gold:#a8854e; --gold-bright:#c9a86a; --gold-soft:#e8d4a8;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  body{ font-family:"Inter",-apple-system,Arial,sans-serif; background:var(--cream); color:var(--ink);
+    font-size:15px; line-height:1.6; -webkit-font-smoothing:antialiased; }
+  a{ color:var(--gold); }
+  .wrap{ max-width:1060px; margin:0 auto; padding:0 22px; }
+
+  /* masthead */
+  .mast{ background:
+      radial-gradient(120% 160% at 85% -20%, rgba(201,168,106,.14) 0%, transparent 55%),
+      linear-gradient(160deg,#0e1a30 0%,var(--dark) 45%,var(--darker) 100%);
+    color:#fff; padding:52px 0 40px; border-bottom:3px solid var(--gold); }
+  .brand{ font-size:15px; font-weight:800; letter-spacing:.26em; text-transform:uppercase; }
+  .brand span{ color:var(--gold-bright); }
+  .conf{ float:right; text-align:right; font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--gold-soft); line-height:1.7; }
+  .mast h1{ margin-top:28px; font-family:"Cormorant Garamond",Georgia,serif; font-size:44px; font-weight:500; line-height:1.1; }
+  .mast h1 em{ font-style:italic; color:var(--gold-soft); }
+  .mast p{ margin-top:14px; max-width:70ch; color:rgba(255,255,255,.75); font-size:15px; }
+
+  /* nav chips */
+  .chips{ margin-top:26px; display:flex; flex-wrap:wrap; gap:10px; }
+  .chips a{ font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; text-decoration:none;
+    color:var(--gold-soft); border:1px solid rgba(201,168,106,.4); border-radius:999px; padding:7px 16px; }
+  .chips a:hover{ background:rgba(201,168,106,.12); }
+
+  section{ padding:46px 0 8px; }
+  .sec-t{ display:flex; align-items:center; gap:12px; font-size:13px; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); margin-bottom:22px; }
+  .sec-t::after{ content:""; flex:1; height:1px; background:var(--line); }
+  h2{ font-size:26px; font-weight:700; letter-spacing:-.01em; margin-bottom:8px; }
+  .lead{ color:var(--body); max-width:76ch; margin-bottom:22px; }
+
+  /* tables */
+  table{ width:100%; border-collapse:collapse; background:#fff; border:1px solid var(--line); border-radius:10px; overflow:hidden; margin-bottom:14px; }
+  th{ background:#0e1426; color:#fff; text-align:left; font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:12px 16px; }
+  td{ padding:11px 16px; border-top:1px solid var(--line); font-size:14px; color:var(--body); vertical-align:top; }
+  td b{ color:var(--ink); }
+  tr.total td{ background:#fbf7ef; font-weight:800; color:var(--ink); font-size:15px; }
+  .note{ font-size:12.5px; color:var(--muted); margin:6px 0 18px; }
+
+  /* asset cards */
+  .grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:22px; margin-bottom:10px; }
+  .card{ background:#fff; border:1px solid var(--line); border-radius:12px; overflow:hidden; display:flex; flex-direction:column; }
+  .card .pic{ background:var(--dark); position:relative; }
+  .card .pic img{ display:block; width:100%; height:auto; }
+  .card .tx{ padding:18px 20px 20px; display:flex; flex-direction:column; flex:1; }
+  .card h3{ font-size:16.5px; font-weight:700; margin-bottom:6px; }
+  .card p{ font-size:13.5px; color:var(--body); }
+  .card .meta{ margin-top:8px; font-size:12px; color:var(--muted); }
+  .btns{ margin-top:14px; display:flex; flex-wrap:wrap; gap:10px; }
+  .btn{ display:inline-block; text-decoration:none; font-size:13px; font-weight:700; border-radius:8px; padding:10px 18px; }
+  .btn.gold{ background:linear-gradient(135deg,var(--gold-bright),var(--gold)); color:#0a0e1a; }
+  .btn.ghost{ border:1px solid var(--line); color:var(--ink); }
+
+  /* video */
+  .video-box{ background:#fff; border:1px solid var(--line); border-radius:12px; padding:24px; display:flex; gap:28px; flex-wrap:wrap; align-items:flex-start; margin-bottom:14px; }
+  .video-box video{ width:280px; max-width:100%; border-radius:10px; background:#000; flex:none; }
+  .video-info{ flex:1; min-width:280px; }
+  .video-info ul{ margin:10px 0 0 18px; color:var(--body); font-size:14px; }
+  .video-info li{ margin-bottom:5px; }
+  .storyboard{ margin-top:16px; }
+  .storyboard img{ width:100%; border-radius:10px; border:1px solid var(--line); display:block; }
+
+  .foot{ margin:50px 0 0; border-top:1px solid var(--line); padding:18px 0 42px; font-size:12px; color:var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="mast">
+  <div class="wrap">
+    <div class="conf">Конфиденциально<br/>Не для распространения<br/>Обновлено: 4 июля 2026</div>
+    <div class="brand">Charter <span>Capital</span></div>
+    <h1>Медиакит рекламной кампании <em>«Архитектура капитала»</em></h1>
+    <p>Все материалы кампании в одном месте: смета с проверенными ценами операторов, печатные макеты (PDF для типографии), видеоролик для экранов и раскадровка. Страница скрытая: не индексируется и не связана ссылками с сайтом.</p>
+    <div class="chips">
+      <a href="#smeta">Смета</a>
+      <a href="#print">Печатные макеты</a>
+      <a href="#video">Видеоролик</a>
+      <a href="#deadlines">Дедлайны и контакты</a>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- ═══ СМЕТА ═══ -->
+  <section id="smeta">
+    <div class="sec-t">01 · Смета</div>
+    <h2>Рекомендованный пакет · месяц 1</h2>
+    <p class="lead">Аудитория: владельцы бизнеса, инвесторы, топ-менеджмент. Логика отбора носителей: «запертая» аудитория с временем на контакт. Тот же бюджет, что в исходном предложении (1,65 млн), но 4 канала вместо 2 и ноль расходов на продакшен — все креативы готовы.</p>
+    <table>
+      <tr><th>Позиция</th><th>Носитель / креатив</th><th style="width:170px">Стоимость / мес</th></tr>
+      <tr><td><b>Москва-Сити · «Город Столиц»</b></td><td>42 лифтовых экрана, ролик 15 сек (готов)</td><td><b>324 000 ₽</b></td></tr>
+      <tr><td><b>Журнал «Сапсан»</b></td><td>Полоса 1/1, тираж 150 000, аудитория ~2 млн/номер (макет готов)</td><td><b>420 000 ₽</b> без НДС</td></tr>
+      <tr><td><b>Сапсан · экраны в вагонах</b></td><td>Ролик 15 сек, направление Москва → СПб, 39 мониторов/поезд</td><td><b>457 500 ₽</b> с НДС</td></tr>
+      <tr><td><b>Домодедово · бизнес-зал МВЛ</b></td><td>Видеоэкран в бизнес-зале, ролик 15 сек</td><td><b>450 000 ₽</b></td></tr>
+      <tr><td><b>Производство</b></td><td>Ролик, полоса, разворот — своими силами</td><td><b>0 ₽</b></td></tr>
+      <tr class="total"><td colspan="2">ИТОГО (месяц 1)</td><td>≈ 1 651 500 ₽</td></tr>
+    </table>
+    <p class="note">Экономный тест-вариант: лифты «Город Столиц» + журнал «Сапсан» = <b>744 000 ₽</b>. НДС 22% — добавлять там, где прайс указан без НДС. При заходе через агентство — просить скидку 15–30% за контракт на 2–3 месяца.</p>
+
+    <h2>Проверенные цены операторов (для сравнения)</h2>
+    <table>
+      <tr><th>Площадка</th><th>Формат</th><th style="width:170px">Цена / мес</th></tr>
+      <tr><td>Журнал «Сапсан»</td><td>Разворот 2/1 (макет готов)</td><td>790 000 ₽ без НДС</td></tr>
+      <tr><td>Сапсан</td><td>Экраны, оба направления (2 160 трансляций)</td><td>915 000 ₽ с НДС</td></tr>
+      <tr><td>Сапсан</td><td>Тейбл-тенты, бизнес-класс, 15 поездов</td><td>420 000 ₽ без НДС</td></tr>
+      <tr><td>«Аэрофлот PREMIUM»</td><td>Полоса 1/1 (только бизнес-класс)</td><td>850 000 ₽ без НДС</td></tr>
+      <tr><td>«Аэрофлот» (осн. журнал)</td><td>Полоса 1/1</td><td>970 000 ₽ без НДС</td></tr>
+      <tr><td>Москва-Сити · «Федерация»</td><td>44 лифтовых экрана</td><td>~360 000 ₽</td></tr>
+      <tr><td>Внуково-3 (бизнес-авиация)</td><td>Видеостена в зале ожидания ЦБА</td><td>715 000 ₽</td></tr>
+      <tr><td>Внуково-3</td><td>Раскладка полиграфии, лайтбоксы</td><td>по запросу (АМС Групп)</td></tr>
+      <tr><td>Шереметьево · бизнес-залы</td><td>Digital / полиграфия — по брифу</td><td>от ~300 000 ₽</td></tr>
+      <tr><td>Стамбул IST</td><td>Залы primeclass — прайс TAV Media</td><td>по запросу</td></tr>
+    </table>
+    <p class="note">Wheely рекламу в салонах не размещает (политика бренда) — канал исключён; возможны только спецпроекты через marketing@wheely.com. Фаза 2 (по результатам UTM месяца 1): «Аэрофлот PREMIUM» или разворот в «Сапсане», лифты «Федерации», полиграфия Внуково-3, бизнес-залы Шереметьево, Стамбул IST.</p>
+  </section>
+
+  <!-- ═══ ПЕЧАТНЫЕ МАКЕТЫ ═══ -->
+  <section id="print">
+    <div class="sec-t">02 · Печатные макеты</div>
+    <h2>PDF для типографии / журнала</h2>
+    <p class="lead">Все макеты — с вылетами 3 мм, текст в безопасной зоне 14 мм от реза. PDF векторные, шрифты встроены (RGB; если оператор попросит CMYK/PDF-X — конвертируем по их тех.требованиям). Слово «легализация» не используется.</p>
+    <div class="grid">
+      <div class="card">
+        <div class="pic"><img src="assets/media-kit/preview-spread.png" alt="Разворот 2/1" loading="lazy"/></div>
+        <div class="tx">
+          <h3>Разворот 2/1 · «Спокойная сила»</h3>
+          <p>Главный нарратив: обращение к квалифицированным клиентам, постулаты архитектуры легитимности, 4 маршрута входа, Private Office + QR.</p>
+          <div class="meta">426 × 303 мм (420×297 + вылеты) · для «Сапсана»/«Аэрофлота»</div>
+          <div class="btns"><a class="btn gold" href="assets/media-kit/charter-capital-inflight-spread.pdf" download>Скачать PDF</a></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="pic"><img src="assets/media-kit/preview-a4-visual.png" alt="Полоса 1/1 визуальная" loading="lazy"/></div>
+        <div class="tx">
+          <h3>Полоса 1/1 · визуальная</h3>
+          <p>Hero-иллюминатор на полполосы, три карточки с иллюстрациями (капитал / ВНЖ / бизнес), тёмная QR-плашка.</p>
+          <div class="meta">216 × 303 мм (A4 + вылеты) · журналы, бизнес-залы</div>
+          <div class="btns"><a class="btn gold" href="assets/media-kit/charter-capital-inflight-a4-visual.pdf" download>Скачать PDF</a></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="pic"><img src="assets/media-kit/preview-a4-text.png" alt="Полоса 1/1 текстовая" loading="lazy"/></div>
+        <div class="tx">
+          <h3>Полоса 1/1 · консервативная</h3>
+          <p>Текстовая версия без крупного фото: слоган, 4 карточки услуг, QR. Запасной вариант под строгие площадки.</p>
+          <div class="meta">216 × 303 мм (A4 + вылеты)</div>
+          <div class="btns"><a class="btn gold" href="assets/media-kit/charter-capital-inflight-a4.pdf" download>Скачать PDF</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ВИДЕО ═══ -->
+  <section id="video">
+    <div class="sec-t">03 · Видеоролик</div>
+    <h2>15 секунд · вертикаль 9:16 · лифты и экраны</h2>
+    <div class="video-box">
+      <video controls preload="metadata" src="assets/media-kit/charter-capital-lift-15s-9x16.mp4"></video>
+      <div class="video-info">
+        <p class="lead" style="margin-bottom:4px">Сценарий: архитектура капитала → ВНЖ Мальты (€15 000/год, 4–5 мес, ЕС) → готовый бизнес в Европе (реальное дело, §21 / Talent Passport) → недвижимость на Пхукете → QR-финал.</p>
+        <ul>
+          <li><b>Параметры:</b> 1080×1920 (9:16), H.264, 25 fps, 15.0 сек, звук AAC</li>
+          <li><b>Читается без звука</b> — весь смысл в тексте на экране (для лифтов)</li>
+          <li><b>Озвучка:</b> нейроголос Dmitry, короткие тезисы (для эфира можно заменить диктором — текст 5 фраз готов)</li>
+          <li><b>QR в финале:</b> ~35% экрана, чёрный на белом → ccapital.pro</li>
+          <li>Пересборка под 16:9 / квадрат / другой хронометраж — из готовых исходников, быстро</li>
+        </ul>
+        <div class="btns" style="margin-top:16px">
+          <a class="btn gold" href="assets/media-kit/charter-capital-lift-15s-9x16.mp4" download>Скачать MP4 (5,7 МБ)</a>
+        </div>
+      </div>
+    </div>
+    <div class="storyboard">
+      <img src="assets/media-kit/lift-storyboard.png" alt="Раскадровка ролика" loading="lazy"/>
+      <p class="note" style="margin-top:8px">Раскадровка по сценам: тезисы на экране взяты со страниц сайта (qualified-clients, residence/malta, business-eu).</p>
+    </div>
+  </section>
+
+  <!-- ═══ ДЕДЛАЙНЫ И КОНТАКТЫ ═══ -->
+  <section id="deadlines">
+    <div class="sec-t">04 · Дедлайны и контакты</div>
+    <h2>Перед стартом</h2>
+    <table>
+      <tr><th>Что</th><th>Срок / контакт</th></tr>
+      <tr><td>Ролик в Сапсан (экраны)</td><td>сдать за <b>15 дней</b> до старта кампании</td></tr>
+      <tr><td>Журнал «Сапсан» (полоса/разворот)</td><td>дедлайн — за <b>30 дней</b> до выхода номера (выходит 1-го числа)</td></tr>
+      <tr><td>Внуково-3 · оператор рекламы</td><td>АО «АМС Групп» · +7 495 775-89-66 · info@amsgroup.ru</td></tr>
+      <tr><td>Wheely · спецпроекты</td><td>marketing@wheely.com (стандартной рекламы в салонах нет)</td></tr>
+      <tr><td>UTM-разметка</td><td>отдельный QR на каждый носитель: <b>?utm_source=lift_gs / sapsan_mag / sapsan_screen / dme_lounge</b></td></tr>
+    </table>
+    <p class="note">QR всех печатных макетов ведёт на t.me/ccapital26 (дайджест), QR ролика — на ccapital.pro. Перед печатью финальных тиражей заменить QR на версии с UTM под конкретный носитель.</p>
+  </section>
+
+  <div class="foot">
+    Charter Capital · внутренний документ кампании. Страница не индексируется (noindex), не включена в sitemap и не связана ссылками с публичной частью сайта. Не пересылайте ссылку третьим лицам без необходимости.
+  </div>
+</div>
+
+</body>
+</html>

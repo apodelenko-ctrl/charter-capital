@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/>
+<title>Charter Capital — журнальная полоса A4 (visual)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Cormorant+Garamond:wght@400;500;600&display=swap"/>
+<style>
+  /* A4 + вылеты 3 мм → 216×303 мм. Безопасная зона текста 14 мм от реза. */
+  @page { size: 216mm 303mm; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root{
+    --darker:#06080f; --dark:#0a0e1a; --ink:#0f172a; --body:#334155; --muted:#64748b;
+    --line:#e2e8f0; --cream:#fbfaf6;
+    --gold:#a8854e; --gold-bright:#c9a86a; --gold-soft:#e8d4a8;
+  }
+  html,body{ width:216mm; height:303mm; }
+  body{
+    font-family:"Inter","Helvetica Neue",-apple-system,Arial,sans-serif;
+    color:var(--ink); -webkit-font-smoothing:antialiased; background:var(--cream);
+  }
+  .sheet{ width:216mm; height:303mm; position:relative; display:flex; flex-direction:column; overflow:hidden; background:var(--cream); }
+
+  /* ── HERO (full-bleed) ── */
+  .hero{
+    position:relative; height:128mm; flex:none; overflow:hidden; background:var(--darker);
+  }
+  .hero img.bg{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 72%; }
+  .hero .shade{ position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(6,8,15,.6) 0%, rgba(6,8,15,.12) 26%, rgba(6,8,15,0) 42%, rgba(6,8,15,.55) 72%, rgba(6,8,15,.92) 100%); }
+  .hero-top{
+    position:absolute; top:12mm; left:17mm; right:17mm;
+    display:flex; justify-content:space-between; align-items:baseline;
+  }
+  .brand{ font-size:15px; font-weight:800; letter-spacing:.26em; text-transform:uppercase; color:#fff;
+    text-shadow:0 1px 8px rgba(6,8,15,.6); }
+  .brand .amp{ color:var(--gold-bright); }
+  .hero-kicker{ font-size:8.5px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-soft);
+    text-shadow:0 1px 6px rgba(6,8,15,.7); }
+  .hero-title{ position:absolute; left:17mm; right:17mm; bottom:11mm; color:#fff; }
+  .hero-title h1{
+    font-family:"Cormorant Garamond",Georgia,serif;
+    font-size:46px; font-weight:500; line-height:1.08; letter-spacing:.01em;
+    text-shadow:0 2px 14px rgba(6,8,15,.65);
+  }
+  .hero-title h1 em{ font-style:italic; color:var(--gold-soft); }
+  .hero-title .sub{
+    margin-top:4mm; max-width:150mm; font-size:12px; font-weight:400; line-height:1.55; color:rgba(255,255,255,.88);
+    text-shadow:0 1px 8px rgba(6,8,15,.7);
+  }
+  .hero-title .sub b{ font-weight:700; color:#fff; }
+  .hero::after{ content:""; position:absolute; left:0; right:0; bottom:0; height:1mm;
+    background:linear-gradient(90deg,var(--gold) 0%,var(--gold-bright) 45%,transparent 100%); }
+
+  /* ── КАРТОЧКИ С КАРТИНКАМИ ── */
+  .cards{ flex:1; min-height:0; padding:7mm 14mm 0; display:grid; grid-template-columns:1fr 1fr 1fr; gap:5mm; }
+  .card{
+    background:#fff; border:1px solid var(--line); border-radius:10px; overflow:hidden;
+    display:flex; flex-direction:column; box-shadow:0 1px 2px rgba(15,23,42,.05);
+  }
+  .card .pic{ height:36mm; flex:none; position:relative; overflow:hidden; background:var(--dark); }
+  .card .pic img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .card .pic::after{ content:""; position:absolute; left:0; right:0; bottom:0; height:2px;
+    background:linear-gradient(90deg,var(--gold-bright),transparent 70%); }
+  .card .tx{ padding:4.5mm 5.5mm 5mm; display:flex; flex-direction:column; flex:1; }
+  .card .no{
+    font-family:"Cormorant Garamond",Georgia,serif; font-size:11.5px; color:var(--gold);
+    letter-spacing:.14em; text-transform:uppercase; margin-bottom:1.8mm;
+  }
+  .card h2{ font-size:13px; font-weight:700; letter-spacing:-.01em; line-height:1.25; margin-bottom:2mm; }
+  .card p{ font-size:9.4px; line-height:1.55; color:var(--body); }
+  .card p b{ color:var(--ink); font-weight:600; }
+
+  /* ── QR-ПЛАШКА ── */
+  .qr-band{
+    flex:none; margin:6mm 14mm 0; border-radius:10px; overflow:hidden;
+    background:linear-gradient(150deg,#0e1a30,var(--darker));
+    color:#fff; display:flex; align-items:center; gap:8mm; padding:5.5mm 8mm;
+    position:relative;
+  }
+  .qr-band::before{ content:""; position:absolute; top:0; left:8mm; width:16mm; height:2.5px;
+    background:linear-gradient(90deg,var(--gold-bright),var(--gold)); border-radius:0 0 3px 3px; }
+  .qr-band .t{ flex:1; }
+  .qr-band .lab{ font-size:8px; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color:var(--gold-soft); margin-bottom:1.6mm; }
+  .qr-band h3{ font-size:14px; font-weight:700; line-height:1.3; margin-bottom:1.6mm; }
+  .qr-band p{ font-size:9.6px; line-height:1.5; color:rgba(255,255,255,.78); max-width:104mm; }
+  .qr-band .handle{ margin-top:2mm; font-size:10px; font-weight:700; letter-spacing:.06em; color:var(--gold-soft); }
+  .qr-box{ flex:none; background:#fff; border-radius:7px; padding:2.6mm; }
+  .qr-box img{ display:block; width:22mm; height:22mm; }
+  .qr-cta{ flex:none; text-align:right; border-left:1px solid rgba(255,255,255,.14); padding-left:7mm; align-self:stretch;
+    display:flex; flex-direction:column; justify-content:center; }
+  .qr-cta .l1{ font-size:9px; letter-spacing:.06em; color:rgba(255,255,255,.66); margin-bottom:1.4mm; }
+  .qr-cta .l2{ font-size:11.5px; font-weight:700; color:#fff; line-height:1.75; white-space:nowrap; }
+  .qr-cta .l2 span{ color:var(--gold-bright); }
+
+  /* ── ФУТЕР ── */
+  .foot{ flex:none; padding:4mm 14mm 10mm; }
+  .disclaimer{ font-size:6.9px; line-height:1.45; color:var(--muted); }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="hero">
+    <img class="bg" src="hero.png" alt=""/>
+    <div class="shade"></div>
+    <div class="hero-top">
+      <div class="brand">Charter <span class="amp">Capital</span></div>
+      <div class="hero-kicker">Архитектура капитала · Private Advisory</div>
+    </div>
+    <div class="hero-title">
+      <h1>Когда двери закрываются,<br/>мы открываем <em>мир</em></h1>
+      <div class="sub">Для тех, кто живёт и ведёт дела в нескольких странах. Приводим капитал в форму, которую понимает западный банк: <b>подтверждённое происхождение, прозрачная структура, верная юрисдикция.</b></div>
+    </div>
+  </div>
+
+  <div class="cards">
+
+    <div class="card">
+      <div class="pic"><img src="card-architecture.png" alt=""/></div>
+      <div class="tx">
+        <div class="no">I · Капитал</div>
+        <h2>Архитектура капитала</h2>
+        <p>Досье <b>Source of Funds / Source of Wealth</b>, читаемая структура владения, реальный substance. Капитал получает «биографию» — и перестаёт бояться вопросов банков и регуляторов.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="pic"><img src="card-residency.png" alt=""/></div>
+      <div class="tx">
+        <div class="no">II · Резидентство</div>
+        <h2>ВНЖ и вторая резиденция. Просто</h2>
+        <p>Понятные маршруты для семьи: <b>Мальта, ОАЭ, Юго-Восточная Азия</b>. Подбираем страну под задачи — налоги, мобильность, образование детей — и ведём до карты резидента.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="pic"><img src="card-business.png" alt=""/></div>
+      <div class="tx">
+        <div class="no">III · Активы</div>
+        <h2>Готовый бизнес за рубежом</h2>
+        <p>Покупка <b>действующего бизнеса</b> в Европе и Азии: отель, торговля, сервис. Проверка, структурирование сделки, передача управления. Реальный актив — и основание для резидентства.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="qr-band">
+    <div class="qr-box"><img src="qr-ccapital26.svg" alt="QR: Telegram-канал Charter Capital"/></div>
+    <div class="t">
+      <div class="lab">Наведите камеру</div>
+      <h3>Дайджест для держателей капитала</h3>
+      <p>Санкции, банки, комплаенс, юрисдикции — коротко о том, что меняется и что с этим делать. Каждую неделю в Telegram.</p>
+      <div class="handle">t.me/ccapital26 →</div>
+    </div>
+    <div class="qr-cta">
+      <div class="l1">Первый шаг — разбор под NDA, 30 минут</div>
+      <div class="l2">Telegram · <span>@ccapital_acces</span><br/>ccapital.pro</div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="disclaimer">Charter Capital выступает производителем собственных продуктов (досье SoF/SoW, структурирование, сопровождение онбординга) и координационным агентом для услуг лицензированных партнёров — банков, EMI, корпоративных провайдеров, юристов по программам резидентства. Услуги партнёров оказываются партнёрами и регулируются их юрисдикциями. Charter Capital не работает с лицами под санкциями и не оказывает услуг по обходу ограничений. Работаем только с капиталом подтверждённого законного происхождения. Информация носит индикативный характер и не является публичной офертой.</div>
+  </div>
+
+</div>
+</body>
+</html>
