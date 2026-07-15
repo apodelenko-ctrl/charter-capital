@@ -98,10 +98,11 @@
     .sub-links { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 8px; }
     .sub-links a { font-size: 12px; color: var(--gold); }
 
-    .modal {
+    .modal:not([hidden]) {
       position: fixed; inset: 0; background: rgba(0,0,0,.65); display: grid; place-items: center;
       padding: 16px; z-index: 100;
     }
+    [hidden] { display: none !important; }
     .modal-card {
       width: min(520px, 100%); max-height: 90vh; overflow: auto;
       background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 20px;
@@ -136,7 +137,7 @@
       <div class="logo">Charter Capital · internal</div>
       <h2>Задачи <span>· ops</span></h2>
       <p class="hint">Тот же пароль, что у Control Tower (DASHBOARD_SECRET).</p>
-      <input id="secret" type="password" placeholder="Пароль" autocomplete="current-password">
+      <input id="secret" type="password" placeholder="Пароль" autocomplete="current-password" autofocus>
       <button id="enter-btn" class="btn primary" type="button" style="width:100%;margin-top:12px;padding:12px">Войти</button>
     </div>
   </div>
