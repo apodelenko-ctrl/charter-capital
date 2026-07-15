@@ -9,6 +9,7 @@
  */
 
 import { BLOCKS, UNITS } from "./units.js";
+import { handleTasksApi } from "./tasks.js";
 
 const REPO = "apodelenko-ctrl/charter-capital";
 const LIVE = "https://ccapital.pro";
@@ -320,6 +321,9 @@ async function handleApi(request, env, path, method) {
   if (path === "/api/health") {
     return json({ ok: true, service: "ccapital-control-tower", ts: new Date().toISOString() });
   }
+
+  const tasksResp = await handleTasksApi(request, env, path, method, checkAuth);
+  if (tasksResp) return tasksResp;
 
   if (!checkAuth(request, env)) return unauthorized();
 
