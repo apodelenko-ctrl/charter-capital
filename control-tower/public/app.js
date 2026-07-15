@@ -1,19 +1,23 @@
 const $ = (s, el = document) => el.querySelector(s);
 const $$ = (s, el = document) => [...el.querySelectorAll(s)];
 
+window.Tower = { $, $$ };
+
 let SECRET = localStorage.getItem("cc_tower_secret") || "";
 let overview = null;
-let panel = "overview";
+let panel = initialPanel();
 
-function toast(msg, ms = 3500) {
-  const el = $("#toast");
-  el.textContent = msg;
-  el.hidden = false;
-  clearTimeout(el._t);
-  el._t = setTimeout(() => { el.hidden = true; }, ms);
+function initialPanel() {
+  if (location.pathname === "/tasks" || location.hash === "#tasks") return "tasks";
+  return "overview";
 }
 
-async function api(path, opts = {}) {
+function setPanelHash(name) {
+  const next = name === "overview" ? "" : `#${name}`;
+  if (location.hash !== next) history.replaceState(null, "", `${location.pathname}${next}`);
+}
+
+window.Tower.api = async function api(path, opts = {}) {
   const headers = { "Content-Type": "application/json", ...(opts.headers || {}) };
   if (SECRET) headers.Authorization = `Bearer ${SECRET}`;
   const r = await fetch(path, { ...opts, headers });
@@ -25,7 +29,18 @@ async function api(path, opts = {}) {
   }
   if (!r.ok) throw new Error(data.error || data.detail?.error || r.statusText);
   return data;
-}
+};
+
+window.Tower.toast = function toast(msg, ms = 3500) {
+  const el = $("#toast");
+  el.textContent = msg;
+  el.hidden = false;
+  clearTimeout(el._t);
+  el._t = setTimeout(() => { el.hidden = true; }, ms);
+};
+
+const api = (...args) => window.Tower.api(...args);
+const toast = (...args) => window.Tower.toast(...args);
 
 function fmtTime(iso) {
   if (!iso) return "—";
@@ -228,9 +243,22 @@ async function bindActions() {
 }
 
 async function showPanel(name) {
+  if (panel === "tasks" && name !== "tasks" && window.TasksPanel) {
+    TasksPanel.cleanup();
+  }
   panel = name;
+  setPanelHash(name);
   $$(".tab").forEach(t => t.classList.toggle("active", t.dataset.panel === name));
+  const subtitles = {
+    overview: "Мониторинг автоматизаций ccapital.pro",
+    tasks: "Задачи команды · ops todo",
+  };
+  $("#subtitle").textContent = subtitles[name] || "Charter Capital · Control Tower";
   $("#panel").innerHTML = "<div class='meta'>Загрузка…</div>";
+  if (name === "tasks") {
+    await TasksPanel.render($("#panel"));
+    return;
+  }
   if (!overview) await loadOverview();
   if (name === "overview") renderOverview();
   else if (name === "publish") renderPublish();
@@ -242,6 +270,10 @@ async function showPanel(name) {
 }
 
 async function refresh() {
+  if (panel === "tasks") {
+    await TasksPanel.refresh();
+    return;
+  }
   overview = null;
   await showPanel(panel);
 }
@@ -250,10 +282,11 @@ $("#enter-btn").onclick = async () => {
   SECRET = $("#secret").value.trim();
   localStorage.setItem("cc_tower_secret", SECRET);
   try {
-    await loadOverview();
+    if (panel === "tasks") await api("/api/tasks");
+    else await loadOverview();
     $("#gate").hidden = true;
     $("#app").hidden = false;
-    await showPanel("overview");
+    await showPanel(panel);
   } catch (e) { toast(e.message); }
 };
 
@@ -264,10 +297,23 @@ $("#secret").addEventListener("keydown", (e) => {
 $$("#tabs .tab").forEach(t => t.onclick = () => showPanel(t.dataset.panel));
 $("#refresh").onclick = refresh;
 
+window.addEventListener("hashchange", () => {
+  if (!$("#gate").hidden) return;
+  const next = initialPanel();
+  if (next !== panel) showPanel(next);
+});
+
+async function bootAuthed() {
+  if (panel === "tasks") {
+    await api("/api/tasks");
+  } else {
+    await loadOverview();
+  }
+  $("#gate").hidden = true;
+  $("#app").hidden = false;
+  await showPanel(panel);
+}
+
 if (SECRET) {
-  loadOverview().then(() => {
-    $("#gate").hidden = true;
-    $("#app").hidden = false;
-    showPanel("overview");
-  }).catch(() => {});
+  bootAuthed().catch(() => {});
 }

@@ -451,6 +451,10 @@ export default {
       return handleApi(request, env, path, request.method);
     }
 
+    if (path === "/tasks") {
+      return Response.redirect(`${url.origin}/#tasks`, 302);
+    }
+
     // Публичная страница логина — без секрета в HTML; API всё равно за auth
     if (env.ASSETS) {
       if (path === "/") path = "/index.html";

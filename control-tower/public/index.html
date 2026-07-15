@@ -25,6 +25,7 @@
         <div class="subtitle" id="subtitle">Мониторинг автоматизаций ccapital.pro</div>
       </div>
       <div class="top-actions">
+        <a class="link-gold" href="https://cc-pipeline-three.vercel.app/pipeline-cc-secure-7f3a9k2x" target="_blank" rel="noopener">Воронка ↗</a>
         <a class="link-gold" href="https://ccapital.pro/" target="_blank" rel="noopener">ccapital.pro ↗</a>
         <button class="btn ghost" id="refresh" type="button">↻</button>
       </div>
@@ -37,13 +38,29 @@
       <button class="tab" data-panel="traffic">Трафик</button>
       <button class="tab" data-panel="content">Контент</button>
       <button class="tab" data-panel="dzen">Дзен</button>
+      <button class="tab" data-panel="tasks">Задачи</button>
       <button class="tab" data-panel="logs">Логи</button>
     </nav>
 
     <main id="panel"></main>
   </div>
 
+  <div id="tasks-modal" class="modal-overlay" hidden>
+    <div class="modal-card">
+      <div class="modal-head">
+        <h3 id="tasks-modal-title">Редактировать</h3>
+        <button type="button" id="tasks-modal-close" class="btn-icon">×</button>
+      </div>
+      <form id="tasks-edit-form"></form>
+      <div class="form-actions">
+        <button type="submit" form="tasks-edit-form" class="btn">Применить</button>
+        <button type="button" id="tasks-modal-cancel" class="btn secondary">Отмена</button>
+      </div>
+    </div>
+  </div>
+
   <div id="toast" class="toast" hidden></div>
+  <script src="/tasks.js"></script>
   <script src="/app.js"></script>
 </body>
 </html>
