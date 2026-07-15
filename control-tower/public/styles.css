@@ -18,6 +18,7 @@
 * { box-sizing: border-box; }
 html, body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--sans); }
 body { min-height: 100dvh; }
+[hidden] { display: none !important; }
 
 .gate {
   min-height: 100dvh; display: grid; place-items: center; padding: 24px;
@@ -33,6 +34,7 @@ body { min-height: 100dvh; }
   width: 100%; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--border);
   background: var(--panel2); color: var(--ink); font-size: .95rem; margin-bottom: 12px;
 }
+.gate-card .btn { width: 100%; }
 .hint { font-size: .72rem; color: var(--muted); margin-top: 14px; line-height: 1.4; }
 
 .topbar {

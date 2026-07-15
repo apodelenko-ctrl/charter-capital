@@ -257,6 +257,10 @@ $("#enter-btn").onclick = async () => {
   } catch (e) { toast(e.message); }
 };
 
+$("#secret").addEventListener("keydown", (e) => {
+  if (e.key === "Enter") $("#enter-btn").click();
+});
+
 $$("#tabs .tab").forEach(t => t.onclick = () => showPanel(t.dataset.panel));
 $("#refresh").onclick = refresh;
 
