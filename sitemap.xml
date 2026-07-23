@@ -17,6 +17,15 @@
   </url>
 
   <url>
+    <loc>https://ccapital.pro/contacts.html</loc>
+    <lastmod>2026-07-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ccapital.pro/contacts.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ccapital.pro/contacts.html"/>
+  </url>
+
+  <url>
     <loc>https://ccapital.pro/evacuation.html</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
