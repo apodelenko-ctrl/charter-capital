@@ -508,7 +508,7 @@
   <!-- Дайджест Charter Capital -->
   <url>
     <loc>https://ccapital.pro/journal.html</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://ccapital.pro/journal.html"/>
@@ -516,6 +516,32 @@
     <image:image>
       <image:loc>https://ccapital.pro/assets/pay/hero-corridor.webp</image:loc>
       <image:title>Дайджест Charter Capital — аналитика, объявления, кейсы</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://ccapital.pro/journal/ofac-vtb-iran-eo13902-2026.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ccapital.pro/journal/ofac-vtb-iran-eo13902-2026.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ccapital.pro/journal/ofac-vtb-iran-eo13902-2026.html"/>
+    <image:image>
+      <image:loc>https://ccapital.pro/assets/journal/ofac-vtb-iran-2026-hero.jpg</image:loc>
+      <image:title>OFAC повесил ВТБ на иранский SDN · Charter Capital</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://ccapital.pro/journal/rfmon-chastichnoe-sovpadenie-115fz-2026.html</loc>
+    <lastmod>2026-09-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ccapital.pro/journal/rfmon-chastichnoe-sovpadenie-115fz-2026.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ccapital.pro/journal/rfmon-chastichnoe-sovpadenie-115fz-2026.html"/>
+    <image:image>
+      <image:loc>https://ccapital.pro/assets/journal/rfmon-chastichnoe-sovpadenie-115fz-2026-hero.jpg</image:loc>
+      <image:title>Похожее ФИО — и счёт стоит пять дней · Charter Capital</image:title>
     </image:image>
   </url>
 
