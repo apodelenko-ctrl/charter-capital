@@ -155,6 +155,21 @@ button{font-family:inherit;cursor:pointer}
 .card p{font-size:14px;line-height:1.6;color:var(--body)}
 @media(max-width:880px){.grid3{grid-template-columns:1fr}.grid2{grid-template-columns:1fr}}
 
+/* PACKAGES — витрина как у массовых онбордеров, но с нашей офертой */
+.pkg-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:28px}
+.pkg{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px 26px 22px;display:flex;flex-direction:column;gap:12px}
+.pkg .pkg-kicker{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
+.pkg h3{font-size:1.2rem;font-weight:600;letter-spacing:-.02em;color:var(--ink);line-height:1.25}
+.pkg .pkg-lead{font-size:14.5px;line-height:1.55;color:var(--body)}
+.pkg .pkg-price{font-size:1.35rem;font-weight:700;letter-spacing:-.03em;color:var(--ink);margin-top:2px}
+.pkg .pkg-price span{display:block;font-size:12px;font-weight:500;letter-spacing:.02em;color:var(--muted);margin-top:4px}
+.pkg ul{list-style:none;margin:4px 0 8px}
+.pkg li{position:relative;padding-left:20px;margin-bottom:7px;font-size:14px;line-height:1.5;color:var(--body)}
+.pkg li::before{content:"";position:absolute;left:2px;top:.55em;width:8px;height:5px;border-left:2px solid var(--green-bright);border-bottom:2px solid var(--green-bright);transform:rotate(-45deg)}
+.pkg .pkg-link{margin-top:auto;font-size:13px;font-weight:600;color:var(--blue)}
+.pkg .pkg-link:hover{color:var(--ink)}
+@media(max-width:760px){.pkg-grid{grid-template-columns:1fr}}
+
 /* JURISDICTIONS */
 .jx{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
 .jx-card{display:block;color:inherit;text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;transition:border-color .15s ease,transform .15s ease}
@@ -275,7 +290,9 @@ button{font-family:inherit;cursor:pointer}
         {"@type": "Question", "name": "В каких странах реально открыть зарубежный счёт в 2026?", "acceptedAnswer": {"@type": "Answer", "text": "Рабочие направления для клиентов из СНГ при корректной подготовке — Гонконг, Сингапур, ОАЭ, отдельные банки и EMI в ЕС и UK. Выбор зависит от задачи (расчёты, капитал, инвестиции), резидентности и подтверждаемости источника средств. Шаблонные «транзитные» связки в 2026 закрываются."}},
         {"@type": "Question", "name": "Можно ли открыть счёт удалённо, без визита?", "acceptedAnswer": {"@type": "Answer", "text": "Часть EMI и отдельные банки допускают удалённое открытие при сильном комплаенс-досье. Многие банки требуют личный визит или видеоверификацию. Реалистичный сценарий определяется после диагностики профиля и цели счёта."}},
         {"@type": "Question", "name": "Charter Capital гарантирует открытие счёта?", "acceptedAnswer": {"@type": "Answer", "text": "Нет. Решение всегда принимает банк. Charter Capital повышает вероятность одобрения за счёт корректной подготовки документов, подбора подходящего банка и сопровождения онбординга через лицензированных партнёров. Если кейс нереалистичен — мы скажем об этом сразу."}},
-        {"@type": "Question", "name": "С какими клиентами Charter Capital не работает?", "acceptedAnswer": {"@type": "Answer", "text": "Мы не работаем с подсанкционными лицами, не помогаем обходить санкции и не «очищаем» средства с сомнительным происхождением. Принцип — доказывать легальность, а не прятать её."}}
+        {"@type": "Question", "name": "С какими клиентами Charter Capital не работает?", "acceptedAnswer": {"@type": "Answer", "text": "Мы не работаем с подсанкционными лицами, не помогаем обходить санкции и не «очищаем» средства с сомнительным происхождением. Принцип — доказывать легальность, а не прятать её."}},
+        {"@type": "Question", "name": "Даёте ли вы карты Visa / Mastercard и IBAN?", "acceptedAnswer": {"@type": "Answer", "text": "Да, там где институт их выпускает. К корпоративному EMI-счёту обычно идут реквизиты USD / EUR / GBP и виртуальная или физическая карта. Это не «карта за 3 дня на любое имя», а продукт конкретного банка или EMI после одобрения."}},
+        {"@type": "Question", "name": "Открываете ли Payoneer и Wise «несмотря на ограничения»?", "acceptedAnswer": {"@type": "Answer", "text": "Нет. Мы не продаём обход ограничений Payoneer, Wise или Stripe. Подбираем институт, который может онбордить ваш профиль: Wise или Mercury в пакете США, Airwallex / Statrys / Equals и банки HK / SG / UAE — если документы и деятельность это выдерживают. Если сервис вам недоступен по своим правилам, мы не обещаем «ускоренную верификацию вопреки»."}}
       ]
     },
     {
@@ -338,7 +355,7 @@ button{font-family:inherit;cursor:pointer}
     </p>
     <div class="hero-actions">
       <a href="#contact" class="btn btn-primary">Запросить разбор кейса <span class="arr">→</span></a>
-      <a href="/diagnostic.html" class="btn btn-ghost">Диагностика маршрута · 60 сек</a>
+      <a href="#packages" class="btn btn-ghost">Пакеты: счёт, карты, эквайринг</a>
     </div>
   </div>
 </section>
@@ -386,6 +403,74 @@ button{font-family:inherit;cursor:pointer}
           <li>Не&nbsp;заменяет банк при&nbsp;крупных суммах и&nbsp;инвестициях</li>
         </ul>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="packages">
+  <div class="container">
+    <div class="s-head">
+      <span class="kicker">Пакеты</span>
+      <h2>Что именно открываем&nbsp;— <strong>не «счёт вообще»</strong></h2>
+      <p>
+        У массовых онбордеров витрина понятная: компания, необанк, карта, эквайринг.
+        У нас те&nbsp;же кирпичи, но без формулы «несмотря на ограничения».
+        Решение всегда принимает институт.
+      </p>
+    </div>
+    <div class="pkg-grid">
+      <article class="pkg">
+        <div class="pkg-kicker">Компания + счёт</div>
+        <h3>Юрлицо и расчётный счёт в HK, SG или UAE</h3>
+        <p class="pkg-lead">Регистрация на ваши данные, без номиналов. Счёт в банке или EMI под реальную деятельность.</p>
+        <div class="pkg-price">Смета после разбора<span>не «от $590 за заявку»</span></div>
+        <ul>
+          <li>Проверка проекта на требования банка</li>
+          <li>Компания на ваши данные, корпоративный пакет</li>
+          <li>Онбординг счёта и реквизиты USD / EUR / GBP</li>
+          <li>Банк-папка Source of Funds под этот институт</li>
+        </ul>
+        <a class="pkg-link" href="/company.html">Витрина компаний →</a>
+      </article>
+      <article class="pkg">
+        <div class="pkg-kicker">Бизнес-EMI</div>
+        <h3>Wise, Mercury, Airwallex, Statrys, Equals</h3>
+        <p class="pkg-lead">Корпоративный аккаунт там, где ваш профиль реально проходят. Не «любой необанк за три дня».</p>
+        <div class="pkg-price">Подбор под профиль<span>удалённо, если институт это допускает</span></div>
+        <ul>
+          <li>Аудит сайта и деятельности до подачи</li>
+          <li>Регистрация и верификация на данные компании</li>
+          <li>IBAN / локальные реквизиты, где институт их даёт</li>
+          <li>Инструкция и привязка вывода, если это требование сервиса</li>
+        </ul>
+        <a class="pkg-link" href="#contact">Какой EMI вам доступен →</a>
+      </article>
+      <article class="pkg">
+        <div class="pkg-kicker">Карты</div>
+        <h3>Visa / Mastercard к счёту</h3>
+        <p class="pkg-lead">Виртуальная и физическая карта&nbsp;— если банк или EMI их выпускает после одобрения счёта.</p>
+        <div class="pkg-price">Входит в счёт<span>не отдельная «карта за 3 дня на дом»</span></div>
+        <ul>
+          <li>Карта на имя директора / UBO, не на номинала</li>
+          <li>Лимиты и география&nbsp;— как у института, не «без ограничений»</li>
+          <li>Доставка туда, куда институт доставляет</li>
+          <li>Связка с корпоративным счётом, не отдельный карточный продукт</li>
+        </ul>
+        <a class="pkg-link" href="#contact">Нужна карта к счёту →</a>
+      </article>
+      <article class="pkg">
+        <div class="pkg-kicker">Эквайринг</div>
+        <h3>Компания в США + Stripe + счёт</h3>
+        <p class="pkg-lead">Приём оплаты с сайта и соцсетей. Для живой услуги: курс, студия, консультации&nbsp;— не high-risk.</p>
+        <div class="pkg-price">$1&nbsp;550<span>пакет Charter Capital · решение принимает Stripe</span></div>
+        <ul>
+          <li>Delaware / Atlas, EIN, агент</li>
+          <li>Эквайринг на сайт, Instagram, Telegram</li>
+          <li>Счёт Wise или Mercury под профиль</li>
+          <li>Легальный криптовыход с поступлений компании</li>
+        </ul>
+        <a class="pkg-link" href="/usa-online.html">Пакет США целиком →</a>
+      </article>
     </div>
   </div>
 </section>
@@ -523,6 +608,14 @@ button{font-family:inherit;cursor:pointer}
         <summary>С какими клиентами вы не работаете?</summary>
         <p>Мы&nbsp;не&nbsp;работаем с&nbsp;подсанкционными лицами, не&nbsp;помогаем обходить санкции и&nbsp;не&nbsp;«очищаем» средства с&nbsp;сомнительным происхождением. Принцип&nbsp;— доказывать легальность, а&nbsp;не&nbsp;прятать её.</p>
       </details>
+      <details>
+        <summary>Даёте ли вы карты Visa / Mastercard и IBAN?</summary>
+        <p>Да, там где институт их выпускает. К корпоративному EMI-счёту обычно идут реквизиты USD&nbsp;/&nbsp;EUR&nbsp;/&nbsp;GBP и виртуальная или физическая карта. Это не «карта за три дня на любое имя», а продукт банка или EMI после одобрения.</p>
+      </details>
+      <details>
+        <summary>Открываете ли Payoneer и Wise «несмотря на ограничения»?</summary>
+        <p>Нет. Мы не продаём обход правил Payoneer, Wise или Stripe. Подбираем институт, который может онбордить ваш профиль: Wise или Mercury в пакете США, Airwallex / Statrys / Equals и банки HK&nbsp;/&nbsp;SG&nbsp;/&nbsp;UAE&nbsp;— если документы и деятельность это выдерживают. Если сервис вам недоступен по своим правилам, «ускоренной верификации вопреки» не будет.</p>
+      </details>
     </div>
   </div>
 </section>
@@ -570,6 +663,10 @@ button{font-family:inherit;cursor:pointer}
               <option value="">Выберите</option>
               <option>Личный счёт / хранение капитала</option>
               <option>Корпоративный счёт / ВЭД-расчёты</option>
+              <option>Компания + счёт (HK / SG / UAE)</option>
+              <option>Бизнес-EMI (Wise / Mercury / Airwallex)</option>
+              <option>Карты Visa / Mastercard к счёту</option>
+              <option>Эквайринг / приём оплаты онлайн</option>
               <option>Инвестиции</option>
               <option>Релокация семьи</option>
               <option>Другое</option>
@@ -596,6 +693,7 @@ button{font-family:inherit;cursor:pointer}
       <div>
         <h4>Услуги</h4>
         <ul>
+          <li><a href="/company.html">Компания за рубежом</a></li>
           <li><a href="/usa-online.html">Онлайн-стек · США</a></li>
           <li><a href="/bank-account.html">Зарубежный счёт</a></li>
           <li><a href="/account-hong-kong.html">Счёт в Гонконге</a></li>

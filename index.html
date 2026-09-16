@@ -899,6 +899,21 @@ section.s.dark p{color:rgba(255,255,255,.72)}
 .do-item h4{font-size:14px;font-weight:600;margin-bottom:4px}
 .do-item p{font-size:13px;color:var(--muted);line-height:1.55}
 
+.shop-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:8px}
+.shop-card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);
+  padding:26px 22px 22px;display:flex;flex-direction:column;gap:10px;
+  text-decoration:none;color:inherit;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
+}
+.shop-card:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(15,23,42,.06);border-color:#cbd5e1}
+.shop-card .k{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
+.shop-card h3{font-size:1.05rem;font-weight:600;letter-spacing:-.02em;line-height:1.25}
+.shop-card p{font-size:13.5px;line-height:1.55;color:var(--muted);flex:1}
+.shop-card .price{font-size:15px;font-weight:700;color:var(--ink)}
+.shop-card .go{font-size:13px;font-weight:600;color:var(--blue)}
+@media(max-width:980px){.shop-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.shop-grid{grid-template-columns:1fr}}
+
 /* ─── ROUTES ────────────────────────────────────────────── */
 .routes{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-bottom:24px}
 .route{
@@ -1474,6 +1489,18 @@ footer.f{
             <span class="nav-dd-ic blue">PY</span>
             <span class="nav-dd-body"><span class="t">Pay</span><span class="d">ВЭД-платежи под банк получателя</span></span>
           </a>
+          <a class="nav-dd-item" href="bank-account.html#packages" role="menuitem">
+            <span class="nav-dd-ic blue">AC</span>
+            <span class="nav-dd-body"><span class="t">Счета, карты, EMI</span><span class="d">Компания + IBAN + Visa/MC · без обхода ограничений</span></span>
+          </a>
+          <a class="nav-dd-item" href="company.html" role="menuitem">
+            <span class="nav-dd-ic blue">CO</span>
+            <span class="nav-dd-body"><span class="t">Компании</span><span class="d">HK · SG · UAE · UK · США · без номиналов</span></span>
+          </a>
+          <a class="nav-dd-item" href="usa-online.html" role="menuitem">
+            <span class="nav-dd-ic blue">US</span>
+            <span class="nav-dd-body"><span class="t">США · эквайринг</span><span class="d">Компания + Stripe + Wise / Mercury · $1 550</span></span>
+          </a>
           <a class="nav-dd-item" href="fund.html" role="menuitem">
             <span class="nav-dd-ic gold">AF</span>
             <span class="nav-dd-body"><span class="t">Charter Asia Fund</span><span class="d">Инвестиции в Сингапуре и Пхукете</span></span>
@@ -1817,15 +1844,15 @@ footer.f{
           <div class="do-item">
             <div class="ic">01</div>
             <div>
-              <h4>Счета - банки и EMI</h4>
-              <p>Personal и corporate в ЕС, ОАЭ, Азии, Кавказе, Грузии. От локальных до Tier-1 private. Подбор под ваш профиль: счёт в <a href="account-singapore.html" style="color:var(--blue,#2563eb)">Сингапуре</a>, <a href="account-hong-kong.html" style="color:var(--blue,#2563eb)">Гонконге</a>, <a href="account-uae.html" style="color:var(--blue,#2563eb)">ОАЭ</a> или <a href="bank-account.html" style="color:var(--blue,#2563eb)">зарубежный счёт под ключ</a>.</p>
+              <h4>Счета, карты и EMI</h4>
+              <p>Personal и corporate в ЕС, ОАЭ, Азии. IBAN, Visa/Mastercard к счёту где институт их выпускает. Подбор: <a href="account-singapore.html" style="color:var(--blue,#2563eb)">Сингапур</a>, <a href="account-hong-kong.html" style="color:var(--blue,#2563eb)">Гонконг</a>, <a href="account-uae.html" style="color:var(--blue,#2563eb)">ОАЭ</a> или <a href="bank-account.html#packages" style="color:var(--blue,#2563eb)">пакеты: счёт / карты / эквайринг</a>.</p>
             </div>
           </div>
           <div class="do-item">
             <div class="ic">02</div>
             <div>
               <h4>Компании - HK, SG, UAE, CY, MNE, BVI</h4>
-              <p>Регистрация и сопровождение. Substance-package, директор, адрес, бухгалтерия - где требуется. Также — <a href="business-eu.html" style="color:var(--blue,#2563eb)">готовый бизнес в Европе</a> с реальным substance.</p>
+              <p>Регистрация на ваши данные, без номиналов. Substance, директор, адрес, бухгалтерия — где требуется. Витрина: <a href="company.html" style="color:var(--blue,#2563eb)">HK / SG / UAE / UK / США</a>. Также — <a href="business-eu.html" style="color:var(--blue,#2563eb)">готовый бизнес в Европе</a> с реальным substance.</p>
             </div>
           </div>
           <div class="do-item">
@@ -1895,6 +1922,86 @@ footer.f{
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="accounts">
+  <div class="container">
+    <div class="s-head">
+      <span class="kicker">Счета и приём денег</span>
+      <h2>Четыре понятных пакета. Без «несмотря на ограничения».</h2>
+      <p>Компания, необанк, карта, эквайринг&nbsp;— те&nbsp;же кирпичи, что продают массовые онбордеры. Разница: мы не обещаем Payoneer или Wise вопреки их правилам. Если институт вас не берёт, скажем сразу.</p>
+    </div>
+    <div class="shop-grid">
+      <a class="shop-card" href="bank-account.html#packages">
+        <span class="k">Компания + счёт</span>
+        <h3>HK · SG · UAE</h3>
+        <p>Юрлицо на ваши данные, расчётный счёт, реквизиты USD / EUR / GBP, банк-папка.</p>
+        <span class="price">Смета после разбора</span>
+        <span class="go">Смотреть пакет →</span>
+      </a>
+      <a class="shop-card" href="bank-account.html#packages">
+        <span class="k">Бизнес-EMI</span>
+        <h3>Wise · Mercury · Airwallex</h3>
+        <p>Корпоративный аккаунт там, где профиль реально проходят. Statrys и Equals&nbsp;— под кейс.</p>
+        <span class="price">Подбор под профиль</span>
+        <span class="go">Какой EMI доступен →</span>
+      </a>
+      <a class="shop-card" href="bank-account.html#packages">
+        <span class="k">Карты</span>
+        <h3>Visa / Mastercard</h3>
+        <p>К счёту, если институт выпускает. Не отдельная «карта за 3 дня на дом».</p>
+        <span class="price">Входит в счёт</span>
+        <span class="go">Нужна карта →</span>
+      </a>
+      <a class="shop-card" href="usa-online.html">
+        <span class="k">Эквайринг</span>
+        <h3>США + Stripe</h3>
+        <p>Компания, касса на сайт и соцсети, Wise или Mercury, легальный криптовыход.</p>
+        <span class="price">$1 550</span>
+        <span class="go">Пакет США →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="s alt" id="companies">
+  <div class="container">
+    <div class="s-head">
+      <span class="kicker">Компании</span>
+      <h2>Юрлицо на ваши данные. Без полки и номинала.</h2>
+      <p>Те же страны, что продают массовые онбордеры. Разница: не обещаем счёт и Stripe «в комплекте», не ставим номинала и не торгуем Amazon / PayPal вопреки их правилам.</p>
+    </div>
+    <div class="shop-grid">
+      <a class="shop-card" href="company.html#jurisdictions">
+        <span class="k">Гонконг</span>
+        <h3>Limited</h3>
+        <p>Секретарь и адрес обязательны. Территориальный налог&nbsp;— не «нулевая ставка».</p>
+        <span class="price">Смета после разбора</span>
+        <span class="go">Компания в HK →</span>
+      </a>
+      <a class="shop-card" href="company.html#jurisdictions">
+        <span class="k">Сингапур</span>
+        <h3>Pte. Ltd.</h3>
+        <p>Капитал и family office. Локальный директор&nbsp;— где требует ACRA.</p>
+        <span class="price">Смета после разбора</span>
+        <span class="go">Компания в SG →</span>
+      </a>
+      <a class="shop-card" href="company.html#jurisdictions">
+        <span class="k">ОАЭ</span>
+        <h3>Free zone / mainland</h3>
+        <p>Лицензия и desk. Банк в 2026 смотрит на substance, не на табличку.</p>
+        <span class="price">Смета после разбора</span>
+        <span class="go">Компания в UAE →</span>
+      </a>
+      <a class="shop-card" href="company.html#jurisdictions">
+        <span class="k">UK · США · ЕС</span>
+        <h3>Ltd / LLC / живой бизнес</h3>
+        <p>UK Ltd, пакет США $1&nbsp;550 или готовый бизнес в Европе как substance.</p>
+        <span class="price">От $1 550 / смета</span>
+        <span class="go">Все юрисдикции →</span>
+      </a>
     </div>
   </div>
 </section>
@@ -2296,6 +2403,7 @@ footer.f{
       <div class="f-col">
         <h5>Справочник</h5>
         <ul>
+          <li><a href="company.html">Компания за рубежом</a></li>
           <li><a href="bank-account.html">Зарубежный счёт</a></li>
           <li><a href="account-hong-kong.html">Счёт в Гонконге</a></li>
           <li><a href="account-singapore.html">Счёт в Сингапуре</a></li>
