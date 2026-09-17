@@ -74,6 +74,8 @@
     .fact { padding:14px 15px; border:1px solid var(--line); background:#fff; border-radius:11px; min-width:0; }
     .fact .k { color:var(--muted); font-size:10px; text-transform:uppercase; letter-spacing:.1em; font-weight:800; }
     .fact .v { margin-top:5px; color:var(--ink); font-weight:720; overflow-wrap:anywhere; }
+    .fact .v a,.pack-item a { color:var(--ink); text-decoration-color:var(--gold); text-underline-offset:3px; }
+    .fact .v a:hover,.pack-item a:hover { color:var(--gold); }
     .route-grid,.accounts-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
     .route,.account { border:1px solid var(--line); border-radius:13px; padding:18px; background:#fff; break-inside:avoid; }
     .route.ok,.account.ok { border-top:4px solid var(--green); background:linear-gradient(180deg,var(--green-pale),#fff 34%); }
@@ -486,8 +488,17 @@
       ]
     ];
     const esc = s => String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
+    const linked = s => {
+      const raw=String(s);
+      const full="https://west-east.cloud/gpu-servers/cloud/";
+      const short="west-east.cloud/gpu-servers/cloud/";
+      const token=raw.includes(full)?full:(raw.includes(short)?short:null);
+      if(!token) return esc(raw);
+      const at=raw.indexOf(token);
+      return `${esc(raw.slice(0,at))}<a href="${full}" target="_blank" rel="noopener noreferrer">${esc(token)}</a>${esc(raw.slice(at+token.length))}`;
+    };
     const copyButton = text => `<button class="copy-btn" type="button" aria-label="Copy" data-copy="${esc(text)}">⧉</button>`;
-    const facts = (keys,values) => values.map((v,i)=>`<div class="fact"><div class="k">${esc(keys[i])}</div><div class="v">${esc(v)}</div></div>`).join("");
+    const facts = (keys,values) => values.map((v,i)=>`<div class="fact"><div class="k">${esc(keys[i])}</div><div class="v">${linked(v)}</div></div>`).join("");
     const routes = rows => rows.map(r=>`<article class="route ${r[0]}"><span class="flag">${esc(r[1])}</span><h3>${esc(r[2])}</h3><p>${esc(r[3])}</p></article>`).join("");
     const bankBox = (title,sub,keys,values) => `<section class="bankbox"><header class="bank-head"><h3>${esc(title)}</h3><span>${esc(sub)}</span></header><div class="bank-grid">${values.map((v,i)=>`<div class="bank-row"><div class="k">${esc(keys[i])}</div><div class="v">${esc(v)}</div>${copyButton(v)}</div>`).join("")}</div></section>`;
     const formula = (label,text) => `<div class="formula"><div class="label">${esc(label)}</div><code>${esc(text)}</code>${copyButton(text)}</div>`;
@@ -520,7 +531,7 @@
             <div class="details-stack">${details(t.serviceSummary,purposeRows(WET_SERVICES,t.lang))}${details(t.goodsSummary,purposeRows(WET_GOODS,t.lang))}</div>
             ${formula(t.universal,t.universalCode)}
             <div class="chapter-title" style="margin-top:34px"><span class="chapter-no">B</span><div><h2>${esc(t.packTitle)}</h2><p>${esc(t.packSub)}</p></div></div>
-            <div class="pack">${t.pack.map(x=>`<div class="pack-item">${esc(x)}</div>`).join("")}</div>
+            <div class="pack">${t.pack.map(x=>`<div class="pack-item">${linked(x)}</div>`).join("")}</div>
             <p class="note"><strong>${esc(t.dontTitle)}:</strong> ${esc(t.dontItems)}</p>
           </section>
           <section class="chapter">${chapterTitle("02",t.chapter2,t.chapter2sub)}
