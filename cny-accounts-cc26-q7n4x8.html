@@ -336,8 +336,6 @@
         payerLabel:"Обычно платит", payer:{client:"клиент",developer:"застройщик или его агент",agreement:"клиент или застройщик — как указано в договоре"},
         common:"Общий шаблон назначения платежа", commonCode:"Property [search / advisory / negotiation / agency commission] fee — [Villa / Project] — Invoice [№]",
         commonHelp:"В квадратных скобках укажите конкретную услугу, название виллы или проекта и номер инвойса. Для удобства используйте готовые варианты ниже.",
-        invoiceTitle:"Текст для инвойса на английском", invoiceText:"This invoice is for WEST EAST’s professional service fee only and does not include the purchase price, rent or security deposit payable to the developer or landlord.",
-        invoiceLocal:"Этот инвойс выставлен только за профессиональные услуги WEST EAST и не включает цену покупки, аренду или обеспечительный депозит, уплачиваемые застройщику или арендодателю.",
         avoidWest:"оплата виллы, квартиры или ключей; полная стоимость объекта; аренда за месяц; депозит за третье лицо; обмен криптовалюты; обработка платежа; эскроу; оптимизация налогов; обход банка; мясо, GPU или облачные услуги.",
         faqTitle:"Частые вопросы", faqSub:"Короткие и понятные ответы перед отправкой платежа.",
         faq:[
@@ -419,8 +417,6 @@
         payerLabel:"Usually paid by", payer:{client:"client",developer:"developer or its agent",agreement:"client or developer, as stated in the agreement"},
         common:"General payment-description template", commonCode:"Property [search / advisory / negotiation / agency commission] fee — [Villa / Project] — Invoice [№]",
         commonHelp:"Replace the text in square brackets with the service, villa or project name and invoice number. You can also use one of the ready-made options below.",
-        invoiceTitle:"Text to include on the invoice", invoiceText:"This invoice is for WEST EAST’s professional service fee only and does not include the purchase price, rent or security deposit payable to the developer or landlord.",
-        invoiceLocal:"This invoice covers WEST EAST’s professional service fee only. The purchase price, rent and security deposit are paid directly to the developer or landlord.",
         avoidWest:"payment for a villa, apartment or keys; full property price; monthly rent; a deposit collected for someone else; cryptocurrency exchange; payment processing; escrow; tax optimisation; bank bypass; meat, GPU or cloud services.",
         faqTitle:"Frequently asked questions", faqSub:"Short answers before making a payment.",
         faq:[
@@ -502,8 +498,6 @@
         payerLabel:"通常付款方", payer:{client:"客户",developer:"开发商或其代理",agreement:"客户或开发商，以合同约定为准"},
         common:"通用付款用途模板", commonCode:"Property [search / advisory / negotiation / agency commission] fee — [Villa / Project] — Invoice [№]",
         commonHelp:"请在方括号内填写具体服务、别墅或项目名称以及发票号码，也可直接使用下方的现成选项。",
-        invoiceTitle:"发票中应加入的英文说明", invoiceText:"This invoice is for WEST EAST’s professional service fee only and does not include the purchase price, rent or security deposit payable to the developer or landlord.",
-        invoiceLocal:"本发票仅收取 WEST EAST 的专业服务费，不包括应直接支付给开发商或房东的购房款、租金或保证金。",
         avoidWest:"购买别墅、公寓或钥匙；房产全款；月租金；代第三方收取的保证金；加密货币兑换；代收代付；托管；税务优化；绕过银行；肉类、GPU或云服务。",
         faqTitle:"常见问题", faqSub:"付款前需要了解的简单说明。",
         faq:[
@@ -620,8 +614,6 @@
             <div class="chapter-title" style="margin-top:34px"><span class="chapter-no">B</span><div><h2>${esc(t.paletteTitle)}</h2><p>${esc(t.paletteSub)}</p></div></div>
             ${formula(t.common,t.commonCode)}<p class="note">${esc(t.commonHelp)}</p>
             <div class="details-stack">${groups}</div>
-            ${formula(t.invoiceTitle,t.invoiceText)}
-            <p class="note">${esc(t.invoiceLocal)}</p>
             <p class="note"><strong>${esc(t.dontTitle)}:</strong> ${esc(t.avoidWest)}</p>
           </section>
           <section class="chapter">${chapterTitle("03",t.faqTitle,t.faqSub)}<div class="details-stack">${faq}</div></section>
