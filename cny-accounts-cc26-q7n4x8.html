@@ -76,7 +76,7 @@
     .fact .v { margin-top:5px; color:var(--ink); font-weight:720; overflow-wrap:anywhere; }
     .fact .v a,.pack-item a { color:var(--ink); text-decoration-color:var(--gold); text-underline-offset:3px; }
     .fact .v a:hover,.pack-item a:hover { color:var(--gold); }
-    .route-grid,.accounts-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+    .route-grid,.accounts-grid { display:grid; grid-template-columns:1fr; gap:12px; max-width:520px; }
     .offer-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:13px; }
     .offer-card { position:relative; padding:21px 21px 19px; border:1px solid var(--line); border-radius:14px; background:#fff; break-inside:avoid; }
     .offer-card::before { content:""; position:absolute; left:0; top:18px; bottom:18px; width:3px; border-radius:0 3px 3px 0; background:linear-gradient(180deg,var(--gold-2),var(--gold)); }
@@ -180,7 +180,7 @@
       .chapter { margin-top:9mm; }
       .chapter-title { margin-bottom:4mm; }
       h2 { font-size:18pt; }
-      .route-grid,.accounts-grid { grid-template-columns:repeat(3,1fr); }
+      .route-grid,.accounts-grid { grid-template-columns:1fr; }
       .offer-grid { grid-template-columns:repeat(2,1fr); }
       .entity-strip { grid-template-columns:repeat(4,1fr); }
       .bank-grid { grid-template-columns:repeat(2,1fr); }
@@ -291,12 +291,10 @@
         labels:{jur:"Юрисдикция",reg:"Регистрация",address:"Юридический адрес",site:"Сайт",confirmed:"Подтверждено",notuse:"Не использовать",pending:"Ожидается",available:"Доступно"},
         wetFacts:["Гонконг","CR 76458883","SUITE C, LEVEL 7, WORLD TRUST TOWER, 50 STANLEY STREET, CENTRAL, HONG KONG","west-east.cloud/gpu-servers/cloud/"],
         wetRoutes:[
-          ["ok","Можно использовать","Юани международным банковским переводом (SWIFT)","Airwallex Global Account через Banking Circle S.A.; начало работы — 10 сентября 2026 года."],
-          ["wait","Пока недоступно","Местный перевод в Гонконге в юанях (FPS / ACH)","Отдельные реквизиты для такого перевода пока не выданы."],
-          ["no","Не для юаней","Счёт в канадских долларах (CAD)","Этот счёт принимает канадские доллары и не подходит для платежей в юанях."]
+          ["ok","Можно использовать","Юани международным банковским переводом (SWIFT)","Счёт Airwallex через Banking Circle S.A. Реквизиты ниже."]
         ],
         bankTitle:"Куда отправлять юани", bankSub:"Международный перевод (SWIFT) в офшорных юанях (CNH)",
-        bankKeys:["Получатель","Банк","Адрес банка","Код банка для перевода (BIC / SWIFT)","Номер счёта (IBAN)","Номер счёта","Код банка","Банк-посредник для юаней","Валюта","Начало работы"],
+        bankKeys:["Получатель","Банк","Адрес банка","Код банка для перевода (BIC / SWIFT)","Номер счёта (IBAN)","Номер счёта","Код банка","Банк-посредник для юаней","Валюта"],
         wetNote:"Это международный счёт для офшорных юаней (CNH), а не счёт в материковом Китае. В поле «Получатель» укажите без изменений: WET SOLUTIONS LIMITED.",
         master:"Общий шаблон назначения платежа", masterCode:"INV-[number] / [service] / WET SOLUTIONS LIMITED / west-east.cloud",
         formulaHelp:"Замените текст в квадратных скобках на фактический номер инвойса и название услуги. Ниже можно выбрать готовый вариант.",
@@ -320,15 +318,12 @@
         westFacts:["Singapore","UEN 202505772C","110 Robinson Road, #08-00, ERH Building, Singapore 068901","138/16 Laguna Village, Choeng Thale, Thalang, Phuket 83110, Thailand"],
         westFactKeys:["Юрисдикция","UEN","Юридический адрес","Операционный адрес"],
         activity:"Компания зарегистрирована для агентских и оценочных услуг в сфере недвижимости (код 68201), а также управленческих консультаций (код 70229).",
-        accountTitle:"Какой счёт подходит для каждой валюты", accountSub:"Для платежа в юанях используйте только подтверждённый счёт Equals Money",
+        accountTitle:"Куда отправлять юани", accountSub:"Международный счёт Equals Money для оплаты услуг WEST EAST",
         accounts:[
-          ["ok","Юани: доступно","Equals Money · международный счёт в юанях","Подходит для оплаты собственных услуг и комиссий WEST EAST в сфере недвижимости."],
-          ["wait","Юани: пока недоступно","Statrys Singapore · счёт в сингапурских долларах","Принимает сингапурские доллары (SGD). Реквизиты для юаней пока не подтверждены."],
-          ["no","Не для юаней","Statrys Hong Kong · счёт в гонконгских долларах","Принимает гонконгские доллары (HKD). Не выдавать его как счёт для юаней."],
-          ["no","Пока не использовать","Kraken Business","Pending / not a receiving account / do not use."]
+          ["ok","Можно использовать","Equals Money · международный счёт в юанях","Для оплаты услуг и комиссий WEST EAST по недвижимости."]
         ],
-        accountNames:["Equals Money — счёт для международного платежа в юанях","Statrys Singapore — счёт в сингапурских долларах (SGD)","Statrys Hong Kong — счёт в гонконгских долларах (HKD)"],
-        accountSubs:["Подтверждённые реквизиты для юаней","Для юаней пока не использовать","Не предназначен для юаней"],
+        accountNames:["Equals Money — счёт для международного платежа в юанях"],
+        accountSubs:["Подтверждённые реквизиты для юаней"],
         flowYes:"Что можно платить WEST EAST", flowYesText:"Вознаграждение компании за поиск, анализ, переговоры, сопровождение и другие услуги по недвижимости — по договору и инвойсу.",
         flowDirect:"Что оплачивается другому получателю", flowDirectText:"Стоимость покупки → застройщику или на эскроу-счёт. Аренда и депозит → владельцу объекта или на указанный им счёт.",
         paletteTitle:"Что написать при оплате услуг WEST EAST", paletteSub:"Выберите услугу, откройте карточку и скопируйте готовый текст назначения платежа.",
@@ -372,12 +367,10 @@
         labels:{jur:"Jurisdiction",reg:"Registration",address:"Registered office",site:"Website",confirmed:"Confirmed",notuse:"Do not use",pending:"Pending",available:"Available"},
         wetFacts:["Hong Kong","CR 76458883","SUITE C, LEVEL 7, WORLD TRUST TOWER, 50 STANLEY STREET, CENTRAL, HONG KONG","west-east.cloud/gpu-servers/cloud/"],
         wetRoutes:[
-          ["ok","Available","Chinese yuan by international bank transfer (SWIFT)","Airwallex Global Account through Banking Circle S.A.; commenced 10 September 2026."],
-          ["wait","Not available yet","Local yuan transfer in Hong Kong (FPS / ACH)","Separate account details for this type of transfer have not been issued yet."],
-          ["no","Not for yuan","Canadian dollar account (CAD)","This account receives Canadian dollars and cannot be used for yuan payments."]
+          ["ok","Available","Chinese yuan by international bank transfer (SWIFT)","Airwallex account through Banking Circle S.A. Details below."]
         ],
         bankTitle:"Where to send the yuan payment", bankSub:"International bank transfer (SWIFT) in offshore yuan (CNH)",
-        bankKeys:["Beneficiary","Bank","Bank address","Bank transfer code (BIC / SWIFT)","Account number (IBAN)","Account number","Bank code","Intermediary bank for yuan","Currency","Commencement"],
+        bankKeys:["Beneficiary","Bank","Bank address","Bank transfer code (BIC / SWIFT)","Account number (IBAN)","Account number","Bank code","Intermediary bank for yuan","Currency"],
         wetNote:"This account receives offshore yuan (CNH) by international bank transfer. It is not a Mainland China account. Enter the beneficiary exactly as: WET SOLUTIONS LIMITED.",
         master:"General payment-description template", masterCode:"INV-[number] / [service] / WET SOLUTIONS LIMITED / west-east.cloud",
         formulaHelp:"Replace the text in square brackets with the actual invoice number and service name. Ready-to-copy options are listed below.",
@@ -401,15 +394,12 @@
         westFacts:["Singapore","UEN 202505772C","110 Robinson Road, #08-00, ERH Building, Singapore 068901","138/16 Laguna Village, Choeng Thale, Thalang, Phuket 83110, Thailand"],
         westFactKeys:["Jurisdiction","UEN","Registered address","Operational address"],
         activity:"The company is registered for real-estate agency and valuation services (code 68201) and management consulting (code 70229).",
-        accountTitle:"Which account is used for each currency", accountSub:"For yuan payments, use only the confirmed Equals Money account",
+        accountTitle:"Where to send the yuan payment", accountSub:"Equals Money international account for WEST EAST service fees",
         accounts:[
-          ["ok","Yuan: available","Equals Money · international yuan account","For WEST EAST’s own property-service fees and commissions."],
-          ["wait","Yuan: not available yet","Statrys Singapore · Singapore dollar account","Receives Singapore dollars (SGD). Yuan receiving details have not been confirmed."],
-          ["no","Not for yuan","Statrys Hong Kong · Hong Kong dollar account","Receives Hong Kong dollars (HKD). Do not issue it as a yuan account."],
-          ["no","Do not use","Kraken Business","Pending / not a receiving account / do not use."]
+          ["ok","Available","Equals Money · international yuan account","For WEST EAST property-service fees and commissions."]
         ],
-        accountNames:["Equals Money — international yuan account","Statrys Singapore — Singapore dollar account (SGD)","Statrys Hong Kong — Hong Kong dollar account (HKD)"],
-        accountSubs:["Confirmed account details for yuan","Do not use for yuan yet","Not intended for yuan"],
+        accountNames:["Equals Money — international yuan account"],
+        accountSubs:["Confirmed account details for yuan"],
         flowYes:"What can be paid to WEST EAST", flowYesText:"The company’s fee for property search, analysis, negotiations, transaction support and other services stated in its contract and invoice.",
         flowDirect:"What is paid to another recipient", flowDirectText:"Property purchase price → developer or escrow account. Rent and deposit → property owner or the account designated by the owner.",
         paletteTitle:"What to write when paying WEST EAST", paletteSub:"Choose the service, open the card and copy the ready-made payment description.",
@@ -453,12 +443,10 @@
         labels:{jur:"注册地",reg:"注册编号",address:"注册地址",site:"网站",confirmed:"已确认",notuse:"请勿使用",pending:"待确认",available:"可用"},
         wetFacts:["中国香港特别行政区","CR 76458883","SUITE C, LEVEL 7, WORLD TRUST TOWER, 50 STANLEY STREET, CENTRAL, HONG KONG","west-east.cloud/gpu-servers/cloud/"],
         wetRoutes:[
-          ["ok","可以使用","通过国际银行汇款（SWIFT）收取人民币","Airwallex Global Account 经由 Banking Circle S.A.；2026年9月10日起启用。"],
-          ["wait","暂不可用","香港本地人民币转账（FPS / ACH）","目前尚未提供此类本地人民币收款信息。"],
-          ["no","不适用于人民币","加拿大元账户（CAD）","该账户仅收取加拿大元，不可用于人民币付款。"]
+          ["ok","可以使用","通过国际银行汇款（SWIFT）收取人民币","Airwallex 账户，经由 Banking Circle S.A.。收款信息见下方。"]
         ],
         bankTitle:"人民币应汇入哪个账户", bankSub:"通过国际银行汇款（SWIFT）汇入离岸人民币（CNH）",
-        bankKeys:["收款人","开户行","银行地址","银行汇款代码（BIC / SWIFT）","国际银行账号（IBAN）","账号","银行代码","人民币中间行","汇款币种","启用日期"],
+        bankKeys:["收款人","开户行","银行地址","银行汇款代码（BIC / SWIFT）","国际银行账号（IBAN）","账号","银行代码","人民币中间行","汇款币种"],
         wetNote:"该账户通过国际银行汇款收取离岸人民币（CNH），不是中国内地账户。收款人名称必须完整填写为：WET SOLUTIONS LIMITED。",
         master:"通用付款用途模板", masterCode:"INV-[number] / [service] / WET SOLUTIONS LIMITED / west-east.cloud",
         formulaHelp:"请将方括号内的文字替换为真实发票号码和服务名称。下方列有可直接复制的选项。",
@@ -482,15 +470,12 @@
         westFacts:["新加坡","UEN 202505772C","110 Robinson Road, #08-00, ERH Building, Singapore 068901","138/16 Laguna Village, Choeng Thale, Thalang, Phuket 83110, Thailand"],
         westFactKeys:["注册地","UEN","注册地址","运营地址"],
         activity:"公司登记的业务包括房地产代理及估值服务（代码 68201）和管理咨询（代码 70229）。",
-        accountTitle:"不同币种应使用哪个账户", accountSub:"人民币付款只使用已确认的 Equals Money 账户",
+        accountTitle:"人民币应汇入哪个账户", accountSub:"Equals Money 国际账户，用于支付 WEST EAST 服务费",
         accounts:[
-          ["ok","人民币：可用","Equals Money · 国际人民币账户","用于支付 WEST EAST 自身的房地产服务费和佣金。"],
-          ["wait","人民币：暂不可用","Statrys Singapore · 新加坡元账户","该账户收取新加坡元（SGD）。人民币收款信息尚未确认。"],
-          ["no","不适用于人民币","Statrys Hong Kong · 港币账户","该账户收取港币（HKD），不可作为人民币收款账户。"],
-          ["no","请勿使用","Kraken Business","Pending / not a receiving account / do not use."]
+          ["ok","可以使用","Equals Money · 国际人民币账户","用于支付 WEST EAST 的房地产服务费和佣金。"]
         ],
-        accountNames:["Equals Money — 国际人民币账户","Statrys Singapore — 新加坡元账户（SGD）","Statrys Hong Kong — 港币账户（HKD）"],
-        accountSubs:["已确认的人民币收款信息","暂勿用于人民币收款","不用于人民币收款"],
+        accountNames:["Equals Money — 国际人民币账户"],
+        accountSubs:["已确认的人民币收款信息"],
         flowYes:"哪些费用可以支付给 WEST EAST", flowYesText:"根据合同和发票支付给公司的房产搜寻、分析、谈判、交易协助及其他房地产服务费。",
         flowDirect:"哪些款项应直接支付给其他收款人", flowDirectText:"购房款 → 开发商或托管账户。租金和保证金 → 房东或房东指定的账户。",
         paletteTitle:"支付 WEST EAST 服务费时应填写什么", paletteSub:"请选择服务，打开对应栏目并复制现成的付款用途。",
@@ -514,23 +499,13 @@
     };
     const BANK_VALUES = [
       "WET SOLUTIONS LIMITED","Banking Circle S.A.","Amerika Plads 38, 2100 Copenhagen, Denmark",
-      "SXPYDKKK","DK2089000048562347","0048562347","8900","Citibank N.A. · BIC CITIGB2L","CNY","10 September 2026"
+      "SXPYDKKK","DK2089000048562347","0048562347","8900","Citibank N.A. · BIC CITIGB2L","CNY"
     ];
     const WEST_BANKS = [
       [
         ["Account name","WEST EAST TRADE GROUP PTE. LTD."],["BIC","SPPVGB2LXXX"],
         ["IBAN","GB80 SPPV 2318 8472 0761 87"],["Bank","Equals Money UK"],
         ["Bank address","Vintners Place, 68 Upper Thames St, London EC4V 3BJ"]
-      ],
-      [
-        ["Account name","WEST EAST TRADE GROUP PTE LTD"],["Account","885571595796"],
-        ["SWIFT","DBSSSGSG"],["Bank code","7171"],["Bank","DBS Bank Ltd"],
-        ["Bank address","12 Marina Boulevard, MBFC Tower 3, Singapore 018982"]
-      ],
-      [
-        ["Account name","WEST EAST TRADE GROUP PTE LTD"],["Account","478798116632"],
-        ["SWIFT","DHBKHKHH"],["Bank code","016"],["Bank","DBS Bank (Hong Kong) Ltd"],
-        ["Bank address","11/F The Center, 99 Queen’s Road Central, Central, HK"]
       ]
     ];
     const BANK_LABELS = {
