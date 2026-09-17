@@ -77,6 +77,16 @@
     .fact .v a,.pack-item a { color:var(--ink); text-decoration-color:var(--gold); text-underline-offset:3px; }
     .fact .v a:hover,.pack-item a:hover { color:var(--gold); }
     .route-grid,.accounts-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+    .offer-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:13px; }
+    .offer-card { position:relative; padding:21px 21px 19px; border:1px solid var(--line); border-radius:14px; background:#fff; break-inside:avoid; }
+    .offer-card::before { content:""; position:absolute; left:0; top:18px; bottom:18px; width:3px; border-radius:0 3px 3px 0; background:linear-gradient(180deg,var(--gold-2),var(--gold)); }
+    .offer-card h3 { padding-left:5px; }
+    .offer-card p { margin:8px 0 0; padding-left:5px; color:var(--body); font-size:13px; }
+    .offer-card ul { margin:13px 0 0; padding:0; list-style:none; display:grid; gap:7px; }
+    .offer-card li { position:relative; padding-left:19px; color:var(--body); font-size:13px; }
+    .offer-card li::before { content:"✓"; position:absolute; left:1px; color:var(--gold); font-weight:900; }
+    .offer-card .recipient { margin-top:15px; padding:9px 11px; border-radius:9px; background:var(--navy); color:#fff; font-size:12px; }
+    .offer-card .recipient b { color:var(--gold-2); }
     .route,.account { border:1px solid var(--line); border-radius:13px; padding:18px; background:#fff; break-inside:avoid; }
     .route.ok,.account.ok { border-top:4px solid var(--green); background:linear-gradient(180deg,var(--green-pale),#fff 34%); }
     .route.wait,.account.wait { border-top:4px solid var(--amber); background:linear-gradient(180deg,var(--amber-pale),#fff 34%); }
@@ -134,7 +144,7 @@
     .footer-grid p { margin:0; max-width:78ch; }
     .page-ref { white-space:nowrap; text-align:right; color:#8591a5; }
     @media (max-width:900px) {
-      .intro,.route-grid,.accounts-grid { grid-template-columns:1fr; }
+      .intro,.offer-grid,.route-grid,.accounts-grid { grid-template-columns:1fr; }
       .entity-strip { grid-template-columns:repeat(2,1fr); }
       .bank-grid { grid-template-columns:1fr; }
       .bank-row:nth-child(odd) { border-right:0; }
@@ -168,6 +178,7 @@
       .chapter-title { margin-bottom:4mm; }
       h2 { font-size:18pt; }
       .route-grid,.accounts-grid { grid-template-columns:repeat(3,1fr); }
+      .offer-grid { grid-template-columns:repeat(2,1fr); }
       .entity-strip { grid-template-columns:repeat(4,1fr); }
       .bank-grid { grid-template-columns:repeat(2,1fr); }
       .pack { grid-template-columns:repeat(3,1fr); }
@@ -184,7 +195,7 @@
       .formula { padding:12px 15px; }
       .pack-item { min-height:0; padding:38px 12px 10px; }
       footer { margin:9mm -10mm -13mm; padding:8mm 10mm; print-color-adjust:exact; -webkit-print-color-adjust:exact; }
-      .route,.account,.bankbox,.formula,.pack-item,.flow-split,.purpose { break-inside:avoid; page-break-inside:avoid; }
+      .offer-card,.route,.account,.bankbox,.formula,.pack-item,.flow-split,.purpose { break-inside:avoid; page-break-inside:avoid; }
     }
   </style>
 </head>
@@ -269,7 +280,18 @@
         tri:"CNY Collection Accounts & Payment Purposes · 人民币收款账户与付款用途",
         badges:["Две компании-получателя","Проверенные банковские реквизиты","Готовые тексты для назначения платежа"],
         intro:"Здесь собраны счета двух компаний и готовые тексты для назначения платежа. Найдите реальную услугу или товар в списке, скопируйте подходящий текст и укажите номер инвойса (счёта). Перед отправкой мы ещё раз подтверждаем реквизиты.",
-        quick:"Как быстро выбрать компанию", quickText:"Облачные услуги, вычислительные мощности и IT-оборудование → WET SOLUTIONS LIMITED. Услуги по недвижимости → WEST EAST TRADE GROUP PTE. LTD. Стоимость объекта, аренда и депозит оплачиваются напрямую застройщику или владельцу.",
+        quick:"Как пользоваться справочником", quickText:"1. Выберите подходящую услугу ниже. 2. Посмотрите, какая компания её оказывает. 3. Скопируйте готовое назначение платежа. 4. Получите подтверждённые реквизиты.",
+        menuTitle:"За какие услуги можно отправить платёж", menuSub:"Выберите вариант, который соответствует реальной задаче клиента.",
+        menuRecipient:"Платёж получает",
+        menuGroups:[
+          ["Аренда вычислительных мощностей","Для искусственного интеллекта, обработки данных, рендеринга и других ресурсоёмких задач.",["GPU: H100, H200, A100, L40S и RTX","Выделенные CPU-серверы и bare-metal","Резерв GPU-мощностей по годовому договору","Дополнительные мощности по действующему договору"],"WET SOLUTIONS LIMITED"],
+          ["Облачная инфраструктура и защита","Для размещения сайтов, приложений, данных и защиты интернет-проектов.",["Облачные серверы и VPS","Доставка контента через CDN","Защита от DDoS-атак, WAF и антибот","DNS, Kubernetes и объектное хранилище"],"WET SOLUTIONS LIMITED"],
+          ["Покупка IT-оборудования","Для компаний, которым нужны собственные серверы или готовая инфраструктура.",["GPU-серверы H100 / H200","Рабочие станции, например 2 × RTX 4090","AI-серверы для обучения моделей","Готовые серверные стойки и кластеры"],"WET SOLUTIONS LIMITED"],
+          ["Аналитика рынка недвижимости","Можно заказать отдельное исследование до поиска или покупки объекта.",["Анализ рынка покупки или аренды","Пхукет, Бангкок, Гонконг или другой согласованный город","Подбор короткого списка подходящих объектов","Расчёт доходности и инвестиционный меморандум"],"WEST EAST TRADE GROUP PTE. LTD."],
+          ["Поиск объекта и сопровождение сделки","Для жилой или коммерческой недвижимости — от первого запроса до подписания документов.",["Поиск виллы, квартиры, офиса или коммерческого помещения","Организация просмотров и сравнение вариантов","Переговоры по цене и условиям","Проверка объекта, координация договора, покупка или аренда"],"WEST EAST TRADE GROUP PTE. LTD."],
+          ["Дополнительные услуги по недвижимости","Отдельные задачи, которые можно включить в договор или заказать дополнительно.",["Помощь с переездом и заселением","Перевод и сопровождение поездки","Консультация по интерьеру и ремонту","Повторный подбор или ежемесячное сопровождение"],"WEST EAST TRADE GROUP PTE. LTD."]
+        ],
+        menuNote:"После выбора услуги используйте соответствующее назначение платежа из раздела нужной компании. Название услуги, город, объект и номер инвойса можно заменить на данные конкретного заказа.",
         chapter1:"WET SOLUTIONS LIMITED", chapter1sub:"Гонконг · облачные услуги, вычислительные мощности, защита сайтов и IT-оборудование",
         labels:{jur:"Юрисдикция",reg:"Регистрация",address:"Юридический адрес",site:"Сайт",confirmed:"Подтверждено",notuse:"Не использовать",pending:"Ожидается",available:"Доступно"},
         wetFacts:["Гонконг","CR 76458883","SUITE C, LEVEL 7, WORLD TRUST TOWER, 50 STANLEY STREET, CENTRAL, HONG KONG","west-east.cloud/gpu-servers/cloud/"],
@@ -340,7 +362,18 @@
         tri:"Приём CNY: счета и назначения · 人民币收款账户与付款用途",
         badges:["Two receiving companies","Verified bank details","Ready-to-copy payment descriptions"],
         intro:"This guide lists the accounts of two companies and provides ready-to-copy payment descriptions. Find the actual service or product, copy the matching text and add the invoice number. We reconfirm the account details before payment.",
-        quick:"How to choose the receiving company", quickText:"Cloud services, computing capacity and IT hardware → WET SOLUTIONS LIMITED. Property-related services → WEST EAST TRADE GROUP PTE. LTD. The property price, rent and deposit are paid directly to the developer or owner.",
+        quick:"How to use this guide", quickText:"1. Choose the service that fits. 2. Check which company provides it. 3. Copy the ready-made payment description. 4. Request the confirmed account details.",
+        menuTitle:"Which services can be paid for", menuSub:"Choose the option that matches the client’s actual task.",
+        menuRecipient:"Payment recipient",
+        menuGroups:[
+          ["Computing-capacity rental","For artificial intelligence, data processing, rendering and other resource-intensive work.",["GPU capacity: H100, H200, A100, L40S and RTX","Dedicated CPU and bare-metal servers","Reserved GPU capacity under a yearly contract","Additional capacity under an existing contract"],"WET SOLUTIONS LIMITED"],
+          ["Cloud infrastructure and protection","For hosting websites, applications and data, and protecting online projects.",["Cloud servers and virtual private servers (VPS)","Content delivery network (CDN)","Protection from DDoS attacks, web firewall (WAF) and bots","Domain-name service (DNS), Kubernetes and object storage"],"WET SOLUTIONS LIMITED"],
+          ["IT hardware purchase","For companies that need their own servers or ready-to-use infrastructure.",["H100 / H200 GPU servers","Workstations, for example 2 × RTX 4090","AI servers for model training","Turnkey server racks and clusters"],"WET SOLUTIONS LIMITED"],
+          ["Property market analysis","A standalone report can be ordered before searching for or purchasing a property.",["Purchase or rental market analysis","Phuket, Bangkok, Hong Kong or another agreed city","A shortlist of suitable properties","Rental-yield analysis and investment memo"],"WEST EAST TRADE GROUP PTE. LTD."],
+          ["Property search and transaction support","For residential or commercial property, from the first request to signed documents.",["Search for a villa, apartment, office or commercial space","Viewings and comparison of options","Price and contract negotiations","Property review, contract coordination, purchase or lease support"],"WEST EAST TRADE GROUP PTE. LTD."],
+          ["Additional property services","Separate tasks that can be included in the agreement or ordered as needed.",["Relocation and move-in support","Translation and hosted property visits","Interior and fit-out advice","A second shortlist or monthly support"],"WEST EAST TRADE GROUP PTE. LTD."]
+        ],
+        menuNote:"After choosing the service, use the matching payment description in the relevant company section. Replace the service, city, property and invoice number with the details of the actual order.",
         chapter1:"WET SOLUTIONS LIMITED", chapter1sub:"Hong Kong · cloud services, computing capacity, website protection and IT hardware",
         labels:{jur:"Jurisdiction",reg:"Registration",address:"Registered office",site:"Website",confirmed:"Confirmed",notuse:"Do not use",pending:"Pending",available:"Available"},
         wetFacts:["Hong Kong","CR 76458883","SUITE C, LEVEL 7, WORLD TRUST TOWER, 50 STANLEY STREET, CENTRAL, HONG KONG","west-east.cloud/gpu-servers/cloud/"],
@@ -411,7 +444,18 @@
         tri:"CNY Collection Accounts & Payment Purposes · Приём CNY: счета и назначения",
         badges:["两个收款公司","已核实的银行信息","可直接复制的付款用途"],
         intro:"本指南列出两个公司的收款账户，并提供可直接复制的付款用途。请选择实际购买的服务或商品，复制对应文字，并填写发票号码。每次付款前，我们都会再次确认收款信息。",
-        quick:"如何快速选择收款公司", quickText:"云服务、算力及IT硬件 → WET SOLUTIONS LIMITED。房地产相关服务 → WEST EAST TRADE GROUP PTE. LTD.。购房款、租金和保证金直接支付给开发商或房东。",
+        quick:"如何使用本指南", quickText:"1. 选择适合的服务。2. 查看由哪家公司提供。3. 复制现成的付款用途。4. 获取再次确认的收款信息。",
+        menuTitle:"可以为哪些服务付款", menuSub:"请选择与客户实际需求相符的服务。",
+        menuRecipient:"收款公司",
+        menuGroups:[
+          ["租用计算资源","适用于人工智能、数据处理、渲染及其他需要大量计算资源的工作。",["GPU算力：H100、H200、A100、L40S及RTX","独立CPU服务器及裸金属服务器","年度合同项下预留GPU算力","现有合同项下增加计算资源"],"WET SOLUTIONS LIMITED"],
+          ["云基础设施及安全防护","适用于网站、应用和数据托管，以及互联网项目安全防护。",["云服务器及虚拟专用服务器（VPS）","内容分发网络（CDN）","DDoS攻击防护、网站防火墙（WAF）及机器人防护","域名解析（DNS）、Kubernetes及对象存储"],"WET SOLUTIONS LIMITED"],
+          ["购买IT硬件","适用于需要自有服务器或完整基础设施的公司。",["H100 / H200 GPU服务器","工作站，例如 2 × RTX 4090","用于模型训练的AI服务器","整机柜服务器及集群"],"WET SOLUTIONS LIMITED"],
+          ["房地产市场分析","可在寻找或购买房产前单独委托市场研究。",["购房或租赁市场分析","普吉岛、曼谷、香港或其他约定城市","筛选符合条件的房产清单","租金收益分析及投资备忘录"],"WEST EAST TRADE GROUP PTE. LTD."],
+          ["房产搜寻及交易协助","适用于住宅或商业地产，从提出需求到签署文件。",["寻找别墅、公寓、办公室或商业场所","安排看房及比较不同方案","就价格及合同条件进行谈判","房产审核、合同协调、购房或租赁协助"],"WEST EAST TRADE GROUP PTE. LTD."],
+          ["其他房地产服务","可写入合同或按需要单独委托的服务。",["搬迁及入住协助","翻译及陪同看房","室内设计及装修咨询","再次筛选房源或月度顾问服务"],"WEST EAST TRADE GROUP PTE. LTD."]
+        ],
+        menuNote:"选择服务后，请在对应公司章节中使用相应的付款用途，并将服务名称、城市、房产和发票号码替换为实际订单信息。",
         chapter1:"WET SOLUTIONS LIMITED", chapter1sub:"中国香港 · 云服务、算力、网站安全及IT硬件",
         labels:{jur:"注册地",reg:"注册编号",address:"注册地址",site:"网站",confirmed:"已确认",notuse:"请勿使用",pending:"待确认",available:"可用"},
         wetFacts:["中国香港特别行政区","CR 76458883","SUITE C, LEVEL 7, WORLD TRUST TOWER, 50 STANLEY STREET, CENTRAL, HONG KONG","west-east.cloud/gpu-servers/cloud/"],
@@ -538,6 +582,7 @@
     };
     const details = (summary,body,klass="") => `<details class="${klass}"><summary>${esc(summary)}</summary>${body}</details>`;
     const chapterTitle = (n,title,sub) => `<header class="chapter-title"><span class="chapter-no">${n}</span><div><h2>${esc(title)}</h2><p>${esc(sub)}</p></div></header>`;
+    const offerMenu = t => `<div class="offer-grid">${t.menuGroups.map(x=>`<article class="offer-card"><h3>${esc(x[0])}</h3><p>${esc(x[1])}</p><ul>${x[2].map(item=>`<li>${esc(item)}</li>`).join("")}</ul><div class="recipient">${esc(t.menuRecipient)}: <b>${esc(x[3])}</b></div></article>`).join("")}</div>`;
     function makePage(t){
       const wetFactKeys=[t.labels.jur,t.labels.reg,t.labels.address,t.labels.site];
       const westAccounts=WEST_BANKS.map((rows,i)=>bankBox(t.accountNames[i],t.accountSubs[i],rows.map(x=>BANK_LABELS[t.lang][x[0]]||x[0]),rows.map(x=>x[1]))).join("");
@@ -550,6 +595,7 @@
         </header>
         <main>
           <section class="intro"><div class="lead-card"><p>${esc(t.intro)}</p></div><div class="status-card"><h3>${esc(t.quick)}</h3><p>${esc(t.quickText)}</p></div></section>
+          <section class="chapter" style="margin-top:0">${chapterTitle("→",t.menuTitle,t.menuSub)}${offerMenu(t)}<p class="note">${esc(t.menuNote)}</p></section>
           <section class="chapter">${chapterTitle("01",t.chapter1,t.chapter1sub)}
             <div class="entity-strip">${facts(wetFactKeys,t.wetFacts)}</div>
             <div class="route-grid">${routes(t.wetRoutes)}</div>
