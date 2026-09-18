@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+  <meta name="googlebot" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+  <meta name="yandex" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+  <meta name="yandexbot" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+  <meta name="bingbot" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+  <meta name="referrer" content="no-referrer">
+  <title>Charter Capital · Crypto Exchange Rules</title>
+  <style>
+    :root {
+      --navy:#08101f; --navy-2:#0e1b31; --ink:#142033; --body:#41506a; --muted:#6d788b;
+      --gold:#a9854e; --gold-2:#cfac70; --gold-pale:#f5ead6; --paper:#fff; --wash:#f5f7fa;
+      --line:#dfe5ed; --green:#15765a; --green-pale:#e9f6f0; --amber:#93681d; --amber-pale:#fff7e7;
+      --shadow:0 18px 60px rgba(7,15,29,.15);
+      --font:"Helvetica Neue","Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+    }
+    * { box-sizing:border-box; }
+    html { background:#dfe3e9; }
+    body { margin:0; color:var(--ink); font-family:var(--font); font-size:16px; line-height:1.55; }
+    button { font:inherit; }
+    .switchbar {
+      position:sticky; top:0; z-index:30; display:flex; align-items:center; justify-content:center; gap:4px;
+      min-height:52px; padding:8px 16px; background:rgba(8,16,31,.96); border-bottom:1px solid rgba(207,172,112,.4);
+    }
+    .lang-btn {
+      min-width:66px; min-height:34px; padding:6px 15px; border:1px solid rgba(255,255,255,.22); border-radius:999px;
+      color:#fff; background:transparent; cursor:pointer;
+    }
+    .lang-btn[aria-pressed="true"] { color:var(--navy); background:var(--gold-2); border-color:var(--gold-2); font-weight:800; }
+    .page { display:none; width:min(920px,calc(100% - 32px)); margin:28px auto 56px; background:var(--paper); box-shadow:var(--shadow); }
+    body[data-lang="ru"] .lang-ru, body[data-lang="en"] .lang-en { display:block; }
+    .masthead {
+      position:relative; overflow:hidden; padding:48px clamp(24px,5vw,64px) 40px; color:#fff;
+      background:linear-gradient(135deg,var(--navy),#0b1930 68%,#132442);
+    }
+    .masthead::before { content:""; position:absolute; inset:0; background:radial-gradient(circle at 86% 16%,rgba(207,172,112,.26),transparent 36%); }
+    .masthead::after { content:""; position:absolute; left:0; right:0; bottom:0; height:4px; background:linear-gradient(90deg,var(--gold),var(--gold-2),transparent 72%); }
+    .mh-top { position:relative; display:flex; justify-content:space-between; gap:24px; }
+    .brand { font-weight:850; text-transform:uppercase; letter-spacing:.2em; font-size:18px; }
+    .brand-sub { margin-top:6px; color:#d8bd8d; font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; }
+    .confidential { text-align:right; color:#efd8ae; font-size:11px; font-weight:750; letter-spacing:.11em; text-transform:uppercase; line-height:1.7; }
+    .hero { position:relative; margin-top:40px; }
+    .eyebrow { margin:0 0 10px; color:var(--gold-2); font-size:12px; font-weight:800; letter-spacing:.16em; text-transform:uppercase; }
+    h1 { margin:0; font-size:clamp(34px,5vw,54px); line-height:1.08; letter-spacing:-.035em; font-weight:350; }
+    h1 strong { font-weight:790; }
+    .lead { margin:18px 0 0; max-width:62ch; color:rgba(255,255,255,.76); font-size:17px; }
+    main { padding:clamp(28px,5vw,52px) clamp(20px,5vw,64px) 12px; }
+    .address { margin:0 0 28px; padding:22px 24px; border:1px solid var(--line); border-left:4px solid var(--gold); border-radius:14px; background:var(--wash); color:var(--body); }
+    .grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .card { position:relative; padding:26px 24px 24px; border:1px solid var(--line); border-radius:16px; background:#fff; }
+    .card.ok { background:linear-gradient(180deg,var(--green-pale),#fff 42%); border-top:4px solid var(--green); }
+    .card.wait { background:linear-gradient(180deg,var(--amber-pale),#fff 42%); border-top:4px solid var(--amber); }
+    .flag { display:inline-block; margin-bottom:12px; padding:4px 9px; border-radius:999px; font-size:11px; font-weight:850; letter-spacing:.08em; text-transform:uppercase; }
+    .ok .flag { color:var(--green); background:#d8efe5; }
+    .wait .flag { color:var(--amber); background:#f8e9bf; }
+    .when { margin:0 0 6px; color:var(--gold); font-size:13px; font-weight:800; letter-spacing:.04em; }
+    h2 { margin:0; font-size:28px; letter-spacing:-.03em; }
+    .card p { margin:12px 0 0; color:var(--body); }
+    .clock { margin-top:18px; padding:14px 16px; border-radius:12px; background:var(--navy); color:#fff; font-weight:750; }
+    .clock b { color:var(--gold-2); }
+    .note { margin:22px 0 0; color:var(--muted); font-size:14px; }
+    footer { margin-top:40px; padding:22px clamp(20px,5vw,64px) 26px; background:var(--navy); color:#bcc5d4; font-size:12px; }
+    footer strong { color:var(--gold-2); }
+    @media (max-width:760px) {
+      .page { width:100%; margin:0; box-shadow:none; }
+      .mh-top { flex-direction:column; }
+      .confidential { text-align:left; }
+      .grid { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body data-lang="ru">
+  <nav class="switchbar" aria-label="Language">
+    <button class="lang-btn" type="button" data-set-lang="ru" aria-pressed="true">RU</button>
+    <button class="lang-btn" type="button" data-set-lang="en" aria-pressed="false">EN</button>
+  </nav>
+
+  <article class="page lang-ru">
+    <header class="masthead">
+      <div class="mh-top">
+        <div>
+          <div class="brand">Charter Capital</div>
+          <div class="brand-sub">Crypto Exchange</div>
+        </div>
+        <div class="confidential">Конфиденциально<br>Документ по прямой ссылке<br>18 сентября 2026</div>
+      </div>
+      <div class="hero">
+        <p class="eyebrow">Правила исполнения</p>
+        <h1>Rules <strong>Crypto Change</strong></h1>
+        <p class="lead">Уважаемые клиенты, пользующиеся услугами Charter Capital Crypto Exchange. Просим принять к сведению следующие правила.</p>
+      </div>
+    </header>
+    <main>
+      <p class="address">Речь о платеже, который вы отправляете нам, чтобы получить криптовалюту. Срок выдачи считается по московскому времени.</p>
+      <div class="grid">
+        <section class="card ok">
+          <span class="flag">T+0 · день в день</span>
+          <p class="when">Платёж до 12:00 МСК</p>
+          <h2>Выдача в день отправки</h2>
+          <p>Чтобы получить криптовалюту в тот же день, отправьте платёж <b>до 12:00 по московскому времени</b>.</p>
+          <div class="clock">Окно дня: <b>до 12:00 МСК</b></div>
+        </section>
+        <section class="card wait">
+          <span class="flag">T+1 · следующий день</span>
+          <p class="when">Платёж после 12:00 МСК</p>
+          <h2>Выдача на следующий день</h2>
+          <p>Платежи, отправленные <b>после 12:00 по московскому времени</b>, выдаются на следующий рабочий день: T+1.</p>
+          <div class="clock">После отсечки: <b>T+1</b></div>
+        </section>
+      </div>
+      <p class="note">Правило действует для клиентов Charter Capital Crypto Exchange. Перед каждым платежом реквизиты подтверждаются отдельно.</p>
+    </main>
+    <footer><strong>Конфиденциально.</strong> Страница доступна только по прямой ссылке и не является публичной офертой.</footer>
+  </article>
+
+  <article class="page lang-en">
+    <header class="masthead">
+      <div class="mh-top">
+        <div>
+          <div class="brand">Charter Capital</div>
+          <div class="brand-sub">Crypto Exchange</div>
+        </div>
+        <div class="confidential">Confidential<br>Direct-link document<br>18 September 2026</div>
+      </div>
+      <div class="hero">
+        <p class="eyebrow">Settlement rules</p>
+        <h1>Rules <strong>Crypto Change</strong></h1>
+        <p class="lead">Dear clients using Charter Capital Crypto Exchange services. Please take note of the following rules.</p>
+      </div>
+    </header>
+    <main>
+      <p class="address">This applies to the payment you send us in order to receive cryptocurrency. Settlement timing is calculated in Moscow time.</p>
+      <div class="grid">
+        <section class="card ok">
+          <span class="flag">T+0 · same day</span>
+          <p class="when">Payment before 12:00 MSK</p>
+          <h2>Issued on the same day</h2>
+          <p>To receive cryptocurrency on the same day, send the payment <b>before 12:00 Moscow time</b>.</p>
+          <div class="clock">Same-day window: <b>before 12:00 MSK</b></div>
+        </section>
+        <section class="card wait">
+          <span class="flag">T+1 · next day</span>
+          <p class="when">Payment after 12:00 MSK</p>
+          <h2>Issued the next day</h2>
+          <p>Payments sent <b>after 12:00 Moscow time</b> are issued on the next business day: T+1.</p>
+          <div class="clock">After cut-off: <b>T+1</b></div>
+        </section>
+      </div>
+      <p class="note">These rules apply to Charter Capital Crypto Exchange clients. Account details are reconfirmed before each payment.</p>
+    </main>
+    <footer><strong>Confidential.</strong> Available by direct link only. Not a public offer.</footer>
+  </article>
+
+  <script>
+    (function(){
+      const valid=["ru","en"];
+      function setLang(lang){
+        if(!valid.includes(lang)) lang="ru";
+        document.body.dataset.lang=lang;
+        document.documentElement.lang=lang;
+        document.querySelectorAll("[data-set-lang]").forEach(b=>b.setAttribute("aria-pressed", String(b.dataset.setLang===lang)));
+        try{ localStorage.setItem("cc-rules-crypto-lang", lang); }catch(e){}
+      }
+      document.querySelectorAll("[data-set-lang]").forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.setLang)));
+      const saved=(()=>{ try{ return localStorage.getItem("cc-rules-crypto-lang"); }catch(e){ return null; }})();
+      setLang(saved||"ru");
+    })();
+  </script>
+</body>
+</html>
