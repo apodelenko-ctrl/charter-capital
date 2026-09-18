@@ -64,14 +64,9 @@
     .card { position:relative; padding:26px 24px 24px; border:1px solid var(--line); border-radius:16px; background:#fff; }
     .card.ok { background:linear-gradient(180deg,var(--green-pale),#fff 42%); border-top:4px solid var(--green); }
     .card.wait { background:linear-gradient(180deg,var(--amber-pale),#fff 42%); border-top:4px solid var(--amber); }
-    .card.best { background:linear-gradient(180deg,#f6efe1,#fff 42%); border-top:4px solid var(--gold); }
-    .card.book { background:linear-gradient(180deg,#eef2f7,#fff 42%); border-top:4px solid #4a5a73; }
     .flag { display:inline-block; margin-bottom:12px; padding:4px 9px; border-radius:999px; font-size:11px; font-weight:850; letter-spacing:.08em; text-transform:uppercase; }
     .ok .flag { color:var(--green); background:#d8efe5; }
     .wait .flag { color:var(--amber); background:#f8e9bf; }
-    .best .flag { color:#7a5d2e; background:#f0e4c8; }
-    .book .flag { color:#3d4d66; background:#dfe6ef; }
-    .section-kicker { margin:36px 0 16px; color:var(--gold); font-size:12px; font-weight:850; letter-spacing:.14em; text-transform:uppercase; }
     .when { margin:0 0 6px; color:var(--gold); font-size:13px; font-weight:800; letter-spacing:.04em; }
     h2 { margin:0; font-size:28px; letter-spacing:-.03em; }
     .card p { margin:12px 0 0; color:var(--body); }
@@ -167,27 +162,10 @@
           <div class="clock">После отсечки: <b>T+1</b></div>
         </section>
       </div>
-      <p class="section-kicker">Курс</p>
-      <p class="address">Charter Capital выкупает объём цифровых активов на оптовых OTC-биржах. Просим принять к сведению правило курса.</p>
-      <div class="grid">
-        <section class="card best">
-          <span class="flag">от 20 000 USD</span>
-          <p class="when">Крупный объём</p>
-          <h2>Лучший доступный рынок</h2>
-          <p>При объёме обмена <b>от 20 000 долларов США</b> курс предоставляется по лучшему доступному рынку.</p>
-          <div class="clock">Курс: <b>лучший на рынке</b></div>
-        </section>
-        <section class="card book">
-          <span class="flag">менее 20 000 USD</span>
-          <p class="when">Текущий стакан</p>
-          <h2>Курс стакана</h2>
-          <p>При объёме обмена <b>менее 20 000 долларов США</b> курс формируется по текущему стакану — рабочий, но не оптовый.</p>
-          <div class="clock">Курс: <b>текущий стакан</b></div>
-        </section>
-      </div>
       <aside class="disclaimer">
-        <p class="disclaimer-kicker">Дисклеймер</p>
-        <p>Компания Charter Capital выкупает объём цифровых активов на оптовых OTC-биржах. В связи с этим выдача в день отправки возможна только если платёж ушёл <b>до 12:00 по московскому времени</b>: после этой отсечки объём закупается на следующей сессии и выдаётся T+1. Курс от 20 000 долларов США — лучший доступный рынок; ниже этого объёма — текущий стакан.</p>
+        <p>Charter Capital выкупает объём цифровых активов на оптовых OTC-биржах. Просим принять к сведению:</p>
+        <p>При объёме обмена от 20&nbsp;000 долларов США курс предоставляется по лучшему доступному рынку. При объёме обмена менее 20&nbsp;000 долларов США курс формируется по текущему стакану.</p>
+        <p>Выдача в день отправки возможна только если платёж ушёл до 12:00 по московскому времени. Платежи, отправленные после 12:00 МСК, исполняются T+1.</p>
       </aside>
       <p class="note">Правило действует для клиентов Charter Capital Crypto Exchange. Перед каждым платежом реквизиты подтверждаются отдельно.</p>
     </main>
@@ -261,27 +239,10 @@
           <div class="clock">After cut-off: <b>T+1</b></div>
         </section>
       </div>
-      <p class="section-kicker">Rate</p>
-      <p class="address">Charter Capital purchases digital-asset volume on wholesale OTC exchanges. Please take note of the rate rule.</p>
-      <div class="grid">
-        <section class="card best">
-          <span class="flag">from USD 20,000</span>
-          <p class="when">Large volume</p>
-          <h2>Best available market</h2>
-          <p>For exchange volume of <b>USD 20,000 or more</b>, the rate is the best available market rate.</p>
-          <div class="clock">Rate: <b>best in the market</b></div>
-        </section>
-        <section class="card book">
-          <span class="flag">under USD 20,000</span>
-          <p class="when">Current book</p>
-          <h2>Order-book rate</h2>
-          <p>For exchange volume <b>under USD 20,000</b>, the rate is taken from the current order book — a working rate, not the wholesale print.</p>
-          <div class="clock">Rate: <b>current book</b></div>
-        </section>
-      </div>
       <aside class="disclaimer">
-        <p class="disclaimer-kicker">Disclaimer</p>
-        <p>Charter Capital purchases digital-asset volume on wholesale OTC exchanges. Same-day release is therefore possible only if the payment is sent <b>before 12:00 Moscow time</b>: after that cut-off the volume is bought in the next session and issued T+1. From USD 20,000 the rate is the best available market; below that volume it follows the current order book.</p>
+        <p>Charter Capital purchases digital-asset volume on wholesale OTC exchanges. Please take note of the following:</p>
+        <p>For exchange volume of USD 20,000 or more, the rate is the best available market rate. For volume under USD 20,000, the rate is taken from the current order book.</p>
+        <p>Same-day release is possible only if the payment is sent before 12:00 Moscow time. Payments sent after 12:00 MSK are executed T+1.</p>
       </aside>
       <p class="note">These rules apply to Charter Capital Crypto Exchange clients. Account details are reconfirmed before each payment.</p>
     </main>
