@@ -10,6 +10,8 @@
   <meta name="bingbot" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
   <meta name="referrer" content="no-referrer">
   <title>Charter Capital · Crypto Exchange Rules</title>
+  <link rel="preload" as="image" href="assets/rules/moscow-night-hero.webp" fetchpriority="high" media="(min-width: 761px)">
+  <link rel="preload" as="image" href="assets/rules/moscow-night-hero-800w.webp" fetchpriority="high" media="(max-width: 760px)">
   <style>
     :root {
       --navy:#08101f; --navy-2:#0e1b31; --ink:#142033; --body:#41506a; --muted:#6d788b;
@@ -22,6 +24,7 @@
     html { background:#dfe3e9; }
     body { margin:0; color:var(--ink); font-family:var(--font); font-size:16px; line-height:1.55; }
     button { font:inherit; }
+    a { color:inherit; }
     .switchbar {
       position:sticky; top:0; z-index:30; display:flex; align-items:center; justify-content:center; gap:4px;
       min-height:52px; padding:8px 16px; background:rgba(8,16,31,.96); border-bottom:1px solid rgba(207,172,112,.4);
@@ -31,23 +34,30 @@
       color:#fff; background:transparent; cursor:pointer;
     }
     .lang-btn[aria-pressed="true"] { color:var(--navy); background:var(--gold-2); border-color:var(--gold-2); font-weight:800; }
-    .page { display:none; width:min(920px,calc(100% - 32px)); margin:28px auto 56px; background:var(--paper); box-shadow:var(--shadow); }
+    .page { display:none; width:min(1080px,calc(100% - 32px)); margin:28px auto 56px; background:var(--paper); box-shadow:var(--shadow); }
     body[data-lang="ru"] .lang-ru, body[data-lang="en"] .lang-en { display:block; }
     .masthead {
-      position:relative; overflow:hidden; padding:48px clamp(24px,5vw,64px) 40px; color:#fff;
-      background:linear-gradient(135deg,var(--navy),#0b1930 68%,#132442);
+      position:relative; overflow:hidden; min-height:420px; padding:48px clamp(24px,5vw,64px) 48px; color:#fff;
+      background:#08101f;
     }
-    .masthead::before { content:""; position:absolute; inset:0; background:radial-gradient(circle at 86% 16%,rgba(207,172,112,.26),transparent 36%); }
-    .masthead::after { content:""; position:absolute; left:0; right:0; bottom:0; height:4px; background:linear-gradient(90deg,var(--gold),var(--gold-2),transparent 72%); }
-    .mh-top { position:relative; display:flex; justify-content:space-between; gap:24px; }
+    .masthead picture, .masthead img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; }
+    .masthead::before {
+      content:""; position:absolute; inset:0; z-index:1;
+      background:
+        linear-gradient(180deg,rgba(8,16,31,.28) 0%,rgba(8,16,31,.22) 38%,rgba(8,16,31,.78) 100%),
+        linear-gradient(90deg,rgba(8,16,31,.72) 0%,rgba(8,16,31,.18) 62%,rgba(8,16,31,.42) 100%);
+    }
+    .masthead::after { content:""; position:absolute; left:0; right:0; bottom:0; height:4px; z-index:2; background:linear-gradient(90deg,var(--gold),var(--gold-2),transparent 72%); }
+    .mh-top,.hero { position:relative; z-index:3; }
+    .mh-top { display:flex; justify-content:space-between; gap:24px; }
     .brand { font-weight:850; text-transform:uppercase; letter-spacing:.2em; font-size:18px; }
     .brand-sub { margin-top:6px; color:#d8bd8d; font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; }
     .confidential { text-align:right; color:#efd8ae; font-size:11px; font-weight:750; letter-spacing:.11em; text-transform:uppercase; line-height:1.7; }
-    .hero { position:relative; margin-top:40px; }
+    .hero { margin-top:86px; max-width:34em; }
     .eyebrow { margin:0 0 10px; color:var(--gold-2); font-size:12px; font-weight:800; letter-spacing:.16em; text-transform:uppercase; }
-    h1 { margin:0; font-size:clamp(34px,5vw,54px); line-height:1.08; letter-spacing:-.035em; font-weight:350; }
+    h1 { margin:0; font-size:clamp(34px,5vw,56px); line-height:1.08; letter-spacing:-.035em; font-weight:350; }
     h1 strong { font-weight:790; }
-    .lead { margin:18px 0 0; max-width:62ch; color:rgba(255,255,255,.76); font-size:17px; }
+    .lead { margin:18px 0 0; color:rgba(255,255,255,.82); font-size:17px; }
     main { padding:clamp(28px,5vw,52px) clamp(20px,5vw,64px) 12px; }
     .address { margin:0 0 28px; padding:22px 24px; border:1px solid var(--line); border-left:4px solid var(--gold); border-radius:14px; background:var(--wash); color:var(--body); }
     .grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
@@ -62,14 +72,48 @@
     .card p { margin:12px 0 0; color:var(--body); }
     .clock { margin-top:18px; padding:14px 16px; border-radius:12px; background:var(--navy); color:#fff; font-weight:750; }
     .clock b { color:var(--gold-2); }
+    .disclaimer {
+      margin:28px 0 0; padding:22px 24px 24px; border:1px solid rgba(169,133,78,.35);
+      border-radius:16px; background:linear-gradient(180deg,#fbf6ec,#fff 58%);
+    }
+    .disclaimer-kicker {
+      margin:0 0 10px; color:var(--gold); font-size:11px; font-weight:850;
+      letter-spacing:.16em; text-transform:uppercase;
+    }
+    .disclaimer p + p { margin:10px 0 0; color:var(--body); }
     .note { margin:22px 0 0; color:var(--muted); font-size:14px; }
-    footer { margin-top:40px; padding:22px clamp(20px,5vw,64px) 26px; background:var(--navy); color:#bcc5d4; font-size:12px; }
+    .house {
+      margin-top:40px; padding:36px clamp(20px,5vw,64px) 32px;
+      background:linear-gradient(180deg,#0b1426,var(--navy)); color:#d7deea;
+    }
+    .house-kicker { margin:0 0 8px; color:var(--gold-2); font-size:11px; font-weight:850; letter-spacing:.16em; text-transform:uppercase; }
+    .house h2 { color:#fff; font-size:clamp(26px,3.4vw,36px); font-weight:350; }
+    .house-lead { margin:12px 0 0; max-width:46em; color:rgba(255,255,255,.72); }
+    .reads { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:26px 0 0; }
+    .read {
+      display:block; padding:20px 22px; border:1px solid rgba(207,172,112,.28); border-radius:16px;
+      background:rgba(255,255,255,.04); text-decoration:none; color:#fff;
+    }
+    .read:hover { border-color:var(--gold-2); background:rgba(207,172,112,.1); }
+    .read .k { color:var(--gold-2); font-size:11px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; }
+    .read strong { display:block; margin:8px 0 6px; font-size:20px; letter-spacing:-.02em; }
+    .read p { margin:0; color:rgba(255,255,255,.68); font-size:14px; }
+    .menu-kicker { margin:28px 0 12px; color:#9aa6bb; font-size:11px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; }
+    .menu { display:flex; flex-wrap:wrap; gap:8px; }
+    .menu a {
+      display:inline-flex; align-items:center; min-height:38px; padding:0 14px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.14); color:#f3efe6; text-decoration:none; font-size:13px; font-weight:650;
+    }
+    .menu a:hover { border-color:var(--gold-2); color:var(--gold-2); }
+    footer { padding:20px clamp(20px,5vw,64px) 24px; background:#060b16; color:#8d97a8; font-size:12px; }
     footer strong { color:var(--gold-2); }
     @media (max-width:760px) {
       .page { width:100%; margin:0; box-shadow:none; }
+      .masthead { min-height:360px; }
       .mh-top { flex-direction:column; }
       .confidential { text-align:left; }
-      .grid { grid-template-columns:1fr; }
+      .hero { margin-top:48px; }
+      .grid,.reads { grid-template-columns:1fr; }
     }
   </style>
 </head>
@@ -81,6 +125,12 @@
 
   <article class="page lang-ru">
     <header class="masthead">
+      <picture>
+        <source media="(max-width:760px)" type="image/webp" srcset="assets/rules/moscow-night-hero-800w.webp">
+        <source media="(max-width:760px)" srcset="assets/rules/moscow-night-hero-800w.jpg">
+        <source type="image/webp" srcset="assets/rules/moscow-night-hero.webp">
+        <img src="assets/rules/moscow-night-hero.jpg" alt="Ночная Москва" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+      </picture>
       <div class="mh-top">
         <div>
           <div class="brand">Charter Capital</div>
@@ -112,13 +162,51 @@
           <div class="clock">После отсечки: <b>T+1</b></div>
         </section>
       </div>
+      <aside class="disclaimer">
+        <p class="disclaimer-kicker">Дисклеймер</p>
+        <p>Компания Charter Capital выкупает объём активов / криптовалюты на оптовых OTC-биржах. В связи с этим выдача в день отправки возможна только если платёж ушёл <b>до 12:00 по московскому времени</b>: после этой отсечки объём закупается на следующей сессии и выдаётся T+1.</p>
+      </aside>
       <p class="note">Правило действует для клиентов Charter Capital Crypto Exchange. Перед каждым платежом реквизиты подтверждаются отдельно.</p>
     </main>
+    <section class="house">
+      <p class="house-kicker">Charter Capital</p>
+      <h2>Читайте наш журнал</h2>
+      <p class="house-lead">Разборы банков, санкций и маршрутов капитала — тем же языком, которым мы работаем с клиентами.</p>
+      <div class="reads">
+        <a class="read" href="https://ccapital.pro/journal.html">
+          <span class="k">Журнал</span>
+          <strong>Читайте наш журнал</strong>
+          <p>Все материалы Дайджеста Charter Capital.</p>
+        </a>
+        <a class="read" href="https://t.me/ccapital26" target="_blank" rel="noopener">
+          <span class="k">Telegram</span>
+          <strong>Подпишитесь на дайджест</strong>
+          <p>Коротко о том, что меняет работу с капиталом.</p>
+        </a>
+      </div>
+      <p class="menu-kicker">Короткое меню</p>
+      <nav class="menu" aria-label="Страницы Charter Capital">
+        <a href="https://ccapital.pro/">Главная</a>
+        <a href="https://ccapital.pro/residence.html">ВНЖ</a>
+        <a href="https://ccapital.pro/pay.html">Pay</a>
+        <a href="https://ccapital.pro/bank-account.html">Счета</a>
+        <a href="https://ccapital.pro/company.html">Компании</a>
+        <a href="https://ccapital.pro/private.html">Private Office</a>
+        <a href="https://ccapital.pro/property.html">Недвижимость</a>
+        <a href="https://ccapital.pro/journal.html">Журнал</a>
+      </nav>
+    </section>
     <footer><strong>Конфиденциально.</strong> Страница доступна только по прямой ссылке и не является публичной офертой.</footer>
   </article>
 
   <article class="page lang-en">
     <header class="masthead">
+      <picture>
+        <source media="(max-width:760px)" type="image/webp" srcset="assets/rules/moscow-night-hero-800w.webp">
+        <source media="(max-width:760px)" srcset="assets/rules/moscow-night-hero-800w.jpg">
+        <source type="image/webp" srcset="assets/rules/moscow-night-hero.webp">
+        <img src="assets/rules/moscow-night-hero.jpg" alt="Moscow at night" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+      </picture>
       <div class="mh-top">
         <div>
           <div class="brand">Charter Capital</div>
@@ -150,8 +238,40 @@
           <div class="clock">After cut-off: <b>T+1</b></div>
         </section>
       </div>
+      <aside class="disclaimer">
+        <p class="disclaimer-kicker">Disclaimer</p>
+        <p>Charter Capital purchases the required volume of assets / cryptocurrency on wholesale OTC exchanges. Same-day release is therefore possible only if the payment is sent <b>before 12:00 Moscow time</b>: after that cut-off the volume is bought in the next session and issued T+1.</p>
+      </aside>
       <p class="note">These rules apply to Charter Capital Crypto Exchange clients. Account details are reconfirmed before each payment.</p>
     </main>
+    <section class="house">
+      <p class="house-kicker">Charter Capital</p>
+      <h2>Read our journal</h2>
+      <p class="house-lead">Banks, sanctions and capital routes — written in the same language we use with clients.</p>
+      <div class="reads">
+        <a class="read" href="https://ccapital.pro/journal.html">
+          <span class="k">Journal</span>
+          <strong>Read our journal</strong>
+          <p>The full Charter Capital Digest.</p>
+        </a>
+        <a class="read" href="https://t.me/ccapital26" target="_blank" rel="noopener">
+          <span class="k">Telegram</span>
+          <strong>Subscribe to the digest</strong>
+          <p>Short notes on what changes capital work.</p>
+        </a>
+      </div>
+      <p class="menu-kicker">A short menu</p>
+      <nav class="menu" aria-label="Charter Capital pages">
+        <a href="https://ccapital.pro/">Home</a>
+        <a href="https://ccapital.pro/residence.html">Residency</a>
+        <a href="https://ccapital.pro/pay.html">Pay</a>
+        <a href="https://ccapital.pro/bank-account.html">Accounts</a>
+        <a href="https://ccapital.pro/company.html">Companies</a>
+        <a href="https://ccapital.pro/private.html">Private Office</a>
+        <a href="https://ccapital.pro/property.html">Property</a>
+        <a href="https://ccapital.pro/journal.html">Journal</a>
+      </nav>
+    </section>
     <footer><strong>Confidential.</strong> Available by direct link only. Not a public offer.</footer>
   </article>
 
