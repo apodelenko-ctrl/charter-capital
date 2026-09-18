@@ -9,288 +9,341 @@
   <meta name="yandexbot" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
   <meta name="bingbot" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
   <meta name="referrer" content="no-referrer">
-  <title>Charter Capital · Crypto Exchange Rules</title>
-  <link rel="preload" as="image" href="assets/rules/moscow-night-hero.webp" fetchpriority="high" media="(min-width: 761px)">
-  <link rel="preload" as="image" href="assets/rules/moscow-night-hero-800w.webp" fetchpriority="high" media="(max-width: 760px)">
+  <title>Rules Crypto Change · Charter Capital</title>
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="preload" as="image" href="/assets/rules/moscow-night-hero.webp" fetchpriority="high" media="(min-width: 769px)">
+  <link rel="preload" as="image" href="/assets/rules/moscow-night-hero-800w.webp" fetchpriority="high" media="(max-width: 768px)">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
   <style>
-    :root {
-      --navy:#08101f; --navy-2:#0e1b31; --ink:#142033; --body:#41506a; --muted:#6d788b;
-      --gold:#a9854e; --gold-2:#cfac70; --gold-pale:#f5ead6; --paper:#fff; --wash:#f5f7fa;
-      --line:#dfe5ed; --green:#15765a; --green-pale:#e9f6f0; --amber:#93681d; --amber-pale:#fff7e7;
-      --shadow:0 18px 60px rgba(7,15,29,.15);
-      --font:"Helvetica Neue","Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+    :root{
+      --bg:#fff;--bg-soft:#f8fafc;--bg-dark:#0a0e1a;--bg-darker:#06080f;
+      --ink:#0f172a;--ink-2:#1e293b;--body:#334155;--muted:#64748b;
+      --line:#e2e8f0;--line-soft:#f1f5f9;--line-dark:#1f2937;
+      --blue:#2563eb;--blue-dark:#1d4ed8;--blue-soft:#eff6ff;
+      --gold:#a08156;--radius:8px;--radius-lg:14px;
     }
-    * { box-sizing:border-box; }
-    html { background:#dfe3e9; }
-    body { margin:0; color:var(--ink); font-family:var(--font); font-size:16px; line-height:1.55; }
-    button { font:inherit; }
-    a { color:inherit; }
-    .switchbar {
-      position:sticky; top:0; z-index:30; display:flex; align-items:center; justify-content:center; gap:4px;
-      min-height:52px; padding:8px 16px; background:rgba(8,16,31,.96); border-bottom:1px solid rgba(207,172,112,.4);
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Inter',-apple-system,sans-serif;background:#fff;color:var(--ink);
+      font-size:16px;line-height:1.6;font-weight:400;-webkit-font-smoothing:antialiased;
+      opacity:0;transition:opacity .35s ease;
     }
-    .lang-btn {
-      min-width:66px; min-height:34px; padding:6px 15px; border:1px solid rgba(255,255,255,.22); border-radius:999px;
-      color:#fff; background:transparent; cursor:pointer;
+    body.page-ready{opacity:1}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    button{font-family:inherit}
+    .container{max-width:1240px;margin:0 auto;padding:0 32px}
+    .container-sm{max-width:920px;margin:0 auto;padding:0 32px}
+
+    #topbar{
+      position:fixed;top:0;left:0;right:0;z-index:100;
+      background:transparent;border-bottom:1px solid transparent;
+      transition:background .3s ease,border-color .3s ease,backdrop-filter .3s ease;
     }
-    .lang-btn[aria-pressed="true"] { color:var(--navy); background:var(--gold-2); border-color:var(--gold-2); font-weight:800; }
-    .page { display:none; width:min(1080px,calc(100% - 32px)); margin:28px auto 56px; background:var(--paper); box-shadow:var(--shadow); }
-    body[data-lang="ru"] .lang-ru, body[data-lang="en"] .lang-en { display:block; }
-    .masthead {
-      position:relative; overflow:hidden; min-height:420px; padding:48px clamp(24px,5vw,64px) 48px; color:#fff;
-      background:#08101f;
+    #topbar.solid{
+      background:rgba(6,8,15,.55);
+      backdrop-filter:saturate(150%) blur(14px);
+      -webkit-backdrop-filter:saturate(150%) blur(14px);
+      border-bottom-color:rgba(255,255,255,.06);
     }
-    .masthead picture, .masthead img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; }
-    .masthead::before {
-      content:""; position:absolute; inset:0; z-index:1;
+    .topbar-inner{
+      max-width:1320px;margin:0 auto;padding:18px 32px;
+      display:flex;align-items:center;justify-content:space-between;gap:24px;
+    }
+    .topbar-brand{display:flex;align-items:baseline;gap:14px;color:#fff}
+    .topbar-brand .name{font-size:14px;font-weight:600;letter-spacing:.18em;text-transform:uppercase}
+    .topbar-brand .tag{
+      font-size:11px;font-weight:300;color:rgba(255,255,255,.55);
+      border-left:1px solid rgba(255,255,255,.2);padding-left:14px;letter-spacing:.04em;
+    }
+    .topbar-nav{display:flex;align-items:center;gap:6px}
+    .topbar-nav>a{
+      font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
+      color:rgba(255,255,255,.78);padding:8px 14px;border-radius:6px;
+      transition:color .15s ease,background .15s ease;
+    }
+    .topbar-nav>a:hover{color:#fff;background:rgba(255,255,255,.06)}
+    .topbar-cta{
+      font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+      background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4);
+      padding:10px 18px;border-radius:6px;transition:all .15s ease;
+    }
+    .topbar-cta:hover{border-color:#fff;background:rgba(255,255,255,.06)}
+    .nav-sep{width:1px;height:18px;background:rgba(255,255,255,.14);margin:0 6px;display:inline-block}
+    .nav-dd{position:relative}
+    .nav-dd-btn{
+      font-family:inherit;font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
+      color:rgba(255,255,255,.78);background:transparent;border:none;cursor:pointer;
+      padding:8px 12px 8px 14px;border-radius:6px;display:inline-flex;align-items:center;gap:6px;
+    }
+    .nav-dd-btn:hover,.nav-dd.is-open .nav-dd-btn{color:#fff;background:rgba(255,255,255,.06)}
+    .nav-dd-btn .arr{font-size:9px;color:rgba(255,255,255,.55)}
+    .nav-dd-menu{
+      position:absolute;top:calc(100% + 10px);left:-12px;min-width:340px;max-width:380px;
+      background:rgba(8,11,22,.94);backdrop-filter:saturate(150%) blur(18px);
+      border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:8px;
+      box-shadow:0 30px 60px rgba(0,0,0,.55);opacity:0;visibility:hidden;transform:translateY(-4px);
+      transition:opacity .18s ease,transform .18s ease,visibility .18s ease;z-index:120;
+    }
+    .nav-dd.is-open .nav-dd-menu{opacity:1;visibility:visible;transform:translateY(0)}
+    .nav-dd-item{display:flex;align-items:flex-start;gap:12px;padding:10px 12px;border-radius:8px;color:#fff}
+    .nav-dd-item + .nav-dd-item{margin-top:2px}
+    .nav-dd-item:hover{background:rgba(255,255,255,.06)}
+    .nav-dd-ic{
+      flex-shrink:0;width:34px;height:34px;border-radius:8px;display:grid;place-items:center;
+      font-family:ui-monospace,Menlo,monospace;font-size:11px;font-weight:600;
+      background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.7);
+    }
+    .nav-dd-ic.blue{background:rgba(59,130,246,.1);border-color:rgba(59,130,246,.32);color:#93c5fd}
+    .nav-dd-ic.gold{background:rgba(160,129,86,.1);border-color:rgba(160,129,86,.32);color:#e8d4a8}
+    .nav-dd-ic.green{background:rgba(34,197,94,.1);border-color:rgba(34,197,94,.3);color:#86efac}
+    .nav-dd-ic.red{background:rgba(220,38,38,.1);border-color:rgba(220,38,38,.3);color:#fca5a5}
+    .nav-dd-body{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1}
+    .nav-dd-body .t{font-size:13.5px;font-weight:600;color:#fff;line-height:1.3;text-transform:none}
+    .nav-dd-body .d{font-size:12px;font-weight:400;color:rgba(255,255,255,.6);text-transform:none;line-height:1.4}
+
+    .hero{
+      position:relative;min-height:86vh;color:#fff;overflow:hidden;
+      display:flex;flex-direction:column;justify-content:flex-end;
+      padding:150px 32px 92px;
       background:
-        linear-gradient(180deg,rgba(8,16,31,.28) 0%,rgba(8,16,31,.22) 38%,rgba(8,16,31,.78) 100%),
-        linear-gradient(90deg,rgba(8,16,31,.72) 0%,rgba(8,16,31,.18) 62%,rgba(8,16,31,.42) 100%);
+        linear-gradient(180deg,rgba(6,8,15,0) 0%,rgba(6,8,15,.18) 36%,rgba(6,8,15,.78) 82%,rgba(6,8,15,.94) 100%),
+        url('/assets/rules/moscow-night-hero.webp') center 40%/cover no-repeat,
+        var(--bg-darker);
     }
-    .masthead::after { content:""; position:absolute; left:0; right:0; bottom:0; height:4px; z-index:2; background:linear-gradient(90deg,var(--gold),var(--gold-2),transparent 72%); }
-    .mh-top,.hero { position:relative; z-index:3; }
-    .mh-top { display:flex; justify-content:space-between; gap:24px; }
-    .brand { font-weight:850; text-transform:uppercase; letter-spacing:.2em; font-size:18px; }
-    .brand-sub { margin-top:6px; color:#d8bd8d; font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; }
-    .confidential { text-align:right; color:#efd8ae; font-size:11px; font-weight:750; letter-spacing:.11em; text-transform:uppercase; line-height:1.7; }
-    .hero { margin-top:86px; max-width:34em; }
-    .eyebrow { margin:0 0 10px; color:var(--gold-2); font-size:12px; font-weight:800; letter-spacing:.16em; text-transform:uppercase; }
-    h1 { margin:0; font-size:clamp(34px,5vw,56px); line-height:1.08; letter-spacing:-.035em; font-weight:350; }
-    h1 strong { font-weight:790; }
-    .lead { margin:18px 0 0; color:rgba(255,255,255,.82); font-size:17px; }
-    main { padding:clamp(28px,5vw,52px) clamp(20px,5vw,64px) 12px; }
-    .address { margin:0 0 28px; padding:22px 24px; border:1px solid var(--line); border-left:4px solid var(--gold); border-radius:14px; background:var(--wash); color:var(--body); }
-    .grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
-    .card { position:relative; padding:26px 24px 24px; border:1px solid var(--line); border-radius:16px; background:#fff; }
-    .card.ok { background:linear-gradient(180deg,var(--green-pale),#fff 42%); border-top:4px solid var(--green); }
-    .card.wait { background:linear-gradient(180deg,var(--amber-pale),#fff 42%); border-top:4px solid var(--amber); }
-    .flag { display:inline-block; margin-bottom:12px; padding:4px 9px; border-radius:999px; font-size:11px; font-weight:850; letter-spacing:.08em; text-transform:uppercase; }
-    .ok .flag { color:var(--green); background:#d8efe5; }
-    .wait .flag { color:var(--amber); background:#f8e9bf; }
-    .when { margin:0 0 6px; color:var(--gold); font-size:13px; font-weight:800; letter-spacing:.04em; }
-    h2 { margin:0; font-size:28px; letter-spacing:-.03em; }
-    .card p { margin:12px 0 0; color:var(--body); }
-    .clock { margin-top:18px; padding:14px 16px; border-radius:12px; background:var(--navy); color:#fff; font-weight:750; }
-    .clock b { color:var(--gold-2); }
-    .disclaimer {
-      margin:28px 0 0; padding:22px 24px 24px; border:1px solid rgba(169,133,78,.35);
-      border-radius:16px; background:linear-gradient(180deg,#fbf6ec,#fff 58%);
+    .hero-inner{position:relative;max-width:1240px;margin:0 auto;width:100%}
+    .kicker{
+      display:inline-block;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+      color:#e8d4a8;margin-bottom:18px;
     }
-    .disclaimer-kicker {
-      margin:0 0 10px; color:var(--gold); font-size:11px; font-weight:850;
-      letter-spacing:.16em; text-transform:uppercase;
+    .hero h1{font-size:clamp(2.2rem,5.5vw,4.4rem);font-weight:300;letter-spacing:-.035em;line-height:1.08;max-width:16ch}
+    .hero h1 strong{font-weight:600}
+    .hero-lead{margin:22px 0 0;max-width:42em;font-size:1.08rem;color:rgba(255,255,255,.78);font-weight:400}
+    .hero-date{margin-top:28px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+
+    .s{padding:88px 0;background:#fff}
+    .lead{font-size:1.2rem;line-height:1.55;font-weight:300;color:var(--ink);max-width:46em;margin-bottom:36px}
+    .rules{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .rule{padding:28px 26px;border:1px solid var(--line);border-radius:var(--radius-lg);background:var(--bg-soft)}
+    .rule .n{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+    .rule h2{font-size:1.55rem;font-weight:300;letter-spacing:-.03em;margin-bottom:12px}
+    .rule p{color:var(--body)}
+    .note{
+      margin-top:28px;padding:22px 24px;border:1px solid var(--line);border-left:3px solid var(--ink);
+      border-radius:var(--radius);background:#fff;color:var(--body);
     }
-    .disclaimer p + p { margin:10px 0 0; color:var(--body); }
-    .note { margin:22px 0 0; color:var(--muted); font-size:14px; }
-    .house {
-      margin-top:40px; padding:36px clamp(20px,5vw,64px) 32px;
-      background:linear-gradient(180deg,#0b1426,var(--navy)); color:#d7deea;
+    .note p + p{margin-top:12px}
+
+    .reads{padding:72px 0;background:var(--bg-darker);color:#fff}
+    .reads h2{font-size:clamp(1.8rem,3.6vw,2.8rem);font-weight:300;letter-spacing:-.035em}
+    .reads p{margin:14px 0 28px;color:#94a3b8;max-width:42em}
+    .btns{display:flex;flex-wrap:wrap;gap:12px}
+    .btn{
+      display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:500;
+      padding:14px 26px;border-radius:var(--radius);
     }
-    .house-kicker { margin:0 0 8px; color:var(--gold-2); font-size:11px; font-weight:850; letter-spacing:.16em; text-transform:uppercase; }
-    .house h2 { color:#fff; font-size:clamp(26px,3.4vw,36px); font-weight:350; }
-    .house-lead { margin:12px 0 0; max-width:46em; color:rgba(255,255,255,.72); }
-    .reads { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:26px 0 0; }
-    .read {
-      display:block; padding:20px 22px; border:1px solid rgba(207,172,112,.28); border-radius:16px;
-      background:rgba(255,255,255,.04); text-decoration:none; color:#fff;
+    .btn-primary{background:var(--blue);color:#fff}
+    .btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4)}
+
+    footer.f{background:#06080f;color:#94a3b8;padding:64px 0 32px;border-top:1px solid var(--line-dark)}
+    .f-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+    .f-brand .logo{font-size:14px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#fff;margin-bottom:14px}
+    .f-brand p{color:#64748b;font-size:13px;line-height:1.6;max-width:36ch}
+    .f-col h5{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;margin-bottom:18px}
+    .f-col ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+    .f-col li a{font-size:13px;color:#94a3b8}
+    .f-col li a:hover{color:#fff}
+    .f-disclaimer{
+      margin-top:18px;background:rgba(220,38,38,.06);border:1px solid rgba(220,38,38,.18);
+      border-radius:var(--radius);padding:16px 20px;font-size:12px;color:#cbd5e1;line-height:1.6;
     }
-    .read:hover { border-color:var(--gold-2); background:rgba(207,172,112,.1); }
-    .read .k { color:var(--gold-2); font-size:11px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; }
-    .read strong { display:block; margin:8px 0 6px; font-size:20px; letter-spacing:-.02em; }
-    .read p { margin:0; color:rgba(255,255,255,.68); font-size:14px; }
-    .menu-kicker { margin:28px 0 12px; color:#9aa6bb; font-size:11px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; }
-    .menu { display:flex; flex-wrap:wrap; gap:8px; }
-    .menu a {
-      display:inline-flex; align-items:center; min-height:38px; padding:0 14px; border-radius:999px;
-      border:1px solid rgba(255,255,255,.14); color:#f3efe6; text-decoration:none; font-size:13px; font-weight:650;
+    .f-bottom{border-top:1px solid var(--line-dark);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+    .f-bottom span{font-size:12px;color:#64748b}
+
+    @media(max-width:980px){
+      .topbar-nav{display:none}
+      .f-grid{grid-template-columns:1fr 1fr}
     }
-    .menu a:hover { border-color:var(--gold-2); color:var(--gold-2); }
-    footer { padding:20px clamp(20px,5vw,64px) 24px; background:#060b16; color:#8d97a8; font-size:12px; }
-    footer strong { color:var(--gold-2); }
-    @media (max-width:760px) {
-      .page { width:100%; margin:0; box-shadow:none; }
-      .masthead { min-height:360px; }
-      .mh-top { flex-direction:column; }
-      .confidential { text-align:left; }
-      .hero { margin-top:48px; }
-      .grid,.reads { grid-template-columns:1fr; }
+    @media(max-width:768px){
+      .hero{min-height:78vh;padding:120px 22px 72px;background-image:linear-gradient(180deg,rgba(6,8,15,.12),rgba(6,8,15,.88)),url('/assets/rules/moscow-night-hero-800w.webp')}
+      .topbar-brand .tag,.topbar-inner{padding-left:22px;padding-right:22px}
+      .topbar-brand .tag{display:none}
+      .container,.container-sm{padding:0 22px}
+      .rules,.f-grid{grid-template-columns:1fr}
     }
   </style>
 </head>
-<body data-lang="ru">
-  <nav class="switchbar" aria-label="Language">
-    <button class="lang-btn" type="button" data-set-lang="ru" aria-pressed="true">RU</button>
-    <button class="lang-btn" type="button" data-set-lang="en" aria-pressed="false">EN</button>
-  </nav>
-
-  <article class="page lang-ru">
-    <header class="masthead">
-      <picture>
-        <source media="(max-width:760px)" type="image/webp" srcset="assets/rules/moscow-night-hero-800w.webp">
-        <source media="(max-width:760px)" srcset="assets/rules/moscow-night-hero-800w.jpg">
-        <source type="image/webp" srcset="assets/rules/moscow-night-hero.webp">
-        <img src="assets/rules/moscow-night-hero.jpg" alt="Ночная Москва-Сити из офиса" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-      </picture>
-      <div class="mh-top">
-        <div>
-          <div class="brand">Charter Capital</div>
-          <div class="brand-sub">Crypto Exchange</div>
+<body>
+<header id="topbar">
+  <div class="topbar-inner">
+    <a href="/" class="topbar-brand">
+      <span class="name">Charter Capital</span>
+      <span class="tag">Когда двери закрываются - мы открываем мир</span>
+    </a>
+    <nav class="topbar-nav">
+      <div class="nav-dd" data-dd="products">
+        <button type="button" class="nav-dd-btn" aria-expanded="false" aria-haspopup="true" aria-controls="dd-products">
+          Все продукты <span class="arr" aria-hidden="true">▾</span>
+        </button>
+        <div class="nav-dd-menu" id="dd-products" role="menu" aria-label="Все продукты Charter Capital">
+          <a class="nav-dd-item" href="/pay.html" role="menuitem"><span class="nav-dd-ic blue">PY</span><span class="nav-dd-body"><span class="t">Pay</span><span class="d">ВЭД-платежи под банк получателя</span></span></a>
+          <a class="nav-dd-item" href="/bank-account.html#packages" role="menuitem"><span class="nav-dd-ic blue">AC</span><span class="nav-dd-body"><span class="t">Счета, карты, сервисы</span><span class="d">Компания + счёт + Visa/MC · без обхода правил</span></span></a>
+          <a class="nav-dd-item" href="/company.html" role="menuitem"><span class="nav-dd-ic blue">CO</span><span class="nav-dd-body"><span class="t">Компании</span><span class="d">Гонконг · Сингапур · ОАЭ · UK · США · на ваше имя</span></span></a>
+          <a class="nav-dd-item" href="/usa-online.html" role="menuitem"><span class="nav-dd-ic blue">US</span><span class="nav-dd-body"><span class="t">США · эквайринг</span><span class="d">Компания + Stripe + Wise / Mercury · $1 550</span></span></a>
+          <a class="nav-dd-item" href="/fund.html" role="menuitem"><span class="nav-dd-ic gold">AF</span><span class="nav-dd-body"><span class="t">Charter Asia Fund</span><span class="d">Инвестиции в Сингапуре и Пхукете</span></span></a>
+          <a class="nav-dd-item" href="/property.html" role="menuitem"><span class="nav-dd-ic">CP</span><span class="nav-dd-body"><span class="t">CP Property</span><span class="d">Кураторская недвижимость Пхукета</span></span></a>
+          <a class="nav-dd-item" href="/private.html" role="menuitem"><span class="nav-dd-ic gold">PO</span><span class="nav-dd-body"><span class="t">Private Office</span><span class="d">Архитектура легитимности · от&nbsp;$1М</span></span></a>
+          <a class="nav-dd-item" href="/residence.html" role="menuitem"><span class="nav-dd-ic green">ВНЖ</span><span class="nav-dd-body"><span class="t">ВНЖ и налоговое резидентство</span><span class="d">Испания · Мальта · Португалия · Франция · Монако</span></span></a>
+          <a class="nav-dd-item" href="/business-eu.html" role="menuitem"><span class="nav-dd-ic green">EU</span><span class="nav-dd-body"><span class="t">Готовый бизнес в Европе</span><span class="d">Substance под ВНЖ · чистый вход капитала</span></span></a>
+          <a class="nav-dd-item" href="/#scoring" role="menuitem"><span class="nav-dd-ic blue">KP</span><span class="nav-dd-body"><span class="t">Подготовка кейса</span><span class="d">Чистота и биография капитала</span></span></a>
         </div>
-        <div class="confidential">Конфиденциально<br>Документ по прямой ссылке<br>18 сентября 2026</div>
       </div>
-      <div class="hero">
-        <p class="eyebrow">Правила исполнения</p>
-        <h1>Rules <strong>Crypto Change</strong></h1>
-        <p class="lead">Уважаемые клиенты, пользующиеся услугами Charter Capital Crypto Exchange. Просим принять к сведению следующие правила.</p>
-      </div>
-    </header>
-    <main>
-      <p class="address">Настоящие правила распространяются на платежи, отправленные в наш адрес для получения криптовалюты. Срок выдачи исчисляется по московскому времени.</p>
-      <div class="grid">
-        <section class="card ok">
-          <span class="flag">T+0 · день в день</span>
-          <p class="when">Платёж до 12:00 МСК</p>
-          <h2>Выдача в день отправки</h2>
-          <p>Чтобы получить криптовалюту в тот же день, отправьте платёж <b>до 12:00 по московскому времени</b>.</p>
-          <div class="clock">Окно дня: <b>до 12:00 МСК</b></div>
-        </section>
-        <section class="card wait">
-          <span class="flag">T+1 · следующий день</span>
-          <p class="when">Платёж после 12:00 МСК</p>
-          <h2>Выдача на следующий день</h2>
-          <p>Платежи, отправленные <b>после 12:00 по московскому времени</b>, выдаются на следующий рабочий день: T+1.</p>
-          <div class="clock">После отсечки: <b>T+1</b></div>
-        </section>
-      </div>
-      <aside class="disclaimer">
-        <p>Charter Capital выкупает объём цифровых активов на оптовых OTC-биржах. Просим принять к сведению:</p>
-        <p>При объёме обмена от 20&nbsp;000 долларов США курс предоставляется по лучшему доступному рынку. При объёме обмена менее 20&nbsp;000 долларов США курс формируется по текущему стакану.</p>
-        <p>Выдача в день отправки возможна только если платёж ушёл до 12:00 по московскому времени. Платежи, отправленные после 12:00 МСК, исполняются T+1.</p>
-      </aside>
-      <p class="note">Правило действует для клиентов Charter Capital Crypto Exchange. Перед каждым платежом реквизиты подтверждаются отдельно.</p>
-    </main>
-    <section class="house">
-      <p class="house-kicker">Charter Capital</p>
-      <h2>Читайте наш журнал</h2>
-      <p class="house-lead">Разборы банков, санкций и маршрутов капитала — тем же языком, которым мы работаем с клиентами.</p>
-      <div class="reads">
-        <a class="read" href="https://ccapital.pro/journal.html">
-          <span class="k">Журнал</span>
-          <strong>Читайте наш журнал</strong>
-          <p>Все материалы Дайджеста Charter Capital.</p>
-        </a>
-        <a class="read" href="https://t.me/ccapital26" target="_blank" rel="noopener">
-          <span class="k">Telegram</span>
-          <strong>Подпишитесь на дайджест</strong>
-          <p>Коротко о том, что меняет работу с капиталом.</p>
-        </a>
-      </div>
-      <p class="menu-kicker">Короткое меню</p>
-      <nav class="menu" aria-label="Страницы Charter Capital">
-        <a href="https://ccapital.pro/">Главная</a>
-        <a href="https://ccapital.pro/residence.html">ВНЖ</a>
-        <a href="https://ccapital.pro/pay.html">Pay</a>
-        <a href="https://ccapital.pro/bank-account.html">Счета</a>
-        <a href="https://ccapital.pro/company.html">Компании</a>
-        <a href="https://ccapital.pro/private.html">Private Office</a>
-        <a href="https://ccapital.pro/property.html">Недвижимость</a>
-        <a href="https://ccapital.pro/journal.html">Журнал</a>
-      </nav>
-    </section>
-    <footer><strong>Конфиденциально.</strong> Страница доступна только по прямой ссылке и не является публичной офертой.</footer>
-  </article>
-
-  <article class="page lang-en">
-    <header class="masthead">
-      <picture>
-        <source media="(max-width:760px)" type="image/webp" srcset="assets/rules/moscow-night-hero-800w.webp">
-        <source media="(max-width:760px)" srcset="assets/rules/moscow-night-hero-800w.jpg">
-        <source type="image/webp" srcset="assets/rules/moscow-night-hero.webp">
-        <img src="assets/rules/moscow-night-hero.jpg" alt="Moscow City at night from the office" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-      </picture>
-      <div class="mh-top">
-        <div>
-          <div class="brand">Charter Capital</div>
-          <div class="brand-sub">Crypto Exchange</div>
+      <div class="nav-dd" data-dd="cases">
+        <button type="button" class="nav-dd-btn" aria-expanded="false" aria-haspopup="true" aria-controls="dd-cases">
+          Где вы сейчас <span class="arr" aria-hidden="true">▾</span>
+        </button>
+        <div class="nav-dd-menu" id="dd-cases" role="menu">
+          <a class="nav-dd-item" href="/homeland.html" role="menuitem"><span class="nav-dd-ic red">RU</span><span class="nav-dd-body"><span class="t">Я ещё в России</span><span class="d">Готовлюсь к выезду - деньги, документы, ФССП</span></span></a>
+          <a class="nav-dd-item" href="/" role="menuitem"><span class="nav-dd-ic green">EU</span><span class="nav-dd-body"><span class="t">Я уже за границей</span><span class="d">Собираю международный маршрут</span></span></a>
+          <a class="nav-dd-item" href="/freedom-route.html" role="menuitem"><span class="nav-dd-ic">?</span><span class="nav-dd-body"><span class="t">Только задумываюсь о переезде</span><span class="d">Маршрут в свободный мир - для предпринимателей из СНГ</span></span></a>
+          <a class="nav-dd-item" href="/residence.html" role="menuitem"><span class="nav-dd-ic green">ВНЖ</span><span class="nav-dd-body"><span class="t">Мне нужен ВНЖ в Европе</span><span class="d">Испания, Мальта, Португалия, Франция, Монако</span></span></a>
+          <a class="nav-dd-item" href="/private.html" role="menuitem"><span class="nav-dd-ic gold">1M</span><span class="nav-dd-body"><span class="t">Капитал от&nbsp;$1М</span><span class="d">Архитектура легитимности и репатриации</span></span></a>
         </div>
-        <div class="confidential">Confidential<br>Direct-link document<br>18 September 2026</div>
       </div>
-      <div class="hero">
-        <p class="eyebrow">Settlement rules</p>
-        <h1>Rules <strong>Crypto Change</strong></h1>
-        <p class="lead">Dear clients using Charter Capital Crypto Exchange services. Please take note of the following rules.</p>
-      </div>
-    </header>
-    <main>
-      <p class="address">These rules apply to payments sent to our account for the receipt of cryptocurrency. Settlement time is calculated in Moscow time.</p>
-      <div class="grid">
-        <section class="card ok">
-          <span class="flag">T+0 · same day</span>
-          <p class="when">Payment before 12:00 MSK</p>
-          <h2>Issued on the same day</h2>
-          <p>To receive cryptocurrency on the same day, send the payment <b>before 12:00 Moscow time</b>.</p>
-          <div class="clock">Same-day window: <b>before 12:00 MSK</b></div>
-        </section>
-        <section class="card wait">
-          <span class="flag">T+1 · next day</span>
-          <p class="when">Payment after 12:00 MSK</p>
-          <h2>Issued the next day</h2>
-          <p>Payments sent <b>after 12:00 Moscow time</b> are issued on the next business day: T+1.</p>
-          <div class="clock">After cut-off: <b>T+1</b></div>
-        </section>
-      </div>
-      <aside class="disclaimer">
-        <p>Charter Capital purchases digital-asset volume on wholesale OTC exchanges. Please take note of the following:</p>
-        <p>For exchange volume of USD 20,000 or more, the rate is the best available market rate. For volume under USD 20,000, the rate is taken from the current order book.</p>
-        <p>Same-day release is possible only if the payment is sent before 12:00 Moscow time. Payments sent after 12:00 MSK are executed T+1.</p>
-      </aside>
-      <p class="note">These rules apply to Charter Capital Crypto Exchange clients. Account details are reconfirmed before each payment.</p>
-    </main>
-    <section class="house">
-      <p class="house-kicker">Charter Capital</p>
-      <h2>Read our journal</h2>
-      <p class="house-lead">Banks, sanctions and capital routes — written in the same language we use with clients.</p>
-      <div class="reads">
-        <a class="read" href="https://ccapital.pro/journal.html">
-          <span class="k">Journal</span>
-          <strong>Read our journal</strong>
-          <p>The full Charter Capital Digest.</p>
-        </a>
-        <a class="read" href="https://t.me/ccapital26" target="_blank" rel="noopener">
-          <span class="k">Telegram</span>
-          <strong>Subscribe to the digest</strong>
-          <p>Short notes on what changes capital work.</p>
-        </a>
-      </div>
-      <p class="menu-kicker">A short menu</p>
-      <nav class="menu" aria-label="Charter Capital pages">
-        <a href="https://ccapital.pro/">Home</a>
-        <a href="https://ccapital.pro/residence.html">Residency</a>
-        <a href="https://ccapital.pro/pay.html">Pay</a>
-        <a href="https://ccapital.pro/bank-account.html">Accounts</a>
-        <a href="https://ccapital.pro/company.html">Companies</a>
-        <a href="https://ccapital.pro/private.html">Private Office</a>
-        <a href="https://ccapital.pro/property.html">Property</a>
-        <a href="https://ccapital.pro/journal.html">Journal</a>
-      </nav>
-    </section>
-    <footer><strong>Confidential.</strong> Available by direct link only. Not a public offer.</footer>
-  </article>
+      <span class="nav-sep" aria-hidden="true"></span>
+      <a href="/#triggers">Боль</a>
+      <a href="/#routes">Маршруты</a>
+      <a href="/#scoring">Скоринг</a>
+      <a href="/#contact">Связаться</a>
+    </nav>
+    <a class="topbar-cta" href="/#contact">Private Access</a>
+  </div>
+</header>
 
-  <script>
-    (function(){
-      const valid=["ru","en"];
-      function setLang(lang){
-        if(!valid.includes(lang)) lang="ru";
-        document.body.dataset.lang=lang;
-        document.documentElement.lang=lang;
-        document.querySelectorAll("[data-set-lang]").forEach(b=>b.setAttribute("aria-pressed", String(b.dataset.setLang===lang)));
-        try{ localStorage.setItem("cc-rules-crypto-lang", lang); }catch(e){}
-      }
-      document.querySelectorAll("[data-set-lang]").forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.setLang)));
-      const saved=(()=>{ try{ return localStorage.getItem("cc-rules-crypto-lang"); }catch(e){ return null; }})();
-      setLang(saved||"ru");
-    })();
-  </script>
+<section class="hero">
+  <div class="hero-inner">
+    <p class="kicker">Crypto Exchange</p>
+    <h1>Rules <strong>Crypto Change</strong></h1>
+    <p class="hero-lead">Уважаемые клиенты, пользующиеся услугами Charter Capital Crypto Exchange. Просим принять к сведению следующие правила.</p>
+    <p class="hero-date">18 сентября 2026</p>
+  </div>
+</section>
+
+<section class="s">
+  <div class="container-sm">
+    <p class="lead">Настоящие правила распространяются на платежи, отправленные в наш адрес для получения криптовалюты. Срок выдачи исчисляется по московскому времени.</p>
+    <div class="rules">
+      <article class="rule">
+        <p class="n">T+0 · день в день</p>
+        <h2>Выдача в день отправки</h2>
+        <p>Чтобы получить криптовалюту в тот же день, отправьте платёж до 12:00 по московскому времени.</p>
+      </article>
+      <article class="rule">
+        <p class="n">T+1 · следующий день</p>
+        <h2>Выдача на следующий день</h2>
+        <p>Платежи, отправленные после 12:00 по московскому времени, выдаются на следующий рабочий день: T+1.</p>
+      </article>
+    </div>
+    <aside class="note">
+      <p>Charter Capital выкупает объём цифровых активов на оптовых OTC-биржах. Просим принять к сведению:</p>
+      <p>При объёме обмена от 20&nbsp;000 долларов США курс предоставляется по лучшему доступному рынку. При объёме обмена менее 20&nbsp;000 долларов США курс формируется по текущему стакану.</p>
+      <p>Выдача в день отправки возможна только если платёж ушёл до 12:00 по московскому времени. Платежи, отправленные после 12:00 МСК, исполняются T+1.</p>
+    </aside>
+  </div>
+</section>
+
+<section class="reads">
+  <div class="container">
+    <h2>Читайте наш журнал</h2>
+    <p>Разборы банков, санкций и маршрутов капитала — тем же языком, которым мы работаем с клиентами.</p>
+    <div class="btns">
+      <a class="btn btn-primary" href="/journal.html">Читайте наш журнал</a>
+      <a class="btn btn-ghost" href="https://t.me/ccapital26" target="_blank" rel="noopener">Подпишитесь на дайджест</a>
+    </div>
+  </div>
+</section>
+
+<footer class="f">
+  <div class="container">
+    <div class="f-grid">
+      <div class="f-brand">
+        <div class="logo">Charter Capital</div>
+        <p>Когда все двери закрываются - Charter открывает мир для вас и вашего капитала. Без искусственных границ.</p>
+      </div>
+      <div class="f-col">
+        <h5>Контуры</h5>
+        <ul>
+          <li><a href="/homeland.html">Подготовка к&nbsp;исходу, ещё в&nbsp;РФ</a></li>
+          <li><a href="/freedom-route.html">Маршрут в&nbsp;свободный мир, СНГ</a></li>
+          <li><a href="/capital-diagnostic.html">Диагностика капитала</a></li>
+          <li><a href="/private.html">Private Office</a></li>
+          <li><a href="/fund.html">Charter Asia Fund</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h5>Справочник</h5>
+        <ul>
+          <li><a href="/company.html">Компания за рубежом</a></li>
+          <li><a href="/bank-account.html">Зарубежный счёт</a></li>
+          <li><a href="/residence.html">ВНЖ</a></li>
+          <li><a href="/pay.html">Pay</a></li>
+          <li><a href="/journal.html">Журнал</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h5>Контакт</h5>
+        <ul>
+          <li><a href="https://t.me/ccapital_acces" target="_blank" rel="noopener">Telegram · Private</a></li>
+          <li><a href="https://t.me/ccapital26" target="_blank" rel="noopener">Telegram · Дайджест</a></li>
+          <li><a href="mailto:hello@ccapital.pro">hello@ccapital.pro</a></li>
+          <li><a href="/">ccapital.pro</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="f-disclaimer">
+      Charter Capital выступает производителем собственных продуктов и координационным агентом для услуг лицензированных партнёров. Информация носит индикативный характер и не является публичной офертой.
+    </div>
+    <div class="f-bottom">
+      <span>© 2026 Charter Capital - Когда двери закрываются, мы открываем мир</span>
+      <span>18 сентября 2026</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  requestAnimationFrame(function () { document.body.classList.add('page-ready'); });
+});
+(function(){
+  var bar=document.getElementById('topbar');
+  function tick(){ if(window.scrollY>140) bar.classList.add('solid'); else bar.classList.remove('solid'); }
+  window.addEventListener('scroll', tick, {passive:true}); tick();
+})();
+(function(){
+  var dds=document.querySelectorAll('.nav-dd');
+  function closeAll(){
+    dds.forEach(function(dd){
+      dd.classList.remove('is-open');
+      var b=dd.querySelector('.nav-dd-btn');
+      if(b) b.setAttribute('aria-expanded','false');
+    });
+  }
+  dds.forEach(function(dd){
+    var btn=dd.querySelector('.nav-dd-btn');
+    if(!btn) return;
+    btn.addEventListener('click',function(e){
+      e.stopPropagation();
+      var willOpen=!dd.classList.contains('is-open');
+      closeAll();
+      if(willOpen){ dd.classList.add('is-open'); btn.setAttribute('aria-expanded','true'); }
+    });
+  });
+  document.addEventListener('click',function(e){ if(!e.target.closest('.nav-dd')) closeAll(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeAll(); });
+})();
+</script>
 </body>
 </html>
