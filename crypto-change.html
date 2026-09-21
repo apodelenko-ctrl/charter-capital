@@ -6,7 +6,7 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
 <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta name="color-scheme" content="dark"/>
+<meta name="color-scheme" content="light dark"/>
 <meta name="theme-color" content="#06080f"/>
 <meta name="format-detection" content="telephone=no"/>
 <meta name="referrer" content="strict-origin-when-cross-origin"/>
@@ -21,126 +21,226 @@
 <meta property="og:title" content="Обмен безналичных рублей на криптовалюту"/>
 <meta property="og:description" content="Платёж российской компании на рублёвый счёт нерезидента в РФ-банке за услуги. На выходе — криптовалюта."/>
 <meta property="og:url" content="https://ccapital.pro/crypto-change.html"/>
-<meta property="og:image" content="https://ccapital.pro/assets/payout/og.jpg"/>
-<meta property="og:image:width" content="1600"/>
-<meta property="og:image:height" content="900"/>
+<meta property="og:image" content="https://ccapital.pro/assets/rules/moscow-night-hero.jpg"/>
 <meta property="og:locale" content="ru_RU"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="Обмен безналичных рублей на криптовалюту"/>
-<meta name="twitter:description" content="Платёж на рублёвый счёт нерезидента в РФ-банке за услуги. На выходе — криптовалюта."/>
-<meta name="twitter:image" content="https://ccapital.pro/assets/payout/og.jpg"/>
+<link rel="preload" as="image" href="/assets/rules/moscow-night-hero.webp" fetchpriority="high" media="(min-width: 769px)"/>
+<link rel="preload" as="image" href="/assets/rules/moscow-night-hero-800w.webp" fetchpriority="high" media="(max-width: 768px)"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"/>
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@graph":[
-    {"@type":"Organization","@id":"https://ccapital.pro/#organization","name":"Charter Capital","url":"https://ccapital.pro/"},
-    {"@type":"WebPage","@id":"https://ccapital.pro/crypto-change.html#webpage","url":"https://ccapital.pro/crypto-change.html","name":"Обмен безналичных рублей на криптовалюту","inLanguage":"ru-RU","isPartOf":{"@id":"https://ccapital.pro/#organization"}},
-    {"@type":["Service","FinancialService"],"@id":"https://ccapital.pro/crypto-change.html#service","name":"Обмен безналичных рублей на криптовалюту под оплату услуг нерезидента","serviceType":"Платёж российской компании на рублёвый счёт нерезидента в российском банке за реальные услуги с выдачей криптовалюты","provider":{"@id":"https://ccapital.pro/#organization"},"areaServed":"RU","url":"https://ccapital.pro/crypto-change.html"}
-  ]
-}
-</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"/>
 <style>
 :root{
-  --bg:#06080f; --bg-2:#0a0e1a; --panel:#0c1120;
-  --line:#1c2336; --line-soft:#26304a;
-  --ink:#f8fafc; --mut:#c6cedd; --mut-2:#8b95a9;
-  --gold:#e9c785; --gold-d:#c9a24a; --blue:#7ea8ff;
+  --bg:#fff;--soft:#f8fafc;--ink:#0f172a;--ink-2:#1e293b;--body:#334155;--muted:#64748b;
+  --line:#e2e8f0;--blue:#2563eb;--gold:#a08156;--gold-soft:#e8d4a8;
+  --dark:#06080f;--radius:8px;
 }
-*{box-sizing:border-box}
+*{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,-apple-system,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
-a{color:inherit}
-.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
-header{position:sticky;top:0;z-index:50;background:rgba(6,8,15,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.hd{display:flex;align-items:center;justify-content:space-between;height:62px}
-.brand{display:flex;align-items:baseline;gap:9px;text-decoration:none}
-.brand .name{font-weight:700;font-size:16px}
-.brand .tag{font-size:11px;font-weight:600;color:var(--gold);border:1px solid var(--line-soft);border-radius:20px;padding:2px 9px}
-.hd-tg{display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-size:14px;font-weight:600;border:1px solid var(--line-soft);border-radius:11px;padding:8px 13px}
-.hd-tg:hover{border-color:#2ea6e0}
-.hero{position:relative;padding:78px 0 64px;overflow:hidden;border-bottom:1px solid var(--line)}
-.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(1200px 500px at 78% -10%,rgba(233,199,133,.16),transparent 60%),radial-gradient(900px 500px at 10% 120%,rgba(126,168,255,.10),transparent 60%);pointer-events:none}
-.eyebrow{display:inline-block;font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
-h1{font-size:clamp(30px,5.2vw,52px);line-height:1.06;font-weight:800;letter-spacing:-.02em;margin:0 0 20px;max-width:16ch}
-h1 .g{color:var(--gold)}
-.lead{font-size:clamp(16px,2.2vw,19px);color:var(--mut);max-width:62ch;margin:0 0 28px}
-.cta{display:flex;flex-wrap:wrap;gap:12px}
-.btn{display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-weight:700;font-size:15px;padding:14px 24px;border-radius:12px}
-.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold-d));color:#101010}
-.btn-tg{background:#229ED9;color:#fff}
-.btn-ghost{border:1px solid var(--line-soft)}
-.stats{display:flex;flex-wrap:wrap;gap:14px;margin-top:38px}
-.stat{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 20px;flex:1 1 180px}
-.stat b{display:block;font-size:18px;color:var(--gold);margin-bottom:4px}
-.stat span{font-size:13px;color:var(--mut-2)}
-section.s{padding:64px 0;border-bottom:1px solid var(--line)}
-.kicker{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:12px;display:block}
-h2{font-size:clamp(24px,3.4vw,34px);font-weight:800;letter-spacing:-.02em;margin:0 0 14px}
-h2 .g{color:var(--gold)}
-.s-lead{color:var(--mut);max-width:64ch;margin:0 0 30px}
-.s-lead a{color:var(--blue)}
-.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.step{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px}
-.step .n{width:38px;height:38px;border-radius:50%;border:2px solid var(--gold);color:var(--gold);display:flex;align-items:center;justify-content:center;font-weight:800;margin-bottom:14px}
-.step h3{margin:0 0 8px;font-size:17px}
-.step p{margin:0;color:var(--mut);font-size:14.5px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.svc{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
-.svc b{display:block;font-size:15.5px;margin-bottom:4px}
-.svc span{color:var(--mut);font-size:13.5px}
-.note{margin-top:24px;padding:18px 20px;border-left:3px solid var(--gold);background:var(--panel);color:var(--mut);font-size:14.5px}
-.end{background:var(--bg-2)}
-footer{padding:40px 0 28px}
-.f-row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--mut-2);font-size:13px}
-.f-row a{color:var(--mut);text-decoration:none}
-.disc{margin-top:18px;padding-top:18px;border-top:1px solid var(--line);color:var(--mut-2);font-size:12px;line-height:1.6;max-width:82ch}
-@media(max-width:760px){
-  .flow,.grid{grid-template-columns:1fr}
-  .hero{padding:52px 0 44px}
+body{font-family:'Inter',-apple-system,sans-serif;background:#fff;color:var(--ink);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+
+#topbar{position:fixed;top:0;left:0;right:0;z-index:100;background:transparent;border-bottom:1px solid transparent;transition:background .3s ease,border-color .3s ease}
+#topbar.solid{background:rgba(6,8,15,.55);backdrop-filter:saturate(150%) blur(14px);border-bottom-color:rgba(255,255,255,.06)}
+.topbar-inner{max-width:1320px;margin:0 auto;padding:16px 32px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.topbar-brand{display:flex;align-items:baseline;gap:14px;color:#fff}
+.topbar-brand .name{font-size:14px;font-weight:600;letter-spacing:.18em;text-transform:uppercase}
+.topbar-brand .tag{font-size:11px;font-weight:300;color:rgba(255,255,255,.5);border-left:1px solid rgba(255,255,255,.18);padding-left:14px}
+.topbar-nav{display:flex;align-items:center;gap:2px;opacity:.62}
+.topbar-nav>a,.nav-dd-btn{
+  font-family:inherit;font-size:11px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,.7);padding:7px 10px;border-radius:6px;background:transparent;border:none;cursor:pointer
 }
+.topbar-nav>a:hover,.nav-dd-btn:hover,.nav-dd.is-open .nav-dd-btn{color:#fff;background:rgba(255,255,255,.05);opacity:1}
+.nav-sep{width:1px;height:14px;background:rgba(255,255,255,.12);margin:0 6px}
+.nav-dd{position:relative}
+.nav-dd-btn{display:inline-flex;align-items:center;gap:5px}
+.nav-dd-btn .arr{font-size:8px;color:rgba(255,255,255,.4)}
+.nav-dd-menu{
+  position:absolute;top:calc(100% + 10px);left:-12px;min-width:320px;
+  background:#0b1020;border:1px solid rgba(255,255,255,.1);
+  border-radius:12px;padding:8px;opacity:0;visibility:hidden;transform:translateY(-4px);
+  transition:opacity .18s ease,transform .18s ease,visibility .18s ease;z-index:120;
+  box-shadow:0 24px 48px rgba(0,0,0,.45)
+}
+.nav-dd.is-open .nav-dd-menu{opacity:1;visibility:visible;transform:none}
+.nav-dd-item{display:flex;align-items:flex-start;gap:10px;padding:9px 10px;border-radius:8px;color:#fff}
+.nav-dd-item:hover{background:rgba(255,255,255,.05)}
+.nav-dd-ic{flex-shrink:0;width:30px;height:30px;border-radius:7px;display:grid;place-items:center;font-size:10px;font-weight:600;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.65)}
+.nav-dd-ic.blue{color:#93c5fd;border-color:rgba(59,130,246,.3)}
+.nav-dd-ic.gold{color:#e8d4a8;border-color:rgba(160,129,86,.3)}
+.nav-dd-ic.green{color:#86efac;border-color:rgba(34,197,94,.3)}
+.nav-dd-ic.red{color:#fca5a5;border-color:rgba(220,38,38,.3)}
+.nav-dd-body .t{font-size:13px;font-weight:500}
+.nav-dd-body .d{font-size:11.5px;color:rgba(255,255,255,.5);text-transform:none;letter-spacing:0}
+.topbar-cta{font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.22);padding:8px 14px;border-radius:6px}
+.topbar-cta:hover{color:#fff;border-color:rgba(255,255,255,.45)}
+
+.hero{
+  min-height:78vh;color:#fff;display:flex;flex-direction:column;justify-content:flex-end;
+  padding:150px 32px 64px;
+  background:
+    linear-gradient(180deg,rgba(6,8,15,0) 0%,rgba(6,8,15,.2) 40%,rgba(6,8,15,.82) 86%,#06080f 100%),
+    url('/assets/rules/moscow-night-hero.webp') center 40%/cover no-repeat,#06080f
+}
+.kicker{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:16px}
+.hero h1{font-size:clamp(2.1rem,5vw,4rem);font-weight:300;letter-spacing:-.035em;line-height:1.08;max-width:15ch}
+.hero h1 strong{font-weight:600}
+.lead{margin-top:20px;max-width:46em;font-size:1.08rem;color:rgba(255,255,255,.78);font-weight:400}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:500;padding:13px 22px;border-radius:var(--radius)}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-ghost{border:1px solid rgba(255,255,255,.35);color:#fff}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:36px}
+.fact{padding:16px 18px;border:1px solid rgba(255,255,255,.1);background:rgba(6,8,15,.35);border-radius:12px}
+.fact b{display:block;font-size:14px;margin-bottom:4px}
+.fact span{font-size:13px;color:rgba(255,255,255,.6)}
+
+.ticker{background:var(--dark);border-bottom:1px solid #1f2937;overflow:hidden;position:relative}
+.ticker::before,.ticker::after{content:"";position:absolute;top:0;bottom:0;width:72px;z-index:2;pointer-events:none}
+.ticker::before{left:0;background:linear-gradient(90deg,#06080f,transparent)}
+.ticker::after{right:0;background:linear-gradient(-90deg,#06080f,transparent)}
+.ticker-track{display:flex;gap:40px;width:max-content;padding:14px 0;animation:tick 42s linear infinite}
+.ticker:hover .ticker-track{animation-play-state:paused}
+@keyframes tick{to{transform:translateX(-50%)}}
+.ti{display:inline-flex;align-items:baseline;gap:10px;white-space:nowrap;color:#cbd5e1;font-size:13px}
+.ti .src{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-soft)}
+.ti b{color:#fff;font-weight:600;font-variant-numeric:tabular-nums}
+.ti a{color:#93c5fd;border-bottom:1px solid rgba(147,197,253,.25)}
+
+section.s{padding:72px 0;border-bottom:1px solid var(--line)}
+h2{font-size:clamp(1.6rem,3vw,2.3rem);font-weight:300;letter-spacing:-.03em;margin-bottom:12px}
+h2 strong{font-weight:600}
+.s-lead{color:var(--body);max-width:54em;margin-bottom:28px}
+.s-lead a{color:var(--blue);border-bottom:1px solid rgba(37,99,235,.25)}
+
+.news{display:block;padding:22px 24px;border:1px solid var(--line);border-left:3px solid var(--ink);border-radius:var(--radius);background:var(--soft)}
+.news .when{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.news h3{font-size:1.25rem;font-weight:500;margin-bottom:8px}
+.news p{color:var(--body)}
+.news .more{display:inline-block;margin-top:12px;color:var(--blue);font-weight:500}
+
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.step{padding:22px;border:1px solid var(--line);border-radius:12px;background:#fff}
+.step .n{width:28px;height:28px;border-radius:50%;border:1px solid var(--gold);color:var(--gold);display:grid;place-items:center;font-size:13px;font-weight:600;margin-bottom:12px}
+.step h3{font-size:17px;font-weight:600;margin-bottom:8px}
+.step p{color:var(--body);font-size:14.5px}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.svc{padding:16px 18px;border:1px solid var(--line);border-radius:10px;background:var(--soft)}
+.svc b{display:block;font-size:15px;margin-bottom:3px}
+.svc span{color:var(--muted);font-size:13.5px}
+
+.rate{padding:22px 24px;border:1px solid var(--line);background:#fff;border-radius:12px}
+.rate p + p{margin-top:10px;color:var(--body)}
+
+.usdc{background:var(--soft)}
+.usdc-box{display:grid;grid-template-columns:1.4fr .8fr;gap:28px;align-items:start}
+.usdc ul{margin:16px 0 0 18px;color:var(--body)}
+.usdc li + li{margin-top:8px}
+.side{padding:20px;border:1px solid var(--line);background:#fff;border-radius:12px}
+.side b{display:block;margin-bottom:8px}
+.side a{color:var(--blue)}
+
+.digest{background:var(--dark);color:#fff;border:none}
+.digest p{color:#94a3b8}
+.digest .btn-blue{background:#fff;color:var(--ink)}
+.digest .btn-ghost{border-color:rgba(255,255,255,.3)}
+
+footer{padding:40px 0;color:var(--muted);font-size:13px}
+footer .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.disc{margin-top:16px;font-size:12px;line-height:1.6;max-width:78em}
+
+@media(max-width:980px){.topbar-nav{display:none}.usdc-box,.facts,.steps,.grid{grid-template-columns:1fr}}
+@media(max-width:768px){
+  .hero{min-height:72vh;padding:120px 20px 48px;background-image:linear-gradient(180deg,rgba(6,8,15,.12),#06080f),url('/assets/rules/moscow-night-hero-800w.webp')}
+  .topbar-brand .tag{display:none}
+  .wrap,.topbar-inner{padding-left:20px;padding-right:20px}
+}
+@media(prefers-reduced-motion:reduce){.ticker-track{animation:none}}
 </style>
 </head>
 <body>
-<header>
-  <div class="wrap hd">
-    <a class="brand" href="/"><span class="name">Charter Capital</span><span class="tag">Crypto Change</span></a>
-    <a class="hd-tg" href="https://t.me/ccapital_acces" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M21.94 4.3 18.6 20.02c-.25 1.11-.92 1.38-1.86.86l-5.14-3.79-2.48 2.39c-.27.27-.5.5-1.03.5l.37-5.23L18.02 6.1c.41-.37-.09-.57-.64-.2L6.63 12.86l-5.06-1.58c-1.1-.34-1.12-1.1.23-1.63l19.77-7.62c.92-.34 1.72.2 1.37 1.27Z"/></svg>
-      Telegram
+<header id="topbar">
+  <div class="topbar-inner">
+    <a href="/" class="topbar-brand">
+      <span class="name">Charter Capital</span>
+      <span class="tag">Когда двери закрываются - мы открываем мир</span>
     </a>
+    <nav class="topbar-nav" aria-label="Разделы сайта">
+      <div class="nav-dd">
+        <button type="button" class="nav-dd-btn" aria-expanded="false">Все продукты <span class="arr">▾</span></button>
+        <div class="nav-dd-menu" role="menu">
+          <a class="nav-dd-item" href="/pay.html"><span class="nav-dd-ic blue">PY</span><span class="nav-dd-body"><span class="t">Pay</span><span class="d">ВЭД-платежи и чистый USDC</span></span></a>
+          <a class="nav-dd-item" href="/bank-account.html#packages"><span class="nav-dd-ic blue">AC</span><span class="nav-dd-body"><span class="t">Счета, карты, сервисы</span><span class="d">Компания + счёт + Visa/MC</span></span></a>
+          <a class="nav-dd-item" href="/company.html"><span class="nav-dd-ic blue">CO</span><span class="nav-dd-body"><span class="t">Компании</span><span class="d">Гонконг · Сингапур · ОАЭ · UK · США</span></span></a>
+          <a class="nav-dd-item" href="/residence.html"><span class="nav-dd-ic green">ВНЖ</span><span class="nav-dd-body"><span class="t">ВНЖ и резидентство</span><span class="d">Испания · Мальта · Португалия · Франция</span></span></a>
+          <a class="nav-dd-item" href="/private.html"><span class="nav-dd-ic gold">PO</span><span class="nav-dd-body"><span class="t">Private Office</span><span class="d">Архитектура легитимности · от $1М</span></span></a>
+        </div>
+      </div>
+      <div class="nav-dd">
+        <button type="button" class="nav-dd-btn" aria-expanded="false">Где вы сейчас <span class="arr">▾</span></button>
+        <div class="nav-dd-menu" role="menu">
+          <a class="nav-dd-item" href="/homeland.html"><span class="nav-dd-ic red">RU</span><span class="nav-dd-body"><span class="t">Я ещё в России</span><span class="d">Деньги, документы, подготовка</span></span></a>
+          <a class="nav-dd-item" href="/"><span class="nav-dd-ic green">EU</span><span class="nav-dd-body"><span class="t">Я уже за границей</span><span class="d">Международный маршрут</span></span></a>
+          <a class="nav-dd-item" href="/freedom-route.html"><span class="nav-dd-ic">?</span><span class="nav-dd-body"><span class="t">Только думаю о переезде</span><span class="d">Маршрут в свободный мир</span></span></a>
+        </div>
+      </div>
+      <span class="nav-sep"></span>
+      <a href="/#triggers">Боль</a>
+      <a href="/#routes">Маршруты</a>
+      <a href="/journal.html">Журнал</a>
+    </nav>
+    <a class="topbar-cta" href="https://t.me/ccapital_acces" target="_blank" rel="noopener">Telegram</a>
   </div>
 </header>
 
-<main>
 <section class="hero">
   <div class="wrap">
-    <p class="eyebrow">Для российских компаний</p>
-    <h1>Безналичный рубль — в&nbsp;<span class="g">криптовалюту</span></h1>
-    <p class="lead">Charter Capital собирает обмен как обычный платёж за услуги. Российская компания перечисляет безналичные рубли на рублёвый счёт нерезидента в российском банке. Основание — реальная услуга. На выходе — криптовалюта.</p>
+    <p class="kicker">Для российских компаний</p>
+    <h1>Безналичный рубль — в&nbsp;<strong>криптовалюту</strong></h1>
+    <p class="lead">Charter Capital собирает обмен как обычный платёж за услуги. Российская компания перечисляет безналичные рубли на рублёвый счёт нерезидента в российском банке. На выходе — криптовалюта.</p>
     <div class="cta">
-      <a class="btn btn-tg" href="https://t.me/ccapital_acces" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M21.94 4.3 18.6 20.02c-.25 1.11-.92 1.38-1.86.86l-5.14-3.79-2.48 2.39c-.27.27-.5.5-1.03.5l.37-5.23L18.02 6.1c.41-.37-.09-.57-.64-.2L6.63 12.86l-5.06-1.58c-1.1-.34-1.12-1.1.23-1.63l19.77-7.62c.92-.34 1.72.2 1.37 1.27Z"/></svg>
-        Написать в Telegram
-      </a>
+      <a class="btn btn-blue" href="https://t.me/ccapital_acces" target="_blank" rel="noopener">Написать в Telegram</a>
       <a class="btn btn-ghost" href="#how">Как это устроено</a>
     </div>
-    <div class="stats">
-      <div class="stat"><b>Счёт в России</b><span>Рублёвый счёт нерезидента в российском банке</span></div>
-      <div class="stat"><b>Платёж за услуги</b><span>Договор, инвойс, штатный валютный контроль</span></div>
-      <div class="stat"><b>На выходе крипта</b><span>После поступления рублей и документов</span></div>
+    <div class="facts">
+      <div class="fact"><b>Счёт в России</b><span>Рублёвый счёт нерезидента в российском банке</span></div>
+      <div class="fact"><b>Платёж за услуги</b><span>Договор, инвойс, штатный валютный контроль</span></div>
+      <div class="fact"><b>На выходе крипта</b><span>После поступления рублей и документов</span></div>
     </div>
+  </div>
+</section>
+
+<div class="ticker" role="region" aria-label="Актуальные курсы">
+  <div class="ticker-track" id="ticker">
+    <span class="ti"><span class="src">ЦБ РФ</span> USD <b id="cbrUsd">—</b> ₽ <span id="cbrDate"></span></span>
+    <span class="ti"><span class="src">Investing</span> <a href="https://www.investing.com/currencies/usd-rub" target="_blank" rel="noopener">USD/RUB</a> <b id="invUsd">—</b> ₽</span>
+    <span class="ti"><span class="src">Investing</span> <a href="https://www.investing.com/crypto/tether/usdt-usd" target="_blank" rel="noopener">USDT/USD</a> <b id="invUsdt">—</b></span>
+    <span class="ti"><span class="src">Investing</span> <a href="https://www.investing.com/crypto/tether/usdt-rub" target="_blank" rel="noopener">USDT/RUB</a> <b id="invUsdtRub">—</b> ₽</span>
+  </div>
+</div>
+
+<section class="s" id="news">
+  <div class="wrap">
+    <p class="kicker" style="color:var(--gold)">Информационное сообщение</p>
+    <h2>Сроки операций Crypto&nbsp;Change</h2>
+    <a class="news" href="/rules-crypto-change-cc26-r8n3w5.html">
+      <p class="when">18 сентября 2026 · обращение к клиентам</p>
+      <h3>Rules Crypto Change</h3>
+      <p>Платёж до 12:00 по московскому времени — выдача в тот же день, T+0. После 12:00 МСК операция уходит на следующий рабочий день, T+1. От 20&nbsp;000 долларов курс — по лучшему доступному рынку.</p>
+      <span class="more">Читать сообщение →</span>
+    </a>
   </div>
 </section>
 
 <section class="s" id="how">
   <div class="wrap">
-    <span class="kicker">Как идёт операция</span>
-    <h2>Три шага — <span class="g">без обменника</span></h2>
+    <h2>Три шага — <strong>без обменника</strong></h2>
     <p class="s-lead">Не перевод «без назначения». Каждая операция — коммерческая сделка с готовым нерезидентом.</p>
-    <div class="flow">
+    <div class="steps">
       <div class="step"><div class="n">1</div><h3>Основание</h3><p>Подбираем услугу из готового контура: вычислительные мощности, Китай, PR, логистика. Подписываете договор и получаете инвойс.</p></div>
       <div class="step"><div class="n">2</div><h3>Платёж в РФ</h3><p>Компания платит безналичными рублями на рублёвый счёт нерезидента в российском банке. Операция идёт через обычный валютный контроль.</p></div>
       <div class="step"><div class="n">3</div><h3>Криптовалюта</h3><p>После зачисления рублей и сверки документов выдаём криптовалюту. Бухгалтерия получает закрывающие документы.</p></div>
@@ -148,10 +248,19 @@ footer{padding:40px 0 28px}
   </div>
 </section>
 
+<section class="s" id="rate">
+  <div class="wrap">
+    <h2>Курс зависит от объёма</h2>
+    <div class="rate">
+      <p>Ориентиры в бегущей строке — официальный курс Банка России и рыночные котировки USD и USDT. Итоговый курс сделки фиксируется в момент исполнения.</p>
+      <p>От 20&nbsp;000 долларов США Charter Capital предоставляет курс по лучшему доступному рынку. При меньшем объёме курс формируется по текущему стакану.</p>
+    </div>
+  </div>
+</section>
+
 <section class="s" id="services">
   <div class="wrap">
-    <span class="kicker">Готовые нерезиденты</span>
-    <h2>За какие услуги <span class="g">можно платить</span></h2>
+    <h2>За какие услуги можно платить</h2>
     <p class="s-lead">Платёж оформляется как оплата реальной работы. Направления — из рабочего контура, включая <a href="https://www.wet-hk.pro/" target="_blank" rel="noopener">WET Solution</a>.</p>
     <div class="grid">
       <div class="svc"><b>Аренда CPU и серверов</b><span>Вычислительные мощности, размещение, облако</span></div>
@@ -165,29 +274,108 @@ footer{padding:40px 0 28px}
       <div class="svc"><b>Переговоры</b><span>Сопровождение коммерческих переговоров</span></div>
       <div class="svc"><b>Логистика</b><span>Координация передачи товара и документов</span></div>
     </div>
-    <p class="note">Конкретную услугу, сумму и назначение платежа согласуем до перевода. Без договора и понятного основания операцию не проводим.</p>
   </div>
 </section>
 
-<section class="s end">
+<section class="s usdc" id="usdc">
   <div class="wrap">
-    <h2>Напишите в Telegram</h2>
-    <p class="s-lead">Коротко: компания, сумма, какая услуга ближе. Ответим в рабочий день и скажем, какой контур подходит.</p>
-    <a class="btn btn-tg" href="https://t.me/ccapital_acces" target="_blank" rel="noopener">Открыть @ccapital_acces</a>
+    <p class="kicker" style="color:var(--gold)">B2B-расчёты</p>
+    <h2>Чистый <strong>USDC</strong></h2>
+    <div class="usdc-box">
+      <div>
+        <p class="s-lead">Не любой USDC одинаково принимается. Токен, купленный через российскую биржу или P2P, несёт «географический след». Банк получателя в Китае, ОАЭ или ЕС читает on-chain историю и может остановить платёж.</p>
+        <p class="s-lead">Charter Capital выкупает американский USDC у лицензированных зарубежных брокеров: без российского следа в цепочке адресов, со скринингом контрагента и Source of Funds под банк получателя. Это тот же коридор, который мы собираем на <a href="/pay.html#usdc">Pay</a>.</p>
+        <ul>
+          <li>Санкционная чистота токена — без следа российских площадок</li>
+          <li>Документальное досье операции для бухгалтерии и банка</li>
+          <li>Коридор «рубль в РФ → чистый USDC → партнёр»</li>
+        </ul>
+      </div>
+      <aside class="side">
+        <b>Как мы это разбирали</b>
+        <p style="color:var(--body);margin-bottom:12px">Полный текст — в журнале: почему обычный стейблкоин ломает B2B-сделку и как выглядит чистый коридор.</p>
+        <p><a href="/journal/b2b-crypto-settlements-clean-usdc.html">Как платить поставщикам криптой и не попасть под блокировку →</a></p>
+        <p style="margin-top:10px"><a href="/pay.html#usdc">Charter Capital Pay · чистый USDC →</a></p>
+      </aside>
+    </div>
   </div>
 </section>
-</main>
+
+<section class="s digest">
+  <div class="wrap">
+    <h2>Подпишитесь на наш дайджест</h2>
+    <p class="s-lead">Короткие разборы банков, санкций и маршрутов капитала — тем же языком, которым мы работаем с клиентами. Канал в Telegram и журнал на сайте.</p>
+    <div class="cta">
+      <a class="btn btn-blue" href="https://t.me/ccapital26" target="_blank" rel="noopener">Telegram · Дайджест</a>
+      <a class="btn btn-ghost" href="/journal.html">Читать журнал</a>
+    </div>
+  </div>
+</section>
 
 <footer>
   <div class="wrap">
-    <div class="f-row">
+    <div class="row">
       <span>© 2026 Charter Capital</span>
-      <span><a href="/">Главная</a> · <a href="/pay.html">Pay</a> · <a href="/payout.html">Вывод средств</a> · <a href="/journal.html">Журнал</a></span>
+      <span><a href="/">Главная</a> · <a href="/pay.html">Pay</a> · <a href="/payout.html">Вывод средств</a> · <a href="/journal.html">Журнал</a> · <a href="https://t.me/ccapital_acces" target="_blank" rel="noopener">Telegram</a></span>
     </div>
-    <p class="disc">Страница не является публичной офертой. Charter Capital собирает операцию как платёж за реальные услуги готового нерезидента. Не принимаем поручения без проверки клиента, документов и назначения платежа. Не используем контур для фиктивных услуг, сокрытия происхождения средств или операций без экономического основания. Курс, срок и комплект документов согласуются отдельно.</p>
+    <p class="disc">Страница не является публичной офертой. Charter Capital собирает операцию как платёж за реальные услуги готового нерезидента. Не принимаем поручения без проверки клиента, документов и назначения платежа. Курсы в строке — справочные: ЦБ РФ и рыночные котировки USD/USDT. Итоговый курс, срок и комплект документов согласуются отдельно.</p>
   </div>
 </footer>
 
+<script>
+(function(){
+  var bar=document.getElementById('topbar');
+  function tick(){ if(window.scrollY>80) bar.classList.add('solid'); else bar.classList.remove('solid'); }
+  window.addEventListener('scroll', tick, {passive:true}); tick();
+})();
+(function(){
+  var dds=document.querySelectorAll('.nav-dd');
+  function closeAll(){ dds.forEach(function(dd){ dd.classList.remove('is-open'); var b=dd.querySelector('.nav-dd-btn'); if(b) b.setAttribute('aria-expanded','false'); }); }
+  dds.forEach(function(dd){
+    var btn=dd.querySelector('.nav-dd-btn'); if(!btn) return;
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      var open=!dd.classList.contains('is-open');
+      closeAll();
+      if(open){ dd.classList.add('is-open'); btn.setAttribute('aria-expanded','true'); }
+    });
+  });
+  document.addEventListener('click', function(e){ if(!e.target.closest('.nav-dd')) closeAll(); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeAll(); });
+})();
+(function(){
+  function fmt(n, d){ return (n==null||isNaN(n))?'—':Number(n).toLocaleString('ru-RU',{minimumFractionDigits:d,maximumFractionDigits:d}); }
+  function set(id, v){ var el=document.getElementById(id); if(el) el.textContent=v; }
+  function cloneTrack(){
+    var track=document.getElementById('ticker');
+    if(!track || track.dataset.cloned) return;
+    track.innerHTML = track.innerHTML + track.innerHTML;
+    track.dataset.cloned='1';
+  }
+  Promise.allSettled([
+    fetch('https://www.cbr-xml-daily.ru/daily_json.js').then(function(r){return r.json();}),
+    fetch('https://open.er-api.com/v6/latest/USD').then(function(r){return r.json();}),
+    fetch('https://api.coingecko.com/api/v3/simple/price?ids=tether&vs_currencies=usd,rub').then(function(r){return r.json();})
+  ]).then(function(res){
+    var cbr=res[0].status==='fulfilled'?res[0].value:null;
+    var mkt=res[1].status==='fulfilled'?res[1].value:null;
+    var usdt=res[2].status==='fulfilled'?res[2].value:null;
+    if(cbr && cbr.Valute && cbr.Valute.USD){
+      set('cbrUsd', fmt(cbr.Valute.USD.Value, 2));
+      if(cbr.Date){
+        var d=new Date(cbr.Date);
+        set('cbrDate', '· '+d.toLocaleDateString('ru-RU'));
+      }
+    }
+    if(mkt && mkt.rates && mkt.rates.RUB) set('invUsd', fmt(mkt.rates.RUB, 2));
+    if(usdt && usdt.tether){
+      set('invUsdt', fmt(usdt.tether.usd, 4));
+      set('invUsdtRub', fmt(usdt.tether.rub, 2));
+    }
+    cloneTrack();
+  }).catch(cloneTrack);
+})();
+</script>
 <script>
 (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();
 for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}
