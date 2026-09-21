@@ -93,10 +93,10 @@ img{max-width:100%;display:block}
 .btn{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:500;padding:13px 22px;border-radius:var(--radius)}
 .btn-blue{background:var(--blue);color:#fff}
 .btn-ghost{border:1px solid rgba(255,255,255,.35);color:#fff}
-.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:36px}
-.fact{padding:16px 18px;border:1px solid rgba(255,255,255,.1);background:rgba(6,8,15,.35);border-radius:12px}
-.fact b{display:block;font-size:14px;margin-bottom:4px}
-.fact span{font-size:13px;color:rgba(255,255,255,.6)}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:36px;align-items:stretch}
+.fact{padding:22px 20px;border:1px solid rgba(232,212,168,.28);background:rgba(6,8,15,.62);border-radius:14px}
+.fact b{display:block;font-size:16px;font-weight:600;margin-bottom:10px;color:#fff}
+.fact span{display:block;font-size:14.5px;line-height:1.45;color:rgba(255,255,255,.86)}
 
 .ticker{background:var(--dark);border-bottom:1px solid #1f2937;overflow:hidden;position:relative}
 .ticker::before,.ticker::after{content:"";position:absolute;top:0;bottom:0;width:72px;z-index:2;pointer-events:none}
@@ -201,15 +201,15 @@ footer .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <div class="wrap">
     <p class="kicker">Для российских компаний</p>
     <h1>Безналичный рубль — в&nbsp;<strong>криптовалюту</strong></h1>
-    <p class="lead">Charter Capital собирает обмен как обычный платёж за услуги. Российская компания перечисляет безналичные рубли на рублёвый счёт нерезидента в российском банке. На выходе — криптовалюта.</p>
+    <p class="lead">Вы платите рублями на счета в российских или белорусских банках. Назначение — услуга из готового контура. Документы для валютного контроля закрываем мы. Криптовалюту выплачиваем день в день.</p>
     <div class="cta">
       <a class="btn btn-blue" href="https://t.me/ccapital_acces" target="_blank" rel="noopener">Написать в Telegram</a>
       <a class="btn btn-ghost" href="#how">Как это устроено</a>
     </div>
     <div class="facts">
-      <div class="fact"><b>Счёт в России</b><span>Рублёвый счёт нерезидента в российском банке</span></div>
-      <div class="fact"><b>Платёж за услуги</b><span>Договор, инвойс, штатный валютный контроль</span></div>
-      <div class="fact"><b>На выходе крипта</b><span>После поступления рублей и документов</span></div>
+      <div class="fact"><b>Платите рублями</b><span>На счета в российских или белорусских банках. Принимаем компанию с любым цветом банковского светофора.</span></div>
+      <div class="fact"><b>Платёж за услуги</b><span>Выбираете подходящее вам назначение из более чем 100–300 готовых назначений за услуги.</span></div>
+      <div class="fact"><b>Документы и выплата день в день</b><span>Закрываем весь документооборот для валютного контроля: договоры, счета, инвойсы, отчёты о проделанной работе. После поступления рублей выплачиваем криптовалюту день в день.</span></div>
     </div>
   </div>
 </section>
@@ -239,11 +239,11 @@ footer .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <section class="s" id="how">
   <div class="wrap">
     <h2>Три шага — <strong>без обменника</strong></h2>
-    <p class="s-lead">Не перевод «без назначения». Каждая операция — коммерческая сделка с готовым нерезидентом.</p>
+    <p class="s-lead">Не перевод «без назначения». Каждая операция — коммерческая сделка: рубль уходит как оплата услуги, пакет документов собираем мы.</p>
     <div class="steps">
-      <div class="step"><div class="n">1</div><h3>Основание</h3><p>Подбираем услугу из готового контура: вычислительные мощности, Китай, PR, логистика. Подписываете договор и получаете инвойс.</p></div>
-      <div class="step"><div class="n">2</div><h3>Платёж в РФ</h3><p>Компания платит безналичными рублями на рублёвый счёт нерезидента в российском банке. Операция идёт через обычный валютный контроль.</p></div>
-      <div class="step"><div class="n">3</div><h3>Криптовалюта</h3><p>После зачисления рублей и сверки документов выдаём криптовалюту. Бухгалтерия получает закрывающие документы.</p></div>
+      <div class="step"><div class="n">1</div><h3>Назначение</h3><p>Выбираете подходящее назначение из более чем 100–300 готовых услуг. Подписываете договор и получаете счёт.</p></div>
+      <div class="step"><div class="n">2</div><h3>Платёж рублями</h3><p>Платите на счёт в российском или белорусском банке. Компания — с любым цветом банковского светофора.</p></div>
+      <div class="step"><div class="n">3</div><h3>Документы и крипта</h3><p>Закрываем валютный контроль: договоры, счета, инвойсы, отчёты. После поступления рублей выплачиваем криптовалюту день в день.</p></div>
     </div>
   </div>
 </section>
@@ -261,7 +261,7 @@ footer .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <section class="s" id="services">
   <div class="wrap">
     <h2>За какие услуги можно платить</h2>
-    <p class="s-lead">Платёж оформляется как оплата реальной работы. Направления — из рабочего контура, включая <a href="https://www.wet-hk.pro/" target="_blank" rel="noopener">WET Solution</a>.</p>
+    <p class="s-lead">Более 100–300 готовых назначений за услуги. Ниже — часть рабочего контура, включая <a href="https://www.wet-hk.pro/" target="_blank" rel="noopener">WET Solution</a>. Конкретное назначение подберём под вашу компанию.</p>
     <div class="grid">
       <div class="svc"><b>Аренда CPU и серверов</b><span>Вычислительные мощности, размещение, облако</span></div>
       <div class="svc"><b>Аренда GPU</b><span>Вычислительное облако под задачу клиента</span></div>
