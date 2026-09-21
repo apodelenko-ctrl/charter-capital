@@ -128,10 +128,26 @@ h2 strong{font-weight:600}
 .step h3{font-size:17px;font-weight:600;margin-bottom:8px}
 .step p{color:var(--body);font-size:14.5px}
 
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.svc{padding:16px 18px;border:1px solid var(--line);border-radius:10px;background:var(--soft)}
-.svc b{display:block;font-size:15px;margin-bottom:3px}
-.svc span{color:var(--muted);font-size:13.5px}
+.acc{border:1px solid var(--line);border-radius:12px;background:#fff;margin-bottom:8px}
+.acc>summary{
+  list-style:none;cursor:pointer;padding:16px 18px;display:flex;justify-content:space-between;align-items:center;gap:16px;
+  font-weight:600;font-size:15.5px
+}
+.acc>summary::-webkit-details-marker{display:none}
+.acc>summary::after{content:"▾";color:var(--gold);font-size:12px}
+.acc[open]>summary{border-bottom:1px solid var(--line)}
+.acc[open]>summary::after{content:"▴"}
+.acc .hint{display:block;font-weight:400;font-size:13px;color:var(--muted);margin-top:3px}
+.sub{padding:8px 12px 14px}
+.sub details{border:1px solid var(--line);border-radius:10px;margin:8px 0;background:var(--soft)}
+.sub details>summary{list-style:none;cursor:pointer;padding:12px 14px;font-weight:600;font-size:14.5px;display:flex;justify-content:space-between}
+.sub details>summary::-webkit-details-marker{display:none}
+.sub details>summary::after{content:"▾";color:var(--muted);font-size:11px}
+.sub details[open]>summary{border-bottom:1px solid var(--line)}
+.purp{list-style:none;padding:6px 8px 10px}
+.purp li{padding:8px 10px;border-radius:8px;font-size:14px;color:var(--body)}
+.purp li:hover{background:#fff}
+.pick{margin-top:18px;padding:16px 18px;border-left:3px solid var(--ink);background:var(--soft);color:var(--body)}
 
 .rate{padding:22px 24px;border:1px solid var(--line);background:#fff;border-radius:12px}
 .rate p + p{margin-top:10px;color:var(--body)}
@@ -153,7 +169,7 @@ footer{padding:40px 0;color:var(--muted);font-size:13px}
 footer .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .disc{margin-top:16px;font-size:12px;line-height:1.6;max-width:78em}
 
-@media(max-width:980px){.topbar-nav{display:none}.usdc-box,.facts,.steps,.grid{grid-template-columns:1fr}}
+@media(max-width:980px){.topbar-nav{display:none}.usdc-box,.facts,.steps{grid-template-columns:1fr}}
 @media(max-width:768px){
   .hero{min-height:72vh;padding:120px 20px 48px;background-image:linear-gradient(180deg,rgba(6,8,15,.12),#06080f),url('/assets/rules/moscow-night-hero-800w.webp')}
   .topbar-brand .tag{display:none}
@@ -260,20 +276,248 @@ footer .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
 <section class="s" id="services">
   <div class="wrap">
-    <h2>За какие услуги можно платить</h2>
-    <p class="s-lead">Более 100–300 готовых назначений за услуги. Ниже — часть рабочего контура, включая <a href="https://www.wet-hk.pro/" target="_blank" rel="noopener">WET Solution</a>. Конкретное назначение подберём под вашу компанию.</p>
-    <div class="grid">
-      <div class="svc"><b>Аренда CPU и серверов</b><span>Вычислительные мощности, размещение, облако</span></div>
-      <div class="svc"><b>Аренда GPU</b><span>Вычислительное облако под задачу клиента</span></div>
-      <div class="svc"><b>PR и медиаразмещение</b><span>Подготовка материалов и работа с площадками в Азии</span></div>
-      <div class="svc"><b>Выставки</b><span>Регистрация, стенд, локальная поддержка</span></div>
-      <div class="svc"><b>Sourcing</b><span>Поиск и сравнение предложений под закупку</span></div>
-      <div class="svc"><b>Поиск поставщиков</b><span>Проверка производителя и готовности к отгрузке</span></div>
-      <div class="svc"><b>Factory audit</b><span>Выезд на производство и отчёт</span></div>
-      <div class="svc"><b>QC · контроль качества</b><span>Инспекция партии, фото- и видеоотчёт</span></div>
-      <div class="svc"><b>Переговоры</b><span>Сопровождение коммерческих переговоров</span></div>
-      <div class="svc"><b>Логистика</b><span>Координация передачи товара и документов</span></div>
-    </div>
+    <h2>Выберите нужное назначение</h2>
+    <p class="s-lead">Откройте сферу — внутри ещё один список. Маркетинг, IT, стройка, кадры, Китай, недвижимость: смотрите, что подходит вашей компании. Конкретное назначение согласуем до платежа.</p>
+
+    <details class="acc">
+      <summary>Маркетинг и реклама<span class="hint">Кампании, digital, выставки, стенды, логистика площадки</span></summary>
+      <div class="sub">
+        <details><summary>Реклама и продвижение</summary>
+          <ul class="purp">
+            <li>Рекламная кампания за рубежом</li>
+            <li>Digital-продвижение и performance</li>
+            <li>Медиаразмещение на площадках</li>
+            <li>Производство рекламных материалов</li>
+            <li>Бренд-стратегия и позиционирование</li>
+            <li>Локализация рекламного сообщения</li>
+          </ul>
+        </details>
+        <details><summary>Выставки и стенды</summary>
+          <ul class="purp">
+            <li>Регистрация участия в выставке</li>
+            <li>Аренда и оснащение стенда</li>
+            <li>Печатные материалы и навигация стенда</li>
+            <li>Логистика выставочного оборудования</li>
+            <li>Локальная поддержка на площадке</li>
+            <li>Коммуникация с организаторами</li>
+          </ul>
+        </details>
+        <details><summary>PR и иностранные СМИ</summary>
+          <ul class="purp">
+            <li>Подготовка PR-материалов</li>
+            <li>Размещение в иностранных СМИ</li>
+            <li>Работа с отраслевыми площадками Азии</li>
+            <li>Сопровождение выхода материала</li>
+            <li>Кризисные коммуникации</li>
+          </ul>
+        </details>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>IT и цифровые услуги<span class="hint">Разработка, лицензии, дизайн, сопровождение</span></summary>
+      <div class="sub">
+        <details><summary>Разработка и продукт</summary>
+          <ul class="purp">
+            <li>Разработка программного обеспечения</li>
+            <li>Дизайн интерфейсов и UX</li>
+            <li>Интеграции и API</li>
+            <li>Аналитика и BI</li>
+            <li>Сопровождение и SLA</li>
+          </ul>
+        </details>
+        <details><summary>Лицензии и подписки</summary>
+          <ul class="purp">
+            <li>Лицензии на ПО</li>
+            <li>Подписки на облачные сервисы</li>
+            <li>Роялти и права использования</li>
+            <li>Расширенная техническая поддержка</li>
+          </ul>
+        </details>
+        <details><summary>Кибербезопасность</summary>
+          <ul class="purp">
+            <li>Аудит информационной безопасности</li>
+            <li>Защита веб-приложений</li>
+            <li>Защита от ботов и DDoS</li>
+            <li>Управление DNS</li>
+          </ul>
+        </details>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>Вычислительные мощности и облако<span class="hint">CPU, GPU, серверы, CDN</span></summary>
+      <div class="sub">
+        <details><summary>Аренда мощностей</summary>
+          <ul class="purp">
+            <li>Аренда CPU и выделенных серверов</li>
+            <li>Аренда GPU: H100, H200, A100, L40S, RTX</li>
+            <li>Облако и VPS</li>
+            <li>Резерв GPU-мощностей по договору</li>
+            <li>Дополнительные мощности по действующему договору</li>
+            <li>Облако для обучения и инференса AI</li>
+          </ul>
+        </details>
+        <details><summary>Инфраструктура</summary>
+          <ul class="purp">
+            <li>Доставка контента через CDN</li>
+            <li>Комплекс облачной инфраструктуры</li>
+            <li>Подключение и настройка контура</li>
+            <li>Kubernetes и объектное хранилище</li>
+          </ul>
+        </details>
+        <details><summary>IT-оборудование</summary>
+          <ul class="purp">
+            <li>Поставка GPU-серверов</li>
+            <li>Рабочие станции с GPU</li>
+            <li>AI-серверы H100 / H200</li>
+            <li>Серверные стойки и кластеры</li>
+          </ul>
+        </details>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>Строительным компаниям<span class="hint">Проект, надзор, сметы, кадры на площадку, снабжение</span></summary>
+      <div class="sub">
+        <details><summary>Проектирование и инженерия</summary>
+          <ul class="purp">
+            <li>Архитектурный консалтинг</li>
+            <li>Разработка проектной документации</li>
+            <li>Инженерные изыскания</li>
+            <li>BIM-моделирование</li>
+            <li>Сметный расчёт и экспертиза сметы</li>
+          </ul>
+        </details>
+        <details><summary>Надзор и подряд</summary>
+          <ul class="purp">
+            <li>Авторский надзор</li>
+            <li>Технический надзор на площадке</li>
+            <li>Подбор подрядчиков</li>
+            <li>Консультации по охране труда и HSE</li>
+          </ul>
+        </details>
+        <details><summary>Снабжение и логистика стройки</summary>
+          <ul class="purp">
+            <li>Поиск поставщиков материалов и оборудования</li>
+            <li>Координация поставки на объект</li>
+            <li>Контроль качества партии</li>
+            <li>Документальное сопровождение отгрузки</li>
+          </ul>
+        </details>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>Подбор персонала<span class="hint">Поиск, оценка, аутстафф, обучение</span></summary>
+      <div class="sub">
+        <details><summary>Поиск и оценка</summary>
+          <ul class="purp">
+            <li>Executive search</li>
+            <li>Подбор линейного персонала</li>
+            <li>Массовый подбор</li>
+            <li>Оценка кандидатов</li>
+            <li>Кадровый аудит</li>
+          </ul>
+        </details>
+        <details><summary>Аутстафф и адаптация</summary>
+          <ul class="purp">
+            <li>Аутстаффинг специалистов</li>
+            <li>Онбординг сотрудников</li>
+            <li>Обучение и адаптация на площадке</li>
+            <li>Сопровождение испытательного срока</li>
+          </ul>
+        </details>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>Обучение и развитие<span class="hint">Семинары, тренинги, квалификация</span></summary>
+      <div class="sub">
+        <ul class="purp">
+          <li>Корпоративные семинары</li>
+          <li>Тренинги персонала</li>
+          <li>Повышение квалификации</li>
+          <li>Языковые программы</li>
+          <li>Отраслевое обучение за рубежом</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>Китай и внешнеторговый контур<span class="hint">Sourcing, поставщики, QC, переговоры, логистика</span></summary>
+      <div class="sub">
+        <details><summary>Поиск и проверка</summary>
+          <ul class="purp">
+            <li>Sourcing под конкретный запрос</li>
+            <li>Поиск поставщиков</li>
+            <li>Поиск покупателей</li>
+            <li>Factory audit</li>
+            <li>Верификация производителя</li>
+          </ul>
+        </details>
+        <details><summary>Качество, переговоры, логистика</summary>
+          <ul class="purp">
+            <li>QC и инспекция партии</li>
+            <li>Фото- и видеоотчёт по чек-листу</li>
+            <li>Сопровождение коммерческих переговоров</li>
+            <li>Координация передачи товара</li>
+            <li>Документальное сопровождение перевозки</li>
+          </ul>
+        </details>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>Недвижимость и переезд<span class="hint">Поиск объекта, сделка, заселение</span></summary>
+      <div class="sub">
+        <details><summary>Поиск и аналитика</summary>
+          <ul class="purp">
+            <li>Анализ рынка покупки или аренды</li>
+            <li>Подбор короткого списка объектов</li>
+            <li>Расчёт доходности</li>
+            <li>Инвестиционный меморандум</li>
+          </ul>
+        </details>
+        <details><summary>Сделка и заселение</summary>
+          <ul class="purp">
+            <li>Организация просмотров</li>
+            <li>Переговоры по цене и условиям</li>
+            <li>Сопровождение договора</li>
+            <li>Помощь с переездом и заселением</li>
+            <li>Консультация по интерьеру и ремонту</li>
+          </ul>
+        </details>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>Консалтинг<span class="hint">Управление, финансы, документы</span></summary>
+      <div class="sub">
+        <ul class="purp">
+          <li>Управленческий консалтинг</li>
+          <li>Финансовый консалтинг</li>
+          <li>Due diligence</li>
+          <li>Подготовка коммерческих документов</li>
+          <li>Перевод и адаптация договоров</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>Деловые поездки и мероприятия<span class="hint">Командировки, конференции, организация</span></summary>
+      <div class="sub">
+        <ul class="purp">
+          <li>Организация деловой поездки</li>
+          <li>Билеты и сопровождение маршрута</li>
+          <li>Участие в конференции</li>
+          <li>Организация корпоративного мероприятия</li>
+          <li>Локальная логистика делегации</li>
+        </ul>
+      </div>
+    </details>
+
+    <p class="pick">Нашли сферу — напишите в Telegram, какое назначение ближе. Подберём формулировку, договор и счёт до перевода.</p>
   </div>
 </section>
 
