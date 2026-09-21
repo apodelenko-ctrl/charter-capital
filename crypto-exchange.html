@@ -128,7 +128,7 @@ img{max-width:100%;display:block}
 .ticker::before,.ticker::after{content:"";position:absolute;top:0;bottom:0;width:90px;z-index:2;pointer-events:none}
 .ticker::before{left:0;background:linear-gradient(90deg,#070b15,transparent)}
 .ticker::after{right:0;background:linear-gradient(-90deg,#070b15,transparent)}
-.track{display:flex;width:max-content;gap:42px;padding:14px 0;animation:marquee 24s linear infinite}
+.track{display:flex;width:max-content;gap:42px;padding:14px 0;animation:marquee 17s linear infinite}
 .ticker:hover .track{animation-play-state:paused}
 @keyframes marquee{to{transform:translateX(-50%)}}
 .quote{white-space:nowrap;font-size:12.5px;color:#9ca9bc;display:flex;align-items:baseline;gap:8px}
@@ -375,13 +375,13 @@ footer{padding:48px 0 96px;color:#68778d;font-size:11px}
 
 <div class="market">
   <div class="wrap">
-    <div class="market-head"><p>Живые ориентиры · не оферта и не курс сделки</p><div class="updated mono" id="updated">обновление…</div></div>
-    <div class="ticker" aria-label="Живые котировки">
+    <div class="market-head"><p>Москва · ЦБ РФ · Investing.com · ориентиры, не оферта</p><div class="updated mono" id="updated">рынок · live</div></div>
+    <div class="ticker" aria-label="Живые рыночные ориентиры">
       <div class="track" id="ticker">
+        <span class="quote"><span class="src">Москва</span> <b id="moscowTicker">--:--:--</b> <em>МСК</em></span>
         <span class="quote"><span class="src">ЦБ РФ</span> USD/RUB <b id="cbrUsd">—</b> ₽ <em id="cbrDate"></em></span>
-        <span class="quote"><span class="src">CoinGecko</span> USDT/RUB <b id="usdtRub">—</b> ₽</span>
-        <span class="quote"><span class="src">CoinGecko</span> USDT/USD <b id="usdtUsd">—</b></span>
-        <span class="quote"><span class="src">CoinGecko</span> USDC/RUB <b id="usdcRub">—</b> ₽</span>
+        <a class="quote" href="https://ru.investing.com/currencies/usd-rub" target="_blank" rel="noopener noreferrer"><span class="src">Investing</span> USD/RUB <b>LIVE ↗</b></a>
+        <a class="quote" href="https://ru.investing.com/crypto/tether/usdt-rub" target="_blank" rel="noopener noreferrer"><span class="src">Investing</span> USDT/RUB <b>LIVE ↗</b></a>
         <span class="quote"><span class="src">Charter</span> от $20k <b>best available market*</b></span>
       </div>
     </div>
@@ -554,6 +554,10 @@ footer{padding:48px 0 96px;color:#68778d;font-size:11px}
   var clock=document.getElementById('moscowClock'), cutoff=document.getElementById('cutoffText'), status=document.getElementById('dayStatus');
   function upd(){
     var now=new Date();
+    var tickerClock=document.getElementById('moscowTicker');
+    if(tickerClock){
+      tickerClock.textContent=new Intl.DateTimeFormat('ru-RU',{timeZone:'Europe/Moscow',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}).format(now);
+    }
     var parts=new Intl.DateTimeFormat('ru-RU',{timeZone:'Europe/Moscow',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(now);
     var m={};parts.forEach(function(p){m[p.type]=p.value});
     clock.textContent='Москва · '+(m.weekday||'')+' · '+m.hour+':'+m.minute;
@@ -564,7 +568,7 @@ footer{padding:48px 0 96px;color:#68778d;font-size:11px}
     else if(h<12){cutoff.textContent='до 12:00 МСК · окно T+0';status.innerHTML='<span class="live-dot"></span>T+0 window'}
     else{cutoff.textContent='после 12:00 МСК · T+1';status.innerHTML='<span class="live-dot"></span>next business day'}
   }
-  upd();setInterval(upd,30000);
+  upd();setInterval(upd,1000);
 })();
 
 (function(){
@@ -614,13 +618,11 @@ var marketRates={USDT:null,USDC:null,CBR:null};
     }
     if(cg&&cg.tether){
       marketRates.USDT=Number(cg.tether.rub);
-      set('usdtRub',fmt(cg.tether.rub,2));set('usdtUsd',fmt(cg.tether.usd,4));
     }
     if(cg&&cg['usd-coin']){
       marketRates.USDC=Number(cg['usd-coin'].rub);
-      set('usdcRub',fmt(cg['usd-coin'].rub,2));
     }
-    set('updated','обновлено · '+new Date().toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'}));
+    set('updated','рынок · live');
     cloneTicker();calc();
   }).catch(function(){cloneTicker();calc()});
 
