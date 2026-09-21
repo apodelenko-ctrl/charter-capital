@@ -37,7 +37,8 @@
     'partner_access_modal': { icon: '🔐', title: 'Private Access' },
     'property_ru':          { icon: '🏠', title: 'Property · RU' },
     'property_en':          { icon: '🏠', title: 'Property · EN' },
-    'slovakia_intake':      { icon: '🇸🇰', title: 'Slovakia · ВНЖ/ПМЖ/паспорт' }
+    'slovakia_intake':      { icon: '🇸🇰', title: 'Slovakia · ВНЖ/ПМЖ/паспорт' },
+    'crypto_exchange_v2':   { icon: '⚡', title: 'Crypto Exchange · RUB → Crypto' }
   };
 
   /* Технические имена полей → читаемые лейблы (по реальной схеме форм сайта) */
