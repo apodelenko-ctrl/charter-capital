@@ -206,10 +206,44 @@ a{text-decoration:none}
 .q b{font-size:13px}
 .q em{font-style:normal;color:var(--muted);font-size:10px}
 
-.tasks{padding:58px 0 24px}
+.promise{
+  border-bottom:1px solid var(--line);
+  background:var(--paper)
+}
+.promise__grid{
+  display:grid;
+  grid-template-columns:1.15fr 1.15fr 1.35fr .95fr
+}
+.promise__item{
+  min-height:126px;
+  padding:24px 22px 22px 0;
+  display:flex;flex-direction:column;justify-content:space-between
+}
+.promise__item + .promise__item{border-left:1px solid var(--line);padding-left:22px}
+.promise__item small{
+  font-size:9px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)
+}
+.promise__item b{
+  display:block;
+  font-size:clamp(20px,2vw,28px);
+  line-height:1.02;
+  letter-spacing:-.035em;
+  max-width:13ch
+}
+.promise__item:nth-child(1) b,.promise__item:nth-child(4) b{color:var(--blue)}
+.promise__item:nth-child(3) b{max-width:16ch}
+.promise__note{font-size:10px;color:var(--muted);margin-top:5px}
+.tasks{padding:62px 0 24px}
 .section-top{display:flex;justify-content:space-between;align-items:flex-end;gap:28px;margin-bottom:25px}
-.section-top h2{margin:0;font-size:34px;letter-spacing:-.045em}
-.section-top p{margin:0;color:var(--muted);font-size:12px}
+.section-top h2{
+  margin:0;
+  font-family:Georgia,'Times New Roman',serif;
+  font-size:clamp(40px,5vw,64px);
+  font-weight:400;
+  letter-spacing:-.045em;
+  line-height:.98
+}
+.section-top p{margin:0;color:var(--muted);font-size:13px}
 .task-list{border-top:1px solid var(--line)}
 .task{
   border-bottom:1px solid var(--line);
@@ -268,7 +302,7 @@ a{text-decoration:none}
 
 .details{padding:46px 0 70px}
 .details__head{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:12px}
-.details__head h2{margin:0;font-size:25px;letter-spacing:-.035em}
+.details__head h2{margin:0;font-family:Georgia,'Times New Roman',serif;font-size:32px;font-weight:400;letter-spacing:-.035em}
 .details__head span{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em}
 .faq{border-top:1px solid var(--line)}
 .faq details{border-bottom:1px solid var(--line)}
@@ -370,6 +404,10 @@ a{text-decoration:none}
   .task__name{font-size:17px}
   .task__content{padding:0 0 20px 45px}
   .task__examples{gap:5px}.task__examples span{font-size:10px;padding:7px 8px}
+  .promise__grid{grid-template-columns:1fr 1fr}
+  .promise__item{min-height:108px}
+  .promise__item:nth-child(3){border-left:0;border-top:1px solid var(--line);padding-left:0}
+  .promise__item:nth-child(4){border-top:1px solid var(--line)}
   .how__grid{grid-template-columns:1fr}
   .how__step{padding:18px 0;min-height:0}
   .how__step + .how__step{border-left:0;border-top:1px solid var(--line);padding-left:0}
@@ -403,7 +441,7 @@ a{text-decoration:none}
     <div>
       <div class="kicker">Для российского бизнеса</div>
       <h1>Купить криптовалюту<br>за <span class="blue">безналичный рубль</span></h1>
-      <p class="hero__sub">RUB со счёта компании → <strong>USDT / USDC.</strong><br><span>Согласуем задачу, документы и условия.</span></p>
+      <p class="hero__sub"><strong>Безналичные RUB</strong> → рублёвый счёт нерезидента в российском банке → <strong>USDT / USDC.</strong><br><span>Выбираете подходящее реальное назначение — документы готовим мы.</span></p>
       <div class="actions">
         <button class="btn btn--blue js-open" type="button">Получить условия <span class="arrow">→</span></button>
         <a class="btn btn--text js-tg" href="https://t.me/ccapital_acces" target="_blank" rel="noopener">Написать в Telegram</a>
@@ -442,53 +480,62 @@ a{text-decoration:none}
   </div>
 </div>
 
+<section class="promise" aria-label="Главные условия">
+  <div class="shell promise__grid">
+    <div class="promise__item"><small>01 · Платёж</small><b>Безналичный RUB</b><div class="promise__note">со счёта российской компании</div></div>
+    <div class="promise__item"><small>02 · Основание</small><b>Вы выбираете назначение</b><div class="promise__note">из доступных реальных услуг</div></div>
+    <div class="promise__item"><small>03 · Документы</small><b>Договор · счёт · закрывающие</b><div class="promise__note">пакет под валютный контроль</div></div>
+    <div class="promise__item"><small>04 · Выход</small><b>USDT / USDC · T+0*</b><div class="promise__note">до 12:00 МСК · по правилам Crypto Change</div></div>
+  </div>
+</section>
+
 <section class="tasks" id="tasks">
   <div class="shell">
     <div class="section-top">
-      <h2>Выберите задачу</h2>
-      <p>Нажмите — покажем варианты.</p>
+      <h2>Выберите назначение</h2>
+      <p>Какую реальную услугу удобнее оплачивать вашей компании.</p>
     </div>
     <div class="task-list">
       <article class="task" data-purpose="Маркетинг и реклама">
         <button class="task__button" type="button"><span class="task__n">01</span><span class="task__name">Маркетинг и реклама</span><span class="task__plus">+</span></button>
         <div class="task__drawer"><div class="task__inner"><div class="task__content">
           <div class="task__examples"><span>Digital</span><span>PR</span><span>Иностранные СМИ</span><span>Выставки</span></div>
-          <button class="btn btn--blue js-purpose" type="button">Подать заявку →</button>
+          <button class="btn btn--blue js-purpose" type="button">Выбрать это назначение →</button>
         </div></div></div>
       </article>
       <article class="task" data-purpose="IT и SaaS">
         <button class="task__button" type="button"><span class="task__n">02</span><span class="task__name">IT / SaaS / облако</span><span class="task__plus">+</span></button>
         <div class="task__drawer"><div class="task__inner"><div class="task__content">
           <div class="task__examples"><span>Разработка</span><span>GPU / CPU</span><span>Лицензии</span><span>Облако</span></div>
-          <button class="btn btn--blue js-purpose" type="button">Подать заявку →</button>
+          <button class="btn btn--blue js-purpose" type="button">Выбрать это назначение →</button>
         </div></div></div>
       </article>
       <article class="task" data-purpose="Китай и ВЭД">
         <button class="task__button" type="button"><span class="task__n">03</span><span class="task__name">Китай / ВЭД</span><span class="task__plus">+</span></button>
         <div class="task__drawer"><div class="task__inner"><div class="task__content">
           <div class="task__examples"><span>Sourcing</span><span>Factory audit</span><span>QC</span><span>Логистика</span></div>
-          <button class="btn btn--blue js-purpose" type="button">Подать заявку →</button>
+          <button class="btn btn--blue js-purpose" type="button">Выбрать это назначение →</button>
         </div></div></div>
       </article>
       <article class="task" data-purpose="Консалтинг">
         <button class="task__button" type="button"><span class="task__n">04</span><span class="task__name">Консалтинг</span><span class="task__plus">+</span></button>
         <div class="task__drawer"><div class="task__inner"><div class="task__content">
           <div class="task__examples"><span>Финансы</span><span>Due diligence</span><span>Документы</span><span>Управление</span></div>
-          <button class="btn btn--blue js-purpose" type="button">Подать заявку →</button>
+          <button class="btn btn--blue js-purpose" type="button">Выбрать это назначение →</button>
         </div></div></div>
       </article>
       <article class="task" data-purpose="Логистика и поездки">
         <button class="task__button" type="button"><span class="task__n">05</span><span class="task__name">Логистика / поездки</span><span class="task__plus">+</span></button>
         <div class="task__drawer"><div class="task__inner"><div class="task__content">
           <div class="task__examples"><span>Делегации</span><span>Конференции</span><span>Маршруты</span><span>События</span></div>
-          <button class="btn btn--blue js-purpose" type="button">Подать заявку →</button>
+          <button class="btn btn--blue js-purpose" type="button">Выбрать это назначение →</button>
         </div></div></div>
       </article>
       <article class="task" data-purpose="Другое">
         <button class="task__button" type="button"><span class="task__n">06</span><span class="task__name">Другое</span><span class="task__plus">+</span></button>
         <div class="task__drawer"><div class="task__inner"><div class="task__content">
           <div class="task__examples"><span>Опишите задачу</span><span>Проверим формат</span><span>Согласуем документы</span></div>
-          <button class="btn btn--blue js-purpose" type="button">Подать заявку →</button>
+          <button class="btn btn--blue js-purpose" type="button">Выбрать это назначение →</button>
         </div></div></div>
       </article>
     </div>
@@ -498,9 +545,9 @@ a{text-decoration:none}
 <section class="how">
   <div class="shell">
     <div class="how__grid">
-      <div class="how__step"><small>01</small><h3>Задача</h3><p>Сумма, банк, USDT/USDC и реальная хозяйственная операция.</p></div>
-      <div class="how__step"><small>02</small><h3>Согласование</h3><p>Основание, документы, курс и срок фиксируем до платежа.</p></div>
-      <div class="how__step"><small>03</small><h3>Расчёт</h3><p>После поступления RUB — криптовалюта на согласованный адрес.</p></div>
+      <div class="how__step"><small>01</small><h3>Выбираете назначение</h3><p>Маркетинг, IT, ВЭД, консалтинг или другая реальная услуга.</p></div>
+      <div class="how__step"><small>02</small><h3>Платите RUB</h3><p>На рублёвый счёт нерезидента в российском банке. Документы готовим до платежа.</p></div>
+      <div class="how__step"><small>03</small><h3>Получаете крипту</h3><p>USDT / USDC на согласованный адрес. До 12:00 МСК — окно T+0.</p></div>
     </div>
   </div>
 </section>
@@ -512,7 +559,7 @@ a{text-decoration:none}
       <details><summary>Какой курс?</summary><p>Курс согласуется перед исполнением. От эквивалента $20 000 применяется правило best available market; при меньшем объёме цена зависит от доступной ликвидности.</p></details>
       <details><summary>Какие сроки?</summary><p>По действующим правилам Crypto Change: платёж до 12:00 МСК — окно T+0; после 12:00 МСК — следующий рабочий день.</p></details>
       <details><summary>Какие документы?</summary><p>Конкретный комплект зависит от хозяйственной задачи. Основание и документы согласуются до движения средств и должны соответствовать реально оказываемой услуге.</p></details>
-      <details><summary>Что нужно для первого расчёта?</summary><p>Сумма RUB, банк плательщика, USDT или USDC, сеть получения и короткое описание задачи.</p></details>
+      <details><summary>Что нужно для первого расчёта?</summary><p>Сумма RUB, банк плательщика, USDT или USDC, сеть получения и выбранное назначение. Если нужного варианта нет — просто опишите реальную услугу.</p></details>
       <details><summary>Полные правила</summary><p><a href="/rules-crypto-change-cc26-r8n3w5.html" style="color:var(--blue)">Открыть Rules Crypto Change →</a></p></details>
     </div>
   </div>
