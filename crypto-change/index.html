@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/>
+<link rel="icon" href="/favicon.ico" sizes="any"/>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="color-scheme" content="light dark"/>
+<meta name="theme-color" content="#06080f"/>
+<meta name="format-detection" content="telephone=no"/>
+<meta name="referrer" content="strict-origin-when-cross-origin"/>
+<title>Обмен безналичных рублей на криптовалюту · Charter Capital</title>
+<meta name="description" content="Российская компания платит безналичными рублями на рублёвый счёт нерезидента в российском банке — за реальные услуги. На выходе криптовалюта. Договор, валютный контроль, закрывающие документы."/>
+<meta name="author" content="Charter Capital"/>
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1"/>
+<meta name="yandex" content="index,follow"/>
+<link rel="canonical" href="https://ccapital.pro/crypto-change/"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Charter Capital"/>
+<meta property="og:title" content="Обмен безналичных рублей на криптовалюту"/>
+<meta property="og:description" content="Платёж российской компании на рублёвый счёт нерезидента в РФ-банке за услуги. На выходе — криптовалюта."/>
+<meta property="og:url" content="https://ccapital.pro/crypto-change/"/>
+<meta property="og:image" content="https://ccapital.pro/assets/rules/moscow-night-hero.jpg"/>
+<meta property="og:locale" content="ru_RU"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="preload" as="image" href="/assets/rules/moscow-night-hero.webp" fetchpriority="high" media="(min-width: 769px)"/>
+<link rel="preload" as="image" href="/assets/rules/moscow-night-hero-800w.webp" fetchpriority="high" media="(max-width: 768px)"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"/>
+<style>
+:root{
+  --bg:#fff;--soft:#f8fafc;--ink:#0f172a;--ink-2:#1e293b;--body:#334155;--muted:#64748b;
+  --line:#e2e8f0;--blue:#2563eb;--gold:#a08156;--gold-soft:#e8d4a8;
+  --dark:#06080f;--radius:8px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',-apple-system,sans-serif;background:#fff;color:var(--ink);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+
+#topbar{position:fixed;top:0;left:0;right:0;z-index:100;background:transparent;border-bottom:1px solid transparent;transition:background .3s ease,border-color .3s ease}
+#topbar.solid{background:rgba(6,8,15,.55);backdrop-filter:saturate(150%) blur(14px);border-bottom-color:rgba(255,255,255,.06)}
+.topbar-inner{max-width:1320px;margin:0 auto;padding:16px 32px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.topbar-brand{display:flex;align-items:baseline;gap:14px;color:#fff}
+.topbar-brand .name{font-size:14px;font-weight:600;letter-spacing:.18em;text-transform:uppercase}
+.topbar-brand .tag{font-size:11px;font-weight:300;color:rgba(255,255,255,.5);border-left:1px solid rgba(255,255,255,.18);padding-left:14px}
+.topbar-nav{display:flex;align-items:center;gap:2px;opacity:.62}
+.topbar-nav>a,.nav-dd-btn{
+  font-family:inherit;font-size:11px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,.7);padding:7px 10px;border-radius:6px;background:transparent;border:none;cursor:pointer
+}
+.topbar-nav>a:hover,.nav-dd-btn:hover,.nav-dd.is-open .nav-dd-btn{color:#fff;background:rgba(255,255,255,.05);opacity:1}
+.nav-sep{width:1px;height:14px;background:rgba(255,255,255,.12);margin:0 6px}
+.nav-dd{position:relative}
+.nav-dd-btn{display:inline-flex;align-items:center;gap:5px}
+.nav-dd-btn .arr{font-size:8px;color:rgba(255,255,255,.4)}
+.nav-dd-menu{
+  position:absolute;top:calc(100% + 10px);left:-12px;min-width:320px;
+  background:#0b1020;border:1px solid rgba(255,255,255,.1);
+  border-radius:12px;padding:8px;opacity:0;visibility:hidden;transform:translateY(-4px);
+  transition:opacity .18s ease,transform .18s ease,visibility .18s ease;z-index:120;
+  box-shadow:0 24px 48px rgba(0,0,0,.45)
+}
+.nav-dd.is-open .nav-dd-menu{opacity:1;visibility:visible;transform:none}
+.nav-dd-item{display:flex;align-items:flex-start;gap:10px;padding:9px 10px;border-radius:8px;color:#fff}
+.nav-dd-item:hover{background:rgba(255,255,255,.05)}
+.nav-dd-ic{flex-shrink:0;width:30px;height:30px;border-radius:7px;display:grid;place-items:center;font-size:10px;font-weight:600;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.65)}
+.nav-dd-ic.blue{color:#93c5fd;border-color:rgba(59,130,246,.3)}
+.nav-dd-ic.gold{color:#e8d4a8;border-color:rgba(160,129,86,.3)}
+.nav-dd-ic.green{color:#86efac;border-color:rgba(34,197,94,.3)}
+.nav-dd-ic.red{color:#fca5a5;border-color:rgba(220,38,38,.3)}
+.nav-dd-body .t{font-size:13px;font-weight:500}
+.nav-dd-body .d{font-size:11.5px;color:rgba(255,255,255,.5);text-transform:none;letter-spacing:0}
+.topbar-cta{font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.22);padding:8px 14px;border-radius:6px}
+.topbar-cta:hover{color:#fff;border-color:rgba(255,255,255,.45)}
+
+.hero{
+  min-height:78vh;color:#fff;display:flex;flex-direction:column;justify-content:flex-end;
+  padding:150px 32px 64px;
+  background:
+    linear-gradient(180deg,rgba(6,8,15,0) 0%,rgba(6,8,15,.2) 40%,rgba(6,8,15,.82) 86%,#06080f 100%),
+    url('/assets/rules/moscow-night-hero.webp') center 40%/cover no-repeat,#06080f
+}
+.kicker{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:16px}
+.hero h1{font-size:clamp(2.1rem,5vw,4rem);font-weight:300;letter-spacing:-.035em;line-height:1.08;max-width:15ch}
+.hero h1 strong{font-weight:600}
+.lead{margin-top:20px;max-width:46em;font-size:1.08rem;color:rgba(255,255,255,.78);font-weight:400}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:500;padding:13px 22px;border-radius:var(--radius)}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-ghost{border:1px solid rgba(255,255,255,.35);color:#fff}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:36px;align-items:stretch}
+.fact{padding:22px 20px;border:1px solid rgba(232,212,168,.28);background:rgba(6,8,15,.62);border-radius:14px}
+.fact b{display:block;font-size:16px;font-weight:600;margin-bottom:10px;color:#fff}
+.fact span{display:block;font-size:14.5px;line-height:1.45;color:rgba(255,255,255,.86)}
+
+.ticker{background:var(--dark);border-bottom:1px solid #1f2937;overflow:hidden;position:relative}
+.ticker::before,.ticker::after{content:"";position:absolute;top:0;bottom:0;width:72px;z-index:2;pointer-events:none}
+.ticker::before{left:0;background:linear-gradient(90deg,#06080f,transparent)}
+.ticker::after{right:0;background:linear-gradient(-90deg,#06080f,transparent)}
+.ticker-track{display:flex;gap:40px;width:max-content;padding:14px 0;animation:tick 42s linear infinite}
+.ticker:hover .ticker-track{animation-play-state:paused}
+@keyframes tick{to{transform:translateX(-50%)}}
+.ti{display:inline-flex;align-items:baseline;gap:10px;white-space:nowrap;color:#cbd5e1;font-size:13px}
+.ti .src{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-soft)}
+.ti b{color:#fff;font-weight:600;font-variant-numeric:tabular-nums}
+.ti a{color:#93c5fd;border-bottom:1px solid rgba(147,197,253,.25)}
+
+section.s{padding:72px 0;border-bottom:1px solid var(--line)}
+h2{font-size:clamp(1.6rem,3vw,2.3rem);font-weight:300;letter-spacing:-.03em;margin-bottom:12px}
+h2 strong{font-weight:600}
+.s-lead{color:var(--body);max-width:54em;margin-bottom:28px}
+.s-lead a{color:var(--blue);border-bottom:1px solid rgba(37,99,235,.25)}
+
+.news{display:block;padding:22px 24px;border:1px solid var(--line);border-left:3px solid var(--ink);border-radius:var(--radius);background:var(--soft)}
+.news .when{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.news h3{font-size:1.25rem;font-weight:500;margin-bottom:8px}
+.news p{color:var(--body)}
+.news .more{display:inline-block;margin-top:12px;color:var(--blue);font-weight:500}
+
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.step{padding:22px;border:1px solid var(--line);border-radius:12px;background:#fff}
+.step .n{width:28px;height:28px;border-radius:50%;border:1px solid var(--gold);color:var(--gold);display:grid;place-items:center;font-size:13px;font-weight:600;margin-bottom:12px}
+.step h3{font-size:17px;font-weight:600;margin-bottom:8px}
+.step p{color:var(--body);font-size:14.5px}
+
+.acc{border:1px solid var(--line);border-radius:12px;background:#fff;margin-bottom:8px}
+.acc>summary{
+  list-style:none;cursor:pointer;padding:16px 18px;display:flex;justify-content:space-between;align-items:center;gap:16px;
+  font-weight:600;font-size:15.5px
+}
+.acc>summary::-webkit-details-marker{display:none}
+.acc>summary::after{content:"▾";color:var(--gold);font-size:12px}
+.acc[open]>summary{border-bottom:1px solid var(--line)}
+.acc[open]>summary::after{content:"▴"}
+.acc .hint{display:block;font-weight:400;font-size:13px;color:var(--muted);margin-top:3px}
+.sub{padding:8px 12px 14px}
+.sub details{border:1px solid var(--line);border-radius:10px;margin:8px 0;background:var(--soft)}
+.sub details>summary{list-style:none;cursor:pointer;padding:12px 14px;font-weight:600;font-size:14.5px;display:flex;justify-content:space-between}
+.sub details>summary::-webkit-details-marker{display:none}
+.sub details>summary::after{content:"▾";color:var(--muted);font-size:11px}
+.sub details[open]>summary{border-bottom:1px solid var(--line)}
+.purp{list-style:none;padding:6px 8px 10px}
+.purp li{padding:8px 10px;border-radius:8px;font-size:14px;color:var(--body)}
+.purp li:hover{background:#fff}
+.pick{margin-top:18px;padding:16px 18px;border-left:3px solid var(--ink);background:var(--soft);color:var(--body)}
+
+.rate{padding:22px 24px;border:1px solid var(--line);background:#fff;border-radius:12px}
+.rate p + p{margin-top:10px;color:var(--body)}
+
+.usdc{background:var(--soft)}
+.usdc-box{display:grid;grid-template-columns:1.4fr .8fr;gap:28px;align-items:start}
+.usdc ul{margin:16px 0 0 18px;color:var(--body)}
+.usdc li + li{margin-top:8px}
+.side{padding:20px;border:1px solid var(--line);background:#fff;border-radius:12px}
+.side b{display:block;margin-bottom:8px}
+.side a{color:var(--blue)}
+
+.digest{background:var(--dark);color:#fff;border:none}
+.digest p{color:#94a3b8}
+.digest .btn-blue{background:#fff;color:var(--ink)}
+.digest .btn-ghost{border-color:rgba(255,255,255,.3)}
+
+footer{padding:40px 0;color:var(--muted);font-size:13px}
+footer .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+@media(max-width:980px){.topbar-nav{display:none}.usdc-box,.facts,.steps{grid-template-columns:1fr}}
+@media(max-width:768px){
+  .hero{min-height:72vh;padding:120px 20px 48px;background-image:linear-gradient(180deg,rgba(6,8,15,.12),#06080f),url('/assets/rules/moscow-night-hero-800w.webp')}
+  .topbar-brand .tag{display:none}
+  .wrap,.topbar-inner{padding-left:20px;padding-right:20px}
+}
+@media(prefers-reduced-motion:reduce){.ticker-track{animation:none}}
+</style>
+</head>
+<body>
+<header id="topbar">
+  <div class="topbar-inner">
+    <a href="/" class="topbar-brand">
+      <span class="name">Charter Capital</span>
+      <span class="tag">Когда двери закрываются - мы открываем мир</span>
+    </a>
+    <nav class="topbar-nav" aria-label="Разделы сайта">
+      <div class="nav-dd">
+        <button type="button" class="nav-dd-btn" aria-expanded="false">Все продукты <span class="arr">▾</span></button>
+        <div class="nav-dd-menu" role="menu">
+          <a class="nav-dd-item" href="/pay.html"><span class="nav-dd-ic blue">PY</span><span class="nav-dd-body"><span class="t">Pay</span><span class="d">ВЭД-платежи и чистый USDC</span></span></a>
+          <a class="nav-dd-item" href="/bank-account.html#packages"><span class="nav-dd-ic blue">AC</span><span class="nav-dd-body"><span class="t">Счета, карты, сервисы</span><span class="d">Компания + счёт + Visa/MC</span></span></a>
+          <a class="nav-dd-item" href="/company.html"><span class="nav-dd-ic blue">CO</span><span class="nav-dd-body"><span class="t">Компании</span><span class="d">Гонконг · Сингапур · ОАЭ · UK · США</span></span></a>
+          <a class="nav-dd-item" href="/residence.html"><span class="nav-dd-ic green">ВНЖ</span><span class="nav-dd-body"><span class="t">ВНЖ и резидентство</span><span class="d">Испания · Мальта · Португалия · Франция</span></span></a>
+          <a class="nav-dd-item" href="/private.html"><span class="nav-dd-ic gold">PO</span><span class="nav-dd-body"><span class="t">Private Office</span><span class="d">Архитектура легитимности · от $1М</span></span></a>
+        </div>
+      </div>
+      <div class="nav-dd">
+        <button type="button" class="nav-dd-btn" aria-expanded="false">Где вы сейчас <span class="arr">▾</span></button>
+        <div class="nav-dd-menu" role="menu">
+          <a class="nav-dd-item" href="/homeland.html"><span class="nav-dd-ic red">RU</span><span class="nav-dd-body"><span class="t">Я ещё в России</span><span class="d">Деньги, документы, подготовка</span></span></a>
+          <a class="nav-dd-item" href="/"><span class="nav-dd-ic green">EU</span><span class="nav-dd-body"><span class="t">Я уже за границей</span><span class="d">Международный маршрут</span></span></a>
+          <a class="nav-dd-item" href="/freedom-route.html"><span class="nav-dd-ic">?</span><span class="nav-dd-body"><span class="t">Только думаю о переезде</span><span class="d">Маршрут в свободный мир</span></span></a>
+        </div>
+      </div>
+      <span class="nav-sep"></span>
+      <a href="/#triggers">Боль</a>
+      <a href="/#routes">Маршруты</a>
+      <a href="/journal.html">Журнал</a>
+    </nav>
+    <a class="topbar-cta" href="https://t.me/ccapital_acces" target="_blank" rel="noopener">Telegram</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <p class="kicker">Для российских компаний</p>
+    <h1>Безналичный рубль — в&nbsp;<strong>криптовалюту</strong></h1>
+    <p class="lead">Вы платите рублями на счета в российских или белорусских банках. Назначение — услуга из готового контура. Документы для валютного контроля закрываем мы. Криптовалюту выплачиваем день в день.</p>
+    <div class="cta">
+      <a class="btn btn-blue" href="https://t.me/ccapital_acces" target="_blank" rel="noopener">Написать в Telegram</a>
+      <a class="btn btn-ghost" href="#how">Как это устроено</a>
+    </div>
+    <div class="facts">
+      <div class="fact"><b>Платите рублями</b><span>На счета в российских или белорусских банках. Принимаем компанию с любым цветом банковского светофора.</span></div>
+      <div class="fact"><b>Платёж за услуги</b><span>Выбираете подходящее вам назначение из более чем 100–300 готовых назначений за услуги.</span></div>
+      <div class="fact"><b>Документы и выплата день в день</b><span>Закрываем весь документооборот для валютного контроля: договоры, счета, инвойсы, отчёты о проделанной работе. После поступления рублей выплачиваем криптовалюту день в день.</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker" role="region" aria-label="Актуальные курсы">
+  <div class="ticker-track" id="ticker">
+    <span class="ti"><span class="src">ЦБ РФ</span> USD <b id="cbrUsd">—</b> ₽ <span id="cbrDate"></span></span>
+    <span class="ti"><span class="src">Investing</span> <a href="https://www.investing.com/currencies/usd-rub" target="_blank" rel="noopener">USD/RUB</a> <b id="invUsd">—</b> ₽</span>
+    <span class="ti"><span class="src">Investing</span> <a href="https://www.investing.com/crypto/tether/usdt-usd" target="_blank" rel="noopener">USDT/USD</a> <b id="invUsdt">—</b></span>
+    <span class="ti"><span class="src">Investing</span> <a href="https://www.investing.com/crypto/tether/usdt-rub" target="_blank" rel="noopener">USDT/RUB</a> <b id="invUsdtRub">—</b> ₽</span>
+  </div>
+</div>
+
+<section class="s" id="news">
+  <div class="wrap">
+    <p class="kicker" style="color:var(--gold)">Информационное сообщение</p>
+    <h2>Сроки операций Crypto&nbsp;Change</h2>
+    <a class="news" href="/rules-crypto-change-cc26-r8n3w5.html">
+      <p class="when">18 сентября 2026 · обращение к клиентам</p>
+      <h3>Rules Crypto Change</h3>
+      <p>Платёж до 12:00 по московскому времени — выдача в тот же день, T+0. После 12:00 МСК операция уходит на следующий рабочий день, T+1. От 20&nbsp;000 долларов курс — по лучшему доступному рынку.</p>
+      <span class="more">Читать сообщение →</span>
+    </a>
+  </div>
+</section>
+
+<section class="s" id="how">
+  <div class="wrap">
+    <h2>Три шага — <strong>без обменника</strong></h2>
+    <p class="s-lead">Не перевод «без назначения». Каждая операция — коммерческая сделка: рубль уходит как оплата услуги, пакет документов собираем мы.</p>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><h3>Назначение</h3><p>Выбираете подходящее назначение из более чем 100–300 готовых услуг. Подписываете договор и получаете счёт.</p></div>
+      <div class="step"><div class="n">2</div><h3>Платёж рублями</h3><p>Платите на счёт в российском или белорусском банке. Компания — с любым цветом банковского светофора.</p></div>
+      <div class="step"><div class="n">3</div><h3>Документы и крипта</h3><p>Закрываем валютный контроль: договоры, счета, инвойсы, отчёты. После поступления рублей выплачиваем криптовалюту день в день.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="rate">
+  <div class="wrap">
+    <h2>Курс зависит от объёма</h2>
+    <div class="rate">
+      <p>Ориентиры в бегущей строке — официальный курс Банка России и рыночные котировки USD и USDT. Итоговый курс сделки фиксируется в момент исполнения.</p>
+      <p>От 20&nbsp;000 долларов США Charter Capital предоставляет курс по лучшему доступному рынку. При меньшем объёме курс формируется по текущему стакану.</p>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="services">
+  <div class="wrap">
+    <h2>Выберите нужное назначение</h2>
+    <p class="s-lead">Откройте сферу — внутри ещё один список. Маркетинг, IT, стройка, кадры, Китай, недвижимость: смотрите, что подходит вашей компании. Конкретное назначение согласуем до платежа.</p>
+
+    <details class="acc">
+      <summary>Маркетинг и реклама<span class="hint">Кампании, digital, выставки, стенды, логистика площадки</span></summary>
+      <div class="sub">
+        <details><summary>Реклама и продвижение</summary>
+          <ul class="purp">
+            <li>Рекламная кампания за рубежом</li>
+            <li>Digital-продвижение и performance</li>
+            <li>Медиаразмещение на площадках</li>
+            <li>Производство рекламных материалов</li>
+            <li>Бренд-стратегия и позиционирование</li>
+            <li>Локализация рекламного сообщения</li>
+          </ul>
+        </details>
+        <details><summary>Выставки и стенды</summary>
+          <ul class="purp">
+            <li>Регистрация участия в выставке</li>
+            <li>Аренда и оснащение стенда</li>
+            <li>Печатные материалы и навигация стенда</li>
+            <li>Логистика выставочного оборудования</li>
+            <li>Локальная поддержка на площадке</li>
+            <li>Коммуникация с организаторами</li>
+          </ul>
+        </details>
+        <details><summary>PR и иностранные СМИ</summary>
+          <ul class="purp">
+            <li>Подготовка PR-материалов</li>
+            <li>Размещение в иностранных СМИ</li>
+            <li>Работа с отраслевыми площадками Азии</li>
+            <li>Сопровождение выхода материала</li>
+            <li>Кризисные коммуникации</li>
+          </ul>
+        </details>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>IT и цифровые услуги<span class="hint">Разработка, лицензии, дизайн, сопровождение</span></summary>
+      <div class="sub">
+        <details><summary>Разработка и продукт</summary>
+          <ul class="purp">
+            <li>Разработка программного обеспечения</li>
+            <li>Дизайн интерфейсов и UX</li>
+            <li>Интеграции и API</li>
+            <li>Аналитика и BI</li>
+            <li>Сопровождение и SLA</li>
+          </ul>
+        </details>
+        <details><summary>Лицензии и подписки</summary>
+          <ul class="purp">
+            <li>Лицензии на ПО</li>
+            <li>Подписки на облачные сервисы</li>
+            <li>Роялти и права использования</li>
+            <li>Расширенная техническая поддержка</li>
+          </ul>
+        </details>
+        <details><summary>Кибербезопасность</summary>
+          <ul class="purp">
+            <li>Аудит информационной безопасности</li>
+            <li>Защита веб-приложений</li>
+            <li>Защита от ботов и DDoS</li>
+            <li>Управление DNS</li>
+          </ul>
+        </details>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>Вычислительные мощности и облако<span class="hint">CPU, GPU, серверы, CDN</span></summary>
+      <div class="sub">
+        <details><summary>Аренда мощностей</summary>
+          <ul class="purp">
+            <li>Аренда CPU и выделенных серверов</li>
+            <li>Аренда GPU: H100, H200, A100, L40S, RTX</li>
+            <li>Облако и VPS</li>
+            <li>Резерв GPU-мощностей по договору</li>
+            <li>Дополнительные мощности по действующему договору</li>
+            <li>Облако для обучения и инференса AI</li>
+          </ul>
+        </details>
+        <details><summary>Инфраструктура</summary>
+          <ul class="purp">
+            <li>Доставка контента через CDN</li>
+            <li>Комплекс облачной инфраструктуры</li>
+            <li>Подключение и настройка контура</li>
+            <li>Kubernetes и объектное хранилище</li>
+          </ul>
+        </details>
+        <details><summary>IT-оборудование</summary>
+          <ul class="purp">
+            <li>Поставка GPU-серверов</li>
+            <li>Рабочие станции с GPU</li>
+            <li>AI-серверы H100 / H200</li>
+            <li>Серверные стойки и кластеры</li>
+          </ul>
+        </details>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>Строительным компаниям<span class="hint">Проект, надзор, сметы, кадры на площадку, снабжение</span></summary>
+      <div class="sub">
+        <details><summary>Проектирование и инженерия</summary>
+          <ul class="purp">
+            <li>Архитектурный консалтинг</li>
+            <li>Разработка проектной документации</li>
+            <li>Инженерные изыскания</li>
+            <li>BIM-моделирование</li>
+            <li>Сметный расчёт и экспертиза сметы</li>
+          </ul>
+        </details>
+        <details><summary>Надзор и подряд</summary>
+          <ul class="purp">
+            <li>Авторский надзор</li>
+            <li>Технический надзор на площадке</li>
+            <li>Подбор подрядчиков</li>
+            <li>Консультации по охране труда и HSE</li>
+          </ul>
+        </details>
+        <details><summary>Снабжение и логистика стройки</summary>
+          <ul class="purp">
+            <li>Поиск поставщиков материалов и оборудования</li>
+            <li>Координация поставки на объект</li>
+            <li>Контроль качества партии</li>
+            <li>Документальное сопровождение отгрузки</li>
+          </ul>
+        </details>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>Подбор персонала<span class="hint">Поиск, оценка, аутстафф, обучение</span></summary>
+      <div class="sub">
+        <details><summary>Поиск и оценка</summary>
+          <ul class="purp">
+            <li>Executive search</li>
+            <li>Подбор линейного персонала</li>
+            <li>Массовый подбор</li>
+            <li>Оценка кандидатов</li>
+            <li>Кадровый аудит</li>
+          </ul>
+        </details>
+        <details><summary>Аутстафф и адаптация</summary>
+          <ul class="purp">
+            <li>Аутстаффинг специалистов</li>
+            <li>Онбординг сотрудников</li>
+            <li>Обучение и адаптация на площадке</li>
+            <li>Сопровождение испытательного срока</li>
+          </ul>
+        </details>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>Обучение и развитие<span class="hint">Семинары, тренинги, квалификация</span></summary>
+      <div class="sub">
+        <ul class="purp">
+          <li>Корпоративные семинары</li>
+          <li>Тренинги персонала</li>
+          <li>Повышение квалификации</li>
+          <li>Языковые программы</li>
+          <li>Отраслевое обучение за рубежом</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>Китай и внешнеторговый контур<span class="hint">Sourcing, поставщики, QC, переговоры, логистика</span></summary>
+      <div class="sub">
+        <details><summary>Поиск и проверка</summary>
+          <ul class="purp">
+            <li>Sourcing под конкретный запрос</li>
+            <li>Поиск поставщиков</li>
+            <li>Поиск покупателей</li>
+            <li>Factory audit</li>
+            <li>Верификация производителя</li>
+          </ul>
+        </details>
+        <details><summary>Качество, переговоры, логистика</summary>
+          <ul class="purp">
+            <li>QC и инспекция партии</li>
+            <li>Фото- и видеоотчёт по чек-листу</li>
+            <li>Сопровождение коммерческих переговоров</li>
+            <li>Координация передачи товара</li>
+            <li>Документальное сопровождение перевозки</li>
+          </ul>
+        </details>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>Недвижимость и переезд<span class="hint">Поиск объекта, сделка, заселение</span></summary>
+      <div class="sub">
+        <details><summary>Поиск и аналитика</summary>
+          <ul class="purp">
+            <li>Анализ рынка покупки или аренды</li>
+            <li>Подбор короткого списка объектов</li>
+            <li>Расчёт доходности</li>
+            <li>Инвестиционный меморандум</li>
+          </ul>
+        </details>
+        <details><summary>Сделка и заселение</summary>
+          <ul class="purp">
+            <li>Организация просмотров</li>
+            <li>Переговоры по цене и условиям</li>
+            <li>Сопровождение договора</li>
+            <li>Помощь с переездом и заселением</li>
+            <li>Консультация по интерьеру и ремонту</li>
+          </ul>
+        </details>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>Консалтинг<span class="hint">Управление, финансы, документы</span></summary>
+      <div class="sub">
+        <ul class="purp">
+          <li>Управленческий консалтинг</li>
+          <li>Финансовый консалтинг</li>
+          <li>Due diligence</li>
+          <li>Подготовка коммерческих документов</li>
+          <li>Перевод и адаптация договоров</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>Деловые поездки и мероприятия<span class="hint">Командировки, конференции, организация</span></summary>
+      <div class="sub">
+        <ul class="purp">
+          <li>Организация деловой поездки</li>
+          <li>Билеты и сопровождение маршрута</li>
+          <li>Участие в конференции</li>
+          <li>Организация корпоративного мероприятия</li>
+          <li>Локальная логистика делегации</li>
+        </ul>
+      </div>
+    </details>
+
+    <p class="pick">Нашли сферу — напишите в Telegram, какое назначение ближе. Подберём формулировку, договор и счёт до перевода.</p>
+  </div>
+</section>
+
+<section class="s usdc" id="usdc">
+  <div class="wrap">
+    <p class="kicker" style="color:var(--gold)">B2B-расчёты</p>
+    <h2>Чистый <strong>USDC</strong></h2>
+    <div class="usdc-box">
+      <div>
+        <p class="s-lead">Не любой USDC одинаково принимается. Токен, купленный через российскую биржу или P2P, несёт «географический след». Банк получателя в Китае, ОАЭ или ЕС читает on-chain историю и может остановить платёж.</p>
+        <p class="s-lead">Charter Capital выкупает американский USDC у лицензированных зарубежных брокеров: без российского следа в цепочке адресов, со скринингом контрагента и Source of Funds под банк получателя. Это тот же коридор, который мы собираем на <a href="/pay.html#usdc">Pay</a>.</p>
+        <ul>
+          <li>Санкционная чистота токена — без следа российских площадок</li>
+          <li>Документальное досье операции для бухгалтерии и банка</li>
+          <li>Коридор «рубль в РФ → чистый USDC → партнёр»</li>
+        </ul>
+      </div>
+      <aside class="side">
+        <b>Как мы это разбирали</b>
+        <p style="color:var(--body);margin-bottom:12px">Полный текст — в журнале: почему обычный стейблкоин ломает B2B-сделку и как выглядит чистый коридор.</p>
+        <p><a href="/journal/b2b-crypto-settlements-clean-usdc.html">Как платить поставщикам криптой и не попасть под блокировку →</a></p>
+        <p style="margin-top:10px"><a href="/pay.html#usdc">Charter Capital Pay · чистый USDC →</a></p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="s digest">
+  <div class="wrap">
+    <h2>Подпишитесь на наш дайджест</h2>
+    <p class="s-lead">Короткие разборы банков, санкций и маршрутов капитала — тем же языком, которым мы работаем с клиентами. Канал в Telegram и журнал на сайте.</p>
+    <div class="cta">
+      <a class="btn btn-blue" href="https://t.me/ccapital26" target="_blank" rel="noopener">Telegram · Дайджест</a>
+      <a class="btn btn-ghost" href="/journal.html">Читать журнал</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <span>© 2026 Charter Capital</span>
+      <span><a href="/">Главная</a> · <a href="/pay.html">Pay</a> · <a href="/payout.html">Вывод средств</a> · <a href="/journal.html">Журнал</a> · <a href="https://t.me/ccapital_acces" target="_blank" rel="noopener">Telegram</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var bar=document.getElementById('topbar');
+  function tick(){ if(window.scrollY>80) bar.classList.add('solid'); else bar.classList.remove('solid'); }
+  window.addEventListener('scroll', tick, {passive:true}); tick();
+})();
+(function(){
+  var dds=document.querySelectorAll('.nav-dd');
+  function closeAll(){ dds.forEach(function(dd){ dd.classList.remove('is-open'); var b=dd.querySelector('.nav-dd-btn'); if(b) b.setAttribute('aria-expanded','false'); }); }
+  dds.forEach(function(dd){
+    var btn=dd.querySelector('.nav-dd-btn'); if(!btn) return;
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      var open=!dd.classList.contains('is-open');
+      closeAll();
+      if(open){ dd.classList.add('is-open'); btn.setAttribute('aria-expanded','true'); }
+    });
+  });
+  document.addEventListener('click', function(e){ if(!e.target.closest('.nav-dd')) closeAll(); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeAll(); });
+})();
+(function(){
+  function fmt(n, d){ return (n==null||isNaN(n))?'—':Number(n).toLocaleString('ru-RU',{minimumFractionDigits:d,maximumFractionDigits:d}); }
+  function set(id, v){ var el=document.getElementById(id); if(el) el.textContent=v; }
+  function cloneTrack(){
+    var track=document.getElementById('ticker');
+    if(!track || track.dataset.cloned) return;
+    track.innerHTML = track.innerHTML + track.innerHTML;
+    track.dataset.cloned='1';
+  }
+  Promise.allSettled([
+    fetch('https://www.cbr-xml-daily.ru/daily_json.js').then(function(r){return r.json();}),
+    fetch('https://open.er-api.com/v6/latest/USD').then(function(r){return r.json();}),
+    fetch('https://api.coingecko.com/api/v3/simple/price?ids=tether&vs_currencies=usd,rub').then(function(r){return r.json();})
+  ]).then(function(res){
+    var cbr=res[0].status==='fulfilled'?res[0].value:null;
+    var mkt=res[1].status==='fulfilled'?res[1].value:null;
+    var usdt=res[2].status==='fulfilled'?res[2].value:null;
+    if(cbr && cbr.Valute && cbr.Valute.USD){
+      set('cbrUsd', fmt(cbr.Valute.USD.Value, 2));
+      if(cbr.Date){
+        var d=new Date(cbr.Date);
+        set('cbrDate', '· '+d.toLocaleDateString('ru-RU'));
+      }
+    }
+    if(mkt && mkt.rates && mkt.rates.RUB) set('invUsd', fmt(mkt.rates.RUB, 2));
+    if(usdt && usdt.tether){
+      set('invUsdt', fmt(usdt.tether.usd, 4));
+      set('invUsdtRub', fmt(usdt.tether.rub, 2));
+    }
+    cloneTrack();
+  }).catch(cloneTrack);
+})();
+</script>
+<script>
+(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();
+for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}
+k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");
+ym(108969822,"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/108969822" style="position:absolute;left:-9999px" alt=""/></div></noscript>
+</body>
+</html>
