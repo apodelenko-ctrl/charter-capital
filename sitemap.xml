@@ -530,7 +530,7 @@
   <!-- Дайджест Charter Capital -->
   <url>
     <loc>https://ccapital.pro/journal.html</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://ccapital.pro/journal.html"/>
@@ -538,6 +538,19 @@
     <image:image>
       <image:loc>https://ccapital.pro/assets/pay/hero-corridor.webp</image:loc>
       <image:title>Дайджест Charter Capital — аналитика, объявления, кейсы</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://ccapital.pro/journal/cbr-nalichnye-istochnik-115fz-2026.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ccapital.pro/journal/cbr-nalichnye-istochnik-115fz-2026.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ccapital.pro/journal/cbr-nalichnye-istochnik-115fz-2026.html"/>
+    <image:image>
+      <image:loc>https://ccapital.pro/assets/journal/cbr-nalichnye-istochnik-115fz-2026-hero.jpg</image:loc>
+      <image:title>ЦБ обновит рекомендации по источникам наличных — и готовит правки 115-ФЗ · Charter Capital</image:title>
     </image:image>
   </url>
 
