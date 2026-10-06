@@ -5,7 +5,7 @@ import {buildSync} from 'esbuild';
 import {snapshot,group} from './fixtures.mjs';
 import {fileURLToPath} from 'node:url';
 const root=fileURLToPath(new URL('../',import.meta.url));
-buildSync({entryPoints:[root+'test/gateway.mjs'],bundle:true,format:'esm',platform:'neutral',external:['cloudflare:*'],outfile:root+'build/test-gateway.mjs'});
+buildSync({entryPoints:[root+'test/gateway.mjs'],bundle:true,format:'esm',platform:'node',external:['cloudflare:*'],outfile:root+'build/test-gateway.mjs'});
 async function fixture(handler) {
   const mf=new Miniflare(convertV4MiniflareOptions({modules:true,scriptPath:root+'build/test-gateway.mjs',compatibilityDate:'2026-10-06',
     compatibilityFlags:['nodejs_compat'],durableObjects:{SENDER:{className:'Sender',useSQLite:true}},serviceBindings:{FAKE:handler}}));

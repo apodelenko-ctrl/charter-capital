@@ -1,4 +1,4 @@
-export const NOW=Date.UTC(2026,9,6,3);
+export const NOW=Date.UTC(2026,9,6,9);
 export function group(overrides={}) {
   return {chat_id:-100123,handle:'fixture_group',enabled:true,paid:true,interval_ms:300_000,slowmode_ms:0,
     verified:true,evidence:'synthetic permission',permission:'approved',valid_until:NOW+86400000,

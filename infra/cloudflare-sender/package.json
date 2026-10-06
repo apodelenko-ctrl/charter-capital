@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "wrangler deploy --dry-run --outdir build",
-    "test": "npm run build && npm run build:transport && node --test test/*.test.mjs",
+    "test": "npm run build && npm run build:transport && node --test test/*.test.mjs && python3 -m unittest discover -s test -p 'test_*.py' -v",
     "build:transport": "wrangler deploy --dry-run --config wrangler.transport.jsonc --outdir build/transport"
   },
   "dependencies": {

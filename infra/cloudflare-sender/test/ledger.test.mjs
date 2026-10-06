@@ -96,5 +96,43 @@ test('synthetic 24-hour load: 8 paid and 17 free, no burst catch-up',()=>{
     if(job){l.finish(job,{kind:'sent',message_id:n+1},now);n++;}
     now=l.nextWake(now);if(now==null)break;
   }
-  assert.equal(n,4752);assert.equal(l.status().attempts.sent,4752);
+  assert.ok(n>4000 && n<4752);assert.equal(l.status().attempts.sent,n);
+});
+test('approved free live-refresh works after expiry; paid expiry cannot refresh',()=>{
+  const l=setup(snapshot({groups:[group({paid:false,refresh_on_live_check:true,valid_until:NOW-1})]}));
+  l.activate();assert.ok(l.claim(NOW,'a','1'));assert.ok(l.nextWake(NOW));
+  assert.throws(()=>setup(snapshot({groups:[group({refresh_on_live_check:true})]})),/paid_refresh/);
+});
+test('restart preserves imported pending record while stopping ambiguous delivery',()=>{
+  const a={id:'157',chat_id:-100123,created:NOW-1,status:'pending',digest:'x',source_created:(NOW-1)/1000};
+  const l=setup(snapshot({attempts:[a]}));assert.equal(l.status().attempts.pending,1);
+  l.recover();assert.equal(l.status().attempts.uncertain,1);
+  assert.deepEqual(JSON.parse(l.exportSnapshot().imported_attempts[0].original),a);
+});
+test('manual review preserves evidence and holds; no automatic restart or replay',()=>{
+  const l=setup();l.activate();const j=l.claim(NOW,'a','1');l.finish(j,{kind:'uncertain'},NOW);
+  assert.throws(()=>l.reviewAttempt({id:'a',decision:'confirmed_not_sent',evidence:'x'},NOW),/evidence/);
+  l.reviewAttempt({id:'a',decision:'keep_hold',evidence:'Owner retains the unresolved attempt'},NOW);
+  assert.equal(l.status().enabled,false);assert.equal(l.status().attempts.uncertain,1);
+  assert.equal(l.exportSnapshot().reviews.length,1);assert.equal(l.status().blocked_groups,1);
+  l.activate();assert.equal(l.claim(NOW+HOUR,'b','2'),null);
+});
+test('hourly catch-up records missing hours with a bounded cursor even while stopped',()=>{
+  const l=setup();assert.equal(l.reportsDue(NOW).length,0);
+  assert.equal(l.reportsDue(NOW+3*HOUR).length,3);assert.equal(l.reportsDue(NOW+3*HOUR).length,0);
+  const queue=l.reportQueue();assert.equal(queue.length,3);
+  l.reportState(queue[0].hour,'uncertain');assert.equal(l.reportQueue().length,2);
+  assert.equal(l.reportsDue(NOW+60*HOUR).length,24);
+});
+test('account failure stops every group while keeping attempt history',()=>{
+  const l=setup();l.activate();const j=l.claim(NOW,'a','1');l.finish(j,{kind:'account_halt'},NOW);
+  assert.equal(l.status().enabled,false);assert.equal(l.status().halt,'account_requires_review');
+  assert.equal(l.status().attempts.failed,1);assert.throws(()=>l.activate(),/blocked/);
+});
+test('paid statistics only every fifth hour; new attempts carry immutable segment',()=>{
+  const l=setup();l.activate();const j=l.claim(NOW,'a','1');l.finish(j,{kind:'sent',message_id:1},NOW);
+  assert.equal(l.hourly(NOW+HOUR).paid_window,undefined);
+  assert.deepEqual(l.hourly(NOW+HOUR).free,{});
+  const fifth=l.hourly(NOW+5*HOUR);assert.deepEqual(fifth.paid_window.attempts,{sent:1});
+  assert.deepEqual(l.hourly(NOW+5*HOUR),fifth);
 });

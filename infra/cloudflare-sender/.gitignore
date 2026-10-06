@@ -5,3 +5,5 @@ build/
 *.session*
 *.sqlite*
 private/
+__pycache__/
+*.pyc

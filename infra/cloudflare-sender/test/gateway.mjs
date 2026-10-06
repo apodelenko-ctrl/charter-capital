@@ -2,6 +2,7 @@
 import {Sender as BaseSender} from '../src/worker.mjs';
 export class Sender extends BaseSender {
   releaseEnabled() {return true;}
+  activationEvidence() {return true;}
   makeTransport() {
     const call=async(path,job)=>{
       const r=await this.env.FAKE.fetch('https://fake.invalid/'+path,{method:'POST',body:JSON.stringify(job)});
