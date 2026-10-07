@@ -27,7 +27,7 @@ The global 24,000 ceiling uses a conservative rolling 24-hour window, stricter t
 
 ## Validation evidence
 
-**56 JavaScript/workerd tests and 12 Python tests passed.** The suite covers crashes, stop during I/O, FloodWait, quotas, current formats, deferred verification, A/B state, migration and rollback. The separate desk integration check passed with a mocked Bot API: existing authentication and owner targeting, private RPC, report deduplication, and no retry after uncertain report delivery. External network calls: zero.
+**56 JavaScript/workerd tests and 21 Python tests passed.** The suite covers crashes, stop during I/O, FloodWait, quotas, current formats, deferred verification, A/B state, migration and rollback. Nine added Python cases cover the owner handoff: busy lock, live PID, stop marker, paused config/signature/disabled control, cancellation, state changes during confirmation, local OFF fuse, staging without deployment, hidden CLI diagnostics and no-network/no-secret readiness checks. A read-only readiness check on the live Mac returned `mac_worker_lock_busy`, with zero secret-file reads/network calls. The separate desk integration check passed with a mocked Bot API: existing authentication and owner targeting, private RPC, report deduplication, and no retry after uncertain report delivery. External network calls: zero.
 
 The actual private snapshot was also imported/exported through the production `Sender` class in local workerd. Activation was rejected by the compiled fuse. No external I/O was permitted.
 
@@ -67,7 +67,7 @@ Vercel Functions also do not host the unchanged daemon: documented invocation li
 1. Owner resolves the Workers plan/capacity decision and agrees to a cutover window. Until then Mac remains the only live sender.
 2. Operator stops Mac schedules and sender, verifies the lock is free, makes a fresh consistent backup and repeats parity checks. Retain every unresolved attempt and the existing no-repeat hold.
 3. Release the reviewed private desk binding, sender binding and approved assets while the sender is still OFF; import the fresh final snapshot paused.
-4. Owner alone transfers the **existing** session/API credentials with `tools/owner_secrets.py` through stdin to Wrangler Secrets. No new login, credentials or rights. Never paste values into chat or GitHub.
+4. Owner alone stages the **existing** session/API credentials with `tools/owner_secrets.py` through stdin to `wrangler versions secret bulk`. The version remains undeployed; Wrangler disk logs and metrics are disabled. Local owner confirmation and Mac stop checks happen before credential files are read, under the exclusive Mac lock. The operator verifies the returned version and its OFF fuse before any separate deployment. No new login, credentials or rights. Never paste values into chat or GitHub.
 5. In the agreed release, remove the compiled fuse while keeping the ledger stopped. Perform real read-only identity/TCP/policy acceptance, then authorize activation. Verify actual message IDs and saved visibility, A/B progression and reports before leaving the Mac off.
 
 Offline mocks prove state handling and runtime serialization; they do not prove Telegram connectivity, remote CPU limits or real publication. The selected transport needs that exclusive real-session acceptance. Exact operator commands and rollback are in [CUTOVER.md](CUTOVER.md).

@@ -16,7 +16,7 @@ Cloudflare-native MTProto sender with a single SQLite Durable Object, its own al
 - Hourly paid and free reports use stored attempts and separate saved visibility. Checks without a send, failures, pending/uncertain, rolling quota and delivery holds are reported separately. Imported rows without historical segment evidence stay unclassified. API acknowledgement is not described as proof of visibility.
 - Existing desk outbox integration: fixed existing owner, durable report deduplication, explicit sent/uncertain/failed delivery states. Separate watchdog catches missing/delayed reports when that integration is enabled. It cannot report a complete outage of the shared Cloudflare account or the Telegram bot.
 - Private status, stop, import/export, read-only preflight, evidence-based attempt review, and reviewed rules updates. Reviews do not automatically unblock a group or replay a message.
-- Owner-only existing-session conversion/transfer utility, consistent cutover backup and paused rollback preparation. No utility stops or starts the live Mac sender.
+- Owner-only existing-session conversion/transfer utility, consistent cutover backup and paused rollback preparation. The owner stages secrets into an undeployed Worker version with local confirmation and disabled Wrangler logs; no utility stops or starts the live Mac sender. A read-only readiness check never opens secret files or uses the network.
 
 ## Validation
 
@@ -30,7 +30,7 @@ The previous 8-paid capacity result is obsolete. A/B plus saved verification at 
 
 ## Release status and owner handoff
 
-Follow [CUTOVER.md](CUTOVER.md). First resolve the capacity/plan gate with the owner. Then coordinate exclusive ownership, a fresh consistent snapshot, the reviewed private integration/assets, owner-only transfer of existing secrets and real-session acceptance. Offline tests are not proof of Telegram connectivity. A single named Durable Object serializes all send and verification work; MTProto TCP connections are short-lived while authorization and delivery state persist. This is a Cloudflare port, not an unchanged Python daemon or a permanently open socket.
+Follow [CUTOVER.md](CUTOVER.md); the owner has a [five-step handoff](OWNER-HANDOFF.md). First verify Workers Paid is already active; do not purchase again if it is. Then coordinate exclusive ownership, a fresh consistent snapshot, the reviewed private integration/assets, owner-only staging of existing secrets and real-session acceptance. Offline tests are not proof of Telegram connectivity. A single named Durable Object serializes all send and verification work; MTProto TCP connections are short-lived while authorization and delivery state persist. This is a Cloudflare port, not an unchanged Python daemon or a permanently open socket.
 
 Supported current group limit basis is rolling 24 hours. Unsupported calendar-based rules are held for review. The global 24,000 ceiling is enforced over a rolling 24-hour window, conservatively stricter than the Mac's UTC calendar-day ceiling. Do not raise limits merely to satisfy a target count.
 
