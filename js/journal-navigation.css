@@ -1,0 +1,51 @@
+/* Journal navigation follows the site's product and route menus. */
+#topbar .topbar-inner{gap:20px}
+#topbar .topbar-brand{flex-shrink:0}
+#topbar .topbar-brand .tag{display:none}
+#topbar .topbar-brand .tag{font-size:11px;font-weight:300;color:#64748b;border:0;border-left:1px solid #e2e8f0;padding:0 0 0 14px;border-radius:0;background:transparent;letter-spacing:.04em;white-space:nowrap}
+#topbar .topbar-nav{gap:2px}
+#topbar .topbar-nav>a,#topbar .nav-dd-btn{font:500 12px 'Inter',-apple-system,BlinkMacSystemFont,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#1e293b;padding:8px 12px;border-radius:6px}
+#topbar .topbar-nav>a:hover,#topbar .nav-dd-btn:hover,#topbar .nav-dd.is-open .nav-dd-btn{color:#1d4ed8;background:#eff6ff}
+#topbar .topbar-nav>a[aria-current]{color:#1d4ed8}
+#topbar .nav-dd{position:relative}
+#topbar .nav-dd-btn{display:inline-flex;align-items:center;gap:6px;background:transparent;border:0;cursor:pointer;white-space:nowrap}
+#topbar .nav-dd-btn .arr{font-size:9px;transition:transform .18s ease}
+#topbar .nav-dd.is-open .arr{transform:rotate(180deg)}
+#topbar .nav-sep{width:1px;height:18px;margin:0 6px;background:#e2e8f0}
+#topbar .nav-dd-menu{display:none;position:absolute;top:calc(100% + 10px);left:0;width:350px;padding:8px;border:1px solid #e2e8f0;border-radius:14px;background:#fff;box-shadow:0 20px 50px rgba(15,23,42,.14);max-height:calc(100dvh - 100px);overflow:auto}
+#topbar .nav-dd.is-open .nav-dd-menu{display:block}
+#topbar .nav-dd-item{display:flex;align-items:flex-start;gap:12px;padding:10px 12px;border-radius:8px;color:#0f172a;letter-spacing:0;text-transform:none}
+#topbar .nav-dd-item:hover{background:#f8fafc}
+#topbar .nav-dd-ic{flex-shrink:0;display:grid;place-items:center;width:34px;height:34px;border:1px solid #e2e8f0;border-radius:8px;background:#f8fafc;font:600 11px ui-monospace,SFMono-Regular,monospace;color:#64748b}
+#topbar .nav-dd-ic.blue{color:#1d4ed8;background:#eff6ff;border-color:#bfdbfe}
+#topbar .nav-dd-ic.gold{color:#7a5f38;background:#f6efe1;border-color:#e6d8bf}
+#topbar .nav-dd-ic.green{color:#047857;background:#ecfdf5;border-color:#a7f3d0}
+#topbar .nav-dd-ic.red{color:#b91c1c;background:#fef2f2;border-color:#fecaca}
+#topbar .nav-dd-body{display:flex;flex-direction:column;gap:3px;min-width:0}
+#topbar .nav-dd-body .t{font-size:13.5px;font-weight:600;line-height:1.3}
+#topbar .nav-dd-body .d{font-size:12px;font-weight:400;line-height:1.4;color:#64748b}
+#topbar .topbar-actions{display:flex;align-items:center;gap:10px;flex-shrink:0}
+#topbar .topbar-cta{white-space:nowrap}
+#topbar .menu-toggle{display:none;align-items:center;justify-content:center;gap:7px;padding:9px 10px;border:1px solid #e2e8f0;border-radius:6px;background:#fff;color:#0f172a;font:500 12px 'Inter',-apple-system,BlinkMacSystemFont,sans-serif;cursor:pointer}
+#topbar .menu-toggle svg{width:18px;height:18px}
+#topbar a:focus-visible,#topbar button:focus-visible{outline:2px solid #1d4ed8;outline-offset:3px}
+@media(min-width:1600px){#topbar .topbar-brand .tag{display:inline-block}}
+@media(max-width:1100px){
+ #topbar .topbar-inner{padding:15px 24px}
+ #topbar .menu-toggle{display:inline-flex}
+ #topbar .topbar-nav{display:none;position:absolute;top:100%;left:0;right:0;max-height:calc(100dvh - 72px);overflow:auto;overscroll-behavior:contain;flex-direction:column;align-items:stretch;gap:4px;padding:14px 24px 24px;background:#fff;border-bottom:1px solid #e2e8f0;box-shadow:0 18px 25px rgba(15,23,42,.08)}
+ #topbar .topbar-nav.is-mobile-open{display:flex}
+ #topbar .topbar-nav>a,#topbar .nav-dd-btn{display:flex;min-height:42px;align-items:center;width:100%;justify-content:space-between;font-size:12px}
+ #topbar .nav-sep{width:100%;height:1px;margin:7px 0}
+ #topbar .nav-dd-menu{position:static;width:100%;max-height:none;overflow:visible;box-shadow:none;margin:5px 0 10px;border-radius:10px}
+}
+@media(max-width:640px){
+ #topbar .topbar-inner{padding:14px 20px;gap:10px}
+ #topbar .topbar-brand .name{font-size:12px;letter-spacing:.13em}
+ #topbar .topbar-actions{gap:8px}
+ #topbar .topbar-cta{font-size:10px;letter-spacing:.05em;padding:10px}
+ #topbar .menu-toggle{padding:8px}
+ #topbar .menu-toggle .menu-label{display:none}
+ #topbar .topbar-nav{padding:12px 20px 20px}
+}
+@media(prefers-reduced-motion:reduce){#topbar .arr{transition:none}}

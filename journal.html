@@ -46,7 +46,7 @@
 <link rel="dns-prefetch" href="https://fonts.gstatic.com"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link rel="preload" as="image" href="assets/journal/ukaz-706-vyvoz-nalichnyh-2026-hero.jpg" fetchpriority="high"/>
+<link rel="preload" as="image" href="assets/journal/snyatie-vklada-115fz-usdt-2026-hero.jpg" fetchpriority="high"/>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" media="print" onload="this.media='all'"/>
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"/></noscript>
@@ -300,6 +300,7 @@ button{font-family:inherit;cursor:pointer}
   font-size:12px;color:#64748b;
 }
 </style>
+<link rel="stylesheet" href="/js/journal-navigation.css?v=20261007"/>
 
 <script type="application/ld+json">
 {
@@ -311,14 +312,19 @@ button{font-family:inherit;cursor:pointer}
       "name": "Charter Capital",
       "url": "https://ccapital.pro/",
       "logo": "https://ccapital.pro/assets/logic/15-passport-gate.webp",
-      "sameAs": ["https://t.me/ccapital26", "https://t.me/ccapital_acces"]
+      "sameAs": [
+        "https://t.me/ccapital26",
+        "https://t.me/ccapital_acces"
+      ]
     },
     {
       "@type": "WebSite",
       "@id": "https://ccapital.pro/#website",
       "url": "https://ccapital.pro/",
       "name": "Charter Capital",
-      "publisher": {"@id": "https://ccapital.pro/#organization"},
+      "publisher": {
+        "@id": "https://ccapital.pro/#organization"
+      },
       "inLanguage": "ru-RU"
     },
     {
@@ -327,15 +333,28 @@ button{font-family:inherit;cursor:pointer}
       "url": "https://ccapital.pro/journal.html",
       "name": "Дайджест Charter Capital",
       "description": "Аналитика, объявления и кейсы из практики международного маршрута: банковский онбординг, AML, family office, недвижимость Азии.",
-      "isPartOf": {"@id": "https://ccapital.pro/#website"},
+      "isPartOf": {
+        "@id": "https://ccapital.pro/#website"
+      },
       "inLanguage": "ru-RU",
-      "primaryImageOfPage": "https://ccapital.pro/assets/journal/singapore-family-office-hero.webp"
+      "primaryImageOfPage": "https://ccapital.pro/assets/journal/snyatie-vklada-115fz-usdt-2026-hero.jpg",
+      "dateModified": "2026-10-07T13:02:21+00:00"
     },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Charter Capital", "item": "https://ccapital.pro/"},
-        {"@type": "ListItem", "position": 2, "name": "Дайджест", "item": "https://ccapital.pro/journal.html"}
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Charter Capital",
+          "item": "https://ccapital.pro/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Дайджест",
+          "item": "https://ccapital.pro/journal.html"
+        }
       ]
     }
   ]
@@ -358,20 +377,94 @@ button{font-family:inherit;cursor:pointer}
 <body>
 
 <header id="topbar">
-  <div class="topbar-inner">
-    <a href="/" class="topbar-brand">
-      <span class="name">Charter Capital</span>
-      <span class="tag">Когда двери закрываются — мы открываем мир</span>
-    </a>
-    <nav class="topbar-nav">
-      <a href="/#routes">Маршруты</a>
-      <a href="property.html">Недвижимость</a>
-      <a href="private.html">Private Office</a>
-      <a href="fund.html">Asia Fund</a>
-      <a href="/#contact">Связаться</a>
-    </nav>
-    <a href="/" class="topbar-cta">На главную</a>
-  </div>
+<div class="topbar-inner">
+<a class="topbar-brand" href="/">
+<span class="name">Charter Capital</span>
+<span class="tag">Когда двери закрываются - мы открываем мир</span>
+</a>
+<nav aria-label="Основная навигация" class="topbar-nav" id="site-navigation">
+<div class="nav-dd" data-dd="products">
+<button aria-controls="dd-products" aria-expanded="false" aria-haspopup="true" class="nav-dd-btn" type="button">
+          Все продукты <span aria-hidden="true" class="arr">▾</span>
+</button>
+<div aria-label="Все продукты Charter Capital" class="nav-dd-menu" id="dd-products" role="menu">
+<a class="nav-dd-item" href="/pay.html" role="menuitem">
+<span class="nav-dd-ic blue">PY</span>
+<span class="nav-dd-body"><span class="t">Pay</span><span class="d">ВЭД-платежи под банк получателя</span></span>
+</a>
+<a class="nav-dd-item" href="/bank-account.html#packages" role="menuitem">
+<span class="nav-dd-ic blue">AC</span>
+<span class="nav-dd-body"><span class="t">Счета, карты, сервисы</span><span class="d">Компания + счёт + Visa/MC · без обхода правил</span></span>
+</a>
+<a class="nav-dd-item" href="/company.html" role="menuitem">
+<span class="nav-dd-ic blue">CO</span>
+<span class="nav-dd-body"><span class="t">Компании</span><span class="d">Гонконг · Сингапур · ОАЭ · UK · США · на ваше имя</span></span>
+</a>
+<a class="nav-dd-item" href="/usa-online.html" role="menuitem">
+<span class="nav-dd-ic blue">US</span>
+<span class="nav-dd-body"><span class="t">США · эквайринг</span><span class="d">Компания + Stripe + Wise / Mercury · $1 550</span></span>
+</a>
+<a class="nav-dd-item" href="/fund.html" role="menuitem">
+<span class="nav-dd-ic gold">AF</span>
+<span class="nav-dd-body"><span class="t">Charter Asia Fund</span><span class="d">Инвестиции в Сингапуре и Пхукете</span></span>
+</a>
+<a class="nav-dd-item" href="/property.html" role="menuitem">
+<span class="nav-dd-ic">CP</span>
+<span class="nav-dd-body"><span class="t">CP Property</span><span class="d">Кураторская недвижимость Пхукета</span></span>
+</a>
+<a class="nav-dd-item" href="/private.html" role="menuitem">
+<span class="nav-dd-ic gold">PO</span>
+<span class="nav-dd-body"><span class="t">Private Office</span><span class="d">Архитектура легитимности · от $1М</span></span>
+</a>
+<a class="nav-dd-item" href="/residence.html" role="menuitem">
+<span class="nav-dd-ic green">ВНЖ</span>
+<span class="nav-dd-body"><span class="t">ВНЖ и налоговое резидентство</span><span class="d">Испания · Мальта · Португалия · Франция · Монако</span></span>
+</a>
+<a class="nav-dd-item" href="/business-eu.html" role="menuitem">
+<span class="nav-dd-ic green">EU</span>
+<span class="nav-dd-body"><span class="t">Готовый бизнес в Европе</span><span class="d">Substance под ВНЖ · чистый вход капитала</span></span>
+</a>
+<a class="nav-dd-item" href="/#scoring" role="menuitem">
+<span class="nav-dd-ic blue">KP</span>
+<span class="nav-dd-body"><span class="t">Подготовка кейса</span><span class="d">Чистота и биография капитала</span></span>
+</a>
+</div>
+</div>
+<div class="nav-dd" data-dd="cases">
+<button aria-controls="dd-cases" aria-expanded="false" aria-haspopup="true" class="nav-dd-btn" type="button">
+          Где вы сейчас <span aria-hidden="true" class="arr">▾</span>
+</button>
+<div aria-label="Где вы сейчас" class="nav-dd-menu" id="dd-cases" role="menu">
+<a class="nav-dd-item" href="/homeland.html" role="menuitem">
+<span class="nav-dd-ic red">RU</span>
+<span class="nav-dd-body"><span class="t">Я ещё в России</span><span class="d">Готовлюсь к выезду - деньги, документы, ФССП</span></span>
+</a>
+<a class="nav-dd-item" href="/" role="menuitem">
+<span class="nav-dd-ic green">EU</span>
+<span class="nav-dd-body"><span class="t">Я уже за границей</span><span class="d">Собираю международный маршрут</span></span>
+</a>
+<a class="nav-dd-item" href="/freedom-route.html" role="menuitem">
+<span class="nav-dd-ic">?</span>
+<span class="nav-dd-body"><span class="t">Только задумываюсь о переезде</span><span class="d">Маршрут в свободный мир - для предпринимателей из СНГ</span></span>
+</a>
+<a class="nav-dd-item" href="/residence.html" role="menuitem">
+<span class="nav-dd-ic green">ВНЖ</span>
+<span class="nav-dd-body"><span class="t">Мне нужен ВНЖ в Европе</span><span class="d">Испания, Мальта, Португалия, Франция, Монако</span></span>
+</a>
+<a class="nav-dd-item" href="/private.html" role="menuitem">
+<span class="nav-dd-ic gold">1M</span>
+<span class="nav-dd-body"><span class="t">Капитал от $1М</span><span class="d">Архитектура легитимности и репатриации</span></span>
+</a>
+</div>
+</div>
+<span aria-hidden="true" class="nav-sep"></span>
+
+
+
+
+<a aria-current="true" href="/journal.html">Дайджест</a><a href="/#routes">Маршруты</a><a href="/#contact">Связаться</a></nav>
+
+<div class="topbar-actions"><button aria-controls="site-navigation" aria-expanded="false" aria-label="Открыть меню" class="menu-toggle" type="button"><svg aria-hidden="true" fill="none" viewbox="0 0 20 20"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path></svg><span class="menu-label">Меню</span></button><a class="topbar-cta" href="/">На главную</a></div></div>
 </header>
 
 <section class="page-head">
@@ -395,30 +488,17 @@ button{font-family:inherit;cursor:pointer}
 </section>
 
 <section class="featured" id="analytics">
-  <div class="container">
-    <div class="featured-grid">
-      <a class="featured-img" href="journal/ukaz-706-vyvoz-nalichnyh-2026.html">
-        <img src="assets/journal/ukaz-706-vyvoz-nalichnyh-2026-hero.jpg" alt="Ночная таможенная стойка: пачка рублей под лампой, закрытый паспорт и опущенный шлагбаум"/>
-        <span class="featured-tag">Свежее · Указ № 706</span>
-      </a>
-      <div>
-        <div class="featured-meta">
-          <span class="cat">Аналитика</span>
-          <span class="dot"></span>
-          <span>29 сентября 2026</span>
-          <span class="dot"></span>
-          <span>6 мин чтения</span>
-        </div>
-        <h2><a href="journal/ukaz-706-vyvoz-nalichnyh-2026.html">Указ 706: вывоз наличных в ЕАЭС — порог для физлица 1 млн рублей</a></h2>
-        <p class="lede">
-          С 29 сентября физлицо везёт в ЕАЭС, Азербайджан, Таджикистан и Узбекистан
-          не больше 1 млн рублей наличными. Раньше порог был эквивалент 100 тыс. долларов.
-          Юрлица и ИП — по-прежнему любая сумма. Золото указ не меняет.
-        </p>
-        <a class="read" href="journal/ukaz-706-vyvoz-nalichnyh-2026.html">Читать материал →</a>
-      </div>
+  <div class="container"><div class="featured-grid">
+    <a class="featured-img" href="journal/snyatie-vklada-115fz-usdt-2026.html">
+      <img src="assets/journal/snyatie-vklada-115fz-usdt-2026-hero.jpg" srcset="assets/journal/snyatie-vklada-115fz-usdt-2026-hero-800w.jpg 800w, assets/journal/snyatie-vklada-115fz-usdt-2026-hero.jpg 1448w" sizes="(max-width:900px) calc(100vw - 64px), 620px" width="1448" height="1086" alt="Папка с документами и рубли на столе; за окном — жилые здания у воды" fetchpriority="high"/>
+      <span class="featured-tag">Свежее · Источник средств</span>
+    </a>
+    <div><div class="featured-meta"><span class="cat">Аналитика</span><span class="dot"></span><span>7 октября 2026</span><span class="dot"></span><span>8 мин чтения</span></div>
+      <h2><a href="journal/snyatie-vklada-115fz-usdt-2026.html">Банк просит источник средств при снятии вклада: что делать</a></h2>
+      <p class="lede">Собственный вклад не отменяет проверку происхождения денег. Разбираем, что говорят документы ЦБ, как ответить банку и подготовить следующий платёж для ВЭД или зарубежной недвижимости.</p>
+      <a class="read" href="journal/snyatie-vklada-115fz-usdt-2026.html">Читать материал →</a>
     </div>
-  </div>
+  </div></div>
 </section>
 
 <section class="feed" id="feed">
@@ -429,6 +509,14 @@ button{font-family:inherit;cursor:pointer}
     </div>
 
     <div class="feed-grid">
+      <article class="card">
+        <a class="card-img" href="journal/snyatie-vklada-115fz-usdt-2026.html"><img src="assets/journal/snyatie-vklada-115fz-usdt-2026-hero-800w.jpg" width="800" height="600" loading="lazy" decoding="async" alt="Папка с документами и рубли на столе; за окном — жилые здания у воды"/><span class="card-tag">Свежее · Источник средств</span></a>
+        <div class="card-meta"><span class="cat">Аналитика</span><span class="dot"></span><span>7 октября 2026</span><span class="dot"></span><span>8 мин</span></div>
+        <h4><a href="journal/snyatie-vklada-115fz-usdt-2026.html">Банк просит источник средств при снятии вклада: что делать</a></h4>
+        <p class="lede">Право на возврат вклада и проверка источника — разные вопросы. Майские рекомендации ЦБ касаются внесения наличных. Какие документы подготовить банку и что согласовать до расчёта в USDT за рубежом.</p>
+        <a class="read-mini" href="journal/snyatie-vklada-115fz-usdt-2026.html">Читать материал <span class="arr">→</span></a>
+      </article>
+
 
       <article class="card">
         <a class="card-img" href="journal/ukaz-706-vyvoz-nalichnyh-2026.html">
@@ -1037,6 +1125,8 @@ button{font-family:inherit;cursor:pointer}
     </div>
 
     <ul class="news-list">
+      <li class="news-item"><div class="news-date">07·10</div><div class="news-body"><span class="news-cat">Комплаенс · источник средств</span><h4 class="news-title"><a href="journal/snyatie-vklada-115fz-usdt-2026.html">Банк просит источник средств при снятии вклада: что делать</a></h4><p class="news-note">Нового общего запрета на снятие вкладов нет. Как связать происхождение денег, вклад и следующий зарубежный платёж документами. <a href="journal/snyatie-vklada-115fz-usdt-2026.html">Разбор →</a></p></div><a class="news-src" href="https://cbr.ru/press/event/?id=28550" target="_blank" rel="noopener noreferrer">cbr.ru ↗</a></li>
+
 
       <li class="news-item">
         <div class="news-date">29·09</div>
@@ -1309,6 +1399,8 @@ button{font-family:inherit;cursor:pointer}
       <div>
         <h4>Дайджест</h4>
         <ul>
+          <li><a href="/journal/snyatie-vklada-115fz-usdt-2026.html"><span>Снятие вклада: банк просит источник средств</span><span class="date">07·10</span></a></li>
+
           <li><a href="journal/ukaz-706-vyvoz-nalichnyh-2026.html"><span>Указ 706: вывоз наличных, порог 1 млн</span><span class="date">29·09</span></a></li>
           <li><a href="journal/cbr-nalichnye-istochnik-115fz-2026.html"><span>ЦБ обновит рекомендации по источникам наличных</span><span class="date">24·09</span></a></li>
           <li><a href="journal/minfin-depozitarii-blokirovka-kripty-2026.html"><span>Минфин: депозитарий не компенсирует заморозку</span><span class="date">22·09</span></a></li>
@@ -1355,5 +1447,6 @@ button{font-family:inherit;cursor:pointer}
 </script>
 
 <script src="/chat-widget.js?v=20260618" defer></script>
+<script src="/js/journal-navigation.js?v=20261007" defer></script>
 </body>
 </html>
