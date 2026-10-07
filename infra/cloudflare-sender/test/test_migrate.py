@@ -9,7 +9,7 @@ import unittest
 
 TOOLS=Path(__file__).resolve().parents[1]/'tools'
 sys.path.insert(0,str(TOOLS))
-from migrate import build_snapshot,digest,assert_stopped
+from migrate import build_snapshot,digest,assert_stopped,SHORT_TEXT,ROTATION_B_TEXT,bold
 from owner_secrets import encode_existing_session
 from rollback import prepare
 
@@ -42,6 +42,39 @@ class Migration(unittest.TestCase):
     def setUp(self):
         self.temp=tempfile.TemporaryDirectory();self.root=Path(self.temp.name);fixture(self.root)
     def tearDown(self):self.temp.cleanup()
+    def resign(self):
+        p=self.root/'unified-control.json';c=json.loads(p.read_text())
+        c['rules_sha256']=digest((self.root/'unified-rules.json').read_bytes());c['content_sha256']=digest((self.root/'unified-content.json').read_bytes());p.write_text(json.dumps(c))
+    def test_short_contact_format_preserves_bold_and_does_not_inherit_photo(self):
+        p=self.root/'unified-rules.json';rules=json.loads(p.read_text());r=next(iter(rules['groups'].values()))
+        r.update(paid=False,content_variant='short_text',allow_text=True,allow_photos=False,allow_contact_handles=True,max_chars=60,max_lines=1,
+                 format_evidence='Owner reviewed exact short format',format_checked_at='2026-10-05T00:00:00Z')
+        p.write_text(json.dumps(rules));p=self.root/'unified-content.json';c=json.loads(p.read_text());c.update(short_text=SHORT_TEXT,short_text_approved=True);p.write_text(json.dumps(c));self.resign()
+        s=build_snapshot(self.root,now=NOW);g=s['groups'][0]
+        self.assertEqual(g['text'],SHORT_TEXT);self.assertEqual(g['format'],'text');self.assertEqual(g['entities'],bold(SHORT_TEXT,1))
+        self.assertEqual(s['source']['omitted_rules'],[])
+    def test_unknown_sqlite_table_refuses_silent_data_loss(self):
+        db=sqlite3.connect(self.root/'state.sqlite');db.execute('CREATE TABLE future_required_state(id INTEGER)');db.close()
+        with self.assertRaisesRegex(ValueError,'unknown_table'):build_snapshot(self.root,now=NOW)
+    def test_disabled_discovery_and_terminal_evidence_are_archived_exactly(self):
+        text='{"enabled":false,"jobs":[{"status":"approval_pending","note":"Не повторять"}]}'
+        (self.root/'finite-candidates-168-20261007.json').write_text(text)
+        s=build_snapshot(self.root,now=NOW);f=next(f for f in s['archive'] if f['path'].startswith('finite-'))
+        self.assertEqual(f['body'],text);self.assertEqual(f['sha256'],digest(text.encode()))
+        (self.root/'growth-queue.json').write_text('{"enabled":true}')
+        with self.assertRaisesRegex(ValueError,'must_be_disabled'):build_snapshot(self.root,now=NOW)
+    def test_visibility_and_rotation_roundtrip_keep_confirmation_and_pending(self):
+        cid=-1000000000123;db=sqlite3.connect(self.root/'state.sqlite')
+        db.execute('CREATE TABLE paid_variant_attempts(attempt_id INTEGER PRIMARY KEY,chat_id INTEGER,campaign TEXT,variant TEXT,confirmed INTEGER)')
+        db.execute('INSERT INTO attempts VALUES(159,?,?,?,?,?,?)',(cid,NOW/1000-0.1,'sent','B digest',123,None))
+        db.execute('INSERT INTO paid_variant_attempts VALUES(?,?,?,?,?)',(159,cid,'paid-ab-20261006','B',0));db.commit();db.close()
+        (self.root/'visibility-queue').mkdir();job=dict(attempt_id=159,chat_id=cid,message_id=123,cycle_id='fixture',text='Текст',bold_first_lines=1,bold_spans=None,photo=False,paid_variant='B',status='queued')
+        (self.root/'visibility-queue/159.json').write_text(json.dumps(job,ensure_ascii=False))
+        s=build_snapshot(self.root,now=NOW);self.assertEqual(s['paid_variants'][0]['confirmed'],0);self.assertEqual(s['visibility'][0]['state'],'pending')
+        self.assertEqual(s['visibility'][0]['original'],job)
+    def test_code_drift_and_unapproved_rotation_content_refuse_export(self):
+        (self.root/'service-code-manifest.json').write_text('{"sha256":{}}')
+        with self.assertRaisesRegex(ValueError,'new_parity_review'):build_snapshot(self.root,now=NOW)
     def test_lossless_attempts_waits_rules_and_no_session_required(self):
         s=build_snapshot(self.root,now=NOW)
         self.assertEqual([a['id'] for a in s['attempts']],['19','22','157','158'])
@@ -78,7 +111,7 @@ class Migration(unittest.TestCase):
         s=build_snapshot(self.root,now=NOW);(self.root/'snapshot.json').write_text(json.dumps(s))
         attempts=[dict(a,error=a['error'] or '') for a in s['attempts']]
         attempts.append(dict(id='cloud-uuid',chat_id=-1000000000123,created=NOW,status='sent',digest='cloud digest',message_id='42',error=''))
-        cloud=dict(version=1,control=dict(enabled=False,wait_until=s['wait_until'],halt=s['halt'],daily_limit=24000),
+        cloud=dict(version=2,paid_variants=s['paid_variants'],visibility=[],archive=s['archive'],control=dict(enabled=False,wait_until=s['wait_until'],halt=s['halt'],daily_limit=24000),
                    source=s['source'],attempts=attempts,blocked=s['blocked'],reviews=[],
                    groups=[dict(chat_id=g['chat_id'],wait_until=g['wait_until'],spec=json.dumps(g)) for g in s['groups']],
                    imported_attempts=[dict(id=a['id'],original=json.dumps(a)) for a in s['attempts']])
@@ -86,6 +119,7 @@ class Migration(unittest.TestCase):
         self.assertEqual(result['attempts'],5);self.assertTrue(result['paused'])
         db=sqlite3.connect(dest/'state.sqlite')
         self.assertEqual(db.execute('SELECT status,created FROM attempts WHERE id=19').fetchone(),('uncertain',s['attempts'][0]['source_created']))
+        self.assertIsNone(db.execute('SELECT error FROM attempts WHERE id=158').fetchone()[0])
         self.assertEqual(db.execute('SELECT message_id FROM attempts WHERE id=159').fetchone()[0],42)
         self.assertEqual(db.execute('SELECT count(*) FROM blocked').fetchone()[0],1);db.close()
         self.assertTrue((dest/'hourly-stop').exists())

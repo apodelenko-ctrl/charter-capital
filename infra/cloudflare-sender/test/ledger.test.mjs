@@ -3,6 +3,11 @@ import assert from 'node:assert/strict';
 import {DatabaseSync} from 'node:sqlite';
 import {Ledger,HOUR} from '../src/ledger.mjs';
 import {NOW,group,snapshot} from './fixtures.mjs';
+function complete(l,job,result,now) {
+  if(!['preflight_failed','skipped','cancelled'].includes(result.kind))assert.ok(l.arm(job,now));
+  l.finish(job,result,now);
+  if(result.kind==='sent')l.finishVisibility({...job,message_id:String(result.message_id)},{kind:'verified'},now);
+}
 function setup(s=snapshot()) {
   const db=new DatabaseSync(':memory:');
   const storage={sql:{exec(query,...params){
@@ -18,14 +23,14 @@ test('import is paused and cannot overwrite existing state',()=>{
 test('paid 5-minute minimum and free 10-minute minimum',()=>{
   for (const paid of [true,false]) {
     const l=setup(snapshot({groups:[group({paid,interval_ms:1000})]}));l.activate();
-    const j=l.claim(NOW,'a','1');assert.ok(j);l.finish(j,{kind:'sent',message_id:1},NOW);
+    const j=l.claim(NOW,'a','1');assert.ok(j);complete(l,j,{kind:'sent',message_id:1},NOW);
     const interval=paid?300_000:600_000;
     assert.equal(l.claim(NOW+interval-1,'b','2'),null);assert.ok(l.claim(NOW+interval,'b','2'));
   }
 });
 test('group rules and slowmode override requested frequency',()=>{
   const l=setup(snapshot({groups:[group({interval_ms:900_000,slowmode_ms:1_200_000})]}));l.activate();
-  const j=l.claim(NOW,'a','1');l.finish(j,{kind:'sent',message_id:1},NOW);
+  const j=l.claim(NOW,'a','1');complete(l,j,{kind:'sent',message_id:1},NOW);
   assert.equal(l.claim(NOW+900_000,'b','2'),null);assert.ok(l.claim(NOW+1_200_000,'b','2'));
 });
 test('paid_until required and expiry checked again after prepare',()=>{
@@ -34,21 +39,21 @@ test('paid_until required and expiry checked again after prepare',()=>{
   assert.equal(l.validClaim(j,NOW+1000),false);
 });
 test('pending prevents concurrent claim; restart becomes uncertain and stopped',()=>{
-  const l=setup(snapshot({groups:[group(),group({chat_id:-100456})]}));l.activate();l.claim(NOW,'a','1');
+  const l=setup(snapshot({groups:[group(),group({chat_id:-100456})]}));l.activate();l.arm(l.claim(NOW,'a','1'),NOW);
   assert.equal(l.claim(NOW,'b','2'),null);l.recover();
   assert.equal(l.status().enabled,false);assert.equal(l.status().attempts.uncertain,1);assert.throws(()=>l.activate(),/blocked/);
 });
 test('network ambiguity never becomes success or a replay',()=>{
-  const l=setup();l.activate();const j=l.claim(NOW,'a','1');l.finish(j,{kind:'uncertain'},NOW);
+  const l=setup();l.activate();const j=l.claim(NOW,'a','1');complete(l,j,{kind:'uncertain'},NOW);
   assert.equal(l.claim(NOW+HOUR,'b','2'),null);assert.equal(l.status().attempts.uncertain,1);
 });
 test('global FloodWait persists and applies to other groups',()=>{
   const l=setup(snapshot({groups:[group(),group({chat_id:-100456})]}));l.activate();
-  const j=l.claim(NOW,'a','1');l.finish(j,{kind:'flood',retry_after_ms:700_000},NOW);
+  const j=l.claim(NOW,'a','1');complete(l,j,{kind:'flood',retry_after_ms:700_000},NOW);
   assert.equal(l.claim(NOW+699_999,'b','2'),null);assert.ok(l.claim(NOW+700_000,'b','2'));
 });
 test('stop during request cannot be overwritten by successful response',()=>{
-  const l=setup();l.activate();const j=l.claim(NOW,'a','1');l.stop();
+  const l=setup();l.activate();const j=l.claim(NOW,'a','1');l.arm(j,NOW);l.stop();
   assert.equal(l.validClaim(j,NOW),false);l.finish(j,{kind:'sent',message_id:42},NOW);
   assert.equal(l.status().enabled,false);assert.equal(l.status().attempts.sent,1);
 });
@@ -61,7 +66,7 @@ test('import preserves uncertain, external sends, waits and off-registry blocked
 });
 test('daily ceilings count failed/uncertain attempts, not only successes',()=>{
   const l=setup(snapshot({daily_limit:1}));l.activate();const j=l.claim(NOW,'a','1');
-  l.finish(j,{kind:'preflight_failed'},NOW);assert.equal(l.claim(NOW+HOUR,'b','2'),null);
+  complete(l,j,{kind:'blocked'},NOW);assert.equal(l.claim(NOW+HOUR,'b','2'),null);
 });
 test('hourly report is idempotent and counts [start,end) with external separately',()=>{
   const attempts=[{id:'a',chat_id:-100123,created:NOW-HOUR,status:'sent',digest:'x'},
@@ -85,7 +90,7 @@ test('rolling counters preserve exact 24-hour boundary across bucket edges',()=>
   assert.equal(l.used(-100123,NOW+1),1);assert.equal(l.used(0,NOW+24*HOUR),0);
 });
 test('scheduler sleeps until next due and stops scheduling expired groups',()=>{
-  const l=setup();l.activate();const j=l.claim(NOW,'a','1');l.finish(j,{kind:'sent',message_id:1},NOW);
+  const l=setup();l.activate();const j=l.claim(NOW,'a','1');complete(l,j,{kind:'sent',message_id:1},NOW);
   assert.equal(l.nextWake(NOW),NOW+300_000);assert.equal(l.nextWake(NOW+24*HOUR),null);
 });
 test('synthetic 24-hour load: 8 paid and 17 free, no burst catch-up',()=>{
@@ -93,7 +98,7 @@ test('synthetic 24-hour load: 8 paid and 17 free, no burst catch-up',()=>{
   const l=setup(snapshot({groups}));l.activate();let now=NOW,n=0;
   while(now<NOW+24*HOUR) {
     const job=l.claim(now,String(n),String(n+1));
-    if(job){l.finish(job,{kind:'sent',message_id:n+1},now);n++;}
+    if(job){complete(l,job,{kind:'sent',message_id:n+1},now);n++;}
     now=l.nextWake(now);if(now==null)break;
   }
   assert.ok(n>4000 && n<4752);assert.equal(l.status().attempts.sent,n);
@@ -110,7 +115,7 @@ test('restart preserves imported pending record while stopping ambiguous deliver
   assert.deepEqual(JSON.parse(l.exportSnapshot().imported_attempts[0].original),a);
 });
 test('manual review preserves evidence and holds; no automatic restart or replay',()=>{
-  const l=setup();l.activate();const j=l.claim(NOW,'a','1');l.finish(j,{kind:'uncertain'},NOW);
+  const l=setup();l.activate();const j=l.claim(NOW,'a','1');complete(l,j,{kind:'uncertain'},NOW);
   assert.throws(()=>l.reviewAttempt({id:'a',decision:'confirmed_not_sent',evidence:'x'},NOW),/evidence/);
   l.reviewAttempt({id:'a',decision:'keep_hold',evidence:'Owner retains the unresolved attempt'},NOW);
   assert.equal(l.status().enabled,false);assert.equal(l.status().attempts.uncertain,1);
@@ -125,14 +130,14 @@ test('hourly catch-up records missing hours with a bounded cursor even while sto
   assert.equal(l.reportsDue(NOW+60*HOUR).length,24);
 });
 test('account failure stops every group while keeping attempt history',()=>{
-  const l=setup();l.activate();const j=l.claim(NOW,'a','1');l.finish(j,{kind:'account_halt'},NOW);
+  const l=setup();l.activate();const j=l.claim(NOW,'a','1');complete(l,j,{kind:'account_halt'},NOW);
   assert.equal(l.status().enabled,false);assert.equal(l.status().halt,'account_requires_review');
   assert.equal(l.status().attempts.failed,1);assert.throws(()=>l.activate(),/blocked/);
 });
-test('paid statistics only every fifth hour; new attempts carry immutable segment',()=>{
-  const l=setup();l.activate();const j=l.claim(NOW,'a','1');l.finish(j,{kind:'sent',message_id:1},NOW);
-  assert.equal(l.hourly(NOW+HOUR).paid_window,undefined);
+test('paid and free statistics every hour; new attempts carry immutable segment',()=>{
+  const l=setup();l.activate();const j=l.claim(NOW,'a','1');complete(l,j,{kind:'sent',message_id:1},NOW);
+  assert.deepEqual(l.hourly(NOW+HOUR).paid,{sent:1});
   assert.deepEqual(l.hourly(NOW+HOUR).free,{});
-  const fifth=l.hourly(NOW+5*HOUR);assert.deepEqual(fifth.paid_window.attempts,{sent:1});
+  const fifth=l.hourly(NOW+5*HOUR);assert.deepEqual(fifth.paid,{});
   assert.deepEqual(l.hourly(NOW+5*HOUR),fifth);
 });

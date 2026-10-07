@@ -37,8 +37,8 @@ export class DeskObject extends ExistingDeskObject {
       let body;
       if(['import','review','rules','preflight'].includes(name)) {
         const size=Number(request.headers.get('content-length') || 0);
-        if(size>8*1024*1024)return new Response('Too large',{status:413});
-        const bytes=await request.arrayBuffer();if(bytes.byteLength>8*1024*1024)return new Response('Too large',{status:413});
+        if(size>32*1024*1024)return new Response('Too large',{status:413});
+        const bytes=await request.arrayBuffer();if(bytes.byteLength>32*1024*1024)return new Response('Too large',{status:413});
         body=JSON.parse(new TextDecoder().decode(bytes));
       }
       const result=await this.env.SENDER_CONTROL[method](...(body?[body]:[]));

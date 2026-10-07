@@ -102,6 +102,8 @@ test('last actual message ours, unreadable, or changed during upload always skip
     ({replies})=>replies['messages.GetHistory'].messages[0].fromId.userId=123456n,
     ({replies})=>replies['messages.GetHistory'].messages=[],
     ({replies})=>replies['messages.GetHistory'].messages[0].out=true,
+    ({replies})=>replies['messages.GetHistory'].messages[0].className='MessageService',
+    ({replies})=>replies['messages.GetHistory'].messages[0].fromId={className:'PeerChannel',channelId:123n},
   ]) {
     const x=setup(change);assert.equal((await x.transport.prepare(x.job)).kind,'skipped');
     assert.equal(x.calls.some(x=>/SaveFilePart|SendMedia|SendMessage/.test(x.className)),false);
@@ -111,6 +113,22 @@ test('last actual message ours, unreadable, or changed during upload always skip
   assert.equal(y.calls.some(x=>/SendMedia|SendMessage/.test(x.className)),false);
   const z=setup(()=>{},{at:'messages.GetHistory',error:Error('read unavailable')});
   assert.deepEqual(await z.transport.prepare(z.job),{kind:'skipped',reason:'last_message_unreadable'});
+});
+test('ACK is followed by a read of the exact message, without another send',async()=>{
+  const x=setup();await x.transport.prepare(x.job);await x.transport.send(x.job,()=>true);
+  x.replies['channels.GetMessages']={messages:[{className:'Message',id:88,message:x.job.group.text,
+    media:{className:'MessageMediaPhoto',photo:{className:'Photo'}},entities:[{className:'MessageEntityBold',offset:0,length:9}]}]};
+  assert.deepEqual(await x.transport.verify({...x.job,message_id:'88'}),{kind:'verified'});
+  x.replies['channels.GetMessages'].messages[0].message='Changed text';
+  assert.deepEqual(await x.transport.verify({...x.job,message_id:'88'}),{kind:'visibility_mismatch'});
+  assert.equal(x.calls.filter(r=>r.className==='messages.SendMedia').length,1);
+});
+test('restart verification connects only for identity, peer and saved message ID',async()=>{
+  const x=setup(({replies,g})=>{replies['channels.GetMessages']={messages:[{className:'Message',id:88,message:g.text,
+    media:{className:'MessageMediaPhoto',photo:{className:'Photo'}},entities:[{className:'MessageEntityBold',offset:0,length:9}]}]};});
+  assert.deepEqual(await x.transport.verify({...x.job,message_id:'88'}),{kind:'verified'});
+  assert.deepEqual(x.calls.map(x=>x.className),['users.GetUsers','contacts.ResolveUsername','channels.GetMessages']);
+  assert.equal(x.counts().connections,1);await x.transport.close();
 });
 test('durable stop fence is checked after the last-message read',async()=>{
   const x=setup();await x.transport.prepare(x.job);

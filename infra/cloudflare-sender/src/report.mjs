@@ -5,18 +5,22 @@ export function validateReport(r) {
 export function formatReport(r) {
   validateReport(r);
   const date=ms=>new Intl.DateTimeFormat('ru-RU',{timeZone:'Asia/Bangkok',day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).format(ms);
-  const n=key=>r.free?.[key] || 0;
+  const line=(segment,label)=>{
+    const n=key=>r[segment]?.[key] || 0;
+    const visible=(r.visibility || []).find(x=>x.segment===segment && x.state==='verified')?.n || 0;
+    const held=(r.visibility || []).filter(x=>x.segment===segment && x.state!=='verified').reduce((n,x)=>n+x.n,0);
+    return `${label}: API ${n('sent')}, видимость подтверждена ${visible}, проверка/карантин ${held}, ошибок ${n('failed')}, неопределённых ${n('uncertain')}, внешних ${n('sent_external')}.`;
+  };
   return [`Charter Capital · ${date(r.start)} — ${date(r.end)} (Бангкок)`,
-    'Бесплатные группы — отчёт за час:',
-    `Подтверждено Telegram: ${n('sent')}. Внешних подтверждений: ${n('sent_external')}.`,
-    `Ошибок: ${n('failed')}. Неопределённых за час: ${n('uncertain')}. Пропущено/отменено: ${n('cancelled')}.`,
-    r.paid_window?`Оплаченные группы — ${date(r.paid_window.start)} — ${date(r.paid_window.end)}: подтверждено ${r.paid_window.attempts.sent || 0}, ошибок ${r.paid_window.attempts.failed || 0}, неопределённых ${r.paid_window.attempts.uncertain || 0}, пропущено/отменено ${r.paid_window.attempts.cancelled || 0}.`:null,
+    line('paid','Оплаченные за час'),line('free','Бесплатные за час'),
+    `Проверок без отправки: ${(r.checks || []).reduce((n,x)=>n+x.n,0)}. Расход за 24 часа: ${r.used_24h ?? '—'}/${r.daily_limit ?? '—'}.`,
     Object.values(r.unclassified || {}).some(n=>n>0)?'Импортированные записи без подтверждённого paid/free-признака учтены отдельно в журнале.':null,
     `Требуют сверки сейчас: pending ${r.unresolved_now.pending || 0}, uncertain ${r.unresolved_now.uncertain || 0}.`,
     `Состояние на момент отчёта: ${r.enabled?'включён':'остановлен'}. Групп на блокировке: ${r.blocked_groups || 0}.`,
     r.halt?'Глобальная остановка: '+String(r.halt).slice(0,100):null,
     r.wait_until>r.generated_at?'Ожидание Telegram до '+date(r.wait_until):null,
     r.generated_at>r.end+15*60_000?'Отчёт сформирован с задержкой.':null,
+    'Поиск групп и завершённая очередь кандидатов отключены.',
     'Подтверждение API не доказывает видимость. Ноль отправок не доказывает исправность.'
   ].filter(Boolean).join('\n');
 }

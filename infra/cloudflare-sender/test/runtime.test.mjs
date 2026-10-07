@@ -18,7 +18,7 @@ async function fixture(handler) {
 }
 test('actual DO SQLite: repeat tick sends once, preserves outcome',async()=>{
   let sends=0;
-  const {mf,call}=await fixture(async req=>Response.json(req.url.endsWith('/prepare')?{kind:'ready'}:{kind:'sent',message_id:++sends}));
+  const {mf,call}=await fixture(async req=>Response.json(req.url.endsWith('/prepare')?{kind:'ready'}:req.url.endsWith('/verify')?{kind:'verified'}:{kind:'sent',message_id:++sends}));
   try {await call('tick');await call('tick');assert.equal(sends,1);assert.equal((await call('status')).attempts.sent,1);}
   finally {await mf.dispose();}
 });

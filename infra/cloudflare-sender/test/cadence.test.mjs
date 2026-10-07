@@ -8,6 +8,14 @@ test('Moscow night is 23:00 through 06:59, 25-minute paid minimum',()=>{
   assert.equal(isNight(time('06:59')),true);assert.equal(isNight(time('07:00')),false);
   assert.equal(nextCadenceAt(paid,time('01:00'),time('01:01')),time('01:25'));
 });
+test('150-second daytime approval is restricted to the nine paid placements',()=>{
+  const fast={...paid,handle:'obmen_valyuty',interval_ms:150000,paid_day_interval_seconds:150};
+  assert.equal(nextCadenceAt(fast,time('12:00'),time('12:01')),time('12:00')+150000);
+  assert.equal(nextCadenceAt({...fast,handle:'unapproved'},time('12:00'),time('12:01')),time('12:05'));
+  assert.equal(nextCadenceAt(fast,time('01:00'),time('01:01')),time('01:25'));
+  assert.equal(nextCadenceAt(fast,time('06:59'),time('06:59')),time('06:59')+150000);
+  assert.equal(nextCadenceAt(fast,time('22:59'),time('22:59')),time('23:24'));
+});
 test('cadence reevaluates across both night boundaries without catch-up bursts',()=>{
   assert.equal(nextCadenceAt(paid,time('22:59'),time('22:59')),time('23:24'));
   assert.equal(nextCadenceAt(paid,time('06:50'),time('06:51')),time('07:00'));

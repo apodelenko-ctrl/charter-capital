@@ -7,5 +7,5 @@ export function group(overrides={}) {
     paid_until:NOW+86400000,payment_confirmed:true,recurring_confirmed:true,gap_ms:0,...overrides};
 }
 export function snapshot(overrides={}) {
-  return {version:1,groups:[group()],attempts:[],blocked:[],daily_limit:10000,gap_ms:0,expected_user_id:'123456',wait_until:0,halt:'',...overrides};
+  return {version:2,paid_variants:[],visibility:[],archive:[],source:{discovery_enabled:false},groups:[group()],attempts:[],blocked:[],daily_limit:10000,gap_ms:0,expected_user_id:'123456',wait_until:0,halt:'',...overrides};
 }

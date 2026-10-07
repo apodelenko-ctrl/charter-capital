@@ -8,7 +8,7 @@ export class Sender extends BaseSender {
       const r=await this.env.FAKE.fetch('https://fake.invalid/'+path,{method:'POST',body:JSON.stringify(job)});
       return r.json();
     };
-    return {prepare:job=>call('prepare',job),send:job=>call('send',job),close:async()=>{}};
+    return {prepare:job=>call('prepare',job),send:async(job,arm)=>await arm()?call('send',job):{kind:'cancelled'},verify:job=>call('verify',job),close:async()=>{}};
   }
 }
 export default {

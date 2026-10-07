@@ -3,7 +3,7 @@ import { Ledger, HOUR, policyBlock } from './ledger.mjs';
 
 // Compile-time fuse. Dashboard variables cannot turn this build into a live sender.
 const LIVE_RELEASE = false;
-const VERSION = '2026-10-06.offline.2';
+const VERSION = '2026-10-07.parity.offline.3';
 
 export class Sender extends DurableObject {
   constructor(ctx,env) {
@@ -15,7 +15,7 @@ export class Sender extends DurableObject {
   releaseEnabled() {return LIVE_RELEASE;}
   activationEvidence() {
     const evidence=this.ledger.meta('preflight'),source=this.ledger.meta('source');
-    return source?.final===true && source.stopped_marker===true && evidence?.kind==='ready' &&
+    return source?.final===true && source.parity_complete===true && source.stopped_marker===true && evidence?.kind==='ready' &&
       evidence.epoch===this.ledger.control().epoch && Date.now()-evidence.at<15*60_000;
   }
   async makeTransport() {
@@ -44,8 +44,16 @@ export class Sender extends DurableObject {
     if (!this.releaseEnabled()) return {status:'offline_build'};
     if (this.running) return {status:'busy'};
     this.running=true;
-    let job,transport;
+    let job,transport,verification=false;
     try {
+      job=this.ledger.visibilityJob();
+      if(job){
+        verification=true;
+        await this.ctx.storage.setAlarm(Date.now()+120_000);
+        transport=await this.makeTransport();
+        this.ledger.finishVisibility(job,await transport.verify(job),Date.now());
+        return {status:'visibility_checked'};
+      }
       const random=new BigUint64Array(1);crypto.getRandomValues(random);
       job=this.ledger.claim(Date.now(),crypto.randomUUID(),String(random[0] & 0x7fffffffffffffffn));
       if (!job) return {status:'idle'};
@@ -64,12 +72,17 @@ export class Sender extends DurableObject {
       if (!this.ledger.validClaim(job,Date.now())) {
         this.ledger.finish(job,{kind:'cancelled'},Date.now());return {status:'cancelled'};
       }
-      const result=await transport.send(job,()=>this.ledger.validClaim(job,Date.now()));
+      const result=await transport.send(job,async()=>{
+        if(!this.ledger.arm(job,Date.now()))return false;
+        await this.ctx.storage.sync();
+        return this.ledger.validClaim(job,Date.now());
+      });
       this.ledger.finish(job,result,Date.now());
       return {status:result?.kind || 'unknown'};
     } catch {
       // Unknown exceptions cannot prove Telegram did not receive a request.
-      if (job) this.ledger.finish(job,{kind:'uncertain'},Date.now());
+      if(job && verification)this.ledger.finishVisibility(job,{kind:'verification_system_error'},Date.now());
+      else if (job) this.ledger.finish(job,{kind:this.ledger.rows('SELECT submitted FROM attempts WHERE id=?',job.id)[0]?.submitted?'uncertain':'preflight_failed'},Date.now());
       return {status:'uncertain'};
     } finally {
       try {await transport?.close();} catch {}

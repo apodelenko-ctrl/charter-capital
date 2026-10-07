@@ -11,13 +11,13 @@ class Engine{
 }
 test('hourly report separates real successes, external confirmations and unresolved holds',()=>{
   const text=formatReport(report);
-  assert.match(text,/Подтверждено Telegram: 12/);assert.match(text,/Внешних подтверждений: 1/);
+  assert.match(text,/API 12/);assert.match(text,/внешних 1/);
   assert.match(text,/uncertain 3/);assert.match(text,/Бангкок/);assert.match(text,/остановлен/);
 });
 test('existing bot outbox dedupes retry and preserves uncertain delivery, fixed owner only',()=>{
   const s={importedAt:'fixture',config:{owner_id:123},outbox:[]};
   assert.equal(enqueueReport(s,Engine,report).state,'pending');
   enqueueReport(s,Engine,{...report,attempts:{sent:999}});assert.equal(s.outbox.length,1);
-  assert.equal(s.outbox[0].payload.chat_id,123);assert.match(s.outbox[0].payload.text,/Telegram: 12/);
+  assert.equal(s.outbox[0].payload.chat_id,123);assert.match(s.outbox[0].payload.text,/API 12/);
   s.outbox[0].state='uncertain';assert.equal(enqueueReport(s,Engine,report).state,'uncertain');assert.equal(s.outbox.length,1);
 });
