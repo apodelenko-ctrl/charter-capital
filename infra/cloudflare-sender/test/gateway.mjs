@@ -19,6 +19,7 @@ export default {
     if (path==='/activate') return Response.json(await stub.activate());
     if (path==='/tick') return Response.json(await stub.tick());
     if (path==='/stop') return Response.json(await stub.stop());
+    if (path==='/query-report') return Response.json(await stub.queryReport(await request.json()));
     return Response.json(await stub.status());
   },
 };

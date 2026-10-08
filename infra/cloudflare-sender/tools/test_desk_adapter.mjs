@@ -17,7 +17,10 @@ const mf=new Miniflare(convertV4MiniflareOptions({workers:[
     }},
   {name:'control',modules:true,compatibilityDate:'2026-10-06',script:`import {WorkerEntrypoint} from 'cloudflare:workers';
     let stops=0;
-    export class SenderControl extends WorkerEntrypoint {status(){return {fixture:true,stops};}stop(){stops++;return {enabled:false};}}
+    export class SenderControl extends WorkerEntrypoint {
+      status(){return {fixture:true,stops};}stop(){stops++;return {enabled:false};}
+      queryReport(input){return input.scope==='paid'?{ok:false,error:'too_many_records_split_window',status:413}:{ok:true,report:{fixture:true,...input}};}
+    }
     export default {fetch(){return new Response('fixture');}};`},
   {name:'caller',modules:true,compatibilityDate:'2026-10-06',serviceBindings:{REPORTS:{name:'desk',entrypoint:'SenderReports'}},
     script:`export default{async fetch(request,env){return Response.json(await env.REPORTS.accept(await request.json()));}};`},
@@ -28,6 +31,20 @@ try{
   const status=await mf.dispatchFetch('https://fixture.local/admin/sender/status',{headers});assert.deepEqual(await status.json(),{fixture:true,stops:0});
   const snapshot={config:{owner_id:123,business_owner_id:124,bot_id:99,allow_new_business_chats:false,test_chat_ids:[125]},tables:{leads:[],connections:[],updates:[],messages:[],meta:[],outbox:[]}};
   const imported=await mf.dispatchFetch('https://fixture.local/admin/import',{method:'POST',headers,body:JSON.stringify(snapshot)});assert.equal(imported.status,200);
+  const query={scope:'free',start_utc:'2026-10-06T00:00:00Z',end_utc:'2026-10-06T01:00:00Z'};
+  const reportUrl='https://fixture.local/admin/sender/report?'+new URLSearchParams(query);
+  const deskBefore=await(await mf.dispatchFetch('https://fixture.local/admin/export',{headers})).json();
+  assert.equal((await mf.dispatchFetch(reportUrl)).status,403);
+  assert.equal((await mf.dispatchFetch(reportUrl,{headers:{Authorization:'Bearer wrong'}})).status,403);
+  assert.equal((await mf.dispatchFetch(reportUrl,{method:'POST',headers})).status,405);
+  assert.equal((await mf.dispatchFetch(reportUrl+'&scope=paid',{headers})).status,400);
+  assert.equal((await mf.dispatchFetch(reportUrl+'&limit=100',{headers})).status,400);
+  assert.equal((await mf.dispatchFetch(reportUrl.replace('scope=free','scope=paid'),{headers})).status,413);
+  const windowResponse=await mf.dispatchFetch(reportUrl,{headers});
+  assert.equal(windowResponse.status,200);assert.equal(windowResponse.headers.get('Cache-Control'),'private, no-store');
+  assert.equal(windowResponse.headers.get('Vary'),'Authorization');assert.deepEqual(await windowResponse.json(),{fixture:true,...query});
+  assert.deepEqual(await(await mf.dispatchFetch('https://fixture.local/admin/export',{headers})).json(),deskBefore);
+  assert.equal(fakeSends,0);
   const end=Math.floor(Date.now()/3600000)*3600000;
   const report={start:end-3600000,end,generated_at:end,attempts:{sent:3},unresolved_now:{uncertain:3},groups:[],enabled:false};
   const caller=await mf.getWorker('caller');
@@ -72,5 +89,6 @@ try{
   assert.equal(commands.length,2);assert.ok(commands.every(x=>x.state==='sent'));
   assert.equal(fakeSends,4);
   console.log(JSON.stringify({desk_auth_preserved:true,private_rpc:true,report_deduplication:true,existing_owner_only:true,
-    uncertain_report_not_retried:true,owner_stop_command_deduplicated:true,foreign_stop_rejected:true,mocked_bot_sends:4,external_network_calls:0}));
+    uncertain_report_not_retried:true,owner_stop_command_deduplicated:true,foreign_stop_rejected:true,
+    window_report_auth_preserved:true,window_query_changes_no_state:true,window_query_notifies_nobody:true,mocked_bot_sends:4,external_network_calls:0}));
 }finally{await mf.dispose();}

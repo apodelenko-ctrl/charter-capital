@@ -23,6 +23,7 @@ def main():
     (dest/'desk-original.mjs').write_text(worker)
     shutil.copyfile(base/'integration/desk-adapter.mjs',dest/'worker.mjs')
     shutil.copyfile(base/'src/report.mjs',dest/'report.mjs')
+    shutil.copyfile(base/'src/report-query-input.mjs',dest/'report-query-input.mjs')
     (dest/'REVIEW-ONLY.json').write_text(json.dumps({'original_worker_sha256':hashlib.sha256(worker.encode()).hexdigest(),
         'not_deployed':True,'required_binding':{'binding':'SENDER_CONTROL','service':'charter-cloudflare-sender','entrypoint':'SenderControl'},
         'required_sender_binding':{'binding':'REPORTS','service':'charter-telegram-desk','entrypoint':'SenderReports'},

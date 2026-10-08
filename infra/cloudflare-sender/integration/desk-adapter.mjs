@@ -4,6 +4,7 @@ import original,{DeskObject as ExistingDeskObject} from './desk-original.mjs';
 import {Engine} from './engine.mjs';
 import {WorkerEntrypoint} from 'cloudflare:workers';
 import {enqueueReport} from './report.mjs';
+import {reportQueryFromUrl,ReportQueryError} from './report-query-input.mjs';
 
 async function readUpdate(request){
   const reader=request.body?.getReader();if(!reader)throw Error('body');
@@ -74,6 +75,20 @@ export class DeskObject extends ExistingDeskObject {
       }
     }
     if(!path.startsWith('/admin/sender/'))return super.fetch(request);
+    if(path==='/admin/sender/report'){
+      const headers={'Cache-Control':'private, no-store','Vary':'Authorization'};
+      if(request.method!=='GET')return new Response('Method not allowed',{status:405,headers:{...headers,Allow:'GET'}});
+      try{
+        const input=reportQueryFromUrl(request.url);
+        const result=await this.env.SENDER_CONTROL.queryReport(input);
+        if(!result?.ok)return Response.json({error:result?.error || 'report_unavailable'},
+          {status:[400,413].includes(result?.status)?result.status:503,headers});
+        return Response.json(result.report,{headers});
+      }catch(error){
+        return Response.json({error:error instanceof ReportQueryError?error.code:'report_unavailable'},
+          {status:error instanceof ReportQueryError?error.status:503,headers});
+      }
+    }
     const name=path.slice('/admin/sender/'.length),methods={status:'status',stop:'stop',import:'importSnapshot',export:'exportSnapshot',review:'reviewAttempt',rules:'updateGroup',activate:'activate',health:'reportHealth',preflight:'preflight',cutover:'acknowledgeCutover',recent:'recent'};
     const method=methods[name];if(!method)return new Response('Not found',{status:404});
     const read=['status','health','export','recent'].includes(name);

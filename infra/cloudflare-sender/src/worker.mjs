@@ -1,5 +1,7 @@
 import { DurableObject, WorkerEntrypoint } from 'cloudflare:workers';
 import { Ledger, HOUR, policyBlock } from './ledger.mjs';
+import {queryReport} from './query-report.mjs';
+import {ReportQueryError} from './report-query-input.mjs';
 
 // Compile-time fuse. Dashboard variables cannot turn this build into a live sender.
 const LIVE_RELEASE = false;
@@ -122,6 +124,10 @@ export class Sender extends DurableObject {
   reviewAttempt(input) {if(this.running)throw Error('inflight_delivery');return this.ledger.reviewAttempt(input,Date.now());}
   acknowledgeCutover(input) {if(this.running)throw Error('inflight_delivery');return this.ledger.acknowledgeCutover(input,Date.now());}
   recent() {return this.ledger.recent();}
+  queryReport(input) {
+    try{return {ok:true,report:queryReport(this.ledger,input)};}
+    catch(error){if(error instanceof ReportQueryError)return {ok:false,error:error.code,status:error.status};throw error;}
+  }
   updateGroup(group) {return this.ledger.updateGroup(group,Date.now());}
   async preflight(chat_id) {
     if(!this.releaseEnabled())throw Error('offline_build_cannot_connect');
@@ -157,6 +163,7 @@ export class SenderControl extends WorkerEntrypoint {
   async reviewAttempt(input) {return this.sender().reviewAttempt(input);}
   async acknowledgeCutover(input) {return this.sender().acknowledgeCutover(input);}
   async recent() {return this.sender().recent();}
+  async queryReport(input) {return this.sender().queryReport(input);}
   async updateGroup(group) {return this.sender().updateGroup(group);}
   async preflight(input) {return this.sender().preflight(input.chat_id);}
 }
