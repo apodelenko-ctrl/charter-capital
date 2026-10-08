@@ -11,17 +11,17 @@ from urllib.parse import urlsplit
 
 def main():
     p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument('action',choices=['status','health','stop','import','export','review','rules','activate','preflight'])
+    p.add_argument('action',choices=['status','health','stop','import','export','review','rules','activate','preflight','cutover','recent'])
     p.add_argument('--desk-url',required=True)
     p.add_argument('--file',type=Path)
     p.add_argument('--owner-approved-cutover',action='store_true')
     args=p.parse_args();url=urlsplit(args.desk_url)
     if url.scheme!='https' or url.username or url.password or url.query or url.fragment or url.path not in ('','/'):
         p.error('use the existing HTTPS desk origin')
-    if args.action in ('activate','preflight') and not args.owner_approved_cutover:
+    if args.action in ('activate','preflight','cutover') and not args.owner_approved_cutover:
         p.error('activation/preflight requires the separately approved cutover')
     body=None
-    if args.action in ('import','review','rules','preflight'):
+    if args.action in ('import','review','rules','preflight','cutover'):
         if not args.file:p.error('--file required')
         data=json.loads(args.file.read_text())
         if args.action=='import' and data.get('source',{}).get('final') is not True:
@@ -32,8 +32,9 @@ def main():
     token=getpass.getpass('Existing desk ADMIN_SECRET (hidden; never paste in chat): ')
     if not token:p.error('existing credential required')
     request=urllib.request.Request(args.desk_url.rstrip('/')+'/admin/sender/'+args.action,
-        data=body,method='GET' if args.action in ('status','health','export') else 'POST',
-        headers={'Authorization':'Bearer '+token,'Content-Type':'application/json'})
+        data=body,method='GET' if args.action in ('status','health','export','recent') else 'POST',
+        headers={'Authorization':'Bearer '+token,'Content-Type':'application/json',
+                 'User-Agent':'CharterCapital-Control/2026-10-08'})
     # Prevent a server redirect from forwarding the admin credential elsewhere.
     class NoRedirect(urllib.request.HTTPRedirectHandler):
         def redirect_request(self,*args,**kwargs):return None

@@ -1,4 +1,6 @@
-# Cloudflare parity review — 2026-10-07
+# Cloudflare parity review — 2026-10-07 (historical)
+
+The following records the offline review at that date. The owner subsequently authorized the complete cutover, and production was accepted on 2026-10-08; see [DEPLOYMENT.md](DEPLOYMENT.md). Earlier launch blockers below are historical, not current operator instructions.
 
 **Offline preparation passed. Production launch is blocked on capacity and the owner-controlled cutover.** This branch keeps `LIVE_RELEASE=false`. It was not deployed during this review. Mac remained the sole live sender; no Telegram session/API file was read, transferred or opened, and no message was sent.
 

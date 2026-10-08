@@ -123,4 +123,13 @@ class OwnerHandoff(unittest.TestCase):
             with patch.object(sys.stdin,'isatty',return_value=True),patch('builtins.input',return_value=answer),contextlib.redirect_stdout(io.StringIO()):
                 self.assertEqual(owner.owner_confirmation(),expected)
 
+    def test_explicit_delegation_still_requires_cutover_approval(self):
+        argv=['owner_secrets.py','--root',str(self.root),'--transfer-existing-secrets','--owner-delegated-cutover']
+        with patch.object(sys,'argv',argv),patch.object(owner,'stage_existing') as stage,contextlib.redirect_stderr(io.StringIO()):
+            with self.assertRaises(SystemExit):owner.main()
+            stage.assert_not_called()
+        with patch.object(sys,'argv',argv+['--owner-approved-cutover']),patch.object(owner,'stage_existing',return_value={'staged':True,'deployed':False}) as stage,contextlib.redirect_stdout(io.StringIO()):
+            owner.main()
+            self.assertTrue(stage.call_args.kwargs['confirm']())
+
 if __name__=='__main__':unittest.main()

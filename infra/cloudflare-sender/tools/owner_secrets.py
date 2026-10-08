@@ -3,7 +3,9 @@
 Reads the EXISTING authorized session only after the Mac stop/lock checks.
 Stages it in an UNDEPLOYED Cloudflare version via stdin using the owner's existing
 Wrangler login. No Telegram connection, new authorization, stdout secret, or temp
-file. --check-only never opens the secret files or uses the network.
+file. --check-only never opens the secret files or uses the network. An explicitly
+delegated owner transfer requires --owner-delegated-cutover as well as the cutover
+approval flag; it preserves all stop/lock/OFF checks and skips only the TTY prompt.
 """
 import argparse
 import base64
@@ -96,6 +98,7 @@ def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--root',type=Path,required=True)
     p.add_argument('--owner-approved-cutover',action='store_true')
+    p.add_argument('--owner-delegated-cutover',action='store_true',help='Use only after the owner explicitly authorizes the agent to transfer existing credentials')
     mode=p.add_mutually_exclusive_group(required=True)
     mode.add_argument('--check-only',action='store_true',help='Read non-secret readiness only; no network or transfer')
     mode.add_argument('--transfer-existing-secrets',action='store_true')
@@ -113,7 +116,10 @@ def main():
         print(json.dumps(dict(ready=ready,reason=reason,secret_files_read=0,network_calls=0,transferred=False),ensure_ascii=False));return
     if not args.owner_approved_cutover:p.error('agreed cutover and owner confirmation required')
     try:
-        result=stage_existing(root,project)
+        if args.owner_delegated_cutover:
+            result=stage_existing(root,project,confirm=lambda:True)
+        else:
+            result=stage_existing(root,project)
     except (Exception,KeyboardInterrupt):
         # Never echo child diagnostics, payloads or exception values after entry.
         print('Передача не подтверждена. Ничего не развёрнуто этой утилитой. Перед повтором проверьте версии Worker; Mac оставьте остановленным.',file=sys.stderr)

@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 import {spawnSync} from 'node:child_process';
 import {StringSession} from 'teleproto/sessions/index.js';
-import {TelegramTransport,ONE_CALL,classify} from '../src/telegram-core.mjs';
+import {TelegramTransport,ONE_CALL,classify,safeDiagnostic} from '../src/telegram-core.mjs';
 import {group,NOW} from './fixtures.mjs';
 
 // Minimal JPEG header fixture; no production photo or Telegram credential.
@@ -43,6 +43,13 @@ test('MTProto mock: complete photo path verifies identity, peer, rules, parts, r
   assert.equal((await x.transport.send(x.job)).kind,'uncertain');
   assert.equal(x.calls.filter(x=>x.className==='messages.SendMedia').length,1);
   await x.transport.close();assert.equal(x.counts().destroyed,1);
+});
+test('runtime diagnostics expose stages and fingerprints without exception contents',()=>{
+  const error=Error('private fixture credential');
+  const diagnostic=safeDiagnostic(error,'upload');
+  assert.equal(diagnostic.stage,'upload');assert.equal(diagnostic.reason,'unclassified');
+  assert.match(diagnostic.fingerprint,/^[a-f0-9]{64}$/);
+  assert.equal(JSON.stringify(diagnostic).includes('private fixture credential'),false);
 });
 test('MTProto mock: identity/peer/pin/Stars/rights mismatches never reach upload or send',async()=>{
   for(const change of [

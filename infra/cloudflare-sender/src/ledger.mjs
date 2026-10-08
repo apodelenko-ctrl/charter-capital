@@ -348,6 +348,25 @@ export class Ledger {
       paid_variants:this.rows('SELECT * FROM paid_variants'),visibility:this.rows('SELECT * FROM visibility'),archive:this.rows('SELECT * FROM source_files ORDER BY path'),
       reviews:this.rows('SELECT * FROM reviews'),source:this.meta('source')};
   }
+  acknowledgeCutover(input,now) {
+    const c=this.control(),source=this.meta('source');
+    if(!c.initialized || c.enabled || this.pending() || c.halt!=='source_dispatcher_disabled_requires_review' ||
+       source?.final!==true || source.parity_complete!==true || source.paused!==true || source.stopped_marker!==true ||
+       !/^[a-f0-9]{64}$/.test(input?.archive_sha256 || '') || input.archive_sha256!==source.archive_sha256 ||
+       input.attempts!==this.rows('SELECT COUNT(*) AS n FROM attempts')[0].n ||
+       typeof input.evidence!=='string' || input.evidence.trim().length<20 || input.evidence.length>2000)throw Error('cutover_acknowledgement_refused');
+    this.storage.transactionSync(()=>{
+      this.sql.exec('INSERT INTO reviews VALUES(?,?,?)',crypto.randomUUID(),now,JSON.stringify({kind:'authorized_cutover',before_halt:c.halt,...input}));
+      this.sql.exec("UPDATE control SET halt='',epoch=epoch+1 WHERE id=1");
+      this.setMeta('preflight',null);
+    });
+    return this.status();
+  }
+  recent() {
+    return this.rows(`SELECT a.id,a.chat_id,a.created,a.status,a.message_id,a.error,a.segment,a.submitted,
+      v.state AS visibility,p.variant,p.confirmed FROM attempts a LEFT JOIN visibility v ON v.attempt_id=a.id
+      LEFT JOIN paid_variants p ON p.attempt_id=a.id ORDER BY a.created DESC,a.id DESC LIMIT 100`);
+  }
   reviewAttempt(input,now) {
     const c=this.control();
     if(c.enabled || typeof input.evidence!=='string' || input.evidence.trim().length<10 || input.evidence.length>2000)throw Error('review_requires_stop_and_evidence');

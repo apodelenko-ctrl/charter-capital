@@ -27,7 +27,7 @@ export class Sender extends DurableObject {
     this.ledger.importSnapshot(data,Date.now());
     return this.ledger.status();
   }
-  status() {return {...this.ledger.status(),version:VERSION,live_release:LIVE_RELEASE};}
+  status() {return {...this.ledger.status(),version:VERSION,live_release:LIVE_RELEASE,last_runtime_failure:this.ledger.meta('last_runtime_failure')};}
   async stop() {
     this.ledger.stop();
     await this.ctx.storage.deleteAlarm();
@@ -44,7 +44,7 @@ export class Sender extends DurableObject {
     if (!this.releaseEnabled()) return {status:'offline_build'};
     if (this.running) return {status:'busy'};
     this.running=true;
-    let job,transport,verification=false;
+    let job,transport,verification=false,stage='claim';
     try {
       job=this.ledger.visibilityJob();
       if(job){
@@ -59,27 +59,31 @@ export class Sender extends DurableObject {
       if (!job) return {status:'idle'};
       // Persist claim and a recovery wake-up before external I/O.
       await this.ctx.storage.setAlarm(Date.now()+120_000);
-      await this.ctx.storage.sync();
+      stage='claim_sync';await this.ctx.storage.sync();
       if (!this.ledger.validClaim(job,Date.now())) {
         this.ledger.finish(job,{kind:'cancelled'},Date.now());return {status:'cancelled'};
       }
-      transport=await this.makeTransport();
+      stage='transport';transport=await this.makeTransport();
+      stage='prepare';
       const ready=await transport.prepare(job);
       if (ready?.kind!=='ready') {
+        if(ready?.diagnostic)this.ledger.setMeta('last_runtime_failure',{at:Date.now(),attempt_id:job.id,...ready.diagnostic});
         this.ledger.finish(job,ready || {kind:'preflight_failed'},Date.now());return {status:'preflight_blocked'};
       }
       // stop/expiry can occur during membership checks or photo upload.
       if (!this.ledger.validClaim(job,Date.now())) {
         this.ledger.finish(job,{kind:'cancelled'},Date.now());return {status:'cancelled'};
       }
-      const result=await transport.send(job,async()=>{
+      stage='send';const result=await transport.send(job,async()=>{
         if(!this.ledger.arm(job,Date.now()))return false;
         await this.ctx.storage.sync();
         return this.ledger.validClaim(job,Date.now());
       });
       this.ledger.finish(job,result,Date.now());
       return {status:result?.kind || 'unknown'};
-    } catch {
+    } catch(error) {
+      this.ledger.setMeta('last_runtime_failure',{at:Date.now(),attempt_id:job?.id || null,stage,error_type:error?.constructor?.name || 'Error',
+        category:String(error?.message || '').includes('different request')?'cross_request_io':'runtime_error'});
       // Unknown exceptions cannot prove Telegram did not receive a request.
       if(job && verification)this.ledger.finishVisibility(job,{kind:'verification_system_error'},Date.now());
       else if (job) this.ledger.finish(job,{kind:this.ledger.rows('SELECT submitted FROM attempts WHERE id=?',job.id)[0]?.submitted?'uncertain':'preflight_failed'},Date.now());
@@ -116,6 +120,8 @@ export class Sender extends DurableObject {
     return this.ledger.exportSnapshot();
   }
   reviewAttempt(input) {if(this.running)throw Error('inflight_delivery');return this.ledger.reviewAttempt(input,Date.now());}
+  acknowledgeCutover(input) {if(this.running)throw Error('inflight_delivery');return this.ledger.acknowledgeCutover(input,Date.now());}
+  recent() {return this.ledger.recent();}
   updateGroup(group) {return this.ledger.updateGroup(group,Date.now());}
   async preflight(chat_id) {
     if(!this.releaseEnabled())throw Error('offline_build_cannot_connect');
@@ -149,6 +155,8 @@ export class SenderControl extends WorkerEntrypoint {
   async exportSnapshot() {return this.sender().exportSnapshot();}
   async reportHealth() {return this.sender().reportHealth();}
   async reviewAttempt(input) {return this.sender().reviewAttempt(input);}
+  async acknowledgeCutover(input) {return this.sender().acknowledgeCutover(input);}
+  async recent() {return this.sender().recent();}
   async updateGroup(group) {return this.sender().updateGroup(group);}
   async preflight(input) {return this.sender().preflight(input.chat_id);}
 }

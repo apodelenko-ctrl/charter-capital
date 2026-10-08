@@ -4,6 +4,15 @@ import {Api} from 'teleproto';
 import {formattingVisible} from './content.mjs';
 
 export const ONE_CALL=Object.freeze({maxRetryCount:0,floodSleepThreshold:0,timeout:15000});
+export function safeDiagnostic(error,stage){
+  const message=String(error?.message || '');
+  const known=['transport_deadline','tcp_closed','tcp_eof','Bytes or str expected, not object',
+    'Cannot send requests while disconnected. Please connect first.','Auth key unset','Unset params'];
+  return {stage,error_type:error?.constructor?.name || 'Error',
+    reason:known.includes(message)?message:'unclassified',
+    fingerprint:createHash('sha256').update(message).digest('hex'),
+    frames:String(error?.stack || '').split('\n').slice(1,7).map(line=>line.match(/^\s*at (?:async )?([A-Za-z_$][\w.$<>]*)\b/)?.[1]).filter(Boolean)};
+}
 export function classify(error,preflight=false) {
   const name=error?.constructor?.name;
   if (['FloodWaitError','FloodTestPhoneWaitError'].includes(name) && Number.isSafeInteger(error.seconds) && error.seconds>0)
@@ -106,23 +115,25 @@ export class TelegramTransport {
   async prepare(job,{upload=true}={}) {
     if(this.jobId) return {kind:'preflight_failed'};
     this.jobId=job.id;this.deadline=this.now()+90_000;
+    let stage='input';
     try {
       const g=job.group;
       if(!/^[1-9]\d*$/.test(g.channel_id || '') || !/^[a-zA-Z][a-zA-Z0-9_]{3,31}$/.test(g.handle) || typeof g.about!=='string')return {kind:'blocked'};
-      await this.session.load();
+      stage='session_load';await this.session.load();
       if(this.session.authKey?.getKey()?.length!==256)return {kind:'account_halt'};
       // No login/start(), no auth.exportAuthorization(), no session cache transfer.
-      await this.client.connect();
+      stage='connect';await this.client.connect();
+      stage='identity';
       const users=await this.invoke(new Api.users.GetUsers({id:[new Api.InputUserSelf()]}));
       if(String(users[0]?.id)!==job.expected_user_id || users[0]?.bot || users[0]?.deleted ||
          (users[0]?.username || '').toLowerCase()!==job.expected_username)return {kind:'account_halt'};
-      const resolved=await this.invoke(new Api.contacts.ResolveUsername({username:g.handle}));
+      stage='resolve';const resolved=await this.invoke(new Api.contacts.ResolveUsername({username:g.handle}));
       const channel=resolved.chats?.find(c=>String(c.id)===g.channel_id);
       if(resolved.peer?.className!=='PeerChannel' || String(resolved.peer.channelId)!==g.channel_id ||
          !channel?.accessHash || channel.min)return {kind:'blocked'};
       this.peer=new Api.InputPeerChannel({channelId:BigInt(g.channel_id),accessHash:channel.accessHash});
       this.channel=new Api.InputChannel({channelId:BigInt(g.channel_id),accessHash:channel.accessHash});
-      const full=await this.invoke(new Api.channels.GetFullChannel({channel:this.channel}));
+      stage='policy';const full=await this.invoke(new Api.channels.GetFullChannel({channel:this.channel}));
       const participant=await this.invoke(new Api.channels.GetParticipant({channel:this.channel,participant:new Api.InputPeerSelf()}));
       let pinned='';
       if(full.fullChat?.pinnedMsgId) {
@@ -132,26 +143,26 @@ export class TelegramTransport {
       const blocked=checkLivePolicy(g,full,participant,pinned,this.now());
       if(blocked==='slowmode_wait')return {kind:'slowmode',retry_after_ms:full.fullChat.slowmodeNextSendDate*1000-this.now()+1000};
       if(blocked)return {kind:'blocked'};
-      const latest=await this.latest(job);if(latest.kind!=='ready')return latest;
+      stage='latest';const latest=await this.latest(job);if(latest.kind!=='ready')return latest;
       if(g.format==='photo') {
-        const response=await this.assets?.fetch(new Request('https://assets.invalid'+g.photo_asset));
+        stage='asset';const response=await this.assets?.fetch(new Request('https://assets.invalid'+g.photo_asset));
         if(!response?.ok || !response.body)return {kind:'blocked'};
         const reader=response.body.getReader();let size=0;const chunks=[];
         while(true) {const r=await reader.read();if(r.done)break;size+=r.value.length;
           if(size>10*1024*1024){await reader.cancel();return {kind:'blocked'};}chunks.push(Buffer.from(r.value));}
-        const data=Buffer.concat(chunks);photoDimensions(data);
+        stage='photo_validation';const data=Buffer.concat(chunks);photoDimensions(data);
         if(createHash('sha256').update(data).digest('hex')!==g.photo_sha256)return {kind:'blocked'};
         if(!upload)return {kind:'ready'};
-        const random=new BigUint64Array(1);crypto.getRandomValues(random);const fileId=random[0]&0x7fffffffffffffffn;
+        stage='upload';const random=new BigUint64Array(1);crypto.getRandomValues(random);const fileId=random[0]&0x7fffffffffffffffn;
         const partSize=512*1024,parts=Math.ceil(data.length/partSize);
         for(let part=0;part<parts;part++) {
           const ok=await this.invoke(new Api.upload.SaveFilePart({fileId,filePart:part,bytes:data.subarray(part*partSize,(part+1)*partSize)}));
-          if(ok!==true)return {kind:'preflight_failed'};
+          if(ok!==true)return {kind:'preflight_failed',diagnostic:{stage:'upload_response',error_type:typeof ok}};
         }
-        this.media=new Api.InputMediaUploadedPhoto({file:new Api.InputFile({id:fileId,parts,name:g.photo_asset.split('/').at(-1),md5Checksum:createHash('md5').update(data).digest('hex')})});
+        stage='media';this.media=new Api.InputMediaUploadedPhoto({file:new Api.InputFile({id:fileId,parts,name:g.photo_asset.split('/').at(-1),md5Checksum:createHash('md5').update(data).digest('hex')})});
       }
       this.prepared=upload;return {kind:'ready'};
-    } catch(error){return classify(error,true);}
+    } catch(error){const result=classify(error,true);return result.kind==='preflight_failed'?{...result,diagnostic:{...safeDiagnostic(error,stage),network:this.networkDiagnostic?.() || null}}:result;}
   }
   async send(job,canSend=()=>false) {
     if(!this.prepared || this.attempted || job.id!==this.jobId)return {kind:'uncertain'};

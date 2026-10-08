@@ -1,6 +1,8 @@
 import {Api} from 'teleproto';
 import {IGE} from 'teleproto/crypto/IGE.js';
 import {Buffer} from 'node:buffer';
+import {createHash} from 'node:crypto';
+import {FullPacketCodec} from 'teleproto/network/connection/TCPFull.js';
 import {classify,extractMessageId,checkLivePolicy} from '../src/telegram.mjs';
 export default {
   async fetch() {
@@ -12,6 +14,8 @@ export default {
     const peer=new Api.InputPeerChannel({channelId:123n,accessHash:456n});
     const photo=new Api.InputMediaUploadedPhoto({file:new Api.InputFile({id:1n,parts:1,name:'fixture.jpg',md5Checksum:''})});
     const request=new Api.messages.SendMedia({peer,media:photo,message:'Fixture',randomId:7n,entities:[]});
+    const part=new Api.upload.SaveFilePart({fileId:7n,filePart:0,bytes:plain.subarray(0,512*1024)});
+    const packet=new FullPacketCodec({}).encodePacket(encrypted);
     const group={channel_id:'123',handle:'fixture',about:'rules',pinned_message_id:null,pinned_text:'',format:'photo',slowmode_ms:0};
     const full={chats:[{id:123n,username:'fixture',megagroup:true}],fullChat:{about:'rules'}};
     const participant={participant:{className:'ChannelParticipantSelf'}};
@@ -21,7 +25,8 @@ export default {
     const unknown=extractMessageId({updates:[]},'7');
     const found=extractMessageId({updates:[{className:'UpdateMessageID',randomId:7n,id:42}]},'7');
     return Response.json({cryptoRoundtrip:plain.equals(decrypted),cryptoWallMs:Date.now()-start,
-      serializedPhotoRequestBytes:request.getBytes().length,allowed,photoDenied,unknown,found,
+      serializedPhotoRequestBytes:request.getBytes().length,serializedUploadBytes:part.getBytes().length,
+      wireHash:createHash('sha256').update(packet).digest('hex'),allowed,photoDenied,unknown,found,
       ambiguous:classify(new Error('network timeout')).kind,connections:0,sends:0});
   },
 };
