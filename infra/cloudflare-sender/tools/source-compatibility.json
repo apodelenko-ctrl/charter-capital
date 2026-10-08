@@ -1,0 +1,16 @@
+{
+  "handoff": "2026-10-07",
+  "sha256": {
+    "worker.py": "5350f4fe4e37ab420d7c09fb420341b656ae1665b2dfd06f03e284fc1dd3ee70",
+    "unified_hourly.py": "9790d9196d17ef00e8e6b62c71bff86faa03c8d18d6857c04f982a1e0de3348b",
+    "delivery_guard.py": "8debac7d0a60d5b7b734e62acd5ae64e76ecf6006a149ecd1e6d388d6cecbfd6",
+    "paid_rotation.py": "9d60a4d654e19c98986c87e2b39948761f3fa5cecc916377e458ba186832d693",
+    "ad_variant.py": "2b92dff490bd2e3bfe08c6343da837551e7f24fbfaa149905e89ef212e86c50d",
+    "message_format.py": "89575916147487368496604d65be6be92708a3b049d226ec085352f373c7072a",
+    "delivery_isolation.py": "b6496e427d228398a4df7a70aee5887c2dfba73321ff58034a565ea99d4037af",
+    "dispatcher_daemon.py": "35bbe41e825b061e468ed1877abc71b60e87998dc9979fa0fc7fefa36b15d279",
+    "paid_expiry.py": "19c75d53e25ca13e1c3dc1f9122467f2034ef1b1ca2e0d4413d7daacfab30cc3",
+    "group_policy.py": "c8d80429d8a9c96318eb1c15bd153247019561c5c76297bf8063d3b588bf2520",
+    "finite_candidate_queue.py": "ce936945a6b52999c73bf553c5ef3ce476c48babdf8acef0f4c94a2f501dd24a"
+  }
+}
