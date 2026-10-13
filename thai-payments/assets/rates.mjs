@@ -6,7 +6,7 @@ const number = (value, decimals) => new Intl.NumberFormat("ru-RU", {minimumFract
 const shortDate = (value) => value.slice(0, 10).split("-").reverse().slice(0, 2).join(".");
 
 export function isValidBankRate(rate) {
-  return Boolean(rate && rate.provider === "Bangkok Bank" && rate.pair === "USD/THB" && rate.type === "TT-buying"
+  return Boolean(rate && rate.provider === "Bangkok Bank" && rate.pair === "USD/THB" && rate.type === "sight-bill-buying"
     && Number.isFinite(rate.rate) && rate.rate > 0
     && typeof rate.publishedAt === "string" && Number.isFinite(Date.parse(rate.publishedAt))
     && typeof rate.checkedAt === "string" && Number.isFinite(Date.parse(rate.checkedAt))
@@ -24,6 +24,6 @@ export function tickerEntries(cbr, bank, now = new Date()) {
   return [
     {pair: "THB / RUB", value: validCbr && Number.isFinite(cbr.thbRub) && cbr.thbRub > 0 ? `1 THB = ${number(cbr.thbRub, 5)} ₽` : "Курс THB уточняется", source: validCbr ? `ЦБ РФ · ${shortDate(cbr.checkedFor)}` : "ЦБ РФ", url: validCbr ? cbr.url : "https://www.cbr.ru/currency_base/daily/", stale: validCbr && !isCurrentCbr(cbr)},
     {pair: "USD / RUB", value: validCbr ? `1 USD = ${number(cbr.rate, 4)} ₽` : "Курс USD уточняется", source: validCbr ? `ЦБ РФ · ${shortDate(cbr.checkedFor)}` : "ЦБ РФ", url: validCbr ? cbr.url : "https://www.cbr.ru/currency_base/daily/", stale: validCbr && !isCurrentCbr(cbr)},
-    {pair: "USD / THB", value: currentBank ? `1 USD = ${number(bank.rate, 2)} THB` : "Курс банка уточняется", source: validBank ? `Bangkok Bank · TT · ${bankDate} ${bankTime}` : "Bangkok Bank · покупка TT", url: bankUrl, stale: validBank && !currentBank},
+    {pair: "USD / THB", value: currentBank ? `1 USD = ${number(bank.rate, 2)} THB` : "Курс банка уточняется", source: validBank ? `Bangkok Bank · Sight Bill Buying Rates · ${bankDate} ${bankTime}` : "Bangkok Bank · Sight Bill Buying Rates", url: bankUrl, stale: validBank && !currentBank},
   ];
 }

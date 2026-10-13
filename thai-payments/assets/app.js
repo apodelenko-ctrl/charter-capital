@@ -1,7 +1,7 @@
 "use strict";
 import {paymentRate, paymentAmount, calculationConfirmed, isValidCbr, moscowDay} from "./calculation.mjs?v=20261013-4";
 import {initMotion, animateRows, animateValues} from "./motion.mjs?v=20261013-5";
-import {tickerEntries, isValidBankRate} from "./rates.mjs?v=20261013-5";
+import {tickerEntries, isValidBankRate} from "./rates.mjs?v=20261014-1";
 
 const ui = {
   amount: document.getElementById("usd-amount"),
@@ -52,7 +52,7 @@ function updateTicker() {
   const signature = JSON.stringify(entries);
   if (signature === lastTicker) return;
   lastTicker = signature;
-  const html = entries.map((entry) => `<a class="ticker-item${entry.stale ? " is-stale" : ""}" href="${escapeHtml(entry.url)}" target="_blank" rel="noopener noreferrer" title="${escapeHtml(entry.source)}${entry.pair === "USD / THB" ? " · покупка USD для переводов" : ""}"><span class="ticker-pair">${escapeHtml(entry.pair)}</span><strong>${escapeHtml(entry.value)}</strong><span class="ticker-source">${escapeHtml(entry.source)}</span></a>`).join("");
+  const html = entries.map((entry) => `<a class="ticker-item${entry.stale ? " is-stale" : ""}" href="${escapeHtml(entry.url)}" target="_blank" rel="noopener noreferrer" title="${escapeHtml(entry.source)}"><span class="ticker-pair">${escapeHtml(entry.pair)}</span><strong>${escapeHtml(entry.value)}</strong><span class="ticker-source">${escapeHtml(entry.source)}</span></a>`).join("");
   document.getElementById("ticker-rates").innerHTML = html;
   document.getElementById("ticker-copy").innerHTML = html.replaceAll('<a ', '<a tabindex="-1" ');
   document.getElementById("ticker-track").classList.add("is-ready");
