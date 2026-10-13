@@ -14,101 +14,77 @@
       "variant": "USDT → USD",
       "method": "usdt",
       "currency": "USDT",
-      "cost": 0.04392857142857143,
-      "receive": "Онлайн-рубли — оплата по СБП. Также предложены наличные в Москве и USDT.",
-      "send": "SWIFT-оплата в USD, по данным Ex24.",
-      "note": "Для оплаты по СБП оператор выдаёт платёжный QR-код."
+      "cost": 0.04392857142857143
     },
     {
       "id": "ex24-rub",
       "providerId": "ex24",
       "name": "Ex24.pro",
       "website": "https://ex24.pro/",
-      "variant": "Онлайн · СБП",
+      "variant": "RUB · онлайн",
       "method": "bank",
       "currency": "RUB",
-      "cost": 0.155041608093629,
-      "receive": "Онлайн-рубли — оплата по СБП. Также предложены наличные в Москве и USDT.",
-      "send": "SWIFT-оплата в USD, по данным Ex24.",
-      "note": "Для оплаты по СБП оператор выдаёт платёжный QR-код."
+      "cost": 0.155041608093629
     },
     {
-      "id": "ex24-rub-cash-moscow",
+      "id": "ex24-rub-cash",
       "providerId": "ex24",
       "name": "Ex24.pro",
       "website": "https://ex24.pro/",
-      "variant": "Наличные · Москва",
+      "variant": "RUB · наличные",
       "method": "cash",
       "currency": "RUB",
-      "cost": 0.09382349147528202,
-      "receive": "Онлайн-рубли — оплата по СБП. Также предложены наличные в Москве и USDT.",
-      "send": "SWIFT-оплата в USD, по данным Ex24.",
-      "note": "Наличные рубли передаются в Москве."
+      "cost": 0.09382349147528202
     },
     {
       "id": "the-one-rub",
       "providerId": "the-one-exchange",
       "name": "The One Exchange",
       "website": "https://the-one.exchange/ru",
-      "variant": "RUB · способ уточняется",
+      "variant": "RUB → USD",
       "method": "unknown",
       "currency": "RUB",
-      "cost": 0.04926499818206409,
-      "receive": "Приём RUB. Способ внесения денег — по условиям сервиса.",
-      "send": "Платёж застройщику в USD. Отправитель и банк — по условиям сервиса.",
-      "note": "Процент применяется к курсу ЦБ для расчёта выбранной суммы USD."
+      "cost": 0.04926499818206409
     },
     {
-      "id": "arbi-swift-individual",
+      "id": "arbi-rub-online-1",
       "providerId": "arbi-exchange",
       "name": "ARBI Exchange",
       "website": "https://arbi.exchange/",
-      "variant": "СБП · SWIFT с физлица",
+      "variant": "RUB · онлайн · вариант 1",
       "method": "bank",
       "currency": "RUB",
-      "cost": 0.12806526344859348,
-      "receive": "По данным ARBI: онлайн-рубли по СБП на юрлицо; банк-партнёр — АО «Банк 131». Также принимают наличные в Москве.",
-      "send": "По данным ARBI, для варианта с физлица — SWIFT из Индонезии через одноразовый счёт на имя клиента.",
-      "note": "Дополнительный резерв 0,5–1% на изменение USD/THB предложен отдельно от цены в таблице."
+      "cost": 0.12806526344859348
     },
     {
-      "id": "arbi-swift-company",
+      "id": "arbi-rub-online-2",
       "providerId": "arbi-exchange",
       "name": "ARBI Exchange",
       "website": "https://arbi.exchange/",
-      "variant": "СБП · SWIFT с юрлица",
+      "variant": "RUB · онлайн · вариант 2",
       "method": "bank",
       "currency": "RUB",
-      "cost": 0.11938475650835922,
-      "receive": "По данным ARBI: онлайн-рубли по СБП на юрлицо; банк-партнёр — АО «Банк 131». Также принимают наличные в Москве.",
-      "send": "SWIFT-оплата с юрлица, по данным ARBI.",
-      "note": "Дополнительный резерв 0,5–1% на изменение USD/THB предложен отдельно от цены в таблице."
+      "cost": 0.11938475650835922
     },
     {
-      "id": "arbi-swift-individual-cash-moscow",
+      "id": "arbi-rub-cash",
       "providerId": "arbi-exchange",
       "name": "ARBI Exchange",
       "website": "https://arbi.exchange/",
-      "variant": "Наличные · Москва · физлицо",
+      "variant": "RUB · наличные",
       "method": "cash",
       "currency": "RUB",
-      "cost": 0.0912955263581654,
-      "receive": "По данным ARBI: онлайн-рубли по СБП на юрлицо; банк-партнёр — АО «Банк 131». Также принимают наличные в Москве.",
-      "send": "По данным ARBI, для варианта с физлица — SWIFT из Индонезии через одноразовый счёт на имя клиента.",
-      "note": "Дополнительный резерв 0,5–1% на изменение USD/THB предложен отдельно от цены в таблице."
+      "cost": 0.0912955263581654
     },
     {
       "id": "grusha-rub",
       "providerId": "grusha-agency",
       "name": "Grusha Agency",
       "website": "https://grusha.agency/",
-      "variant": "По реквизитам · Сбербанк",
+      "variant": "RUB · онлайн",
       "method": "bank",
       "currency": "RUB",
-      "cost": 0.043973728560258385,
-      "receive": "RUB по банковским реквизитам на счёт в Сбербанке; также принимают USDT.",
-      "send": "Агент по организации платежа — MF Corporation Company Limited, Таиланд.",
-      "note": "Для рублей запрашивают подтверждение источника средств; для USDT заявлена AML-проверка кошелька."
+      "cost": 0.043973728560258385
     },
     {
       "id": "grusha-usdt",
@@ -118,10 +94,7 @@
       "variant": "USDT → USD",
       "method": "usdt",
       "currency": "USDT",
-      "cost": 0.03470688720051314,
-      "receive": "RUB по банковским реквизитам на счёт в Сбербанке; также принимают USDT.",
-      "send": "Агент по организации платежа — MF Corporation Company Limited, Таиланд.",
-      "note": "Для рублей запрашивают подтверждение источника средств; для USDT заявлена AML-проверка кошелька."
+      "cost": 0.03470688720051314
     }
   ]
 }

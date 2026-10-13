@@ -165,7 +165,7 @@ function offerRow(offer, amount) {
   const link = offer.own ? ui.request.href || data.charter.contact : offer.website;
   const actions = offer.own
     ? `<a class="button primary" href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer">Запросить <span aria-hidden="true">↗</span></a><button type="button" class="details-button" data-offer="${escapeHtml(offer.id)}">Условия</button>`
-    : `<button type="button" class="details-button" data-offer="${escapeHtml(offer.id)}">Путь денег <span aria-hidden="true">↗</span></button><a class="site-link" href="${escapeHtml(offer.website)}" target="_blank" rel="noopener noreferrer">Сайт сервиса ↗</a>`;
+    : `<a class="button primary" href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer">Запросить <span aria-hidden="true">↗</span></a><a class="site-link" href="${escapeHtml(offer.website)}" target="_blank" rel="noopener noreferrer">Сайт сервиса ↗</a>`;
   return `<tr${offer.own ? ' class="charter-row"' : ""} data-offer-row="${escapeHtml(offer.id)}">
     <td><div class="provider-cell"><span class="provider-avatar" aria-hidden="true">${initials[offer.providerId]}</span><div class="provider-meta">${offer.own ? '<span class="own-badge">НАШ СЕРВИС</span><br>' : ""}<a class="provider-name" href="${escapeHtml(offer.website)}" target="_blank" rel="noopener noreferrer">${escapeHtml(offer.name)}</a><span class="provider-variant">${escapeHtml(offer.variant)}</span>${statusText}</div></div></td>
     <td data-label="${currency === "RUB" ? "К курсу ЦБ" : "Стоимость"}"><strong class="cell-value">${currency === "RUB" ? "+" : ""}${percentage.format(offer.cost * 100)}%</strong><span class="cell-sub">${escapeHtml(costSub)}</span></td>
@@ -205,9 +205,9 @@ function detailBlock(title, text, extraClass = "") {
 }
 
 function openOffer(id) {
-  const sourceOffer = id.startsWith("charter-") ? charterOffer() : data.offers.find((item) => item.id === id);
-  const offer = sourceOffer ? {...sourceOffer, rate: paymentRate(sourceOffer, data.cbr)} : null;
-  if (!offer) return;
+  const own = charterOffer();
+  if (id !== own.id) return;
+  const offer = {...own, rate: paymentRate(own, data.cbr)};
   ui.dialog.querySelector("#dialog-title").textContent = offer.name;
   ui.dialog.querySelector("#dialog-variant").textContent = offer.variant;
   const amount = amountValue();
@@ -234,7 +234,7 @@ document.querySelectorAll('input[name="currency"]').forEach((input) => input.add
 [ui.amount, ui.search].forEach((input) => input.addEventListener("input", render));
 [ui.method, ui.sort].forEach((select) => select.addEventListener("change", render));
 document.querySelectorAll("button[data-amount]").forEach((button) => button.addEventListener("click", () => {ui.amount.value = button.dataset.amount; render();}));
-ui.body.addEventListener("click", (event) => {const button = event.target.closest("button[data-offer]"); if (button) openOffer(button.dataset.offer);});
+ui.body.addEventListener("click", (event) => {const button = event.target.closest(".charter-row button[data-offer]"); if (button) openOffer(button.dataset.offer);});
 document.getElementById("reset-filters").addEventListener("click", () => {ui.search.value = ""; ui.method.value = "all"; ui.sort.value = "cost-asc"; render();});
 [document.getElementById("close-dialog"), document.getElementById("dialog-done")].forEach((button) => button.addEventListener("click", () => ui.dialog.close()));
 ui.dialog.addEventListener("click", (event) => {if (event.target === ui.dialog) {const bounds = ui.dialog.getBoundingClientRect(); if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) ui.dialog.close();}});
