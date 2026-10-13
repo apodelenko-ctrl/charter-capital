@@ -2,6 +2,7 @@
 import {paymentRate, paymentAmount, calculationConfirmed, isValidCbr, moscowDay} from "./calculation.mjs?v=20261013-4";
 import {initMotion, animateRows, animateValues} from "./motion.mjs?v=20261013-5";
 import {tickerEntries, isValidBankRate} from "./rates.mjs?v=20261014-1";
+import {calculationDetails} from "./calculation-details.mjs?v=20261014-1";
 
 const ui = {
   amount: document.getElementById("usd-amount"),
@@ -37,6 +38,7 @@ let bankRate = null;
 let lastRows = "";
 let lastDisplay = "";
 let lastTicker = "";
+let selectedOfferId = null;
 const money = new Intl.NumberFormat("ru-RU", {minimumFractionDigits: 2, maximumFractionDigits: 2});
 const shortNumber = new Intl.NumberFormat("ru-RU", {maximumFractionDigits: 2});
 const rateNumber = new Intl.NumberFormat("ru-RU", {minimumFractionDigits: 4, maximumFractionDigits: 4});
@@ -173,7 +175,7 @@ function offerRow(offer, amount) {
     ? `<a class="button primary" href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer">Запросить <span aria-hidden="true">↗</span></a><button type="button" class="details-button" data-offer="${escapeHtml(offer.id)}">Условия</button>`
     : `<a class="button primary" href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer">Запросить <span aria-hidden="true">↗</span></a><a class="site-link" href="${escapeHtml(offer.website)}" target="_blank" rel="noopener noreferrer">Сайт сервиса ↗</a>`;
   return `<tr${offer.own ? ' class="charter-row"' : ""} data-offer-row="${escapeHtml(offer.id)}">
-    <td><div class="provider-cell">${avatar}<div class="provider-meta">${offer.own ? '<span class="own-badge">НАШ СЕРВИС</span><br>' : ""}<a class="provider-name${wordmark ? " provider-wordmark" : ""}" href="${escapeHtml(offer.website)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(offer.name)}">${name}</a><span class="provider-variant">${escapeHtml(offer.variant)}</span>${statusText}</div></div></td>
+    <td><div class="provider-cell">${avatar}<div class="provider-meta">${offer.own ? '<span class="own-badge">НАШ СЕРВИС</span><br>' : ""}<button type="button" class="provider-name${wordmark ? " provider-wordmark" : ""}" data-offer="${escapeHtml(offer.id)}" aria-haspopup="dialog" aria-controls="offer-dialog" aria-label="Показать расчёт: ${escapeHtml(offer.name)} — ${escapeHtml(offer.variant)}">${name}<span class="provider-details-mark" aria-hidden="true">i</span></button><span class="provider-variant">${escapeHtml(offer.variant)}</span>${statusText}</div></div></td>
     <td data-label="${currency === "RUB" ? "К курсу ЦБ" : "Стоимость"}"><strong class="cell-value">${currency === "RUB" ? "+" : ""}${percentage.format(offer.cost * 100)}%</strong><span class="cell-sub">${escapeHtml(costSub)}</span></td>
     <td data-label="${offer.own ? "По тарифу Charter Capital" : "Расчёт по проценту сервиса"}"><strong class="cell-amount">${amountText}</strong><span class="cell-sub">${rateText}</span></td>
     <td><div class="row-actions">${actions}</div></td></tr>`;
@@ -204,46 +206,73 @@ function render() {
   lastRows = rows;
   lastDisplay = display;
   updateTicker();
+  if (ui.dialog.open && selectedOfferId) renderOfferDetails(selectedOfferId);
 }
 
 function detailBlock(title, text, extraClass = "") {
   return `<section class="detail-block"><h3>${escapeHtml(title)}</h3><p${extraClass ? ` class="${extraClass}"` : ""}>${escapeHtml(text)}</p></section>`;
 }
 
-function openOffer(id) {
+function renderOfferDetails(id) {
   const own = charterOffer();
-  if (id !== own.id) return;
-  const offer = {...own, rate: paymentRate(own, data.cbr)};
+  const offer = id === own.id ? own : data.offers.find((item) => item.id === id && item.currency === currency);
+  if (!offer) return false;
   ui.dialog.querySelector("#dialog-title").textContent = offer.name;
   ui.dialog.querySelector("#dialog-variant").textContent = offer.variant;
   const amount = amountValue();
-  const total = paymentAmount(amount, offer, data.cbr);
-  const value = total === null ? "Укажите сумму или запросите расчёт у менеджера." : `${shortNumber.format(amount)} USD → ${money.format(total)} ${symbol(offer.currency)} к внесению`;
-  let content = detailBlock("Расчёт для вашей суммы", value, "detail-quote");
+  const details = calculationDetails(amount, offer, data.cbr);
+  const pay = details ? `${money.format(details.total)} ${symbol(offer.currency)}` : "—";
+  const receive = amount === null ? "—" : `${money.format(amount)} USD`;
+  let content = `<div class="detail-summary"><section class="detail-side"><h3>Вы отдаёте</h3><strong id="detail-pay">${pay}</strong><span>${escapeHtml(offer.currency)}</span></section><section class="detail-side detail-receive"><h3>Застройщик получает</h3><strong id="detail-receive">${receive}</strong><span>USD · по вашему инвойсу</span></section></div>`;
+  if (details) {
+    content += detailBlock("Расчётный курс", `1 USD = ${rateNumber.format(details.rate)} ${symbol(offer.currency)}.`, "detail-rate");
+    content += detailBlock(offer.currency === "RUB" ? "Разница с расчётом по ЦБ" : "Разница с суммой USD", `${money.format(details.difference)} ${symbol(offer.currency)}${offer.currency === "USDT" ? " при паритете 1 USDT = 1 USD" : ""}.`);
+  } else {
+    content += detailBlock("Расчёт", amount === null ? "Введите сумму USD в калькуляторе, чтобы увидеть расчёт." : "Курс ЦБ временно недоступен. Запросите расчёт у исполнителя.");
+  }
   content += detailBlock("Процент сервиса", `${percentage.format(offer.cost * 100)}% ${offer.currency === "RUB" ? "к курсу ЦБ" : "от внесённых USDT при паритете 1 USDT = 1 USD"}.`);
-  if (offer.currency === "RUB" && data.cbr) content += detailBlock("Курс ЦБ для расчёта", `${rateNumber.format(data.cbr.rate)} ₽ за 1 USD. Сумма = USD × курс ЦБ × (1 + процент сервиса ÷ 100).`);
+  if (details && offer.currency === "RUB") content += detailBlock("Как считается сумма", `Сумма в RUB = USD × курс ЦБ × (1 + процент сервиса ÷ 100). Курс ЦБ: ${rateNumber.format(details.cbrRate)} ₽ за 1 USD на ${dateLabel(data.cbr.checkedFor)}.`);
+  if (details && offer.currency === "USDT") content += detailBlock("Как считается сумма", "Сумма в USDT = USD ÷ (1 − процент сервиса ÷ 100). Расчёт при паритете 1 USDT = 1 USD.");
   if (offer.own) {
     const status = confirmation(offer, amount);
     content += detailBlock("Charter Capital", status.text, `calculation-status ${status.confirmed ? "confirmed" : "pending"}`);
+    content += detailBlock("Как принимают деньги", offer.receive);
+    content += detailBlock("Как отправляют платёж", offer.send);
+    content += detailBlock("Условия", offer.note);
   }
-  content += detailBlock("Как принимают деньги", offer.receive);
-  content += detailBlock("Как отправляют платёж", offer.send);
-  content += detailBlock("Условия", offer.note);
+  content += `<p class="detail-reference">Справочный информационный расчёт. Данные о комиссии исполнителя получены из открытых источников. Перед проведением сделки уточните актуальность расчёта напрямую у исполнителя.</p>`;
   ui.dialog.querySelector("#dialog-content").innerHTML = content;
   const destination = ui.dialog.querySelector("#dialog-website");
   destination.href = offer.own && validAmount ? draftUrl(amountValue()) : offer.website;
-  destination.textContent = offer.own ? "Запросить расчёт ↗" : "Перейти на сайт ↗";
-  ui.dialog.showModal();
+  destination.textContent = offer.own ? "Запросить расчёт ↗" : "Запросить у сервиса ↗";
+  return true;
+}
+
+function openOffer(id) {
+  if (!data || !renderOfferDetails(id)) return;
+  selectedOfferId = id;
+  if (!ui.dialog.open) ui.dialog.showModal();
 }
 
 document.querySelectorAll('input[name="currency"]').forEach((input) => input.addEventListener("change", () => {currency = input.value; render();}));
 [ui.amount, ui.search].forEach((input) => input.addEventListener("input", render));
 [ui.method, ui.sort].forEach((select) => select.addEventListener("change", render));
 document.querySelectorAll("button[data-amount]").forEach((button) => button.addEventListener("click", () => {ui.amount.value = button.dataset.amount; render();}));
-ui.body.addEventListener("click", (event) => {const button = event.target.closest(".charter-row button[data-offer]"); if (button) openOffer(button.dataset.offer);});
+ui.body.addEventListener("click", (event) => {
+  const button = event.target.closest("button[data-offer]");
+  if (button) {openOffer(button.dataset.offer); return;}
+  if (event.target.closest("a,button,input,select,textarea") || window.getSelection()?.toString().trim()) return;
+  const row = event.target.closest("tr[data-offer-row]");
+  if (row) openOffer(row.dataset.offerRow);
+});
 document.getElementById("reset-filters").addEventListener("click", () => {ui.search.value = ""; ui.method.value = "all"; ui.sort.value = "cost-asc"; render();});
 [document.getElementById("close-dialog"), document.getElementById("dialog-done")].forEach((button) => button.addEventListener("click", () => ui.dialog.close()));
 ui.dialog.addEventListener("click", (event) => {if (event.target === ui.dialog) {const bounds = ui.dialog.getBoundingClientRect(); if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) ui.dialog.close();}});
+ui.dialog.addEventListener("close", () => {
+  const opener = [...ui.body.querySelectorAll("button[data-offer]")].find((button) => button.dataset.offer === selectedOfferId);
+  selectedOfferId = null;
+  opener?.focus({preventScroll: true});
+});
 [ui.request, ui.closing].forEach((link) => link.addEventListener("click", (event) => {if (!validAmount) event.preventDefault();}));
 
 async function fetchJson(url) {

@@ -17,3 +17,19 @@
 .provider-name.provider-wordmark{display:inline-block;font-family:GrushaWordmark,Georgia,serif;font-size:19px;font-style:italic;font-weight:400;line-height:1.1;letter-spacing:-.45px;white-space:nowrap;background:#08080a;color:#f5f4f0;padding:4px 8px;border-radius:5px}
 .provider-wordmark>span{color:#c9a55a}
 .provider-meta{min-width:0}
+
+/* Public calculation details, available by card and by keyboard. */
+.offers-table tbody tr[data-offer-row]{cursor:pointer}
+button.provider-name{border:0;background:transparent;padding:0;text-align:left;vertical-align:middle}
+.provider-details-mark{display:inline-grid;place-items:center;width:13px;height:13px;margin-left:6px;border:1px solid #b7c8e4;border-radius:50%;font:500 9px/1 Inter,sans-serif;color:var(--blue);vertical-align:middle}
+.provider-wordmark>.provider-details-mark{color:#c9a55a;border-color:#b18d54}
+.detail-summary{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;margin:23px 0 22px}
+.detail-side{min-width:0;background:var(--soft);border:1px solid var(--line);border-radius:11px;padding:17px}
+.detail-side h3{font-size:11px;color:var(--body);font-weight:500;line-height:1.5;margin-bottom:10px}
+.detail-side strong{display:block;font-family:Manrope,Inter,sans-serif;font-size:24px;line-height:1.35;letter-spacing:-.6px;overflow-wrap:anywhere}
+.detail-side>span{display:block;font-size:9px;color:var(--muted);margin-top:8px;line-height:1.5}
+.detail-receive{background:var(--blue-light);border-color:#ccdbfc}
+.detail-receive strong{color:var(--blue)}
+.detail-block .detail-rate{font-size:15px;color:var(--ink);font-weight:600}
+.detail-reference{font-size:10px;color:var(--muted);line-height:1.7;margin-top:21px}
+@media(max-width:520px){.detail-summary{grid-template-columns:1fr;gap:10px;margin-block:18px}.detail-side{padding:15px}.detail-side strong{font-size:23px}.detail-reference{font-size:10px}.provider-details-mark{width:14px;height:14px;font-size:10px}}
