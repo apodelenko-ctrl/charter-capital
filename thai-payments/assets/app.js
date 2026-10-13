@@ -230,7 +230,7 @@ function renderOfferDetails(id) {
   } else {
     content += detailBlock("Расчёт", amount === null ? "Введите сумму USD в калькуляторе, чтобы увидеть расчёт." : "Курс ЦБ временно недоступен. Запросите расчёт у исполнителя.");
   }
-  content += detailBlock("Процент сервиса", `${percentage.format(offer.cost * 100)}% ${offer.currency === "RUB" ? "к курсу ЦБ" : "от внесённых USDT при паритете 1 USDT = 1 USD"}.`);
+  content += detailBlock("Ваши затраты на перевод", `${percentage.format(offer.cost * 100)}% ${offer.currency === "RUB" ? "к курсу ЦБ" : "от внесённых USDT при паритете 1 USDT = 1 USD"}.`);
   if (details && offer.currency === "RUB") content += detailBlock("Как считается сумма", `Сумма в RUB = USD × курс ЦБ × (1 + процент сервиса ÷ 100). Курс ЦБ: ${rateNumber.format(details.cbrRate)} ₽ за 1 USD на ${dateLabel(data.cbr.checkedFor)}.`);
   if (details && offer.currency === "USDT") content += detailBlock("Как считается сумма", "Сумма в USDT = USD ÷ (1 − процент сервиса ÷ 100). Расчёт при паритете 1 USDT = 1 USD.");
   if (offer.own) {
