@@ -50,7 +50,7 @@ function charterOffer() {
     providerId: "charter-capital",
     name: "Charter Capital",
     website: "https://ccapital.pro/",
-    variant: rub ? "RUB · способ приёма согласуем" : "USDT · маршрут по инвойсу",
+    variant: rub ? "RUB · ЦБ + 3%" : "USDT · 2,5% от внесённой суммы",
     currency,
     rate: rub ? data.cbr.rate * (1 + data.charter.rubPremium) : 1 / (1 - data.charter.usdtInputFee),
     cost: rub ? data.charter.rubPremium : data.charter.usdtInputFee,
@@ -58,9 +58,9 @@ function charterOffer() {
     dateKind: "Тариф",
     own: true,
     cbr: rub ? data.cbr : undefined,
-    receive: "Тариф для финансирования платежа в RUB или USDT. Способ приёма, реквизиты и договор согласуются по конкретному инвойсу. Наличная котировка Charter Capital в подборке не заявлена.",
-    send: "Банк, фактический отправитель USD, сумма к зачислению и пакет документов согласуются при подготовке платежа. Эта страница не фиксирует отдельный банковский маршрут.",
-    note: "RUB: 3% к курсу ЦБ. USDT: 2,5% от внесённой суммы при допущении 1 USDT = 1 USD. Итоговые расходы банков и условия конвертации в THB уточняются до оплаты.",
+    receive: "Финансирование платежа в RUB или USDT.",
+    send: "Оплата инвойса застройщика в USD. Маршрут подготавливаем по инвойсу.",
+    note: "RUB: 3% к курсу ЦБ. USDT: 2,5% от внесённой суммы при допущении 1 USDT = 1 USD.",
   };
 }
 
@@ -158,8 +158,7 @@ function openOffer(id) {
   }
   content += detailBlock("Как принимают деньги", offer.receive);
   content += detailBlock("Как отправляют платёж", offer.send);
-  content += detailBlock("Что уточнить до оплаты", offer.note);
-  if (!offer.own) content += detailBlock("Для вашей суммы", "Число в таблице пересчитано по сохранённому курсу. Это пример, а не подтверждённая новая котировка. Цена и расходы банков требуют согласования с сервисом.");
+  content += detailBlock("Условия", offer.note);
   ui.dialog.querySelector("#dialog-content").innerHTML = content;
   const destination = ui.dialog.querySelector("#dialog-website");
   destination.href = offer.own && validAmount ? draftUrl(amountValue()) : offer.website;
