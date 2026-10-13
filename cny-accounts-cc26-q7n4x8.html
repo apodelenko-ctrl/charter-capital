@@ -9,7 +9,7 @@
   <meta name="yandexbot" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
   <meta name="bingbot" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
   <meta name="referrer" content="no-referrer">
-  <title>Charter Capital · CNY Collection Accounts &amp; Payment Purposes</title>
+  <title>Charter Capital · CNY Services and Payment Descriptions</title>
   <style>
     :root {
       --navy:#08101f; --navy-2:#0e1b31; --ink:#142033; --body:#41506a; --muted:#6d788b;
@@ -215,336 +215,13 @@
   <script>
   (() => {
     "use strict";
-    const WET_SERVICES = [
-      ["CDN","CDN content delivery","Payment for CDN content delivery services, Invoice [№]","支付内容分发网络（CDN）服务费，发票 [№]","Оплата услуг сети доставки контента (CDN), инвойс [№]"],
-      ["Cloud / VPS","Cloud server / VPS rental","Payment for monthly cloud server / VPS rental, Invoice [№]","支付云服务器 / VPS 月租服务费，发票 [№]","Оплата ежемесячной аренды облачного сервера / VPS, инвойс [№]"],
-      ["CPU / bare-metal","Dedicated CPU / bare-metal server rental","Payment for dedicated CPU / bare-metal server rental, Invoice [№]","支付独立 CPU / 裸金属服务器租赁费，发票 [№]","Оплата аренды выделенного CPU / bare-metal сервера, инвойс [№]"],
-      ["GPU rental","GPU computing-capacity rental","Payment for GPU computing-capacity rental (H100/H200/A100/L40S/RTX), Invoice [№]","支付 GPU 算力租赁费（H100/H200/A100/L40S/RTX），发票 [№]","Оплата аренды вычислительных мощностей GPU (H100/H200/A100/L40S/RTX), инвойс [№]"],
-      ["Reserved GPU","Reserved GPU capacity","Payment for reserved GPU capacity under a 12-month contract, Invoice [№]","支付 12 个月合同项下的 GPU 预留算力费，发票 [№]","Оплата резервирования GPU-мощностей по договору на 12 месяцев, инвойс [№]"],
-      ["AI training / inference","AI training and inference cloud service","Payment for AI training and inference cloud services, Invoice [№]","支付 AI 训练及推理云服务费，发票 [№]","Оплата облачных услуг для обучения и инференса AI, инвойс [№]"],
-      ["DDoS protection","DDoS protection","Payment for L3/L4 DDoS mitigation and always-on protection services, Invoice [№]","支付 L3/L4 DDoS 缓解及持续防护服务费，发票 [№]","Оплата услуг защиты от DDoS L3/L4 и постоянного мониторинга, инвойс [№]"],
-      ["WAF / WAAP","Web application protection (WAF / WAAP)","Payment for web application firewall / WAAP services, Invoice [№]","支付网站应用防火墙（WAF / WAAP）服务费，发票 [№]","Оплата услуг WAF / WAAP по защите веб-приложений, инвойс [№]"],
-      ["Cybersecurity / bots","Cybersecurity and bot protection","Payment for cybersecurity, bot mitigation and traffic filtering services, Invoice [№]","支付网络安全、机器人防护及流量过滤服务费，发票 [№]","Оплата услуг кибербезопасности, антибот-защиты и фильтрации трафика, инвойс [№]"],
-      ["Managed DNS","Managed Anycast DNS","Payment for managed Anycast DNS services, Invoice [№]","支付托管 Anycast DNS 服务费，发票 [№]","Оплата услуг управляемого Anycast DNS, инвойс [№]"],
-      ["Full stack cloud","Cloud infrastructure package","Payment for cloud infrastructure services (CDN, compute and security), Invoice [№]","支付云基础设施服务费（CDN、计算及安全），发票 [№]","Оплата комплекса облачной инфраструктуры (CDN, вычисления и защита), инвойс [№]"],
-      ["Kubernetes / storage","Managed Kubernetes and object storage","Payment for managed Kubernetes and object storage services, Invoice [№]","支付托管 Kubernetes 及对象存储服务费，发票 [№]","Оплата услуг управляемого Kubernetes и объектного хранилища, инвойс [№]"],
-      ["Setup","Cloud infrastructure setup","Payment for one-time cloud infrastructure provisioning and setup services, Invoice [№]","支付一次性云基础设施开通及配置服务费，发票 [№]","Оплата разового подключения и настройки облачной инфраструктуры, инвойс [№]"],
-      ["Scale","Additional cloud / GPU capacity","Payment for additional cloud / GPU capacity under the existing contract, Invoice [№]","支付现有合同项下新增云 / GPU 资源服务费，发票 [№]","Оплата дополнительных облачных / GPU-мощностей по действующему договору, инвойс [№]"],
-      ["SLA","Enhanced service level (SLA)","Payment for enhanced service-level support under the contract, Invoice [№]","支付合同项下增强服务等级（SLA）支持费，发票 [№]","Оплата расширенного уровня сервисной поддержки (SLA) по договору, инвойс [№]"]
-    ];
-    const WET_GOODS = [
-      ["IT hardware / GPU servers","IT hardware / GPU server supply","Payment for IT hardware / GPU server supply under the contract, Invoice [№]","支付合同项下 IT 设备 / GPU 服务器采购款，发票 [№]","Оплата поставки IT-оборудования / GPU-серверов по договору, инвойс [№]"],
-      ["GPU workstation","GPU workstation supply","Payment for GPU workstation supply (e.g. 2 × RTX 4090), Invoice [№]","支付 GPU 工作站采购款（例如 2 × RTX 4090），发票 [№]","Оплата поставки рабочей станции GPU (например, 2 × RTX 4090), инвойс [№]"],
-      ["AI server H100/H200","H100 / H200 AI server supply","Payment for H100 / H200 GPU AI server supply, Invoice [№]","支付 H100 / H200 GPU 人工智能服务器采购款，发票 [№]","Оплата поставки GPU AI-сервера H100 / H200, инвойс [№]"],
-      ["Turnkey rack / cluster","Turnkey AI rack / cluster supply","Payment for turnkey AI rack / cluster supply, Invoice [№]","支付整机柜 AI 集群采购款，发票 [№]","Оплата поставки AI-стойки / кластера под ключ, инвойс [№]"]
-    ];
-    const WEST_GROUPS = [
-      ["agency",[
-        ["developerCommission","Developer agency commission","Payment for developer agency commission — [Project] — Invoice [№]","支付开发商代理佣金 — [项目] — 发票 [№]","Оплата агентской комиссии застройщика — [Проект] — Инвойс [№]","developer"],
-        ["successCommission","Successful transaction commission","Payment for commission for a successfully completed transaction — [Object] — Invoice [№]","支付成功完成交易的佣金 — [房产] — 发票 [№]","Оплата комиссии за успешно завершённую сделку — [Объект] — Инвойс [№]","agreement"]
-      ]],
-      ["search",[
-        ["propertySearch","Property search","Payment for property search services — [Area] — Invoice [№]","支付房产搜寻服务费 — [区域] — 发票 [№]","Оплата услуг по поиску недвижимости — [Район] — Инвойс [№]","client"],
-        ["marketAnalysis","Market analysis and shortlist","Payment for property market analysis and shortlisting — [Phuket / Bangkok / Hong Kong] — Invoice [№]","支付房地产市场分析及房源初选服务费 — [普吉岛 / 曼谷 / 香港] — 发票 [№]","Оплата анализа рынка и формирования шорт-листа — [Пхукет / Бангкок / Гонконг] — Инвойс [№]","client"],
-        ["selectionAdvisory","Property selection advisory","Payment for property selection advisory services — [Object] — Invoice [№]","支付房产甄选咨询服务费 — [房产] — 发票 [№]","Оплата консультаций по выбору объекта — [Объект] — Инвойс [№]","client"],
-        ["negotiation","Property negotiations","Payment for property negotiation services — [Object] — Invoice [№]","支付房产交易谈判服务费 — [房产] — 发票 [№]","Оплата услуг по переговорам — [Объект] — Инвойс [№]","client"],
-        ["viewing","Property inspection and viewing","Payment for property inspection and viewing services — [Object] — Invoice [№]","支付现场考察及看房服务费 — [房产] — 发票 [№]","Оплата организации выезда и осмотра объекта — [Объект] — Инвойс [№]","client"],
-        ["searchPackage","Search, analysis and negotiation package","Payment for property search, analysis and negotiation services — [Area / Project] — Invoice [№]","支付房产搜寻、分析及谈判综合服务费 — [区域 / 项目] — 发票 [№]","Оплата пакета услуг по поиску, анализу и переговорам — [Район / Проект] — Инвойс [№]","client"],
-        ["yieldAnalysis","Investment memo and yield analysis","Payment for property investment memo and rental-yield analysis — [Object] — Invoice [№]","支付房产投资备忘录及租金收益分析服务费 — [房产] — 发票 [№]","Оплата инвестиционного меморандума и анализа доходности — [Объект] — Инвойс [№]","client"],
-        ["secondHome","Second-home advisory","Payment for second-home property advisory services — [Area / Object] — Invoice [№]","支付第二居所房产咨询服务费 — [区域 / 房产] — 发票 [№]","Оплата консультаций по выбору второго дома — [Район / Объект] — Инвойс [№]","client"],
-        ["additionalShortlist","Additional property shortlist","Payment for an additional property shortlist — [Area] — Invoice [№]","支付追加房源初选服务费 — [区域] — 发票 [№]","Оплата дополнительного подбора объектов — [Район] — Инвойс [№]","client"]
-      ]],
-      ["transaction",[
-        ["purchaseAdvisory","Purchase advisory and due-diligence coordination","Payment for property purchase advisory and due-diligence coordination — [Object] — Invoice [№]","支付购房咨询及尽职调查协调服务费 — [房产] — 发票 [№]","Оплата сопровождения покупки и координации проверки объекта — [Объект] — Инвойс [№]","client"],
-        ["contractCoordination","Contract review coordination","Payment for contract review coordination services — [Object] — Invoice [№]","支付合同审阅协调服务费 — [房产] — 发票 [№]","Оплата координации проверки договора — [Объект] — Инвойс [№]","client"],
-        ["interiorAdvisory","Interior and fit-out advisory","Payment for interior and fit-out advisory services — [Object] — Invoice [№]","支付室内设计及装修咨询服务费 — [房产] — 发票 [№]","Оплата консультаций по интерьеру и ремонту (без закупки) — [Объект] — Инвойс [№]","client"]
-      ]],
-      ["tenancy",[
-        ["tenancyAdvisory","Tenancy advisory","Payment for tenancy advisory services — [Villa / Object] — Invoice [№]","支付租赁咨询服务费 — [别墅 / 房产] — 发票 [№]","Оплата сопровождения аренды — [Вилла / Объект] — Инвойс [№]","client"],
-        ["relocation","Relocation and move-in coordination","Payment for relocation and move-in coordination services — [Object] — Invoice [№]","支付搬迁及入住协调服务费 — [房产] — 发票 [№]","Оплата координации релокации и заселения — [Объект] — Инвойс [№]","client"],
-        ["hostedVisit","Hosted property visit and interpretation","Payment for hosted property visits and interpretation services — [Project / Area] — Invoice [№]","支付陪同看房及口译服务费 — [项目 / 区域] — 发票 [№]","Оплата сопровождения просмотров и устного перевода — [Проект / Район] — Инвойс [№]","client"]
-      ]],
-      ["other",[
-        ["monthlyRetainer","Monthly property advisory","Payment for monthly property advisory services — [Project / Area] — Invoice [№]","支付月度房地产顾问服务费 — [项目 / 区域] — 发票 [№]","Оплата ежемесячных консультаций по недвижимости — [Проект / Район] — Инвойс [№]","client"],
-        ["consultancyReport","Property consultancy and report","Payment for property consultancy and report services — [Subject / Area] — Invoice [№]","支付房地产咨询及报告服务费 — [主题 / 区域] — 发票 [№]","Оплата консультации и отчёта по недвижимости — [Тема / Район] — Инвойс [№]","client"]
-      ]]
-    ];
-    const I18N = {
-      ru:{
-        lang:"ru", date:"17 сентября 2026", confidential:"Конфиденциально", direct:"Документ по прямой ссылке",
-        brandSub:"Платёжные инструкции для клиентов",
-        eyebrow:"Понятный справочник по платежам", title:"Приём CNY: <strong>счета и назначения</strong>",
-        tri:"CNY Collection Accounts & Payment Purposes · 人民币收款账户与付款用途",
-        badges:["Две компании-получателя","Проверенные банковские реквизиты","Готовые тексты для назначения платежа"],
-        intro:"Здесь собраны счета двух компаний и готовые тексты для назначения платежа. Найдите реальную услугу или товар в списке, скопируйте подходящий текст и укажите номер инвойса (счёта). Перед отправкой мы ещё раз подтверждаем реквизиты.",
-        quick:"Как пользоваться справочником", quickText:"1. Выберите подходящую услугу ниже. 2. Посмотрите, какая компания её оказывает. 3. Скопируйте готовое назначение платежа. 4. Получите подтверждённые реквизиты.",
-        menuTitle:"За какие услуги можно отправить платёж", menuSub:"Выберите вариант, который соответствует реальной задаче клиента.",
-        menuRecipient:"Платёж получает",
-        menuGroups:[
-          ["Аренда вычислительных мощностей","Для искусственного интеллекта, обработки данных, рендеринга и других ресурсоёмких задач.",["GPU: H100, H200, A100, L40S и RTX","Выделенные CPU-серверы и bare-metal","Резерв GPU-мощностей по годовому договору","Дополнительные мощности по действующему договору"],"WET SOLUTIONS LIMITED"],
-          ["Облачная инфраструктура и защита","Для размещения сайтов, приложений, данных и защиты интернет-проектов.",["Облачные серверы и VPS","Доставка контента через CDN","Защита от DDoS-атак, WAF и антибот","DNS, Kubernetes и объектное хранилище"],"WET SOLUTIONS LIMITED"],
-          ["Покупка IT-оборудования","Для компаний, которым нужны собственные серверы или готовая инфраструктура.",["GPU-серверы H100 / H200","Рабочие станции, например 2 × RTX 4090","AI-серверы для обучения моделей","Готовые серверные стойки и кластеры"],"WET SOLUTIONS LIMITED"],
-          ["Аналитика рынка недвижимости","Можно заказать отдельное исследование до поиска или покупки объекта.",["Анализ рынка покупки или аренды","Пхукет, Бангкок, Гонконг или другой согласованный город","Подбор короткого списка подходящих объектов","Расчёт доходности и инвестиционный меморандум"],"WEST EAST TRADE GROUP PTE. LTD."],
-          ["Поиск объекта и сопровождение сделки","Для жилой или коммерческой недвижимости — от первого запроса до подписания документов.",["Поиск виллы, квартиры, офиса или коммерческого помещения","Организация просмотров и сравнение вариантов","Переговоры по цене и условиям","Проверка объекта, координация договора, покупка или аренда"],"WEST EAST TRADE GROUP PTE. LTD."],
-          ["Дополнительные услуги по недвижимости","Отдельные задачи, которые можно включить в договор или заказать дополнительно.",["Помощь с переездом и заселением","Перевод и сопровождение поездки","Консультация по интерьеру и ремонту","Повторный подбор или ежемесячное сопровождение"],"WEST EAST TRADE GROUP PTE. LTD."]
-        ],
-        menuNote:"После выбора услуги используйте соответствующее назначение платежа из раздела нужной компании. Название услуги, город, объект и номер инвойса можно заменить на данные конкретного заказа.",
-        chapter1:"WET SOLUTIONS LIMITED", chapter1sub:"Гонконг · облачные услуги, вычислительные мощности, защита сайтов и IT-оборудование",
-        labels:{jur:"Юрисдикция",reg:"Регистрация",address:"Юридический адрес",site:"Сайт",confirmed:"Подтверждено",notuse:"Не использовать",pending:"Ожидается",available:"Доступно"},
-        wetFacts:["Гонконг","CR 76458883","SUITE C, LEVEL 7, WORLD TRUST TOWER, 50 STANLEY STREET, CENTRAL, HONG KONG","west-east.cloud/gpu-servers/cloud/"],
-        wetRoutes:[
-          ["ok","Можно использовать","Юани международным банковским переводом (SWIFT)","Счёт Airwallex через Banking Circle S.A. Реквизиты ниже."]
-        ],
-        bankTitle:"Куда отправлять юани", bankSub:"Международный перевод (SWIFT) в офшорных юанях (CNH)",
-        bankKeys:["Получатель","Банк","Адрес банка","Код банка для перевода (BIC / SWIFT)","Номер счёта (IBAN)","Номер счёта","Код банка","Банк-посредник для юаней","Валюта"],
-        wetNote:"Это международный счёт для офшорных юаней (CNH), а не счёт в материковом Китае. В поле «Получатель» укажите без изменений: WET SOLUTIONS LIMITED.",
-        master:"Общий шаблон назначения платежа", masterCode:"INV-[number] / [service] / WET SOLUTIONS LIMITED / west-east.cloud",
-        formulaHelp:"В платёж копируйте английский текст. Замените квадратные скобки на номер инвойса и название услуги.",
-        bankShort:"Готовый короткий вариант для банка отправителя", bankShortCode:"Payment for cloud / IT services under contract, Invoice [№]",
-        catTitle:"Что написать при оплате услуг WET SOLUTIONS", catSub:"Скопируйте английский текст — его и нужно указать в платеже. Русский рядом только для понимания.",
-        serviceSummary:"Оплата облачных и IT-услуг (банковский код CSTRDR)",
-        goodsSummary:"Оплата IT-оборудования (банковский код CGODDR)",
-        universal:"Если в одном инвойсе несколько облачных услуг", universalCode:"Payment for cloud / IT infrastructure services, Invoice INV-2026-0xxx, WET SOLUTIONS LIMITED",
-        packTitle:"Какие документы приложить к платежу", packSub:"Данные в документах и назначении платежа должны совпадать.",
-        webDocs:"Договор, инвойс и полный комплект закрывающих документов предоставим мы после согласования выбранной услуги.",
-        pack:[
-          "Инвойс (счёт на оплату) от WET SOLUTIONS LIMITED, регистрационный номер CR 76458883. Валюта — китайские юани (CNY), сумма совпадает с переводом.",
-          "Договор на услуги с описанием работ (SOW) либо отдельный договор поставки оборудования.",
-          "Сайт в инвойсе: https://west-east.cloud/gpu-servers/cloud/",
-          "Имя получателя без добавлений: WET SOLUTIONS LIMITED.",
-          "Готовый текст назначения платежа из списка с фактическим номером инвойса.",
-          "Для оборудования: упаковочный лист и экспортные документы. Для услуг не использовать формулировку о покупке товара."
-        ],
-        dontTitle:"Не указывать в назначении платежа", dontItems:"USDT, USDC, криптовалюта, обмен; заём, подарок, пожертвование, зарплата или личный перевод; товар без договора поставки; консультация без соответствующего инвойса; мясо, птица или код товара HS 0207.",
-        chapter2:"WEST EAST TRADE GROUP PTE. LTD.", chapter2sub:"Сингапур · услуги, консультации и комиссии в сфере недвижимости",
-        westFacts:["Singapore","UEN 202505772C","110 Robinson Road, #08-00, ERH Building, Singapore 068901","138/16 Laguna Village, Choeng Thale, Thalang, Phuket 83110, Thailand"],
-        westFactKeys:["Юрисдикция","UEN","Юридический адрес","Операционный адрес"],
-        activity:"Компания зарегистрирована для агентских и оценочных услуг в сфере недвижимости (код 68201), а также управленческих консультаций (код 70229).",
-        accountTitle:"Куда отправлять юани", accountSub:"Три рабочих счёта WEST EAST. Все принимают юани.",
-        accounts:[
-          ["ok","Можно использовать","Equals Money · международный счёт в юанях","Для оплаты услуг и комиссий WEST EAST по недвижимости."],
-          ["ok","Можно использовать","Statrys Singapore · счёт в юанях","Сингапурский счёт. Принимает юани."],
-          ["ok","Можно использовать","Statrys Hong Kong · счёт в юанях","Гонконгский счёт. Принимает юани."]
-        ],
-        accountNames:["Equals Money — международный счёт в юанях","Statrys Singapore — счёт в юанях","Statrys Hong Kong — счёт в юанях"],
-        accountSubs:["Подтверждённые реквизиты для юаней","Подтверждённые реквизиты для юаней","Подтверждённые реквизиты для юаней"],
-        paletteTitle:"Что написать при оплате услуг WEST EAST", paletteSub:"Скопируйте английский текст — его и нужно указать в платеже. Русский рядом только для понимания.",
-        groupNames:{agency:"Комиссии за сделку",search:"Поиск и анализ недвижимости",transaction:"Сопровождение покупки",tenancy:"Аренда, переезд и перевод",other:"Другие услуги"},
-        common:"Общий шаблон назначения платежа", commonCode:"Property [search / advisory / negotiation / agency commission] fee — [Villa / Project] — Invoice [№]",
-        purposeRef:"Справочный перевод",
-        commonHelp:"В платёж копируйте английский текст. В квадратных скобках укажите услугу, виллу или проект и номер инвойса.",
-        avoidWest:"криптовалюта или обмен; заём, подарок, пожертвование; оптимизация налогов; обход банка; мясо, GPU или облачные услуги.",
-        faqTitle:"Частые вопросы", faqSub:"Короткие и понятные ответы перед отправкой платежа.",
-        faq:[
-          ["Куда отправлять платёж в юанях?","За облачные услуги, вычислительные мощности или IT-оборудование — на WET SOLUTIONS через Airwallex / Banking Circle. За услуги по недвижимости — на WEST EAST: Equals Money, Statrys Singapore или Statrys Hong Kong. Все три счёта принимают юани."],
-          ["Можно объединить товар и услугу в одном платеже?","Нет. Оборудование и облачные услуги оформляются отдельными договорами, инвойсами и платежами."],
-          ["Обязательно ли указывать инвойс?","Да. В назначении укажите номер инвойса. Сумма, валюта, получатель и описание должны совпадать с документами."],
-          ["Это счёт в материковом Китае?","Нет. Юани отправляются международным банковским переводом. Подтверждённые счета находятся за пределами материкового Китая."],
-          ["Когда клиент получает полные реквизиты?","После выбора валюты, услуги и проверки инвойса. Перед каждым платежом мы повторно подтверждаем реквизиты."],
-          ["Какие слова не использовать?","Не указывайте криптовалюту, заём, пожертвование, личный перевод либо услугу, которой нет в договоре и инвойсе."]
-        ],
-        footer:"Документ доступен только по прямой ссылке. Не является публичной офертой. Доступность счетов и реквизиты повторно подтверждаются перед платежом.",
-        ref:"Charter Capital · 17.09.2026"
-      },
-      en:{
-        lang:"en", date:"17 September 2026", confidential:"Confidential", direct:"Direct-link document",
-        brandSub:"Client payment instructions",
-        eyebrow:"Plain-language payment guide", title:"CNY Collection Accounts <strong>&amp; Payment Purposes</strong>",
-        tri:"Приём CNY: счета и назначения · 人民币收款账户与付款用途",
-        badges:["Two receiving companies","Verified bank details","Ready-to-copy payment descriptions"],
-        intro:"This guide lists the accounts of two companies and provides ready-to-copy payment descriptions. Find the actual service or product, copy the matching text and add the invoice number. We reconfirm the account details before payment.",
-        quick:"How to use this guide", quickText:"1. Choose the service that fits. 2. Check which company provides it. 3. Copy the ready-made payment description. 4. Request the confirmed account details.",
-        menuTitle:"Which services can be paid for", menuSub:"Choose the option that matches the client’s actual task.",
-        menuRecipient:"Payment recipient",
-        menuGroups:[
-          ["Computing-capacity rental","For artificial intelligence, data processing, rendering and other resource-intensive work.",["GPU capacity: H100, H200, A100, L40S and RTX","Dedicated CPU and bare-metal servers","Reserved GPU capacity under a yearly contract","Additional capacity under an existing contract"],"WET SOLUTIONS LIMITED"],
-          ["Cloud infrastructure and protection","For hosting websites, applications and data, and protecting online projects.",["Cloud servers and virtual private servers (VPS)","Content delivery network (CDN)","Protection from DDoS attacks, web firewall (WAF) and bots","Domain-name service (DNS), Kubernetes and object storage"],"WET SOLUTIONS LIMITED"],
-          ["IT hardware purchase","For companies that need their own servers or ready-to-use infrastructure.",["H100 / H200 GPU servers","Workstations, for example 2 × RTX 4090","AI servers for model training","Turnkey server racks and clusters"],"WET SOLUTIONS LIMITED"],
-          ["Property market analysis","A standalone report can be ordered before searching for or purchasing a property.",["Purchase or rental market analysis","Phuket, Bangkok, Hong Kong or another agreed city","A shortlist of suitable properties","Rental-yield analysis and investment memo"],"WEST EAST TRADE GROUP PTE. LTD."],
-          ["Property search and transaction support","For residential or commercial property, from the first request to signed documents.",["Search for a villa, apartment, office or commercial space","Viewings and comparison of options","Price and contract negotiations","Property review, contract coordination, purchase or lease support"],"WEST EAST TRADE GROUP PTE. LTD."],
-          ["Additional property services","Separate tasks that can be included in the agreement or ordered as needed.",["Relocation and move-in support","Translation and hosted property visits","Interior and fit-out advice","A second shortlist or monthly support"],"WEST EAST TRADE GROUP PTE. LTD."]
-        ],
-        menuNote:"After choosing the service, use the matching payment description in the relevant company section. Replace the service, city, property and invoice number with the details of the actual order.",
-        chapter1:"WET SOLUTIONS LIMITED", chapter1sub:"Hong Kong · cloud services, computing capacity, website protection and IT hardware",
-        labels:{jur:"Jurisdiction",reg:"Registration",address:"Registered office",site:"Website",confirmed:"Confirmed",notuse:"Do not use",pending:"Pending",available:"Available"},
-        wetFacts:["Hong Kong","CR 76458883","SUITE C, LEVEL 7, WORLD TRUST TOWER, 50 STANLEY STREET, CENTRAL, HONG KONG","west-east.cloud/gpu-servers/cloud/"],
-        wetRoutes:[
-          ["ok","Available","Chinese yuan by international bank transfer (SWIFT)","Airwallex account through Banking Circle S.A. Details below."]
-        ],
-        bankTitle:"Where to send the yuan payment", bankSub:"International bank transfer (SWIFT) in offshore yuan (CNH)",
-        bankKeys:["Beneficiary","Bank","Bank address","Bank transfer code (BIC / SWIFT)","Account number (IBAN)","Account number","Bank code","Intermediary bank for yuan","Currency"],
-        wetNote:"This account receives offshore yuan (CNH) by international bank transfer. It is not a Mainland China account. Enter the beneficiary exactly as: WET SOLUTIONS LIMITED.",
-        master:"General payment-description template", masterCode:"INV-[number] / [service] / WET SOLUTIONS LIMITED / west-east.cloud",
-        formulaHelp:"Replace the text in square brackets with the actual invoice number and service name. Ready-to-copy options are listed below.",
-        bankShort:"Short version for the sending bank", bankShortCode:"Payment for cloud / IT services under contract, Invoice [№]",
-        catTitle:"What to write when paying WET SOLUTIONS", catSub:"Choose the service, open the card and copy the ready-made payment description.",
-        serviceSummary:"Payment for cloud and IT services (bank code CSTRDR)",
-        goodsSummary:"Payment for IT hardware (bank code CGODDR)",
-        universal:"When one invoice covers several cloud services", universalCode:"Payment for cloud / IT infrastructure services, Invoice INV-2026-0xxx, WET SOLUTIONS LIMITED",
-        packTitle:"Documents to send with the payment", packSub:"The documents and the payment description must contain matching information.",
-        webDocs:"We will provide the agreement, invoice and the full set of supporting documents once the selected service has been confirmed.",
-        pack:[
-          "Invoice from WET SOLUTIONS LIMITED, registration number CR 76458883. Currency: Chinese yuan (CNY). The amount must match the payment.",
-          "Service contract with a statement of work (SOW), or a separate hardware supply contract.",
-          "Website shown on the invoice: https://west-east.cloud/gpu-servers/cloud/",
-          "Beneficiary name without additions: WET SOLUTIONS LIMITED.",
-          "Ready-made payment description from this guide with the actual invoice number.",
-          "For hardware: packing list and export documents. For services: do not describe the payment as a goods purchase."
-        ],
-        dontTitle:"Do not use these words in the payment description", dontItems:"USDT, USDC, cryptocurrency or exchange; loan, donation, gift, salary or personal transfer; goods without a sales contract; consulting without a matching invoice; chicken, poultry or product code HS 0207.",
-        chapter2:"WEST EAST TRADE GROUP PTE. LTD.", chapter2sub:"Singapore · property services, advice and commissions",
-        westFacts:["Singapore","UEN 202505772C","110 Robinson Road, #08-00, ERH Building, Singapore 068901","138/16 Laguna Village, Choeng Thale, Thalang, Phuket 83110, Thailand"],
-        westFactKeys:["Jurisdiction","UEN","Registered address","Operational address"],
-        activity:"The company is registered for real-estate agency and valuation services (code 68201) and management consulting (code 70229).",
-        accountTitle:"Where to send the yuan payment", accountSub:"Three working WEST EAST accounts. All of them receive yuan.",
-        accounts:[
-          ["ok","Available","Equals Money · international yuan account","For WEST EAST property-service fees and commissions."],
-          ["ok","Available","Statrys Singapore · yuan account","Singapore account. Receives yuan."],
-          ["ok","Available","Statrys Hong Kong · yuan account","Hong Kong account. Receives yuan."]
-        ],
-        accountNames:["Equals Money — international yuan account","Statrys Singapore — yuan account","Statrys Hong Kong — yuan account"],
-        accountSubs:["Confirmed account details for yuan","Confirmed account details for yuan","Confirmed account details for yuan"],
-        paletteTitle:"What to write when paying WEST EAST", paletteSub:"Choose the service, open the card and copy the ready-made payment description.",
-        groupNames:{agency:"Transaction commissions",search:"Property search and analysis",transaction:"Purchase support",tenancy:"Rental, relocation and translation",other:"Other services"},
-        common:"General payment-description template", commonCode:"Property [search / advisory / negotiation / agency commission] fee — [Villa / Project] — Invoice [№]",
-        commonHelp:"Replace the text in square brackets with the service, villa or project name and invoice number. You can also use one of the ready-made options below.",
-        avoidWest:"cryptocurrency or exchange; loan, gift or donation; tax optimisation; bank bypass; meat, GPU or cloud services.",
-        faqTitle:"Frequently asked questions", faqSub:"Short answers before making a payment.",
-        faq:[
-          ["Where should a yuan payment be sent?","For cloud services, computing capacity or IT hardware, pay WET SOLUTIONS through Airwallex / Banking Circle. For property services, pay WEST EAST through Equals Money, Statrys Singapore or Statrys Hong Kong. All three accounts receive yuan."],
-          ["Can goods and services be combined in one payment?","No. Hardware and cloud services require separate contracts, invoices and payments."],
-          ["Must the invoice number be included?","Yes. Add the invoice number to the payment description. The amount, currency, beneficiary and description must match the documents."],
-          ["Is this a Mainland China account?","No. Yuan is sent by international bank transfer to accounts outside Mainland China."],
-          ["When does the client receive the full account details?","After the currency, service and invoice have been checked. We reconfirm the details before every payment."],
-          ["Which words should not be used?","Do not state cryptocurrency, loan, donation or a personal transfer, or name a service that is not in the contract and invoice."]
-        ],
-        footer:"Available by direct link only. Not a public offer. Account availability and details are reconfirmed before payment.",
-        ref:"Charter Capital · 17.09.2026"
-      },
-      zh:{
-        lang:"zh", date:"2026年9月17日", confidential:"机密", direct:"仅限直接链接访问",
-        brandSub:"客户付款指引",
-        eyebrow:"简单易懂的付款指南", title:"人民币收款账户<strong>与付款用途</strong>",
-        tri:"CNY Collection Accounts & Payment Purposes · Приём CNY: счета и назначения",
-        badges:["两个收款公司","已核实的银行信息","可直接复制的付款用途"],
-        intro:"本指南列出两个公司的收款账户，并提供可直接复制的付款用途。请选择实际购买的服务或商品，复制对应文字，并填写发票号码。每次付款前，我们都会再次确认收款信息。",
-        quick:"如何使用本指南", quickText:"1. 选择适合的服务。2. 查看由哪家公司提供。3. 复制现成的付款用途。4. 获取再次确认的收款信息。",
-        menuTitle:"可以为哪些服务付款", menuSub:"请选择与客户实际需求相符的服务。",
-        menuRecipient:"收款公司",
-        menuGroups:[
-          ["租用计算资源","适用于人工智能、数据处理、渲染及其他需要大量计算资源的工作。",["GPU算力：H100、H200、A100、L40S及RTX","独立CPU服务器及裸金属服务器","年度合同项下预留GPU算力","现有合同项下增加计算资源"],"WET SOLUTIONS LIMITED"],
-          ["云基础设施及安全防护","适用于网站、应用和数据托管，以及互联网项目安全防护。",["云服务器及虚拟专用服务器（VPS）","内容分发网络（CDN）","DDoS攻击防护、网站防火墙（WAF）及机器人防护","域名解析（DNS）、Kubernetes及对象存储"],"WET SOLUTIONS LIMITED"],
-          ["购买IT硬件","适用于需要自有服务器或完整基础设施的公司。",["H100 / H200 GPU服务器","工作站，例如 2 × RTX 4090","用于模型训练的AI服务器","整机柜服务器及集群"],"WET SOLUTIONS LIMITED"],
-          ["房地产市场分析","可在寻找或购买房产前单独委托市场研究。",["购房或租赁市场分析","普吉岛、曼谷、香港或其他约定城市","筛选符合条件的房产清单","租金收益分析及投资备忘录"],"WEST EAST TRADE GROUP PTE. LTD."],
-          ["房产搜寻及交易协助","适用于住宅或商业地产，从提出需求到签署文件。",["寻找别墅、公寓、办公室或商业场所","安排看房及比较不同方案","就价格及合同条件进行谈判","房产审核、合同协调、购房或租赁协助"],"WEST EAST TRADE GROUP PTE. LTD."],
-          ["其他房地产服务","可写入合同或按需要单独委托的服务。",["搬迁及入住协助","翻译及陪同看房","室内设计及装修咨询","再次筛选房源或月度顾问服务"],"WEST EAST TRADE GROUP PTE. LTD."]
-        ],
-        menuNote:"选择服务后，请在对应公司章节中使用相应的付款用途，并将服务名称、城市、房产和发票号码替换为实际订单信息。",
-        chapter1:"WET SOLUTIONS LIMITED", chapter1sub:"中国香港 · 云服务、算力、网站安全及IT硬件",
-        labels:{jur:"注册地",reg:"注册编号",address:"注册地址",site:"网站",confirmed:"已确认",notuse:"请勿使用",pending:"待确认",available:"可用"},
-        wetFacts:["中国香港特别行政区","CR 76458883","SUITE C, LEVEL 7, WORLD TRUST TOWER, 50 STANLEY STREET, CENTRAL, HONG KONG","west-east.cloud/gpu-servers/cloud/"],
-        wetRoutes:[
-          ["ok","可以使用","通过国际银行汇款（SWIFT）收取人民币","Airwallex 账户，经由 Banking Circle S.A.。收款信息见下方。"]
-        ],
-        bankTitle:"人民币应汇入哪个账户", bankSub:"通过国际银行汇款（SWIFT）汇入离岸人民币（CNH）",
-        bankKeys:["收款人","开户行","银行地址","银行汇款代码（BIC / SWIFT）","国际银行账号（IBAN）","账号","银行代码","人民币中间行","汇款币种"],
-        wetNote:"该账户通过国际银行汇款收取离岸人民币（CNH），不是中国内地账户。收款人名称必须完整填写为：WET SOLUTIONS LIMITED。",
-        master:"通用付款用途模板", masterCode:"发票 [编号] / [服务] / WET SOLUTIONS LIMITED / west-east.cloud",
-        formulaHelp:"请将方括号内的文字替换为真实发票号码和服务名称。",
-        bankShort:"提供给汇款银行的简短版本", bankShortCode:"根据合同支付云 / IT 服务费，发票 [编号]",
-        catTitle:"支付 WET SOLUTIONS 服务费时应填写什么", catSub:"请选择服务，打开对应栏目并复制中文付款用途。",
-        serviceSummary:"支付云服务及IT服务费（银行代码：CSTRDR）",
-        goodsSummary:"支付IT硬件采购款（银行代码：CGODDR）",
-        universal:"一张发票包含多项云服务时", universalCode:"支付云 / IT 基础设施服务费，发票 INV-2026-0xxx，WET SOLUTIONS LIMITED",
-        packTitle:"汇款时需要提供哪些文件", packSub:"文件内容必须与付款用途完全一致。",
-        webDocs:"确认所选服务后，我们将提供合同、发票及完整的业务和结算证明文件。",
-        pack:[
-          "WET SOLUTIONS LIMITED 出具的发票，注册编号 CR 76458883。币种为人民币（CNY），金额与汇款一致。",
-          "服务付款需提供服务合同及工作说明（SOW）；硬件采购需提供单独的供货合同。",
-          "发票中列明网站：https://west-east.cloud/gpu-servers/cloud/",
-          "收款人名称不得添加其他文字：WET SOLUTIONS LIMITED。",
-          "从本指南复制对应的付款用途，并填写真实发票编号。",
-          "硬件采购需提供装箱单和出口文件；服务付款不得写成购买货物。"
-        ],
-        dontTitle:"付款用途中不要填写", dontItems:"USDT、USDC、加密货币或兑换；借款、赠与、捐赠、工资或个人汇款；没有销售合同的货款；没有对应发票的咨询费；鸡肉、家禽或商品代码 HS 0207。",
-        chapter2:"WEST EAST TRADE GROUP PTE. LTD.", chapter2sub:"新加坡 · 房地产服务、咨询及佣金",
-        westFacts:["新加坡","UEN 202505772C","110 Robinson Road, #08-00, ERH Building, Singapore 068901","138/16 Laguna Village, Choeng Thale, Thalang, Phuket 83110, Thailand"],
-        westFactKeys:["注册地","UEN","注册地址","运营地址"],
-        activity:"公司登记的业务包括房地产代理及估值服务（代码 68201）和管理咨询（代码 70229）。",
-        accountTitle:"人民币应汇入哪个账户", accountSub:"WEST EAST 有三个可用账户，均可收取人民币。",
-        accounts:[
-          ["ok","可以使用","Equals Money · 国际人民币账户","用于支付 WEST EAST 的房地产服务费和佣金。"],
-          ["ok","可以使用","Statrys Singapore · 人民币账户","新加坡账户，可收取人民币。"],
-          ["ok","可以使用","Statrys Hong Kong · 人民币账户","香港账户，可收取人民币。"]
-        ],
-        accountNames:["Equals Money — 国际人民币账户","Statrys Singapore — 人民币账户","Statrys Hong Kong — 人民币账户"],
-        accountSubs:["已确认的人民币收款信息","已确认的人民币收款信息","已确认的人民币收款信息"],
-        paletteTitle:"支付 WEST EAST 服务费时应填写什么", paletteSub:"请选择服务，打开对应栏目并复制中文付款用途。",
-        groupNames:{agency:"交易佣金",search:"房产搜寻与分析",transaction:"购房协助",tenancy:"租赁、搬迁及翻译",other:"其他服务"},
-        common:"通用付款用途模板", commonCode:"房地产 [搜寻 / 顾问 / 谈判 / 代理佣金] 服务费 — [别墅 / 项目] — 发票 [编号]",
-        commonHelp:"请将方括号内的文字替换为具体服务、别墅或项目名称以及发票号码。",
-        avoidWest:"加密货币或兑换；借款、赠与、捐赠；税务优化；绕过银行；肉类、GPU或云服务。",
-        faqTitle:"常见问题", faqSub:"付款前需要了解的简单说明。",
-        faq:[
-          ["人民币应汇入哪个账户？","云服务、算力或IT硬件款汇给 WET SOLUTIONS，并通过 Airwallex / Banking Circle 收款。房地产服务费可汇入 WEST EAST 的 Equals Money、Statrys Singapore 或 Statrys Hong Kong 账户。三个账户均可收取人民币。"],
-          ["货物与服务可以合并付款吗？","不可以。硬件和云服务需要分别签订合同、开具发票并单独付款。"],
-          ["必须填写发票号码吗？","必须。付款用途应填写发票号码，金额、币种、收款人和说明必须与文件一致。"],
-          ["这是中国内地账户吗？","不是。人民币通过国际银行汇款发送至中国内地以外的账户。"],
-          ["客户何时收到完整收款信息？","核对币种、服务和发票后提供。每次付款前，我们都会再次确认收款信息。"],
-          ["哪些词语不应使用？","不要填写加密货币、借款、捐赠、个人汇款，也不要填写合同和发票中不存在的服务。"]
-        ],
-        footer:"本文件仅限通过直接链接访问，并非公开要约。每次付款前须再次确认账户可用性及收款信息。",
-        ref:"Charter Capital · 2026年9月17日"
-      }
-    };
-    const BANK_VALUES = [
-      "WET SOLUTIONS LIMITED","Banking Circle S.A.","Amerika Plads 38, 2100 Copenhagen, Denmark",
-      "SXPYDKKK","DK2089000048562347","0048562347","8900","Citibank N.A. · BIC CITIGB2L","CNY"
-    ];
-    const WEST_BANKS = [
-      [
-        ["Account name","WEST EAST TRADE GROUP PTE. LTD."],["BIC","SPPVGB2LXXX"],
-        ["IBAN","GB80 SPPV 2318 8472 0761 87"],["Bank","Equals Money UK"],
-        ["Bank address","Vintners Place, 68 Upper Thames St, London EC4V 3BJ"]
-      ],
-      [
-        ["Account name","WEST EAST TRADE GROUP PTE LTD"],["Account","885571595796"],
-        ["SWIFT","DBSSSGSG"],["Bank code","7171"],["Bank","DBS Bank Ltd"],
-        ["Bank address","12 Marina Boulevard, MBFC Tower 3, Singapore 018982"]
-      ],
-      [
-        ["Account name","WEST EAST TRADE GROUP PTE LTD"],["Account","478798116632"],
-        ["SWIFT","DHBKHKHH"],["Bank code","016"],["Bank","DBS Bank (Hong Kong) Ltd"],
-        ["Bank address","11/F The Center, 99 Queen’s Road Central, Central, HK"]
-      ]
-    ];
-    const BANK_LABELS = {
-      ru:{"Account name":"Получатель","Account":"Номер счёта","BIC":"Код банка (BIC)","IBAN":"Номер счёта (IBAN)","Bank":"Банк","Bank code":"Код банка","Bank address":"Адрес банка","SWIFT":"Код для международного перевода (SWIFT)"},
-      en:{"Account name":"Beneficiary","Account":"Account number","BIC":"Bank code (BIC)","IBAN":"Account number (IBAN)","Bank":"Bank","Bank code":"Bank code","Bank address":"Bank address","SWIFT":"International transfer code (SWIFT)"},
-      zh:{"Account name":"收款人","Account":"账号","BIC":"银行代码（BIC）","IBAN":"国际银行账号（IBAN）","Bank":"开户行","Bank code":"银行代码","Bank address":"银行地址","SWIFT":"国际汇款代码（SWIFT）"}
-    };
-    const PURPOSE_NAMES = {
-      ru:{
-        "CDN":"Доставка контента через сеть (CDN)","Cloud / VPS":"Аренда облачного сервера (VPS)","CPU / bare-metal":"Аренда выделенного сервера","GPU rental":"Аренда вычислительных мощностей (GPU)","Reserved GPU":"Резерв вычислительных мощностей на год","AI training / inference":"Облачные мощности для искусственного интеллекта (AI)","DDoS protection":"Защита от сетевых атак (DDoS)","WAF / WAAP":"Защита веб-приложений (WAF / WAAP)","Cybersecurity / bots":"Кибербезопасность и защита от ботов","Managed DNS":"Управление доменными записями (DNS)","Full stack cloud":"Комплекс облачных услуг","Kubernetes / storage":"Управляемая платформа и хранилище (Kubernetes)","Setup":"Разовое подключение и настройка","Scale":"Увеличение облачных мощностей","SLA":"Расширенная сервисная поддержка (SLA)",
-        "IT hardware / GPU servers":"Поставка IT-оборудования и GPU-серверов","GPU workstation":"Поставка рабочей станции с GPU","AI server H100/H200":"Поставка AI-сервера H100/H200","Turnkey rack / cluster":"Поставка серверной стойки или кластера под ключ",
-        developerCommission:"Комиссия за объект",successCommission:"Комиссия за успешно завершённую сделку",propertySearch:"Поиск недвижимости",marketAnalysis:"Анализ рынка и подбор вариантов",selectionAdvisory:"Помощь в выборе объекта",negotiation:"Переговоры по объекту",viewing:"Организация просмотра объекта",searchPackage:"Пакет: поиск, анализ и переговоры",yieldAnalysis:"Расчёт доходности объекта",secondHome:"Консультации по второму дому",additionalShortlist:"Дополнительный подбор объектов",purchaseAdvisory:"Сопровождение покупки и координация проверки",contractCoordination:"Координация проверки договора",interiorAdvisory:"Консультации по интерьеру и ремонту",tenancyAdvisory:"Сопровождение аренды",relocation:"Помощь с переездом и заселением",hostedVisit:"Сопровождение просмотров и перевод",monthlyRetainer:"Ежемесячное сопровождение",consultancyReport:"Консультация и отчёт по недвижимости"
-      },
-      zh:{
-        "CDN":"内容分发网络服务（CDN）","Cloud / VPS":"云服务器租赁（VPS）","CPU / bare-metal":"独立服务器租赁","GPU rental":"GPU算力租赁","Reserved GPU":"年度预留GPU算力","AI training / inference":"人工智能训练及推理云服务（AI）","DDoS protection":"网络攻击防护（DDoS）","WAF / WAAP":"网站应用安全防护（WAF / WAAP）","Cybersecurity / bots":"网络安全及机器人防护","Managed DNS":"托管域名解析服务（DNS）","Full stack cloud":"综合云基础设施服务","Kubernetes / storage":"托管平台及对象存储（Kubernetes）","Setup":"一次性开通及配置","Scale":"增加云端或GPU资源","SLA":"增强服务等级支持（SLA）",
-        "IT hardware / GPU servers":"采购IT设备及GPU服务器","GPU workstation":"采购GPU工作站","AI server H100/H200":"采购H100/H200人工智能服务器","Turnkey rack / cluster":"采购整机柜或集群",
-        developerCommission:"开发商代理佣金",successCommission:"成功完成交易的佣金",propertySearch:"房产搜寻服务",marketAnalysis:"市场分析及房源初选",selectionAdvisory:"房产选择咨询",negotiation:"房产交易谈判",viewing:"现场考察及看房",searchPackage:"房产搜寻、分析及谈判套餐",yieldAnalysis:"投资及租金收益分析",secondHome:"第二居所咨询",additionalShortlist:"追加房源初选",purchaseAdvisory:"购房咨询及尽职调查协调",contractCoordination:"合同审阅协调",interiorAdvisory:"室内设计及装修咨询",tenancyAdvisory:"租赁咨询",relocation:"搬迁及入住协调",hostedVisit:"陪同看房及口译",monthlyRetainer:"月度房地产顾问服务",consultancyReport:"房地产咨询及报告"
-      }
-    };
+    const I18N = {"ru":{"lang":"ru","date":"17 сентября 2026","confidential":"Конфиденциально","direct":"Документ по прямой ссылке","brandSub":"Платёжные инструкции для клиентов","eyebrow":"Понятный справочник по платежам","title":"Платежи в юанях <strong>Услуги и назначения платежа</strong>","tri":"CNY Collection Accounts & Payment Purposes · 人民币收款账户与付款用途","badges":["Услуги и назначения платежа","Документы по сделке","Реквизиты предоставляются отдельно"],"intro":"Справочник услуг и примеров назначения платежа. Выберите реальную услугу или товар из вашего инвойса. Получатель и банковские реквизиты указываются в согласованных документах и повторно подтверждаются перед платежом.","quick":"Как пользоваться справочником","quickText":"1. Выберите подходящую услугу. 2. Проверьте описание в договоре и инвойсе. 3. Используйте соответствующее назначение платежа. 4. Запросите подтверждённые реквизиты.","menuTitle":"За какие услуги можно отправить платёж","menuSub":"Выберите вариант, который соответствует реальной задаче клиента.","menuRecipient":"Платёж получает","menuGroups":[["Аренда вычислительных мощностей","Для искусственного интеллекта, обработки данных, рендеринга и других ресурсоёмких задач.",["GPU: H100, H200, A100, L40S и RTX","Выделенные CPU-серверы и bare-metal","Резерв GPU-мощностей по годовому договору","Дополнительные мощности по действующему договору"],"Исполнитель по договору"],["Облачная инфраструктура и защита","Для размещения сайтов, приложений, данных и защиты интернет-проектов.",["Облачные серверы и VPS","Доставка контента через CDN","Защита от DDoS-атак, WAF и антибот","DNS, Kubernetes и объектное хранилище"],"Исполнитель по договору"],["Покупка IT-оборудования","Для компаний, которым нужны собственные серверы или готовая инфраструктура.",["GPU-серверы H100 / H200","Рабочие станции, например 2 × RTX 4090","AI-серверы для обучения моделей","Готовые серверные стойки и кластеры"],"Исполнитель по договору"],["Аналитика рынка недвижимости","Можно заказать отдельное исследование до поиска или покупки объекта.",["Анализ рынка покупки или аренды","Пхукет, Бангкок, Гонконг или другой согласованный город","Подбор короткого списка подходящих объектов","Расчёт доходности и инвестиционный меморандум"],"Исполнитель по договору"],["Поиск объекта и сопровождение сделки","Для жилой или коммерческой недвижимости — от первого запроса до подписания документов.",["Поиск виллы, квартиры, офиса или коммерческого помещения","Организация просмотров и сравнение вариантов","Переговоры по цене и условиям","Проверка объекта, координация договора, покупка или аренда"],"Исполнитель по договору"],["Дополнительные услуги по недвижимости","Отдельные задачи, которые можно включить в договор или заказать дополнительно.",["Помощь с переездом и заселением","Перевод и сопровождение поездки","Консультация по интерьеру и ремонту","Повторный подбор или ежемесячное сопровождение"],"Исполнитель по договору"]],"menuNote":"После выбора услуги используйте соответствующее назначение платежа. Название услуги, город, объект и номер инвойса замените на данные конкретного заказа.","chapter1":"Облачные и IT-услуги","chapter1sub":"Гонконг · облачные услуги, вычислительные мощности, защита сайтов и IT-оборудование","labels":{"jur":"Юрисдикция","reg":"Регистрация","address":"Юридический адрес","site":"Сайт","confirmed":"Подтверждено","notuse":"Не использовать","pending":"Ожидается","available":"Доступно"},"master":"Общий шаблон назначения платежа","masterCode":"INV-[number] / [service] / [beneficiary]","formulaHelp":"В платёж копируйте английский текст. Замените квадратные скобки на номер инвойса и название услуги.","bankShort":"Готовый короткий вариант для банка отправителя","bankShortCode":"Payment for cloud / IT services under contract, Invoice [№]","catTitle":"Что написать при оплате облачных и IT-услуг","catSub":"Скопируйте английский текст — его и нужно указать в платеже. Русский рядом только для понимания.","serviceSummary":"Оплата облачных и IT-услуг (банковский код CSTRDR)","goodsSummary":"Оплата IT-оборудования (банковский код CGODDR)","universal":"Если в одном инвойсе несколько облачных услуг","universalCode":"Payment for cloud / IT infrastructure services, Invoice [number], [beneficiary]","packTitle":"Какие документы приложить к платежу","packSub":"Данные в документах и назначении платежа должны совпадать.","webDocs":"Договор, инвойс и полный комплект закрывающих документов предоставим мы после согласования выбранной услуги.","pack":["Инвойс от фактического исполнителя. Валюта и сумма совпадают с переводом.","Договор на услуги с описанием работ (SOW) либо отдельный договор поставки оборудования.","Сведения об исполнителе и услуге в договоре и инвойсе.","Название получателя совпадает с согласованным инвойсом.","Готовый текст назначения платежа из списка с фактическим номером инвойса.","Для оборудования: упаковочный лист и экспортные документы. Для услуг не использовать формулировку о покупке товара."],"dontTitle":"Не указывать в назначении платежа","dontItems":"USDT, USDC, криптовалюта, обмен; заём, подарок, пожертвование, зарплата или личный перевод; товар без договора поставки; консультация без соответствующего инвойса; мясо, птица или код товара HS 0207.","chapter2":"Услуги в сфере недвижимости","chapter2sub":"Сингапур · услуги, консультации и комиссии в сфере недвижимости","paletteTitle":"Что написать при оплате услуг по недвижимости","paletteSub":"Скопируйте английский текст — его и нужно указать в платеже. Русский рядом только для понимания.","groupNames":{"agency":"Комиссии за сделку","search":"Поиск и анализ недвижимости","transaction":"Сопровождение покупки","tenancy":"Аренда, переезд и перевод","other":"Другие услуги"},"common":"Общий шаблон назначения платежа","commonCode":"Property [search / advisory / negotiation / agency commission] fee — [Villa / Project] — Invoice [№]","purposeRef":"Справочный перевод","commonHelp":"В платёж копируйте английский текст. В квадратных скобках укажите услугу, виллу или проект и номер инвойса.","avoidWest":"криптовалюта или обмен; заём, подарок, пожертвование; оптимизация налогов; обход банка; мясо, GPU или облачные услуги.","faqTitle":"Частые вопросы","faqSub":"Короткие и понятные ответы перед отправкой платежа.","faq":[["Куда отправлять платёж в юанях?","Используйте реквизиты исполнителя, указанного в согласованных договоре и инвойсе. Перед каждым платежом мы повторно подтверждаем реквизиты."],["Можно объединить товар и услугу в одном платеже?","Нет. Оборудование и облачные услуги оформляются отдельными договорами, инвойсами и платежами."],["Обязательно ли указывать инвойс?","Да. В назначении укажите номер инвойса. Сумма, валюта, получатель и описание должны совпадать с документами."],["Это счёт в материковом Китае?","Нет. Юани отправляются международным банковским переводом. Подтверждённые счета находятся за пределами материкового Китая."],["Когда клиент получает полные реквизиты?","После выбора валюты, услуги и проверки инвойса. Перед каждым платежом мы повторно подтверждаем реквизиты."],["Какие слова не использовать?","Не указывайте криптовалюту, заём, пожертвование, личный перевод либо услугу, которой нет в договоре и инвойсе."]],"footer":"Документ доступен только по прямой ссылке. Не является публичной офертой. Доступность счетов и реквизиты повторно подтверждаются перед платежом.","ref":"Charter Capital · 17.09.2026","paymentNote":"Справочная версия. Название исполнителя и банковские реквизиты не публикуются в этом документе. Используйте реквизиты из согласованного инвойса после подтверждения."},"en":{"lang":"en","date":"17 September 2026","confidential":"Confidential","direct":"Direct-link document","brandSub":"Client payment instructions","eyebrow":"Plain-language payment guide","title":"CNY payments <strong>Services and payment descriptions</strong>","tri":"Приём CNY: счета и назначения · 人民币收款账户与付款用途","badges":["Services and payment descriptions","Transaction documents","Payment details provided separately"],"intro":"Service and payment-description reference. Choose the actual service or product shown in your invoice. The recipient and bank details are provided in the agreed documents and reconfirmed before payment.","quick":"How to use this guide","quickText":"1. Choose the service. 2. Check its description in the agreement and invoice. 3. Use the matching payment description. 4. Request confirmed payment details.","menuTitle":"Which services can be paid for","menuSub":"Choose the option that matches the client’s actual task.","menuRecipient":"Payment recipient","menuGroups":[["Computing-capacity rental","For artificial intelligence, data processing, rendering and other resource-intensive work.",["GPU capacity: H100, H200, A100, L40S and RTX","Dedicated CPU and bare-metal servers","Reserved GPU capacity under a yearly contract","Additional capacity under an existing contract"],"Service provider under the agreement"],["Cloud infrastructure and protection","For hosting websites, applications and data, and protecting online projects.",["Cloud servers and virtual private servers (VPS)","Content delivery network (CDN)","Protection from DDoS attacks, web firewall (WAF) and bots","Domain-name service (DNS), Kubernetes and object storage"],"Service provider under the agreement"],["IT hardware purchase","For companies that need their own servers or ready-to-use infrastructure.",["H100 / H200 GPU servers","Workstations, for example 2 × RTX 4090","AI servers for model training","Turnkey server racks and clusters"],"Service provider under the agreement"],["Property market analysis","A standalone report can be ordered before searching for or purchasing a property.",["Purchase or rental market analysis","Phuket, Bangkok, Hong Kong or another agreed city","A shortlist of suitable properties","Rental-yield analysis and investment memo"],"Service provider under the agreement"],["Property search and transaction support","For residential or commercial property, from the first request to signed documents.",["Search for a villa, apartment, office or commercial space","Viewings and comparison of options","Price and contract negotiations","Property review, contract coordination, purchase or lease support"],"Service provider under the agreement"],["Additional property services","Separate tasks that can be included in the agreement or ordered as needed.",["Relocation and move-in support","Translation and hosted property visits","Interior and fit-out advice","A second shortlist or monthly support"],"Service provider under the agreement"]],"menuNote":"Use the payment description for the selected service. Replace the service, city, property and invoice number with the actual order details.","chapter1":"Cloud and IT services","chapter1sub":"Hong Kong · cloud services, computing capacity, website protection and IT hardware","labels":{"jur":"Jurisdiction","reg":"Registration","address":"Registered office","site":"Website","confirmed":"Confirmed","notuse":"Do not use","pending":"Pending","available":"Available"},"master":"General payment-description template","masterCode":"INV-[number] / [service] / [beneficiary]","formulaHelp":"Replace the text in square brackets with the actual invoice number and service name. Ready-to-copy options are listed below.","bankShort":"Short version for the sending bank","bankShortCode":"Payment for cloud / IT services under contract, Invoice [№]","catTitle":"Payment descriptions for cloud and IT services","catSub":"Choose the service, open the card and copy the ready-made payment description.","serviceSummary":"Payment for cloud and IT services (bank code CSTRDR)","goodsSummary":"Payment for IT hardware (bank code CGODDR)","universal":"When one invoice covers several cloud services","universalCode":"Payment for cloud / IT infrastructure services, Invoice [number], [beneficiary]","packTitle":"Documents to send with the payment","packSub":"The documents and the payment description must contain matching information.","webDocs":"We will provide the agreement, invoice and the full set of supporting documents once the selected service has been confirmed.","pack":["Invoice from the actual service provider. Currency and amount match the transfer.","Service contract with a statement of work (SOW), or a separate hardware supply contract.","Service provider and service information in the agreement and invoice.","The recipient name matches the agreed invoice.","Ready-made payment description from this guide with the actual invoice number.","For hardware: packing list and export documents. For services: do not describe the payment as a goods purchase."],"dontTitle":"Do not use these words in the payment description","dontItems":"USDT, USDC, cryptocurrency or exchange; loan, donation, gift, salary or personal transfer; goods without a sales contract; consulting without a matching invoice; chicken, poultry or product code HS 0207.","chapter2":"Property services","chapter2sub":"Singapore · property services, advice and commissions","paletteTitle":"Payment descriptions for property services","paletteSub":"Choose the service, open the card and copy the ready-made payment description.","groupNames":{"agency":"Transaction commissions","search":"Property search and analysis","transaction":"Purchase support","tenancy":"Rental, relocation and translation","other":"Other services"},"common":"General payment-description template","commonCode":"Property [search / advisory / negotiation / agency commission] fee — [Villa / Project] — Invoice [№]","commonHelp":"Replace the text in square brackets with the service, villa or project name and invoice number. You can also use one of the ready-made options below.","avoidWest":"cryptocurrency or exchange; loan, gift or donation; tax optimisation; bank bypass; meat, GPU or cloud services.","faqTitle":"Frequently asked questions","faqSub":"Short answers before making a payment.","faq":[["Where should a yuan payment be sent?","Use the payment details of the service provider identified in the agreed contract and invoice. We reconfirm the details before each payment."],["Can goods and services be combined in one payment?","No. Hardware and cloud services require separate contracts, invoices and payments."],["Must the invoice number be included?","Yes. Add the invoice number to the payment description. The amount, currency, beneficiary and description must match the documents."],["Is this a Mainland China account?","No. Yuan is sent by international bank transfer to accounts outside Mainland China."],["When does the client receive the full account details?","After the currency, service and invoice have been checked. We reconfirm the details before every payment."],["Which words should not be used?","Do not state cryptocurrency, loan, donation or a personal transfer, or name a service that is not in the contract and invoice."]],"footer":"Available by direct link only. Not a public offer. Account availability and details are reconfirmed before payment.","ref":"Charter Capital · 17.09.2026","paymentNote":"Reference version. The service provider name and bank details are not published in this document. Use the agreed invoice details after confirmation."},"zh":{"lang":"zh","date":"2026年9月17日","confidential":"机密","direct":"仅限直接链接访问","brandSub":"客户付款指引","eyebrow":"简单易懂的付款指南","title":"人民币付款 <strong>服务与付款用途</strong>","tri":"CNY Collection Accounts & Payment Purposes · Приём CNY: счета и назначения","badges":["服务与付款用途","交易文件","收款信息另行提供"],"intro":"本文件提供服务项目及付款用途示例。请选择发票所列的真实服务或商品。收款人及银行信息以约定文件为准，并在每次付款前再次确认。","quick":"如何使用本指南","quickText":"1. 选择相应服务。2. 核对合同及发票说明。3. 使用相应付款用途。4. 索取已确认的收款信息。","menuTitle":"可以为哪些服务付款","menuSub":"请选择与客户实际需求相符的服务。","menuRecipient":"收款公司","menuGroups":[["租用计算资源","适用于人工智能、数据处理、渲染及其他需要大量计算资源的工作。",["GPU算力：H100、H200、A100、L40S及RTX","独立CPU服务器及裸金属服务器","年度合同项下预留GPU算力","现有合同项下增加计算资源"],"合同约定的服务提供方"],["云基础设施及安全防护","适用于网站、应用和数据托管，以及互联网项目安全防护。",["云服务器及虚拟专用服务器（VPS）","内容分发网络（CDN）","DDoS攻击防护、网站防火墙（WAF）及机器人防护","域名解析（DNS）、Kubernetes及对象存储"],"合同约定的服务提供方"],["购买IT硬件","适用于需要自有服务器或完整基础设施的公司。",["H100 / H200 GPU服务器","工作站，例如 2 × RTX 4090","用于模型训练的AI服务器","整机柜服务器及集群"],"合同约定的服务提供方"],["房地产市场分析","可在寻找或购买房产前单独委托市场研究。",["购房或租赁市场分析","普吉岛、曼谷、香港或其他约定城市","筛选符合条件的房产清单","租金收益分析及投资备忘录"],"合同约定的服务提供方"],["房产搜寻及交易协助","适用于住宅或商业地产，从提出需求到签署文件。",["寻找别墅、公寓、办公室或商业场所","安排看房及比较不同方案","就价格及合同条件进行谈判","房产审核、合同协调、购房或租赁协助"],"合同约定的服务提供方"],["其他房地产服务","可写入合同或按需要单独委托的服务。",["搬迁及入住协助","翻译及陪同看房","室内设计及装修咨询","再次筛选房源或月度顾问服务"],"合同约定的服务提供方"]],"menuNote":"请选择相应服务的付款用途，并将服务、城市、房产及发票号码替换为实际订单信息。","chapter1":"云服务与IT服务","chapter1sub":"中国香港 · 云服务、算力、网站安全及IT硬件","labels":{"jur":"注册地","reg":"注册编号","address":"注册地址","site":"网站","confirmed":"已确认","notuse":"请勿使用","pending":"待确认","available":"可用"},"master":"通用付款用途模板","masterCode":"INV-[number] / [service] / [beneficiary]","formulaHelp":"请将方括号内的文字替换为真实发票号码和服务名称。","bankShort":"提供给汇款银行的简短版本","bankShortCode":"根据合同支付云 / IT 服务费，发票 [编号]","catTitle":"云服务与IT服务的付款用途","catSub":"请选择服务，打开对应栏目并复制中文付款用途。","serviceSummary":"支付云服务及IT服务费（银行代码：CSTRDR）","goodsSummary":"支付IT硬件采购款（银行代码：CGODDR）","universal":"一张发票包含多项云服务时","universalCode":"Payment for cloud / IT infrastructure services, Invoice [number], [beneficiary]","packTitle":"汇款时需要提供哪些文件","packSub":"文件内容必须与付款用途完全一致。","webDocs":"确认所选服务后，我们将提供合同、发票及完整的业务和结算证明文件。","pack":["实际服务提供方开具的发票，币种及金额须与汇款一致。","服务付款需提供服务合同及工作说明（SOW）；硬件采购需提供单独的供货合同。","合同及发票中的服务提供方和服务信息。","收款人名称须与约定发票一致。","从本指南复制对应的付款用途，并填写真实发票编号。","硬件采购需提供装箱单和出口文件；服务付款不得写成购买货物。"],"dontTitle":"付款用途中不要填写","dontItems":"USDT、USDC、加密货币或兑换；借款、赠与、捐赠、工资或个人汇款；没有销售合同的货款；没有对应发票的咨询费；鸡肉、家禽或商品代码 HS 0207。","chapter2":"房地产服务","chapter2sub":"新加坡 · 房地产服务、咨询及佣金","paletteTitle":"房地产服务的付款用途","paletteSub":"请选择服务，打开对应栏目并复制中文付款用途。","groupNames":{"agency":"交易佣金","search":"房产搜寻与分析","transaction":"购房协助","tenancy":"租赁、搬迁及翻译","other":"其他服务"},"common":"通用付款用途模板","commonCode":"房地产 [搜寻 / 顾问 / 谈判 / 代理佣金] 服务费 — [别墅 / 项目] — 发票 [编号]","commonHelp":"请将方括号内的文字替换为具体服务、别墅或项目名称以及发票号码。","avoidWest":"加密货币或兑换；借款、赠与、捐赠；税务优化；绕过银行；肉类、GPU或云服务。","faqTitle":"常见问题","faqSub":"付款前需要了解的简单说明。","faq":[["人民币应汇入哪个账户？","请使用约定合同及发票中服务提供方的收款信息。每次付款前，我们都会再次确认。"],["货物与服务可以合并付款吗？","不可以。硬件和云服务需要分别签订合同、开具发票并单独付款。"],["必须填写发票号码吗？","必须。付款用途应填写发票号码，金额、币种、收款人和说明必须与文件一致。"],["这是中国内地账户吗？","不是。人民币通过国际银行汇款发送至中国内地以外的账户。"],["客户何时收到完整收款信息？","核对币种、服务和发票后提供。每次付款前，我们都会再次确认收款信息。"],["哪些词语不应使用？","不要填写加密货币、借款、捐赠、个人汇款，也不要填写合同和发票中不存在的服务。"]],"footer":"本文件仅限通过直接链接访问，并非公开要约。每次付款前须再次确认账户可用性及收款信息。","ref":"Charter Capital · 2026年9月17日","paymentNote":"参考版本。本文件不公布服务提供方名称及银行信息。确认后请使用约定发票中的收款信息。"}};
+    const WET_SERVICES = [["CDN","CDN content delivery","Payment for CDN content delivery services, Invoice [№]","支付内容分发网络（CDN）服务费，发票 [№]","Оплата услуг сети доставки контента (CDN), инвойс [№]"],["Cloud / VPS","Cloud server / VPS rental","Payment for monthly cloud server / VPS rental, Invoice [№]","支付云服务器 / VPS 月租服务费，发票 [№]","Оплата ежемесячной аренды облачного сервера / VPS, инвойс [№]"],["CPU / bare-metal","Dedicated CPU / bare-metal server rental","Payment for dedicated CPU / bare-metal server rental, Invoice [№]","支付独立 CPU / 裸金属服务器租赁费，发票 [№]","Оплата аренды выделенного CPU / bare-metal сервера, инвойс [№]"],["GPU rental","GPU computing-capacity rental","Payment for GPU computing-capacity rental (H100/H200/A100/L40S/RTX), Invoice [№]","支付 GPU 算力租赁费（H100/H200/A100/L40S/RTX），发票 [№]","Оплата аренды вычислительных мощностей GPU (H100/H200/A100/L40S/RTX), инвойс [№]"],["Reserved GPU","Reserved GPU capacity","Payment for reserved GPU capacity under a 12-month contract, Invoice [№]","支付 12 个月合同项下的 GPU 预留算力费，发票 [№]","Оплата резервирования GPU-мощностей по договору на 12 месяцев, инвойс [№]"],["AI training / inference","AI training and inference cloud service","Payment for AI training and inference cloud services, Invoice [№]","支付 AI 训练及推理云服务费，发票 [№]","Оплата облачных услуг для обучения и инференса AI, инвойс [№]"],["DDoS protection","DDoS protection","Payment for L3/L4 DDoS mitigation and always-on protection services, Invoice [№]","支付 L3/L4 DDoS 缓解及持续防护服务费，发票 [№]","Оплата услуг защиты от DDoS L3/L4 и постоянного мониторинга, инвойс [№]"],["WAF / WAAP","Web application protection (WAF / WAAP)","Payment for web application firewall / WAAP services, Invoice [№]","支付网站应用防火墙（WAF / WAAP）服务费，发票 [№]","Оплата услуг WAF / WAAP по защите веб-приложений, инвойс [№]"],["Cybersecurity / bots","Cybersecurity and bot protection","Payment for cybersecurity, bot mitigation and traffic filtering services, Invoice [№]","支付网络安全、机器人防护及流量过滤服务费，发票 [№]","Оплата услуг кибербезопасности, антибот-защиты и фильтрации трафика, инвойс [№]"],["Managed DNS","Managed Anycast DNS","Payment for managed Anycast DNS services, Invoice [№]","支付托管 Anycast DNS 服务费，发票 [№]","Оплата услуг управляемого Anycast DNS, инвойс [№]"],["Full stack cloud","Cloud infrastructure package","Payment for cloud infrastructure services (CDN, compute and security), Invoice [№]","支付云基础设施服务费（CDN、计算及安全），发票 [№]","Оплата комплекса облачной инфраструктуры (CDN, вычисления и защита), инвойс [№]"],["Kubernetes / storage","Managed Kubernetes and object storage","Payment for managed Kubernetes and object storage services, Invoice [№]","支付托管 Kubernetes 及对象存储服务费，发票 [№]","Оплата услуг управляемого Kubernetes и объектного хранилища, инвойс [№]"],["Setup","Cloud infrastructure setup","Payment for one-time cloud infrastructure provisioning and setup services, Invoice [№]","支付一次性云基础设施开通及配置服务费，发票 [№]","Оплата разового подключения и настройки облачной инфраструктуры, инвойс [№]"],["Scale","Additional cloud / GPU capacity","Payment for additional cloud / GPU capacity under the existing contract, Invoice [№]","支付现有合同项下新增云 / GPU 资源服务费，发票 [№]","Оплата дополнительных облачных / GPU-мощностей по действующему договору, инвойс [№]"],["SLA","Enhanced service level (SLA)","Payment for enhanced service-level support under the contract, Invoice [№]","支付合同项下增强服务等级（SLA）支持费，发票 [№]","Оплата расширенного уровня сервисной поддержки (SLA) по договору, инвойс [№]"]];
+    const WET_GOODS = [["IT hardware / GPU servers","IT hardware / GPU server supply","Payment for IT hardware / GPU server supply under the contract, Invoice [№]","支付合同项下 IT 设备 / GPU 服务器采购款，发票 [№]","Оплата поставки IT-оборудования / GPU-серверов по договору, инвойс [№]"],["GPU workstation","GPU workstation supply","Payment for GPU workstation supply (e.g. 2 × RTX 4090), Invoice [№]","支付 GPU 工作站采购款（例如 2 × RTX 4090），发票 [№]","Оплата поставки рабочей станции GPU (например, 2 × RTX 4090), инвойс [№]"],["AI server H100/H200","H100 / H200 AI server supply","Payment for H100 / H200 GPU AI server supply, Invoice [№]","支付 H100 / H200 GPU 人工智能服务器采购款，发票 [№]","Оплата поставки GPU AI-сервера H100 / H200, инвойс [№]"],["Turnkey rack / cluster","Turnkey AI rack / cluster supply","Payment for turnkey AI rack / cluster supply, Invoice [№]","支付整机柜 AI 集群采购款，发票 [№]","Оплата поставки AI-стойки / кластера под ключ, инвойс [№]"]];
+    const WEST_GROUPS = [["agency",[["developerCommission","Developer agency commission","Payment for developer agency commission — [Project] — Invoice [№]","支付开发商代理佣金 — [项目] — 发票 [№]","Оплата агентской комиссии застройщика — [Проект] — Инвойс [№]","developer"],["successCommission","Successful transaction commission","Payment for commission for a successfully completed transaction — [Object] — Invoice [№]","支付成功完成交易的佣金 — [房产] — 发票 [№]","Оплата комиссии за успешно завершённую сделку — [Объект] — Инвойс [№]","agreement"]]],["search",[["propertySearch","Property search","Payment for property search services — [Area] — Invoice [№]","支付房产搜寻服务费 — [区域] — 发票 [№]","Оплата услуг по поиску недвижимости — [Район] — Инвойс [№]","client"],["marketAnalysis","Market analysis and shortlist","Payment for property market analysis and shortlisting — [Phuket / Bangkok / Hong Kong] — Invoice [№]","支付房地产市场分析及房源初选服务费 — [普吉岛 / 曼谷 / 香港] — 发票 [№]","Оплата анализа рынка и формирования шорт-листа — [Пхукет / Бангкок / Гонконг] — Инвойс [№]","client"],["selectionAdvisory","Property selection advisory","Payment for property selection advisory services — [Object] — Invoice [№]","支付房产甄选咨询服务费 — [房产] — 发票 [№]","Оплата консультаций по выбору объекта — [Объект] — Инвойс [№]","client"],["negotiation","Property negotiations","Payment for property negotiation services — [Object] — Invoice [№]","支付房产交易谈判服务费 — [房产] — 发票 [№]","Оплата услуг по переговорам — [Объект] — Инвойс [№]","client"],["viewing","Property inspection and viewing","Payment for property inspection and viewing services — [Object] — Invoice [№]","支付现场考察及看房服务费 — [房产] — 发票 [№]","Оплата организации выезда и осмотра объекта — [Объект] — Инвойс [№]","client"],["searchPackage","Search, analysis and negotiation package","Payment for property search, analysis and negotiation services — [Area / Project] — Invoice [№]","支付房产搜寻、分析及谈判综合服务费 — [区域 / 项目] — 发票 [№]","Оплата пакета услуг по поиску, анализу и переговорам — [Район / Проект] — Инвойс [№]","client"],["yieldAnalysis","Investment memo and yield analysis","Payment for property investment memo and rental-yield analysis — [Object] — Invoice [№]","支付房产投资备忘录及租金收益分析服务费 — [房产] — 发票 [№]","Оплата инвестиционного меморандума и анализа доходности — [Объект] — Инвойс [№]","client"],["secondHome","Second-home advisory","Payment for second-home property advisory services — [Area / Object] — Invoice [№]","支付第二居所房产咨询服务费 — [区域 / 房产] — 发票 [№]","Оплата консультаций по выбору второго дома — [Район / Объект] — Инвойс [№]","client"],["additionalShortlist","Additional property shortlist","Payment for an additional property shortlist — [Area] — Invoice [№]","支付追加房源初选服务费 — [区域] — 发票 [№]","Оплата дополнительного подбора объектов — [Район] — Инвойс [№]","client"]]],["transaction",[["purchaseAdvisory","Purchase advisory and due-diligence coordination","Payment for property purchase advisory and due-diligence coordination — [Object] — Invoice [№]","支付购房咨询及尽职调查协调服务费 — [房产] — 发票 [№]","Оплата сопровождения покупки и координации проверки объекта — [Объект] — Инвойс [№]","client"],["contractCoordination","Contract review coordination","Payment for contract review coordination services — [Object] — Invoice [№]","支付合同审阅协调服务费 — [房产] — 发票 [№]","Оплата координации проверки договора — [Объект] — Инвойс [№]","client"],["interiorAdvisory","Interior and fit-out advisory","Payment for interior and fit-out advisory services — [Object] — Invoice [№]","支付室内设计及装修咨询服务费 — [房产] — 发票 [№]","Оплата консультаций по интерьеру и ремонту (без закупки) — [Объект] — Инвойс [№]","client"]]],["tenancy",[["tenancyAdvisory","Tenancy advisory","Payment for tenancy advisory services — [Villa / Object] — Invoice [№]","支付租赁咨询服务费 — [别墅 / 房产] — 发票 [№]","Оплата сопровождения аренды — [Вилла / Объект] — Инвойс [№]","client"],["relocation","Relocation and move-in coordination","Payment for relocation and move-in coordination services — [Object] — Invoice [№]","支付搬迁及入住协调服务费 — [房产] — 发票 [№]","Оплата координации релокации и заселения — [Объект] — Инвойс [№]","client"],["hostedVisit","Hosted property visit and interpretation","Payment for hosted property visits and interpretation services — [Project / Area] — Invoice [№]","支付陪同看房及口译服务费 — [项目 / 区域] — 发票 [№]","Оплата сопровождения просмотров и устного перевода — [Проект / Район] — Инвойс [№]","client"]]],["other",[["monthlyRetainer","Monthly property advisory","Payment for monthly property advisory services — [Project / Area] — Invoice [№]","支付月度房地产顾问服务费 — [项目 / 区域] — 发票 [№]","Оплата ежемесячных консультаций по недвижимости — [Проект / Район] — Инвойс [№]","client"],["consultancyReport","Property consultancy and report","Payment for property consultancy and report services — [Subject / Area] — Invoice [№]","支付房地产咨询及报告服务费 — [主题 / 区域] — 发票 [№]","Оплата консультации и отчёта по недвижимости — [Тема / Район] — Инвойс [№]","client"]]]];
+    const PURPOSE_NAMES = {"ru":{"CDN":"Доставка контента через сеть (CDN)","Cloud / VPS":"Аренда облачного сервера (VPS)","CPU / bare-metal":"Аренда выделенного сервера","GPU rental":"Аренда вычислительных мощностей (GPU)","Reserved GPU":"Резерв вычислительных мощностей на год","AI training / inference":"Облачные мощности для искусственного интеллекта (AI)","DDoS protection":"Защита от сетевых атак (DDoS)","WAF / WAAP":"Защита веб-приложений (WAF / WAAP)","Cybersecurity / bots":"Кибербезопасность и защита от ботов","Managed DNS":"Управление доменными записями (DNS)","Full stack cloud":"Комплекс облачных услуг","Kubernetes / storage":"Управляемая платформа и хранилище (Kubernetes)","Setup":"Разовое подключение и настройка","Scale":"Увеличение облачных мощностей","SLA":"Расширенная сервисная поддержка (SLA)","IT hardware / GPU servers":"Поставка IT-оборудования и GPU-серверов","GPU workstation":"Поставка рабочей станции с GPU","AI server H100/H200":"Поставка AI-сервера H100/H200","Turnkey rack / cluster":"Поставка серверной стойки или кластера под ключ","developerCommission":"Комиссия за объект","successCommission":"Комиссия за успешно завершённую сделку","propertySearch":"Поиск недвижимости","marketAnalysis":"Анализ рынка и подбор вариантов","selectionAdvisory":"Помощь в выборе объекта","negotiation":"Переговоры по объекту","viewing":"Организация просмотра объекта","searchPackage":"Пакет: поиск, анализ и переговоры","yieldAnalysis":"Расчёт доходности объекта","secondHome":"Консультации по второму дому","additionalShortlist":"Дополнительный подбор объектов","purchaseAdvisory":"Сопровождение покупки и координация проверки","contractCoordination":"Координация проверки договора","interiorAdvisory":"Консультации по интерьеру и ремонту","tenancyAdvisory":"Сопровождение аренды","relocation":"Помощь с переездом и заселением","hostedVisit":"Сопровождение просмотров и перевод","monthlyRetainer":"Ежемесячное сопровождение","consultancyReport":"Консультация и отчёт по недвижимости"},"zh":{"CDN":"内容分发网络服务（CDN）","Cloud / VPS":"云服务器租赁（VPS）","CPU / bare-metal":"独立服务器租赁","GPU rental":"GPU算力租赁","Reserved GPU":"年度预留GPU算力","AI training / inference":"人工智能训练及推理云服务（AI）","DDoS protection":"网络攻击防护（DDoS）","WAF / WAAP":"网站应用安全防护（WAF / WAAP）","Cybersecurity / bots":"网络安全及机器人防护","Managed DNS":"托管域名解析服务（DNS）","Full stack cloud":"综合云基础设施服务","Kubernetes / storage":"托管平台及对象存储（Kubernetes）","Setup":"一次性开通及配置","Scale":"增加云端或GPU资源","SLA":"增强服务等级支持（SLA）","IT hardware / GPU servers":"采购IT设备及GPU服务器","GPU workstation":"采购GPU工作站","AI server H100/H200":"采购H100/H200人工智能服务器","Turnkey rack / cluster":"采购整机柜或集群","developerCommission":"开发商代理佣金","successCommission":"成功完成交易的佣金","propertySearch":"房产搜寻服务","marketAnalysis":"市场分析及房源初选","selectionAdvisory":"房产选择咨询","negotiation":"房产交易谈判","viewing":"现场考察及看房","searchPackage":"房产搜寻、分析及谈判套餐","yieldAnalysis":"投资及租金收益分析","secondHome":"第二居所咨询","additionalShortlist":"追加房源初选","purchaseAdvisory":"购房咨询及尽职调查协调","contractCoordination":"合同审阅协调","interiorAdvisory":"室内设计及装修咨询","tenancyAdvisory":"租赁咨询","relocation":"搬迁及入住协调","hostedVisit":"陪同看房及口译","monthlyRetainer":"月度房地产顾问服务","consultancyReport":"房地产咨询及报告"}};
     const esc = s => String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
-    const linked = s => {
-      const raw=String(s);
-      const full="https://west-east.cloud/gpu-servers/cloud/";
-      const short="west-east.cloud/gpu-servers/cloud/";
-      const token=raw.includes(full)?full:(raw.includes(short)?short:null);
-      if(!token) return esc(raw);
-      const at=raw.indexOf(token);
-      return `${esc(raw.slice(0,at))}<a href="${full}" target="_blank" rel="noopener noreferrer">${esc(token)}</a>${esc(raw.slice(at+token.length))}`;
-    };
+    const linked = s => esc(s);
     const copyButton = text => `<button class="copy-btn" type="button" aria-label="Copy" data-copy="${esc(text)}">⧉</button>`;
     const facts = (keys,values) => values.map((v,i)=>`<div class="fact"><div class="k">${esc(keys[i])}</div><div class="v">${linked(v)}</div></div>`).join("");
     const routes = rows => rows.map(r=>`<article class="route ${r[0]}"><span class="flag">${esc(r[1])}</span><h3>${esc(r[2])}</h3><p>${esc(r[3])}</p></article>`).join("");
@@ -563,7 +240,7 @@
     const offerMenu = t => `<div class="offer-grid">${t.menuGroups.map(x=>`<article class="offer-card"><h3>${esc(x[0])}</h3><p>${esc(x[1])}</p><ul>${x[2].map(item=>`<li>${esc(item)}</li>`).join("")}</ul><div class="recipient">${esc(t.menuRecipient)}: <b>${esc(x[3])}</b></div></article>`).join("")}</div>`;
     function makePage(t){
       const wetFactKeys=[t.labels.jur,t.labels.reg,t.labels.address,t.labels.site];
-      const westAccounts=WEST_BANKS.map((rows,i)=>bankBox(t.accountNames[i],t.accountSubs[i],rows.map(x=>BANK_LABELS[t.lang][x[0]]||x[0]),rows.map(x=>x[1]))).join("");
+
       const groups=WEST_GROUPS.map(g=>details(t.groupNames[g[0]],purposeRows(g[1],t))).join("");
       const faq=t.faq.map(x=>details(x[0],`<div class="answer"><p>${esc(x[1])}</p></div>`,"faq")).join("");
       return `<section class="language lang-${t.lang}" lang="${t.lang}">
@@ -575,10 +252,7 @@
           <section class="intro"><div class="lead-card"><p>${esc(t.intro)}</p></div><div class="status-card"><h3>${esc(t.quick)}</h3><p>${esc(t.quickText)}</p></div></section>
           <section class="chapter" style="margin-top:0">${chapterTitle("→",t.menuTitle,t.menuSub)}${offerMenu(t)}<p class="note">${esc(t.menuNote)}</p></section>
           <section class="chapter">${chapterTitle("01",t.chapter1,t.chapter1sub)}
-            <div class="entity-strip">${facts(wetFactKeys,t.wetFacts)}</div>
-            <div class="route-grid">${routes(t.wetRoutes)}</div>
-            ${bankBox(t.bankTitle,t.bankSub,t.bankKeys,BANK_VALUES)}
-            <p class="note">${esc(t.wetNote)}</p>
+            <p class="note">${esc(t.paymentNote)}</p>
             ${formula(t.master,t.masterCode)}<p class="note">${esc(t.formulaHelp)}</p>${formula(t.bankShort,t.bankShortCode)}
             <div class="chapter-title" style="margin-top:34px"><span class="chapter-no">A</span><div><h2>${esc(t.catTitle)}</h2><p>${esc(t.catSub)}</p></div></div>
             <div class="details-stack">${details(t.serviceSummary,purposeRows(WET_SERVICES,t))}${details(t.goodsSummary,purposeRows(WET_GOODS,t))}</div>
@@ -589,11 +263,7 @@
             <p class="note"><strong>${esc(t.dontTitle)}:</strong> ${esc(t.dontItems)}</p>
           </section>
           <section class="chapter">${chapterTitle("02",t.chapter2,t.chapter2sub)}
-            <div class="entity-strip">${facts(t.westFactKeys,t.westFacts)}</div>
-            <p class="note">${esc(t.activity)}</p>
-            <div class="chapter-title" style="margin-top:34px"><span class="chapter-no">A</span><div><h2>${esc(t.accountTitle)}</h2><p>${esc(t.accountSub)}</p></div></div>
-            <div class="accounts-grid">${routes(t.accounts)}</div>
-            ${westAccounts}
+            <p class="note">${esc(t.paymentNote)}</p>
             <div class="chapter-title" style="margin-top:34px"><span class="chapter-no">B</span><div><h2>${esc(t.paletteTitle)}</h2><p>${esc(t.paletteSub)}</p></div></div>
             ${formula(t.common,t.commonCode)}<p class="note">${esc(t.commonHelp)}</p>
             <div class="details-stack">${groups}</div>
