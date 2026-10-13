@@ -243,8 +243,9 @@ function renderOfferDetails(id) {
   content += `<p class="detail-reference">Справочный информационный расчёт. Данные о комиссии исполнителя получены из открытых источников. Перед проведением сделки уточните актуальность расчёта напрямую у исполнителя.</p>`;
   ui.dialog.querySelector("#dialog-content").innerHTML = content;
   const destination = ui.dialog.querySelector("#dialog-website");
-  destination.href = offer.own && validAmount ? draftUrl(amountValue()) : offer.website;
-  destination.textContent = offer.own ? "Запросить расчёт ↗" : "Запросить у сервиса ↗";
+  destination.href = offer.own ? validAmount ? draftUrl(amount) : data.charter.contact : offer.website;
+  destination.textContent = "Перейти к сделке ↗";
+  destination.setAttribute("aria-label", `Перейти к сделке: ${offer.name}`);
   return true;
 }
 
@@ -252,6 +253,7 @@ function openOffer(id) {
   if (!data || !renderOfferDetails(id)) return;
   selectedOfferId = id;
   if (!ui.dialog.open) ui.dialog.showModal();
+  ui.dialog.querySelector("#dialog-content").scrollTop = 0;
 }
 
 document.querySelectorAll('input[name="currency"]').forEach((input) => input.addEventListener("change", () => {currency = input.value; render();}));

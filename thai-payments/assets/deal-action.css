@@ -1,0 +1,74 @@
+/* Keep the next step visible while the calculation scrolls inside the dialog. */
+#offer-dialog[open] {
+  display: flex;
+  flex-direction: column;
+  max-height: 85vh;
+  max-height: min(85dvh, calc(100dvh - 24px));
+  overflow: hidden;
+}
+
+#offer-dialog > .dialog-top,
+#offer-dialog > h2,
+#offer-dialog > .dialog-variant {
+  flex-shrink: 0;
+}
+
+#dialog-content {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: 6px;
+  margin-right: -6px;
+}
+
+#offer-dialog .dialog-actions {
+  flex: 0 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  background: white;
+}
+
+#offer-dialog .dialog-actions .button {
+  min-height: 46px;
+  line-height: 1.25;
+  text-align: center;
+  white-space: normal;
+}
+
+#dialog-website {
+  flex: 2 1 200px;
+}
+
+#dialog-done,
+#copy-calculation {
+  flex: 1 1 auto;
+}
+
+#dialog-content:focus-visible {
+  outline: 2px solid var(--blue, #234de3);
+  outline-offset: -2px;
+  border-radius: 6px;
+}
+
+@media (max-width: 600px) {
+  #offer-dialog[open] {
+    padding: 20px;
+    max-height: calc(100dvh - 24px);
+  }
+
+  #offer-dialog .dialog-actions {
+    gap: 8px;
+    margin-top: 12px;
+    padding-top: 12px;
+  }
+
+  #offer-dialog #dialog-website {
+    flex: 1 0 100%;
+    font-size: 14px;
+  }
+}
