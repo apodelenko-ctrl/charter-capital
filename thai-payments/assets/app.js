@@ -168,7 +168,7 @@ function offerRow(offer, amount) {
   const logo = logos[offer.providerId];
   const avatar = logo
     ? `<span class="provider-avatar provider-logo" aria-hidden="true"><img src="assets/logos/${logo}" alt="" width="34" height="34" decoding="async"></span>`
-    : wordmark ? "" : `<span class="provider-avatar" aria-hidden="true">${offer.own ? "C" : escapeHtml(offer.name.slice(0, 1))}</span>`;
+    : wordmark ? "" : `<span class="provider-avatar${offer.own ? " charter-avatar" : ""}" aria-hidden="true">${offer.own ? "CC" : escapeHtml(offer.name.slice(0, 1))}</span>`;
   const name = wordmark ? 'GRUSHA <span>AGENCY</span>' : escapeHtml(offer.name);
   const link = offer.own ? ui.request.href || data.charter.contact : offer.website;
   const actions = offer.own
