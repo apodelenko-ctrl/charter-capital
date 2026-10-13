@@ -1,0 +1,213 @@
+{
+  "updatedOn": "2026-10-13",
+  "cbr": {
+    "rate": 83.9153,
+    "date": "2026-10-13",
+    "url": "https://www.cbr.ru/currency_base/daily/?UniDbQuery.Posted=True&UniDbQuery.To=13.10.2026"
+  },
+  "charter": {
+    "rubPremium": 0.03,
+    "usdtInputFee": 0.025,
+    "contact": "https://t.me/ccapital_acces",
+    "date": "2026-10-13"
+  },
+  "offers": [
+    {
+      "id": "ex24-usdt-2026-10-13",
+      "providerId": "ex24",
+      "name": "Ex24.pro",
+      "website": "https://ex24.pro/",
+      "variant": "USDT → USD",
+      "method": "usdt",
+      "currency": "USDT",
+      "inputAmount": 28000,
+      "outputUsd": 26770,
+      "rate": 1.0459469555472545,
+      "cost": 0.04392857142857143,
+      "date": "2026-10-13",
+      "dateKind": "Получено",
+      "receive": "Онлайн-рубли — оплата по СБП. Также предложены наличные в Москве и USDT.",
+      "send": "В котировке указана SWIFT-оплата в USD. Банк и фактический отправитель не раскрыты.",
+      "note": "Полное юрлицо и реквизиты получателя рублей в представленных материалах не указаны."
+    },
+    {
+      "id": "ex24-rub-2026-10-13",
+      "providerId": "ex24",
+      "name": "Ex24.pro",
+      "website": "https://ex24.pro/",
+      "variant": "Онлайн · СБП",
+      "method": "bank",
+      "currency": "RUB",
+      "inputAmount": 2594700,
+      "outputUsd": 26770,
+      "rate": 96.92566305565931,
+      "cost": 0.155041608093629,
+      "date": "2026-10-13",
+      "dateKind": "Получено",
+      "receive": "Онлайн-рубли — оплата по СБП. Также предложены наличные в Москве и USDT.",
+      "send": "В котировке указана SWIFT-оплата в USD. Банк и фактический отправитель не раскрыты.",
+      "note": "Полное юрлицо и реквизиты получателя рублей в представленных материалах не указаны.",
+      "cbr": {
+        "rate": 83.9153,
+        "date": "2026-10-13",
+        "url": "https://www.cbr.ru/currency_base/daily/?UniDbQuery.Posted=True&UniDbQuery.To=13.10.2026"
+      }
+    },
+    {
+      "id": "ex24-rub-cash-moscow-2026-10-13",
+      "providerId": "ex24",
+      "name": "Ex24.pro",
+      "website": "https://ex24.pro/",
+      "variant": "Наличные · Москва",
+      "method": "cash",
+      "currency": "RUB",
+      "inputAmount": 2448000,
+      "outputUsd": 26670,
+      "rate": 91.78852643419573,
+      "cost": 0.09382349147528202,
+      "date": "2026-10-13",
+      "dateKind": "Получено",
+      "receive": "Онлайн-рубли — оплата по СБП. Также предложены наличные в Москве и USDT.",
+      "send": "В котировке указана SWIFT-оплата в USD. Банк и фактический отправитель не раскрыты.",
+      "note": "Полное юрлицо и реквизиты получателя рублей в представленных материалах не указаны. В этой котировке к получению 26 670 USD, в онлайн-варианте — 26 770 USD. Кто принимает наличные и какой документ выдаёт, не уточнено.",
+      "cbr": {
+        "rate": 83.9153,
+        "date": "2026-10-13",
+        "url": "https://www.cbr.ru/currency_base/daily/?UniDbQuery.Posted=True&UniDbQuery.To=13.10.2026"
+      }
+    },
+    {
+      "id": "the-one-rub-2026-10-07",
+      "providerId": "the-one-exchange",
+      "name": "The One Exchange",
+      "website": "https://the-one.exchange/ru",
+      "variant": "RUB · способ уточняется",
+      "method": "unknown",
+      "currency": "RUB",
+      "inputAmount": 2967828,
+      "outputUsd": 33000,
+      "rate": 89.93418181818181,
+      "cost": 0.04926499818206409,
+      "date": "2026-10-07",
+      "dateKind": "Котировка",
+      "receive": "Предложен приём RUB. Способ приёма и получатель в котировке не уточнены.",
+      "send": "Указана сумма USD к получению. Отправитель и банк для этого расчёта не названы.",
+      "note": "Стоимость рассчитана по полным суммам: курс в сообщении округлён до 89,93 RUB/USD.",
+      "cbr": {
+        "rate": 85.7116,
+        "date": "2026-10-07",
+        "url": "https://www.cbr.ru/currency_base/daily/?UniDbQuery.Posted=True&UniDbQuery.To=07.10.2026"
+      }
+    },
+    {
+      "id": "arbi-swift-individual-2026-10-13",
+      "providerId": "arbi-exchange",
+      "name": "ARBI Exchange",
+      "website": "https://arbi.exchange/",
+      "variant": "СБП · SWIFT с физлица",
+      "method": "bank",
+      "currency": "RUB",
+      "inputAmount": 2534100,
+      "outputUsd": 26770,
+      "rate": 94.66193500186776,
+      "cost": 0.12806526344859348,
+      "date": "2026-10-13",
+      "dateKind": "Получено",
+      "receive": "По переписке: онлайн-рубли по СБП на юрлицо; назван банк-партнёр АО «Банк 131». Также предложены наличные в Москве.",
+      "send": "Для варианта с физлица ARBI заявляют SWIFT из Индонезии через одноразовый счёт на имя клиента. Банковское подтверждение этого маршрута не представлено.",
+      "note": "Предложен дополнительный резерв 0,5–1% из-за изменения USD/THB. Он не добавлен к цене в сравнении. Полное юрлицо получателя рублей и индонезийский банк не названы.",
+      "cbr": {
+        "rate": 83.9153,
+        "date": "2026-10-13",
+        "url": "https://www.cbr.ru/currency_base/daily/?UniDbQuery.Posted=True&UniDbQuery.To=13.10.2026"
+      }
+    },
+    {
+      "id": "arbi-swift-company-2026-10-13",
+      "providerId": "arbi-exchange",
+      "name": "ARBI Exchange",
+      "website": "https://arbi.exchange/",
+      "variant": "СБП · SWIFT с юрлица",
+      "method": "bank",
+      "currency": "RUB",
+      "inputAmount": 2514600,
+      "outputUsd": 26770,
+      "rate": 93.93350765782593,
+      "cost": 0.11938475650835922,
+      "date": "2026-10-13",
+      "dateKind": "Получено",
+      "receive": "По переписке: онлайн-рубли по СБП на юрлицо; назван банк-партнёр АО «Банк 131». Также предложены наличные в Москве.",
+      "send": "Предложена SWIFT-оплата с юрлица. Применимость описанного ARBI маршрута из Индонезии к этому варианту не подтверждена.",
+      "note": "Предложен дополнительный резерв 0,5–1% из-за изменения USD/THB. Он не добавлен к цене в сравнении. Полное юрлицо получателя рублей и индонезийский банк не названы.",
+      "cbr": {
+        "rate": 83.9153,
+        "date": "2026-10-13",
+        "url": "https://www.cbr.ru/currency_base/daily/?UniDbQuery.Posted=True&UniDbQuery.To=13.10.2026"
+      }
+    },
+    {
+      "id": "arbi-swift-individual-cash-moscow-2026-10-13",
+      "providerId": "arbi-exchange",
+      "name": "ARBI Exchange",
+      "website": "https://arbi.exchange/",
+      "variant": "Наличные · Москва · физлицо",
+      "method": "cash",
+      "currency": "RUB",
+      "inputAmount": 2451500,
+      "outputUsd": 26770,
+      "rate": 91.57639148300336,
+      "cost": 0.0912955263581654,
+      "date": "2026-10-13",
+      "dateKind": "Получено",
+      "receive": "По переписке: онлайн-рубли по СБП на юрлицо; назван банк-партнёр АО «Банк 131». Также предложены наличные в Москве.",
+      "send": "Для варианта с физлица ARBI заявляют SWIFT из Индонезии через одноразовый счёт на имя клиента. Банковское подтверждение этого маршрута не представлено.",
+      "note": "Предложен дополнительный резерв 0,5–1% из-за изменения USD/THB. Он не добавлен к цене в сравнении. Полное юрлицо получателя рублей и индонезийский банк не названы.",
+      "cbr": {
+        "rate": 83.9153,
+        "date": "2026-10-13",
+        "url": "https://www.cbr.ru/currency_base/daily/?UniDbQuery.Posted=True&UniDbQuery.To=13.10.2026"
+      }
+    },
+    {
+      "id": "grusha-rub-2026-10-07",
+      "providerId": "grusha-agency",
+      "name": "Grusha Agency",
+      "website": "https://grusha.agency/",
+      "variant": "По реквизитам · Сбербанк",
+      "method": "bank",
+      "currency": "RUB",
+      "inputAmount": 2887420.95,
+      "outputUsd": 32268.66,
+      "rate": 89.48065863286546,
+      "cost": 0.043973728560258385,
+      "date": "2026-10-07",
+      "dateKind": "Котировка",
+      "receive": "По переписке: RUB по банковским реквизитам на счёт в Сбербанке; также принимают USDT.",
+      "send": "В шаблоне договора агентом названа MF Corporation Company Limited, Таиланд. Конкретный банковский отправитель USD в шаблоне не определён.",
+      "note": "Для рублей запрашивают подтверждение источника средств; для USDT заявлена AML-проверка кошелька. За один THB-инвойс в двух вариантах предложены разные суммы USD.",
+      "cbr": {
+        "rate": 85.7116,
+        "date": "2026-10-07",
+        "url": "https://www.cbr.ru/currency_base/daily/?UniDbQuery.Posted=True&UniDbQuery.To=07.10.2026"
+      }
+    },
+    {
+      "id": "grusha-usdt-2026-10-07",
+      "providerId": "grusha-agency",
+      "name": "Grusha Agency",
+      "website": "https://grusha.agency/",
+      "variant": "USDT → USD",
+      "method": "usdt",
+      "currency": "USDT",
+      "inputAmount": 33279.85,
+      "outputUsd": 32124.81,
+      "rate": 1.0359547651799341,
+      "cost": 0.03470688720051314,
+      "date": "2026-10-07",
+      "dateKind": "Котировка",
+      "receive": "По переписке: RUB по банковским реквизитам на счёт в Сбербанке; также принимают USDT.",
+      "send": "В шаблоне договора агентом названа MF Corporation Company Limited, Таиланд. Конкретный банковский отправитель USD в шаблоне не определён.",
+      "note": "Для рублей запрашивают подтверждение источника средств; для USDT заявлена AML-проверка кошелька. За один THB-инвойс в двух вариантах предложены разные суммы USD."
+    }
+  ]
+}

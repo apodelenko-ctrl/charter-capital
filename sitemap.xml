@@ -4,6 +4,14 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
   <url>
+    <loc>https://ccapital.pro/thai-payments/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ccapital.pro/thai-payments/"/>
+  </url>
+
+  <url>
     <loc>https://ccapital.pro/</loc>
     <lastmod>2026-09-16</lastmod>
     <changefreq>weekly</changefreq>
