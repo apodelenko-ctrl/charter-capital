@@ -31,7 +31,7 @@ jobs:
 
       - name: Validate calculations and CBR parsing
         run: |
-          node --test .github/tests/payment_calculation.test.mjs
+          node --test .github/tests/payment_*.test.mjs
           python3 -m unittest discover -s .github/tests -p 'test_property_cbr.py'
 
       - name: Refresh today's official CBR rate
@@ -94,7 +94,7 @@ jobs:
                 const response = await fetch('https://ccapital.pro/thai-payments/cbr.json?v=' + process.env.PUBLISHED_REVISION + '&check=' + Date.now(), {cache: 'no-store'});
                 if (response.ok) {
                   const actual = await response.json();
-                  const matches = ['rate', 'date', 'checkedFor', 'verifiedAt'].every(key => actual[key] === expected[key]);
+                  const matches = ['rate', 'thbRub', 'date', 'checkedFor', 'verifiedAt'].every(key => actual[key] === expected[key]);
                   if (matches) {published = true; break;}
                   problem = 'Published CBR data differs from the source';
                 }

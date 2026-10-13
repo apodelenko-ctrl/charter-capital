@@ -1,5 +1,7 @@
 "use strict";
 import {paymentRate, paymentAmount, calculationConfirmed, isValidCbr, moscowDay} from "./calculation.mjs?v=20261013-4";
+import {initMotion, animateRows, animateValues} from "./motion.mjs?v=20261013-5";
+import {tickerEntries, isValidBankRate} from "./rates.mjs?v=20261013-5";
 
 const ui = {
   amount: document.getElementById("usd-amount"),
@@ -31,6 +33,10 @@ const ui = {
 let data;
 let currency = "RUB";
 let validAmount = true;
+let bankRate = null;
+let lastRows = "";
+let lastDisplay = "";
+let lastTicker = "";
 const money = new Intl.NumberFormat("ru-RU", {minimumFractionDigits: 2, maximumFractionDigits: 2});
 const shortNumber = new Intl.NumberFormat("ru-RU", {maximumFractionDigits: 2});
 const rateNumber = new Intl.NumberFormat("ru-RU", {minimumFractionDigits: 4, maximumFractionDigits: 4});
@@ -38,6 +44,19 @@ const percentage = new Intl.NumberFormat("ru-RU", {minimumFractionDigits: 2, max
 const dateLabel = (date) => date.split("-").reverse().join(".");
 const symbol = (curr) => curr === "RUB" ? "₽" : "USDT";
 const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (char) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[char]));
+
+initMotion();
+
+function updateTicker() {
+  const entries = tickerEntries(data?.cbr, bankRate);
+  const signature = JSON.stringify(entries);
+  if (signature === lastTicker) return;
+  lastTicker = signature;
+  const html = entries.map((entry) => `<a class="ticker-item${entry.stale ? " is-stale" : ""}" href="${escapeHtml(entry.url)}" target="_blank" rel="noopener noreferrer" title="${escapeHtml(entry.source)}${entry.pair === "USD / THB" ? " · покупка USD для переводов" : ""}"><span class="ticker-pair">${escapeHtml(entry.pair)}</span><strong>${escapeHtml(entry.value)}</strong><span class="ticker-source">${escapeHtml(entry.source)}</span></a>`).join("");
+  document.getElementById("ticker-rates").innerHTML = html;
+  document.getElementById("ticker-copy").innerHTML = html.replaceAll('<a ', '<a tabindex="-1" ');
+  document.getElementById("ticker-track").classList.add("is-ready");
+}
 
 function amountValue() {
   const clean = ui.amount.value.replace(/[\s\u00a0\u202f]/g, "").replace(",", ".");
@@ -172,6 +191,13 @@ function render() {
   ui.body.innerHTML = offers.map((offer) => offerRow(offer, amount)).join("");
   ui.count.textContent = `${offers.length} ${resultWord(offers.length)}`;
   ui.empty.hidden = offers.length > 0;
+  const rows = offers.map((offer) => offer.id).join("|");
+  const display = `${currency}|${amount}|${data.cbr?.rate}`;
+  if (rows !== lastRows) animateRows(ui.body);
+  if (display !== lastDisplay) animateValues([ui.total, ...ui.body.querySelectorAll(".cell-amount")]);
+  lastRows = rows;
+  lastDisplay = display;
+  updateTicker();
 }
 
 function detailBlock(title, text, extraClass = "") {
@@ -237,6 +263,18 @@ async function refreshCbr() {
   } finally {refreshing = false; render();}
 }
 
+async function refreshBangkok() {
+  try {
+    const rate = await fetchJson("bangkok-bank.json");
+    if (!isValidBankRate(rate)) throw new Error("Invalid bank rate");
+    bankRate = rate;
+  } catch {
+    // Retain the last verified bank quote and its original publication timestamp.
+  } finally {updateTicker();}
+}
+
+const refreshRates = () => Promise.all([refreshCbr(), refreshBangkok()]);
+
 async function init() {
   try {
     const loaded = await fetchJson("offers.json");
@@ -246,9 +284,9 @@ async function init() {
       || loaded.offers.some((offer) => !Number.isFinite(offer.cost) || offer.cost < 0 || !["RUB", "USDT"].includes(offer.currency) || (offer.currency === "USDT" && offer.cost >= 1))) throw new Error("Invalid percentage data");
     data = {...loaded, cbr: null};
     render();
-    await refreshCbr();
-    setInterval(() => {if (document.visibilityState !== "hidden") refreshCbr();}, 5 * 60 * 1000);
-    document.addEventListener("visibilitychange", () => {if (document.visibilityState === "visible") refreshCbr();});
+    await refreshRates();
+    setInterval(() => {if (document.visibilityState !== "hidden") refreshRates();}, 5 * 60 * 1000);
+    document.addEventListener("visibilitychange", () => {if (document.visibilityState === "visible") refreshRates();});
   } catch {
     document.getElementById("load-error").hidden = false;
     ui.count.textContent = "Данные сервисов недоступны";

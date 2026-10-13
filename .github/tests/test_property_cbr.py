@@ -11,8 +11,8 @@ module = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(module)
 
 
-def xml(day="13.10.2026", nominal="1", value="83,9153", code="USD"):
-    return f'<ValCurs Date="{day}"><Valute><CharCode>{code}</CharCode><Nominal>{nominal}</Nominal><Value>{value}</Value></Valute></ValCurs>'.encode()
+def xml(day="13.10.2026", nominal="1", value="83,9153", code="USD", thb_nominal="10", thb_value="25,0337"):
+    return f'<ValCurs Date="{day}"><Valute><CharCode>{code}</CharCode><Nominal>{nominal}</Nominal><Value>{value}</Value></Valute><Valute><CharCode>THB</CharCode><Nominal>{thb_nominal}</Nominal><Value>{thb_value}</Value></Valute></ValCurs>'.encode()
 
 
 class CbrTest(unittest.TestCase):
@@ -25,6 +25,12 @@ class CbrTest(unittest.TestCase):
     def test_official_usd_and_nominal_normalization(self):
         self.assertEqual(self.parse(xml())["rate"], 83.9153)
         self.assertEqual(self.parse(xml(nominal="100", value="8391,53"))["rate"], 83.9153)
+
+    def test_thb_is_normalized_to_one_baht(self):
+        self.assertEqual(self.parse(xml())["thbRub"], 2.50337)
+        for body in [xml(thb_nominal="0"), xml(thb_value="NaN"), xml(thb_value="-1")]:
+            with self.assertRaises(ValueError):
+                self.parse(body)
 
     def test_previous_working_day_is_valid_for_requested_day(self):
         rate = self.parse(xml(day="09.10.2026"))

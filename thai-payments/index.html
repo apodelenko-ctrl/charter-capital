@@ -21,8 +21,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;550;600;650;700;750;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/styles.css?v=20261013-4">
-  <script type="module" src="assets/app.js?v=20261013-4"></script>
+  <link rel="stylesheet" href="assets/styles.css?v=20261013-5">
+  <link rel="stylesheet" href="assets/motion.css?v=20261013-5">
+  <script type="module" src="assets/app.js?v=20261013-5"></script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Оплата недвижимости в Таиланде — агрегатор сервисов","url":"https://ccapital.pro/thai-payments/","inLanguage":"ru","dateModified":"2026-10-13","publisher":{"@type":"Organization","name":"Charter Capital","url":"https://ccapital.pro/"},"description":"Сравнение котировок платёжных сервисов для оплаты недвижимости в Таиланде в RUB и USDT."}</script>
 </head>
 <body>
@@ -39,6 +40,18 @@
     <a class="button header-contact" href="https://t.me/ccapital_acces" target="_blank" rel="noopener noreferrer">Обсудить платёж <span aria-hidden="true">↗</span></a>
   </div>
 </header>
+<div class="rates-ticker" role="region" aria-label="Курсы валют ЦБ РФ и Bangkok Bank">
+  <div class="shell rates-ticker-inner">
+    <span class="ticker-caption"><span class="ticker-dot" aria-hidden="true"></span> Курсы</span>
+    <div class="ticker-window" id="ticker-window">
+      <div class="ticker-track" id="ticker-track">
+        <div class="ticker-group" id="ticker-rates"><span class="ticker-loading">Получаем курсы ЦБ РФ и Bangkok Bank</span></div>
+        <div class="ticker-group" id="ticker-copy" aria-hidden="true"></div>
+      </div>
+    </div>
+    <button class="ticker-pause" id="ticker-pause" type="button" aria-label="Приостановить бегущую строку" aria-pressed="false"><span aria-hidden="true">Ⅱ</span></button>
+  </div>
+</div>
 <main>
   <section class="hero shell">
     <div class="hero-copy">

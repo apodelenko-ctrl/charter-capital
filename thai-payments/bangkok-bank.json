@@ -1,0 +1,11 @@
+{
+  "provider": "Bangkok Bank",
+  "pair": "USD/THB",
+  "type": "TT-buying",
+  "rate": 33.45,
+  "sellingRate": 33.75,
+  "publishedAt": "2026-10-12T15:15:00+07:00",
+  "checkedAt": "2026-10-13T14:01:25.439674+00:00",
+  "source": "https://www.bangkokbank.com/en/Personal/Other-Services/View-Rates/Foreign-Exchange-Rates",
+  "url": "https://www.bangkokbank.com/en/Personal/Other-Services/View-Rates/Foreign-Exchange-Rates"
+}

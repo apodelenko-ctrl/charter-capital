@@ -1,4 +1,4 @@
-"""Fetch the official CBR USD rate for today's Moscow date and save atomically."""
+"""Fetch official CBR USD and THB rates for today's Moscow date and save atomically."""
 import argparse
 import json
 import math
@@ -17,20 +17,25 @@ def parse_rate(xml: bytes, requested: date, verified_at: datetime) -> dict:
     effective = datetime.strptime(root.attrib["Date"], "%d.%m.%Y").date()
     if effective > requested:
         raise ValueError("CBR returned a future rate")
-    usd = next((item for item in root.findall("Valute") if item.findtext("CharCode") == "USD"), None)
-    if usd is None:
-        raise ValueError("USD is missing from CBR XML")
-    nominal = Decimal(usd.findtext("Nominal"))
-    value = Decimal(usd.findtext("Value").replace(",", "."))
-    if not nominal.is_finite() or nominal <= 0 or not value.is_finite() or value <= 0:
-        raise ValueError("Invalid CBR USD rate")
-    rate = float(value / nominal)
-    if not math.isfinite(rate) or rate <= 0:
-        raise ValueError("Invalid normalized CBR USD rate")
+    def normalized(code):
+        item = next((item for item in root.findall("Valute") if item.findtext("CharCode") == code), None)
+        if item is None:
+            raise ValueError(code + " is missing from CBR XML")
+        nominal = Decimal(item.findtext("Nominal"))
+        value = Decimal(item.findtext("Value").replace(",", "."))
+        if not nominal.is_finite() or nominal <= 0 or not value.is_finite() or value <= 0:
+            raise ValueError("Invalid CBR " + code + " rate")
+        rate = float(value / nominal)
+        if not math.isfinite(rate) or rate <= 0:
+            raise ValueError("Invalid normalized CBR " + code + " rate")
+        return rate
+    rate = normalized("USD")
+    thb = normalized("THB")
     requested_text = requested.strftime("%d.%m.%Y")
     return {
         "currency": "USD",
         "rate": rate,
+        "thbRub": thb,
         "date": effective.isoformat(),
         "checkedFor": requested.isoformat(),
         "verifiedAt": verified_at.astimezone(timezone.utc).isoformat(),
