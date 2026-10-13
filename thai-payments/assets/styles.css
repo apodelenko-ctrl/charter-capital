@@ -10,3 +10,10 @@
 @media print{.header,.calculator,.results-toolbar,.closing,.footer,.faq,.row-actions,.publisher-note{display:none!important}.shell{width:100%}.hero{padding:15px 0}.hero h1{font-size:28px}.hero-meta{font-size:10px}.tariff-card{color:black;background:white;border:1px solid #aaa}.tariff-card *{color:black!important}.monitor{display:block}.results-panel{border-color:#bbb}.table-context{background:white}.offers-table tr.charter-row{background:white}.how-section{padding:25px 0;break-inside:avoid}.methodology{break-inside:avoid}.source-note{grid-template-columns:120px 1fr 140px}.cell-sub,.provider-variant,.results-footnote p{font-size:9px}.offers-table tr{break-inside:avoid}body{background:white}}
 
 .calculation-status{font-size:9px;line-height:1.6;margin:11px 0 0}.row-confirmation{display:block;font-size:8px;line-height:1.6;margin-top:6px}.confirmed{color:var(--blue);font-weight:600;text-decoration:underline;text-decoration-color:#a9c1f5;text-underline-offset:3px}.pending{color:var(--muted);font-weight:400}.detail-block .calculation-status.confirmed{color:var(--blue)}
+
+@font-face{font-family:GrushaWordmark;src:url("logos/instrument-serif-italic.woff2") format("woff2");font-weight:400;font-style:italic;font-display:swap}
+.provider-avatar.provider-logo{display:grid;background:transparent;border:0;letter-spacing:0}
+.provider-logo img{display:block;width:100%;height:100%;object-fit:contain;border-radius:7px}
+.provider-name.provider-wordmark{display:inline-block;font-family:GrushaWordmark,Georgia,serif;font-size:19px;font-style:italic;font-weight:400;line-height:1.1;letter-spacing:-.45px;white-space:nowrap;background:#08080a;color:#f5f4f0;padding:4px 8px;border-radius:5px}
+.provider-wordmark>span{color:#c9a55a}
+.provider-meta{min-width:0}
