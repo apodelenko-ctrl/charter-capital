@@ -1,213 +1,127 @@
 {
-  "updatedOn": "2026-10-13",
-  "cbr": {
-    "rate": 83.9153,
-    "date": "2026-10-13",
-    "url": "https://www.cbr.ru/currency_base/daily/?UniDbQuery.Posted=True&UniDbQuery.To=13.10.2026"
-  },
+  "model": "fixed-percentages",
   "charter": {
     "rubPremium": 0.03,
     "usdtInputFee": 0.025,
-    "contact": "https://t.me/ccapital_acces",
-    "date": "2026-10-13"
+    "contact": "https://t.me/ccapital_acces"
   },
   "offers": [
     {
-      "id": "ex24-usdt-2026-10-13",
+      "id": "ex24-usdt",
       "providerId": "ex24",
       "name": "Ex24.pro",
       "website": "https://ex24.pro/",
       "variant": "USDT → USD",
       "method": "usdt",
       "currency": "USDT",
-      "inputAmount": 28000,
-      "outputUsd": 26770,
-      "rate": 1.0459469555472545,
       "cost": 0.04392857142857143,
-      "date": "2026-10-13",
-      "dateKind": "Получено",
       "receive": "Онлайн-рубли — оплата по СБП. Также предложены наличные в Москве и USDT.",
-      "send": "По котировке Ex24: SWIFT-оплата в USD.",
+      "send": "SWIFT-оплата в USD, по данным Ex24.",
       "note": "Для оплаты по СБП оператор выдаёт платёжный QR-код."
     },
     {
-      "id": "ex24-rub-2026-10-13",
+      "id": "ex24-rub",
       "providerId": "ex24",
       "name": "Ex24.pro",
       "website": "https://ex24.pro/",
       "variant": "Онлайн · СБП",
       "method": "bank",
       "currency": "RUB",
-      "inputAmount": 2594700,
-      "outputUsd": 26770,
-      "rate": 96.92566305565931,
       "cost": 0.155041608093629,
-      "date": "2026-10-13",
-      "dateKind": "Получено",
       "receive": "Онлайн-рубли — оплата по СБП. Также предложены наличные в Москве и USDT.",
-      "send": "По котировке Ex24: SWIFT-оплата в USD.",
-      "note": "Для оплаты по СБП оператор выдаёт платёжный QR-код.",
-      "cbr": {
-        "rate": 83.9153,
-        "date": "2026-10-13",
-        "url": "https://www.cbr.ru/currency_base/daily/?UniDbQuery.Posted=True&UniDbQuery.To=13.10.2026"
-      }
+      "send": "SWIFT-оплата в USD, по данным Ex24.",
+      "note": "Для оплаты по СБП оператор выдаёт платёжный QR-код."
     },
     {
-      "id": "ex24-rub-cash-moscow-2026-10-13",
+      "id": "ex24-rub-cash-moscow",
       "providerId": "ex24",
       "name": "Ex24.pro",
       "website": "https://ex24.pro/",
       "variant": "Наличные · Москва",
       "method": "cash",
       "currency": "RUB",
-      "inputAmount": 2448000,
-      "outputUsd": 26670,
-      "rate": 91.78852643419573,
       "cost": 0.09382349147528202,
-      "date": "2026-10-13",
-      "dateKind": "Получено",
       "receive": "Онлайн-рубли — оплата по СБП. Также предложены наличные в Москве и USDT.",
-      "send": "По котировке Ex24: SWIFT-оплата в USD.",
-      "note": "В этой котировке к получению 26 670 USD, в онлайн-варианте — 26 770 USD.",
-      "cbr": {
-        "rate": 83.9153,
-        "date": "2026-10-13",
-        "url": "https://www.cbr.ru/currency_base/daily/?UniDbQuery.Posted=True&UniDbQuery.To=13.10.2026"
-      }
+      "send": "SWIFT-оплата в USD, по данным Ex24.",
+      "note": "Наличные рубли передаются в Москве."
     },
     {
-      "id": "the-one-rub-2026-10-07",
+      "id": "the-one-rub",
       "providerId": "the-one-exchange",
       "name": "The One Exchange",
       "website": "https://the-one.exchange/ru",
       "variant": "RUB · способ уточняется",
       "method": "unknown",
       "currency": "RUB",
-      "inputAmount": 2967828,
-      "outputUsd": 33000,
-      "rate": 89.93418181818181,
       "cost": 0.04926499818206409,
-      "date": "2026-10-07",
-      "dateKind": "Котировка",
-      "receive": "Предложен приём RUB. Способ приёма и получатель в котировке не уточнены.",
-      "send": "Указана сумма USD к получению. Отправитель и банк для этого расчёта не названы.",
-      "note": "Стоимость рассчитана по полным суммам: курс в сообщении округлён до 89,93 RUB/USD.",
-      "cbr": {
-        "rate": 85.7116,
-        "date": "2026-10-07",
-        "url": "https://www.cbr.ru/currency_base/daily/?UniDbQuery.Posted=True&UniDbQuery.To=07.10.2026"
-      }
+      "receive": "Приём RUB. Способ внесения денег — по условиям сервиса.",
+      "send": "Платёж застройщику в USD. Отправитель и банк — по условиям сервиса.",
+      "note": "Процент применяется к курсу ЦБ для расчёта выбранной суммы USD."
     },
     {
-      "id": "arbi-swift-individual-2026-10-13",
+      "id": "arbi-swift-individual",
       "providerId": "arbi-exchange",
       "name": "ARBI Exchange",
       "website": "https://arbi.exchange/",
       "variant": "СБП · SWIFT с физлица",
       "method": "bank",
       "currency": "RUB",
-      "inputAmount": 2534100,
-      "outputUsd": 26770,
-      "rate": 94.66193500186776,
       "cost": 0.12806526344859348,
-      "date": "2026-10-13",
-      "dateKind": "Получено",
-      "receive": "По переписке: онлайн-рубли по СБП на юрлицо; назван банк-партнёр АО «Банк 131». Также предложены наличные в Москве.",
+      "receive": "По данным ARBI: онлайн-рубли по СБП на юрлицо; банк-партнёр — АО «Банк 131». Также принимают наличные в Москве.",
       "send": "По данным ARBI, для варианта с физлица — SWIFT из Индонезии через одноразовый счёт на имя клиента.",
-      "note": "Дополнительный резерв 0,5–1% на изменение USD/THB предложен отдельно от цены в таблице.",
-      "cbr": {
-        "rate": 83.9153,
-        "date": "2026-10-13",
-        "url": "https://www.cbr.ru/currency_base/daily/?UniDbQuery.Posted=True&UniDbQuery.To=13.10.2026"
-      }
+      "note": "Дополнительный резерв 0,5–1% на изменение USD/THB предложен отдельно от цены в таблице."
     },
     {
-      "id": "arbi-swift-company-2026-10-13",
+      "id": "arbi-swift-company",
       "providerId": "arbi-exchange",
       "name": "ARBI Exchange",
       "website": "https://arbi.exchange/",
       "variant": "СБП · SWIFT с юрлица",
       "method": "bank",
       "currency": "RUB",
-      "inputAmount": 2514600,
-      "outputUsd": 26770,
-      "rate": 93.93350765782593,
       "cost": 0.11938475650835922,
-      "date": "2026-10-13",
-      "dateKind": "Получено",
-      "receive": "По переписке: онлайн-рубли по СБП на юрлицо; назван банк-партнёр АО «Банк 131». Также предложены наличные в Москве.",
-      "send": "По котировке ARBI: SWIFT-оплата с юрлица.",
-      "note": "Дополнительный резерв 0,5–1% на изменение USD/THB предложен отдельно от цены в таблице.",
-      "cbr": {
-        "rate": 83.9153,
-        "date": "2026-10-13",
-        "url": "https://www.cbr.ru/currency_base/daily/?UniDbQuery.Posted=True&UniDbQuery.To=13.10.2026"
-      }
+      "receive": "По данным ARBI: онлайн-рубли по СБП на юрлицо; банк-партнёр — АО «Банк 131». Также принимают наличные в Москве.",
+      "send": "SWIFT-оплата с юрлица, по данным ARBI.",
+      "note": "Дополнительный резерв 0,5–1% на изменение USD/THB предложен отдельно от цены в таблице."
     },
     {
-      "id": "arbi-swift-individual-cash-moscow-2026-10-13",
+      "id": "arbi-swift-individual-cash-moscow",
       "providerId": "arbi-exchange",
       "name": "ARBI Exchange",
       "website": "https://arbi.exchange/",
       "variant": "Наличные · Москва · физлицо",
       "method": "cash",
       "currency": "RUB",
-      "inputAmount": 2451500,
-      "outputUsd": 26770,
-      "rate": 91.57639148300336,
       "cost": 0.0912955263581654,
-      "date": "2026-10-13",
-      "dateKind": "Получено",
-      "receive": "По переписке: онлайн-рубли по СБП на юрлицо; назван банк-партнёр АО «Банк 131». Также предложены наличные в Москве.",
+      "receive": "По данным ARBI: онлайн-рубли по СБП на юрлицо; банк-партнёр — АО «Банк 131». Также принимают наличные в Москве.",
       "send": "По данным ARBI, для варианта с физлица — SWIFT из Индонезии через одноразовый счёт на имя клиента.",
-      "note": "Дополнительный резерв 0,5–1% на изменение USD/THB предложен отдельно от цены в таблице.",
-      "cbr": {
-        "rate": 83.9153,
-        "date": "2026-10-13",
-        "url": "https://www.cbr.ru/currency_base/daily/?UniDbQuery.Posted=True&UniDbQuery.To=13.10.2026"
-      }
+      "note": "Дополнительный резерв 0,5–1% на изменение USD/THB предложен отдельно от цены в таблице."
     },
     {
-      "id": "grusha-rub-2026-10-07",
+      "id": "grusha-rub",
       "providerId": "grusha-agency",
       "name": "Grusha Agency",
       "website": "https://grusha.agency/",
       "variant": "По реквизитам · Сбербанк",
       "method": "bank",
       "currency": "RUB",
-      "inputAmount": 2887420.95,
-      "outputUsd": 32268.66,
-      "rate": 89.48065863286546,
       "cost": 0.043973728560258385,
-      "date": "2026-10-07",
-      "dateKind": "Котировка",
-      "receive": "По переписке: RUB по банковским реквизитам на счёт в Сбербанке; также принимают USDT.",
-      "send": "По шаблону договора организацией платежа занимается агент MF Corporation Company Limited, Таиланд.",
-      "note": "Для рублей запрашивают подтверждение источника средств; для USDT заявлена AML-проверка кошелька. За один THB-инвойс в двух вариантах предложены разные суммы USD.",
-      "cbr": {
-        "rate": 85.7116,
-        "date": "2026-10-07",
-        "url": "https://www.cbr.ru/currency_base/daily/?UniDbQuery.Posted=True&UniDbQuery.To=07.10.2026"
-      }
+      "receive": "RUB по банковским реквизитам на счёт в Сбербанке; также принимают USDT.",
+      "send": "Агент по организации платежа — MF Corporation Company Limited, Таиланд.",
+      "note": "Для рублей запрашивают подтверждение источника средств; для USDT заявлена AML-проверка кошелька."
     },
     {
-      "id": "grusha-usdt-2026-10-07",
+      "id": "grusha-usdt",
       "providerId": "grusha-agency",
       "name": "Grusha Agency",
       "website": "https://grusha.agency/",
       "variant": "USDT → USD",
       "method": "usdt",
       "currency": "USDT",
-      "inputAmount": 33279.85,
-      "outputUsd": 32124.81,
-      "rate": 1.0359547651799341,
       "cost": 0.03470688720051314,
-      "date": "2026-10-07",
-      "dateKind": "Котировка",
-      "receive": "По переписке: RUB по банковским реквизитам на счёт в Сбербанке; также принимают USDT.",
-      "send": "По шаблону договора организацией платежа занимается агент MF Corporation Company Limited, Таиланд.",
-      "note": "Для рублей запрашивают подтверждение источника средств; для USDT заявлена AML-проверка кошелька. За один THB-инвойс в двух вариантах предложены разные суммы USD."
+      "receive": "RUB по банковским реквизитам на счёт в Сбербанке; также принимают USDT.",
+      "send": "Агент по организации платежа — MF Corporation Company Limited, Таиланд.",
+      "note": "Для рублей запрашивают подтверждение источника средств; для USDT заявлена AML-проверка кошелька."
     }
   ]
 }

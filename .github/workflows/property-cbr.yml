@@ -1,0 +1,94 @@
+name: Property payments CBR
+
+on:
+  workflow_dispatch:
+    inputs:
+      force_refresh:
+        description: Verify the complete rate publication path even if today's rate is already saved
+        type: boolean
+        default: false
+  schedule:
+    # Hourly checks refresh the daily rate and retry temporary source outages.
+    - cron: '17 * * * *'
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: property-payments-cbr
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Validate calculations and CBR parsing
+        run: |
+          node --test .github/tests/payment_calculation.test.mjs
+          python3 -m unittest discover -s .github/tests -p 'test_property_cbr.py'
+
+      - name: Refresh today's official CBR rate
+        env:
+          FORCE_REFRESH: ${{ github.event.inputs.force_refresh || 'false' }}
+        run: |
+          if [[ "$FORCE_REFRESH" == 'true' ]]; then
+            python3 .github/scripts/update_property_cbr.py thai-payments/cbr.json --force-refresh
+          else
+            python3 .github/scripts/update_property_cbr.py thai-payments/cbr.json
+          fi
+
+      - name: Publish only the rate change
+        id: publish
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -- thai-payments/cbr.json
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "Refresh official CBR rate for property payments"
+            git fetch origin main:refs/remotes/origin/main gh-pages:refs/remotes/origin/gh-pages
+            if [[ "$(git rev-parse origin/main)" != "$(git rev-parse origin/gh-pages)" ]]; then
+              echo "Publishing branches differ; refusing to publish unrelated pending changes." >&2
+              exit 1
+            fi
+            git rebase origin/main
+            git push --atomic origin HEAD:refs/heads/main HEAD:refs/heads/gh-pages
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+          echo "revision=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      - name: Build GitHub Pages and verify the published rate
+        if: steps.publish.outputs.changed == 'true' || github.event_name == 'workflow_dispatch'
+        uses: actions/github-script@v7
+        env:
+          PUBLISHED_REVISION: ${{ steps.publish.outputs.revision }}
+        with:
+          script: |
+            const target = {owner: context.repo.owner, repo: context.repo.repo};
+            const expected = JSON.parse(require('fs').readFileSync('thai-payments/cbr.json', 'utf8'));
+            await github.request('POST /repos/{owner}/{repo}/pages/builds', target);
+            let built = false;
+            for (let attempt = 0; attempt < 30; attempt++) {
+              const {data} = await github.request('GET /repos/{owner}/{repo}/pages/builds/latest', target);
+              if (data.status === 'built' && data.commit === process.env.PUBLISHED_REVISION) {built = true; break;}
+              if (data.status === 'errored') throw new Error('GitHub Pages build failed');
+              await new Promise(resolve => setTimeout(resolve, 10000));
+            }
+            if (!built) throw new Error('GitHub Pages publication was not confirmed');
+            const response = await fetch('https://ccapital.pro/thai-payments/cbr.json?v=' + process.env.PUBLISHED_REVISION, {cache: 'no-store'});
+            if (!response.ok) throw new Error('Published CBR file is unavailable');
+            const actual = await response.json();
+            for (const key of ['rate', 'date', 'checkedFor', 'verifiedAt']) {
+              if (actual[key] !== expected[key]) throw new Error('Published CBR data differs from the source');
+            }
+            core.info('Official CBR rate successfully published and verified.');

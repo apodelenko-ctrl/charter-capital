@@ -1,4 +1,5 @@
 "use strict";
+import {paymentRate, paymentAmount, calculationConfirmed, isValidCbr, moscowDay} from "./calculation.mjs?v=20261013-4";
 
 const ui = {
   amount: document.getElementById("usd-amount"),
@@ -20,6 +21,9 @@ const ui = {
   rate: document.getElementById("calc-rate"),
   fee: document.getElementById("calc-fee"),
   cbr: document.getElementById("cbr-link"),
+  cbrMethod: document.getElementById("method-cbr-link"),
+  benchmark: document.getElementById("benchmark-context"),
+  confirmation: document.getElementById("charter-status"),
   request: document.getElementById("request-link"),
   closing: document.getElementById("closing-request"),
 };
@@ -33,7 +37,6 @@ const rateNumber = new Intl.NumberFormat("ru-RU", {minimumFractionDigits: 4, max
 const percentage = new Intl.NumberFormat("ru-RU", {minimumFractionDigits: 2, maximumFractionDigits: 2});
 const dateLabel = (date) => date.split("-").reverse().join(".");
 const symbol = (curr) => curr === "RUB" ? "₽" : "USDT";
-const roundUpCents = (value) => Math.ceil((value - 1e-8) * 100) / 100;
 const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (char) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[char]));
 
 function amountValue() {
@@ -45,23 +48,46 @@ function amountValue() {
 
 function charterOffer() {
   const rub = currency === "RUB";
-  return {
+  const offer = {
     id: "charter-" + currency.toLowerCase(),
     providerId: "charter-capital",
     name: "Charter Capital",
     website: "https://ccapital.pro/",
     variant: rub ? "RUB · ЦБ + 3%" : "USDT · 2,5% от внесённой суммы",
     currency,
-    rate: rub ? data.cbr.rate * (1 + data.charter.rubPremium) : 1 / (1 - data.charter.usdtInputFee),
     cost: rub ? data.charter.rubPremium : data.charter.usdtInputFee,
-    date: data.charter.date,
-    dateKind: "Тариф",
     own: true,
-    cbr: rub ? data.cbr : undefined,
     receive: "Финансирование платежа в RUB или USDT.",
     send: "Оплата инвойса застройщика в USD. Маршрут подготавливаем по инвойсу.",
     note: "RUB: 3% к курсу ЦБ. USDT: 2,5% от внесённой суммы при допущении 1 USDT = 1 USD.",
   };
+  return {...offer, rate: paymentRate(offer, data.cbr)};
+}
+
+function confirmation(offer, amount) {
+  const confirmed = calculationConfirmed(amount, offer, data.cbr);
+  const text = confirmed ? "Актуальность расчёта подтверждена"
+    : amount === null ? "Укажите сумму для расчёта"
+    : !data.cbr ? "Курс ЦБ временно недоступен" : "Требуется обновление курса ЦБ";
+  return {confirmed, text};
+}
+
+function updateBenchmark() {
+  ui.cbr.hidden = currency === "USDT";
+  const cbr = data.cbr;
+  if (cbr) {
+    ui.cbr.href = cbr.url;
+    ui.cbr.innerHTML = `ЦБ РФ · на ${dateLabel(cbr.checkedFor)}<br><strong>${rateNumber.format(cbr.rate)} ₽ за 1 USD</strong> <span aria-hidden="true">↗</span>`;
+    ui.cbrMethod.href = cbr.url;
+    ui.cbrMethod.textContent = `ЦБ РФ · на ${dateLabel(cbr.checkedFor)} ↗`;
+  } else {
+    ui.cbr.removeAttribute("href");
+    ui.cbr.textContent = "Курс ЦБ временно недоступен";
+    ui.cbrMethod.href = "https://www.cbr.ru/currency_base/daily/";
+    ui.cbrMethod.textContent = "ЦБ РФ · официальный курс ↗";
+  }
+  ui.benchmark.textContent = currency === "USDT" ? "Процент от внесённых USDT"
+    : cbr ? `ЦБ ${rateNumber.format(cbr.rate)} ₽/USD · ${dateLabel(cbr.checkedFor)}` : "Получаем курс ЦБ";
 }
 
 function draftUrl(amount) {
@@ -72,18 +98,20 @@ function draftUrl(amount) {
 function updateCalculator(amount) {
   const own = charterOffer();
   ui.percent.textContent = currency === "RUB" ? "3%" : "2,5%";
-  ui.rate.textContent = `${rateNumber.format(own.rate)} ${currency === "RUB" ? "₽" : "USDT"} за 1 USD`;
-  ui.cbr.hidden = currency === "USDT";
+  ui.rate.textContent = own.rate === null ? "Курс ЦБ недоступен" : `${rateNumber.format(own.rate)} ${currency === "RUB" ? "₽" : "USDT"} за 1 USD`;
+  const status = confirmation(own, amount);
+  ui.confirmation.textContent = status.text;
+  ui.confirmation.className = `calculation-status ${status.confirmed ? "confirmed" : "pending"}`;
   if (amount === null) {
     ui.total.textContent = "—";
     ui.fee.textContent = "Укажите сумму к зачислению";
     [ui.request, ui.closing].forEach((link) => {link.setAttribute("aria-disabled", "true"); link.removeAttribute("href");});
     return;
   }
-  const total = roundUpCents(amount * own.rate);
-  ui.total.textContent = `${money.format(total)} ${symbol(currency)}`;
-  const fee = currency === "RUB" ? total - amount * data.cbr.rate : total - amount;
-  ui.fee.textContent = `${currency === "RUB" ? "Надбавка к ЦБ" : "2,5% от внесённых USDT"}: ${money.format(fee)} ${symbol(currency)}`;
+  const total = paymentAmount(amount, own, data.cbr);
+  ui.total.textContent = total === null ? "—" : `${money.format(total)} ${symbol(currency)}`;
+  const fee = total === null ? null : currency === "RUB" ? total - amount * data.cbr.rate : total - amount;
+  ui.fee.textContent = fee === null ? "Запросите расчёт у менеджера" : `${currency === "RUB" ? "Надбавка к ЦБ" : "2,5% от внесённых USDT"}: ${money.format(fee)} ${symbol(currency)}`;
   [ui.request, ui.closing].forEach((link) => {link.removeAttribute("aria-disabled"); link.href = draftUrl(amount);});
 }
 
@@ -97,8 +125,9 @@ function resultWord(number) {
 function filteredOffers() {
   const query = ui.search.value.trim().toLocaleLowerCase("ru-RU");
   const matches = (offer) => !query || `${offer.name} ${offer.variant}`.toLocaleLowerCase("ru-RU").includes(query);
-  const competitors = data.offers.filter((offer) => offer.currency === currency && (currency !== "RUB" || ui.method.value === "all" || offer.method === ui.method.value) && matches(offer));
-  competitors.sort((a, b) => ui.sort.value === "date-desc" ? b.date.localeCompare(a.date) || a.cost - b.cost : ui.sort.value === "cost-desc" ? b.cost - a.cost : a.cost - b.cost);
+  const competitors = data.offers.filter((offer) => offer.currency === currency && (currency !== "RUB" || ui.method.value === "all" || offer.method === ui.method.value) && matches(offer))
+    .map((offer) => ({...offer, rate: paymentRate(offer, data.cbr)}));
+  competitors.sort((a, b) => ui.sort.value === "name-asc" ? a.name.localeCompare(b.name, "ru") || a.cost - b.cost : ui.sort.value === "cost-desc" ? b.cost - a.cost : a.cost - b.cost);
   const own = charterOffer();
   // Cash availability has not been quoted for Charter Capital. Do not imply it.
   const includeOwn = matches(own) && (currency !== "RUB" || ui.method.value !== "cash");
@@ -107,17 +136,21 @@ function filteredOffers() {
 
 function offerRow(offer, amount) {
   const rateUnit = currency === "RUB" ? "₽/USD" : "USDT/USD";
-  const amountText = amount === null ? "—" : `${money.format(roundUpCents(amount * offer.rate))} ${symbol(currency)}`;
-  const costSub = currency === "RUB" ? `ЦБ · ${dateLabel(offer.cbr.date)}` : "от внесённых USDT";
+  const total = paymentAmount(amount, offer, data.cbr);
+  const amountText = total === null ? "—" : `${money.format(total)} ${symbol(currency)}`;
+  const costSub = currency === "RUB" ? "к курсу ЦБ" : "от внесённых USDT";
+  const status = offer.own ? confirmation(offer, amount) : null;
+  const statusText = status ? `<span class="row-confirmation ${status.confirmed ? "confirmed" : "pending"}">${escapeHtml(status.text)}</span>` : "";
+  const rateText = offer.rate === null ? "Курс ЦБ недоступен" : `${rateNumber.format(offer.rate)} ${rateUnit}`;
   const initials = {"charter-capital":"C", "ex24":"24", "arbi-exchange":"A", "grusha-agency":"G", "the-one-exchange":"1"};
   const link = offer.own ? ui.request.href || data.charter.contact : offer.website;
   const actions = offer.own
     ? `<a class="button primary" href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer">Запросить <span aria-hidden="true">↗</span></a><button type="button" class="details-button" data-offer="${escapeHtml(offer.id)}">Условия</button>`
     : `<button type="button" class="details-button" data-offer="${escapeHtml(offer.id)}">Путь денег <span aria-hidden="true">↗</span></button><a class="site-link" href="${escapeHtml(offer.website)}" target="_blank" rel="noopener noreferrer">Сайт сервиса ↗</a>`;
   return `<tr${offer.own ? ' class="charter-row"' : ""} data-offer-row="${escapeHtml(offer.id)}">
-    <td><div class="provider-cell"><span class="provider-avatar" aria-hidden="true">${initials[offer.providerId]}</span><div class="provider-meta">${offer.own ? '<span class="own-badge">НАШ СЕРВИС</span><br>' : ""}<a class="provider-name" href="${escapeHtml(offer.website)}" target="_blank" rel="noopener noreferrer">${escapeHtml(offer.name)}</a><span class="provider-variant">${escapeHtml(offer.variant)}</span></div></div></td>
+    <td><div class="provider-cell"><span class="provider-avatar" aria-hidden="true">${initials[offer.providerId]}</span><div class="provider-meta">${offer.own ? '<span class="own-badge">НАШ СЕРВИС</span><br>' : ""}<a class="provider-name" href="${escapeHtml(offer.website)}" target="_blank" rel="noopener noreferrer">${escapeHtml(offer.name)}</a><span class="provider-variant">${escapeHtml(offer.variant)}</span>${statusText}</div></div></td>
     <td data-label="${currency === "RUB" ? "К курсу ЦБ" : "Стоимость"}"><strong class="cell-value">${currency === "RUB" ? "+" : ""}${percentage.format(offer.cost * 100)}%</strong><span class="cell-sub">${escapeHtml(costSub)}</span></td>
-    <td data-label="${offer.own ? "По тарифу Charter Capital" : "Пример по котировке"}"><strong class="cell-amount">${amountText}</strong><span class="cell-sub">${rateNumber.format(offer.rate)} ${rateUnit}<br>${offer.dateKind} · ${dateLabel(offer.date)}</span></td>
+    <td data-label="${offer.own ? "По тарифу Charter Capital" : "Расчёт по проценту сервиса"}"><strong class="cell-amount">${amountText}</strong><span class="cell-sub">${rateText}</span></td>
     <td><div class="row-actions">${actions}</div></td></tr>`;
 }
 
@@ -133,6 +166,7 @@ function render() {
   ui.costHeading.textContent = currency === "RUB" ? "К курсу ЦБ" : "Стоимость";
   ui.amountHeading.textContent = `Отдаёте, ${currency}`;
   ui.context.textContent = amount === null ? "Введите сумму для расчёта" : `Расчёт на ${shortNumber.format(amount)} USD`;
+  updateBenchmark();
   updateCalculator(amount);
   const offers = filteredOffers();
   ui.body.innerHTML = offers.map((offer) => offerRow(offer, amount)).join("");
@@ -145,16 +179,20 @@ function detailBlock(title, text, extraClass = "") {
 }
 
 function openOffer(id) {
-  const offer = id.startsWith("charter-") ? charterOffer() : data.offers.find((item) => item.id === id);
+  const sourceOffer = id.startsWith("charter-") ? charterOffer() : data.offers.find((item) => item.id === id);
+  const offer = sourceOffer ? {...sourceOffer, rate: paymentRate(sourceOffer, data.cbr)} : null;
   if (!offer) return;
   ui.dialog.querySelector("#dialog-title").textContent = offer.name;
-  ui.dialog.querySelector("#dialog-variant").textContent = `${offer.variant} · ${offer.dateKind.toLowerCase()} ${dateLabel(offer.date)}`;
-  const original = offer.own ? `Тариф: ${currency === "RUB" ? "ЦБ + 3%" : "2,5% от внесённых USDT"}.` : `${shortNumber.format(offer.inputAmount)} ${symbol(offer.currency)} → ${shortNumber.format(offer.outputUsd)} USD`;
-  let content = detailBlock(offer.own ? "Стоимость Charter Capital" : "Исходная котировка", original, "detail-quote");
-  if (offer.cbr) {
-    content += `<section class="detail-block"><h3>Как получен процент</h3><p>Курс ${rateNumber.format(offer.rate)} RUB/USD ÷ курс ЦБ ${rateNumber.format(offer.cbr.rate)} − 1 = ${percentage.format(offer.cost * 100)}%. <a href="${escapeHtml(offer.cbr.url)}" target="_blank" rel="noopener noreferrer">ЦБ на ${dateLabel(offer.cbr.date)} ↗</a></p></section>`;
-  } else if (!offer.own) {
-    content += detailBlock("Как получен процент", `(${shortNumber.format(offer.inputAmount)} − ${shortNumber.format(offer.outputUsd)}) ÷ ${shortNumber.format(offer.inputAmount)} × 100% = ${percentage.format(offer.cost * 100)}%. Принят паритет 1 USDT = 1 USD.`);
+  ui.dialog.querySelector("#dialog-variant").textContent = offer.variant;
+  const amount = amountValue();
+  const total = paymentAmount(amount, offer, data.cbr);
+  const value = total === null ? "Укажите сумму или запросите расчёт у менеджера." : `${shortNumber.format(amount)} USD → ${money.format(total)} ${symbol(offer.currency)} к внесению`;
+  let content = detailBlock("Расчёт для вашей суммы", value, "detail-quote");
+  content += detailBlock("Процент сервиса", `${percentage.format(offer.cost * 100)}% ${offer.currency === "RUB" ? "к курсу ЦБ" : "от внесённых USDT при паритете 1 USDT = 1 USD"}.`);
+  if (offer.currency === "RUB" && data.cbr) content += detailBlock("Курс ЦБ для расчёта", `${rateNumber.format(data.cbr.rate)} ₽ за 1 USD. Сумма = USD × курс ЦБ × (1 + процент сервиса ÷ 100).`);
+  if (offer.own) {
+    const status = confirmation(offer, amount);
+    content += detailBlock("Charter Capital", status.text, `calculation-status ${status.confirmed ? "confirmed" : "pending"}`);
   }
   content += detailBlock("Как принимают деньги", offer.receive);
   content += detailBlock("Как отправляют платёж", offer.send);
@@ -176,17 +214,44 @@ document.getElementById("reset-filters").addEventListener("click", () => {ui.sea
 ui.dialog.addEventListener("click", (event) => {if (event.target === ui.dialog) {const bounds = ui.dialog.getBoundingClientRect(); if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) ui.dialog.close();}});
 [ui.request, ui.closing].forEach((link) => link.addEventListener("click", (event) => {if (!validAmount) event.preventDefault();}));
 
+async function fetchJson(url) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 10000);
+  try {
+    const response = await fetch(url, {cache: "no-cache", signal: controller.signal});
+    if (!response.ok) throw new Error("Data unavailable");
+    return await response.json();
+  } finally {clearTimeout(timeout);}
+}
+
+let refreshing = false;
+async function refreshCbr() {
+  if (!data || refreshing) return;
+  refreshing = true;
+  try {
+    const cbr = await fetchJson("cbr.json");
+    if (!isValidCbr(cbr) || cbr.checkedFor > moscowDay()) throw new Error("Invalid CBR data");
+    data.cbr = cbr;
+  } catch {
+    // Keep the last verified value, but the current-day check removes confirmation when stale.
+  } finally {refreshing = false; render();}
+}
+
 async function init() {
   try {
-    const response = await fetch("offers.json", {cache: "no-cache"});
-    if (!response.ok) throw new Error("Quotes are unavailable");
-    const loaded = await response.json();
-    if (!Array.isArray(loaded.offers) || !Number.isFinite(loaded.cbr?.rate) || loaded.cbr.rate <= 0) throw new Error("Invalid quote data");
-    data = loaded;
+    const loaded = await fetchJson("offers.json");
+    if (loaded.model !== "fixed-percentages" || !Array.isArray(loaded.offers)
+      || !Number.isFinite(loaded.charter?.rubPremium) || loaded.charter.rubPremium < 0
+      || !Number.isFinite(loaded.charter?.usdtInputFee) || loaded.charter.usdtInputFee < 0 || loaded.charter.usdtInputFee >= 1
+      || loaded.offers.some((offer) => !Number.isFinite(offer.cost) || offer.cost < 0 || !["RUB", "USDT"].includes(offer.currency) || (offer.currency === "USDT" && offer.cost >= 1))) throw new Error("Invalid percentage data");
+    data = {...loaded, cbr: null};
     render();
+    await refreshCbr();
+    setInterval(() => {if (document.visibilityState !== "hidden") refreshCbr();}, 5 * 60 * 1000);
+    document.addEventListener("visibilitychange", () => {if (document.visibilityState === "visible") refreshCbr();});
   } catch {
     document.getElementById("load-error").hidden = false;
-    ui.count.textContent = "Котировки недоступны";
+    ui.count.textContent = "Данные сервисов недоступны";
     ui.total.textContent = "Уточните у менеджера";
     ui.fee.textContent = "";
     ui.rate.textContent = "";
