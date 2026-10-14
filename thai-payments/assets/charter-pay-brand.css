@@ -1,0 +1,14 @@
+/* Payment product identity; corporate Charter Capital remains the project owner. */
+.charter-pay-inline{display:inline-flex;align-items:center;gap:10px;font-family:Manrope,Inter,system-ui,sans-serif;color:var(--ink);font-weight:750;letter-spacing:-.5px;line-height:1.2}
+.charter-pay-inline img{width:32px;height:32px;flex-shrink:0;border-radius:9px}
+.charter-pay-inline em{font-style:normal;color:var(--blue)}
+.provider-avatar.charter-pay-avatar{background:transparent;border:0;border-radius:11px;overflow:visible}
+.provider-avatar.charter-pay-avatar img{width:100%;height:100%;max-width:none;object-fit:contain}
+.own-tariff-label .charter-pay-inline{font-size:18px;margin-bottom:6px}
+.own-tariff-label .charter-pay-inline img{width:29px;height:29px}
+.calc-product-label{display:flex;align-items:center;gap:7px}
+.calc-product-label img{width:22px;height:22px;border-radius:6px}
+@media(max-width:760px){.own-tariff-label .charter-pay-inline{font-size:15px;gap:7px}.own-tariff-label .charter-pay-inline img{width:24px;height:24px}}
+@media(max-width:390px){.own-tariff-label .charter-pay-inline{font-size:13px;gap:5px}.own-tariff-label .charter-pay-inline img{width:21px;height:21px}.calc-product-label{font-size:10px}}
+
+#dialog-title{display:flex;align-items:center;gap:12px}#dialog-title img{flex-shrink:0;border-radius:10px}

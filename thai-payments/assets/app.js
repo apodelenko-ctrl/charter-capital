@@ -72,7 +72,7 @@ function charterOffer() {
   const offer = {
     id: "charter-" + currency.toLowerCase(),
     providerId: "charter-capital",
-    name: "Charter Capital",
+    name: "Charter Pay",
     website: "https://ccapital.pro/",
     variant: rub ? "RUB · ЦБ + 3%" : "USDT · 2,5% от внесённой суммы",
     currency,
@@ -112,7 +112,7 @@ function updateBenchmark() {
 }
 
 function draftUrl(amount) {
-  const text = `Здравствуйте! Хочу оплатить недвижимость в Таиланде через Charter Capital.\nК зачислению: ${shortNumber.format(amount)} USD.\nОплата: ${currency}.\nПрошу подтвердить итоговую сумму, расходы банков, маршрут и документы.\nhttps://ccapital.pro/thai-payments/`;
+  const text = `Здравствуйте! Хочу оплатить недвижимость в Таиланде через Charter Pay.\nК зачислению: ${shortNumber.format(amount)} USD.\nОплата: ${currency}.\nПрошу подтвердить итоговую сумму, расходы банков, маршрут и документы.\nhttps://ccapital.pro/thai-payments/`;
   return data.charter.contact + "?text=" + encodeURIComponent(text);
 }
 
@@ -150,7 +150,7 @@ function filteredOffers() {
     .map((offer) => ({...offer, rate: paymentRate(offer, data.cbr)}));
   competitors.sort((a, b) => ui.sort.value === "name-asc" ? a.name.localeCompare(b.name, "ru") || a.cost - b.cost : ui.sort.value === "cost-desc" ? b.cost - a.cost : a.cost - b.cost);
   const own = charterOffer();
-  // Cash availability has not been quoted for Charter Capital. Do not imply it.
+  // Cash availability has not been quoted for Charter Pay. Do not imply it.
   const includeOwn = matches(own) && (currency !== "RUB" || ui.method.value !== "cash");
   return includeOwn ? [own, ...competitors] : competitors;
 }
@@ -163,11 +163,11 @@ function offerRow(offer, amount) {
   const status = offer.own ? confirmation(offer, amount) : null;
   const statusText = status ? `<span class="row-confirmation ${status.confirmed ? "confirmed" : "pending"}">${escapeHtml(status.text)}</span>` : "";
   const rateText = offer.rate === null ? "Курс ЦБ недоступен" : `${rateNumber.format(offer.rate)} ${rateUnit}`;
-  const logos = {"ex24":"ex24.webp", "arbi-exchange":"arbi-exchange.png", "the-one-exchange":"the-one-exchange.png"};
+  const logos = {"charter-capital":"charter-pay.svg", "ex24":"ex24.webp", "arbi-exchange":"arbi-exchange.png", "the-one-exchange":"the-one-exchange.png"};
   const wordmark = offer.providerId === "grusha-agency";
   const logo = logos[offer.providerId];
   const avatar = logo
-    ? `<span class="provider-avatar provider-logo" aria-hidden="true"><img src="assets/logos/${logo}" alt="" width="34" height="34" decoding="async"></span>`
+    ? `<span class="provider-avatar provider-logo${offer.own ? " charter-pay-avatar" : ""}" aria-hidden="true"><img src="assets/logos/${logo}" alt="" width="34" height="34" decoding="async"></span>`
     : wordmark ? "" : `<span class="provider-avatar${offer.own ? " charter-avatar" : ""}" aria-hidden="true">${offer.own ? "CC" : escapeHtml(offer.name.slice(0, 1))}</span>`;
   const name = wordmark ? 'GRUSHA <span>AGENCY</span>' : escapeHtml(offer.name);
   const link = offer.own ? ui.request.href || data.charter.contact : offer.website;
@@ -177,7 +177,7 @@ function offerRow(offer, amount) {
   return `<tr${offer.own ? ' class="charter-row"' : ""} data-offer-row="${escapeHtml(offer.id)}">
     <td><div class="provider-cell">${avatar}<div class="provider-meta">${offer.own ? '<span class="own-badge">НАШ СЕРВИС</span><br>' : ""}<button type="button" class="provider-name${wordmark ? " provider-wordmark" : ""}" data-offer="${escapeHtml(offer.id)}" aria-haspopup="dialog" aria-controls="offer-dialog" aria-label="Показать расчёт: ${escapeHtml(offer.name)} — ${escapeHtml(offer.variant)}">${name}<span class="provider-details-mark" aria-hidden="true">i</span></button><span class="provider-variant">${escapeHtml(offer.variant)}</span>${statusText}</div></div></td>
     <td data-label="${currency === "RUB" ? "К курсу ЦБ" : "Стоимость"}"><strong class="cell-value">${currency === "RUB" ? "+" : ""}${percentage.format(offer.cost * 100)}%</strong><span class="cell-sub">${escapeHtml(costSub)}</span></td>
-    <td data-label="${offer.own ? "По тарифу Charter Capital" : "Расчёт по проценту сервиса"}"><strong class="cell-amount">${amountText}</strong><span class="cell-sub">${rateText}</span></td>
+    <td data-label="${offer.own ? "По тарифу Charter Pay" : "Расчёт по проценту сервиса"}"><strong class="cell-amount">${amountText}</strong><span class="cell-sub">${rateText}</span></td>
     <td><div class="row-actions">${actions}</div></td></tr>`;
 }
 
@@ -218,7 +218,7 @@ function renderOfferDetails(id) {
   const own = charterOffer();
   const offer = id === own.id ? own : data.offers.find((item) => item.id === id && item.currency === currency);
   if (!offer) return false;
-  ui.dialog.querySelector("#dialog-title").textContent = offer.name;
+  ui.dialog.querySelector("#dialog-title").innerHTML = (offer.own ? '<img src="assets/logos/charter-pay.svg" width="34" height="34" alt="" aria-hidden="true">' : "") + escapeHtml(offer.name);
   ui.dialog.querySelector("#dialog-variant").textContent = offer.variant;
   const amount = amountValue();
   const details = calculationDetails(amount, offer, data.cbr);
@@ -236,7 +236,7 @@ function renderOfferDetails(id) {
   if (details && offer.currency === "USDT") content += detailBlock("Как считается сумма", "Сумма в USDT = USD ÷ (1 − процент сервиса ÷ 100). Расчёт при паритете 1 USDT = 1 USD.");
   if (offer.own) {
     const status = confirmation(offer, amount);
-    content += detailBlock("Charter Capital", status.text, `calculation-status ${status.confirmed ? "confirmed" : "pending"}`);
+    content += detailBlock("Charter Pay", status.text, `calculation-status ${status.confirmed ? "confirmed" : "pending"}`);
     content += detailBlock("Как принимают деньги", offer.receive);
     content += detailBlock("Как отправляют платёж", offer.send);
     content += detailBlock("Условия", offer.note);
