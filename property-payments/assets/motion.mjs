@@ -32,7 +32,7 @@ export function animateValues(elements) {
 
 export function initMotion() {
   document.documentElement.classList.add("motion-ready");
-  const revealTargets = document.querySelectorAll(".hero-copy, .tariff-card, .calculator, .results-panel, .section-intro, .steps li, .methodology, .faq h2, .faq details, .closing");
+  const revealTargets = document.querySelectorAll(".hero-copy, .hero-property, .scenario-grid article, .documents-visual, .service-calculator, .tariff-card, .calculator, .results-panel, .section-intro, .steps li, .methodology, .faq h2, .faq details, .closing");
   if (typeof IntersectionObserver !== "undefined") {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
