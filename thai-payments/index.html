@@ -25,14 +25,14 @@
   <link rel="stylesheet" href="assets/charter-brand.css?v=20261014-3">
   <link rel="stylesheet" href="assets/motion.css?v=20261013-5">
   <link rel="stylesheet" href="assets/deal-action.css?v=20261014-1">
-  <script type="module" src="assets/app.js?v=20261014-7"></script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Оплата недвижимости за рубежом","url":"https://ccapital.pro/thai-payments/","inLanguage":"ru","dateModified":"2026-10-13","publisher":{"@type":"Organization","name":"Charter Capital","url":"https://ccapital.pro/"},"description":"Сравнение котировок платёжных сервисов для оплаты недвижимости в Таиланде в RUB и USDT."}</script>
+  <script type="module" src="assets/app.js?v=20261014-8"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Оплата недвижимости за рубежом","url":"https://ccapital.pro/thai-payments/","inLanguage":"ru","dateModified":"2026-10-14","publisher":{"@type":"Organization","name":"Charter Capital","url":"https://ccapital.pro/"},"description":"Сравнение котировок платёжных сервисов для оплаты недвижимости в Таиланде в RUB и USDT."}</script>
+<link rel="stylesheet" href="assets/monitor.css?v=20261014-1">
+  <script type="module" src="assets/comparison-ui.mjs?v=20261014-1"></script>
 </head>
-<body>
-<a class="skip-link" href="#compare">Перейти к сравнению</a>
-<header class="header">
+<body class="theme-emerald"><a class="skip-link" href="#compare">Перейти к сравнению</a><header class="header">
   <div class="shell header-inner">
-    <a class="brand" href="/" aria-label="Charter Capital — главная"><b class="brand-mark" aria-hidden="true">CC</b><span class="brand-wordmark">Charter<br>Capital</span></a>
+    <a class="brand" href="https://ccapital.pro/" aria-label="Charter Capital — главная"><b class="brand-mark" aria-hidden="true">CC</b><span class="brand-wordmark">Charter<br>Capital</span></a>
     <div class="product-name"><strong class="product-title">Агрегатор сервисов оплаты недвижимости</strong></div>
     <nav aria-label="Главная навигация">
       <a href="#compare">Сравнить</a>
@@ -42,6 +42,7 @@
     <a class="button header-contact" href="https://t.me/ccapital_acces" target="_blank" rel="noopener noreferrer" aria-label="Написать в Telegram" title="Написать в Telegram"><svg class="telegram-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.78 18.65 10.06 14.42 17.73 7.5c.34-.3-.07-.46-.53-.16L7.73 13.33 3.63 12.05c-.88-.28-.89-.88.19-1.3l15.98-6.16c.73-.33 1.44.18 1.16 1.31l-2.72 12.79c-.19.9-.73 1.11-1.49.69l-4.14-3.06-1.99 1.93c-.23.23-.42.42-.84.4Z"/></svg><span class="telegram-label">Telegram</span></a>
   </div>
 </header>
+
 <div class="rates-ticker" role="region" aria-label="Курсы валют ЦБ РФ и Bangkok Bank">
   <div class="shell rates-ticker-inner">
     <span class="ticker-caption"><span class="ticker-dot" aria-hidden="true"></span> Курсы</span>
@@ -54,50 +55,25 @@
     <button class="ticker-pause" id="ticker-pause" type="button" aria-label="Приостановить бегущую строку" aria-pressed="false"><span aria-hidden="true">Ⅱ</span></button>
   </div>
 </div>
-<main>
-  <section class="hero shell">
-    <div class="hero-copy">
-      <div class="eyebrow"><span class="flag-th" aria-hidden="true"></span> ПЛАТЁЖНЫЕ СЕРВИСЫ · ТАИЛАНД</div>
-      <h1>Оплата недвижимости за рубежом.<br><span>Сравните стоимость услуг перевода.</span></h1>
-      <p>SWIFT-переводы для оплаты недвижимости во freehold — застройщикам и продавцам на вторичном рынке.<br class="desktop-break"> Сравните комиссии сервисов и сумму к внесению в рублях или USDT.</p>
-      <div class="hero-meta"><span>5 сервисов</span><span>2 способа финансирования</span></div>
-    </div>
-    <div class="tariff-card" aria-label="Тарифы Charter Capital">
-      <div class="tariff-label"><span class="tiny-square" aria-hidden="true"></span> НАШ ТАРИФ</div>
-      <div class="tariff-values"><div><strong>3<span>%</span></strong><p>RUB · к курсу ЦБ</p></div><div><strong>2,5<span>%</span></strong><p>от внесённых USDT</p></div></div>
-      <a href="#compare">Рассчитать оплату <span aria-hidden="true">↓</span></a>
-    </div>
-  </section>
-
-  <section id="compare" class="monitor shell" aria-labelledby="compare-title">
-    <aside class="calculator">
-      <div class="panel-heading"><span class="mini-icon" aria-hidden="true">⇄</span><h2>Ваш платёж</h2><span class="step-label">01 / 02</span></div>
-      <fieldset class="currency-fieldset"><legend>Чем оплачиваете</legend>
-        <div class="currency-switch">
-          <label class="currency-choice"><input type="radio" name="currency" value="RUB" checked><span><b>₽</b> Рубли</span></label>
-          <label class="currency-choice"><input type="radio" name="currency" value="USDT"><span><b>₮</b> USDT</span></label>
-        </div>
-      </fieldset>
-      <div id="method-control" class="method-control"><label for="payment-method">Способ передачи рублей</label><select id="payment-method"><option value="all">Все варианты</option><option value="bank">Банковский перевод / СБП</option><option value="cash">Наличные</option></select></div>
-      <div class="direction-arrow" aria-hidden="true">↓</div>
-      <div class="destination"><span class="currency-symbol">$</span><div><strong>USD получателю</strong><span>Недвижимость в Таиланде</span></div><span class="flag-th" aria-hidden="true"></span></div>
-      <div class="amount-control"><label for="usd-amount">Сумма к зачислению, USD</label><div class="amount-field"><input id="usd-amount" type="text" inputmode="decimal" value="26770" autocomplete="off" aria-describedby="amount-error"><span>USD</span></div><p id="amount-error" class="form-error" hidden></p><div class="presets" aria-label="Быстро выбрать сумму"><button type="button" data-amount="10000">10 000</button><button type="button" data-amount="30000">30 000</button><button type="button" data-amount="100000">100 000</button></div></div>
-      <div class="calc-result" aria-live="polite"><div class="calc-top"><span>В Charter Capital</span><span id="calc-percent">3%</span></div><strong id="calc-total">—</strong><div class="calc-breakdown"><span id="calc-rate">Получаем курс ЦБ</span><span id="calc-fee">3% к курсу ЦБ</span></div><p id="charter-status" class="calculation-status pending">Проверяем актуальность расчёта</p></div>
-      <a id="request-link" class="button primary full" href="https://t.me/ccapital_acces" target="_blank" rel="noopener noreferrer">Запросить расчёт <span aria-hidden="true">↗</span></a>
-      <a id="cbr-link" class="cbr-reference" href="https://www.cbr.ru/currency_base/daily/" target="_blank" rel="noopener noreferrer">ЦБ РФ · актуальный курс <span aria-hidden="true">↗</span></a>
-    </aside>
-
+<main><section class="design-lead shell" aria-labelledby="calculator-title"><div class="hero-copy"><div class="eyebrow"><span class="flag-th" aria-hidden="true"></span>ПЛАТЁЖНЫЕ СЕРВИСЫ · ТАИЛАНД</div><h1>Оплата недвижимости за рубежом.<br><span>Сравните стоимость услуг перевода.</span></h1><p>SWIFT-переводы для оплаты недвижимости во freehold — застройщикам и продавцам на вторичном рынке. Сравните комиссии сервисов и сумму к внесению в рублях или USDT.</p><div class="hero-meta"><span>5 сервисов</span><span>RUB и USDT</span></div><div class="hero-links"><a class="button primary" href="#compare">Сравнить сервисы <span aria-hidden="true">↓</span></a><a class="text-link" href="#how">Как оплатить <span aria-hidden="true">↗</span></a></div><div class="own-tariff" aria-label="Тариф Charter Capital"><div class="own-tariff-label"><b>Charter Capital</b>сервис проекта</div><div class="own-tariff-value"><strong>3<span>%</span></strong><small>RUB · к курсу ЦБ</small></div><div class="own-tariff-value"><strong>2,5<span>%</span></strong><small>от внесённых USDT</small></div></div></div><aside class="calculator " id="calculate" aria-labelledby="calculator-title">
+<div class="panel-heading"><span class="mini-icon" aria-hidden="true">⇄</span><h2 id="calculator-title">Рассчитайте перевод</h2><span class="step-label">USD → ПОЛУЧАТЕЛЮ</span></div>
+<div class="amount-control"><label for="usd-amount">Продавец должен получить</label><div class="amount-field"><input id="usd-amount" type="text" inputmode="decimal" value="26770" autocomplete="off" aria-describedby="amount-error"><span>USD</span></div><p id="amount-error" class="form-error" hidden></p><div class="presets" aria-label="Быстро выбрать сумму"><button type="button" data-amount="10000">10 000</button><button type="button" data-amount="33000">33 000</button><button type="button" data-amount="100000">100 000</button></div><p class="form-kicker">Сумма по документам сделки</p></div>
+<fieldset class="currency-fieldset"><legend>Вы вносите</legend><div class="currency-switch"><label class="currency-choice"><input type="radio" name="currency" value="RUB" checked><span><b>₽</b> Рубли</span></label><label class="currency-choice"><input type="radio" name="currency" value="USDT"><span><b>₮</b> USDT</span></label></div></fieldset>
+<div id="method-control" class="method-control"><label for="payment-method">Способ внесения в сравнении</label><select id="payment-method"><option value="all">Все варианты</option><option value="bank">Банковский перевод / СБП</option><option value="cash">Наличные</option></select></div>
+<div class="calc-result" aria-live="polite"><div class="calc-top"><span>К внесению в Charter Capital</span><span id="calc-percent">3%</span></div><strong id="calc-total">—</strong><div class="calc-breakdown"><span id="calc-rate">Получаем курс ЦБ</span><span id="calc-fee">3% к курсу ЦБ</span></div><p id="charter-status" class="calculation-status pending">Проверяем актуальность расчёта</p></div>
+<a id="request-link" class="button primary full" href="https://t.me/ccapital_acces" target="_blank" rel="noopener noreferrer">Запросить расчёт <span aria-hidden="true">↗</span></a>
+<a class="calc-comparison-link" href="#compare">Сравнить все предложения <span aria-hidden="true">↓</span></a><a id="cbr-link" class="cbr-reference" href="https://www.cbr.ru/currency_base/daily/" target="_blank" rel="noopener noreferrer">ЦБ РФ · актуальный курс <span aria-hidden="true">↗</span></a>
+</aside></section><section id="compare" class="monitor shell" aria-labelledby="compare-title">
     <div class="results-panel">
       <div class="results-heading"><div><div class="eyebrow small">СРАВНЕНИЕ ПЛАТЁЖНЫХ СЕРВИСОВ</div><h2 id="compare-title">RUB <span aria-hidden="true">→</span> USD в Таиланд</h2></div><div class="snapshot-label"><span aria-hidden="true"></span> Проценты сервисов</div></div>
-      <div class="results-toolbar"><label class="search-field"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"></circle><path d="m13 13 4 4"></path></svg><input id="provider-search" type="search" placeholder="Найти сервис" aria-label="Найти сервис"></label><label class="sort-control"><span class="visually-hidden">Порядок предложений</span><select id="offer-sort"><option value="cost-asc">По стоимости ↑</option><option value="cost-desc">По стоимости ↓</option><option value="name-asc">По названию</option></select></label><span id="result-count" class="result-count" aria-live="polite">8 предложений</span></div>
-      <div class="table-context"><span id="comparison-context">Расчёт на 26 770 USD</span><span id="benchmark-context">Получаем курс ЦБ</span></div>
+      <div class="results-toolbar"><label class="search-field"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"></circle><path d="m13 13 4 4"></path></svg><input id="provider-search" type="search" placeholder="Найти сервис" aria-label="Найти сервис"></label><label class="sort-control"><span class="visually-hidden">Порядок предложений</span><select id="offer-sort"><option value="cost-asc">По стоимости ↑</option><option value="cost-desc">По стоимости ↓</option><option value="name-asc">По названию</option></select></label><div class="view-toggle" aria-label="Вид сравнения"><button type="button" data-view="table" aria-pressed="true">Таблица</button><button type="button" data-view="cards" aria-pressed="false">Карточки</button></div><button id="share-calculation" class="icon-button" type="button" aria-label="Скопировать ссылку на расчёт" title="Скопировать ссылку на расчёт"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 15 15 9M8.2 17.8l-1 1a4.2 4.2 0 0 1-6-6l4-4a4.2 4.2 0 0 1 6 0M15.8 6.2l1-1a4.2 4.2 0 0 1 6 6l-4 4a4.2 4.2 0 0 1-6 0"/></svg></button><button id="clear-all-filters" class="clear-filters" type="button" hidden>Сбросить фильтры</button><span id="result-count" class="result-count" aria-live="polite">8 предложений</span></div>
+      <div class="lowest-summary" aria-live="polite"><div><span class="summary-label">Минимальная сумма в подборке</span><strong id="lowest-total">—</strong><span id="lowest-provider"></span></div><span>Для выбранного способа внесения и суммы платежа</span></div><div class="table-context"><span id="comparison-context">Расчёт на 26 770 USD</span><span id="benchmark-context">Получаем курс ЦБ</span></div>
       <div class="table-wrap"><table class="offers-table"><caption class="visually-hidden">Сравнение стоимости и способов оплаты недвижимости в Таиланде</caption><thead><tr><th scope="col">Сервис / способ оплаты</th><th scope="col" id="cost-heading">К курсу ЦБ</th><th scope="col" id="amount-heading">Отдаёте, RUB</th><th scope="col">Условия</th></tr></thead><tbody id="offers-body"></tbody></table></div>
       <div id="empty-state" class="empty-state" hidden><strong>Сервис не найден</strong><p>Попробуйте другое название или сбросьте фильтры.</p><button id="reset-filters" class="button" type="button">Сбросить фильтры</button></div>
       <div id="load-error" class="empty-state" hidden><strong>Не удалось загрузить данные сервисов</strong><p>Обновите страницу или запросите расчёт в Charter Capital.</p><a class="button" href="https://t.me/ccapital_acces" target="_blank" rel="noopener noreferrer">Связаться ↗</a></div>
       <div class="results-footnote"><span class="info-icon" aria-hidden="true">i</span><p>Справочный информационный расчёт. Данные о комиссии исполнителя получены из открытых источников. Перед проведением сделки уточните актуальность расчёта напрямую у исполнителя.</p></div>
     </div>
-  </section>
-
+</section>
   <section id="how" class="how-section shell">
     <div class="section-intro"><div class="eyebrow small">ОТ ДОКУМЕНТОВ ДО ПЛАТЕЖА</div><h2>Три шага к оплате.</h2><p>Стоимость — первый вопрос.<br>Путь денег и документы — следующий.</p></div>
     <ol class="steps"><li><span class="step-number">01</span><h3>Сравните варианты</h3><p>Выберите RUB или USDT, укажите сумму в USD и посмотрите стоимость. Наличные и онлайн-оплата вынесены отдельно.</p></li><li><span class="step-number">02</span><h3>Согласуйте маршрут</h3><p>Передайте документы сделки менеджеру. Уточните получателя ваших средств, отправителя платежа, комиссии банков и документы по сделке.</p></li><li><span class="step-number">03</span><h3>Зафиксируйте условия</h3><p>Согласуйте сумму к зачислению, реквизиты и назначение платежа. Сохраните документы об отправке и подтверждение получателя.</p></li></ol>
@@ -113,8 +89,8 @@
 
   <section class="closing shell"><div><span class="eyebrow small">CHARTER CAPITAL</span><h2>Готовы к оплате?<br>Посчитаем ваш платёж.</h2><p>Укажите сумму и удобный способ оплаты.<br>Детали маршрута согласуем до передачи денег.</p></div><a id="closing-request" class="button primary" href="https://t.me/ccapital_acces" target="_blank" rel="noopener noreferrer">Обсудить оплату в Telegram <span aria-hidden="true">↗</span></a></section>
 </main>
-<footer class="footer"><div class="shell footer-inner"><div><strong>Оплата недвижимости за рубежом</strong><span>Агрегатор сервисов оплаты недвижимости</span></div><div class="footer-links"><a href="/">Charter Capital ↗</a><a href="mailto:hello@ccapital.pro">hello@ccapital.pro</a><a href="/privacy.html">Конфиденциальность</a></div><small>© 2026 Charter Capital</small></div></footer>
-<dialog id="offer-dialog" aria-labelledby="dialog-title" aria-describedby="dialog-variant"><div class="dialog-top"><span class="eyebrow small">ДЕТАЛИ РАСЧЁТА</span><button id="close-dialog" type="button" aria-label="Закрыть подробности">×</button></div><h2 id="dialog-title"></h2><p id="dialog-variant" class="dialog-variant"></p><div id="dialog-content" tabindex="0" role="region" aria-label="Подробности расчёта"></div><div class="dialog-actions"><a id="dialog-website" class="button primary" target="_blank" rel="noopener noreferrer">Перейти к сделке ↗</a><button id="dialog-done" class="button" type="button">Закрыть</button></div></dialog>
+<div class="provider-invitation shell"><span>Предоставляете услуги оплаты недвижимости?</span><a href="https://t.me/ccapital_acces" target="_blank" rel="noopener noreferrer">Добавить сервис ↗</a></div><footer class="footer"><div class="shell footer-inner"><div><strong>Оплата недвижимости за рубежом</strong><span>Агрегатор сервисов оплаты недвижимости</span></div><div class="footer-links"><a href="https://ccapital.pro/">Charter Capital ↗</a><a href="mailto:hello@ccapital.pro">hello@ccapital.pro</a><a href="https://ccapital.pro/privacy.html">Конфиденциальность</a></div><small>© 2026 Charter Capital</small></div></footer>
+<dialog id="offer-dialog" aria-labelledby="dialog-title" aria-describedby="dialog-variant"><div class="dialog-top"><span class="eyebrow small">ДЕТАЛИ РАСЧЁТА</span><button id="close-dialog" type="button" aria-label="Закрыть подробности">×</button></div><h2 id="dialog-title"></h2><p id="dialog-variant" class="dialog-variant"></p><div id="dialog-content" tabindex="0" role="region" aria-label="Подробности расчёта"></div><div class="dialog-actions"><a id="dialog-website" class="button primary" target="_blank" rel="noopener noreferrer">Перейти к сделке ↗</a><button id="copy-calculation" class="button" type="button" disabled>Скопировать расчёт</button><button id="dialog-done" class="button" type="button">Закрыть</button></div><textarea id="copy-fallback" class="copy-fallback" aria-label="Текст расчёта для копирования" readonly hidden></textarea></dialog>
 <noscript><div class="noscript-note">Для калькулятора и сравнения включите JavaScript. Тарифы Charter Capital: 3% к курсу ЦБ для RUB, 2,5% от внесённых USDT. <a href="https://t.me/ccapital_acces">Запросить расчёт</a>.</div></noscript>
-</body>
+<nav class="mobile-dock" aria-label="Быстрый переход"><a href="#calculate">Калькулятор</a><a href="#compare" id="mobile-offer-count">Все предложения</a></nav><div id="design-toast" class="design-toast" role="status" hidden></div><textarea id="share-fallback" class="copy-fallback share-fallback" aria-label="Ссылка для копирования" readonly hidden></textarea></body>
 </html>

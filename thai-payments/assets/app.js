@@ -172,8 +172,8 @@ function offerRow(offer, amount) {
   const name = wordmark ? 'GRUSHA <span>AGENCY</span>' : escapeHtml(offer.name);
   const link = offer.own ? ui.request.href || data.charter.contact : offer.website;
   const actions = offer.own
-    ? `<a class="button primary" href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer">Запросить <span aria-hidden="true">↗</span></a><button type="button" class="details-button" data-offer="${escapeHtml(offer.id)}">Условия</button>`
-    : `<a class="button primary" href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer">Запросить <span aria-hidden="true">↗</span></a><a class="site-link" href="${escapeHtml(offer.website)}" target="_blank" rel="noopener noreferrer">Сайт сервиса ↗</a>`;
+    ? `<a class="button primary" href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer">Запросить <span aria-hidden="true">↗</span></a><button type="button" class="details-button" data-offer="${escapeHtml(offer.id)}">Детали расчёта</button>`
+    : `<a class="button primary" href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer">Запросить <span aria-hidden="true">↗</span></a><button type="button" class="details-button" data-offer="${escapeHtml(offer.id)}" aria-haspopup="dialog">Детали расчёта</button><a class="site-link" href="${escapeHtml(offer.website)}" target="_blank" rel="noopener noreferrer">Сайт сервиса ↗</a>`;
   return `<tr${offer.own ? ' class="charter-row"' : ""} data-offer-row="${escapeHtml(offer.id)}">
     <td><div class="provider-cell">${avatar}<div class="provider-meta">${offer.own ? '<span class="own-badge">НАШ СЕРВИС</span><br>' : ""}<button type="button" class="provider-name${wordmark ? " provider-wordmark" : ""}" data-offer="${escapeHtml(offer.id)}" aria-haspopup="dialog" aria-controls="offer-dialog" aria-label="Показать расчёт: ${escapeHtml(offer.name)} — ${escapeHtml(offer.variant)}">${name}<span class="provider-details-mark" aria-hidden="true">i</span></button><span class="provider-variant">${escapeHtml(offer.variant)}</span>${statusText}</div></div></td>
     <td data-label="${currency === "RUB" ? "К курсу ЦБ" : "Стоимость"}"><strong class="cell-value">${currency === "RUB" ? "+" : ""}${percentage.format(offer.cost * 100)}%</strong><span class="cell-sub">${escapeHtml(costSub)}</span></td>
@@ -207,6 +207,7 @@ function render() {
   lastDisplay = display;
   updateTicker();
   if (ui.dialog.open && selectedOfferId) renderOfferDetails(selectedOfferId);
+  document.dispatchEvent(new Event("payment-rendered"));
 }
 
 function detailBlock(title, text, extraClass = "") {
@@ -246,6 +247,7 @@ function renderOfferDetails(id) {
   destination.href = offer.own ? validAmount ? draftUrl(amount) : data.charter.contact : offer.website;
   destination.textContent = "Перейти к сделке ↗";
   destination.setAttribute("aria-label", `Перейти к сделке: ${offer.name}`);
+  document.getElementById("copy-calculation").disabled = !details;
   return true;
 }
 
