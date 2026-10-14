@@ -1,0 +1,68 @@
+/* Currency ribbon and native transform/opacity motion. */
+.rates-ticker{background:#151e35;color:#e8edfc;border-bottom:1px solid #26304a}
+.rates-ticker-inner{display:flex;align-items:center;gap:23px;height:43px;min-width:0}
+.ticker-caption{display:flex;align-items:center;gap:9px;flex:none;font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase}
+.ticker-dot{width:5px;height:5px;border-radius:50%;background:#8ca8ff;box-shadow:0 0 0 4px #8ca8ff15}
+.ticker-window{min-width:0;flex:1;overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 2%,#000 98%,transparent)}
+.ticker-track{display:flex;width:max-content}
+.ticker-track.is-ready{animation:ticker-loop 48s linear infinite}
+.ticker-group{display:flex;align-items:center;justify-content:space-around;gap:36px;padding-right:36px;flex:none;min-width:var(--ticker-width,900px)}
+.ticker-item{display:inline-flex;align-items:center;gap:12px;white-space:nowrap;text-decoration:none;color:inherit;font-size:11px;line-height:1.5}
+.ticker-item strong{font-size:12px;font-weight:650;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.ticker-item .ticker-source{font-size:9px;color:#9eabc7}
+.ticker-item .ticker-pair{color:#a9bdff;font-size:9px;font-weight:600;letter-spacing:.08em}
+.ticker-item.is-stale .ticker-source{color:#e4bc79}
+.ticker-item:hover .ticker-source{color:#e8edfc}
+.ticker-loading{font-size:11px;color:#9eabc7;white-space:nowrap}
+.ticker-pause{width:27px;height:27px;flex:none;display:grid;place-items:center;background:#ffffff0a;border:1px solid #ffffff19;border-radius:7px;color:#d7e3ff;font-size:12px;cursor:pointer}
+.ticker-pause:hover{background:#ffffff18}
+.ticker-pause:focus-visible{outline:2px solid #9eb5ff;outline-offset:3px}
+.ticker-track.is-paused,.ticker-window:hover .ticker-track,.ticker-window:focus-within .ticker-track{animation-play-state:paused}
+@keyframes ticker-loop{to{transform:translateX(-50%)}}
+
+.hero{position:relative;isolation:isolate}
+.hero:before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 83% 38%,#345cf01a,transparent 55%);opacity:.65}
+.motion-ready .hero:before{animation:hero-glow 7s ease-in-out infinite alternate}
+.motion-ready .tariff-card{animation:tariff-float 7s ease-in-out infinite;box-shadow:0 14px 40px #17213b12}
+.tariff-card:after{content:"";position:absolute;inset:-65% auto -65% -70%;width:35%;pointer-events:none;background:linear-gradient(90deg,transparent,#a9bcff12,transparent);transform:translateX(0) rotate(24deg)}
+.motion-ready .tariff-card:after{animation:tariff-sheen 11s ease-in-out infinite}
+.motion-ready .direction-arrow{animation:route-pulse 2.8s ease-in-out infinite}
+.motion-ready .ticker-dot{animation:live-pulse 3s ease-in-out infinite}
+.button,.provider-avatar,.calculator,.results-panel,.methodology,.steps li,.offers-table tbody tr,.faq details{transition:transform 280ms cubic-bezier(.2,.9,.25,1),box-shadow 280ms ease,border-color 220ms ease,background-color 220ms ease}
+.cell-amount,#calc-total{font-variant-numeric:tabular-nums}
+.steps li{border-radius:12px}
+.button:active{transform:scale(.97)}
+#offer-dialog[open]{animation:dialog-enter 280ms cubic-bezier(.22,1,.36,1)}
+#offer-dialog::backdrop{animation:backdrop-enter 220ms ease}
+@keyframes hero-glow{to{opacity:1}}
+@keyframes tariff-float{0%,100%{translate:0 0}50%{translate:0 -5px}}
+@keyframes tariff-sheen{0%,65%{transform:translateX(0) rotate(24deg)}95%,100%{transform:translateX(800%) rotate(24deg)}}
+@keyframes route-pulse{0%,100%{transform:translateY(-2px);opacity:.5}50%{transform:translateY(3px);opacity:1}}
+@keyframes live-pulse{50%{box-shadow:0 0 0 7px #8ca8ff00;opacity:.55}}
+@keyframes dialog-enter{from{opacity:0;transform:translateY(16px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes backdrop-enter{from{opacity:0}to{opacity:1}}
+@media(hover:hover) and (pointer:fine){
+  .button:hover{transform:translateY(-2px);box-shadow:0 8px 24px #2345c81f}
+  .calculator:hover,.results-panel:hover,.methodology:hover{border-color:#c7d2ef;box-shadow:0 12px 35px #2235590a}
+  .steps li:hover{transform:translateY(-4px)}
+  .offers-table tbody tr:hover{transform:translateX(2px);background:#f5f7ff}
+  .offers-table tbody tr.charter-row:hover{background:#edf1ff}
+  .offers-table tbody tr:hover .provider-avatar{transform:scale(1.07) rotate(-3deg)}
+  .faq details:hover{transform:translateX(3px)}
+}
+@media(max-width:600px){
+  .rates-ticker-inner{height:40px;gap:13px}
+  .ticker-caption{font-size:8px;letter-spacing:.08em;gap:7px}
+  .ticker-item{gap:9px;font-size:10px}
+  .ticker-item strong{font-size:11px}
+  .ticker-item .ticker-source{font-size:8px}
+  .ticker-group{gap:28px;padding-right:28px}
+  .ticker-pause{width:25px;height:25px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .ticker-window{overflow-x:auto;mask-image:none}
+  .ticker-group{min-width:0;justify-content:flex-start}
+  #ticker-copy,.ticker-pause{display:none}
+}
+@media print{.rates-ticker{display:none}*,*:before,*:after{animation:none!important;transform:none!important;translate:none!important}}
