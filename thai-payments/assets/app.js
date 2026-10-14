@@ -79,7 +79,7 @@ function charterOffer() {
     cost: rub ? data.charter.rubPremium : data.charter.usdtInputFee,
     own: true,
     receive: "Финансирование платежа в RUB или USDT.",
-    send: "Оплата инвойса застройщика в USD. Маршрут подготавливаем по инвойсу.",
+    send: "SWIFT-перевод в USD застройщику или продавцу на вторичном рынке. Маршрут подготавливаем по документам сделки.",
     note: "RUB: 3% к курсу ЦБ. USDT: 2,5% от внесённой суммы при допущении 1 USDT = 1 USD.",
   };
   return {...offer, rate: paymentRate(offer, data.cbr)};
@@ -223,7 +223,7 @@ function renderOfferDetails(id) {
   const details = calculationDetails(amount, offer, data.cbr);
   const pay = details ? `${money.format(details.total)} ${symbol(offer.currency)}` : "—";
   const receive = amount === null ? "—" : `${money.format(amount)} USD`;
-  let content = `<div class="detail-summary"><section class="detail-side"><h3>Вы отдаёте</h3><strong id="detail-pay">${pay}</strong><span>${escapeHtml(offer.currency)}</span></section><section class="detail-side detail-receive"><h3>Застройщик получает</h3><strong id="detail-receive">${receive}</strong><span>USD · по вашему инвойсу</span></section></div>`;
+  let content = `<div class="detail-summary"><section class="detail-side"><h3>Вы отдаёте</h3><strong id="detail-pay">${pay}</strong><span>${escapeHtml(offer.currency)}</span></section><section class="detail-side detail-receive"><h3>Продавец получает</h3><strong id="detail-receive">${receive}</strong><span>USD · по документам сделки</span></section></div>`;
   if (details) {
     content += detailBlock("Расчётный курс", `1 USD = ${rateNumber.format(details.rate)} ${symbol(offer.currency)}.`, "detail-rate");
     content += detailBlock(offer.currency === "RUB" ? "Разница с расчётом по ЦБ" : "Разница с суммой USD", `${money.format(details.difference)} ${symbol(offer.currency)}${offer.currency === "USDT" ? " при паритете 1 USDT = 1 USD" : ""}.`);

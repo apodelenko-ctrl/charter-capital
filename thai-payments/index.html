@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#f6f8fb">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>Оплата недвижимости за рубежом · Charter Capital</title>
-  <meta name="description" content="Сравните стоимость услуг перевода для оплаты недвижимости в Таиланде. Рубли или USDT — в платёж застройщику. Калькулятор комиссий и суммы к внесению, сравнение сервисов.">
+  <meta name="description" content="Сравните стоимость SWIFT-переводов для оплаты недвижимости во freehold в Таиланде: застройщикам и на вторичном рынке. Калькулятор RUB и USDT.">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <link rel="canonical" href="https://ccapital.pro/thai-payments/">
   <link rel="alternate" hreflang="ru" href="https://ccapital.pro/thai-payments/">
@@ -14,7 +14,7 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Charter Capital">
   <meta property="og:title" content="Оплата недвижимости за рубежом · Charter Capital">
-  <meta property="og:description" content="RUB или USDT → платёж застройщику. Charter Capital первым: 3% к курсу ЦБ для рублей и 2,5% от внесённых USDT. Сравните стоимость и запросите условия у сервиса.">
+  <meta property="og:description" content="SWIFT-переводы для оплаты недвижимости во freehold — застройщикам и продавцам на вторичном рынке. Сравните комиссии сервисов и сумму к внесению в RUB или USDT.">
   <meta property="og:url" content="https://ccapital.pro/thai-payments/">
   <meta property="og:locale" content="ru_RU">
   <meta name="twitter:card" content="summary">
@@ -25,7 +25,7 @@
   <link rel="stylesheet" href="assets/charter-brand.css?v=20261014-3">
   <link rel="stylesheet" href="assets/motion.css?v=20261013-5">
   <link rel="stylesheet" href="assets/deal-action.css?v=20261014-1">
-  <script type="module" src="assets/app.js?v=20261014-6"></script>
+  <script type="module" src="assets/app.js?v=20261014-7"></script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Оплата недвижимости за рубежом","url":"https://ccapital.pro/thai-payments/","inLanguage":"ru","dateModified":"2026-10-13","publisher":{"@type":"Organization","name":"Charter Capital","url":"https://ccapital.pro/"},"description":"Сравнение котировок платёжных сервисов для оплаты недвижимости в Таиланде в RUB и USDT."}</script>
 </head>
 <body>
@@ -59,7 +59,7 @@
     <div class="hero-copy">
       <div class="eyebrow"><span class="flag-th" aria-hidden="true"></span> ПЛАТЁЖНЫЕ СЕРВИСЫ · ТАИЛАНД</div>
       <h1>Оплата недвижимости за рубежом.<br><span>Сравните стоимость услуг перевода.</span></h1>
-      <p>Перевод для оплаты инвойса застройщика в Таиланде.<br class="desktop-break"> Сравните комиссии сервисов и сумму к внесению в рублях или USDT.</p>
+      <p>SWIFT-переводы для оплаты недвижимости во freehold — застройщикам и продавцам на вторичном рынке.<br class="desktop-break"> Сравните комиссии сервисов и сумму к внесению в рублях или USDT.</p>
       <div class="hero-meta"><span>5 сервисов</span><span>2 способа финансирования</span></div>
     </div>
     <div class="tariff-card" aria-label="Тарифы Charter Capital">
@@ -80,7 +80,7 @@
       </fieldset>
       <div id="method-control" class="method-control"><label for="payment-method">Способ передачи рублей</label><select id="payment-method"><option value="all">Все варианты</option><option value="bank">Банковский перевод / СБП</option><option value="cash">Наличные</option></select></div>
       <div class="direction-arrow" aria-hidden="true">↓</div>
-      <div class="destination"><span class="currency-symbol">$</span><div><strong>USD застройщику</strong><span>Недвижимость в Таиланде</span></div><span class="flag-th" aria-hidden="true"></span></div>
+      <div class="destination"><span class="currency-symbol">$</span><div><strong>USD получателю</strong><span>Недвижимость в Таиланде</span></div><span class="flag-th" aria-hidden="true"></span></div>
       <div class="amount-control"><label for="usd-amount">Сумма к зачислению, USD</label><div class="amount-field"><input id="usd-amount" type="text" inputmode="decimal" value="26770" autocomplete="off" aria-describedby="amount-error"><span>USD</span></div><p id="amount-error" class="form-error" hidden></p><div class="presets" aria-label="Быстро выбрать сумму"><button type="button" data-amount="10000">10 000</button><button type="button" data-amount="30000">30 000</button><button type="button" data-amount="100000">100 000</button></div></div>
       <div class="calc-result" aria-live="polite"><div class="calc-top"><span>В Charter Capital</span><span id="calc-percent">3%</span></div><strong id="calc-total">—</strong><div class="calc-breakdown"><span id="calc-rate">Получаем курс ЦБ</span><span id="calc-fee">3% к курсу ЦБ</span></div><p id="charter-status" class="calculation-status pending">Проверяем актуальность расчёта</p></div>
       <a id="request-link" class="button primary full" href="https://t.me/ccapital_acces" target="_blank" rel="noopener noreferrer">Запросить расчёт <span aria-hidden="true">↗</span></a>
@@ -99,8 +99,8 @@
   </section>
 
   <section id="how" class="how-section shell">
-    <div class="section-intro"><div class="eyebrow small">ОТ ИНВОЙСА ДО ПЛАТЕЖА</div><h2>Три шага к оплате.</h2><p>Стоимость — первый вопрос.<br>Путь денег и документы — следующий.</p></div>
-    <ol class="steps"><li><span class="step-number">01</span><h3>Сравните варианты</h3><p>Выберите RUB или USDT, укажите сумму в USD и посмотрите стоимость. Наличные и онлайн-оплата вынесены отдельно.</p></li><li><span class="step-number">02</span><h3>Согласуйте маршрут</h3><p>Передайте инвойс менеджеру. Уточните получателя ваших средств, отправителя платежа, комиссии банков и документы для застройщика.</p></li><li><span class="step-number">03</span><h3>Зафиксируйте условия</h3><p>Согласуйте сумму к зачислению, реквизиты и назначение платежа. Сохраните документы об отправке и подтверждение получателя.</p></li></ol>
+    <div class="section-intro"><div class="eyebrow small">ОТ ДОКУМЕНТОВ ДО ПЛАТЕЖА</div><h2>Три шага к оплате.</h2><p>Стоимость — первый вопрос.<br>Путь денег и документы — следующий.</p></div>
+    <ol class="steps"><li><span class="step-number">01</span><h3>Сравните варианты</h3><p>Выберите RUB или USDT, укажите сумму в USD и посмотрите стоимость. Наличные и онлайн-оплата вынесены отдельно.</p></li><li><span class="step-number">02</span><h3>Согласуйте маршрут</h3><p>Передайте документы сделки менеджеру. Уточните получателя ваших средств, отправителя платежа, комиссии банков и документы по сделке.</p></li><li><span class="step-number">03</span><h3>Зафиксируйте условия</h3><p>Согласуйте сумму к зачислению, реквизиты и назначение платежа. Сохраните документы об отправке и подтверждение получателя.</p></li></ol>
   </section>
 
   <section id="methodology" class="methodology shell">
@@ -109,9 +109,9 @@
     <div class="source-note"><strong>Откуда данные</strong><p>Справочный информационный расчёт. Данные о комиссии исполнителя получены из открытых источников. Перед проведением сделки уточните актуальность расчёта напрямую у исполнителя.</p><div><a id="method-cbr-link" href="https://www.cbr.ru/currency_base/daily/" target="_blank" rel="noopener noreferrer">ЦБ РФ · официальный курс ↗</a></div></div>
   </section>
 
-  <section class="faq shell" aria-labelledby="faq-title"><h2 id="faq-title">Перед оплатой</h2><div><details><summary>Почему несколько предложений от одного сервиса?</summary><p>Сервис может предлагать несколько вариантов внесения денег. Для каждого показан отдельный справочный расчёт. Условия выбранного варианта уточните напрямую у исполнителя.</p></details><details><summary>Что делать, если инвойс выставлен в батах?</summary><p>Для калькулятора нужна сумма в USD. Возьмите её из инвойса или запросите у застройщика вместе с условиями конвертации в THB.</p></details><details><summary>Как запросить расчёт в Charter Capital?</summary><p>Выберите RUB или USDT, укажите сумму в USD и нажмите «Запросить расчёт». Откроется Telegram с подготовленными параметрами платежа. Передайте менеджеру инвойс для подготовки оплаты.</p></details></div></section>
+  <section class="faq shell" aria-labelledby="faq-title"><h2 id="faq-title">Перед оплатой</h2><div><details><summary>Почему несколько предложений от одного сервиса?</summary><p>Сервис может предлагать несколько вариантов внесения денег. Для каждого показан отдельный справочный расчёт. Условия выбранного варианта уточните напрямую у исполнителя.</p></details><details><summary>Что делать, если сумма сделки указана в батах?</summary><p>Для калькулятора нужна сумма в USD. Возьмите её из платёжных документов или запросите у получателя вместе с условиями конвертации в THB.</p></details><details><summary>Как запросить расчёт в Charter Capital?</summary><p>Выберите RUB или USDT, укажите сумму в USD и нажмите «Запросить расчёт». Откроется Telegram с подготовленными параметрами платежа. Передайте менеджеру документы сделки для подготовки оплаты.</p></details></div></section>
 
-  <section class="closing shell"><div><span class="eyebrow small">CHARTER CAPITAL</span><h2>Есть инвойс?<br>Посчитаем ваш платёж.</h2><p>Укажите сумму и удобный способ оплаты.<br>Детали маршрута согласуем до передачи денег.</p></div><a id="closing-request" class="button primary" href="https://t.me/ccapital_acces" target="_blank" rel="noopener noreferrer">Обсудить оплату в Telegram <span aria-hidden="true">↗</span></a></section>
+  <section class="closing shell"><div><span class="eyebrow small">CHARTER CAPITAL</span><h2>Готовы к оплате?<br>Посчитаем ваш платёж.</h2><p>Укажите сумму и удобный способ оплаты.<br>Детали маршрута согласуем до передачи денег.</p></div><a id="closing-request" class="button primary" href="https://t.me/ccapital_acces" target="_blank" rel="noopener noreferrer">Обсудить оплату в Telegram <span aria-hidden="true">↗</span></a></section>
 </main>
 <footer class="footer"><div class="shell footer-inner"><div><strong>Оплата недвижимости за рубежом</strong><span>Агрегатор сервисов оплаты недвижимости</span></div><div class="footer-links"><a href="/">Charter Capital ↗</a><a href="mailto:hello@ccapital.pro">hello@ccapital.pro</a><a href="/privacy.html">Конфиденциальность</a></div><small>© 2026 Charter Capital</small></div></footer>
 <dialog id="offer-dialog" aria-labelledby="dialog-title" aria-describedby="dialog-variant"><div class="dialog-top"><span class="eyebrow small">ДЕТАЛИ РАСЧЁТА</span><button id="close-dialog" type="button" aria-label="Закрыть подробности">×</button></div><h2 id="dialog-title"></h2><p id="dialog-variant" class="dialog-variant"></p><div id="dialog-content" tabindex="0" role="region" aria-label="Подробности расчёта"></div><div class="dialog-actions"><a id="dialog-website" class="button primary" target="_blank" rel="noopener noreferrer">Перейти к сделке ↗</a><button id="dialog-done" class="button" type="button">Закрыть</button></div></dialog>
