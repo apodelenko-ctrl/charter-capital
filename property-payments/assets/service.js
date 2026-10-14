@@ -1,5 +1,5 @@
 import {paymentRate,paymentAmount,calculationConfirmed,isValidCbr,moscowDay} from './calculation.mjs';
-import {parseUsd,referralContext} from './service-model.mjs';
+import {parseUsd,referralContext,partnerContext,partnerContactUrl} from './service-model.mjs?v=20261015-links-1';
 import {initMotion,animateValues} from './motion.mjs?v=charter-pay-1';
 const base='https://ccapital.pro/thai-payments/';
 const ui=Object.fromEntries(['amount','error','total','percent','rate','fee','status','cbr','request','closing','receive','copy'].map(id=>[id,document.getElementById('service-'+id)]));
@@ -12,13 +12,15 @@ const shortNumber=new Intl.NumberFormat('ru-RU',{maximumFractionDigits:2});
 const symbol=()=>currency==='RUB'?'₽':'USDT';
 const offer=(curr=currency)=>({own:true,currency:curr,cost:curr==='RUB'?tariff.rubPremium:tariff.usdtInputFee});
 function requestUrl(amount){
+  const tracked=partnerContactUrl(location.search,amount,currency);if(tracked)return tracked;
   const url=new URL('https://t.me/ccapital_acces');
   let message='Здравствуйте! Хочу оплатить недвижимость в Таиланде через Charter Pay.\nК зачислению получателю: '+shortNumber.format(amount)+' USD.\nСпособ внесения: '+currency+'.\nПрошу подготовить окончательный расчёт и агентский договор.\nМаршрут: Гонконг, платёж от имени поручителя.\nЗачисление: T+1.';
   if(referralContext(location.search).fromAggregator)message+='\nИсточник: ThaiPay.';
   url.searchParams.set('text',message);return url.href;
 }
 function calculationText(){
-  return 'Charter Pay · оплата недвижимости в Таиланде\nВы вносите: '+ui.total.textContent+'\nПолучатель получает: '+ui.receive.textContent+'\nТариф: '+ui.percent.textContent+'\nРасчётный курс: '+ui.rate.textContent+'\nВаши затраты на перевод: '+ui.fee.textContent+'\n'+ui.status.textContent+'\nОкончательный расчёт и расходы банков согласуются до оплаты.\nhttps://ccapital.pro/property-payments/';
+  const partner=partnerContext(location.search);
+  return 'Charter Pay · оплата недвижимости в Таиланде\nВы вносите: '+ui.total.textContent+'\nПолучатель получает: '+ui.receive.textContent+'\nТариф: '+ui.percent.textContent+'\nРасчётный курс: '+ui.rate.textContent+'\nВаши затраты на перевод: '+ui.fee.textContent+'\n'+ui.status.textContent+'\nОкончательный расчёт и расходы банков согласуются до оплаты.\nhttps://ccapital.pro/property-payments/'+(partner.code?'\nРекомендация ThaiPay: '+partner.code+(partner.visit?' · Код обращения: '+partner.visit:''):'');
 }
 function render(){
   const amount=parseUsd(ui.amount.value),current=offer(),total=paymentAmount(amount,current,cbr),confirmed=calculationConfirmed(amount,current,cbr);
@@ -38,6 +40,7 @@ function render(){
     if(amount===null||total===null){link.setAttribute('aria-disabled','true');link.removeAttribute('href');}
     else{link.removeAttribute('aria-disabled');link.href=requestUrl(amount);}
   }
+  if(partnerContext(location.search).code)document.querySelectorAll('[data-partner-contact]').forEach(link=>{link.href=requestUrl(amount);});
   ui.copy.disabled=amount===null||total===null;copyStatus.textContent='';copyFallback.hidden=true;
   const example=paymentAmount(10000,offer('RUB'),cbr);document.getElementById('example-rub').textContent=example===null?'Получаем курс ЦБ':money.format(example)+' ₽';
   animateValues([ui.total,ui.receive]);
@@ -58,6 +61,7 @@ ui.copy.addEventListener('click',async()=>{
   catch{copyFallback.value=text;copyFallback.hidden=false;copyFallback.focus();copyFallback.select();copyStatus.textContent='Выделите и скопируйте расчёт из поля ниже.';}
 });
 const context=referralContext(location.search);if(context.amount!==null)ui.amount.value=String(context.amount);
+document.querySelectorAll('a[href^="https://t.me/ccapital_acces"]').forEach(link=>{if(link!==ui.request&&link!==ui.closing)link.dataset.partnerContact='true';});
 currency=context.currency;document.querySelector('input[name="service-currency"][value="'+currency+'"]').checked=true;
 initMotion();render();
 try{const data=await json(base+'offers.json');if(Number.isFinite(data.charter?.rubPremium)&&data.charter.rubPremium>=0&&Number.isFinite(data.charter?.usdtInputFee)&&data.charter.usdtInputFee>=0&&data.charter.usdtInputFee<1)tariff=data.charter;}catch{}
