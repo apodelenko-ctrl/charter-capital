@@ -87,7 +87,7 @@ function charterOffer() {
 
 function confirmation(offer, amount) {
   const confirmed = calculationConfirmed(amount, offer, data.cbr);
-  const text = confirmed ? "Актуальность расчёта подтверждена"
+  const text = confirmed ? "Актуальность расчёта подтверждена при переводе через Charter Pay"
     : amount === null ? "Укажите сумму для расчёта"
     : !data.cbr ? "Курс ЦБ временно недоступен" : "Требуется обновление курса ЦБ";
   return {confirmed, text};
