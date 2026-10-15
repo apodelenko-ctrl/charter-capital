@@ -1,0 +1,567 @@
+{
+  "method": "Independent Python Decimal with exact input-fee multiplication, floor output, ceiling funding",
+  "cbrUsdRub": "83.9497",
+  "bankUsdThb": "33.32",
+  "cases": [
+    {
+      "input": {
+        "amount": "1",
+        "side": "give",
+        "giveCurrency": "RUB",
+        "receiveCurrency": "THB"
+      },
+      "expected": {
+        "give": 1.0,
+        "receive": 0.33,
+        "usd": 0.01,
+        "fee": 0.17
+      }
+    },
+    {
+      "input": {
+        "amount": "1",
+        "side": "receive",
+        "giveCurrency": "RUB",
+        "receiveCurrency": "THB"
+      },
+      "expected": {
+        "give": 3.46,
+        "receive": 1.33,
+        "usd": 0.04,
+        "fee": 0.11
+      }
+    },
+    {
+      "input": {
+        "amount": "1",
+        "side": "give",
+        "giveCurrency": "RUB",
+        "receiveCurrency": "USD"
+      },
+      "expected": {
+        "give": 1.0,
+        "receive": 0.01,
+        "usd": 0.01,
+        "fee": 0.17
+      }
+    },
+    {
+      "input": {
+        "amount": "1",
+        "side": "receive",
+        "giveCurrency": "RUB",
+        "receiveCurrency": "USD"
+      },
+      "expected": {
+        "give": 86.47,
+        "receive": 1.0,
+        "usd": 1.0,
+        "fee": 2.53
+      }
+    },
+    {
+      "input": {
+        "amount": "1",
+        "side": "give",
+        "giveCurrency": "USDT",
+        "receiveCurrency": "THB"
+      },
+      "expected": {
+        "give": 1.0,
+        "receive": 32.32,
+        "usd": 0.97,
+        "fee": 0.03
+      }
+    },
+    {
+      "input": {
+        "amount": "1",
+        "side": "receive",
+        "giveCurrency": "USDT",
+        "receiveCurrency": "THB"
+      },
+      "expected": {
+        "give": 0.05,
+        "receive": 1.33,
+        "usd": 0.04,
+        "fee": 0.01
+      }
+    },
+    {
+      "input": {
+        "amount": "1",
+        "side": "give",
+        "giveCurrency": "USDT",
+        "receiveCurrency": "USD"
+      },
+      "expected": {
+        "give": 1.0,
+        "receive": 0.97,
+        "usd": 0.97,
+        "fee": 0.03
+      }
+    },
+    {
+      "input": {
+        "amount": "1",
+        "side": "receive",
+        "giveCurrency": "USDT",
+        "receiveCurrency": "USD"
+      },
+      "expected": {
+        "give": 1.03,
+        "receive": 1.0,
+        "usd": 1.0,
+        "fee": 0.03
+      }
+    },
+    {
+      "input": {
+        "amount": "10000",
+        "side": "give",
+        "giveCurrency": "RUB",
+        "receiveCurrency": "THB"
+      },
+      "expected": {
+        "give": 10000.0,
+        "receive": 3853.12,
+        "usd": 115.64,
+        "fee": 292.06
+      }
+    },
+    {
+      "input": {
+        "amount": "10000",
+        "side": "receive",
+        "giveCurrency": "RUB",
+        "receiveCurrency": "THB"
+      },
+      "expected": {
+        "give": 25951.7,
+        "receive": 10000.33,
+        "usd": 300.13,
+        "fee": 755.88
+      }
+    },
+    {
+      "input": {
+        "amount": "10000",
+        "side": "give",
+        "giveCurrency": "RUB",
+        "receiveCurrency": "USD"
+      },
+      "expected": {
+        "give": 10000.0,
+        "receive": 115.64,
+        "usd": 115.64,
+        "fee": 292.06
+      }
+    },
+    {
+      "input": {
+        "amount": "10000",
+        "side": "receive",
+        "giveCurrency": "RUB",
+        "receiveCurrency": "USD"
+      },
+      "expected": {
+        "give": 864681.91,
+        "receive": 10000.0,
+        "usd": 10000.0,
+        "fee": 25184.91
+      }
+    },
+    {
+      "input": {
+        "amount": "10000",
+        "side": "give",
+        "giveCurrency": "USDT",
+        "receiveCurrency": "THB"
+      },
+      "expected": {
+        "give": 10000.0,
+        "receive": 324870.0,
+        "usd": 9750.0,
+        "fee": 250.0
+      }
+    },
+    {
+      "input": {
+        "amount": "10000",
+        "side": "receive",
+        "giveCurrency": "USDT",
+        "receiveCurrency": "THB"
+      },
+      "expected": {
+        "give": 307.83,
+        "receive": 10000.33,
+        "usd": 300.13,
+        "fee": 7.7
+      }
+    },
+    {
+      "input": {
+        "amount": "10000",
+        "side": "give",
+        "giveCurrency": "USDT",
+        "receiveCurrency": "USD"
+      },
+      "expected": {
+        "give": 10000.0,
+        "receive": 9750.0,
+        "usd": 9750.0,
+        "fee": 250.0
+      }
+    },
+    {
+      "input": {
+        "amount": "10000",
+        "side": "receive",
+        "giveCurrency": "USDT",
+        "receiveCurrency": "USD"
+      },
+      "expected": {
+        "give": 10256.42,
+        "receive": 10000.0,
+        "usd": 10000.0,
+        "fee": 256.42
+      }
+    },
+    {
+      "input": {
+        "amount": "26770.55",
+        "side": "give",
+        "giveCurrency": "RUB",
+        "receiveCurrency": "THB"
+      },
+      "expected": {
+        "give": 26770.55,
+        "receive": 10315.53,
+        "usd": 309.59,
+        "fee": 780.57
+      }
+    },
+    {
+      "input": {
+        "amount": "26770.55",
+        "side": "receive",
+        "giveCurrency": "RUB",
+        "receiveCurrency": "THB"
+      },
+      "expected": {
+        "give": 69472.01,
+        "receive": 26770.62,
+        "usd": 803.44,
+        "fee": 2023.47
+      }
+    },
+    {
+      "input": {
+        "amount": "26770.55",
+        "side": "give",
+        "giveCurrency": "RUB",
+        "receiveCurrency": "USD"
+      },
+      "expected": {
+        "give": 26770.55,
+        "receive": 309.59,
+        "usd": 309.59,
+        "fee": 780.57
+      }
+    },
+    {
+      "input": {
+        "amount": "26770.55",
+        "side": "receive",
+        "giveCurrency": "RUB",
+        "receiveCurrency": "USD"
+      },
+      "expected": {
+        "give": 2314801.04,
+        "receive": 26770.55,
+        "usd": 26770.55,
+        "fee": 67421.4
+      }
+    },
+    {
+      "input": {
+        "amount": "26770.55",
+        "side": "give",
+        "giveCurrency": "USDT",
+        "receiveCurrency": "THB"
+      },
+      "expected": {
+        "give": 26770.55,
+        "receive": 869694.64,
+        "usd": 26101.28,
+        "fee": 669.27
+      }
+    },
+    {
+      "input": {
+        "amount": "26770.55",
+        "side": "receive",
+        "giveCurrency": "USDT",
+        "receiveCurrency": "THB"
+      },
+      "expected": {
+        "give": 824.05,
+        "receive": 26770.62,
+        "usd": 803.44,
+        "fee": 20.61
+      }
+    },
+    {
+      "input": {
+        "amount": "26770.55",
+        "side": "give",
+        "giveCurrency": "USDT",
+        "receiveCurrency": "USD"
+      },
+      "expected": {
+        "give": 26770.55,
+        "receive": 26101.28,
+        "usd": 26101.28,
+        "fee": 669.27
+      }
+    },
+    {
+      "input": {
+        "amount": "26770.55",
+        "side": "receive",
+        "giveCurrency": "USDT",
+        "receiveCurrency": "USD"
+      },
+      "expected": {
+        "give": 27456.98,
+        "receive": 26770.55,
+        "usd": 26770.55,
+        "fee": 686.43
+      }
+    },
+    {
+      "input": {
+        "amount": "100000",
+        "side": "give",
+        "giveCurrency": "RUB",
+        "receiveCurrency": "THB"
+      },
+      "expected": {
+        "give": 100000.0,
+        "receive": 38534.24,
+        "usd": 1156.49,
+        "fee": 2913.02
+      }
+    },
+    {
+      "input": {
+        "amount": "100000",
+        "side": "receive",
+        "giveCurrency": "RUB",
+        "receiveCurrency": "THB"
+      },
+      "expected": {
+        "give": 259509.2,
+        "receive": 100000.31,
+        "usd": 3001.21,
+        "fee": 7558.53
+      }
+    },
+    {
+      "input": {
+        "amount": "100000",
+        "side": "give",
+        "giveCurrency": "RUB",
+        "receiveCurrency": "USD"
+      },
+      "expected": {
+        "give": 100000.0,
+        "receive": 1156.49,
+        "usd": 1156.49,
+        "fee": 2913.02
+      }
+    },
+    {
+      "input": {
+        "amount": "100000",
+        "side": "receive",
+        "giveCurrency": "RUB",
+        "receiveCurrency": "USD"
+      },
+      "expected": {
+        "give": 8646819.1,
+        "receive": 100000.0,
+        "usd": 100000.0,
+        "fee": 251849.1
+      }
+    },
+    {
+      "input": {
+        "amount": "100000",
+        "side": "give",
+        "giveCurrency": "USDT",
+        "receiveCurrency": "THB"
+      },
+      "expected": {
+        "give": 100000.0,
+        "receive": 3248700.0,
+        "usd": 97500.0,
+        "fee": 2500.0
+      }
+    },
+    {
+      "input": {
+        "amount": "100000",
+        "side": "receive",
+        "giveCurrency": "USDT",
+        "receiveCurrency": "THB"
+      },
+      "expected": {
+        "give": 3078.17,
+        "receive": 100000.31,
+        "usd": 3001.21,
+        "fee": 76.96
+      }
+    },
+    {
+      "input": {
+        "amount": "100000",
+        "side": "give",
+        "giveCurrency": "USDT",
+        "receiveCurrency": "USD"
+      },
+      "expected": {
+        "give": 100000.0,
+        "receive": 97500.0,
+        "usd": 97500.0,
+        "fee": 2500.0
+      }
+    },
+    {
+      "input": {
+        "amount": "100000",
+        "side": "receive",
+        "giveCurrency": "USDT",
+        "receiveCurrency": "USD"
+      },
+      "expected": {
+        "give": 102564.11,
+        "receive": 100000.0,
+        "usd": 100000.0,
+        "fee": 2564.11
+      }
+    },
+    {
+      "input": {
+        "amount": "1000000",
+        "side": "give",
+        "giveCurrency": "RUB",
+        "receiveCurrency": "THB"
+      },
+      "expected": {
+        "give": 1000000.0,
+        "receive": 385343.8,
+        "usd": 11564.94,
+        "fee": 29126.76
+      }
+    },
+    {
+      "input": {
+        "amount": "1000000",
+        "side": "receive",
+        "giveCurrency": "RUB",
+        "receiveCurrency": "THB"
+      },
+      "expected": {
+        "give": 2595084.22,
+        "receive": 1000000.17,
+        "usd": 30012.01,
+        "fee": 75584.99
+      }
+    },
+    {
+      "input": {
+        "amount": "1000000",
+        "side": "give",
+        "giveCurrency": "RUB",
+        "receiveCurrency": "USD"
+      },
+      "expected": {
+        "give": 1000000.0,
+        "receive": 11564.94,
+        "usd": 11564.94,
+        "fee": 29126.76
+      }
+    },
+    {
+      "input": {
+        "amount": "1000000",
+        "side": "receive",
+        "giveCurrency": "RUB",
+        "receiveCurrency": "USD"
+      },
+      "expected": {
+        "give": 86468191.0,
+        "receive": 1000000.0,
+        "usd": 1000000.0,
+        "fee": 2518491.0
+      }
+    },
+    {
+      "input": {
+        "amount": "1000000",
+        "side": "give",
+        "giveCurrency": "USDT",
+        "receiveCurrency": "THB"
+      },
+      "expected": {
+        "give": 1000000.0,
+        "receive": 32487000.0,
+        "usd": 975000.0,
+        "fee": 25000.0
+      }
+    },
+    {
+      "input": {
+        "amount": "1000000",
+        "side": "receive",
+        "giveCurrency": "USDT",
+        "receiveCurrency": "THB"
+      },
+      "expected": {
+        "give": 30781.55,
+        "receive": 1000000.17,
+        "usd": 30012.01,
+        "fee": 769.54
+      }
+    },
+    {
+      "input": {
+        "amount": "1000000",
+        "side": "give",
+        "giveCurrency": "USDT",
+        "receiveCurrency": "USD"
+      },
+      "expected": {
+        "give": 1000000.0,
+        "receive": 975000.0,
+        "usd": 975000.0,
+        "fee": 25000.0
+      }
+    },
+    {
+      "input": {
+        "amount": "1000000",
+        "side": "receive",
+        "giveCurrency": "USDT",
+        "receiveCurrency": "USD"
+      },
+      "expected": {
+        "give": 1025641.03,
+        "receive": 1000000.0,
+        "usd": 1000000.0,
+        "fee": 25641.03
+      }
+    }
+  ]
+}
