@@ -27,8 +27,8 @@ jobs:
       - name: Verify the official Bangkok Bank public feed from the runner
         if: github.ref != 'refs/heads/main'
         run: |
-          curl --fail --silent --show-error --location --retry 1 --max-time 25 'https://www.bangkokbank.com/api/exchangerateservice/GetLatestfxrates'
-          curl --fail --silent --show-error --location --retry 1 --max-time 25 'https://www.bangkokbank.com/api/exchangerateservice/GetDateTimeLastUpdate'
+          curl --http1.1 --fail --silent --show-error --location --max-time 20 'https://www.bangkokbank.com/api/exchangerateservice/GetLatestfxrates'
+          curl --http1.1 --fail --silent --show-error --location --max-time 20 'https://www.bangkokbank.com/api/exchangerateservice/GetDateTimeLastUpdate'
 
       - uses: actions/checkout@v4
         with:
