@@ -57,6 +57,13 @@ async function readSnapshot() {
     const page = await browser.newPage();
     await page.goto(BANK_URL, {waitUntil:'domcontentloaded', timeout:45000});
     await page.locator('#exchange-rates tr').filter({hasText:'USD50'}).waitFor({timeout:30000});
+    // Rates and publication metadata arrive through independent bank requests.
+    // A visible USD row alone does not establish which dated publication it is.
+    await page.waitForFunction(() => {
+      const date=document.querySelector('#exchange-rates input[name="date"]')?.value || '';
+      const time=document.querySelector('#exchange-rates select')?.selectedOptions[0]?.textContent || '';
+      return /^\d{1,2} [A-Z][a-z]{2} 20\d{2}$/.test(date.trim()) && /^\d+:\s*\d{2}:\d{2}\s*$/.test(time.trim());
+    }, undefined, {timeout:45000});
     return await page.evaluate(() => ({
       headers:[...document.querySelectorAll('#exchange-rates th')].map(element => element.textContent),
       rows:[...document.querySelectorAll('#exchange-rates tr')].map(row => [...row.querySelectorAll('td')].map(cell => cell.textContent)).filter(cells => cells.length),
