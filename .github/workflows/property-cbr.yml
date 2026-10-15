@@ -24,6 +24,12 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
+      - name: Verify the official Bangkok Bank public feed from the runner
+        if: github.ref != 'refs/heads/main'
+        run: |
+          curl --fail --silent --show-error --location --retry 1 --max-time 25 'https://www.bangkokbank.com/api/exchangerateservice/GetLatestfxrates'
+          curl --fail --silent --show-error --location --retry 1 --max-time 25 'https://www.bangkokbank.com/api/exchangerateservice/GetDateTimeLastUpdate'
+
       - uses: actions/checkout@v4
         with:
           ref: main
