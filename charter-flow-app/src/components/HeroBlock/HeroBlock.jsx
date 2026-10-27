@@ -21,7 +21,7 @@ export default function HeroBlock({ hero }) {
       <div className="relative z-10 py-6 sm:py-8">
         <div className="section-eyebrow mb-4">{hero.eyebrow}</div>
 
-        <h1 className="font-sans text-[44px] font-bold leading-[0.98] tracking-[-0.02em] text-ink sm:text-[60px] md:text-[80px] lg:text-[96px]">
+        <h1 className={`font-sans font-bold tracking-[-0.02em] text-ink ${hero.compactTitle ? 'max-w-5xl text-[38px] leading-[1.03] sm:text-[48px] md:text-[60px] lg:text-[68px]' : 'text-[44px] leading-[0.98] sm:text-[60px] md:text-[80px] lg:text-[96px]'}`}>
           {hero.title}
         </h1>
 

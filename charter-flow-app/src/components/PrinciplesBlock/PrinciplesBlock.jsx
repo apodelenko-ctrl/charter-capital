@@ -10,13 +10,18 @@ const ICONS = { Eye, Scale, Lock, FileCheck2, Zap };
  * Блок «Принципы» — четыре принципа, которые обеспечивает структура сделки.
  * Сетка 2×2 на десктопе, 1 колонка на мобильных.
  */
-export default function PrinciplesBlock({ principles }) {
+export default function PrinciplesBlock({
+  principles,
+  eyebrow = 'Раздел 02 · Гарантии',
+  title = 'Что обеспечивает структура',
+  lead = 'Маршрут построен так, чтобы исключить односторонние действия и обеспечить независимую верификацию каждого шага.',
+}) {
   return (
     <Card delay={0.1}>
       <SectionTitle
-        eyebrow="Раздел 02 · Гарантии"
-        title="Что обеспечивает структура"
-        lead="Маршрут построен так, чтобы исключить односторонние действия и обеспечить независимую верификацию каждого шага."
+        eyebrow={eyebrow}
+        title={title}
+        lead={lead}
       />
 
       <div className="grid gap-5 sm:grid-cols-2 sm:gap-6">

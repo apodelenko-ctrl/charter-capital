@@ -7,15 +7,18 @@ import { Download, FileText } from 'lucide-react';
  *  - Атрибут download заставляет браузер скачивать, а не открывать PDF.
  */
 export default function DownloadButton({ document, delay = 0 }) {
+  const Element = document.file ? motion.a : motion.div;
+  const linkProps = document.file
+    ? { href: `${import.meta.env.BASE_URL}${document.file}`, download: true }
+    : {};
   return (
-    <motion.a
-      href={`${import.meta.env.BASE_URL}${document.file}`}
-      download
+    <Element
+      {...linkProps}
       initial={{ opacity: 0, y: 8 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.5, delay }}
-      whileHover={{ y: -2 }}
+      whileHover={document.file ? { y: -2 } : undefined}
       className="group flex items-start gap-4 rounded-lg border border-rule bg-white p-5 shadow-soft transition-all hover:border-gold-600/50 hover:shadow-card-hover sm:p-6"
     >
       <span className="grid h-11 w-11 flex-shrink-0 place-items-center rounded-lg border border-gold-600/30 bg-paper-100 text-gold-600 transition-transform group-hover:scale-105">
@@ -39,16 +42,21 @@ export default function DownloadButton({ document, delay = 0 }) {
             PDF · {document.fileSize}
           </span>
         )}
+        {document.deliveryNote && (
+          <span className="mt-2 text-[12px] text-ink-500">
+            {document.deliveryNote}
+          </span>
+        )}
       </span>
 
-      <span className="flex-shrink-0 transition-transform group-hover:translate-x-1">
+      {document.file && <span className="flex-shrink-0 transition-transform group-hover:translate-x-1">
         <Download
           size={18}
           strokeWidth={1.75}
           className="text-ink-400 transition-colors group-hover:text-gold-600"
           aria-hidden
         />
-      </span>
-    </motion.a>
+      </span>}
+    </Element>
   );
 }

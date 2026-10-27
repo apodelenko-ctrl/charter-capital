@@ -3,15 +3,19 @@ import SectionTitle from '../ui/SectionTitle';
 import DownloadButton from './DownloadButton';
 
 /**
- * Секция «Документация» — приложения к договору в виде скачиваемых PDF.
+ * Секция «Документация» — скачиваемые документы к договору.
  */
-export default function DocumentSection({ documents }) {
+export default function DocumentSection({
+  documents,
+  title = 'Первичные документы',
+  lead = 'Каждая стадия маршрута сопровождается соответствующим приложением к договору. Документы доступны для скачивания и архивирования.',
+}) {
   return (
     <Card delay={0.15}>
       <SectionTitle
         eyebrow="Раздел 03 · Документация"
-        title="Первичные документы"
-        lead="Каждая стадия маршрута сопровождается соответствующим приложением к договору. Документы доступны для скачивания и архивирования."
+        title={title}
+        lead={lead}
       />
 
       <div className="grid gap-4 sm:grid-cols-2 sm:gap-5">

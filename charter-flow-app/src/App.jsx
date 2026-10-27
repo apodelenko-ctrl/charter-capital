@@ -10,8 +10,11 @@ import {
   recipient,
   issuer,
   hero,
+  flowSection,
   flowNodes,
+  principlesSection,
   principles,
+  documentsSection,
   documents,
   externalLinks,
   disclaimer,
@@ -23,9 +26,9 @@ import {
  * Структура (как у деловой презентации JP Morgan):
  *   1. StatusHeader  — фирменный бланк: эмитент, адресат, реквизиты договора
  *   2. HeroBlock     — заголовок и executive summary
- *   3. FlowChart     — Раздел 01: четыре стадии движения капитала
- *   4. Principles    — Раздел 02: что обеспечивает структура
- *   5. Documents     — Раздел 03: первичные документы (PDF)
+ *   3. FlowChart     — Раздел 01: заём, обеспечение и переход прав на USDT
+ *   4. Principles    — Раздел 02: условия и подтверждения
+ *   5. Documents     — Раздел 03: образцы актов (PDF)
  *   6. Links         — Раздел 04: дополнительные материалы
  *   7. Disclaimer    — NDA / условия использования материала
  *
@@ -39,11 +42,11 @@ export default function App() {
 
         <HeroBlock hero={hero} />
 
-        <FlowChart nodes={flowNodes} />
+        <FlowChart nodes={flowNodes} {...flowSection} />
 
-        <PrinciplesBlock principles={principles} />
+        <PrinciplesBlock principles={principles} {...principlesSection} />
 
-        <DocumentSection documents={documents} />
+        <DocumentSection documents={documents} {...documentsSection} />
 
         <LinksBlock links={externalLinks} />
 
@@ -62,7 +65,7 @@ function PageFooter({ issuer }) {
   return (
     <footer className="flex flex-col items-center justify-between gap-2 border-t border-rule pt-6 text-[11px] text-ink-400 sm:flex-row">
       <span className="font-mono uppercase tracking-institutional">
-        Charter Flow · v1.0
+        Charter Flow · 27.10.2026
       </span>
       <span className="font-mono uppercase tracking-institutional">
         © {new Date().getFullYear()} {issuer.name}
