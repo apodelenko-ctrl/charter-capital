@@ -3,7 +3,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const BANK_URL = 'https://www.bangkokbank.com/en/Personal/Other-Services/View-Rates/Foreign-Exchange-Rates';
 const HEADERS = ['Currency', 'Description', 'BankNotesBuyingRates', 'BankNotesSellingRates', 'SightBillBuyingRates', 'TTBuyingRates', 'Bill-DD-TTSellingRates'];
-const compact = value => String(value ?? '').replace(/\s+/g, '');
+const compact = value => String(value ?? '').replace(/[\u2010-\u2015\u2212]/g, '-').replace(/\s+/g, '');
 const bangkokDay = value => new Intl.DateTimeFormat('en-CA', {timeZone:'Asia/Bangkok', year:'numeric', month:'2-digit', day:'2-digit'}).format(value);
 
 function parseSnapshot(snapshot, checkedAt = new Date()) {
@@ -49,6 +49,32 @@ function writeRate(file, data, force = false) {
   return true;
 }
 
+// This self-contained function is also executed inside the bank's page. Keep
+// date/time tied to the selected table layout; never mix two publications.
+function readTableSnapshot(sourceDocument = document) {
+  const current = sourceDocument.querySelector('table.forex-rates-table');
+  const table = current || sourceDocument.querySelector('#exchange-rates');
+  if (!table) return null;
+  const date = current
+    ? sourceDocument.querySelector('#forex-rates-date-text-input')?.value
+    : table.querySelector('input[name="date"]')?.value;
+  const time = current
+    ? sourceDocument.querySelector('.forex-rates-time-label')?.textContent
+    : table.querySelector('select')?.selectedOptions[0]?.textContent;
+  const snapshot = {
+    headers:[...table.querySelectorAll('th')].map(element => element.textContent),
+    rows:[...table.querySelectorAll('tr')].map(row => [...row.querySelectorAll('td')].map(cell => cell.textContent)).filter(cells => cells.length),
+    date, time,
+  };
+  // Rates and metadata load independently. A table row alone cannot establish
+  // its publication time, and an initial empty row must not renew checkedAt.
+  if (!/^\d{1,2} [A-Z][a-z]{2} 20\d{2}$/.test(String(date ?? '').trim())
+    || !/^\d+:\s*\d{2}:\d{2}\s*$/.test(String(time ?? '').trim())
+    || !snapshot.rows.some(cells => String(cells[0]).replace(/\s+/g, '') === 'USD50'
+      && cells.length === 7 && cells.slice(4,7).every(cell => String(cell).trim()))) return null;
+  return snapshot;
+}
+
 async function readSnapshot() {
   // Dependency is installed only in the scheduled runner; no visitor browser is used.
   const {chromium} = require('playwright');
@@ -56,20 +82,8 @@ async function readSnapshot() {
   try {
     const page = await browser.newPage();
     await page.goto(BANK_URL, {waitUntil:'domcontentloaded', timeout:45000});
-    await page.locator('#exchange-rates tr').filter({hasText:'USD50'}).waitFor({timeout:30000});
-    // Rates and publication metadata arrive through independent bank requests.
-    // A visible USD row alone does not establish which dated publication it is.
-    await page.waitForFunction(() => {
-      const date=document.querySelector('#exchange-rates input[name="date"]')?.value || '';
-      const time=document.querySelector('#exchange-rates select')?.selectedOptions[0]?.textContent || '';
-      return /^\d{1,2} [A-Z][a-z]{2} 20\d{2}$/.test(date.trim()) && /^\d+:\s*\d{2}:\d{2}\s*$/.test(time.trim());
-    }, undefined, {timeout:45000});
-    return await page.evaluate(() => ({
-      headers:[...document.querySelectorAll('#exchange-rates th')].map(element => element.textContent),
-      rows:[...document.querySelectorAll('#exchange-rates tr')].map(row => [...row.querySelectorAll('td')].map(cell => cell.textContent)).filter(cells => cells.length),
-      date:document.querySelector('#exchange-rates input[name="date"]')?.value,
-      time:document.querySelector('#exchange-rates select')?.selectedOptions[0]?.textContent,
-    }));
+    await page.waitForFunction(readTableSnapshot, undefined, {timeout:45000});
+    return await page.evaluate(readTableSnapshot);
   } finally {await browser.close();}
 }
 
@@ -80,5 +94,5 @@ async function main() {
   const changed = writeRate(file, data, process.argv.includes('--force-refresh'));
   console.log(`Bangkok Bank Sight Bill ${data.rate} THB/USD, published ${data.publishedAt}: ${changed ? 'updated' : 'already current'}`);
 }
-module.exports = {parseSnapshot, writeRate, BANK_URL};
+module.exports = {parseSnapshot, writeRate, readTableSnapshot, BANK_URL};
 if (require.main === module) main().catch(error => {console.error(error.message); process.exitCode = 1;});

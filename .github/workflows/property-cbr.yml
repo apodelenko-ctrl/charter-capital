@@ -1,6 +1,14 @@
 name: Property payments CBR
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/property-cbr.yml'
+      - '.github/scripts/update_property_bank.cjs'
+      - '.github/scripts/update_property_cbr.py'
+      - '.github/tests/property_bank.test.cjs'
+      - '.github/tests/test_property_cbr.py'
   workflow_dispatch:
     inputs:
       force_refresh:
