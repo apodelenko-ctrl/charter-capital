@@ -16,8 +16,9 @@ on:
         type: boolean
         default: false
   schedule:
-    # Reuse the existing hourly job for daily CBR verification and bank publications.
-    - cron: '17 * * * *'
+    # GitHub schedules are best-effort; repeat off the hour so a delayed or
+    # dropped invocation is not the only opportunity to read a publication.
+    - cron: '7,27,47 * * * *'
 
 permissions:
   contents: write

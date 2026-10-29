@@ -2,9 +2,11 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const BANK_URL = 'https://www.bangkokbank.com/en/Personal/Other-Services/View-Rates/Foreign-Exchange-Rates';
+const READ_ATTEMPTS = 3;
+const READ_TIMEOUT_MS = 45000;
+const VERIFICATION_COALESCE_MS = 15 * 60 * 1000;
 const HEADERS = ['Currency', 'Description', 'BankNotesBuyingRates', 'BankNotesSellingRates', 'SightBillBuyingRates', 'TTBuyingRates', 'Bill-DD-TTSellingRates'];
 const compact = value => String(value ?? '').replace(/[\u2010-\u2015\u2212]/g, '-').replace(/\s+/g, '');
-const bangkokDay = value => new Intl.DateTimeFormat('en-CA', {timeZone:'Asia/Bangkok', year:'numeric', month:'2-digit', day:'2-digit'}).format(value);
 
 function parseSnapshot(snapshot, checkedAt = new Date()) {
   if (!snapshot || !Array.isArray(snapshot.headers) || snapshot.headers.length !== HEADERS.length
@@ -38,9 +40,11 @@ function writeRate(file, data, force = false) {
     let previous;
     try {previous = JSON.parse(fs.readFileSync(file, 'utf8'));} catch {previous = null;}
     if (previous && Date.parse(previous.publishedAt) > Date.parse(data.publishedAt)) throw new Error('Refusing an older bank publication');
+    const previousCheck = Date.parse(previous?.checkedAt), checked = Date.parse(data.checkedAt);
+    if (Number.isFinite(previousCheck) && checked < previousCheck) throw new Error('Refusing an older bank verification');
     const fields = Object.keys(data).filter(key => key !== 'checkedAt');
-    if (!force && previous && Number.isFinite(Date.parse(previous.checkedAt))
-      && bangkokDay(new Date(previous.checkedAt)) === bangkokDay(new Date(data.checkedAt))
+    if (!force && previous && Number.isFinite(previousCheck)
+      && checked - previousCheck < VERIFICATION_COALESCE_MS
       && fields.every(key => previous[key] === data[key])) return false;
   }
   fs.mkdirSync(path.dirname(file), {recursive:true});
@@ -75,15 +79,36 @@ function readTableSnapshot(sourceDocument = document) {
   return snapshot;
 }
 
-async function readSnapshot() {
+function transientReadFailure(error) {
+  return error?.name === 'TimeoutError'
+    || /net::ERR_(?:TIMED_OUT|CONNECTION_RESET|CONNECTION_CLOSED|CONNECTION_REFUSED|NETWORK_CHANGED|NAME_NOT_RESOLVED|EMPTY_RESPONSE|HTTP2_PROTOCOL_ERROR|ABORTED)\b/.test(String(error?.message));
+}
+
+async function readSnapshot({launch, now = () => new Date(), log = message => console.warn(message)} = {}) {
   // Dependency is installed only in the scheduled runner; no visitor browser is used.
-  const {chromium} = require('playwright');
-  const browser = await chromium.launch({channel:'chrome', headless:true});
+  const launchBrowser = launch || (options => require('playwright').chromium.launch(options));
+  const browser = await launchBrowser({channel:'chrome', headless:true});
   try {
-    const page = await browser.newPage();
-    await page.goto(BANK_URL, {waitUntil:'domcontentloaded', timeout:45000});
-    await page.waitForFunction(readTableSnapshot, undefined, {timeout:45000});
-    return await page.evaluate(readTableSnapshot);
+    for (let attempt = 1; attempt <= READ_ATTEMPTS; attempt++) {
+      const context = await browser.newContext({locale:'en-US', timezoneId:'Asia/Bangkok'});
+      try {
+        const page = await context.newPage();
+        try {
+          // The bank redirects legacy mixed-case paths to this canonical URL.
+          await page.goto(BANK_URL.toLowerCase(), {waitUntil:'domcontentloaded', timeout:READ_TIMEOUT_MS});
+          await page.waitForFunction(readTableSnapshot, undefined, {timeout:READ_TIMEOUT_MS});
+        } catch (error) {
+          if (!transientReadFailure(error) || attempt === READ_ATTEMPTS) throw error;
+          log(`Bangkok Bank read attempt ${attempt}/${READ_ATTEMPTS} failed transiently; retrying in a fresh page.`);
+          continue;
+        }
+        const snapshot = await page.evaluate(readTableSnapshot);
+        // Validation failures must stop the run, never become a retry that
+        // silently accepts a different or incomplete financial publication.
+        parseSnapshot(snapshot, now());
+        return snapshot;
+      } finally {await context.close();}
+    }
   } finally {await browser.close();}
 }
 
@@ -94,5 +119,5 @@ async function main() {
   const changed = writeRate(file, data, process.argv.includes('--force-refresh'));
   console.log(`Bangkok Bank Sight Bill ${data.rate} THB/USD, published ${data.publishedAt}: ${changed ? 'updated' : 'already current'}`);
 }
-module.exports = {parseSnapshot, writeRate, readTableSnapshot, BANK_URL};
+module.exports = {parseSnapshot, writeRate, readTableSnapshot, readSnapshot, BANK_URL};
 if (require.main === module) main().catch(error => {console.error(error.message); process.exitCode = 1;});

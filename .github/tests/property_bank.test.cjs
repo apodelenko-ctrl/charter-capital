@@ -3,7 +3,7 @@ const assert = require('node:assert/strict');
 const {mkdtempSync, readFileSync, rmSync} = require('node:fs');
 const {tmpdir} = require('node:os');
 const {join} = require('node:path');
-const {parseSnapshot, writeRate, readTableSnapshot} = require('../scripts/update_property_bank.cjs');
+const {parseSnapshot, writeRate, readTableSnapshot, readSnapshot, BANK_URL} = require('../scripts/update_property_bank.cjs');
 const now = new Date('2026-10-15T10:00:00Z');
 const fixture = () => ({headers:['Currency','Description','Bank NotesBuying Rates','Bank NotesSelling Rates','Sight BillBuying Rates','TTBuying Rates','Bill - DD - TTSelling Rates'],
   date:'15 Oct 2026',time:'2: 14:30     ',rows:[['USD1','USD: 1-2','32.23','33.77','','',''],['USD50','USD: 50-100','33.05','33.77','33.27     ','33.37','33.67']]});
@@ -64,14 +64,82 @@ test('rejects missing, impossible, ambiguous or future publication dates', () =>
   for (const time of ['', '2: 25:30', '14:30']) assert.throws(()=>parseSnapshot({...fixture(),time},now));
   assert.equal(parseSnapshot({...fixture(),date:'14 Oct 2026'},now).publishedAt,'2026-10-14T14:30:00+07:00');
 });
-test('same publication avoids hourly commits, a new bank day or publication updates, regressions never replace good data', t => {
+test('unchanged publication refreshes its actual verification after 15 minutes; publication and verification regressions are rejected', t => {
   const dir=mkdtempSync(join(tmpdir(),'thaipay-bank-')); t.after(()=>rmSync(dir,{recursive:true,force:true}));
   const file=join(dir,'bank.json'), first=parseSnapshot(fixture(),now);
   assert.equal(writeRate(file,first),true);
-  const later={...first,checkedAt:'2026-10-15T11:00:00Z'}; assert.equal(writeRate(file,later),false);
+  const rapid={...first,checkedAt:'2026-10-15T10:14:59.999Z'}; assert.equal(writeRate(file,rapid),false);
   assert.equal(JSON.parse(readFileSync(file)).checkedAt,first.checkedAt);
-  assert.equal(writeRate(file,later,true),true);
+  const boundary={...first,checkedAt:'2026-10-15T10:15:00Z'}; assert.equal(writeRate(file,boundary),true);
+  assert.equal(JSON.parse(readFileSync(file)).checkedAt,boundary.checkedAt);
+  const later={...first,checkedAt:'2026-10-15T11:00:00Z'}; assert.equal(writeRate(file,later),true);
+  assert.equal(JSON.parse(readFileSync(file)).checkedAt,later.checkedAt);
+  assert.equal(JSON.parse(readFileSync(file)).publishedAt,first.publishedAt);
+  assert.equal(writeRate(file,{...later,checkedAt:'2026-10-15T11:01:00Z'},true),true);
+  assert.throws(()=>writeRate(file,later,true),/older bank verification/);
   const tomorrow={...first,checkedAt:'2026-10-16T02:00:00Z'};assert.equal(writeRate(file,tomorrow),true);
   const updated={...tomorrow,rate:33.28,publishedAt:'2026-10-16T08:30:00+07:00'};assert.equal(writeRate(file,updated),true);
   assert.throws(()=>writeRate(file,first));assert.equal(JSON.parse(readFileSync(file)).rate,33.28);
+});
+
+const timeoutError = () => Object.assign(new Error('page.waitForFunction: Timeout 45000ms exceeded.'),{name:'TimeoutError'});
+function readerHarness(attempts) {
+  const state={launchOptions:null,contexts:[],logs:[],browserClosed:false};
+  const launch=async options => {
+    state.launchOptions=options;
+    return {
+      newContext:async contextOptions => {
+        const config=attempts[state.contexts.length] || {};
+        const record={options:contextOptions,closed:false};state.contexts.push(record);
+        return {
+          newPage:async () => ({
+            goto:async (url,options) => {record.goto={url,options};if(config.gotoError)throw config.gotoError;},
+            waitForFunction:async (fn,arg,options) => {record.wait={fn,arg,options};if(config.waitError)throw config.waitError;},
+            evaluate:async fn => {record.evaluate=fn;if(config.evaluateError)throw config.evaluateError;return config.snapshot || fixture();},
+          }),
+          close:async () => {record.closed=true;},
+        };
+      },
+      close:async () => {state.browserClosed=true;},
+    };
+  };
+  return {state,options:{launch,now:()=>now,log:message=>state.logs.push(message)}};
+}
+test('a transient navigation or load timeout retries in fresh bounded English Bangkok pages', async () => {
+  const h=readerHarness([{gotoError:new Error('page.goto: net::ERR_CONNECTION_RESET')},{waitError:timeoutError()},{}]);
+  assert.deepEqual(await readSnapshot(h.options),fixture());
+  assert.equal(h.state.contexts.length,3);assert.equal(h.state.logs.length,2);
+  assert.deepEqual(h.state.launchOptions,{channel:'chrome',headless:true});
+  for(const context of h.state.contexts){
+    assert.equal(context.closed,true);
+    assert.deepEqual(context.options,{locale:'en-US',timezoneId:'Asia/Bangkok'});
+    assert.equal(context.goto.url,BANK_URL.toLowerCase());
+    assert.equal(context.goto.options.timeout,45000);
+    if(context.wait){assert.equal(context.wait.fn,readTableSnapshot);assert.equal(context.wait.options.timeout,45000);}
+  }
+  assert.equal(h.state.browserClosed,true);
+});
+test('three transient failures stop the reader and leave the previous published rate untouched', async t => {
+  const dir=mkdtempSync(join(tmpdir(),'thaipay-bank-'));t.after(()=>rmSync(dir,{recursive:true,force:true}));
+  const file=join(dir,'bank.json');writeRate(file,parseSnapshot(fixture(),now));
+  const previous=readFileSync(file,'utf8');
+  const h=readerHarness(Array.from({length:4},()=>({waitError:timeoutError()})));
+  await assert.rejects(async()=>writeRate(file,parseSnapshot(await readSnapshot(h.options),now)),/Timeout 45000ms/);
+  assert.equal(h.state.contexts.length,3);assert.equal(h.state.logs.length,2);
+  assert(h.state.contexts.every(context=>context.closed));assert.equal(h.state.browserClosed,true);
+  assert.equal(readFileSync(file,'utf8'),previous);
+});
+test('schema, date and non-transient browser failures fail closed without retrying', async () => {
+  const changed=fixture();changed.headers.reverse();
+  for(const [config,expected] of [
+    [{snapshot:changed},/columns changed/],
+    [{snapshot:{...fixture(),date:'16 Oct 2026'}},/future/],
+    [{gotoError:new Error('page.goto: invalid URL')},/invalid URL/],
+    [{evaluateError:timeoutError()},/Timeout 45000ms/],
+  ]){
+    const h=readerHarness([config,{}]);
+    await assert.rejects(()=>readSnapshot(h.options),expected);
+    assert.equal(h.state.contexts.length,1);assert.equal(h.state.logs.length,0);
+    assert.equal(h.state.contexts[0].closed,true);assert.equal(h.state.browserClosed,true);
+  }
 });
