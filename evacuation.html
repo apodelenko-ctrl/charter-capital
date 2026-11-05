@@ -388,9 +388,9 @@ footer a:hover{color:#fff}
   </div>
 </footer>
 
+<script src="/js/forms-telegram.js?v=20261105-security1"></script>
 <script>
 (function(){
-  var PROXY='https://ccapital-forms-proxy.wegc.workers.dev/';
 
   // карточка ситуации → выбор radio + скролл к форме
   document.querySelectorAll('.sit-card').forEach(function(card){
@@ -423,21 +423,10 @@ footer a:hover{color:#fff}
       document.getElementById('efContact').focus();
       return;
     }
-    var fd=new FormData(form);
-    var sit=fd.get('situation')||'—';
-    var vol=fd.get('volume')||'—';
-    var msg=(fd.get('message')||'').toString().trim()||'—';
-    var text='🚨 <b>ЭВАКУАЦИЯ КАПИТАЛА — срочная заявка</b>\n'
-      +'Ситуация: '+sit+'\n'
-      +'Объём: '+vol+'\n'
-      +'Контакт: '+contact+'\n'
-      +'Комментарий: '+msg+'\n'
-      +'Страница: evacuation.html\n'
-      +'⏱ Обещали связаться ≤ 2 часов';
     sub.disabled=true;sub.textContent='Отправка…';
     try{
-      var res=await fetch(PROXY,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text:text})});
-      if(!res.ok)throw new Error('fail');
+      if(!window.CharterForms)throw new Error('unavailable');
+      await window.CharterForms.submit(form,'evacuation_intake');
       form.style.display='none';
       done.classList.add('show');
       try{if(window.ym)ym(108969822,'reachGoal','evac_form_sent');}catch(e2){}

@@ -6,3 +6,18 @@ compatibility_date = "2026-06-03"
 # TG_TOKEN ставится отдельно как СЕКРЕТ:  wrangler secret put TG_TOKEN
 [vars]
 TG_CHAT_ID = "8085530280"
+
+# Coarse abuse ceiling per network, plus per-contact throttling after validation.
+[[ratelimits]]
+name = "FORM_RATE_LIMITER"
+namespace_id = "2026110501"
+[ratelimits.simple]
+limit = 30
+period = 60
+
+[[ratelimits]]
+name = "CONTACT_RATE_LIMITER"
+namespace_id = "2026110502"
+[ratelimits.simple]
+limit = 5
+period = 60

@@ -1,54 +1,45 @@
-# Charter Capital · Forms-to-Telegram proxy
+# Charter Capital · protected lead delivery
 
-Прокси на Cloudflare Worker. Прячет токен Telegram-бота на сервере, чтобы он
-больше не торчал в публичном JS сайта (из-за чего бота переименовали в «#FREEVPN»).
+The browser validates required fields before any delivery, obtains a Turnstile
+challenge token, and POSTs JSON `{source, page, fields, token}` to the Worker.
+The Worker validates the origin, body size, source/page schema, contact details,
+required consent and honeypot, applies rate limits, verifies the single-use
+Turnstile token (hostname + `lead` action), and constructs escaped Telegram HTML.
+Arbitrary `{text: ...}` requests are rejected. Tokens and bot credentials are
+never returned to the browser. Existing Formspree handlers run once after the
+protected delivery succeeds; unchanged retries within five minutes do not send
+a second Telegram notification from the same page.
 
-## Что делает
-Сайт шлёт текст заявки на воркер → воркер добавляет токен (из секрета) и
-пересылает в Telegram. Токена в коде сайта больше нет.
+## Configuration
 
-## Деплой (один раз)
+`wrangler.toml` contains the bot chat ID and two approximate per-location rate
+limits: 30 attempts/minute per network, and 5/minute per contact. Turnstile is the
+independent proof required for each accepted request. Origin alone is not an
+anti-bot credential. Network limits can affect people sharing a public network.
 
-1. Установить Wrangler (CLI Cloudflare), если нет:
-   ```
-   npm install -g wrangler
-   ```
+Secrets are set with `wrangler secret put TG_TOKEN` and
+`wrangler secret put TURNSTILE_SECRET_KEY`, using the interactive prompt.
+The public sitekey in `js/forms-telegram.js` belongs to the managed
+**Charter Capital public enquiries** widget, restricted to `ccapital.pro` and
+`www.ccapital.pro`. Do not use testing keys in production.
 
-2. Залогиниться в Cloudflare:
-   ```
-   wrangler login
-   ```
+Keep existing dashboard variables when publishing:
 
-3. Из папки `cloudflare-worker/` положить токен бота как СЕКРЕТ
-   (вставить НОВЫЙ токен, который выдал @BotFather после Revoke):
-   ```
-   wrangler secret put TG_TOKEN
-   ```
-   (вставьте токен в появившийся запрос)
-
-4. (Опционально) сменить chat_id получателя — в `wrangler.toml`, поле `TG_CHAT_ID`.
-
-5. Опубликовать:
-   ```
-   wrangler deploy
-   ```
-
-6. Wrangler выведет URL вида:
-   `https://ccapital-forms-proxy.<ваш-субдомен>.workers.dev`
-   Скопируйте его.
-
-7. Вставьте этот URL в `js/forms-telegram.js` — константа `PROXY_URL` в начале файла.
-   Закоммитьте и задеплойте сайт.
-
-## Проверка
+```sh
+wrangler deploy --dry-run
+wrangler deploy --keep-vars
 ```
-curl -i -X POST "https://ccapital-forms-proxy.<субдомен>.workers.dev" \
-  -H "Origin: https://ccapital.pro" \
-  --data-urlencode "text=Тест прокси ✅"
-```
-Должно прийти сообщение в Telegram и вернуться `{"ok":true,...}`.
 
-## Безопасность
-- Токен только в секрете воркера, в репозитории и в JS его нет.
-- Origin-allowlist (`ccapital.pro`, `www.ccapital.pro`) отсекает чужие сайты.
-- Длина текста ограничена 4096 символами (лимит Telegram).
+Publish the matching client scripts and HTML cache versions from an isolated,
+clean checkout. There is no backwards-compatible raw-text endpoint.
+
+## Verification without notifications
+
+```sh
+node --test cloudflare-worker/index.test.mjs tests/forms-telegram.test.cjs
+```
+
+Tests mock every external fetch, including Turnstile, Telegram and ingestion.
+They exercise valid delivery as well as malformed, empty, oversized, foreign,
+replayed and unverified requests. Do not test by sending messages to the live
+bot. Production health can be checked with a GET to `/health`.
