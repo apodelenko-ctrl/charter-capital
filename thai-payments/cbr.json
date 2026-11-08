@@ -3,8 +3,8 @@
   "rate": 82.1386,
   "thbRub": 2.45168,
   "date": "2026-11-07",
-  "checkedFor": "2026-11-08",
-  "verifiedAt": "2026-11-07T22:19:44.183701+00:00",
-  "source": "https://www.cbr.ru/scripts/XML_daily.asp?date_req=08/11/2026",
-  "url": "https://www.cbr.ru/currency_base/daily/?UniDbQuery.Posted=True&UniDbQuery.To=08.11.2026"
+  "checkedFor": "2026-11-09",
+  "verifiedAt": "2026-11-08T23:11:16.221227+00:00",
+  "source": "https://www.cbr.ru/scripts/XML_daily.asp?date_req=09/11/2026",
+  "url": "https://www.cbr.ru/currency_base/daily/?UniDbQuery.Posted=True&UniDbQuery.To=09.11.2026"
 }
