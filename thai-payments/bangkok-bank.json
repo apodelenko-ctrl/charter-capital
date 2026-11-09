@@ -2,10 +2,10 @@
   "provider": "Bangkok Bank",
   "pair": "USD/THB",
   "type": "sight-bill-buying",
-  "rate": 33.26,
-  "sellingRate": 33.66,
-  "publishedAt": "2026-11-09T08:30:00+07:00",
-  "checkedAt": "2026-11-09T02:51:39.414Z",
+  "rate": 33.25,
+  "sellingRate": 33.65,
+  "publishedAt": "2026-11-09T14:45:00+07:00",
+  "checkedAt": "2026-11-09T08:50:27.825Z",
   "source": "https://www.bangkokbank.com/en/Personal/Other-Services/View-Rates/Foreign-Exchange-Rates",
   "url": "https://www.bangkokbank.com/en/Personal/Other-Services/View-Rates/Foreign-Exchange-Rates"
 }
