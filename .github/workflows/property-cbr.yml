@@ -16,9 +16,10 @@ on:
         type: boolean
         default: false
   schedule:
-    # GitHub schedules are best-effort; repeat off the hour so a delayed or
-    # dropped invocation is not the only opportunity to read a publication.
-    - cron: '7,27,47 * * * *'
+    # One daily reference refresh at 11:00 Moscow / 15:00 Bangkok.
+    # GitHub cron is best-effort; actual source and check timestamps stay intact.
+    - cron: '0 11 * * *'
+      timezone: 'Europe/Moscow'
 
 permissions:
   contents: write
