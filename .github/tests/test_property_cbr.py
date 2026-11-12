@@ -74,6 +74,25 @@ class CbrTest(unittest.TestCase):
             self.assertTrue(module.write_rate(path, later, force=True))
             self.assertEqual(json.loads(path.read_text())["verifiedAt"], later["verifiedAt"])
 
+    def test_daily_cycle_renews_an_earlier_same_day_check_without_changing_effective_date(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "cbr.json"
+            requested = date(2026, 10, 13)
+            # An earlier check may exist on the same Moscow date. The daily
+            # cycle must record its own real verification even over a holiday.
+            earlier = module.parse_rate(xml(day="09.10.2026"), requested,
+                                        datetime(2026, 10, 13, 0, 30, tzinfo=timezone.utc))
+            daily = module.parse_rate(xml(day="09.10.2026"), requested,
+                                      datetime(2026, 10, 13, 8, tzinfo=timezone.utc))
+            module.write_rate(path, earlier)
+            self.assertTrue(module.write_rate(path, daily, force=True))
+            actual = json.loads(path.read_text())
+            self.assertEqual(actual["verifiedAt"], "2026-10-13T08:00:00+00:00")
+            self.assertEqual(actual["checkedFor"], "2026-10-13")
+            self.assertEqual(actual["date"], "2026-10-09")
+            self.assertEqual({key: value for key, value in actual.items() if key != "verifiedAt"},
+                             {key: value for key, value in earlier.items() if key != "verifiedAt"})
+
 
 if __name__ == "__main__":
     unittest.main()
