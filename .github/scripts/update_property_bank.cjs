@@ -113,6 +113,10 @@ async function readSnapshot({launch, now = () => new Date(), log = message => co
 }
 
 async function main() {
+  // Older queued YAML checks out main too: require its approved daily plan.
+  if (process.env.GITHUB_ACTIONS === 'true') {
+    require('node:child_process').execFileSync(process.execPath,[path.join(__dirname,'property_daily_cycle.cjs'),'check-reader'],{stdio:'inherit'});
+  }
   const snapshot = await readSnapshot();
   const data = parseSnapshot(snapshot, new Date());
   const file = process.argv.slice(2).find(value => !value.startsWith('--')) || 'thai-payments/bangkok-bank.json';

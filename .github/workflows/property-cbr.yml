@@ -5,21 +5,21 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/property-cbr.yml'
+      - '.github/scripts/property_daily_cycle.cjs'
       - '.github/scripts/update_property_bank.cjs'
       - '.github/scripts/update_property_cbr.py'
       - '.github/tests/property_bank.test.cjs'
-      - '.github/tests/payment_refresh_workflow.test.mjs'
+      - '.github/tests/payment_*.test.mjs'
       - '.github/tests/test_property_cbr.py'
+  # Manual and push runs validate only; they cannot refresh or publish rates.
   workflow_dispatch:
-    inputs:
-      force_refresh:
-        description: Verify the full CBR and Bangkok Bank publication path
-        type: boolean
-        default: false
   schedule:
-    # One daily reference refresh at 11:00 Moscow / 15:00 Bangkok.
-    # GitHub cron is best-effort; actual source and check timestamps stay intact.
+    # Reserves recover an unfinished cycle. Cron is best-effort.
     - cron: '0 11 * * *'
+      timezone: 'Europe/Moscow'
+    - cron: '7 11 * * *'
+      timezone: 'Europe/Moscow'
+    - cron: '17 11 * * *'
       timezone: 'Europe/Moscow'
 
 permissions:
@@ -45,105 +45,93 @@ jobs:
           node --test .github/tests/payment_*.test.mjs .github/tests/property_bank.test.cjs
           python3 -m unittest discover -s .github/tests -p 'test_property_cbr.py'
 
+      - name: Read authoritative daily state before any source request
+        id: cycle
+        if: github.event_name == 'schedule' && github.ref == 'refs/heads/main'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('node:fs'), path = require('node:path');
+            const daily = require(path.resolve('.github/scripts/property_daily_cycle.cjs'));
+            const {owner,repo} = context.repo;
+            const response = await fetch('https://api.github.com/repos/'+owner+'/'+repo+'/actions/runs/'+context.runId,{headers:{Accept:'application/vnd.github+json'},signal:AbortSignal.timeout(15000)});
+            if (!response.ok) throw new Error('Cannot establish authoritative workflow creation time');
+            const run = await response.json();
+            if (run.id !== context.runId) throw new Error('Unexpected workflow identity');
+            if (run.event !== 'schedule' || run.head_branch !== 'main') throw new Error('Not an approved scheduled run');
+            const plan = daily.prepare({cwd:process.cwd(), now:new Date(), runCreatedAt:run.created_at, event:context.eventName, cron:context.payload.schedule});
+            fs.writeFileSync(path.join(process.env.RUNNER_TEMP,'thaipay-daily-plan.json'),JSON.stringify(plan));
+            core.setOutput('mode',plan.mode);
+            core.info(plan.reason || ('Daily mode: '+plan.mode+', Moscow date: '+plan.day));
+
       - name: Refresh today's official CBR rate
         id: cbr
-        if: github.event_name != 'push'
+        if: github.event_name == 'schedule' && steps.cycle.outputs.mode == 'refresh'
         continue-on-error: true
         env:
-          FORCE_REFRESH: ${{ github.event_name == 'schedule' && 'true' || github.event.inputs.force_refresh || 'false' }}
-        run: |
-          if [[ "$FORCE_REFRESH" == 'true' ]]; then
-            python3 .github/scripts/update_property_cbr.py thai-payments/cbr.json --force-refresh
-          else
-            python3 .github/scripts/update_property_cbr.py thai-payments/cbr.json
-          fi
+          THAIPAY_CYCLE_PLAN: ${{ runner.temp }}/thaipay-daily-plan.json
+        run: python3 .github/scripts/update_property_cbr.py thai-payments/cbr.json --force-refresh
 
       - name: Prepare the official bank table reader
         id: bank_reader
-        if: github.event_name != 'push'
+        if: github.event_name == 'schedule' && steps.cycle.outputs.mode == 'refresh'
         continue-on-error: true
         run: npm install --prefix "$RUNNER_TEMP/thaipay-bank" --no-audit --no-fund playwright@1.64.1
 
       - name: Refresh Bangkok Bank Sight Bill Buying Rates
         id: bank
-        if: github.event_name != 'push' && steps.bank_reader.outcome == 'success'
+        if: github.event_name == 'schedule' && steps.cycle.outputs.mode == 'refresh' && steps.bank_reader.outcome == 'success'
         continue-on-error: true
         env:
           NODE_PATH: ${{ runner.temp }}/thaipay-bank/node_modules
-          FORCE_REFRESH: ${{ github.event_name == 'schedule' && 'true' || github.event.inputs.force_refresh || 'false' }}
-        run: |
-          if [[ "$FORCE_REFRESH" == 'true' ]]; then
-            node .github/scripts/update_property_bank.cjs thai-payments/bangkok-bank.json --force-refresh
-          else
-            node .github/scripts/update_property_bank.cjs thai-payments/bangkok-bank.json
-          fi
+          THAIPAY_CYCLE_PLAN: ${{ runner.temp }}/thaipay-daily-plan.json
+        run: node .github/scripts/update_property_bank.cjs thai-payments/bangkok-bank.json --force-refresh
 
-      - name: Publish the complete verified rate set
+      - name: Freeze both verified sources and the Moscow day atomically
         id: publish
-        if: github.event_name != 'push' && github.ref == 'refs/heads/main' && steps.cbr.outcome == 'success' && steps.bank.outcome == 'success'
-        shell: bash
-        run: |
-          set -euo pipefail
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -- thai-payments/cbr.json thai-payments/bangkok-bank.json
-          if git diff --cached --quiet; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-          else
-            git commit -m "Refresh official property payment exchange rates"
-            git fetch origin main:refs/remotes/origin/main gh-pages:refs/remotes/origin/gh-pages
-            if [[ "$(git rev-parse origin/main)" != "$(git rev-parse origin/gh-pages)" ]]; then
-              echo "Publishing branches differ; refusing to publish unrelated pending changes." >&2
-              exit 1
-            fi
-            git rebase origin/main
-            git push --atomic origin HEAD:refs/heads/main HEAD:refs/heads/gh-pages
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-          fi
-          echo "revision=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
-
-      - name: Build GitHub Pages and verify both published sources
-        if: github.event_name != 'push' && github.ref == 'refs/heads/main' && steps.publish.outcome == 'success' && (steps.publish.outputs.changed == 'true' || github.event_name == 'workflow_dispatch')
+        if: github.event_name == 'schedule' && github.ref == 'refs/heads/main' && (steps.cycle.outputs.mode == 'adopt' || (steps.cycle.outputs.mode == 'refresh' && steps.cbr.outcome == 'success' && steps.bank.outcome == 'success'))
         uses: actions/github-script@v7
-        env:
-          PUBLISHED_REVISION: ${{ steps.publish.outputs.revision }}
         with:
           script: |
-            const target = {owner: context.repo.owner, repo: context.repo.repo};
-            const files = ['cbr.json', 'bangkok-bank.json'];
-            const expected = Object.fromEntries(files.map(file => [file, JSON.parse(require('fs').readFileSync('thai-payments/' + file, 'utf8'))]));
-            await github.request('POST /repos/{owner}/{repo}/pages/builds', target);
-            let built = false;
-            for (let attempt = 0; attempt < 30; attempt++) {
-              const {data} = await github.request('GET /repos/{owner}/{repo}/pages/builds/latest', target);
-              if (data.status === 'built' && data.commit === process.env.PUBLISHED_REVISION) {built = true; break;}
-              if (data.status === 'errored' && data.commit === process.env.PUBLISHED_REVISION) throw new Error('GitHub Pages build failed');
-              await new Promise(resolve => setTimeout(resolve, 10000));
-            }
-            if (!built) throw new Error('GitHub Pages publication was not confirmed');
-            let published = false;
-            for (let attempt = 0; attempt < 18; attempt++) {
-              try {
-                const checks = await Promise.all(files.map(async file => {
-                  const response = await fetch('https://ccapital.pro/thai-payments/' + file + '?v=' + process.env.PUBLISHED_REVISION + '&check=' + Date.now(), {cache:'no-store'});
-                  if (!response.ok) return false;
-                  const actual = await response.json();
-                  return Object.keys(expected[file]).every(key => actual[key] === expected[file][key]);
-                }));
-                if (checks.every(Boolean)) {published = true; break;}
-              } catch { /* A completed build can precede CDN propagation. */ }
-              await new Promise(resolve => setTimeout(resolve, 10000));
-            }
-            if (!published) throw new Error('Published exchange rates do not match their verified sources');
-            core.info('Official CBR and Bangkok Bank rates published and read back successfully.');
+            const fs = require('node:fs'), path = require('node:path');
+            const daily = require(path.resolve('.github/scripts/property_daily_cycle.cjs'));
+            const plan = JSON.parse(fs.readFileSync(path.join(process.env.RUNNER_TEMP,'thaipay-daily-plan.json'),'utf8'));
+            const revision = daily.commitPair({cwd:process.cwd(),plan});
+            core.info('Frozen daily set: '+revision);
 
-      - name: Report source failures while preserving the last complete rate set
-        if: always() && github.event_name != 'push'
+      - name: Reconcile Pages and verify the frozen live sources
+        id: confirmation
+        if: github.event_name == 'schedule' && github.ref == 'refs/heads/main' && (steps.publish.outcome == 'success' || steps.cycle.outputs.mode == 'resume')
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const path = require('node:path');
+            const daily = require(path.resolve('.github/scripts/property_daily_cycle.cjs'));
+            const target = daily.pendingTarget({cwd:process.cwd()});
+            if (!target) {core.info('Daily publication already confirmed.');return;}
+            const repo = context.repo;
+            const proof = await daily.confirmPublication({cwd:process.cwd(),target,
+              getLatestBuild:async () => {
+                try {return (await github.request('GET /repos/{owner}/{repo}/pages/builds/latest',repo)).data;}
+                catch (error) {if (error.status === 404) return null;throw error;}
+              },
+              requestBuild:() => github.request('POST /repos/{owner}/{repo}/pages/builds',repo),
+              readLivePair:async revision => Object.fromEntries(await Promise.all(daily.FILES.map(async file => {
+                const response = await fetch('https://ccapital.pro/thai-payments/'+file+'?v='+revision+'&check='+Date.now(),{cache:'no-store',signal:AbortSignal.timeout(10000)});
+                if (!response.ok) throw new Error('Live rate source unavailable');
+                return [file,await response.json()];
+              }))),
+            });
+            daily.acknowledge({cwd:process.cwd(),target,proof});
+            core.info('Both frozen official sources were verified live; this Moscow day is complete.');
+
+      - name: Report source failure without changing the previous complete set
+        if: always() && github.event_name == 'schedule' && steps.cycle.outputs.mode == 'refresh'
         env:
           CBR_OUTCOME: ${{ steps.cbr.outcome }}
           BANK_OUTCOME: ${{ steps.bank.outcome }}
         run: |
           if [[ "$CBR_OUTCOME" != 'success' || "$BANK_OUTCOME" != 'success' ]]; then
-            echo 'A source failed. Publication was skipped; the previous complete verified rate set and its dates were preserved.' >&2
+            echo 'Source verification failed; the previous complete set and real dates were preserved.' >&2
             exit 1
           fi

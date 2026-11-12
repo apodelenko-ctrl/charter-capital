@@ -2,6 +2,7 @@
 import argparse
 import json
 import math
+import os
 import subprocess
 import xml.etree.ElementTree as ET
 from datetime import date, datetime, timezone
@@ -62,6 +63,9 @@ def write_rate(path: Path, data: dict, force: bool = False) -> bool:
 
 
 def main() -> None:
+    # Older queued YAML checks out main too; guard before any source request.
+    if os.environ.get("GITHUB_ACTIONS") == "true":
+        subprocess.run(["node", str(Path(__file__).with_name("property_daily_cycle.cjs")), "check-reader"], check=True)
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("path", nargs="?", type=Path, default=Path("thai-payments/cbr.json"))
     parser.add_argument("--force-refresh", action="store_true", help="Refresh the verification timestamp for a manual publication check")
