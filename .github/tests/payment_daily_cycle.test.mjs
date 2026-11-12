@@ -128,12 +128,21 @@ test('a source check before 11:00 or a Moscow date rollover cannot commit a new 
  f.write(pair('2026-11-12'));assert.throws(()=>commitPair({cwd:f.cwd,plan:p,now:time('2026-11-12T21:00:00Z')}),/eligible/);
  assert.equal(f.state(),null);
 });
-test('a pending previous day must be recovered after 11 before a new date can obtain rates',async t=>{
+test('recovering a previous day consumes the completion day and both remaining reserves skip',async t=>{
  const f=fixture(t),{target}=freeze(f);
  assert.equal(plan(f.cwd,{now:time('2026-11-12T21:01:00Z'),runCreatedAt:'2026-11-12T08:00:00Z'}).mode,'skip');
  const next=time('2026-11-13T08:02:00Z');assert.equal(plan(f.cwd,{now:next}).mode,'resume');
  assert.throws(()=>pendingTarget({cwd:f.cwd,now:time('2026-11-13T07:59:59Z')}),/before/);
- await complete(f,pendingTarget({cwd:f.cwd,now:next}),next);assert.equal(plan(f.cwd,{now:next,cron:daily.CRONS[1]}).mode,'refresh');
+ const original=structuredClone(target.values),stale=f.clone();
+ await complete(f,pendingTarget({cwd:f.cwd,now:next}),next);
+ assert.equal(f.state().day,'2026-11-12');assert.equal(f.state().completedDay,'2026-11-13');
+ assert.equal(f.state().confirmedAt,next.toISOString());
+ assert.deepEqual(FILES.map(file=>JSON.parse(f.current('thai-payments/'+file))),FILES.map(file=>original[file]));
+ for(const [cron,at] of [[daily.CRONS[1],'2026-11-13T08:07:00Z'],[daily.CRONS[2],'2026-11-13T08:17:00Z']]){
+  for(const cwd of [f.cwd,stale,f.clone()])assert.equal(plan(cwd,{now:time(at),cron}).mode,'skip');
+ }
+ assert.equal(plan(f.clone(),{now:time('2026-11-14T07:59:59Z')}).mode,'skip');
+ assert.equal(plan(f.clone(),{now:time('2026-11-14T08:00:00Z')}).mode,'refresh');
 });
 test('a later date permits just one new verified set after the previous day completed',async t=>{
  const f=fixture(t),{target}=freeze(f);await complete(f,target);
@@ -207,4 +216,50 @@ test('a forged completed marker cannot suppress a real source failure',async t=>
  const f=fixture(t),{target}=freeze(f);await complete(f,target);
  const state=f.state();state.confirmedAt='2026-11-12T07:00:00Z';writeFileSync(join(f.cwd,STATE),JSON.stringify(state));f.push();
  assert.throws(()=>plan(f.clone()),/confirmation/);
+});
+test('completion day blocks even a forged refresh plan at the source and commit boundaries',async t=>{
+ const f=fixture(t);freeze(f);const now=time('2026-11-13T08:02:00Z');await complete(f,pendingTarget({cwd:f.cwd,now}),now);
+ const forced={mode:'refresh',base:f.refs()[0],day:'2026-11-13',event:'schedule',cron:daily.CRONS[1],runCreatedAt:now.toISOString()};
+ assert.throws(()=>assertReaderAllowed({cwd:f.cwd,plan:forced,now}),/frozen|migration/);
+ const before=f.refs();f.write(pair('2026-11-13'));assert.throws(()=>commitPair({cwd:f.cwd,plan:forced,now}),/day is complete/);assert.deepEqual(f.refs(),before);
+});
+test('a rejected recovery acknowledgement stays resumable and cannot allow a second rate that day',async t=>{
+ const f=fixture(t);const {revision}=freeze(f);const now=time('2026-11-13T08:02:00Z'),target=pendingTarget({cwd:f.cwd,now}),proof=await confirm(f,target,{now});
+ f.reject();assert.throws(()=>acknowledge({cwd:f.cwd,target,proof,now}));assert.equal(f.state().status,'committed');assert.equal(f.state().completedDay,undefined);f.allow();
+ const next=f.clone(),reserve=time('2026-11-13T08:07:00Z');assert.equal(plan(next,{now:reserve,cron:daily.CRONS[1]}).mode,'resume');
+ const nextTarget=pendingTarget({cwd:next,now:reserve});assert.equal(nextTarget.revision,revision);
+ await complete({...f,cwd:next},nextTarget,reserve);
+ assert.equal(f.state().day,'2026-11-12');assert.equal(f.state().completedDay,'2026-11-13');
+ assert.equal(plan(f.clone(),{now:time('2026-11-13T08:17:00Z'),cron:daily.CRONS[2]}).mode,'skip');
+});
+test('a lost response after an accepted recovery acknowledgement remains complete in fresh clones',async t=>{
+ const f=fixture(t);freeze(f);const now=time('2026-11-13T08:02:00Z'),target=pendingTarget({cwd:f.cwd,now}),proof=await confirm(f,target,{now});
+ assert.throws(()=>{acknowledge({cwd:f.cwd,target,proof,now});throw new Error('Acknowledgement response lost');},/response lost/);
+ assert.equal(f.state().completedDay,'2026-11-13');assert.equal(f.state().day,'2026-11-12');
+ for(const cron of daily.CRONS.slice(1))assert.equal(plan(f.clone(),{now,cron}).mode,'skip');
+});
+test('legacy published markers derive their completion-day lock from real confirmedAt',async t=>{
+ const f=fixture(t);freeze(f);const now=time('2026-11-13T08:02:00Z');await complete(f,pendingTarget({cwd:f.cwd,now}),now);
+ const old=f.state();delete old.completedDay;writeFileSync(join(f.cwd,STATE),JSON.stringify(old));f.push();
+ for(const cron of daily.CRONS.slice(1))assert.equal(plan(f.clone(),{now,cron}).mode,'skip');
+ assert.equal(plan(f.clone(),{now:time('2026-11-14T08:02:00Z')}).mode,'refresh');
+});
+test('inconsistent, invalid or future completion dates fail closed rather than reopening a day',async t=>{
+ const f=fixture(t),{target}=freeze(f);await complete(f,target);const valid=f.state();
+ for(const completedDay of ['2026-11-11','2026-11-13','invalid',null,42]){
+  writeFileSync(join(f.cwd,STATE),JSON.stringify({...valid,completedDay}));f.push();
+  assert.throws(()=>plan(f.clone()),/completion date/);
+ }
+ for(const confirmedAt of ['2026-11-13T08:02:00Z','2026-11-12T08:02:00.001Z']){
+  writeFileSync(join(f.cwd,STATE),JSON.stringify({...valid,confirmedAt,completedDay:daily.localTime(confirmedAt).day}));f.push();
+  assert.throws(()=>plan(f.clone()),/confirmation/);
+ }
+});
+test('a pending marker cannot claim a completion day before live confirmation',t=>{
+ const f=fixture(t);freeze(f);writeFileSync(join(f.cwd,STATE),JSON.stringify({...f.state(),completedDay:'2026-11-12'}));f.push();
+ assert.throws(()=>plan(f.clone()),/completion metadata/);
+});
+test('deleting a prior completion marker is not treated as a first migration',async t=>{
+ const f=fixture(t);freeze(f);const now=time('2026-11-13T08:02:00Z');await complete(f,pendingTarget({cwd:f.cwd,now}),now);
+ unlinkSync(join(f.cwd,STATE));f.push();assert.throws(()=>plan(f.clone(),{now}),/state disappeared/);
 });

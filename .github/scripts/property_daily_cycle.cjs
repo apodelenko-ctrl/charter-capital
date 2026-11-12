@@ -2,6 +2,8 @@
  * committed freezes hashes of both JSONs in one atomic push. published is only
  * recorded after matching Pages history AND a complete live readback. An
  * unfinished committed set must be recovered before any later source refresh.
+ * The Moscow day of confirmed live readback consumes that day's update limit,
+ * including recovery of an older set; it never changes the source-check day.
  */
 const fs = require('node:fs');
 const path = require('node:path');
@@ -51,7 +53,10 @@ function fastForward(cwd, revision) {
 function readState(cwd, revision) {
   const paths = git(cwd, 'ls-tree', '--name-only', revision, '--', STATE);
   // Absence is a supported first migration, not a swallowed Git/JSON error.
-  if (!paths) return null;
+  if (!paths) {
+    if (git(cwd,'log','-1','--format=%H',revision,'--',STATE)) fail('Daily cycle state disappeared; refusing an ambiguous migration');
+    return null;
+  }
   const state = parse(readAt(cwd, revision, STATE), 'daily cycle state');
   if (!state || typeof state !== 'object' || Array.isArray(state)) fail('Invalid daily cycle state');
   return state;
@@ -85,16 +90,27 @@ function validateState(cwd, base, state, bytes, now) {
   const checks = [pair.values['cbr.json'].verifiedAt, pair.values['bangkok-bank.json'].checkedAt];
   if (checks.some(value => Date.parse(value) > Date.parse(state.committedAt))
     || (state.origin === 'verified' && checks.some(value => localTime(value).hour < 11))) fail('Daily source verification does not belong to the cycle');
+  if (state.status === 'committed' && ['completedDay','confirmedAt','rateRevision','publishedRevision'].some(key => Object.hasOwn(state,key))) fail('Pending cycle has inconsistent completion metadata');
   if (state.status === 'published') {
     if (![state.rateRevision,state.publishedRevision].every(value => typeof value === 'string' && /^[a-f0-9]{40}$/.test(value))
       || !timestamp(state.confirmedAt) || Date.parse(state.confirmedAt) < Date.parse(state.committedAt)
-      || Date.parse(state.confirmedAt) > now.getTime() + 60000
+      || Date.parse(state.confirmedAt) > now.getTime()
       || !isAncestor(cwd,state.rateRevision,state.publishedRevision) || !isAncestor(cwd,state.publishedRevision,base)
       || !isDeepStrictEqual(hashPair(pairAt(cwd,state.rateRevision)),state.rateHashes)
       || !isDeepStrictEqual(hashPair(pairAt(cwd,state.publishedRevision)),state.rateHashes)) fail('Invalid publication confirmation');
+    const completed = localTime(state.confirmedAt);
+    if (completed.hour < 11 || completed.day < state.day || completed.day > localTime(now).day
+      || (Object.hasOwn(state,'completedDay') && state.completedDay !== completed.day)) fail('Inconsistent or future Moscow completion date');
   }
   return pair;
 }
+// Older published markers already carry the real confirmedAt. Derive their
+// completion day conservatively, rather than treating a missing new field as
+// permission for another course on the day recovery was verified.
+function completedDay(state) {
+  return state?.status === 'published' ? state.completedDay ?? localTime(state.confirmedAt).day : null;
+}
+const dayLocked = (state,day) => state && (state.day === day || completedDay(state) === day);
 function eligibility({now, runCreatedAt, event, cron}) {
   if (event !== 'schedule' || !CRONS.includes(cron)) return 'Not an approved scheduled slot';
   if (!timestamp(runCreatedAt) || Date.parse(runCreatedAt) > now.getTime() + 60000) fail('Invalid authoritative workflow creation time');
@@ -113,7 +129,7 @@ function prepare({cwd, now = new Date(), runCreatedAt, event, cron}) {
   const plan = {base, day, event, cron, runCreatedAt};
   // A committed set is already frozen, even if Pages or the acknowledgement failed.
   if (state?.status === 'committed') return {...plan, mode:'resume', cycleDay:state.day};
-  if (state?.day === day) return {...plan, mode:'skip', reason:'This Moscow day is already published'};
+  if (dayLocked(state,day)) return {...plan, mode:'skip', reason:'This Moscow day already has a completed live publication'};
   if (!state && (pair.cbrDay === day || pair.bankDay === day)) {
     if (pair.cbrDay !== day || pair.bankDay !== day) fail('Migration found an ambiguous partial same-day verification');
     return {...plan, mode:'adopt'};
@@ -145,7 +161,7 @@ function commitPair({cwd, plan, now, clock = () => now || new Date()}) {
   const before = pairAt(cwd,plan.base), stateBefore = readState(cwd,plan.base);
   const at = assertTime();
   validateState(cwd,plan.base,stateBefore,before,at);
-  if (stateBefore?.status === 'committed' || stateBefore?.day === plan.day) fail('The daily set is already frozen');
+  if (stateBefore?.status === 'committed' || dayLocked(stateBefore,plan.day)) fail('The daily set is already frozen or this day is complete');
   const bytes = Object.fromEntries(FILES.map(name => [name,fs.readFileSync(path.join(cwd,DIRECTORY,name),'utf8')]));
   const pair = validatePair(bytes,at);
   if (pair.cbrDay !== plan.day || pair.bankDay !== plan.day) fail('Both sources must be verified on this Moscow date');
@@ -178,7 +194,7 @@ function assertReaderAllowed({cwd,plan,now,clock = () => now || new Date()}) {
   if (base !== plan.base || git(cwd,'rev-parse','HEAD') !== base) fail('Source reader has a stale cycle checkout');
   const bytes = pairAt(cwd,base), state = readState(cwd,base), pair = validatePair(bytes,at);
   validateState(cwd,base,state,bytes,at);
-  if (state?.status === 'committed' || state?.day === plan.day
+  if (state?.status === 'committed' || dayLocked(state,plan.day)
     || (!state && (pair.cbrDay === plan.day || pair.bankDay === plan.day))) fail('This day is already frozen or needs migration');
   if (eligibility({...plan,now:clock()})) fail('Source reader crossed its authorized Moscow date');
 }
@@ -229,7 +245,7 @@ function acknowledge({cwd,target,proof,now,clock = () => now || new Date()}) {
   if (!isAncestor(cwd,proof.publishedRevision,pending.base) || !timestamp(proof.confirmedAt)
     || Date.parse(proof.confirmedAt) < Date.parse(pending.committedAt) || Date.parse(proof.confirmedAt) > assertTime().getTime()) fail('Invalid live publication proof');
   const state = readState(cwd,pending.base);
-  Object.assign(state,{status:'published',rateRevision:target.revision,publishedRevision:proof.publishedRevision,confirmedAt:proof.confirmedAt});
+  Object.assign(state,{status:'published',rateRevision:target.revision,publishedRevision:proof.publishedRevision,confirmedAt:proof.confirmedAt,completedDay:localTime(proof.confirmedAt).day});
   fs.writeFileSync(path.join(cwd,STATE),JSON.stringify(state,null,2)+'\n');
   return writeAndPush(cwd,pending.base,[STATE],'Confirm live property payment rates for '+target.day,assertTime);
 }
