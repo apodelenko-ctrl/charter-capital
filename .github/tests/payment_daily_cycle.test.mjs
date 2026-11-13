@@ -31,7 +31,7 @@ function fixture(t,initial=pair()){
  const reject=()=>writeFileSync(join(remote,'hooks','pre-receive'),'#!/bin/sh\nexit 1\n',{mode:0o755});
  return {root,remote,cwd,write,push,clone,current,state,refs,reject,allow:()=>unlinkSync(join(remote,'hooks','pre-receive'))};
 }
-function plan(cwd,{now=instant,cron='0 11 * * *',runCreatedAt=now.toISOString(),event='schedule'}={}){return prepare({cwd,now,cron,runCreatedAt,event});}
+function plan(cwd,{now=instant,event='schedule',cron=event==='schedule'?'0 11 * * *':undefined,runCreatedAt=now.toISOString(),refreshToday=false}={}){return prepare({cwd,now,cron,runCreatedAt,event,refreshToday});}
 function freeze(f,options={}){
  const now=options.now||instant,day=options.day||'2026-11-12';
  const p=plan(f.cwd,{now});f.write(pair(day,options));
@@ -49,6 +49,31 @@ test('only approved daily and catch-up scheduled events after 11:00 Moscow are e
  assert.equal(plan('/not-a-repository',{now:time('2026-11-13T08:00:00Z'),runCreatedAt:'2026-11-12T08:00:00Z'}).mode,'skip');
  assert.throws(()=>plan('/not-a-repository',{runCreatedAt:'invalid'}),/creation time/);
  assert.throws(()=>plan('/not-a-repository',{runCreatedAt:'2026-11-13T08:00:00Z'}),/creation time/);
+});
+test('operator recovery requires a real dispatch and explicit boolean consent on the same Moscow day after 11',()=>{
+ for(const refreshToday of [false,undefined,'true',1])assert.equal(plan('/not-a-repository',{event:'workflow_dispatch',refreshToday}).mode,'skip');
+ for(const event of ['push','workflow_run'])assert.equal(plan('/not-a-repository',{event,refreshToday:true}).mode,'skip');
+ assert.equal(plan('/not-a-repository',{event:'workflow_dispatch',refreshToday:true,cron:'0 11 * * *'}).mode,'skip');
+ assert.equal(plan('/not-a-repository',{event:'workflow_dispatch',refreshToday:true,now:time('2026-11-12T07:59:59Z')}).mode,'skip');
+ assert.equal(plan('/not-a-repository',{event:'workflow_dispatch',refreshToday:true,now:time('2026-11-13T08:00:00Z'),runCreatedAt:'2026-11-12T08:00:00Z'}).mode,'skip');
+ assert.throws(()=>plan('/not-a-repository',{event:'workflow_dispatch',refreshToday:true,runCreatedAt:'invalid'}),/creation time/);
+});
+test('explicit operator recovery freezes one verified pair, resumes it, and cannot open a second source read or publication',async t=>{
+ const f=fixture(t),operator={event:'workflow_dispatch',refreshToday:true},p=plan(f.cwd,operator);
+ assert.equal(p.mode,'refresh');assert.equal(p.event,'workflow_dispatch');assert.equal(p.refreshToday,true);assert.equal(p.cron,undefined);
+ assertReaderAllowed({cwd:f.cwd,plan:p,now:instant});
+ const tampered={...p,refreshToday:false};assert.throws(()=>assertReaderAllowed({cwd:f.cwd,plan:tampered,now:instant}),/approved/);
+ f.write(pair('2026-11-12'));const revision=commitPair({cwd:f.cwd,plan:p,now:instant});
+ const pending=plan(f.clone(),operator);assert.equal(pending.mode,'resume');
+ assert.throws(()=>assertReaderAllowed({cwd:f.cwd,plan:{...pending,mode:'refresh'},now:instant}),/frozen|migration/);
+ const target=pendingTarget({cwd:f.cwd,now:instant});assert.equal(target.revision,revision);await complete(f,target);
+ const before=f.refs(),values=FILES.map(file=>f.current('thai-payments/'+file));
+ assert.equal(plan(f.cwd,operator).mode,'skip');
+ for(const cron of daily.CRONS)assert.equal(plan(f.cwd,{cron}).mode,'skip');
+ const forced={...pending,base:before[0],mode:'refresh'};
+ assert.throws(()=>assertReaderAllowed({cwd:f.cwd,plan:forced,now:instant}),/frozen|migration/);
+ assert.throws(()=>commitPair({cwd:f.cwd,plan:forced,now:instant}),/already frozen|day is complete/);
+ assert.deepEqual(f.refs(),before);assert.deepEqual(FILES.map(file=>f.current('thai-payments/'+file)),values);
 });
 test('late catch-up accepts an unfinished same-day cycle but never runs before 11 or across Moscow midnight',t=>{
  const cron='37 11-23 * * *',late=time('2026-11-12T20:37:10Z'),f=fixture(t);

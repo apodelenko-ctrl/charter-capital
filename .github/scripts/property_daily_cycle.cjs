@@ -111,22 +111,24 @@ function completedDay(state) {
   return state?.status === 'published' ? state.completedDay ?? localTime(state.confirmedAt).day : null;
 }
 const dayLocked = (state,day) => state && (state.day === day || completedDay(state) === day);
-function eligibility({now, runCreatedAt, event, cron}) {
-  if (event !== 'schedule' || !CRONS.includes(cron)) return 'Not an approved scheduled slot';
+function eligibility({now, runCreatedAt, event, cron, refreshToday = false}) {
+  const scheduled = event === 'schedule' && CRONS.includes(cron);
+  const recovery = event === 'workflow_dispatch' && refreshToday === true && cron === undefined;
+  if (!scheduled && !recovery) return 'Not an approved scheduled slot or explicit operator recovery';
   if (!timestamp(runCreatedAt) || Date.parse(runCreatedAt) > now.getTime() + 60000) fail('Invalid authoritative workflow creation time');
   if (localTime(runCreatedAt).day !== localTime(now).day) return 'Delayed run belongs to another Moscow date';
   if (localTime(now).hour < 11) return 'Before 11:00 Moscow';
   return null;
 }
-function prepare({cwd, now = new Date(), runCreatedAt, event, cron}) {
-  const reason = eligibility({now, runCreatedAt, event, cron});
+function prepare({cwd, now = new Date(), runCreatedAt, event, cron, refreshToday = false}) {
+  const reason = eligibility({now, runCreatedAt, event, cron, refreshToday});
   if (reason) return {mode:'skip', reason};
   clean(cwd);
   const base = remoteHead(cwd);
   fastForward(cwd, base);
   const bytes = pairAt(cwd, base), state = readState(cwd, base), pair = validatePair(bytes, now), day = localTime(now).day;
   validateState(cwd, base, state, bytes, now);
-  const plan = {base, day, event, cron, runCreatedAt};
+  const plan = {base, day, event, cron, runCreatedAt, refreshToday};
   // A committed set is already frozen, even if Pages or the acknowledgement failed.
   if (state?.status === 'committed') return {...plan, mode:'resume', cycleDay:state.day};
   if (dayLocked(state,day)) return {...plan, mode:'skip', reason:'This Moscow day already has a completed live publication'};

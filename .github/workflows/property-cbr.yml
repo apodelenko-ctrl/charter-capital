@@ -11,8 +11,13 @@ on:
       - '.github/tests/property_bank.test.cjs'
       - '.github/tests/payment_*.test.mjs'
       - '.github/tests/test_property_cbr.py'
-  # Manual and push runs validate only; they cannot refresh or publish rates.
+  # Push and ordinary manual runs validate only. Recovery must be explicitly selected.
   workflow_dispatch:
+    inputs:
+      refresh_today:
+        description: Recover today's unfinished rate cycle after 11:00 Moscow
+        type: boolean
+        default: false
   schedule:
     # Reserves recover an unfinished cycle. Cron is best-effort.
     - cron: '0 11 * * *'
@@ -53,7 +58,7 @@ jobs:
 
       - name: Read authoritative daily state before any source request
         id: cycle
-        if: github.event_name == 'schedule' && github.ref == 'refs/heads/main'
+        if: (github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.refresh_today == true)) && github.ref == 'refs/heads/main'
         uses: actions/github-script@v7
         with:
           script: |
@@ -64,15 +69,16 @@ jobs:
             if (!response.ok) throw new Error('Cannot establish authoritative workflow creation time');
             const run = await response.json();
             if (run.id !== context.runId) throw new Error('Unexpected workflow identity');
-            if (run.event !== 'schedule' || run.head_branch !== 'main') throw new Error('Not an approved scheduled run');
-            const plan = daily.prepare({cwd:process.cwd(), now:new Date(), runCreatedAt:run.created_at, event:context.eventName, cron:context.payload.schedule});
+            if (run.event !== context.eventName || run.head_branch !== 'main') throw new Error('Unexpected workflow event or branch');
+            const refreshToday = context.eventName === 'workflow_dispatch' && [true,'true'].includes(context.payload.inputs?.refresh_today);
+            const plan = daily.prepare({cwd:process.cwd(), now:new Date(), runCreatedAt:run.created_at, event:context.eventName, cron:context.payload.schedule, refreshToday});
             fs.writeFileSync(path.join(process.env.RUNNER_TEMP,'thaipay-daily-plan.json'),JSON.stringify(plan));
             core.setOutput('mode',plan.mode);
             core.info(plan.reason || ('Daily mode: '+plan.mode+', Moscow date: '+plan.day));
 
       - name: Refresh today's official CBR rate
         id: cbr
-        if: github.event_name == 'schedule' && steps.cycle.outputs.mode == 'refresh'
+        if: (github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.refresh_today == true)) && steps.cycle.outputs.mode == 'refresh'
         continue-on-error: true
         env:
           THAIPAY_CYCLE_PLAN: ${{ runner.temp }}/thaipay-daily-plan.json
@@ -80,13 +86,13 @@ jobs:
 
       - name: Prepare the official bank table reader
         id: bank_reader
-        if: github.event_name == 'schedule' && steps.cycle.outputs.mode == 'refresh'
+        if: (github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.refresh_today == true)) && steps.cycle.outputs.mode == 'refresh'
         continue-on-error: true
         run: npm install --prefix "$RUNNER_TEMP/thaipay-bank" --no-audit --no-fund playwright@1.64.1
 
       - name: Refresh Bangkok Bank Sight Bill Buying Rates
         id: bank
-        if: github.event_name == 'schedule' && steps.cycle.outputs.mode == 'refresh' && steps.bank_reader.outcome == 'success'
+        if: (github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.refresh_today == true)) && steps.cycle.outputs.mode == 'refresh' && steps.bank_reader.outcome == 'success'
         continue-on-error: true
         env:
           NODE_PATH: ${{ runner.temp }}/thaipay-bank/node_modules
@@ -95,7 +101,7 @@ jobs:
 
       - name: Freeze both verified sources and the Moscow day atomically
         id: publish
-        if: github.event_name == 'schedule' && github.ref == 'refs/heads/main' && (steps.cycle.outputs.mode == 'adopt' || (steps.cycle.outputs.mode == 'refresh' && steps.cbr.outcome == 'success' && steps.bank.outcome == 'success'))
+        if: (github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.refresh_today == true)) && github.ref == 'refs/heads/main' && (steps.cycle.outputs.mode == 'adopt' || (steps.cycle.outputs.mode == 'refresh' && steps.cbr.outcome == 'success' && steps.bank.outcome == 'success'))
         uses: actions/github-script@v7
         with:
           script: |
@@ -107,7 +113,7 @@ jobs:
 
       - name: Reconcile Pages and verify the frozen live sources
         id: confirmation
-        if: github.event_name == 'schedule' && github.ref == 'refs/heads/main' && (steps.publish.outcome == 'success' || steps.cycle.outputs.mode == 'resume')
+        if: (github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.refresh_today == true)) && github.ref == 'refs/heads/main' && (steps.publish.outcome == 'success' || steps.cycle.outputs.mode == 'resume')
         uses: actions/github-script@v7
         with:
           script: |
@@ -132,7 +138,7 @@ jobs:
             core.info('Both frozen official sources were verified live; this Moscow day is complete.');
 
       - name: Report source failure without changing the previous complete set
-        if: always() && github.event_name == 'schedule' && steps.cycle.outputs.mode == 'refresh'
+        if: always() && (github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.refresh_today == true)) && steps.cycle.outputs.mode == 'refresh'
         env:
           CBR_OUTCOME: ${{ steps.cbr.outcome }}
           BANK_OUTCOME: ${{ steps.bank.outcome }}

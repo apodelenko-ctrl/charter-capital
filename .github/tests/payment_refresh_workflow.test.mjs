@@ -4,9 +4,9 @@ import {readFileSync} from 'node:fs';
 const workflow=readFileSync(new URL('../workflows/property-cbr.yml',import.meta.url),'utf8');
 const blocks=workflow.split(/^      - name: /m).slice(1);
 const byId=id=>blocks.find(b=>b.includes('\n        id: '+id+'\n'));
-const evaluate=(block,{event='schedule',mode='refresh',cbr='success',bank='success',published='success',ref='refs/heads/main'}={})=>{
+const evaluate=(block,{event='schedule',mode='refresh',cbr='success',bank='success',published='success',ref='refs/heads/main',refreshToday=false}={})=>{
  const expression=/^        if: (.+)$/m.exec(block)?.[1];assert(expression);
- return Boolean(new Function('github','steps','always','return '+expression)({event_name:event,ref},{cycle:{outputs:{mode}},cbr:{outcome:cbr},bank_reader:{outcome:'success'},bank:{outcome:bank},publish:{outcome:published}},()=>true));
+ return Boolean(new Function('github','steps','always','inputs','return '+expression)({event_name:event,ref},{cycle:{outputs:{mode}},cbr:{outcome:cbr},bank_reader:{outcome:'success'},bank:{outcome:bank},publish:{outcome:published}},()=>true,{refresh_today:refreshToday}));
 };
 test('original daily slots and late reserves keep the existing serial concurrency and permissions',()=>{
  assert.deepEqual([...workflow.matchAll(/- cron: '([^']+)'\n      timezone: '([^']+)'/g)].map(m=>m.slice(1)),[['0 11 * * *','Europe/Moscow'],['7 11 * * *','Europe/Moscow'],['17 11 * * *','Europe/Moscow'],['37 11-23 * * *','Europe/Moscow']]);
@@ -21,6 +21,20 @@ test('push and manual dispatch run validation only for every possible cycle mode
  const validation=blocks.find(b=>b.startsWith('Validate calculations'));
  assert.doesNotMatch(validation,/^        if:/m);
  for(const event of ['push','workflow_dispatch'])for(const mode of ['refresh','adopt','resume','skip'])for(const block of blocks.filter(b=>/^        if:/m.test(b)))assert.equal(evaluate(block,{event,mode}),false,block.split('\n')[0]);
+});
+test('only an explicit dispatch recovery input enables the existing daily cycle, never a push or another branch',()=>{
+ assert.match(workflow,/workflow_dispatch:\n    inputs:\n      refresh_today:\n        description:.*\n        type: boolean\n        default: false/);
+ assert.equal(evaluate(byId('cycle'),{event:'workflow_dispatch',refreshToday:true}),true);
+ assert.equal(evaluate(byId('cycle'),{event:'workflow_dispatch',refreshToday:true,ref:'refs/heads/other'}),false);
+ for(const block of blocks.filter(b=>/^        if:/m.test(b)))assert.equal(evaluate(block,{event:'push',refreshToday:true}),false);
+ for(const cbr of ['success','failure','skipped'])for(const bank of ['success','failure','skipped']){
+  assert.equal(evaluate(byId('publish'),{event:'workflow_dispatch',refreshToday:true,cbr,bank}),cbr==='success'&&bank==='success');
+ }
+ for(const mode of ['adopt','resume','skip'])for(const id of ['cbr','bank_reader','bank'])assert.equal(evaluate(byId(id),{event:'workflow_dispatch',refreshToday:true,mode}),false);
+ assert.equal(evaluate(byId('confirmation'),{event:'workflow_dispatch',refreshToday:true,mode:'resume',published:'skipped'}),true);
+ assert.match(byId('cycle'),/run\.event !== context\.eventName/);assert.match(byId('cycle'),/run\.head_branch !== 'main'/);
+ assert.match(byId('cycle'),/context\.eventName === 'workflow_dispatch'/);assert.match(byId('cycle'),/context\.payload\.inputs\?\.refresh_today/);
+ assert.match(byId('cycle'),/event:context\.eventName, cron:context\.payload\.schedule, refreshToday/);
 });
 test('all source outcomes gate freezing; recovery and completed-day modes never read sources',()=>{
  for(const cbr of ['success','failure','skipped','cancelled'])for(const bank of ['success','failure','skipped','cancelled'])assert.equal(evaluate(byId('publish'),{cbr,bank}),cbr==='success'&&bank==='success');
