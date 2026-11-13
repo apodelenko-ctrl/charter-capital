@@ -8,8 +8,8 @@ const evaluate=(block,{event='schedule',mode='refresh',cbr='success',bank='succe
  const expression=/^        if: (.+)$/m.exec(block)?.[1];assert(expression);
  return Boolean(new Function('github','steps','always','return '+expression)({event_name:event,ref},{cycle:{outputs:{mode}},cbr:{outcome:cbr},bank_reader:{outcome:'success'},bank:{outcome:bank},publish:{outcome:published}},()=>true));
 };
-test('exactly three slots keep the existing serial concurrency and permissions',()=>{
- assert.deepEqual([...workflow.matchAll(/- cron: '([^']+)'\n      timezone: '([^']+)'/g)].map(m=>m.slice(1)),[['0 11 * * *','Europe/Moscow'],['7 11 * * *','Europe/Moscow'],['17 11 * * *','Europe/Moscow']]);
+test('original daily slots and late reserves keep the existing serial concurrency and permissions',()=>{
+ assert.deepEqual([...workflow.matchAll(/- cron: '([^']+)'\n      timezone: '([^']+)'/g)].map(m=>m.slice(1)),[['0 11 * * *','Europe/Moscow'],['7 11 * * *','Europe/Moscow'],['17 11 * * *','Europe/Moscow'],['37 11-23 * * *','Europe/Moscow']]);
  assert.match(workflow,/group: property-payments-cbr\n  cancel-in-progress: false/);
  assert.match(workflow,/permissions:\n  contents: write\n  pages: write\n/);
  assert.doesNotMatch(workflow,/actions: write|--force(?:-with-lease)?\b(?!-refresh)/);

@@ -21,6 +21,9 @@ on:
       timezone: 'Europe/Moscow'
     - cron: '17 11 * * *'
       timezone: 'Europe/Moscow'
+    # Late reserves recover source outages or delayed queues without a second daily set.
+    - cron: '37 11-23 * * *'
+      timezone: 'Europe/Moscow'
 
 permissions:
   contents: write

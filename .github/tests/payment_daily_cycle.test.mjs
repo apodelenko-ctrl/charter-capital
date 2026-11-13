@@ -42,13 +42,41 @@ async function confirm(f,target,{now=instant,...options}={}){
 }
 async function complete(f,target,now=instant){const proof=await confirm(f,target,{now});acknowledge({cwd:f.cwd,target,proof,now});return proof;}
 
-test('only the three approved scheduled events after 11:00 Moscow are eligible',()=>{
+test('only approved daily and catch-up scheduled events after 11:00 Moscow are eligible',()=>{
  for(const event of ['push','workflow_dispatch','workflow_run'])assert.equal(plan('/not-a-repository',{event}).mode,'skip');
  assert.equal(plan('/not-a-repository',{cron:'16 12 * * *'}).mode,'skip');
  assert.equal(plan('/not-a-repository',{now:time('2026-11-12T07:59:59.999Z')}).mode,'skip');
  assert.equal(plan('/not-a-repository',{now:time('2026-11-13T08:00:00Z'),runCreatedAt:'2026-11-12T08:00:00Z'}).mode,'skip');
  assert.throws(()=>plan('/not-a-repository',{runCreatedAt:'invalid'}),/creation time/);
  assert.throws(()=>plan('/not-a-repository',{runCreatedAt:'2026-11-13T08:00:00Z'}),/creation time/);
+});
+test('late catch-up accepts an unfinished same-day cycle but never runs before 11 or across Moscow midnight',t=>{
+ const cron='37 11-23 * * *',late=time('2026-11-12T20:37:10Z'),f=fixture(t);
+ assert.equal(plan('/not-a-repository',{cron,now:time('2026-11-12T07:59:59Z')}).mode,'skip');
+ assert.equal(plan('/not-a-repository',{cron,now:time('2026-11-12T21:00:00Z'),runCreatedAt:late.toISOString()}).mode,'skip');
+ const p=plan(f.cwd,{cron,now:late});assert.equal(p.mode,'refresh');
+ assertReaderAllowed({cwd:f.cwd,plan:p,now:late});
+ f.write(pair('2026-11-12',{checked:'20:37:01',bankChecked:'20:37:02'}));
+ commitPair({cwd:f.cwd,plan:p,now:late});
+ assert.equal(f.state().day,'2026-11-12');assert.equal(f.state().status,'committed');
+});
+test('every hourly catch-up resumes the same frozen pair and skips a completed day without reopening source readers',async t=>{
+ const f=fixture(t),{target,revision}=freeze(f),cron='37 11-23 * * *';
+ const slots=[...Array(13)].map((_,i)=>time('2026-11-12T'+String(i+8).padStart(2,'0')+':37:00Z'));
+ const frozen=FILES.map(file=>f.current('thai-payments/'+file));
+ for(const now of slots){
+  const p=plan(f.cwd,{cron,now});assert.equal(p.mode,'resume');
+  assert.equal(pendingTarget({cwd:f.cwd,now}).revision,revision);
+  assert.throws(()=>assertReaderAllowed({cwd:f.cwd,plan:{...p,mode:'refresh'},now}),/frozen|migration/);
+ }
+ assert.deepEqual(FILES.map(file=>f.current('thai-payments/'+file)),frozen);
+ await complete(f,target);const refs=f.refs();
+ for(const now of slots){
+  assert.equal(plan(f.cwd,{cron,now}).mode,'skip');
+  const forged={mode:'refresh',base:refs[0],day:'2026-11-12',event:'schedule',cron,runCreatedAt:now.toISOString()};
+  assert.throws(()=>assertReaderAllowed({cwd:f.cwd,plan:forged,now}),/frozen|migration/);
+ }
+ assert.deepEqual(f.refs(),refs);assert.deepEqual(FILES.map(file=>f.current('thai-payments/'+file)),frozen);
 });
 test('missing marker migrates an older valid pair and both reserves can retry an uncommitted failure',t=>{
  const f=fixture(t),before=FILES.map(file=>f.current('thai-payments/'+file));

@@ -14,7 +14,7 @@ const {isDeepStrictEqual} = require('node:util');
 const FILES = ['cbr.json', 'bangkok-bank.json'];
 const DIRECTORY = 'thai-payments/';
 const STATE = DIRECTORY + 'daily-cycle.json';
-const CRONS = ['0 11 * * *', '7 11 * * *', '17 11 * * *'];
+const CRONS = ['0 11 * * *', '7 11 * * *', '17 11 * * *', '37 11-23 * * *'];
 const BANK = 'https://www.bangkokbank.com/en/Personal/Other-Services/View-Rates/Foreign-Exchange-Rates';
 const verifiedProofs = new WeakSet();
 const fail = message => {throw new Error(message);};
