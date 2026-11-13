@@ -14,6 +14,9 @@ test('exactly three slots keep the existing serial concurrency and permissions',
  assert.match(workflow,/permissions:\n  contents: write\n  pages: write\n/);
  assert.doesNotMatch(workflow,/actions: write|--force(?:-with-lease)?\b(?!-refresh)/);
 });
+test('Python validation cannot leave bytecode in the strict daily-cycle checkout',()=>{
+ assert.match(workflow,/^    env:\n(?:      #.*\n)*      PYTHONDONTWRITEBYTECODE: '1'$/m);
+});
 test('push and manual dispatch run validation only for every possible cycle mode',()=>{
  const validation=blocks.find(b=>b.startsWith('Validate calculations'));
  assert.doesNotMatch(validation,/^        if:/m);
