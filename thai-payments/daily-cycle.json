@@ -1,15 +1,11 @@
 {
   "version": 1,
-  "day": "2026-11-13",
-  "status": "published",
+  "day": "2026-11-14",
+  "status": "committed",
   "origin": "verified",
-  "committedAt": "2026-11-13T08:14:09.488Z",
+  "committedAt": "2026-11-14T14:50:41.275Z",
   "rateHashes": {
-    "cbr.json": "1a0af954a49d36d855865b25ac5f565123c0494e6d1fe900ee1efd5522861bc9",
-    "bangkok-bank.json": "88873c5478735dc9d25209a2daca15d40293a28c8f384974e51f1912cdc471c9"
-  },
-  "rateRevision": "8e28ffe5dafa5a4c43ea9577d25f22f006e51c20",
-  "publishedRevision": "8e28ffe5dafa5a4c43ea9577d25f22f006e51c20",
-  "confirmedAt": "2026-11-13T08:14:56.235Z",
-  "completedDay": "2026-11-13"
+    "cbr.json": "4ed92daeaf21eaeb504d566fb8cb66e6f88ac6b15a4f757da092ba2371cfc1ee",
+    "bangkok-bank.json": "5f23acc3052375e0a8733b3a195a0873972f33684dbc4043d04f4823b1119cf2"
+  }
 }
