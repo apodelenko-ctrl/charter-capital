@@ -1,0 +1,11 @@
+node_modules
+build/
+.wrangler/
+.dev.vars*
+*.session*
+*.sqlite*
+api.json
+__pycache__/
+*.pyc
+private/
+assets/
