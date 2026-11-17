@@ -1,10 +1,10 @@
 {
   "currency": "USD",
-  "rate": 82.1516,
-  "thbRub": 2.42629,
-  "date": "2026-11-14",
-  "checkedFor": "2026-11-16",
-  "verifiedAt": "2026-11-16T18:00:20.967216+00:00",
-  "source": "https://www.cbr.ru/scripts/XML_daily.asp?date_req=16/11/2026",
-  "url": "https://www.cbr.ru/currency_base/daily/?UniDbQuery.Posted=True&UniDbQuery.To=16.11.2026"
+  "rate": 82.5143,
+  "thbRub": 2.43664,
+  "date": "2026-11-17",
+  "checkedFor": "2026-11-17",
+  "verifiedAt": "2026-11-17T17:26:17.960900+00:00",
+  "source": "https://www.cbr.ru/scripts/XML_daily.asp?date_req=17/11/2026",
+  "url": "https://www.cbr.ru/currency_base/daily/?UniDbQuery.Posted=True&UniDbQuery.To=17.11.2026"
 }
